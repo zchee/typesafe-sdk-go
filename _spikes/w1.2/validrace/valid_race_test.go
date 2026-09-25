@@ -15,9 +15,21 @@
 // Package validrace is a W1.2 probe of sonic v1.15.4's check of a
 // json.Marshaler's output (internal/encoder/prim EncodeJsonMarshaler →
 // alg.Valid → native.ValidateOne), the check a nested RawJSON or JSON Content
-// relies on (rulings R52, R57). In a normal build it refuses every invalid
-// output; built with -race it accepts some complete but invalid outputs a
-// fraction of the time, while truncated outputs are refused in both builds.
+// relied on before ruling R60 (rulings R52, R57). In the lane's runs on (M),
+// results/validrace-*-M.txt, a normal build refused every invalid output and
+// a -race build accepted some complete but invalid outputs (0.42–0.46 %),
+// while truncated outputs were refused in both builds.
+//
+// Correction (K26, W1.2 landing): that the normal build refuses every input
+// holds only for this standalone probe. The reviewer's runs of it accepted
+// none in any configuration, -race included, while inside the full root
+// test binary the reviewer captured invalid bodies in normal builds as well
+// (about 1 in 100,000 tries for a nested json.RawMessage or a caller's
+// MarshalJSON) and 0.6–0.7 % under -race. The effect depends on the state of
+// the whole process, so this probe neither reproduces nor bounds it. Since
+// R60 the SDK's own nested Content and RawJSON are checked by wire's
+// scanner; a caller's Marshaler output is the caller's contract (R61).
+//
 // The leading underscore of _spikes keeps it out of ./...; run it with an
 // explicit path, once without and once with -race:
 //
