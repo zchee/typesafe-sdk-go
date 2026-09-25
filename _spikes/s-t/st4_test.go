@@ -20,6 +20,7 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"syscall"
 	"testing"
 	"time"
 
@@ -75,7 +76,7 @@ func TestST4ReplayBeforeWrite(t *testing.T) {
 // TestST4FailureAfterWrite: the server reads the whole body, then either
 // closes the TCP connection or resets the stream.
 func TestST4FailureAfterWrite(t *testing.T) {
-	for _, kind := range []string{"tcp-close", "rst-internal"} {
+	for _, kind := range []string{"tcp-close", "tcp-reset", "rst-internal"} {
 		t.Run(kind, func(t *testing.T) {
 			var srv *testsupport.LoopbackServer
 			srv = testsupport.NewLoopbackServer(t, testsupport.ServerConfig{
@@ -84,12 +85,15 @@ func TestST4FailureAfterWrite(t *testing.T) {
 					if r.URL.Path != "/fail" {
 						return
 					}
-					if kind == "tcp-close" {
+					switch kind {
+					case "tcp-close":
 						srv.CloseConns()
-						<-r.Context().Done()
-						return
+					case "tcp-reset":
+						srv.LiveH2Conns()[0].Reset()
+					default:
+						panic(http.ErrAbortHandler)
 					}
-					panic(http.ErrAbortHandler)
+					<-r.Context().Done()
 				}),
 			})
 			tr := newTransport(t, Options{})
@@ -101,7 +105,8 @@ func TestST4FailureAfterWrite(t *testing.T) {
 			var ne net.Error
 			isNetErr := errors.As(err, &ne)
 			result("spike", "S-T4", "case", "failure-after-write/"+kind, "role", role, "err", err, "chain", chain(err),
-				"classify", fmt.Sprintf("%+v", flags(err)), "is_net_error", isNetErr, "accepts", srv.Accepts(),
+				"classify", fmt.Sprintf("%+v", flags(err)), "is_net_error", isNetErr,
+				"is_econnreset", errors.Is(err, syscall.ECONNRESET), "is_unexpected_eof", errors.Is(err, io.ErrUnexpectedEOF), "accepts", srv.Accepts(),
 				"seen_on", fmt.Sprint(seenOn(srv)))
 			if err == nil {
 				t.Errorf("want an error")

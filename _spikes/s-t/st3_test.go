@@ -17,13 +17,17 @@ package st
 import (
 	"bytes"
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"math/rand/v2"
+	"net"
 	"net/http"
+	"regexp"
 	"slices"
 	"strconv"
 	"sync"
+	"syscall"
 	"testing"
 	"time"
 
@@ -54,7 +58,11 @@ func holdServer(t *testing.T, onStream func(*testsupport.Stream) testsupport.Act
 func seenOn(srv *testsupport.LoopbackServer) map[string][]string {
 	m := map[string][]string{}
 	for _, r := range srv.Requests() {
-		m[r.Path] = append(m[r.Path], fmt.Sprintf("c%d/s%d/%s", r.Conn, r.StreamID, r.Action))
+		tag := fmt.Sprintf("c%d/s%d/%s", r.Conn, r.StreamID, r.Action)
+		if r.Dropped {
+			tag += "/dropped"
+		}
+		m[r.Path] = append(m[r.Path], tag)
 	}
 	return m
 }
@@ -196,33 +204,52 @@ func TestST3RefusedStream(t *testing.T) {
 	}
 }
 
-// TestST3TCPClose closes the connection under an in-flight request.
+// TestST3TCPClose ends the connection under an in-flight request, with a
+// clean close (close_notify and FIN) or a TCP reset (SO_LINGER 0).
 func TestST3TCPClose(t *testing.T) {
-	srv, _ := holdServer(t, nil)
-	tr := newTransport(t, Options{})
-	g := &Gate{RT: tr, WaitBound: 20 * time.Second}
-	if c := do(t.Context(), g, srv.URL()+"/warm"); c.Err != nil {
-		t.Fatal(c.Err)
+	for _, mode := range []string{"close", "reset"} {
+		t.Run(mode, func(t *testing.T) {
+			srv, _ := holdServer(t, nil)
+			tr := newTransport(t, Options{})
+			g := &Gate{RT: tr, WaitBound: 20 * time.Second}
+			if c := do(t.Context(), g, srv.URL()+"/warm"); c.Err != nil {
+				t.Fatal(c.Err)
+			}
+			done := make(chan call, 1)
+			go func() { done <- do(t.Context(), g, srv.URL()+"/hold/x") }()
+			waitUntil(t, "a held stream", func() bool {
+				cs := srv.LiveH2Conns()
+				return len(cs) == 1 && len(cs[0].ActiveStreams()) == 1
+			})
+			if mode == "reset" {
+				srv.LiveH2Conns()[0].Reset()
+			} else {
+				srv.CloseConns()
+			}
+			inflight := <-done
+			next := do(t.Context(), g, srv.URL()+"/next")
+			result("spike", "S-T3", "case", "conn-"+mode+"-inflight", "inflight_err", inflight.Err, "inflight_chain", chain(inflight.Err),
+				"classify", fmt.Sprintf("%+v", flags(inflight.Err)), "is_net_error", isNetError(inflight.Err),
+				"is_econnreset", errors.Is(inflight.Err, syscall.ECONNRESET), "is_unexpected_eof", errors.Is(inflight.Err, io.ErrUnexpectedEOF),
+				"next_status", next.Status, "next_err", next.Err, "accepts", srv.Accepts(), "seen_on", fmt.Sprint(seenOn(srv)))
+		})
 	}
-	done := make(chan call, 1)
-	go func() { done <- do(t.Context(), g, srv.URL()+"/hold/x") }()
-	waitUntil(t, "a held stream", func() bool {
-		cs := srv.LiveH2Conns()
-		return len(cs) == 1 && len(cs[0].ActiveStreams()) == 1
-	})
-	srv.CloseConns()
-	inflight := <-done
-	next := do(t.Context(), g, srv.URL()+"/next")
-	result("spike", "S-T3", "case", "tcp-close-inflight", "inflight_err", inflight.Err, "inflight_chain", chain(inflight.Err),
-		"classify", fmt.Sprintf("%+v", flags(inflight.Err)), "next_status", next.Status, "next_err", next.Err,
-		"accepts", srv.Accepts(), "seen_on", fmt.Sprint(seenOn(srv)))
 }
+
+// isNetError reports whether a net.Error is in err's chain.
+func isNetError(err error) bool {
+	var ne net.Error
+	return errors.As(err, &ne)
+}
+
+// portRE matches a loopback address with its port, so outcomes aggregate.
+var portRE = regexp.MustCompile(`127\.0\.0\.1:[0-9]+`)
 
 // TestST3IdleCloseRace races a server-side close of an idle connection (as
 // at the server's idle timeout) against a new request, 100 times per mode.
 func TestST3IdleCloseRace(t *testing.T) {
 	const trials = 100
-	for _, mode := range []string{"tcp-close", "goaway-then-close"} {
+	for _, mode := range []string{"tcp-close", "tcp-reset", "goaway-then-close"} {
 		t.Run(mode, func(t *testing.T) {
 			outcomes := map[string]int{}
 			var reused, fresh int
@@ -241,10 +268,15 @@ func TestST3IdleCloseRace(t *testing.T) {
 					if i%2 == 0 {
 						time.Sleep(jitter)
 					}
-					if mode == "goaway-then-close" {
+					switch mode {
+					case "goaway-then-close":
 						_ = conn.GoAway(1, testsupport.CodeNoError)
+						conn.Close()
+					case "tcp-reset":
+						conn.Reset()
+					default:
+						conn.Close()
 					}
-					conn.Close()
 				})
 				var c call
 				wg.Go(func() {
@@ -260,7 +292,7 @@ func TestST3IdleCloseRace(t *testing.T) {
 				wg.Wait()
 				key := "ok"
 				if c.Err != nil {
-					key = "err: " + c.Err.Error()
+					key = "err: " + portRE.ReplaceAllString(c.Err.Error(), "127.0.0.1:P")
 				}
 				outcomes[key]++
 				for _, r := range srv.Requests() {
