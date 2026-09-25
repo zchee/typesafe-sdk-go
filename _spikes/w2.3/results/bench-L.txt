@@ -1,0 +1,23 @@
+# 2026-09-25 19:14:19 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -run ^$ -bench ^BenchmarkCall$ -benchmem -count=10 .
+# load before:  19:14:19 up 1 day, 14:39,  1 user,  load average: 0.10, 0.33, 0.44 | kernel: 0.10 0.33 0.44 1/595 261902 (MAXLOAD=44, waited 0 x 60 s)
+# base: 504b201
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  194455	      6116 ns/op	    3013 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  196635	      6094 ns/op	    3024 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  198915	      6077 ns/op	    3011 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  192915	      6098 ns/op	    3017 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  198036	      6113 ns/op	    3023 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  197211	      6097 ns/op	    3013 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  195462	      6102 ns/op	    3020 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  196334	      6096 ns/op	    3013 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  196516	      6112 ns/op	    3013 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  195234	      6129 ns/op	    3031 B/op	      22 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	11.991s
+# exit 0 at 2026-09-25 19:14:32 UTC
+# load after:  19:14:32 up 1 day, 14:39,  1 user,  load average: 0.17, 0.34, 0.44 | kernel: 0.17 0.34 0.44 1/595 262042

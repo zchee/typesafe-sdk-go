@@ -1,0 +1,15 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+            │ bench-M.txt │
+            │   sec/op    │
+Call/sdk-16   4.742µ ± 3%
+
+            │ bench-M.txt  │
+            │     B/op     │
+Call/sdk-16   2.920Ki ± 1%
+
+            │ bench-M.txt │
+            │  allocs/op  │
+Call/sdk-16    22.00 ± 0%

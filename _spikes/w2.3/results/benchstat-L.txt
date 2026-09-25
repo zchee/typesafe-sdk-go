@@ -1,0 +1,15 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+            │ bench-L.txt │
+            │   sec/op    │
+Call/sdk-44   6.100µ ± 0%
+
+            │ bench-L.txt  │
+            │     B/op     │
+Call/sdk-44   2.944Ki ± 0%
+
+            │ bench-L.txt │
+            │  allocs/op  │
+Call/sdk-44    22.00 ± 0%
