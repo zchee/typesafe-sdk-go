@@ -1,0 +1,172 @@
+# lock: /opt/homebrew/opt/util-linux/bin/flock /private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock; acquired 2026-09-25 17:25:57 JST
+# host: (M) Apple M3 Max, 16 cores
+# load before: { 8.29 6.69 6.91 } (MAXLOAD=16, waited 0 x 60 s)
+# base: 31f2986 
+# go version: go version go1.27.1 darwin/arm64
+# ToolTags: [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# command: env GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run ^TestAllocDecode$ -v ./_spikes/s-d1/
+=== RUN   TestAllocDecode
+    alloc_test.go:61: runs of a1 deviation-lone-surrogate.json total mallocs/bytes: 14/4568 14/4568 14/4568 14/4568 14/4568
+    alloc_test.go:68: runs of a1 deviation-lone-surrogate.json traverse mallocs/bytes: 4/144 4/144 4/144 4/144 4/144
+    alloc_test.go:79: runs of a1 deviation-lone-surrogate.json lazyScan mallocs/bytes: 8/4256 8/4256 8/4256 8/4256 8/4256
+    alloc_test.go:88: runs of a1 deviation-lone-surrogate.json per-level copy mallocs/bytes: 14/4568 14/4568 14/4568 14/4568 14/4568
+    alloc_test.go:95: ALLOC a1  deviation-lone-surrogate           bytes=219     total=14/4568        traverse=4/144      lazyScan=8/4256       perLevelCopyTotal=14/4568        members=11     structured=1      scans=0
+    alloc_test.go:61: runs of a1 duplicates.json total               mallocs/bytes: 17/5336 17/5336 17/5336 17/5336 17/5336
+    alloc_test.go:68: runs of a1 duplicates.json traverse            mallocs/bytes: 6/400 6/400 6/400 6/400 6/400
+    alloc_test.go:79: runs of a1 duplicates.json lazyScan            mallocs/bytes: 9/4272 9/4272 9/4272 9/4272 9/4272
+    alloc_test.go:88: runs of a1 duplicates.json per-level copy      mallocs/bytes: 17/5336 17/5336 17/5336 17/5336 17/5336
+    alloc_test.go:95: ALLOC a1  duplicates                         bytes=825     total=17/5336        traverse=6/400      lazyScan=9/4272       perLevelCopyTotal=17/5336        members=18     structured=1      scans=0
+    alloc_test.go:61: runs of a1 escaped-member-names.json total     mallocs/bytes: 30/5144 30/5144 30/5144 30/5144 30/5144
+    alloc_test.go:68: runs of a1 escaped-member-names.json traverse  mallocs/bytes: 15/312 15/312 15/312 15/312 15/312
+    alloc_test.go:79: runs of a1 escaped-member-names.json lazyScan  mallocs/bytes: 13/4320 13/4320 13/4320 13/4320 13/4320
+    alloc_test.go:88: runs of a1 escaped-member-names.json per-level copy mallocs/bytes: 30/5144 30/5144 30/5144 30/5144 30/5144
+    alloc_test.go:95: ALLOC a1  escaped-member-names               bytes=425     total=30/5144        traverse=15/312     lazyScan=13/4320      perLevelCopyTotal=30/5144        members=12     structured=1      scans=0
+    alloc_test.go:61: runs of a1 escaped-names.json total            mallocs/bytes: 10/1224 10/1224 10/1224 10/1224 10/1224
+    alloc_test.go:68: runs of a1 escaped-names.json traverse         mallocs/bytes: 9/328 9/328 9/328 9/328 9/328
+    alloc_test.go:95: ALLOC a1  escaped-names                      bytes=481     total=10/1224        traverse=9/328      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=1
+    alloc_test.go:61: runs of a1 no-answers.json total               mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:68: runs of a1 no-answers.json traverse            mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:95: ALLOC a1  no-answers                         bytes=67      total=0/0            traverse=0/0        lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a1 parity-big-exp-unknown.json total   mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_test.go:68: runs of a1 parity-big-exp-unknown.json traverse mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:95: ALLOC a1  parity-big-exp-unknown             bytes=135     total=1/144          traverse=0/0        lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a1 result-20.json total                mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    alloc_test.go:68: runs of a1 result-20.json traverse             mallocs/bytes: 19/1952 19/1952 19/1952 19/1952 19/1952
+    alloc_test.go:95: ALLOC a1  result-20                          bytes=2253    total=24/6008        traverse=19/1952    lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a1 result.json total                   mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_test.go:68: runs of a1 result.json traverse                mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+    alloc_test.go:95: ALLOC a1  result                             bytes=364     total=4/688          traverse=3/240      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a1 score-flood-mini.json total         mallocs/bytes: 21/4184 21/4184 21/4184 21/4184 21/4184
+    alloc_test.go:68: runs of a1 score-flood-mini.json traverse      mallocs/bytes: 16/512 16/512 16/512 16/512 16/512
+    alloc_test.go:95: ALLOC a1  score-flood-mini                   bytes=1495    total=21/4184        traverse=16/512     lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a1 structured-legend-flood-10k.json total mallocs/bytes: 686/2005944 686/2005944 686/2005944 686/2005944 686/2005944
+    alloc_test.go:68: runs of a1 structured-legend-flood-10k.json traverse mallocs/bytes: 3/647216 3/647216 3/647216 3/647216 3/647216
+    alloc_test.go:79: runs of a1 structured-legend-flood-10k.json lazyScan mallocs/bytes: 681/956872 681/956872 681/956872 681/956872 681/956872
+    alloc_test.go:88: runs of a1 structured-legend-flood-10k.json per-level copy mallocs/bytes: 10685/2083736 10685/2083736 10685/2083736 10685/2083736 10685/2083736
+    alloc_test.go:95: ALLOC a1  structured-legend-flood-10k        bytes=616421  total=686/2005944    traverse=3/647216   lazyScan=681/956872   perLevelCopyTotal=10685/2083736  members=10011  structured=10000  scans=0
+    alloc_test.go:61: runs of a1 structured-legend-flood-1k.json total mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
+    alloc_test.go:68: runs of a1 structured-legend-flood-1k.json traverse mallocs/bytes: 3/65584 3/65584 3/65584 3/65584 3/65584
+    alloc_test.go:79: runs of a1 structured-legend-flood-1k.json lazyScan mallocs/bytes: 86/106904 86/106904 86/106904 86/106904 86/106904
+    alloc_test.go:88: runs of a1 structured-legend-flood-1k.json per-level copy mallocs/bytes: 1090/220136 1090/220136 1090/220136 1090/220136 1090/220136
+    alloc_test.go:95: ALLOC a1  structured-legend-flood-1k         bytes=57418   total=91/213896      traverse=3/65584    lazyScan=86/106904    perLevelCopyTotal=1090/220136    members=1011   structured=1000   scans=0
+    alloc_test.go:61: runs of a1 structured-legend.json total        mallocs/bytes: 12/4528 12/4528 12/4528 12/4528 12/4528
+    alloc_test.go:68: runs of a1 structured-legend.json traverse     mallocs/bytes: 2/64 2/64 2/64 2/64 2/64
+    alloc_test.go:79: runs of a1 structured-legend.json lazyScan     mallocs/bytes: 8/4256 8/4256 8/4256 8/4256 8/4256
+    alloc_test.go:88: runs of a1 structured-legend.json per-level copy mallocs/bytes: 12/4528 12/4528 12/4528 12/4528 12/4528
+    alloc_test.go:95: ALLOC a1  structured-legend                  bytes=217     total=12/4528        traverse=2/64       lazyScan=8/4256       perLevelCopyTotal=12/4528        members=10     structured=1      scans=0
+    alloc_test.go:61: runs of a1 type-last.json total                mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_test.go:68: runs of a1 type-last.json traverse             mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+    alloc_test.go:95: ALLOC a1  type-last                          bytes=364     total=4/688          traverse=3/240      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a1 unknown-answer-type.json total      mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_test.go:68: runs of a1 unknown-answer-type.json traverse   mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:95: ALLOC a1  unknown-answer-type                bytes=145     total=1/144          traverse=0/0        lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 deviation-lone-surrogate.json total mallocs/bytes: 14/4568 14/4568 14/4568 14/4568 14/4568
+    alloc_test.go:68: runs of a2 deviation-lone-surrogate.json traverse mallocs/bytes: 4/144 4/144 4/144 4/144 4/144
+    alloc_test.go:79: runs of a2 deviation-lone-surrogate.json lazyScan mallocs/bytes: 8/4256 8/4256 8/4256 8/4256 8/4256
+    alloc_test.go:88: runs of a2 deviation-lone-surrogate.json per-level copy mallocs/bytes: 14/4568 14/4568 14/4568 14/4568 14/4568
+    alloc_test.go:95: ALLOC a2  deviation-lone-surrogate           bytes=219     total=14/4568        traverse=4/144      lazyScan=8/4256       perLevelCopyTotal=14/4568        members=11     structured=1      scans=0
+    alloc_test.go:61: runs of a2 duplicates.json total               mallocs/bytes: 17/5336 17/5336 17/5336 17/5336 17/5336
+    alloc_test.go:68: runs of a2 duplicates.json traverse            mallocs/bytes: 6/400 6/400 6/400 6/400 6/400
+    alloc_test.go:79: runs of a2 duplicates.json lazyScan            mallocs/bytes: 9/4272 9/4272 9/4272 9/4272 9/4272
+    alloc_test.go:88: runs of a2 duplicates.json per-level copy      mallocs/bytes: 17/5336 17/5336 17/5336 17/5336 17/5336
+    alloc_test.go:95: ALLOC a2  duplicates                         bytes=825     total=17/5336        traverse=6/400      lazyScan=9/4272       perLevelCopyTotal=17/5336        members=18     structured=1      scans=0
+    alloc_test.go:61: runs of a2 escaped-member-names.json total     mallocs/bytes: 30/5144 30/5144 30/5144 30/5144 30/5144
+    alloc_test.go:68: runs of a2 escaped-member-names.json traverse  mallocs/bytes: 15/312 15/312 15/312 15/312 15/312
+    alloc_test.go:79: runs of a2 escaped-member-names.json lazyScan  mallocs/bytes: 13/4320 13/4320 13/4320 13/4320 13/4320
+    alloc_test.go:88: runs of a2 escaped-member-names.json per-level copy mallocs/bytes: 30/5144 30/5144 30/5144 30/5144 30/5144
+    alloc_test.go:95: ALLOC a2  escaped-member-names               bytes=425     total=30/5144        traverse=15/312     lazyScan=13/4320      perLevelCopyTotal=30/5144        members=12     structured=1      scans=0
+    alloc_test.go:61: runs of a2 escaped-names.json total            mallocs/bytes: 10/1224 10/1224 10/1224 10/1224 10/1224
+    alloc_test.go:68: runs of a2 escaped-names.json traverse         mallocs/bytes: 9/328 9/328 9/328 9/328 9/328
+    alloc_test.go:95: ALLOC a2  escaped-names                      bytes=481     total=10/1224        traverse=9/328      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=1
+    alloc_test.go:61: runs of a2 no-answers.json total               mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:68: runs of a2 no-answers.json traverse            mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:95: ALLOC a2  no-answers                         bytes=67      total=0/0            traverse=0/0        lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 parity-big-exp-unknown.json total   mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_test.go:68: runs of a2 parity-big-exp-unknown.json traverse mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:95: ALLOC a2  parity-big-exp-unknown             bytes=135     total=1/144          traverse=0/0        lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 result-20.json total                mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    alloc_test.go:68: runs of a2 result-20.json traverse             mallocs/bytes: 19/1952 19/1952 19/1952 19/1952 19/1952
+    alloc_test.go:95: ALLOC a2  result-20                          bytes=2253    total=24/6008        traverse=19/1952    lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 result.json total                   mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_test.go:68: runs of a2 result.json traverse                mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+    alloc_test.go:95: ALLOC a2  result                             bytes=364     total=4/688          traverse=3/240      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 score-flood-mini.json total         mallocs/bytes: 21/4184 21/4184 21/4184 21/4184 21/4184
+    alloc_test.go:68: runs of a2 score-flood-mini.json traverse      mallocs/bytes: 16/512 16/512 16/512 16/512 16/512
+    alloc_test.go:95: ALLOC a2  score-flood-mini                   bytes=1495    total=21/4184        traverse=16/512     lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 structured-legend-flood-10k.json total mallocs/bytes: 686/2005944 686/2005944 686/2005944 686/2005944 686/2005944
+    alloc_test.go:68: runs of a2 structured-legend-flood-10k.json traverse mallocs/bytes: 3/647216 3/647216 3/647216 3/647216 3/647216
+    alloc_test.go:79: runs of a2 structured-legend-flood-10k.json lazyScan mallocs/bytes: 681/956872 681/956872 681/956872 681/956872 681/956872
+    alloc_test.go:88: runs of a2 structured-legend-flood-10k.json per-level copy mallocs/bytes: 10685/2083736 10685/2083736 10685/2083736 10685/2083736 10685/2083736
+    alloc_test.go:95: ALLOC a2  structured-legend-flood-10k        bytes=616421  total=686/2005944    traverse=3/647216   lazyScan=681/956872   perLevelCopyTotal=10685/2083736  members=10011  structured=10000  scans=0
+    alloc_test.go:61: runs of a2 structured-legend-flood-1k.json total mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
+    alloc_test.go:68: runs of a2 structured-legend-flood-1k.json traverse mallocs/bytes: 3/65584 3/65584 3/65584 3/65584 3/65584
+    alloc_test.go:79: runs of a2 structured-legend-flood-1k.json lazyScan mallocs/bytes: 86/106904 86/106904 86/106904 86/106904 86/106904
+    alloc_test.go:88: runs of a2 structured-legend-flood-1k.json per-level copy mallocs/bytes: 1090/220136 1090/220136 1090/220136 1090/220136 1090/220136
+    alloc_test.go:95: ALLOC a2  structured-legend-flood-1k         bytes=57418   total=91/213896      traverse=3/65584    lazyScan=86/106904    perLevelCopyTotal=1090/220136    members=1011   structured=1000   scans=0
+    alloc_test.go:61: runs of a2 structured-legend.json total        mallocs/bytes: 12/4528 12/4528 12/4528 12/4528 12/4528
+    alloc_test.go:68: runs of a2 structured-legend.json traverse     mallocs/bytes: 2/64 2/64 2/64 2/64 2/64
+    alloc_test.go:79: runs of a2 structured-legend.json lazyScan     mallocs/bytes: 8/4256 8/4256 8/4256 8/4256 8/4256
+    alloc_test.go:88: runs of a2 structured-legend.json per-level copy mallocs/bytes: 12/4528 12/4528 12/4528 12/4528 12/4528
+    alloc_test.go:95: ALLOC a2  structured-legend                  bytes=217     total=12/4528        traverse=2/64       lazyScan=8/4256       perLevelCopyTotal=12/4528        members=10     structured=1      scans=0
+    alloc_test.go:61: runs of a2 type-last.json total                mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_test.go:68: runs of a2 type-last.json traverse             mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+    alloc_test.go:95: ALLOC a2  type-last                          bytes=364     total=4/688          traverse=3/240      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of a2 unknown-answer-type.json total      mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_test.go:68: runs of a2 unknown-answer-type.json traverse   mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:95: ALLOC a2  unknown-answer-type                bytes=145     total=1/144          traverse=0/0        lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of b deviation-lone-surrogate.json total  mallocs/bytes: 18/3848 18/3848 18/3848 18/3848 18/3848
+    alloc_test.go:68: runs of b deviation-lone-surrogate.json traverse mallocs/bytes: 9/448 9/448 9/448 9/448 9/448
+    alloc_test.go:79: runs of b deviation-lone-surrogate.json lazyScan mallocs/bytes: 7/3232 7/3232 7/3232 7/3232 7/3232
+    alloc_test.go:88: runs of b deviation-lone-surrogate.json per-level copy mallocs/bytes: 18/3848 18/3848 18/3848 18/3848 18/3848
+    alloc_test.go:95: ALLOC b   deviation-lone-surrogate           bytes=219     total=18/3848        traverse=9/448      lazyScan=7/3232       perLevelCopyTotal=18/3848        members=8      structured=1      scans=0
+    alloc_test.go:61: runs of b duplicates.json total                mallocs/bytes: 23/5232 23/5232 23/5232 23/5232 23/5232
+    alloc_test.go:68: runs of b duplicates.json traverse             mallocs/bytes: 14/1336 14/1336 14/1336 14/1336 14/1336
+    alloc_test.go:79: runs of b duplicates.json lazyScan             mallocs/bytes: 7/3232 7/3232 7/3232 7/3232 7/3232
+    alloc_test.go:88: runs of b duplicates.json per-level copy       mallocs/bytes: 23/5232 23/5232 23/5232 23/5232 23/5232
+    alloc_test.go:95: ALLOC b   duplicates                         bytes=825     total=23/5232        traverse=14/1336    lazyScan=7/3232       perLevelCopyTotal=23/5232        members=12     structured=1      scans=0
+    alloc_test.go:61: runs of b escaped-member-names.json total      mallocs/bytes: 31/4568 31/4568 31/4568 31/4568 31/4568
+    alloc_test.go:68: runs of b escaped-member-names.json traverse   mallocs/bytes: 20/792 20/792 20/792 20/792 20/792
+    alloc_test.go:79: runs of b escaped-member-names.json lazyScan   mallocs/bytes: 9/3264 9/3264 9/3264 9/3264 9/3264
+    alloc_test.go:88: runs of b escaped-member-names.json per-level copy mallocs/bytes: 31/4568 31/4568 31/4568 31/4568 31/4568
+    alloc_test.go:95: ALLOC b   escaped-member-names               bytes=425     total=31/4568        traverse=20/792     lazyScan=9/3264       perLevelCopyTotal=31/4568        members=9      structured=1      scans=0
+    alloc_test.go:61: runs of b escaped-names.json total             mallocs/bytes: 15/1800 15/1800 15/1800 15/1800 15/1800
+    alloc_test.go:68: runs of b escaped-names.json traverse          mallocs/bytes: 14/904 14/904 14/904 14/904 14/904
+    alloc_test.go:95: ALLOC b   escaped-names                      bytes=481     total=15/1800        traverse=14/904     lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=1
+    alloc_test.go:61: runs of b no-answers.json total                mallocs/bytes: 4/160 4/160 4/160 4/160 4/160
+    alloc_test.go:68: runs of b no-answers.json traverse             mallocs/bytes: 4/160 4/160 4/160 4/160 4/160
+    alloc_test.go:95: ALLOC b   no-answers                         bytes=67      total=4/160          traverse=4/160      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of b result-20.json total                 mallocs/bytes: 29/8472 29/8472 29/8472 29/8472 29/8472
+    alloc_test.go:68: runs of b result-20.json traverse              mallocs/bytes: 24/4416 24/4416 24/4416 24/4416 24/4416
+    alloc_test.go:95: ALLOC b   result-20                          bytes=2253    total=29/8472        traverse=24/4416    lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of b result.json total                    mallocs/bytes: 9/1136 9/1136 9/1136 9/1136 9/1136
+    alloc_test.go:68: runs of b result.json traverse                 mallocs/bytes: 8/688 8/688 8/688 8/688 8/688
+    alloc_test.go:95: ALLOC b   result                             bytes=364     total=9/1136         traverse=8/688      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of b score-flood-mini.json total          mallocs/bytes: 26/5880 26/5880 26/5880 26/5880 26/5880
+    alloc_test.go:68: runs of b score-flood-mini.json traverse       mallocs/bytes: 21/2208 21/2208 21/2208 21/2208 21/2208
+    alloc_test.go:95: ALLOC b   score-flood-mini                   bytes=1495    total=26/5880        traverse=21/2208    lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of b structured-legend-flood-10k.json total mallocs/bytes: 691/4765784 691/4765784 691/4765784 691/4765784 691/4765784
+    alloc_test.go:68: runs of b structured-legend-flood-10k.json traverse mallocs/bytes: 9/3408080 9/3408080 9/3408080 9/3408080 9/3408080
+    alloc_test.go:79: runs of b structured-legend-flood-10k.json lazyScan mallocs/bytes: 680/955848 680/955848 680/955848 680/955848 680/955848
+    alloc_test.go:88: runs of b structured-legend-flood-10k.json per-level copy mallocs/bytes: 10690/4843576 10690/4843576 10690/4843576 10690/4843576 10690/4843576
+    alloc_test.go:95: ALLOC b   structured-legend-flood-10k        bytes=616421  total=691/4765784    traverse=9/3408080  lazyScan=680/955848   perLevelCopyTotal=10690/4843576  members=10008  structured=10000  scans=0
+    alloc_test.go:61: runs of b structured-legend-flood-1k.json total mallocs/bytes: 95/270376 95/270376 95/270376 95/270376 95/270376
+    alloc_test.go:68: runs of b structured-legend-flood-1k.json traverse mallocs/bytes: 8/123088 8/123088 8/123088 8/123088 8/123088
+    alloc_test.go:79: runs of b structured-legend-flood-1k.json lazyScan mallocs/bytes: 85/105880 85/105880 85/105880 85/105880 85/105880
+    alloc_test.go:88: runs of b structured-legend-flood-1k.json per-level copy mallocs/bytes: 1094/276616 1094/276616 1094/276616 1094/276616 1094/276616
+    alloc_test.go:95: ALLOC b   structured-legend-flood-1k         bytes=57418   total=95/270376      traverse=8/123088   lazyScan=85/105880    perLevelCopyTotal=1094/276616    members=1008   structured=1000   scans=0
+    alloc_test.go:61: runs of b structured-legend.json total         mallocs/bytes: 16/3808 16/3808 16/3808 16/3808 16/3808
+    alloc_test.go:68: runs of b structured-legend.json traverse      mallocs/bytes: 7/368 7/368 7/368 7/368 7/368
+    alloc_test.go:79: runs of b structured-legend.json lazyScan      mallocs/bytes: 7/3232 7/3232 7/3232 7/3232 7/3232
+    alloc_test.go:88: runs of b structured-legend.json per-level copy mallocs/bytes: 16/3808 16/3808 16/3808 16/3808 16/3808
+    alloc_test.go:95: ALLOC b   structured-legend                  bytes=217     total=16/3808        traverse=7/368      lazyScan=7/3232       perLevelCopyTotal=16/3808        members=7      structured=1      scans=0
+    alloc_test.go:61: runs of b type-last.json total                 mallocs/bytes: 9/1136 9/1136 9/1136 9/1136 9/1136
+    alloc_test.go:68: runs of b type-last.json traverse              mallocs/bytes: 8/688 8/688 8/688 8/688 9/736
+    alloc_test.go:95: ALLOC b   type-last                          bytes=364     total=9/1136         traverse=8/688      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+    alloc_test.go:61: runs of b unknown-answer-type.json total       mallocs/bytes: 6/384 6/384 6/384 6/384 6/384
+    alloc_test.go:68: runs of b unknown-answer-type.json traverse    mallocs/bytes: 5/240 5/240 5/240 5/240 5/240
+    alloc_test.go:95: ALLOC b   unknown-answer-type                bytes=145     total=6/384          traverse=5/240      lazyScan=0/0          perLevelCopyTotal=-              members=0      structured=0      scans=0
+--- PASS: TestAllocDecode (0.37s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-d1	0.385s
+# load after: { 8.29 6.69 6.91 }
+# end: 2026-09-25 17:25:58 JST rc=0
