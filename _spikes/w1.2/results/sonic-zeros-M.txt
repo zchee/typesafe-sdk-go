@@ -1,0 +1,9 @@
+# 2026-09-25 23:45:21 JST (M) load 9.24 11.82 10.85 go version go1.27.1 darwin/arm64 GOEXPERIMENT=nosimd,noruntimesecret github.com/bytedance/sonic v1.15.4 base aafdbc4, probe from wave/w1.2-cifix (zeros and sweep added): sonic_probe zeros
+float64 -0: 0
+float64 +0: 0
+float32 -0: 0
+float32 +0: 0
+struct fields -0: {"f64":0,"f32":0}
+map value -0: {"z":0}
+R59 extra floats: [0.5,3,10000000000000000,0,0.000001,1e+21]
+R59 nested extra float: {"t":{"x":3}}

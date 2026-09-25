@@ -1,0 +1,2 @@
+# 2026-09-25 14:45:16 UTC (L) load 0.60 0.40 0.17 go version go1.27.1 linux/amd64 GOEXPERIMENT= github.com/bytedance/sonic v1.15.4 base aafdbc4, probe from wave/w1.2-cifix (zeros and sweep added): sonic_probe cycslice
+cyclic slice: ERR *json.UnsupportedValueError: json: unsupported value: Value nesting too deep

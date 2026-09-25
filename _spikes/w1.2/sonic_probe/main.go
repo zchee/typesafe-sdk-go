@@ -17,12 +17,16 @@
 // the float set of R42 ("floats"), and control characters, invalid UTF-8,
 // NaN and the infinities, unsupported kinds, nil containers, []byte and
 // json.RawMessage ("misc"), and cyclic values ("cycmap", "cycptr",
-// "cycslice", which sonic stops at its nesting limit). The leading
-// underscore of _spikes keeps it out of ./...; run it with an explicit path:
+// "cycslice", which sonic stops at its nesting limit). For K27 it also
+// prints negative and positive zero as float64 and float32, alone, in a
+// struct and in a map, with the extra-value floats of R59 ("zeros"), and
+// digests of about 3.8 million deterministic floats, integers and strings
+// that two hosts compare ("sweep", see sweep.go). The leading underscore of
+// _spikes keeps it out of ./...; run it with an explicit path:
 //
 //	GOEXPERIMENT=nosimd,noruntimesecret go run ./_spikes/w1.2/sonic_probe floats
 //
-// results/sonic-*-M.txt are its runs on (M).
+// results/sonic-*-M.txt are its runs on (M), results/sonic-*-L.txt on (L).
 package main
 
 import (
@@ -49,7 +53,7 @@ type node struct {
 
 func main() {
 	if len(os.Args) != 2 {
-		fmt.Fprintln(os.Stderr, "usage: sonic_probe floats|misc|cycmap|cycptr|cycslice")
+		fmt.Fprintln(os.Stderr, "usage: sonic_probe floats|misc|cycmap|cycptr|cycslice|zeros|sweep")
 		os.Exit(2)
 	}
 	switch os.Args[1] {
@@ -100,6 +104,21 @@ func main() {
 		s := []any{nil}
 		s[0] = s
 		fmt.Println("cyclic slice:", enc(s))
+	case "zeros":
+		negZero := math.Copysign(0, -1)
+		fmt.Println("float64 -0:", enc(negZero))
+		fmt.Println("float64 +0:", enc(0.0))
+		fmt.Println("float32 -0:", enc(float32(negZero)))
+		fmt.Println("float32 +0:", enc(float32(0)))
+		fmt.Println("struct fields -0:", enc(&struct {
+			F64 float64 `json:"f64"`
+			F32 float32 `json:"f32"`
+		}{negZero, float32(negZero)}))
+		fmt.Println("map value -0:", enc(map[string]any{"z": negZero}))
+		fmt.Println("R59 extra floats:", enc([]any{0.5, 3.0, 1e16, negZero, 1e-6, 1e21}))
+		fmt.Println("R59 nested extra float:", enc(map[string]any{"t": map[string]any{"x": 3.0}}))
+	case "sweep":
+		sweep()
 	default:
 		fmt.Fprintln(os.Stderr, "unknown probe", os.Args[1])
 		os.Exit(2)

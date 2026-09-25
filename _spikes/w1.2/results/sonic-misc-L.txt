@@ -1,0 +1,25 @@
+# 2026-09-25 14:45:16 UTC (L) load 0.57 0.39 0.17 go version go1.27.1 linux/amd64 GOEXPERIMENT= github.com/bytedance/sonic v1.15.4 base aafdbc4, probe from wave/w1.2-cifix (zeros and sweep added): sonic_probe misc
+ctl: "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\t\n\u000b\u000c\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f<>&\"\\/é  😀"
+invalid utf8: "\"a\xffb\""
+lone surrogate bytes: "\"a\xed\xa0\x80b\""
+nan: ERR *json.UnsupportedValueError: json: unsupported value: NaN or ±Infinite
+inf: ERR *json.UnsupportedValueError: json: unsupported value: NaN or ±Infinite
+f32 nan: ERR *json.UnsupportedValueError: json: unsupported value: NaN or ±Infinite
+nan nested: ERR *json.UnsupportedValueError: json: unsupported value: NaN or ±Infinite
+chan: ERR *json.UnsupportedTypeError: json: unsupported type: chan int
+func: ERR *json.UnsupportedTypeError: json: unsupported type: func()
+complex: ERR *json.UnsupportedTypeError: json: unsupported type: complex128
+map[bool]int: {"true":1}
+map[int]string: {"3":"x"}
+nil map: null
+nil slice: null
+nil ptr: null
+nil any: null
+bytes: "eyJhIjoxfQ=="
+rawmsg ws: " {\"a\" : 1} "
+rawmsg bad: ERR *errors.errorString: invalid Marshaler output json syntax at 8: "{\"a\":"
+rawmsg scalar: 3
+json.Number: 12
+uint64 max: 18446744073709551615
+int8: -3
+f32 0.1: 0.1
