@@ -1,0 +1,1329 @@
+# 2026-09-25 22:27:11 UTC (L) tree=45fd018 lock=/tmp/ts-spike/bench.lock loops=44 GOEXPERIMENT= go test -race -count=60 -cpu 1,4 -run ^TestTokenResidualK21$ -v ./internal/h2gate/
+# load before:  22:27:11 up 1 day, 17:52,  2 users,  load average: 16.00, 5.28, 4.07
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  22:27:17 up 1 day, 17:52,  2 users,  load average: 18.25, 5.92, 4.29
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.104 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:39 timeout:33]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=149 probe_headers_ms=0.152 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:50 timeout:22]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=124 probe_headers_ms=0.223 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.140 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.112 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:49 timeout:23]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=129 probe_headers_ms=0.152 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.111 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.104 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:55 timeout:17]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=118 probe_headers_ms=0.260 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.100 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.079 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:40 timeout:32]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=143 probe_headers_ms=0.187 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:38 timeout:34]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=146 probe_headers_ms=0.194 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.099 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.090 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:68 timeout:4]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=85 probe_headers_ms=0.144 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=130 probe_headers_ms=0.145 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.117 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:20 timeout:52]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=182 probe_headers_ms=0.181 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.078 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.079 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=165 probe_headers_ms=0.165 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:45 timeout:27]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=134 probe_headers_ms=0.166 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.082 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:41 timeout:31]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=142 probe_headers_ms=0.147 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:45 timeout:27]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=133 probe_headers_ms=0.145 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:33 timeout:39]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=123 probe_headers_ms=0.144 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.34s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:47 timeout:25]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=132 probe_headers_ms=0.156 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=169 probe_headers_ms=0.163 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.099 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.088 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:38 timeout:34]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=150 probe_headers_ms=0.161 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.34s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:33 timeout:39]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=155 probe_headers_ms=0.170 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=165 probe_headers_ms=0.178 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.110 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.107 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:20 timeout:52]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=139 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.090 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.081 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=127 probe_headers_ms=0.149 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.100 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:42 timeout:30]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=143 probe_headers_ms=0.187 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.090 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=150 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:41 timeout:31]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=142 probe_headers_ms=0.178 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.113 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:42 timeout:30]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.140 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=153 probe_headers_ms=0.170 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.120 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.107 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:27 timeout:45]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=155 probe_headers_ms=0.140 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.086 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:41 timeout:31]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=143 probe_headers_ms=0.159 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:57 timeout:15]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=117 probe_headers_ms=0.179 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.097 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:49 timeout:23]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=129 probe_headers_ms=0.159 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.112 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:43 timeout:29]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=141 probe_headers_ms=0.206 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=169 probe_headers_ms=0.194 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.088 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:44 timeout:28]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=134 probe_headers_ms=0.140 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.110 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=161 probe_headers_ms=0.174 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=165 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.097 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=155 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.088 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:42 timeout:30]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=144 probe_headers_ms=0.155 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.090 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.079 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.104 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:50 timeout:22]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=124 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.34s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:30 timeout:42]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=117 probe_headers_ms=0.140 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=153 probe_headers_ms=0.175 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.113 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.090 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:40 timeout:32]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=148 probe_headers_ms=0.140 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:26 timeout:46]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=167 probe_headers_ms=0.176 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.082 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:43 timeout:29]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=140 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.247 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.34s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:38 timeout:34]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=151 probe_headers_ms=0.164 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.103 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.99s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.34s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=115 probe_headers_ms=0.144 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.086 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:44 timeout:28]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=137 probe_headers_ms=0.193 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.118 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.104 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=137 probe_headers_ms=0.152 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:37 timeout:35]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=151 probe_headers_ms=0.184 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:27 timeout:45]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.172 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.104 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=155 probe_headers_ms=0.146 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.082 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.34s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.116 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.114 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:37 timeout:35]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=151 probe_headers_ms=0.175 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:47 timeout:25]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=131 probe_headers_ms=0.157 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.082 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=151 probe_headers_ms=0.174 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.115 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=146 probe_headers_ms=0.174 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.123 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.094 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:20 timeout:52]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=141 probe_headers_ms=0.150 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:43 timeout:29]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=135 probe_headers_ms=0.189 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.112 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=155 probe_headers_ms=0.163 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.097 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:47 timeout:25]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=133 probe_headers_ms=0.177 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=152 probe_headers_ms=0.190 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.124 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.34s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.100 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:46 timeout:26]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=132 probe_headers_ms=0.139 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.078 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=158 probe_headers_ms=0.170 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.086 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=156 probe_headers_ms=0.184 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:27 timeout:45]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=167 probe_headers_ms=0.337 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.215 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.111 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:25 timeout:47]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.157 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.099 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.093 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.101 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.177 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.34s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.106 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.097 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:26 timeout:46]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=132 probe_headers_ms=0.149 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=174 probe_headers_ms=0.170 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.142 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=156 probe_headers_ms=0.174 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.136 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.258 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:25 timeout:47]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=166 probe_headers_ms=0.169 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.286 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:35 timeout:37]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=154 probe_headers_ms=0.141 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.259 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.109 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:16 timeout:56]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=131 probe_headers_ms=0.158 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.97s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.34s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:15 timeout:57]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=153 probe_headers_ms=0.291 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:30 timeout:42]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.150 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.111 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.282 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:26 timeout:46]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=169 probe_headers_ms=0.150 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=156 probe_headers_ms=0.336 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.100 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.103 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=157 probe_headers_ms=0.169 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.103 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.101 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:41 timeout:31]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=116 probe_headers_ms=0.130 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:25 timeout:47]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=170 probe_headers_ms=0.173 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.100 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.96s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=152 probe_headers_ms=0.141 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.102 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.107 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=154 probe_headers_ms=0.235 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.094 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.101 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:42 timeout:30]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=141 probe_headers_ms=0.375 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=163 probe_headers_ms=0.138 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.166 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.105 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=165 probe_headers_ms=0.153 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.103 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:43 timeout:29]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=143 probe_headers_ms=0.157 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.099 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.251 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:23 timeout:49]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=173 probe_headers_ms=0.147 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=126 probe_headers_ms=0.160 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.101 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.099 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:25 timeout:47]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=145 probe_headers_ms=0.137 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.106 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.094 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=163 probe_headers_ms=0.138 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:42 timeout:30]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=140 probe_headers_ms=0.165 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.094 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:31 timeout:41]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=161 probe_headers_ms=0.332 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=157 probe_headers_ms=0.145 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.119 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:19 timeout:53]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=135 probe_headers_ms=0.155 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.106 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:20 timeout:52]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=161 probe_headers_ms=0.360 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.115 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:37 timeout:35]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=150 probe_headers_ms=0.148 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.240 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.087 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:37 timeout:35]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=149 probe_headers_ms=0.320 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.092 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.094 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:26 timeout:46]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=133 probe_headers_ms=0.126 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=154 probe_headers_ms=0.149 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.086 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.112 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.097 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.171 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.113 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:52 timeout:20]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=120 probe_headers_ms=0.145 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:49 timeout:23]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=128 probe_headers_ms=0.354 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.106 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:35 timeout:37]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=159 probe_headers_ms=0.169 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.112 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.334 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:33 timeout:39]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=159 probe_headers_ms=0.179 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.139 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.108 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.148 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.134 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=1.424 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:30 timeout:42]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=165 probe_headers_ms=0.261 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.118 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=166 probe_headers_ms=0.341 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:30 timeout:42]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=163 probe_headers_ms=0.177 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.274 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.110 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:30 timeout:42]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.352 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.101 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.98s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.34s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=145 probe_headers_ms=0.160 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.131 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.215 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:40 timeout:32]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=140 probe_headers_ms=0.160 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.128 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.094 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:39 timeout:33]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=145 probe_headers_ms=0.141 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.090 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.096 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=166 probe_headers_ms=0.156 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.098 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.236 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.280 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.126 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=130 probe_headers_ms=0.159 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:28 timeout:44]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=166 probe_headers_ms=0.240 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.120 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.105 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:24 timeout:48]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=120 probe_headers_ms=0.366 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.089 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.224 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:36 timeout:36]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=152 probe_headers_ms=0.151 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.268 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.086 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.95s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:31 timeout:41]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=160 probe_headers_ms=0.168 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.112 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.177 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=164 probe_headers_ms=0.365 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.136 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.92s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:29 timeout:43]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=152 probe_headers_ms=0.145 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.103 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:16 timeout:56]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=128 probe_headers_ms=0.158 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.091 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.268 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.94s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:31 timeout:41]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=158 probe_headers_ms=0.161 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.129 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.095 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.93s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.31s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	355.448s
+# load at the end:  22:33:14 up 1 day, 17:58,  2 users,  load average: 44.39, 32.78, 17.14
+# exit 0 at 2026-09-25 22:33:14 UTC; yes loops left: []

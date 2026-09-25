@@ -1,0 +1,191 @@
+# 2026-09-26 08:08:46 JST (M) tree=a885fee+inject(I1 I2 I3) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock loops=0 GOEXPERIMENT=nosimd,noruntimesecret go test -count=20 -run ^(TestProxyModes|TestTokenResidualK21)$/(strict_ALPN_refuses|GOAWAY) -v ./internal/testsupport/ ./internal/h2gate/
+# load before:  8:08  up 4 days,  7:14, 1 user, load averages: 8.06 41.75 66.26
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# load with 0 loops:  8:08  up 4 days,  7:14, 1 user, load averages: 7.66 41.11 65.89
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.20s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.20s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.20s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.20s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.20s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.20s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.20s)
+=== RUN   TestProxyModes
+=== RUN   TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client
+--- PASS: TestProxyModes (0.21s)
+    --- PASS: TestProxyModes/error:_TLS_proxy_with_strict_ALPN_refuses_an_h2-only_client (0.21s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	4.148s
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.017 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.02s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.02s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.049 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.04s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.033 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.01s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.01s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.012 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.01s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.01s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.033 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.035 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.02s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.02s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.016 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.02s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.01s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.027 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.04s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.04s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.032 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.035 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.015 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.02s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.02s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.018 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.01s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.01s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.009 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.01s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.01s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.031 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.037 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.013 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.01s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.01s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.027 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.02s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.02s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.034 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.02s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.02s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.042 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.02s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.033 restore_skipped=1 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (1.03s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.03s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	20.473s
+# load at the end:  8:09  up 4 days,  7:15, 1 user, load averages: 6.46 38.67 64.44
+# exit 0 at 2026-09-26 08:09:12 JST; yes loops left: []
