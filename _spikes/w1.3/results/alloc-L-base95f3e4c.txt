@@ -1,0 +1,55 @@
+# 2026-09-25 12:49:07 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocPrepare$ -v .
+# load before:  12:49:07 up 1 day,  8:14,  1 user,  load average: 0.04, 0.01, 0.03 | kernel: 0.04 0.01 0.03 1/594 93158 (MAXLOAD=none, waited 0 x 60 s)
+# base: 95f3e4c (production code as b227e5b)
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+=== RUN   TestAllocPrepare
+=== RUN   TestAllocPrepare/c1-sketch
+    alloc_prepare_test.go:61: runs of c1-sketch                              mallocs/bytes: 9/1016 9/1016 9/1016 9/1016 9/1016
+    alloc_prepare_test.go:68: c1-sketch: 9 mallocs, 1016 bytes; prepared 340 bytes
+=== RUN   TestAllocPrepare/c2-noul-short
+    alloc_prepare_test.go:61: runs of c2-noul-short                          mallocs/bytes: 3/224 3/224 3/224 3/224 3/224
+    alloc_prepare_test.go:68: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+=== RUN   TestAllocPrepare/c3-choice-20x10
+    alloc_prepare_test.go:61: runs of c3-choice-20x10                        mallocs/bytes: 27/15256 27/15256 27/15256 27/15256 27/15256
+    alloc_prepare_test.go:68: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+=== RUN   TestAllocPrepare/c4a-score-20x8-text
+    alloc_prepare_test.go:61: runs of c4a-score-20x8-text                    mallocs/bytes: 27/17176 27/17176 27/17176 27/17176 27/17176
+    alloc_prepare_test.go:68: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+=== RUN   TestAllocPrepare/c4b-score-20x8-json
+    alloc_prepare_test.go:61: runs of c4b-score-20x8-json                    mallocs/bytes: 36/44408 36/44408 36/44408 36/44408 36/44408
+    alloc_prepare_test.go:68: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+=== RUN   TestAllocPrepare/c5-raw-100x3
+    alloc_prepare_test.go:61: runs of c5-raw-100x3                           mallocs/bytes: 1710/78080 1710/78080 1710/78080 1710/78080 1710/78080
+    alloc_prepare_test.go:68: c5-raw-100x3: 1710 mallocs, 78080 bytes; prepared 15681 bytes
+=== RUN   TestAllocPrepare/c6-escapes
+    alloc_prepare_test.go:61: runs of c6-escapes                             mallocs/bytes: 12/8536 12/8536 12/8536 12/8536 12/8536
+    alloc_prepare_test.go:68: c6-escapes: 12 mallocs, 8536 bytes; prepared 2888 bytes
+=== RUN   TestAllocPrepare/n8a-array-control
+    alloc_prepare_test.go:61: runs of n8a-array-control                      mallocs/bytes: 132/58840 132/58840 132/58840 132/58840 132/58840
+    alloc_prepare_test.go:68: n8a-array-control: 132 mallocs, 58840 bytes; prepared 14681 bytes
+=== RUN   TestAllocPrepare/n8a-array-score
+    alloc_prepare_test.go:61: runs of n8a-array-score                        mallocs/bytes: 252/110040 252/110040 252/110040 252/110040 252/110040
+    alloc_prepare_test.go:68: n8a-array-score: 252 mallocs, 110040 bytes; prepared 14681 bytes
+=== RUN   TestAllocPrepare/n8b-map-control
+    alloc_prepare_test.go:61: runs of n8b-map-control                        mallocs/bytes: 615/271744 615/271744 615/271744 615/271744 615/271744
+    alloc_prepare_test.go:68: n8b-map-control: 615 mallocs, 271744 bytes; prepared 64581 bytes
+=== RUN   TestAllocPrepare/n8b-map-score
+    alloc_prepare_test.go:61: runs of n8b-map-score                          mallocs/bytes: 1215/514944 1215/514944 1215/514944 1215/514944 1215/514944
+    alloc_prepare_test.go:68: n8b-map-score: 1215 mallocs, 514944 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    --- PASS: TestAllocPrepare/c1-sketch (0.00s)
+    --- PASS: TestAllocPrepare/c2-noul-short (0.00s)
+    --- PASS: TestAllocPrepare/c3-choice-20x10 (0.00s)
+    --- PASS: TestAllocPrepare/c4a-score-20x8-text (0.00s)
+    --- PASS: TestAllocPrepare/c4b-score-20x8-json (0.00s)
+    --- PASS: TestAllocPrepare/c5-raw-100x3 (0.00s)
+    --- PASS: TestAllocPrepare/c6-escapes (0.00s)
+    --- PASS: TestAllocPrepare/n8a-array-control (0.00s)
+    --- PASS: TestAllocPrepare/n8a-array-score (0.00s)
+    --- PASS: TestAllocPrepare/n8b-map-control (0.00s)
+    --- PASS: TestAllocPrepare/n8b-map-score (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.013s
+# exit 0 at 2026-09-25 12:49:08 UTC
+# load after:  12:49:08 up 1 day,  8:14,  1 user,  load average: 0.04, 0.01, 0.03 | kernel: 0.04 0.01 0.03 1/594 93466

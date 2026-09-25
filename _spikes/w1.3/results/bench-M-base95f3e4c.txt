@@ -1,0 +1,83 @@
+# 2026-09-25 21:48:55 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -run ^$ -bench ^Benchmark(Prepare|FalsyJSON)$ -benchmem -count=5 .
+# load before: 21:48  up 3 days, 20:54, 1 user, load averages: 8.39 7.74 10.12 | kernel: { 8.39 7.74 10.12 } (MAXLOAD=16, waited 0 x 60 s)
+# base: 95f3e4c (production code as b227e5b)
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c1-sketch-16         	 2019391	       601.6 ns/op	    1008 B/op	       9 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 2015056	       598.8 ns/op	    1008 B/op	       9 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 1961168	       608.5 ns/op	    1008 B/op	       9 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 1989730	       605.2 ns/op	    1008 B/op	       9 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 1962915	       609.4 ns/op	    1008 B/op	       9 allocs/op
+BenchmarkPrepare/c2-noul-short-16     	11893276	       102.6 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-16     	12488410	        97.96 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-16     	11211067	        99.30 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-16     	12061513	        97.71 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-16     	12341700	       101.9 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-16   	  101694	     11793 ns/op	   15256 B/op	      27 allocs/op
+BenchmarkPrepare/c3-choice-20x10-16   	  105246	     11557 ns/op	   15256 B/op	      27 allocs/op
+BenchmarkPrepare/c3-choice-20x10-16   	  100627	     11814 ns/op	   15256 B/op	      27 allocs/op
+BenchmarkPrepare/c3-choice-20x10-16   	   99434	     11911 ns/op	   15256 B/op	      27 allocs/op
+BenchmarkPrepare/c3-choice-20x10-16   	  104031	     11661 ns/op	   15256 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	  128515	      9775 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	  116727	      9720 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	  126787	      9412 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	  131247	      9417 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	  128944	      9393 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   47370	     25239 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   47656	     25504 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   45693	     25183 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   46405	     25320 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   46813	     25998 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16                	   16665	     72545 ns/op	   78081 B/op	    1710 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16                	   16812	     72507 ns/op	   78081 B/op	    1710 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16                	   16124	     73009 ns/op	   78081 B/op	    1710 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16                	   15667	     76135 ns/op	   78081 B/op	    1710 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16                	   15992	     76288 ns/op	   78081 B/op	    1710 allocs/op
+BenchmarkPrepare/c6-escapes-16                  	  361286	      3441 ns/op	    8528 B/op	      12 allocs/op
+BenchmarkPrepare/c6-escapes-16                  	  349436	      3306 ns/op	    8528 B/op	      12 allocs/op
+BenchmarkPrepare/c6-escapes-16                  	  348578	      3276 ns/op	    8528 B/op	      12 allocs/op
+BenchmarkPrepare/c6-escapes-16                  	  374073	      3258 ns/op	    8528 B/op	      12 allocs/op
+BenchmarkPrepare/c6-escapes-16                  	  357246	      3282 ns/op	    8528 B/op	      12 allocs/op
+BenchmarkPrepare/n8a-array-control-16           	   38641	     31216 ns/op	   58840 B/op	     132 allocs/op
+BenchmarkPrepare/n8a-array-control-16           	   38811	     30265 ns/op	   58840 B/op	     132 allocs/op
+BenchmarkPrepare/n8a-array-control-16           	   40587	     30001 ns/op	   58840 B/op	     132 allocs/op
+BenchmarkPrepare/n8a-array-control-16           	   39760	     29490 ns/op	   58840 B/op	     132 allocs/op
+BenchmarkPrepare/n8a-array-control-16           	   40213	     29737 ns/op	   58840 B/op	     132 allocs/op
+BenchmarkPrepare/n8a-array-score-16             	   22654	     53693 ns/op	  110040 B/op	     252 allocs/op
+BenchmarkPrepare/n8a-array-score-16             	   22573	     55220 ns/op	  110040 B/op	     252 allocs/op
+BenchmarkPrepare/n8a-array-score-16             	   21836	     54449 ns/op	  110040 B/op	     252 allocs/op
+BenchmarkPrepare/n8a-array-score-16             	   22262	     53601 ns/op	  110040 B/op	     252 allocs/op
+BenchmarkPrepare/n8a-array-score-16             	   22621	     54312 ns/op	  110040 B/op	     252 allocs/op
+BenchmarkPrepare/n8b-map-control-16             	    8895	    129082 ns/op	  271745 B/op	     615 allocs/op
+BenchmarkPrepare/n8b-map-control-16             	    9326	    126572 ns/op	  271745 B/op	     615 allocs/op
+BenchmarkPrepare/n8b-map-control-16             	    8518	    126717 ns/op	  271745 B/op	     615 allocs/op
+BenchmarkPrepare/n8b-map-control-16             	    9783	    127247 ns/op	  271746 B/op	     615 allocs/op
+BenchmarkPrepare/n8b-map-control-16             	    9338	    127052 ns/op	  271745 B/op	     615 allocs/op
+BenchmarkPrepare/n8b-map-score-16               	    5103	    234231 ns/op	  514947 B/op	    1215 allocs/op
+BenchmarkPrepare/n8b-map-score-16               	    5300	    230832 ns/op	  514947 B/op	    1215 allocs/op
+BenchmarkPrepare/n8b-map-score-16               	    5284	    241450 ns/op	  514947 B/op	    1215 allocs/op
+BenchmarkPrepare/n8b-map-score-16               	    5317	    234388 ns/op	  514947 B/op	    1215 allocs/op
+BenchmarkPrepare/n8b-map-score-16               	    4971	    239113 ns/op	  514947 B/op	    1215 allocs/op
+BenchmarkFalsyJSON/array-16                     	  956577	      1213 ns/op	    2560 B/op	       6 allocs/op
+BenchmarkFalsyJSON/array-16                     	 1000000	      1164 ns/op	    2560 B/op	       6 allocs/op
+BenchmarkFalsyJSON/array-16                     	 1000000	      1182 ns/op	    2560 B/op	       6 allocs/op
+BenchmarkFalsyJSON/array-16                     	 1000000	      1194 ns/op	    2560 B/op	       6 allocs/op
+BenchmarkFalsyJSON/array-16                     	  988558	      1250 ns/op	    2560 B/op	       6 allocs/op
+BenchmarkFalsyJSON/map-16                       	 1235380	       970.2 ns/op	    2432 B/op	       6 allocs/op
+BenchmarkFalsyJSON/map-16                       	 1224531	       978.0 ns/op	    2432 B/op	       6 allocs/op
+BenchmarkFalsyJSON/map-16                       	 1211137	      1001 ns/op	    2432 B/op	       6 allocs/op
+BenchmarkFalsyJSON/map-16                       	 1000000	      1020 ns/op	    2432 B/op	       6 allocs/op
+BenchmarkFalsyJSON/map-16                       	 1231435	       975.1 ns/op	    2432 B/op	       6 allocs/op
+BenchmarkFalsyJSON/small-14B-16                 	42973016	        27.90 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16                 	42789392	        28.66 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16                 	41779698	        28.07 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16                 	43640990	        27.71 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16                 	42042076	        27.56 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	83.723s
+# exit 0 at 2026-09-25 21:50:19 JST
+# load after: 21:50  up 3 days, 20:56, 1 user, load averages: 5.29 6.97 9.60 | kernel: { 5.29 6.97 9.60 }

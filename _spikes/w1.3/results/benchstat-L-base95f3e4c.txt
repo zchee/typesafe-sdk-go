@@ -1,0 +1,62 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+                               │ bench-L-base95f3e4c.txt │
+                               │         sec/op          │
+Prepare/c1-sketch-44                        1.155µ ± ∞ ¹
+Prepare/c2-noul-short-44                    180.2n ± ∞ ¹
+Prepare/c3-choice-20x10-44                  20.28µ ± ∞ ¹
+Prepare/c4a-score-20x8-text-44              16.09µ ± ∞ ¹
+Prepare/c4b-score-20x8-json-44              44.48µ ± ∞ ¹
+Prepare/c5-raw-100x3-44                     133.7µ ± ∞ ¹
+Prepare/c6-escapes-44                       5.384µ ± ∞ ¹
+Prepare/n8a-array-control-44                54.32µ ± ∞ ¹
+Prepare/n8a-array-score-44                  99.61µ ± ∞ ¹
+Prepare/n8b-map-control-44                  233.8µ ± ∞ ¹
+Prepare/n8b-map-score-44                    435.7µ ± ∞ ¹
+FalsyJSON/array-44                          2.089µ ± ∞ ¹
+FalsyJSON/map-44                            1.769µ ± ∞ ¹
+FalsyJSON/small-14B-44                      48.06n ± ∞ ¹
+geomean                                     10.55µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                               │ bench-L-base95f3e4c.txt │
+                               │          B/op           │
+Prepare/c1-sketch-44                        1008.0 ± ∞ ¹
+Prepare/c2-noul-short-44                     224.0 ± ∞ ¹
+Prepare/c3-choice-20x10-44                 14.90Ki ± ∞ ¹
+Prepare/c4a-score-20x8-text-44             16.77Ki ± ∞ ¹
+Prepare/c4b-score-20x8-json-44             43.37Ki ± ∞ ¹
+Prepare/c5-raw-100x3-44                    76.25Ki ± ∞ ¹
+Prepare/c6-escapes-44                      8.328Ki ± ∞ ¹
+Prepare/n8a-array-control-44               57.46Ki ± ∞ ¹
+Prepare/n8a-array-score-44                 107.5Ki ± ∞ ¹
+Prepare/n8b-map-control-44                 265.4Ki ± ∞ ¹
+Prepare/n8b-map-score-44                   502.9Ki ± ∞ ¹
+FalsyJSON/array-44                         2.500Ki ± ∞ ¹
+FalsyJSON/map-44                           2.375Ki ± ∞ ¹
+FalsyJSON/small-14B-44                       0.000 ± ∞ ¹
+geomean                                                ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                               │ bench-L-base95f3e4c.txt │
+                               │        allocs/op        │
+Prepare/c1-sketch-44                         9.000 ± ∞ ¹
+Prepare/c2-noul-short-44                     3.000 ± ∞ ¹
+Prepare/c3-choice-20x10-44                   27.00 ± ∞ ¹
+Prepare/c4a-score-20x8-text-44               27.00 ± ∞ ¹
+Prepare/c4b-score-20x8-json-44               36.00 ± ∞ ¹
+Prepare/c5-raw-100x3-44                     1.710k ± ∞ ¹
+Prepare/c6-escapes-44                        12.00 ± ∞ ¹
+Prepare/n8a-array-control-44                 132.0 ± ∞ ¹
+Prepare/n8a-array-score-44                   252.0 ± ∞ ¹
+Prepare/n8b-map-control-44                   615.0 ± ∞ ¹
+Prepare/n8b-map-score-44                    1.215k ± ∞ ¹
+FalsyJSON/array-44                           6.000 ± ∞ ¹
+FalsyJSON/map-44                             6.000 ± ∞ ¹
+FalsyJSON/small-14B-44                       0.000 ± ∞ ¹
+geomean                                                ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
