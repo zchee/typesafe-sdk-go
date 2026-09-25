@@ -1,0 +1,309 @@
+# 2026-09-26 02:48:37 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=20 -run ^TestLinearityFlood$ -v .
+# load before:  2:48  up 4 days,  1:54, 1 user, load averages: 4.66 4.67 6.48 | kernel: { 4.66 4.67 6.48 } (MAXLOAD=16, waited 0 x 60 s)
+# base: 0dce9d6+k30
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    369 decodes in 250.168ms, 677.962µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 253.43925ms, 6.498442ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    371 decodes in 250.166458ms, 674.303µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 255.54375ms, 6.388593ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    376 decodes in 250.3335ms, 665.78µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 254.013625ms, 6.513169ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    373 decodes in 250.577208ms, 671.788µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 255.420042ms, 6.385501ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    372 decodes in 250.367542ms, 673.031µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 256.130125ms, 6.567439ms each
+    alloc_decode_test.go:248: LINEARITY 1k 665.78µs 90 allocs, 10k 6.385501ms 685 allocs, time ratio 9.59 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [369 371 376 373 372] 10k [39 40 39 40 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.63s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    356 decodes in 250.313583ms, 703.128µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    38 decodes in 252.117208ms, 6.634663ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    361 decodes in 250.055833ms, 692.675µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    38 decodes in 250.460083ms, 6.591054ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    359 decodes in 250.328167ms, 697.292µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 253.845583ms, 6.508861ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    372 decodes in 250.406209ms, 673.134µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 255.845459ms, 6.396136ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    373 decodes in 250.305875ms, 671.061µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    40 decodes in 255.311666ms, 6.382791ms each
+    alloc_decode_test.go:248: LINEARITY 1k 671.061µs 90 allocs, 10k 6.382791ms 685 allocs, time ratio 9.51 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [356 361 359 372 373] 10k [38 38 39 40 40], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    364 decodes in 250.5665ms, 688.369µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 255.423875ms, 6.385596ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    376 decodes in 250.58975ms, 666.462µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 254.842166ms, 6.371054ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    366 decodes in 250.553083ms, 684.571µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 251.791375ms, 6.456189ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    363 decodes in 250.220709ms, 689.313µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    38 decodes in 250.232166ms, 6.585057ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    367 decodes in 250.10125ms, 681.474µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 251.096208ms, 6.438364ms each
+    alloc_decode_test.go:248: LINEARITY 1k 666.462µs 90 allocs, 10k 6.371054ms 685 allocs, time ratio 9.56 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [364 376 366 363 367] 10k [40 40 39 38 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.61s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    368 decodes in 250.026625ms, 679.42µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 255.336333ms, 6.383408ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    368 decodes in 250.620958ms, 681.035µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    38 decodes in 252.56025ms, 6.646322ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    356 decodes in 250.552792ms, 703.799µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    38 decodes in 253.917167ms, 6.68203ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    353 decodes in 250.372875ms, 709.271µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    37 decodes in 251.754667ms, 6.80418ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    358 decodes in 250.408125ms, 699.464µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    38 decodes in 254.506916ms, 6.69755ms each
+    alloc_decode_test.go:248: LINEARITY 1k 679.42µs 90 allocs, 10k 6.383408ms 685 allocs, time ratio 9.40 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [368 368 356 353 358] 10k [40 38 38 37 38], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    358 decodes in 250.212166ms, 698.916µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 251.198291ms, 6.440981ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    375 decodes in 250.130791ms, 667.015µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 253.030459ms, 6.48796ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    374 decodes in 250.1545ms, 668.862µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    40 decodes in 255.147709ms, 6.378692ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    376 decodes in 250.338792ms, 665.794µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    39 decodes in 252.62425ms, 6.477544ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    376 decodes in 250.081084ms, 665.109µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 256.202667ms, 6.569299ms each
+    alloc_decode_test.go:248: LINEARITY 1k 665.109µs 90 allocs, 10k 6.378692ms 685 allocs, time ratio 9.59 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [358 375 374 376 376] 10k [39 39 40 39 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    352 decodes in 250.081625ms, 710.459µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    38 decodes in 255.127083ms, 6.71387ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    366 decodes in 250.265875ms, 683.786µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 250.453542ms, 6.421885ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    373 decodes in 250.477291ms, 671.52µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 253.277958ms, 6.494306ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    374 decodes in 250.133708ms, 668.806µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 255.453375ms, 6.386334ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    373 decodes in 250.544208ms, 671.7µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 251.072916ms, 6.437767ms each
+    alloc_decode_test.go:248: LINEARITY 1k 668.806µs 90 allocs, 10k 6.386334ms 685 allocs, time ratio 9.55 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [352 366 373 374 373] 10k [38 39 39 40 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    368 decodes in 250.371875ms, 680.358µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 255.95275ms, 6.398818ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    371 decodes in 250.425333ms, 675µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 255.558584ms, 6.388964ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    374 decodes in 250.540333ms, 669.893µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    38 decodes in 250.141791ms, 6.582678ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    342 decodes in 250.349291ms, 732.015µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    36 decodes in 253.112834ms, 7.030912ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    350 decodes in 250.093333ms, 714.552µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 251.390666ms, 6.445914ms each
+    alloc_decode_test.go:248: LINEARITY 1k 669.893µs 90 allocs, 10k 6.388964ms 685 allocs, time ratio 9.54 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [368 371 374 342 350] 10k [40 40 38 36 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    362 decodes in 250.10725ms, 690.904µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 255.908792ms, 6.397719ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    373 decodes in 250.221792ms, 670.835µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 256.098917ms, 6.402472ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    361 decodes in 250.150125ms, 692.936µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 252.95025ms, 6.485903ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    369 decodes in 250.279833ms, 678.265µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    39 decodes in 256.058375ms, 6.565599ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    354 decodes in 250.315833ms, 707.106µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    38 decodes in 251.83775ms, 6.627309ms each
+    alloc_decode_test.go:248: LINEARITY 1k 670.835µs 90 allocs, 10k 6.397719ms 685 allocs, time ratio 9.54 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [362 373 361 369 354] 10k [40 40 39 39 38], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    364 decodes in 250.23125ms, 687.448µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 254.936125ms, 6.536823ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    368 decodes in 250.526292ms, 680.777µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 256.07375ms, 6.401843ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    368 decodes in 250.409709ms, 680.461µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 253.86625ms, 6.509391ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    372 decodes in 250.607041ms, 673.674µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 255.156916ms, 6.378922ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    374 decodes in 250.613542ms, 670.089µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 255.162791ms, 6.542635ms each
+    alloc_decode_test.go:248: LINEARITY 1k 670.089µs 90 allocs, 10k 6.378922ms 685 allocs, time ratio 9.52 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [364 368 368 372 374] 10k [39 40 39 40 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.63s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    369 decodes in 250.448292ms, 678.721µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 254.826792ms, 6.370669ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    377 decodes in 250.565083ms, 664.628µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    38 decodes in 252.765375ms, 6.65172ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    355 decodes in 250.322875ms, 705.134µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    38 decodes in 251.384959ms, 6.615393ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    367 decodes in 250.363ms, 682.188µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    39 decodes in 252.985625ms, 6.48681ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    376 decodes in 250.528292ms, 666.298µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 250.805875ms, 6.430919ms each
+    alloc_decode_test.go:248: LINEARITY 1k 664.628µs 90 allocs, 10k 6.370669ms 685 allocs, time ratio 9.59 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [369 377 355 367 376] 10k [40 38 38 39 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.61s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    362 decodes in 250.697875ms, 692.535µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 254.5215ms, 6.526192ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    371 decodes in 250.384459ms, 674.89µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 251.447708ms, 6.447377ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    366 decodes in 250.594083ms, 684.683µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 252.635667ms, 6.477837ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    374 decodes in 250.393667ms, 669.501µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 255.683334ms, 6.392083ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    370 decodes in 250.124417ms, 676.011µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 250.579125ms, 6.425105ms each
+    alloc_decode_test.go:248: LINEARITY 1k 669.501µs 90 allocs, 10k 6.392083ms 685 allocs, time ratio 9.55 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [362 371 366 374 370] 10k [39 39 39 40 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    362 decodes in 250.252333ms, 691.304µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 254.712625ms, 6.367815ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    371 decodes in 250.026375ms, 673.925µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 252.703125ms, 6.479567ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    367 decodes in 250.666791ms, 683.015µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 253.1395ms, 6.490756ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    369 decodes in 250.547709ms, 678.991µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    38 decodes in 250.936833ms, 6.6036ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    358 decodes in 250.521125ms, 699.779µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    38 decodes in 250.829958ms, 6.600788ms each
+    alloc_decode_test.go:248: LINEARITY 1k 673.925µs 90 allocs, 10k 6.367815ms 685 allocs, time ratio 9.45 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [362 371 367 369 358] 10k [40 39 39 38 38], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.61s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    359 decodes in 250.588ms, 698.016µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 250.113792ms, 6.413174ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    375 decodes in 250.520625ms, 668.055µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 255.792209ms, 6.394805ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    368 decodes in 250.556625ms, 680.86µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 254.352166ms, 6.52185ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    366 decodes in 250.18775ms, 683.573µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    39 decodes in 255.562459ms, 6.552883ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    366 decodes in 250.040666ms, 683.171µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    38 decodes in 252.565625ms, 6.646463ms each
+    alloc_decode_test.go:248: LINEARITY 1k 668.055µs 90 allocs, 10k 6.394805ms 685 allocs, time ratio 9.57 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [359 375 368 366 366] 10k [39 40 39 39 38], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    358 decodes in 250.500875ms, 699.723µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 255.119459ms, 6.541524ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    374 decodes in 250.429417ms, 669.597µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 251.929417ms, 6.459728ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    371 decodes in 250.080875ms, 674.072µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    37 decodes in 250.355792ms, 6.766372ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    357 decodes in 250.113167ms, 700.597µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    39 decodes in 254.985083ms, 6.538079ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    373 decodes in 250.060709ms, 670.404µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 251.9655ms, 6.460653ms each
+    alloc_decode_test.go:248: LINEARITY 1k 669.597µs 90 allocs, 10k 6.459728ms 685 allocs, time ratio 9.65 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [358 374 371 357 373] 10k [39 39 37 39 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    370 decodes in 250.503167ms, 677.035µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 254.497042ms, 6.362426ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    373 decodes in 250.149708ms, 670.642µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 252.688375ms, 6.479189ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    377 decodes in 250.374167ms, 664.122µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    40 decodes in 254.297875ms, 6.357446ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    367 decodes in 250.489292ms, 682.532µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    38 decodes in 255.028167ms, 6.711267ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    363 decodes in 250.475542ms, 690.015µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 253.825917ms, 6.508356ms each
+    alloc_decode_test.go:248: LINEARITY 1k 664.122µs 90 allocs, 10k 6.357446ms 685 allocs, time ratio 9.57 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [370 373 377 367 363] 10k [40 39 40 38 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    352 decodes in 250.710875ms, 712.246µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    38 decodes in 253.1535ms, 6.661934ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    364 decodes in 250.523792ms, 688.252µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 251.932667ms, 6.459811ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    364 decodes in 250.6585ms, 688.622µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    38 decodes in 253.155125ms, 6.661976ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    374 decodes in 250.426417ms, 669.589µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 255.590958ms, 6.389773ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    370 decodes in 250.00475ms, 675.688µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    40 decodes in 254.127ms, 6.353175ms each
+    alloc_decode_test.go:248: LINEARITY 1k 669.589µs 90 allocs, 10k 6.353175ms 685 allocs, time ratio 9.49 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [352 364 364 374 370] 10k [38 39 38 40 40], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    368 decodes in 250.409625ms, 680.46µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 253.940333ms, 6.348508ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    368 decodes in 250.133ms, 679.709µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 255.652917ms, 6.391322ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    371 decodes in 250.488291ms, 675.17µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 253.660875ms, 6.504125ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    363 decodes in 250.140583ms, 689.092µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    40 decodes in 254.206167ms, 6.355154ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    374 decodes in 250.142916ms, 668.831µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    40 decodes in 254.7465ms, 6.368662ms each
+    alloc_decode_test.go:248: LINEARITY 1k 668.831µs 90 allocs, 10k 6.348508ms 685 allocs, time ratio 9.49 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [368 368 371 363 374] 10k [40 40 39 40 40], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    369 decodes in 250.076958ms, 677.715µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 254.828ms, 6.3707ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    373 decodes in 250.171ms, 670.699µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    39 decodes in 251.588292ms, 6.450981ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    371 decodes in 250.421167ms, 674.989µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    40 decodes in 255.748166ms, 6.393704ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    375 decodes in 250.6405ms, 668.374µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    39 decodes in 251.661834ms, 6.452867ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    375 decodes in 250.297708ms, 667.46µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    40 decodes in 255.682792ms, 6.392069ms each
+    alloc_decode_test.go:248: LINEARITY 1k 667.46µs 90 allocs, 10k 6.3707ms 685 allocs, time ratio 9.54 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [369 373 371 375 375] 10k [40 39 40 39 40], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    367 decodes in 250.013708ms, 681.236µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    39 decodes in 253.370958ms, 6.496691ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    375 decodes in 250.621458ms, 668.323µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 255.706958ms, 6.392673ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    374 decodes in 250.560917ms, 669.948µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    39 decodes in 252.203666ms, 6.46676ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    362 decodes in 250.636917ms, 692.367µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    38 decodes in 255.30225ms, 6.71848ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    362 decodes in 250.630375ms, 692.349µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 254.519542ms, 6.526142ms each
+    alloc_decode_test.go:248: LINEARITY 1k 668.323µs 90 allocs, 10k 6.392673ms 685 allocs, time ratio 9.57 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [367 375 374 362 362] 10k [39 40 39 38 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+=== RUN   TestLinearityFlood
+    alloc_decode_test.go:213: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:213: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:234: span 0 structured-legend-flood-1k.json    370 decodes in 250.416792ms, 676.802µs each
+    alloc_decode_test.go:234: span 0 structured-legend-flood-10k.json    40 decodes in 255.280458ms, 6.382011ms each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-1k.json    371 decodes in 250.433125ms, 675.021µs each
+    alloc_decode_test.go:234: span 1 structured-legend-flood-10k.json    40 decodes in 255.853125ms, 6.396328ms each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-1k.json    364 decodes in 250.602625ms, 688.468µs each
+    alloc_decode_test.go:234: span 2 structured-legend-flood-10k.json    40 decodes in 256.1385ms, 6.403462ms each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-1k.json    360 decodes in 250.655459ms, 696.265µs each
+    alloc_decode_test.go:234: span 3 structured-legend-flood-10k.json    38 decodes in 253.461834ms, 6.670048ms each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-1k.json    363 decodes in 250.639542ms, 690.467µs each
+    alloc_decode_test.go:234: span 4 structured-legend-flood-10k.json    39 decodes in 250.631209ms, 6.426441ms each
+    alloc_decode_test.go:248: LINEARITY 1k 675.021µs 90 allocs, 10k 6.382011ms 685 allocs, time ratio 9.45 (bound 15), allocation ratio 7.61 (bound 12), decodes per span 1k [370 371 364 360 363] 10k [40 40 40 38 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFlood (2.62s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	52.401s
+# exit 0 at 2026-09-26 02:49:30 JST
+# load after:  2:49  up 4 days,  1:55, 1 user, load averages: 5.11 4.82 6.43 | kernel: { 5.11 4.82 6.43 }
