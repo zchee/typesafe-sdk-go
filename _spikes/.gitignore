@@ -1,0 +1,7 @@
+# The perf ledger (docs/perf/ledger.md) cites the raw benchmark outputs in
+# */results/ as the evidence for its numbers, so they must be committed. A
+# common global excludes rule, bench*.txt, silently kept bench-L.txt and
+# bench-M.txt out of the repository once; re-include them here.
+!bench*.txt
+# The root .gitignore's scratch benchstat input stays ignored.
+bench.txt
