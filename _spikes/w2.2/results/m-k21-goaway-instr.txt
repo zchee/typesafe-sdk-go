@@ -1,0 +1,81 @@
+# 2026-09-26 01:07:38 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock loops=16 GOEXPERIMENT=nosimd,noruntimesecret go test -count=12 -run TestTokenResidualK21/success:_GOAWAY -v ./internal/h2gate/
+# load before:  1:07  up 4 days, 13 mins, 1 user, load averages: 227.89 244.68 151.93
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# load with 16 loops:  1:07  up 4 days, 13 mins, 1 user, load averages: 229.02 244.64 152.46
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[1:1]; first request on conn 1 at seq 9, first refusal at seq 20
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=1 probe_headers_ms=0.030 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.019 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.023 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[1:27]; first request on conn 1 at seq 9, first refusal at seq 17
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:22 timeout:50]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=27 probe_headers_ms=0.054 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.33s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[1:56]; first request on conn 1 at seq 9, first refusal at seq 17
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:10 timeout:62]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=56 probe_headers_ms=0.053 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.30s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.30s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.010 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.026 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.046 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.33s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.33s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.027 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.31s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.31s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.014 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[1:63]; first request on conn 1 at seq 9, first refusal at seq 17
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:9 timeout:63]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=63 probe_headers_ms=2.098 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:185: INSTR refused per conn map[]; first request on conn 1 at seq 9, first refusal at seq -1
+    token_test.go:202: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.052 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.32s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.32s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	9.806s
+# load at the end:  1:07  up 4 days, 13 mins, 1 user, load averages: 257.31 250.13 155.48
+# exit 0 at 2026-09-26 01:07:54 JST; yes loops left: []

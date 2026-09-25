@@ -1,0 +1,169 @@
+# 2026-09-25 16:00:01 UTC (L) lock=/tmp/ts-spike/bench.lock loops=44 GOEXPERIMENT= go test -count=20 -run ^TestFanOut$ -v ./internal/h2gate/
+# load before:  16:00:01 up 1 day, 11:24,  1 user,  load average: 0.07, 3.82, 5.68
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  16:00:06 up 1 day, 11:25,  1 user,  load average: 3.67, 4.51, 5.90
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.740 waiter_wire_p99_ms=35.356 warm_wire_p50_ms=0.956 warm_wire_p99_ms=10.790 answer_to_first_waiter_write_min_ms=0.042 answer_to_first_waiter_write_p50_ms=0.070 leader_write_to_first_waiter_write_p50_ms=20.298
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=279.642 wall_max_ms=1076.616 max_active_streams=8 refused_streams_total=19
+--- PASS: TestFanOut (3.91s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.31s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.60s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.442 waiter_wire_p99_ms=29.544 warm_wire_p50_ms=0.799 warm_wire_p99_ms=6.433 answer_to_first_waiter_write_min_ms=0.040 answer_to_first_waiter_write_p50_ms=0.066 leader_write_to_first_waiter_write_p50_ms=20.276
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=276.514 wall_max_ms=285.776 max_active_streams=8 refused_streams_total=22
+--- PASS: TestFanOut (3.08s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.79s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.643 waiter_wire_p99_ms=27.954 warm_wire_p50_ms=0.670 warm_wire_p99_ms=2.090 answer_to_first_waiter_write_min_ms=0.052 answer_to_first_waiter_write_p50_ms=0.077 leader_write_to_first_waiter_write_p50_ms=20.251
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=295.455 wall_max_ms=1275.389 max_active_streams=8 refused_streams_total=55
+--- PASS: TestFanOut (6.79s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (6.52s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.411 waiter_wire_p99_ms=24.656 warm_wire_p50_ms=0.519 warm_wire_p99_ms=2.783 answer_to_first_waiter_write_min_ms=0.043 answer_to_first_waiter_write_p50_ms=0.072 leader_write_to_first_waiter_write_p50_ms=20.279
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=276.119 wall_max_ms=1266.386 max_active_streams=8 refused_streams_total=37
+--- PASS: TestFanOut (5.03s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.75s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.467 waiter_wire_p99_ms=24.411 warm_wire_p50_ms=0.040 warm_wire_p99_ms=1.974 answer_to_first_waiter_write_min_ms=0.066 answer_to_first_waiter_write_p50_ms=0.099 leader_write_to_first_waiter_write_p50_ms=20.371
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=292.190 wall_max_ms=1271.190 max_active_streams=8 refused_streams_total=59
+--- PASS: TestFanOut (5.86s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.57s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.134 waiter_wire_p99_ms=29.934 warm_wire_p50_ms=0.391 warm_wire_p99_ms=4.718 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.053 leader_write_to_first_waiter_write_p50_ms=20.278
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=286.653 wall_max_ms=1162.586 max_active_streams=8 refused_streams_total=75
+--- PASS: TestFanOut (5.59s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.31s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.685 waiter_wire_p99_ms=26.706 warm_wire_p50_ms=0.023 warm_wire_p99_ms=3.067 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.043 leader_write_to_first_waiter_write_p50_ms=20.286
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=277.312 wall_max_ms=1259.436 max_active_streams=8 refused_streams_total=28
+--- PASS: TestFanOut (4.96s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.68s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.137 waiter_wire_p99_ms=26.080 warm_wire_p50_ms=0.053 warm_wire_p99_ms=6.073 answer_to_first_waiter_write_min_ms=0.038 answer_to_first_waiter_write_p50_ms=0.053 leader_write_to_first_waiter_write_p50_ms=20.289
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.643 wall_max_ms=1169.484 max_active_streams=8 refused_streams_total=51
+--- PASS: TestFanOut (4.84s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.56s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.385 waiter_wire_p99_ms=27.508 warm_wire_p50_ms=0.580 warm_wire_p99_ms=7.254 answer_to_first_waiter_write_min_ms=0.037 answer_to_first_waiter_write_p50_ms=0.065 leader_write_to_first_waiter_write_p50_ms=20.278
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=277.292 wall_max_ms=1190.437 max_active_streams=8 refused_streams_total=45
+--- PASS: TestFanOut (4.85s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.56s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.325 waiter_wire_p99_ms=25.753 warm_wire_p50_ms=0.019 warm_wire_p99_ms=3.044 answer_to_first_waiter_write_min_ms=0.038 answer_to_first_waiter_write_p50_ms=0.044 leader_write_to_first_waiter_write_p50_ms=20.289
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=288.248 wall_max_ms=1280.453 max_active_streams=8 refused_streams_total=74
+--- PASS: TestFanOut (5.85s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.56s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.315 waiter_wire_p99_ms=24.352 warm_wire_p50_ms=0.425 warm_wire_p99_ms=2.469 answer_to_first_waiter_write_min_ms=0.038 answer_to_first_waiter_write_p50_ms=0.049 leader_write_to_first_waiter_write_p50_ms=20.273
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.255 wall_max_ms=1159.541 max_active_streams=8 refused_streams_total=48
+--- PASS: TestFanOut (4.80s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.27s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.53s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.288 waiter_wire_p99_ms=27.500 warm_wire_p50_ms=0.550 warm_wire_p99_ms=1.901 answer_to_first_waiter_write_min_ms=0.035 answer_to_first_waiter_write_p50_ms=0.049 leader_write_to_first_waiter_write_p50_ms=20.285
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=285.378 wall_max_ms=1159.493 max_active_streams=8 refused_streams_total=73
+--- PASS: TestFanOut (4.81s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.54s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.246 waiter_wire_p99_ms=29.123 warm_wire_p50_ms=0.421 warm_wire_p99_ms=6.493 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.057 leader_write_to_first_waiter_write_p50_ms=20.231
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.841 wall_max_ms=1285.269 max_active_streams=8 refused_streams_total=45
+--- PASS: TestFanOut (5.12s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.83s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.395 waiter_wire_p99_ms=28.242 warm_wire_p50_ms=0.677 warm_wire_p99_ms=3.366 answer_to_first_waiter_write_min_ms=0.041 answer_to_first_waiter_write_p50_ms=0.064 leader_write_to_first_waiter_write_p50_ms=20.265
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=273.912 wall_max_ms=1213.409 max_active_streams=8 refused_streams_total=19
+--- PASS: TestFanOut (4.00s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.71s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.305 waiter_wire_p99_ms=25.408 warm_wire_p50_ms=0.299 warm_wire_p99_ms=1.411 answer_to_first_waiter_write_min_ms=0.034 answer_to_first_waiter_write_p50_ms=0.068 leader_write_to_first_waiter_write_p50_ms=20.291
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=277.103 wall_max_ms=1202.473 max_active_streams=8 refused_streams_total=31
+--- PASS: TestFanOut (4.83s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.55s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.222 waiter_wire_p99_ms=23.408 warm_wire_p50_ms=0.767 warm_wire_p99_ms=4.150 answer_to_first_waiter_write_min_ms=0.051 answer_to_first_waiter_write_p50_ms=0.059 leader_write_to_first_waiter_write_p50_ms=20.254
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.121 wall_max_ms=1255.650 max_active_streams=8 refused_streams_total=46
+--- PASS: TestFanOut (4.96s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.68s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.306 waiter_wire_p99_ms=23.301 warm_wire_p50_ms=0.886 warm_wire_p99_ms=6.858 answer_to_first_waiter_write_min_ms=0.059 answer_to_first_waiter_write_p50_ms=0.070 leader_write_to_first_waiter_write_p50_ms=20.298
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=276.160 wall_max_ms=1191.407 max_active_streams=8 refused_streams_total=37
+--- PASS: TestFanOut (3.99s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.71s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.341 waiter_wire_p99_ms=25.395 warm_wire_p50_ms=0.345 warm_wire_p99_ms=1.679 answer_to_first_waiter_write_min_ms=0.036 answer_to_first_waiter_write_p50_ms=0.063 leader_write_to_first_waiter_write_p50_ms=20.285
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=283.985 wall_max_ms=1255.308 max_active_streams=8 refused_streams_total=58
+--- PASS: TestFanOut (4.89s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.27s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.62s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.273 waiter_wire_p99_ms=24.201 warm_wire_p50_ms=0.381 warm_wire_p99_ms=2.050 answer_to_first_waiter_write_min_ms=0.037 answer_to_first_waiter_write_p50_ms=0.062 leader_write_to_first_waiter_write_p50_ms=20.300
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.288 wall_max_ms=1200.406 max_active_streams=8 refused_streams_total=38
+--- PASS: TestFanOut (4.89s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.27s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.62s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.100 waiter_wire_p99_ms=25.379 warm_wire_p50_ms=0.559 warm_wire_p99_ms=9.536 answer_to_first_waiter_write_min_ms=0.036 answer_to_first_waiter_write_p50_ms=0.049 leader_write_to_first_waiter_write_p50_ms=20.303
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=280.156 wall_max_ms=1141.771 max_active_streams=8 refused_streams_total=55
+--- PASS: TestFanOut (4.77s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.49s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	97.836s
+# load at the end:  16:01:45 up 1 day, 11:26,  1 user,  load average: 36.72, 15.93, 9.86
+# exit 0 at 2026-09-25 16:01:45 UTC; yes loops left: []

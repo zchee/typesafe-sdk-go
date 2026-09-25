@@ -1,0 +1,8 @@
+# 2026-09-26 01:02:33 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock loops=16 GOEXPERIMENT=nosimd,noruntimesecret go test -count=30 ./internal/testsupport/
+# load before:  1:02  up 4 days, 8 mins, 1 user, load averages: 126.61 59.43 58.70
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# load with 16 loops:  1:02  up 4 days, 8 mins, 1 user, load averages: 132.81 61.83 59.55
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	19.901s
+# load at the end:  1:02  up 4 days, 9 mins, 1 user, load averages: 217.20 85.40 68.04
+# exit 0 at 2026-09-26 01:02:58 JST; yes loops left: []
