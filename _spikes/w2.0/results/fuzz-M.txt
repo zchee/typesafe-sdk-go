@@ -1,0 +1,21 @@
+# 2026-09-26 01:12:00 JST (M) base 8686b40 load { 55.67 133.36 127.18 }
+go version go1.27.1 darwin/arm64
+## FuzzDecodeResponse start 2026-09-26 01:12:00 JST
+fuzz: elapsed: 30s, execs: 1691917 (122867/sec), new interesting: 16 (total: 179)
+fuzz: elapsed: 31s, execs: 1691917 (0/sec), new interesting: 16 (total: 179)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	31.054s
+## FuzzDecodeResponse exit 0 end 2026-09-26 01:12:32 JST
+## FuzzErrorBody start 2026-09-26 01:12:32 JST
+fuzz: elapsed: 30s, execs: 347194 (0/sec), new interesting: 45 (total: 208)
+fuzz: elapsed: 31s, execs: 347194 (0/sec), new interesting: 45 (total: 208)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	31.051s
+## FuzzErrorBody exit 0 end 2026-09-26 01:13:03 JST
+## FuzzAppendJSON start 2026-09-26 01:13:03 JST
+fuzz: elapsed: 30s, execs: 2507433 (53729/sec), new interesting: 121 (total: 567)
+fuzz: elapsed: 31s, execs: 2507433 (0/sec), new interesting: 121 (total: 567)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	31.084s
+## FuzzAppendJSON exit 0 end 2026-09-26 01:13:35 JST
+# load after { 175.45 152.61 135.23 }

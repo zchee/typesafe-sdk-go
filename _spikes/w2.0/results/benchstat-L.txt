@@ -1,0 +1,133 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+                                                │ bench-L.txt  │
+                                                │    sec/op    │
+Decode/result-44                                  3.321µ ± ∞ ¹
+Decode/type-last-44                               3.338µ ± ∞ ¹
+Decode/duplicates-44                              10.93µ ± ∞ ¹
+Decode/result-20-44                               21.25µ ± ∞ ¹
+Decode/score-flood-mini-44                        13.87µ ± ∞ ¹
+Decode/escaped-names-44                           4.911µ ± ∞ ¹
+Decode/escaped-member-names-44                    7.186µ ± ∞ ¹
+Decode/structured-legend-44                       4.647µ ± ∞ ¹
+Decode/deviation-lone-surrogate-44                5.044µ ± ∞ ¹
+Decode/unknown-answer-type-44                     1.285µ ± ∞ ¹
+Decode/parity-big-exp-unknown-44                  1.198µ ± ∞ ¹
+Decode/no-answers-44                              525.1n ± ∞ ¹
+Decode/structured-legend-flood-1k-44              616.9µ ± ∞ ¹
+Decode/structured-legend-flood-10k-44             6.010m ± ∞ ¹
+DecodeNaiveSonic/result-44                        2.764µ ± ∞ ¹
+DecodeNaiveSonic/type-last-44                     2.805µ ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                    6.743µ ± ∞ ¹
+DecodeNaiveSonic/result-20-44                     16.64µ ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44              11.78µ ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                 4.047µ ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44          3.371µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44             1.926µ ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44      1.935µ ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44           1.346µ ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                    598.2n ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    603.9µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44   5.804m ± ∞ ¹
+geomean                                           9.273µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                │  bench-L.txt  │
+                                                │      B/s      │
+Decode/result-44                                  104.5Mi ± ∞ ¹
+Decode/type-last-44                               104.0Mi ± ∞ ¹
+Decode/duplicates-44                              71.97Mi ± ∞ ¹
+Decode/result-20-44                               101.1Mi ± ∞ ¹
+Decode/score-flood-mini-44                        102.8Mi ± ∞ ¹
+Decode/escaped-names-44                           93.40Mi ± ∞ ¹
+Decode/escaped-member-names-44                    56.41Mi ± ∞ ¹
+Decode/structured-legend-44                       44.54Mi ± ∞ ¹
+Decode/deviation-lone-surrogate-44                41.41Mi ± ∞ ¹
+Decode/unknown-answer-type-44                     107.6Mi ± ∞ ¹
+Decode/parity-big-exp-unknown-44                  107.5Mi ± ∞ ¹
+Decode/no-answers-44                              121.7Mi ± ∞ ¹
+Decode/structured-legend-flood-1k-44              88.76Mi ± ∞ ¹
+Decode/structured-legend-flood-10k-44             97.82Mi ± ∞ ¹
+DecodeNaiveSonic/result-44                        125.6Mi ± ∞ ¹
+DecodeNaiveSonic/type-last-44                     123.7Mi ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                    116.7Mi ± ∞ ¹
+DecodeNaiveSonic/result-20-44                     129.1Mi ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44              121.0Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                 113.3Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44          120.2Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44             107.5Mi ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44      107.9Mi ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44           102.7Mi ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                    106.8Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    90.68Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44   101.3Mi ± ∞ ¹
+geomean                                           96.97Mi
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                │  bench-L.txt   │
+                                                │      B/op      │
+Decode/result-44                                     705.0 ± ∞ ¹
+Decode/type-last-44                                  704.0 ± ∞ ¹
+Decode/duplicates-44                               5.333Ki ± ∞ ¹
+Decode/result-20-44                                6.048Ki ± ∞ ¹
+Decode/score-flood-mini-44                         4.207Ki ± ∞ ¹
+Decode/escaped-names-44                            1.227Ki ± ∞ ¹
+Decode/escaped-member-names-44                     5.119Ki ± ∞ ¹
+Decode/structured-legend-44                        4.495Ki ± ∞ ¹
+Decode/deviation-lone-surrogate-44                 4.580Ki ± ∞ ¹
+Decode/unknown-answer-type-44                        147.0 ± ∞ ¹
+Decode/parity-big-exp-unknown-44                     147.0 ± ∞ ¹
+Decode/no-answers-44                                 0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-44               172.6Ki ± ∞ ¹
+Decode/structured-legend-flood-10k-44              1.564Mi ± ∞ ¹
+DecodeNaiveSonic/result-44                         3.617Ki ± ∞ ¹
+DecodeNaiveSonic/type-last-44                      3.616Ki ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                     9.019Ki ± ∞ ¹
+DecodeNaiveSonic/result-20-44                      19.27Ki ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44               16.17Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                  4.987Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44           4.599Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44              2.954Ki ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44       2.721Ki ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44            1.938Ki ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                       831.0 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    1014.9Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44    9.283Mi ± ∞ ¹
+geomean                                                        ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                │ bench-L.txt  │
+                                                │  allocs/op   │
+Decode/result-44                                   4.000 ± ∞ ¹
+Decode/type-last-44                                4.000 ± ∞ ¹
+Decode/duplicates-44                               16.00 ± ∞ ¹
+Decode/result-20-44                                24.00 ± ∞ ¹
+Decode/score-flood-mini-44                         21.00 ± ∞ ¹
+Decode/escaped-names-44                            10.00 ± ∞ ¹
+Decode/escaped-member-names-44                     29.00 ± ∞ ¹
+Decode/structured-legend-44                        11.00 ± ∞ ¹
+Decode/deviation-lone-surrogate-44                 13.00 ± ∞ ¹
+Decode/unknown-answer-type-44                      1.000 ± ∞ ¹
+Decode/parity-big-exp-unknown-44                   1.000 ± ∞ ¹
+Decode/no-answers-44                               0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-44               90.00 ± ∞ ¹
+Decode/structured-legend-flood-10k-44              686.0 ± ∞ ¹
+DecodeNaiveSonic/result-44                         40.00 ± ∞ ¹
+DecodeNaiveSonic/type-last-44                      40.00 ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                     89.00 ± ∞ ¹
+DecodeNaiveSonic/result-20-44                      214.0 ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44               137.0 ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                  57.00 ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44           51.00 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44              27.00 ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44       27.00 ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44            20.00 ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                     9.000 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    6.574k ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44   65.19k ± ∞ ¹
+geomean                                                      ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean

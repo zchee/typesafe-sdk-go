@@ -1,0 +1,133 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+                                                │ _spikes/w2.0/results/bench-M.txt │
+                                                │              sec/op              │
+Decode/result-16                                                      3.323µ ± ∞ ¹
+Decode/type-last-16                                                   3.285µ ± ∞ ¹
+Decode/duplicates-16                                                  12.28µ ± ∞ ¹
+Decode/result-20-16                                                   21.74µ ± ∞ ¹
+Decode/score-flood-mini-16                                            13.75µ ± ∞ ¹
+Decode/escaped-names-16                                               4.867µ ± ∞ ¹
+Decode/escaped-member-names-16                                        6.609µ ± ∞ ¹
+Decode/structured-legend-16                                           4.053µ ± ∞ ¹
+Decode/deviation-lone-surrogate-16                                    4.209µ ± ∞ ¹
+Decode/unknown-answer-type-16                                         1.371µ ± ∞ ¹
+Decode/parity-big-exp-unknown-16                                      1.274µ ± ∞ ¹
+Decode/no-answers-16                                                  575.2n ± ∞ ¹
+Decode/structured-legend-flood-1k-16                                  667.6µ ± ∞ ¹
+Decode/structured-legend-flood-10k-16                                 6.828m ± ∞ ¹
+DecodeNaiveSonic/result-16                                            1.490µ ± ∞ ¹
+DecodeNaiveSonic/type-last-16                                         1.413µ ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                                        3.262µ ± ∞ ¹
+DecodeNaiveSonic/result-20-16                                         7.271µ ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16                                  5.670µ ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                                     1.981µ ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16                              1.627µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16                                 1.011µ ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16                          1.070µ ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16                               825.1n ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                                        426.0n ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16                        202.8µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16                       1.722m ± ∞ ¹
+geomean                                                               6.577µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                │ _spikes/w2.0/results/bench-M.txt │
+                                                │               B/s                │
+Decode/result-16                                                     104.5Mi ± ∞ ¹
+Decode/type-last-16                                                  105.7Mi ± ∞ ¹
+Decode/duplicates-16                                                 64.08Mi ± ∞ ¹
+Decode/result-20-16                                                  98.84Mi ± ∞ ¹
+Decode/score-flood-mini-16                                           103.7Mi ± ∞ ¹
+Decode/escaped-names-16                                              94.25Mi ± ∞ ¹
+Decode/escaped-member-names-16                                       61.32Mi ± ∞ ¹
+Decode/structured-legend-16                                          51.06Mi ± ∞ ¹
+Decode/deviation-lone-surrogate-16                                   49.62Mi ± ∞ ¹
+Decode/unknown-answer-type-16                                        100.8Mi ± ∞ ¹
+Decode/parity-big-exp-unknown-16                                     101.1Mi ± ∞ ¹
+Decode/no-answers-16                                                 111.1Mi ± ∞ ¹
+Decode/structured-legend-flood-1k-16                                 82.03Mi ± ∞ ¹
+Decode/structured-legend-flood-10k-16                                86.09Mi ± ∞ ¹
+DecodeNaiveSonic/result-16                                           233.0Mi ± ∞ ¹
+DecodeNaiveSonic/type-last-16                                        245.7Mi ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                                       241.2Mi ± ∞ ¹
+DecodeNaiveSonic/result-20-16                                        295.5Mi ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16                                 251.4Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                                    231.6Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16                             249.1Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16                                204.6Mi ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16                         195.2Mi ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16                              167.6Mi ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                                       150.0Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16                       270.1Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16                      341.5Mi ± ∞ ¹
+geomean                                                              136.7Mi
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                │ _spikes/w2.0/results/bench-M.txt │
+                                                │               B/op               │
+Decode/result-16                                                       697.0 ± ∞ ¹
+Decode/type-last-16                                                    698.0 ± ∞ ¹
+Decode/duplicates-16                                                 5.270Ki ± ∞ ¹
+Decode/result-20-16                                                  5.960Ki ± ∞ ¹
+Decode/score-flood-mini-16                                           4.148Ki ± ∞ ¹
+Decode/escaped-names-16                                              1.213Ki ± ∞ ¹
+Decode/escaped-member-names-16                                       5.044Ki ± ∞ ¹
+Decode/structured-legend-16                                          4.431Ki ± ∞ ¹
+Decode/deviation-lone-surrogate-16                                   4.509Ki ± ∞ ¹
+Decode/unknown-answer-type-16                                          146.0 ± ∞ ¹
+Decode/parity-big-exp-unknown-16                                       146.0 ± ∞ ¹
+Decode/no-answers-16                                                   0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-16                                 171.6Ki ± ∞ ¹
+Decode/structured-legend-flood-10k-16                                1.565Mi ± ∞ ¹
+DecodeNaiveSonic/result-16                                           4.251Ki ± ∞ ¹
+DecodeNaiveSonic/type-last-16                                        4.195Ki ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                                       9.903Ki ± ∞ ¹
+DecodeNaiveSonic/result-20-16                                        19.62Ki ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16                                 16.61Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                                    5.517Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16                             4.782Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16                                3.343Ki ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16                         3.308Ki ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16                              2.465Ki ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                                       1.239Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16                       639.9Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16                      7.877Mi ± ∞ ¹
+geomean                                                                          ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                │ _spikes/w2.0/results/bench-M.txt │
+                                                │            allocs/op             │
+Decode/result-16                                                       4.000 ± ∞ ¹
+Decode/type-last-16                                                    4.000 ± ∞ ¹
+Decode/duplicates-16                                                   16.00 ± ∞ ¹
+Decode/result-20-16                                                    24.00 ± ∞ ¹
+Decode/score-flood-mini-16                                             21.00 ± ∞ ¹
+Decode/escaped-names-16                                                10.00 ± ∞ ¹
+Decode/escaped-member-names-16                                         29.00 ± ∞ ¹
+Decode/structured-legend-16                                            11.00 ± ∞ ¹
+Decode/deviation-lone-surrogate-16                                     13.00 ± ∞ ¹
+Decode/unknown-answer-type-16                                          1.000 ± ∞ ¹
+Decode/parity-big-exp-unknown-16                                       1.000 ± ∞ ¹
+Decode/no-answers-16                                                   0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-16                                   90.00 ± ∞ ¹
+Decode/structured-legend-flood-10k-16                                  686.0 ± ∞ ¹
+DecodeNaiveSonic/result-16                                             26.00 ± ∞ ¹
+DecodeNaiveSonic/type-last-16                                          26.00 ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                                         55.00 ± ∞ ¹
+DecodeNaiveSonic/result-20-16                                          94.00 ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16                                   96.00 ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                                      38.00 ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16                               41.00 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16                                  24.00 ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16                           24.00 ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16                                18.00 ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                                         12.00 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16                        2.036k ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16                       20.09k ± ∞ ¹
+geomean                                                                          ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
