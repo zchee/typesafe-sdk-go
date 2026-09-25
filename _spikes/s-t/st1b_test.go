@@ -97,67 +97,95 @@ func TestST1bStreamLimit(t *testing.T) {
 		cases = append(cases, m)
 	}
 	for _, c := range cases {
+		t.Run(c.name(), func(t *testing.T) { runF1(t, c) })
+	}
+}
+
+// TestST1bFirstHold re-measures option (iv-b), the owner's choice at W0.6
+// (G2), for W0.4b: 200 vs limit 8 and 64 vs limit 4 with the token held by
+// the first request per new connection until its response headers, and the
+// cold-burst cost at 50 ms service time, gate alone against gate+token-first.
+// Every case must complete all its calls on one connection.
+func TestST1bFirstHold(t *testing.T) {
+	const slow = 50 * time.Millisecond
+	for _, c := range []f1Case{
+		{calls: 200, limit: 8, mitig: "token-first"},
+		{calls: 64, limit: 4, mitig: "token-first"},
+		{calls: 64, service: slow},
+		{calls: 64, mitig: "token-first", service: slow},
+	} {
 		t.Run(c.name(), func(t *testing.T) {
-			srv := testsupport.NewLoopbackServer(t, testsupport.ServerConfig{
-				MaxConcurrentStreams: c.limit,
-				Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-					tm := time.NewTimer(cmp.Or(c.service, f1Service))
-					defer tm.Stop()
-					select {
-					case <-tm.C:
-						w.WriteHeader(http.StatusOK)
-					case <-r.Context().Done():
-					}
-				}),
-			})
-			tr := newTransport(t, Options{NonStrict: c.nonStrict})
-			var rt http.RoundTripper = tr
-			switch c.mitig {
-			case "limiter":
-				rt = NewLimiter(rt, c.limiterN)
-			case "token":
-				rt = NewWriteToken(rt)
-			case "token-first":
-				wt := NewWriteToken(rt)
-				wt.FirstHold = true
-				rt = wt
+			ok, accepts := runF1(t, c)
+			if ok != c.calls || accepts != 1 {
+				t.Errorf("ok %d/%d, accepts %d; want every call on 1 connection", ok, c.calls, accepts)
 			}
-			g := &Gate{RT: rt, WaitBound: 20 * time.Second}
-			start := time.Now()
-			calls := fanOut(c.calls, func(i int) call {
-				ctx, cancel := context.WithTimeout(t.Context(), f1Deadline)
-				defer cancel()
-				return do(ctx, g, srv.URL()+"/"+strconv.Itoa(i))
-			})
-			var last time.Time
-			var okLat []time.Duration
-			for _, cl := range calls {
-				if cl.Done.After(last) {
-					last = cl.Done
-				}
-				if cl.Err == nil {
-					okLat = append(okLat, cl.Done.Sub(cl.Start))
-				}
-			}
-			perConn := map[int]int{}
-			for _, r := range srv.Requests() {
-				perConn[r.Conn]++
-			}
-			var dist []int
-			for i := range len(perConn) {
-				dist = append(dist, perConn[i])
-			}
-			slices.Sort(dist)
-			classes := countClasses(calls)
-			result("spike", "S-T1b", "case", c.name(), "calls", c.calls, "limit", c.limit,
-				"service_ms", ms(cmp.Or(c.service, f1Service)), "deadline_ms", ms(f1Deadline),
-				"ok", classes["ok"], "deadline", classes["deadline"], "canceled", classes["canceled"], "other", classes["other"],
-				"accepts", srv.Accepts(), "dials", tr.Dials(), "requests_seen", len(srv.Requests()), "requests_per_conn", fmt.Sprint(dist),
-				"max_active_streams", srv.MaxActiveStreams(), "over_limit", srv.OverLimit(),
-				"wall_ms", ms(last.Sub(start)), "ok_p50_ms", ms(pct(okLat, 0.5)), "ok_p99_ms", ms(pct(okLat, 0.99)),
-				"first_other", firstOther(calls))
 		})
 	}
+}
+
+// runF1 runs case c once: a cold burst of c.calls through the gate, each
+// call with f1Deadline, and prints its RESULT line. It returns the number
+// of calls that succeeded and the connections the server accepted.
+func runF1(t *testing.T, c f1Case) (ok, accepts int) {
+	srv := testsupport.NewLoopbackServer(t, testsupport.ServerConfig{
+		MaxConcurrentStreams: c.limit,
+		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			tm := time.NewTimer(cmp.Or(c.service, f1Service))
+			defer tm.Stop()
+			select {
+			case <-tm.C:
+				w.WriteHeader(http.StatusOK)
+			case <-r.Context().Done():
+			}
+		}),
+	})
+	tr := newTransport(t, Options{NonStrict: c.nonStrict})
+	var rt http.RoundTripper = tr
+	switch c.mitig {
+	case "limiter":
+		rt = NewLimiter(rt, c.limiterN)
+	case "token":
+		rt = NewWriteToken(rt)
+	case "token-first":
+		wt := NewWriteToken(rt)
+		wt.FirstHold = true
+		rt = wt
+	}
+	g := &Gate{RT: rt, WaitBound: 20 * time.Second}
+	start := time.Now()
+	calls := fanOut(c.calls, func(i int) call {
+		ctx, cancel := context.WithTimeout(t.Context(), f1Deadline)
+		defer cancel()
+		return do(ctx, g, srv.URL()+"/"+strconv.Itoa(i))
+	})
+	var last time.Time
+	var okLat []time.Duration
+	for _, cl := range calls {
+		if cl.Done.After(last) {
+			last = cl.Done
+		}
+		if cl.Err == nil {
+			okLat = append(okLat, cl.Done.Sub(cl.Start))
+		}
+	}
+	perConn := map[int]int{}
+	for _, r := range srv.Requests() {
+		perConn[r.Conn]++
+	}
+	var dist []int
+	for i := range len(perConn) {
+		dist = append(dist, perConn[i])
+	}
+	slices.Sort(dist)
+	classes := countClasses(calls)
+	result("spike", "S-T1b", "case", c.name(), "calls", c.calls, "limit", c.limit,
+		"service_ms", ms(cmp.Or(c.service, f1Service)), "deadline_ms", ms(f1Deadline),
+		"ok", classes["ok"], "deadline", classes["deadline"], "canceled", classes["canceled"], "other", classes["other"],
+		"accepts", srv.Accepts(), "dials", tr.Dials(), "requests_seen", len(srv.Requests()), "requests_per_conn", fmt.Sprint(dist),
+		"max_active_streams", srv.MaxActiveStreams(), "over_limit", srv.OverLimit(),
+		"wall_ms", ms(last.Sub(start)), "ok_p50_ms", ms(pct(okLat, 0.5)), "ok_p99_ms", ms(pct(okLat, 0.99)),
+		"first_other", firstOther(calls))
+	return classes["ok"], srv.Accepts()
 }
 
 // TestST1bStallRate repeats the token mitigations 20 times per case with a

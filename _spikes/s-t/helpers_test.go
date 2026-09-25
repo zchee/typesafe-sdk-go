@@ -120,15 +120,21 @@ func fanOut(n int, fn func(i int) call) []call {
 }
 
 // barrier holds every handler until n requests with the same key arrived,
-// or until guard expires (the ordering assertion then fails).
+// or until guard expires (the ordering assertion then fails). When free is
+// set, the first request of that key is answered at once and the others
+// of the key are held until the n-1 after it have arrived: AC-P4's ordering
+// clause as reworded for F1 option (iv-b), where the leader's request is
+// answered before any waiter's request is written.
 type barrier struct {
 	n     int
 	guard time.Duration
+	free  string
 
-	mu      sync.Mutex
-	arrived map[string]int
-	all     map[string]chan struct{}
-	guarded map[string]int // handlers released by the guard, per key
+	mu        sync.Mutex
+	arrived   map[string]int
+	all       map[string]chan struct{}
+	guarded   map[string]int // handlers released by the guard, per key
+	freeFirst string         // path of the free key's first request
 }
 
 func newBarrier(n int, guard time.Duration) *barrier {
@@ -155,6 +161,12 @@ func (b *barrier) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	key := barrierKey(r.URL.Path)
 	b.mu.Lock()
 	b.arrived[key]++
+	if key == b.free && b.arrived[key] == 1 {
+		b.freeFirst = r.URL.Path
+		b.mu.Unlock()
+		w.WriteHeader(http.StatusOK)
+		return
+	}
 	c := b.ch(key)
 	if b.arrived[key] == b.n {
 		close(c)
@@ -179,6 +191,13 @@ func (b *barrier) guardedCount(key string) int {
 	b.mu.Lock()
 	defer b.mu.Unlock()
 	return b.guarded[key]
+}
+
+// firstFree returns the path of the free key's first request, "" before it.
+func (b *barrier) firstFree() string {
+	b.mu.Lock()
+	defer b.mu.Unlock()
+	return b.freeFirst
 }
 
 // newTransport builds the §6.3 default transport for a test and closes its

@@ -1,0 +1,78 @@
+# 2026-09-25 19:52:19 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=5 -run ^TestST1bFirstHold$ -v ./_spikes/s-t/
+# load before: 19:52  up 3 days, 18:58, 1 user, load averages: 9.82 8.28 9.29 (MAXLOAD=16, waited 0 x 60 s)
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestST1bFirstHold
+=== RUN   TestST1bFirstHold/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=291.879 ok_p50_ms=157.287 ok_p99_ms=291.605 first_other=""
+=== RUN   TestST1bFirstHold/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=190.796 ok_p50_ms=102.249 ok_p99_ms=190.719 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.661 ok_p50_ms=52.402 ok_p99_ms=52.604 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=103.923 ok_p50_ms=103.679 ok_p99_ms=103.880 first_other=""
+--- PASS: TestST1bFirstHold (0.64s)
+    --- PASS: TestST1bFirstHold/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bFirstHold/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/token-first/service50ms (0.10s)
+=== RUN   TestST1bFirstHold
+=== RUN   TestST1bFirstHold/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=296.400 ok_p50_ms=157.691 ok_p99_ms=295.441 first_other=""
+=== RUN   TestST1bFirstHold/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=190.354 ok_p50_ms=100.351 ok_p99_ms=190.290 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=58.114 ok_p50_ms=56.875 ok_p99_ms=57.962 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=107.999 ok_p50_ms=106.849 ok_p99_ms=107.841 first_other=""
+--- PASS: TestST1bFirstHold (0.66s)
+    --- PASS: TestST1bFirstHold/200vs8/strict/token-first (0.30s)
+    --- PASS: TestST1bFirstHold/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/service50ms (0.06s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/token-first/service50ms (0.11s)
+=== RUN   TestST1bFirstHold
+=== RUN   TestST1bFirstHold/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=292.906 ok_p50_ms=158.251 ok_p99_ms=292.695 first_other=""
+=== RUN   TestST1bFirstHold/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=192.859 ok_p50_ms=102.784 ok_p99_ms=192.779 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=53.246 ok_p50_ms=52.936 ok_p99_ms=53.160 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=102.739 ok_p50_ms=102.527 ok_p99_ms=102.702 first_other=""
+--- PASS: TestST1bFirstHold (0.64s)
+    --- PASS: TestST1bFirstHold/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bFirstHold/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/token-first/service50ms (0.10s)
+=== RUN   TestST1bFirstHold
+=== RUN   TestST1bFirstHold/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=293.002 ok_p50_ms=157.615 ok_p99_ms=292.802 first_other=""
+=== RUN   TestST1bFirstHold/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=187.527 ok_p50_ms=99.373 ok_p99_ms=187.465 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=53.210 ok_p50_ms=52.940 ok_p99_ms=53.146 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=104.427 ok_p50_ms=104.059 ok_p99_ms=104.387 first_other=""
+--- PASS: TestST1bFirstHold (0.64s)
+    --- PASS: TestST1bFirstHold/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bFirstHold/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/token-first/service50ms (0.10s)
+=== RUN   TestST1bFirstHold
+=== RUN   TestST1bFirstHold/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=294.276 ok_p50_ms=158.166 ok_p99_ms=294.034 first_other=""
+=== RUN   TestST1bFirstHold/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=184.960 ok_p50_ms=97.152 ok_p99_ms=184.900 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=53.277 ok_p50_ms=52.889 ok_p99_ms=53.140 first_other=""
+=== RUN   TestST1bFirstHold/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=103.463 ok_p50_ms=103.054 ok_p99_ms=103.401 first_other=""
+--- PASS: TestST1bFirstHold (0.64s)
+    --- PASS: TestST1bFirstHold/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bFirstHold/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bFirstHold/64vs0/strict/token-first/service50ms (0.10s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-t	3.228s
+# exit 0 at 2026-09-25 19:52:23 JST
+# load after: 19:52  up 3 days, 18:58, 1 user, load averages: 9.43 8.23 9.26

@@ -19,7 +19,10 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/http/httptrace"
+	"slices"
 	"strconv"
+	"sync"
 	"testing"
 	"time"
 
@@ -37,19 +40,31 @@ type variant struct {
 	name  string
 	gated bool
 	token bool // the F1 mitigation (iv): header-write token inside the gate
+	// firstHold is option (iv-b), the owner's choice at W0.6 (G2): the first
+	// request on a new connection keeps the token until its response
+	// headers.
+	firstHold bool
+	// control applies gate+token-first's reworded handler and checks to a
+	// variant without firstHold and does not assert them: the negative
+	// control showing that the checks can fail.
+	control bool
 }
 
 var fanVariants = []variant{
 	{name: "gate", gated: true},
 	{name: "nogate"},
 	{name: "gate+token", gated: true, token: true},
+	{name: "gate+token-first", gated: true, token: true, firstHold: true},
+	{name: "control:gate+token", gated: true, token: true, control: true},
 }
 
 // wrap builds the round-tripper chain of v over tr.
 func wrap(v variant, tr http.RoundTripper, bound time.Duration) *Gate {
 	rt := tr
 	if v.token {
-		rt = NewWriteToken(rt)
+		wt := NewWriteToken(rt)
+		wt.FirstHold = v.firstHold
+		rt = wt
 	}
 	return &Gate{RT: rt, WaitBound: bound, Disabled: !v.gated}
 }
@@ -57,9 +72,22 @@ func wrap(v variant, tr http.RoundTripper, bound time.Duration) *Gate {
 // TestST1FanOut measures the cold 64-way fan-out (NF4/AC-P4): connections,
 // the ordering assertion (the handler holds every response until 64
 // requests arrived, 5 s guard), waiter latency, and a warm second burst.
+//
+// The gate+token-first variant (option (iv-b)) asserts AC-P4's ordering
+// clause as reworded at W0.6 (G2) for its cold burst: the handler answers
+// the burst's first request at once and holds every other response until
+// the 63 requests after it have arrived (5 s guard); the first request must
+// be the leader's, the client must have the leader's response headers
+// before any other caller writes its HEADERS, and every request must arrive
+// on connection 0. Its warm burst keeps the original clause. The
+// control:gate+token variant runs the same handler and checks over the
+// plain token (option (iv-a)) without asserting them. For every gated
+// variant the burst's gap from the leader's WroteHeaders to the first
+// waiter's WroteHeaders is recorded: the cost of the hold.
 func TestST1FanOut(t *testing.T) {
 	const reps = 10
 	for _, v := range fanVariants {
+		reworded := v.firstHold || v.control
 		t.Run(v.name, func(t *testing.T) {
 			var (
 				coldConns, warmNew     []int
@@ -69,15 +97,35 @@ func TestST1FanOut(t *testing.T) {
 				spans, warmWire        []time.Duration
 				roles                  = map[Role]int{}
 				failures, statusNot200 int
+				// leadGaps: leader WroteHeaders → first non-leader
+				// WroteHeaders; answerGaps (reworded variants): the
+				// leader's first response byte → first non-leader
+				// WroteHeaders, negative when a waiter wrote first.
+				leadGaps, answerGaps        []time.Duration
+				leaderFirst, answeredBefore int
 			)
 			for rep := range reps {
 				b := newBarrier(fanN, guard)
+				if reworded {
+					b.free = "cold"
+				}
 				srv := testsupport.NewLoopbackServer(t, testsupport.ServerConfig{Handler: b})
 				tr := newTransport(t, Options{})
 				g := wrap(v, tr, 20*time.Second)
 
+				var fbMu sync.Mutex
+				firstByte := make([]time.Time, fanN)
 				cold := fanOut(fanN, func(i int) call {
-					return do(t.Context(), g, srv.URL()+"/cold/"+strconv.Itoa(i))
+					ctx := t.Context()
+					if reworded {
+						ctx = httptrace.WithClientTrace(ctx, &httptrace.ClientTrace{GotFirstResponseByte: func() {
+							now := time.Now()
+							fbMu.Lock()
+							firstByte[i] = now
+							fbMu.Unlock()
+						}})
+					}
+					return do(ctx, g, srv.URL()+"/cold/"+strconv.Itoa(i))
 				})
 				accCold := srv.Accepts()
 				warm := fanOut(fanN, func(i int) call {
@@ -131,6 +179,46 @@ func TestST1FanOut(t *testing.T) {
 					}
 					warmWire = append(warmWire, c.WroteHeaders.Sub(c.Start))
 				}
+				leader := -1
+				var firstOtherWrite time.Time
+				for i, c := range cold {
+					switch {
+					case c.Err != nil:
+					case c.Role == RoleLeader:
+						leader = i
+					case firstOtherWrite.IsZero() || c.WroteHeaders.Before(firstOtherWrite):
+						firstOtherWrite = c.WroteHeaders
+					}
+				}
+				if v.gated && leader >= 0 && !firstOtherWrite.IsZero() {
+					leadGaps = append(leadGaps, firstOtherWrite.Sub(cold[leader].WroteHeaders))
+				}
+				if reworded {
+					var answered time.Time
+					if leader >= 0 {
+						fbMu.Lock()
+						answered = firstByte[leader]
+						fbMu.Unlock()
+					}
+					isFirst := leader >= 0 && b.firstFree() == "/cold/"+strconv.Itoa(leader)
+					before := !answered.IsZero() && firstOtherWrite.After(answered)
+					if isFirst {
+						leaderFirst++
+					}
+					if before {
+						answeredBefore++
+					}
+					if !answered.IsZero() && !firstOtherWrite.IsZero() {
+						answerGaps = append(answerGaps, firstOtherWrite.Sub(answered))
+					}
+					if !isFirst || !before {
+						ok = false
+						if !v.control {
+							t.Errorf("rep %d: first request %q (leader index %d); leader's response headers at %v, first other HEADERS written at %v",
+								rep, b.firstFree(), leader, answered, firstOtherWrite)
+						}
+					}
+				}
 				if ok {
 					orderingOK++
 				}
@@ -141,10 +229,11 @@ func TestST1FanOut(t *testing.T) {
 					t.Errorf("rep %d: warm burst opened %d connections, want 0", rep, accWarm-accCold)
 				}
 			}
-			if v.gated && orderingOK != reps {
+			if v.gated && !v.control && orderingOK != reps {
 				t.Errorf("ordering %d/%d", orderingOK, reps)
 			}
-			result("spike", "S-T1", "case", "cold64", "variant", v.name, "reps", reps,
+			kv := []any{
+				"spike", "S-T1", "case", "cold64", "variant", v.name, "reps", reps,
 				"cold_conns", fmt.Sprint(coldConns), "warm_new_conns", fmt.Sprint(warmNew),
 				"ordering_ok", fmt.Sprintf("%d/%d", orderingOK, reps), "failures", failures, "non200", statusNot200,
 				"roles", fmt.Sprint(roles),
@@ -153,7 +242,22 @@ func TestST1FanOut(t *testing.T) {
 				"all_wire_p50_ms", ms(pct(allWire, 0.5)), "all_wire_p99_ms", ms(pct(allWire, 0.99)),
 				"leader_gotconn_p50_ms", ms(pct(leaderGot, 0.5)),
 				"span_p50_ms", ms(pct(spans, 0.5)), "span_max_ms", ms(pct(spans, 1)),
-				"warm_wire_p50_ms", ms(pct(warmWire, 0.5)), "warm_wire_p99_ms", ms(pct(warmWire, 0.99)))
+				"warm_wire_p50_ms", ms(pct(warmWire, 0.5)), "warm_wire_p99_ms", ms(pct(warmWire, 0.99)),
+			}
+			if v.gated {
+				kv = append(kv, "lead_to_waiter_write_p50_ms", ms(pct(leadGaps, 0.5)), "lead_to_waiter_write_max_ms", ms(pct(leadGaps, 1)))
+			}
+			if reworded {
+				var minAnswer time.Duration
+				if len(answerGaps) > 0 {
+					minAnswer = slices.Min(answerGaps)
+				}
+				kv = append(kv, "leader_first", fmt.Sprintf("%d/%d", leaderFirst, reps),
+					"leader_answered_before_waiter_writes", fmt.Sprintf("%d/%d", answeredBefore, reps),
+					"answer_to_waiter_write_min_ms", ms(minAnswer),
+					"answer_to_waiter_write_p50_ms", ms(pct(answerGaps, 0.5)))
+			}
+			result(kv...)
 		})
 	}
 }
