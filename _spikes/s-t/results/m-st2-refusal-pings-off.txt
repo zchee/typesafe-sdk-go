@@ -1,0 +1,453 @@
+# 2026-09-25 16:26:49 JST (M) lock=none GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -timeout 20s -run ^TestST2Refusals$/^strict_stall_without_a_deadline/pings=false$ -v ./_spikes/s-t/
+# load before: 16:26  up 3 days, 15:32, 1 user, load averages: 11.11 12.27 12.65
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestST2Refusals
+=== RUN   TestST2Refusals/strict_stall_without_a_deadline/pings=false
+--- FAIL: TestST2Refusals (0.00s)
+    --- FAIL: TestST2Refusals/strict_stall_without_a_deadline/pings=false (0.00s)
+panic: deadlock: all goroutines in bubble are blocked [recovered, repanicked]
+
+goroutine 37 [running]:
+testing.tRunner.func1.2({0x1027971b0, 0x2a8e18538090})
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2123 +0x1a0
+testing.tRunner.func1()
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2126 +0x2c8
+panic({0x1027971b0?, 0x2a8e18538090?})
+	/Users/zchee/sdk/go1.27.1/src/runtime/panic.go:859 +0x120
+internal/synctest.Run(0x2a8e181b4600)
+	/Users/zchee/sdk/go1.27.1/src/runtime/synctest.go:247 +0x2b4
+testing/synctest.Test(0x2a8e1820a6c8, 0x2a8e18190d70)
+	/Users/zchee/sdk/go1.27.1/src/testing/synctest/synctest.go:291 +0x90
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1(0x2a8e1820a6c8)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:168 +0x58
+testing.tRunner(0x2a8e1820a6c8, 0x2a8e181909a0)
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2193 +0xc4
+created by testing.(*T).Run in goroutine 36
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2258 +0x3b8
+
+goroutine 38 [chan receive (durable), synctest bubble 1]:
+testing/synctest.testingSynctestTest(0x2a8e1820a6c8, 0x2a8e18190d70)
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2308 +0x218
+testing/synctest.Test.func1()
+	/Users/zchee/sdk/go1.27.1/src/testing/synctest/synctest.go:292 +0x28
+created by testing/synctest.Test in goroutine 37
+	/Users/zchee/sdk/go1.27.1/src/testing/synctest/synctest.go:291 +0x90
+
+goroutine 39 [sync.WaitGroup.Wait (durable), synctest bubble 1]:
+sync.runtime_SemacquireWaitGroup(0x2a8e1818e538?, 0x30?)
+	/Users/zchee/sdk/go1.27.1/src/runtime/sema.go:114 +0x38
+sync.(*WaitGroup).Wait(0x2a8e18190eb0)
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:206 +0xa4
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut(0x10, 0x2a8e181b04e0)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:118 +0x144
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1(0x2a8e1820a908)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0x114
+testing.tRunner(0x2a8e1820a908, 0x2a8e18190d70)
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2193 +0xc4
+created by testing/synctest.testingSynctestTest in goroutine 38
+	/Users/zchee/sdk/go1.27.1/src/testing/testing.go:2307 +0x204
+
+goroutine 40 [select (durable), synctest bubble 1]:
+internal/gate.(*Gate).WaitAndLock(0x2a8e18195220, {0x1027cbc20, 0x102862720})
+	/Users/zchee/sdk/go1.27.1/src/internal/gate/gate.go:51 +0x84
+internal/nettest.(*Listener).Accept(0x2a8e18195220)
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/listener.go:105 +0x44
+net/http.(*Server).Serve(0x2a8e18224c80, {0x1027cba08, 0x2a8e18195220})
+	/Users/zchee/sdk/go1.27.1/src/net/http/server.go:3551 +0x2a8
+net/http/httptest.(*Server).goServe.func1()
+	/Users/zchee/sdk/go1.27.1/src/net/http/httptest/server.go:586 +0x54
+created by net/http/httptest.(*Server).goServe in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/net/http/httptest/server.go:584 +0x8c
+
+goroutine 41 [select (durable), synctest bubble 1]:
+internal/gate.(*Gate).WaitAndLock(0x2a8e181952c0, {0x1027cbc20, 0x102862720})
+	/Users/zchee/sdk/go1.27.1/src/internal/gate/gate.go:51 +0x84
+internal/nettest.(*Listener).Accept(0x2a8e181952c0)
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/listener.go:105 +0x44
+crypto/tls.(*listener).Accept(0x2a8e181b04c8)
+	/Users/zchee/sdk/go1.27.1/src/crypto/tls/tls.go:78 +0x28
+net/http.(*Server).Serve(0x2a8e18224c80, {0x1027cb8b8, 0x2a8e181b04c8})
+	/Users/zchee/sdk/go1.27.1/src/net/http/server.go:3551 +0x2a8
+net/http/httptest.(*Server).goServe.func1()
+	/Users/zchee/sdk/go1.27.1/src/net/http/httptest/server.go:586 +0x54
+created by net/http/httptest.(*Server).goServe in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/net/http/httptest/server.go:584 +0x8c
+
+goroutine 42 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e185c0508, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e185c0508, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1812f7c0, 0x2a8e1842d838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c390?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1812f7c0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e1813eae8?, 0x2a8e1813ea8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1812f7c0)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e181280d8?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 43 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e1834a788, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e1834a788, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1812f2c0, 0x2a8e183a7838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c2d0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1812f2c0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e1813cae8?, 0x2a8e1813ca8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1812f2c0)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e181280a8?, 0x102134f30?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 46 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e18523408, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e18523408, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1812e640, 0x2a8e180ef838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c0f0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1812e640)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e1811dae8?, 0x2a8e1811da8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1812e640)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e18128030?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 49 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e1834aa08, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e1834aa08, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1814a140, 0x2a8e18529838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c4b0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1814a140)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e18147ae8?, 0x2a8e18147a8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1814a140)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e18128120?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 50 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e183a0288, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e183a0288, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1812eb40, 0x2a8e18485838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c1b0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1812eb40)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e18269ae8?, 0x2a8e18269a8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1812eb40)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e18128060?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 51 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e183a0508, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e183a0508, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1812edc0, 0x2a8e18483838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c210?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1812edc0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e1826aae8?, 0x2a8e1826aa8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1812edc0)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e18128078?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 52 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e18523188, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e18523188, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e18296140, 0x2a8e183a3838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e18294030?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e18296140)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e18138ae8?, 0x2a8e18138a8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e18296140)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e18290000?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 56 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*ClientConn).roundTrip(0x2a8e18440000, 0x2a8e18522f08, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1186 +0x424
+net/http/internal/http2.(*ClientConn).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1100
+net/http/internal/http2.(*Transport).RoundTripOpt(0x2a8e181b4920, 0x2a8e18522f08, {0x1?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:425 +0x18c
+net/http/internal/http2.(*Transport).RoundTrip(...)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:380
+net/http.http2RoundTrip(0x2a8e1812f040, 0x2a8e18383838)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:321 +0x1b8
+net/http.http2RoundTripper.RoundTrip({0x2a8e181b4920?, 0x90?}, 0x2a8e1812c270?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:438 +0x38
+net/http.(*Transport).roundTrip(0x2a8e18242380, 0x2a8e1812f040)
+	/Users/zchee/sdk/go1.27.1/src/net/http/transport.go:723 +0x7f4
+net/http.(*Transport).RoundTrip(0x2a8e1826bae8?, 0x2a8e1826ba8c?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/roundtrip.go:33 +0x20
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.(*Gate).Do(0x2a8e18208360, 0x2a8e1812f040)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/gate.go:263 +0x47c
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.do({0x1027cbcc8?, 0x2a8e18212500?}, 0x2a8e18208360, {0x2a8e18128090?, 0x0?})
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:87 +0xd8
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.TestST2Refusals.func1.1.1(0x0?)
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/st2_test.go:175 +0xac
+github.com/zchee/typesafe-sdk-go/_spikes/s-t.fanOut.func1()
+	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/wt-w0.4/_spikes/s-t/helpers_test.go:113 +0x68
+sync.(*WaitGroup).Go.func1()
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:258 +0x48
+created by sync.(*WaitGroup).Go in goroutine 39
+	/Users/zchee/sdk/go1.27.1/src/sync/waitgroup.go:238 +0x78
+
+goroutine 116 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e18522f88, 0x2a8e18522f08, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e18522f88, 0x0?, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 56
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 71 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e1834aa88, 0x2a8e1834aa08, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e1834aa88, 0x0?, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 49
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 70 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e1834a808, 0x2a8e1834a788, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e1834a808, 0x0?, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 43
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 152 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e185c0588, 0x2a8e185c0508, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e185c0588, 0x0?, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 42
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 25 [select (durable), synctest bubble 1]:
+internal/nettest.(*connHalf).waitAndLockForRead(...)
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/conn.go:322
+internal/nettest.(*connHalf).read(0x2a8e1843e0c0, {0x2a8e18158044, 0x9, 0x10211abdc?})
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/conn.go:341 +0x74
+internal/nettest.(*Conn).Read(0x2a8e1843a180, {0x2a8e18158044?, 0x2a8e183b1ed8?, 0x10231937c?})
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/conn.go:61 +0x28
+io.ReadAtLeast({0x14febd400, 0x2a8e1843a180}, {0x2a8e18158044, 0x9, 0x9}, 0x9)
+	/Users/zchee/sdk/go1.27.1/src/io/io.go:335 +0x90
+io.ReadFull(...)
+	/Users/zchee/sdk/go1.27.1/src/io/io.go:354
+net/http/internal/http2.readFrameHeader({0x2a8e18158044, 0x9, 0x0?}, {0x14febd400?, 0x2a8e1843a180?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/frame.go:252 +0x58
+net/http/internal/http2.(*Framer).ReadFrameHeader(0x2a8e18158000)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/frame.go:525 +0x5c
+net/http/internal/http2.(*Framer).ReadFrame(0x2a8e18158000)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/frame.go:584 +0x20
+net/http/internal/http2.(*serverConn).readFrames(0x2a8e181054a0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/server.go:688 +0x88
+created by net/http/internal/http2.(*serverConn).serve in goroutine 135
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/server.go:813 +0x560
+
+goroutine 135 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*serverConn).serve(0x2a8e181054a0, {0x4, 0x0, 0x1000, 0x1000, 0x100000, 0x100000, 0x100000, 0x0, 0x37e11d600, ...})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/server.go:822 +0x74c
+net/http/internal/http2.(*Server).serveConn(0x2a8e180dc000, {0x1027cce08, 0x2a8e1843a180}, 0x2a8e184299c0, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/server.go:391 +0x9c8
+net/http/internal/http2.(*Server).ServeConn(0x10278bde0?, {0x1027cce08?, 0x2a8e1843a180?}, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/server.go:246 +0xb0
+net/http.(*Server).serveHTTP2Conn(0x2a8e18224c80, {0x1027cbcc8, 0x2a8e1838e0f0}, {0x1027cce08, 0x2a8e1843a180}, {0x1027c9128, 0x2a8e18224c80}, 0x1, 0x0, {0x0, ...})
+	/Users/zchee/sdk/go1.27.1/src/net/http/http2.go:102 +0x34c
+net/http.(*conn).maybeServeUnencryptedHTTP2(0x2a8e18424090, {0x1027cbcc8, 0x2a8e1838e0f0})
+	/Users/zchee/sdk/go1.27.1/src/net/http/server.go:2250 +0x1d0
+net/http.(*conn).serve(0x2a8e18424090, {0x1027cbc90, 0x2a8e180da120})
+	/Users/zchee/sdk/go1.27.1/src/net/http/server.go:2044 +0x32c
+created by net/http.(*Server).Serve in goroutine 40
+	/Users/zchee/sdk/go1.27.1/src/net/http/server.go:3581 +0x3e8
+
+goroutine 136 [select (durable), synctest bubble 1]:
+internal/nettest.(*connHalf).waitAndLockForRead(...)
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/conn.go:322
+internal/nettest.(*connHalf).read(0x2a8e1843e000, {0x2a8e18445000, 0x1000, 0x2a8e18270420?})
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/conn.go:341 +0x74
+internal/nettest.(*Conn).Read(0x2a8e1843a168, {0x2a8e18445000?, 0x2a8e1844a000?, 0x2?})
+	/Users/zchee/sdk/go1.27.1/src/internal/nettest/conn.go:61 +0x28
+bufio.(*Reader).Read(0x2a8e18446000, {0x2a8e18448044, 0x9, 0x1020d0b38?})
+	/Users/zchee/sdk/go1.27.1/src/bufio/bufio.go:245 +0x188
+io.ReadAtLeast({0x1027c8ca8, 0x2a8e18446000}, {0x2a8e18448044, 0x9, 0x9}, 0x9)
+	/Users/zchee/sdk/go1.27.1/src/io/io.go:335 +0x90
+io.ReadFull(...)
+	/Users/zchee/sdk/go1.27.1/src/io/io.go:354
+net/http/internal/http2.readFrameHeader({0x2a8e18448044, 0x9, 0x0?}, {0x1027c8ca8?, 0x2a8e18446000?})
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/frame.go:252 +0x58
+net/http/internal/http2.(*Framer).ReadFrameHeader(0x2a8e18448000)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/frame.go:525 +0x5c
+net/http/internal/http2.(*Framer).ReadFrame(0x2a8e18448000)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/frame.go:584 +0x20
+net/http/internal/http2.(*clientConnReadLoop).run(0x2a8e183b3f98)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:2047 +0xc0
+net/http/internal/http2.(*ClientConn).readLoop(0x2a8e18440000)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1913 +0x4c
+created by net/http/internal/http2.(*Transport).newClientConn in goroutine 3
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:703 +0xa60
+
+goroutine 98 [sync.Cond.Wait (durable), synctest bubble 1]:
+sync.runtime_notifyListWait(0x2a8e18442010, 0x3)
+	/Users/zchee/sdk/go1.27.1/src/runtime/sema.go:617 +0x194
+sync.(*Cond).Wait(0x2a8e18442000)
+	/Users/zchee/sdk/go1.27.1/src/sync/cond.go:71 +0xa4
+net/http/internal/http2.(*ClientConn).awaitOpenSlotForStreamLocked(0x2a8e18440000, 0x2a8e183a0308)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1555 +0xec
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e183a0308, 0x2a8e183a0288, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1271 +0x2d4
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e183a0308, 0x1027cbc90?, 0x2a8e180da120?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 50
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 117 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e18523208, 0x2a8e18523188, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e18523208, 0x0?, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 52
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 99 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e183a0588, 0x2a8e183a0508, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e183a0588, 0x102147114?, 0x2a8e18440000?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 51
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+
+goroutine 118 [select (durable), synctest bubble 1]:
+net/http/internal/http2.(*clientStream).writeRequest(0x2a8e18523488, 0x2a8e18523408, 0x0)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1258 +0x218
+net/http/internal/http2.(*clientStream).doRequest(0x2a8e18523488, 0x0?, 0x0?)
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1216 +0x20
+created by net/http/internal/http2.(*ClientConn).roundTrip in goroutine 46
+	/Users/zchee/sdk/go1.27.1/src/net/http/internal/http2/transport.go:1123 +0x3b0
+FAIL	github.com/zchee/typesafe-sdk-go/_spikes/s-t	0.016s
+FAIL
+# exit 1 at 2026-09-25 16:26:49 JST
+# load after: 16:26  up 3 days, 15:32, 1 user, load averages: 11.11 12.27 12.65

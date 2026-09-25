@@ -1,0 +1,603 @@
+# 2026-09-25 16:27:54 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=5 -timeout 900s -run ^TestST1bStreamLimit$ -v ./_spikes/s-t/
+# load before: 16:27  up 3 days, 15:33, 1 user, load averages: 13.21 12.48 12.69 (MAXLOAD=16, waited 0 x 60 s)
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestST1bStreamLimit
+=== RUN   TestST1bStreamLimit/200vs8/strict
+RESULT spike=S-T1b case=200vs8/strict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=1 deadline=199 canceled=0 other=0 accepts=1 dials=1 requests_seen=1 requests_per_conn=[1] max_active_streams=1 over_limit=0 wall_ms=2001.794 ok_p50_ms=13.814 ok_p99_ms=13.814 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict
+RESULT spike=S-T1b case=200vs8/nonstrict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=23 dials=23 requests_seen=264 requests_per_conn="[0 0 0 8 9 16 16 19 19 19 19 23 23 49]" max_active_streams=8 over_limit=64 wall_ms=1032.250 ok_p50_ms=24.009 ok_p99_ms=34.147 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict
+RESULT spike=S-T1b case=64vs4/strict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=60 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=4 over_limit=5 wall_ms=2001.473 ok_p50_ms=12.162 ok_p99_ms=12.545 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict
+RESULT spike=S-T1b case=64vs4/nonstrict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=15 dials=15 requests_seen=248 requests_per_conn="[0 0 0 13 23 24 28 30 32 32 38]" max_active_streams=4 over_limit=184 wall_ms=33.019 ok_p50_ms=25.563 ok_p99_ms=32.903 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict
+RESULT spike=S-T1b case=8vs8/strict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.276 ok_p50_ms=12.085 ok_p99_ms=12.096 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/nonstrict
+RESULT spike=S-T1b case=8vs8/nonstrict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=13.360 ok_p50_ms=13.234 ok_p99_ms=13.342 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict
+RESULT spike=S-T1b case=9vs8/strict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=7 over_limit=0 wall_ms=24.147 ok_p50_ms=12.612 ok_p99_ms=24.026 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/nonstrict
+RESULT spike=S-T1b case=9vs8/nonstrict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=10 requests_per_conn="[1 9]" max_active_streams=8 over_limit=1 wall_ms=15.700 ok_p50_ms=13.894 ok_p99_ms=15.598 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict
+RESULT spike=S-T1b case=4vs4/strict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.604 ok_p50_ms=12.486 ok_p99_ms=12.583 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/nonstrict
+RESULT spike=S-T1b case=4vs4/nonstrict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.356 ok_p50_ms=12.258 ok_p99_ms=12.340 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict
+RESULT spike=S-T1b case=5vs4/strict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=6 requests_per_conn=[6] max_active_streams=4 over_limit=1 wall_ms=23.173 ok_p50_ms=12.201 ok_p99_ms=23.100 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/nonstrict
+RESULT spike=S-T1b case=5vs4/nonstrict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=6 requests_per_conn="[1 5]" max_active_streams=4 over_limit=1 wall_ms=13.500 ok_p50_ms=12.726 ok_p99_ms=13.402 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter8
+RESULT spike=S-T1b case=200vs8/strict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=292.401 ok_p50_ms=151.447 ok_p99_ms=292.191 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter100
+RESULT spike=S-T1b case=200vs8/strict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=2 deadline=198 canceled=0 other=0 accepts=1 dials=1 requests_seen=2 requests_per_conn=[2] max_active_streams=2 over_limit=0 wall_ms=2002.386 ok_p50_ms=12.437 ok_p99_ms=13.265 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter4
+RESULT spike=S-T1b case=200vs8/strict/limiter4 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=4 over_limit=0 wall_ms=558.963 ok_p50_ms=281.833 ok_p99_ms=556.764 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token
+RESULT spike=S-T1b case=200vs8/strict/token calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=280.189 ok_p50_ms=146.111 ok_p99_ms=280.001 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=291.751 ok_p50_ms=157.178 ok_p99_ms=291.547 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token
+RESULT spike=S-T1b case=64vs4/strict/token calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=177.973 ok_p50_ms=89.137 ok_p99_ms=177.911 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=187.205 ok_p50_ms=99.936 ok_p99_ms=187.114 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token
+RESULT spike=S-T1b case=8vs8/strict/token calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.380 ok_p50_ms=12.349 ok_p99_ms=12.360 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token-first
+RESULT spike=S-T1b case=8vs8/strict/token-first calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=7 over_limit=0 wall_ms=23.260 ok_p50_ms=23.200 ok_p99_ms=23.227 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token
+RESULT spike=S-T1b case=9vs8/strict/token calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=22.527 ok_p50_ms=11.276 ok_p99_ms=22.485 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token-first
+RESULT spike=S-T1b case=9vs8/strict/token-first calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=22.898 ok_p50_ms=22.822 ok_p99_ms=22.866 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token
+RESULT spike=S-T1b case=4vs4/strict/token calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=11.532 ok_p50_ms=11.502 ok_p99_ms=11.519 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token-first
+RESULT spike=S-T1b case=4vs4/strict/token-first calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=3 over_limit=0 wall_ms=23.074 ok_p50_ms=23.046 ok_p99_ms=23.058 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token
+RESULT spike=S-T1b case=5vs4/strict/token calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=23.320 ok_p50_ms=12.104 ok_p99_ms=23.307 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token-first
+RESULT spike=S-T1b case=5vs4/strict/token-first calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=23.283 ok_p50_ms=23.259 ok_p99_ms=23.269 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/strict
+RESULT spike=S-T1b case=200vs1024/strict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=15.209 ok_p50_ms=13.008 ok_p99_ms=14.746 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict
+RESULT spike=S-T1b case=200vs1024/nonstrict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=14.771 ok_p50_ms=13.136 ok_p99_ms=14.451 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/strict
+RESULT spike=S-T1b case=200vs0/strict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=14.161 ok_p50_ms=12.653 ok_p99_ms=13.883 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict
+RESULT spike=S-T1b case=200vs0/nonstrict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=14.615 ok_p50_ms=13.521 ok_p99_ms=14.531 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=13 dials=13 requests_seen=257 requests_per_conn="[3 16 16 17 18 18 19 21 23 25 25 27 29]" max_active_streams=8 over_limit=57 wall_ms=1014.423 ok_p50_ms=21.203 ok_p99_ms=31.410 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict/limiter100
+RESULT spike=S-T1b case=64vs4/nonstrict/limiter100 calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=15 dials=15 requests_seen=103 requests_per_conn="[4 5 7 8 10 13 13 14 14 15]" max_active_streams=4 over_limit=39 wall_ms=26.769 ok_p50_ms=18.147 ok_p99_ms=26.707 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs1024/nonstrict/limiter100 calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=24.896 ok_p50_ms=14.504 ok_p99_ms=24.387 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs0/nonstrict/limiter100 calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=24.134 ok_p50_ms=13.665 ok_p99_ms=23.929 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter8
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=279.157 ok_p50_ms=145.304 ok_p99_ms=278.960 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=53.052 ok_p50_ms=52.558 ok_p99_ms=52.988 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=104.130 ok_p50_ms=103.796 ok_p99_ms=104.073 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms
+RESULT spike=S-T1b case=64vs0/nonstrict/limiter100/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.646 ok_p50_ms=52.417 ok_p99_ms=52.598 first_other=""
+--- PASS: TestST1bStreamLimit (10.80s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict (1.03s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter8 (0.29s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter100 (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter4 (0.56s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token (0.28s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token (0.18s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter100 (1.02s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict/limiter100 (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict/limiter100 (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/token-first/service50ms (0.10s)
+    --- PASS: TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms (0.05s)
+=== RUN   TestST1bStreamLimit
+=== RUN   TestST1bStreamLimit/200vs8/strict
+RESULT spike=S-T1b case=200vs8/strict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=14 requests_per_conn=[14] max_active_streams=8 over_limit=6 wall_ms=2002.616 ok_p50_ms=11.204 ok_p99_ms=11.303 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict
+RESULT spike=S-T1b case=200vs8/nonstrict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=21 dials=21 requests_seen=340 requests_per_conn="[0 0 0 16 32 32 39 73 87]" max_active_streams=8 over_limit=140 wall_ms=50.486 ok_p50_ms=36.448 ok_p99_ms=50.187 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict
+RESULT spike=S-T1b case=64vs4/strict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=60 canceled=0 other=0 accepts=1 dials=1 requests_seen=33 requests_per_conn=[33] max_active_streams=4 over_limit=29 wall_ms=2001.427 ok_p50_ms=14.299 ok_p99_ms=14.336 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict
+RESULT spike=S-T1b case=64vs4/nonstrict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=12 dials=12 requests_seen=113 requests_per_conn="[4 6 6 7 8 8 8 10 11 16 29]" max_active_streams=4 over_limit=49 wall_ms=26.854 ok_p50_ms=18.074 ok_p99_ms=26.733 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict
+RESULT spike=S-T1b case=8vs8/strict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=13.028 ok_p50_ms=12.806 ok_p99_ms=13.007 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/nonstrict
+RESULT spike=S-T1b case=8vs8/nonstrict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.383 ok_p50_ms=12.330 ok_p99_ms=12.346 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict
+RESULT spike=S-T1b case=9vs8/strict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=6 over_limit=0 wall_ms=23.588 ok_p50_ms=12.232 ok_p99_ms=23.548 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/nonstrict
+RESULT spike=S-T1b case=9vs8/nonstrict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=1012.683 ok_p50_ms=12.005 ok_p99_ms=1012.628 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict
+RESULT spike=S-T1b case=4vs4/strict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.139 ok_p50_ms=12.120 ok_p99_ms=12.128 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/nonstrict
+RESULT spike=S-T1b case=4vs4/nonstrict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.141 ok_p50_ms=12.106 ok_p99_ms=12.115 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict
+RESULT spike=S-T1b case=5vs4/strict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=6 requests_per_conn=[6] max_active_streams=4 over_limit=1 wall_ms=24.863 ok_p50_ms=13.903 ok_p99_ms=24.839 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/nonstrict
+RESULT spike=S-T1b case=5vs4/nonstrict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=6 requests_per_conn="[1 5]" max_active_streams=4 over_limit=1 wall_ms=12.617 ok_p50_ms=12.361 ok_p99_ms=12.571 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter8
+RESULT spike=S-T1b case=200vs8/strict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=286.966 ok_p50_ms=147.667 ok_p99_ms=286.439 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter100
+RESULT spike=S-T1b case=200vs8/strict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=195 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=5 over_limit=0 wall_ms=2002.033 ok_p50_ms=12.151 ok_p99_ms=12.482 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter4
+RESULT spike=S-T1b case=200vs8/strict/limiter4 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=5 over_limit=0 wall_ms=577.411 ok_p50_ms=282.461 ok_p99_ms=577.043 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token
+RESULT spike=S-T1b case=200vs8/strict/token calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=100 requests_per_conn=[100] max_active_streams=8 over_limit=92 wall_ms=2001.334 ok_p50_ms=16.949 ok_p99_ms=17.301 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=293.095 ok_p50_ms=158.130 ok_p99_ms=292.874 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token
+RESULT spike=S-T1b case=64vs4/strict/token calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=178.194 ok_p50_ms=89.373 ok_p99_ms=178.137 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=192.121 ok_p50_ms=102.801 ok_p99_ms=191.998 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token
+RESULT spike=S-T1b case=8vs8/strict/token calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.325 ok_p50_ms=12.257 ok_p99_ms=12.305 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token-first
+RESULT spike=S-T1b case=8vs8/strict/token-first calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=7 over_limit=0 wall_ms=22.668 ok_p50_ms=22.621 ok_p99_ms=22.654 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token
+RESULT spike=S-T1b case=9vs8/strict/token calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=23.221 ok_p50_ms=11.992 ok_p99_ms=23.207 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token-first
+RESULT spike=S-T1b case=9vs8/strict/token-first calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=23.551 ok_p50_ms=23.495 ok_p99_ms=23.535 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token
+RESULT spike=S-T1b case=4vs4/strict/token calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.078 ok_p50_ms=12.035 ok_p99_ms=12.058 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token-first
+RESULT spike=S-T1b case=4vs4/strict/token-first calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=3 over_limit=0 wall_ms=23.164 ok_p50_ms=23.131 ok_p99_ms=23.149 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token
+RESULT spike=S-T1b case=5vs4/strict/token calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=23.319 ok_p50_ms=12.069 ok_p99_ms=23.303 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token-first
+RESULT spike=S-T1b case=5vs4/strict/token-first calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=23.229 ok_p50_ms=23.210 ok_p99_ms=23.212 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/strict
+RESULT spike=S-T1b case=200vs1024/strict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=14.796 ok_p50_ms=13.002 ok_p99_ms=14.563 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict
+RESULT spike=S-T1b case=200vs1024/nonstrict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=14.868 ok_p50_ms=13.366 ok_p99_ms=14.617 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/strict
+RESULT spike=S-T1b case=200vs0/strict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=13.805 ok_p50_ms=12.553 ok_p99_ms=13.635 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict
+RESULT spike=S-T1b case=200vs0/nonstrict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=13.892 ok_p50_ms=12.411 ok_p99_ms=13.605 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=13 dials=13 requests_seen=318 requests_per_conn="[4 12 16 16 16 16 20 24 28 31 36 39 60]" max_active_streams=8 over_limit=118 wall_ms=33.733 ok_p50_ms=23.151 ok_p99_ms=33.325 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict/limiter100
+RESULT spike=S-T1b case=64vs4/nonstrict/limiter100 calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=16 dials=16 requests_seen=124 requests_per_conn="[0 4 4 4 6 7 8 12 12 13 15 15 18]" max_active_streams=4 over_limit=60 wall_ms=23.827 ok_p50_ms=17.135 ok_p99_ms=23.674 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs1024/nonstrict/limiter100 calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=23.183 ok_p50_ms=12.892 ok_p99_ms=22.981 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs0/nonstrict/limiter100 calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=24.435 ok_p50_ms=13.634 ok_p99_ms=24.238 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter8
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=279.762 ok_p50_ms=144.911 ok_p99_ms=279.465 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.586 ok_p50_ms=52.314 ok_p99_ms=52.519 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=104.855 ok_p50_ms=104.630 ok_p99_ms=104.729 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms
+RESULT spike=S-T1b case=64vs0/nonstrict/limiter100/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=55.224 ok_p50_ms=54.852 ok_p99_ms=55.140 first_other=""
+--- PASS: TestST1bStreamLimit (11.57s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/nonstrict (1.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict (0.03s)
+    --- PASS: TestST1bStreamLimit/5vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter8 (0.29s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter100 (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter4 (0.58s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token (0.18s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter100 (0.03s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/token-first/service50ms (0.11s)
+    --- PASS: TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms (0.06s)
+=== RUN   TestST1bStreamLimit
+=== RUN   TestST1bStreamLimit/200vs8/strict
+RESULT spike=S-T1b case=200vs8/strict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=101 requests_per_conn=[101] max_active_streams=8 over_limit=91 wall_ms=2003.665 ok_p50_ms=13.529 ok_p99_ms=16.970 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict
+RESULT spike=S-T1b case=200vs8/nonstrict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=24 dials=24 requests_seen=270 requests_per_conn="[0 0 0 8 9 16 16 16 17 21 21 23 24 27 37]" max_active_streams=8 over_limit=70 wall_ms=31.262 ok_p50_ms=22.568 ok_p99_ms=30.985 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict
+RESULT spike=S-T1b case=64vs4/strict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=60 canceled=0 other=0 accepts=1 dials=1 requests_seen=11 requests_per_conn=[11] max_active_streams=4 over_limit=7 wall_ms=2002.589 ok_p50_ms=11.741 ok_p99_ms=11.755 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict
+RESULT spike=S-T1b case=64vs4/nonstrict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=12 dials=12 requests_seen=186 requests_per_conn="[4 4 8 8 8 11 13 22 25 32 51]" max_active_streams=4 over_limit=122 wall_ms=32.118 ok_p50_ms=21.816 ok_p99_ms=31.998 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict
+RESULT spike=S-T1b case=8vs8/strict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=14.107 ok_p50_ms=14.045 ok_p99_ms=14.067 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/nonstrict
+RESULT spike=S-T1b case=8vs8/nonstrict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=14.579 ok_p50_ms=14.467 ok_p99_ms=14.556 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict
+RESULT spike=S-T1b case=9vs8/strict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=7 over_limit=0 wall_ms=25.653 ok_p50_ms=14.016 ok_p99_ms=25.551 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/nonstrict
+RESULT spike=S-T1b case=9vs8/nonstrict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=10 requests_per_conn="[1 9]" max_active_streams=8 over_limit=1 wall_ms=12.501 ok_p50_ms=12.313 ok_p99_ms=12.461 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict
+RESULT spike=S-T1b case=4vs4/strict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.981 ok_p50_ms=12.907 ok_p99_ms=12.968 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/nonstrict
+RESULT spike=S-T1b case=4vs4/nonstrict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.940 ok_p50_ms=12.725 ok_p99_ms=12.928 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict
+RESULT spike=S-T1b case=5vs4/strict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=6 requests_per_conn=[6] max_active_streams=4 over_limit=1 wall_ms=23.634 ok_p50_ms=13.172 ok_p99_ms=23.613 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/nonstrict
+RESULT spike=S-T1b case=5vs4/nonstrict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=5 requests_per_conn="[1 4]" max_active_streams=4 over_limit=0 wall_ms=12.286 ok_p50_ms=11.970 ok_p99_ms=12.237 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter8
+RESULT spike=S-T1b case=200vs8/strict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=289.825 ok_p50_ms=156.638 ok_p99_ms=288.945 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter100
+RESULT spike=S-T1b case=200vs8/strict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=196 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=2003.269 ok_p50_ms=12.703 ok_p99_ms=14.804 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter4
+RESULT spike=S-T1b case=200vs8/strict/limiter4 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=4 over_limit=0 wall_ms=565.510 ok_p50_ms=282.716 ok_p99_ms=565.227 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token
+RESULT spike=S-T1b case=200vs8/strict/token calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=278.745 ok_p50_ms=144.150 ok_p99_ms=278.241 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=290.594 ok_p50_ms=156.301 ok_p99_ms=290.451 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token
+RESULT spike=S-T1b case=64vs4/strict/token calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=60 canceled=0 other=0 accepts=1 dials=1 requests_seen=13 requests_per_conn=[13] max_active_streams=4 over_limit=8 wall_ms=2001.367 ok_p50_ms=12.105 ok_p99_ms=12.147 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=191.219 ok_p50_ms=101.858 ok_p99_ms=191.150 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token
+RESULT spike=S-T1b case=8vs8/strict/token calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.159 ok_p50_ms=12.089 ok_p99_ms=12.121 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token-first
+RESULT spike=S-T1b case=8vs8/strict/token-first calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=7 over_limit=0 wall_ms=23.340 ok_p50_ms=23.286 ok_p99_ms=23.320 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token
+RESULT spike=S-T1b case=9vs8/strict/token calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=23.433 ok_p50_ms=12.159 ok_p99_ms=23.402 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token-first
+RESULT spike=S-T1b case=9vs8/strict/token-first calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=23.727 ok_p50_ms=23.677 ok_p99_ms=23.704 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token
+RESULT spike=S-T1b case=4vs4/strict/token calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.352 ok_p50_ms=12.325 ok_p99_ms=12.333 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token-first
+RESULT spike=S-T1b case=4vs4/strict/token-first calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=3 over_limit=0 wall_ms=23.432 ok_p50_ms=23.383 ok_p99_ms=23.404 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token
+RESULT spike=S-T1b case=5vs4/strict/token calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=23.393 ok_p50_ms=12.129 ok_p99_ms=23.335 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token-first
+RESULT spike=S-T1b case=5vs4/strict/token-first calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=22.673 ok_p50_ms=22.637 ok_p99_ms=22.652 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/strict
+RESULT spike=S-T1b case=200vs1024/strict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=13.922 ok_p50_ms=12.218 ok_p99_ms=13.536 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict
+RESULT spike=S-T1b case=200vs1024/nonstrict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=13.657 ok_p50_ms=12.718 ok_p99_ms=13.503 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/strict
+RESULT spike=S-T1b case=200vs0/strict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=13.743 ok_p50_ms=12.798 ok_p99_ms=13.556 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict
+RESULT spike=S-T1b case=200vs0/nonstrict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=15.000 ok_p50_ms=12.802 ok_p99_ms=14.715 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=13 dials=13 requests_seen=231 requests_per_conn="[2 12 16 16 16 16 16 16 17 17 19 24 44]" max_active_streams=8 over_limit=31 wall_ms=1016.355 ok_p50_ms=21.705 ok_p99_ms=31.961 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict/limiter100
+RESULT spike=S-T1b case=64vs4/nonstrict/limiter100 calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=14 dials=14 requests_seen=129 requests_per_conn="[4 4 5 5 7 7 8 9 10 11 11 13 16 19]" max_active_streams=4 over_limit=65 wall_ms=23.239 ok_p50_ms=17.390 ok_p99_ms=23.155 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs1024/nonstrict/limiter100 calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=24.523 ok_p50_ms=13.768 ok_p99_ms=24.340 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs0/nonstrict/limiter100 calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=24.300 ok_p50_ms=13.826 ok_p99_ms=24.028 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter8
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=280.689 ok_p50_ms=145.420 ok_p99_ms=280.491 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.782 ok_p50_ms=52.449 ok_p99_ms=52.673 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=104.401 ok_p50_ms=103.885 ok_p99_ms=104.197 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms
+RESULT spike=S-T1b case=64vs0/nonstrict/limiter100/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.786 ok_p50_ms=52.402 ok_p99_ms=52.682 first_other=""
+--- PASS: TestST1bStreamLimit (11.63s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict (0.03s)
+    --- PASS: TestST1bStreamLimit/9vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter8 (0.29s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter100 (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter4 (0.57s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token (0.28s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs0/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter100 (1.02s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/token-first/service50ms (0.10s)
+    --- PASS: TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms (0.05s)
+=== RUN   TestST1bStreamLimit
+=== RUN   TestST1bStreamLimit/200vs8/strict
+RESULT spike=S-T1b case=200vs8/strict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=29 requests_per_conn=[29] max_active_streams=8 over_limit=21 wall_ms=2000.672 ok_p50_ms=11.844 ok_p99_ms=12.069 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict
+RESULT spike=S-T1b case=200vs8/nonstrict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=21 dials=21 requests_seen=305 requests_per_conn="[0 0 0 0 8 9 15 16 16 16 21 21 32 32 37 39]" max_active_streams=8 over_limit=105 wall_ms=31.782 ok_p50_ms=24.616 ok_p99_ms=31.310 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict
+RESULT spike=S-T1b case=64vs4/strict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=2 deadline=62 canceled=0 other=0 accepts=1 dials=1 requests_seen=2 requests_per_conn=[2] max_active_streams=2 over_limit=0 wall_ms=2000.693 ok_p50_ms=11.818 ok_p99_ms=11.858 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict
+RESULT spike=S-T1b case=64vs4/nonstrict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=15 dials=15 requests_seen=164 requests_per_conn="[0 0 4 4 6 8 8 9 11 29 35 40]" max_active_streams=4 over_limit=100 wall_ms=25.115 ok_p50_ms=19.865 ok_p99_ms=25.030 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict
+RESULT spike=S-T1b case=8vs8/strict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=11.809 ok_p50_ms=11.778 ok_p99_ms=11.790 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/nonstrict
+RESULT spike=S-T1b case=8vs8/nonstrict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.037 ok_p50_ms=12.013 ok_p99_ms=12.019 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict
+RESULT spike=S-T1b case=9vs8/strict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=10 requests_per_conn=[10] max_active_streams=8 over_limit=1 wall_ms=23.040 ok_p50_ms=11.745 ok_p99_ms=23.001 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/nonstrict
+RESULT spike=S-T1b case=9vs8/nonstrict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=9 requests_per_conn="[1 8]" max_active_streams=8 over_limit=0 wall_ms=12.227 ok_p50_ms=12.144 ok_p99_ms=12.182 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict
+RESULT spike=S-T1b case=4vs4/strict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=11.990 ok_p50_ms=11.959 ok_p99_ms=11.967 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/nonstrict
+RESULT spike=S-T1b case=4vs4/nonstrict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=11.570 ok_p50_ms=11.549 ok_p99_ms=11.555 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict
+RESULT spike=S-T1b case=5vs4/strict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=6 requests_per_conn=[6] max_active_streams=4 over_limit=1 wall_ms=22.721 ok_p50_ms=12.045 ok_p99_ms=22.709 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/nonstrict
+RESULT spike=S-T1b case=5vs4/nonstrict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=5 requests_per_conn="[1 4]" max_active_streams=4 over_limit=0 wall_ms=12.073 ok_p50_ms=12.049 ok_p99_ms=12.057 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter8
+RESULT spike=S-T1b case=200vs8/strict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=201 requests_per_conn=[201] max_active_streams=8 over_limit=1 wall_ms=281.003 ok_p50_ms=145.262 ok_p99_ms=280.739 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter100
+RESULT spike=S-T1b case=200vs8/strict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=2 deadline=198 canceled=0 other=0 accepts=1 dials=1 requests_seen=3 requests_per_conn=[3] max_active_streams=2 over_limit=0 wall_ms=2005.418 ok_p50_ms=12.322 ok_p99_ms=12.662 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter4
+RESULT spike=S-T1b case=200vs8/strict/limiter4 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=4 over_limit=0 wall_ms=603.719 ok_p50_ms=309.785 ok_p99_ms=603.571 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token
+RESULT spike=S-T1b case=200vs8/strict/token calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=100 requests_per_conn=[100] max_active_streams=8 over_limit=92 wall_ms=2002.087 ok_p50_ms=19.402 ok_p99_ms=19.971 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=307.805 ok_p50_ms=165.412 ok_p99_ms=307.694 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token
+RESULT spike=S-T1b case=64vs4/strict/token calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=60 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=4 over_limit=4 wall_ms=2000.980 ok_p50_ms=12.332 ok_p99_ms=12.561 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=192.302 ok_p50_ms=101.514 ok_p99_ms=192.228 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token
+RESULT spike=S-T1b case=8vs8/strict/token calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=13.255 ok_p50_ms=13.089 ok_p99_ms=13.227 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token-first
+RESULT spike=S-T1b case=8vs8/strict/token-first calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=7 over_limit=0 wall_ms=24.151 ok_p50_ms=24.098 ok_p99_ms=24.117 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token
+RESULT spike=S-T1b case=9vs8/strict/token calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=10 requests_per_conn=[10] max_active_streams=8 over_limit=1 wall_ms=26.267 ok_p50_ms=15.247 ok_p99_ms=26.087 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token-first
+RESULT spike=S-T1b case=9vs8/strict/token-first calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=25.939 ok_p50_ms=25.870 ok_p99_ms=25.894 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token
+RESULT spike=S-T1b case=4vs4/strict/token calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=13.045 ok_p50_ms=12.918 ok_p99_ms=13.032 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token-first
+RESULT spike=S-T1b case=4vs4/strict/token-first calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=3 over_limit=0 wall_ms=24.518 ok_p50_ms=24.278 ok_p99_ms=24.329 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token
+RESULT spike=S-T1b case=5vs4/strict/token calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=25.414 ok_p50_ms=13.731 ok_p99_ms=25.211 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token-first
+RESULT spike=S-T1b case=5vs4/strict/token-first calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=28.537 ok_p50_ms=28.340 ok_p99_ms=28.352 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/strict
+RESULT spike=S-T1b case=200vs1024/strict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=183 over_limit=0 wall_ms=31.595 ok_p50_ms=28.308 ok_p99_ms=30.967 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict
+RESULT spike=S-T1b case=200vs1024/nonstrict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=17.981 ok_p50_ms=13.986 ok_p99_ms=17.596 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/strict
+RESULT spike=S-T1b case=200vs0/strict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=20.432 ok_p50_ms=16.891 ok_p99_ms=19.588 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict
+RESULT spike=S-T1b case=200vs0/nonstrict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=15.407 ok_p50_ms=13.973 ok_p99_ms=15.280 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=13 dials=13 requests_seen=536 requests_per_conn="[4 8 12 24 24 28 39 42 52 60 68 76 99]" max_active_streams=8 over_limit=336 wall_ms=48.850 ok_p50_ms=37.234 ok_p99_ms=48.086 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict/limiter100
+RESULT spike=S-T1b case=64vs4/nonstrict/limiter100 calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=13 dials=13 requests_seen=301 requests_per_conn="[0 21 25 28 29 30 36 56 60]" max_active_streams=4 over_limit=237 wall_ms=42.747 ok_p50_ms=30.933 ok_p99_ms=42.537 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs1024/nonstrict/limiter100 calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=26.850 ok_p50_ms=16.401 ok_p99_ms=26.715 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs0/nonstrict/limiter100 calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=23.718 ok_p50_ms=13.416 ok_p99_ms=23.563 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter8
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=277.965 ok_p50_ms=145.024 ok_p99_ms=277.788 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=53.616 ok_p50_ms=53.291 ok_p99_ms=53.528 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=105.643 ok_p50_ms=105.299 ok_p99_ms=105.552 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms
+RESULT spike=S-T1b case=64vs0/nonstrict/limiter100/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=54.163 ok_p50_ms=53.974 ok_p99_ms=54.126 first_other=""
+--- PASS: TestST1bStreamLimit (12.49s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter100 (2.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter4 (0.60s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token-first (0.31s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token-first (0.19s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token (0.03s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token-first (0.03s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token (0.03s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token-first (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs1024/strict (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter100 (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict/limiter100 (0.04s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict/limiter100 (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict/limiter100 (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/token-first/service50ms (0.11s)
+    --- PASS: TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms (0.05s)
+=== RUN   TestST1bStreamLimit
+=== RUN   TestST1bStreamLimit/200vs8/strict
+RESULT spike=S-T1b case=200vs8/strict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=62 requests_per_conn=[62] max_active_streams=8 over_limit=54 wall_ms=2002.511 ok_p50_ms=12.493 ok_p99_ms=12.865 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict
+RESULT spike=S-T1b case=200vs8/nonstrict calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=22 dials=22 requests_seen=495 requests_per_conn="[0 0 0 21 32 50 58 86 117]" max_active_streams=8 over_limit=295 wall_ms=51.809 ok_p50_ms=36.027 ok_p99_ms=51.088 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict
+RESULT spike=S-T1b case=64vs4/strict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=60 canceled=0 other=0 accepts=1 dials=1 requests_seen=13 requests_per_conn=[13] max_active_streams=4 over_limit=9 wall_ms=2001.885 ok_p50_ms=13.087 ok_p99_ms=13.236 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict
+RESULT spike=S-T1b case=64vs4/nonstrict calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=14 dials=14 requests_seen=153 requests_per_conn="[0 4 8 9 9 11 11 11 12 14 17 19 24]" max_active_streams=4 over_limit=89 wall_ms=27.249 ok_p50_ms=21.345 ok_p99_ms=27.147 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict
+RESULT spike=S-T1b case=8vs8/strict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.786 ok_p50_ms=12.626 ok_p99_ms=12.729 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/nonstrict
+RESULT spike=S-T1b case=8vs8/nonstrict calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.261 ok_p50_ms=12.171 ok_p99_ms=12.236 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict
+RESULT spike=S-T1b case=9vs8/strict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=5 over_limit=0 wall_ms=22.582 ok_p50_ms=22.502 ok_p99_ms=22.560 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/nonstrict
+RESULT spike=S-T1b case=9vs8/nonstrict calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=10 requests_per_conn="[1 9]" max_active_streams=8 over_limit=1 wall_ms=11.724 ok_p50_ms=11.464 ok_p99_ms=11.626 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict
+RESULT spike=S-T1b case=4vs4/strict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.035 ok_p50_ms=12.009 ok_p99_ms=12.024 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/nonstrict
+RESULT spike=S-T1b case=4vs4/nonstrict calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=11.915 ok_p50_ms=11.881 ok_p99_ms=11.896 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict
+RESULT spike=S-T1b case=5vs4/strict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=3 over_limit=0 wall_ms=23.075 ok_p50_ms=11.840 ok_p99_ms=23.058 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/nonstrict
+RESULT spike=S-T1b case=5vs4/nonstrict calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=6 requests_per_conn="[1 5]" max_active_streams=4 over_limit=1 wall_ms=12.260 ok_p50_ms=12.210 ok_p99_ms=12.221 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter8
+RESULT spike=S-T1b case=200vs8/strict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=275.279 ok_p50_ms=143.762 ok_p99_ms=275.031 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter100
+RESULT spike=S-T1b case=200vs8/strict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=192 canceled=0 other=0 accepts=1 dials=1 requests_seen=16 requests_per_conn=[16] max_active_streams=8 over_limit=8 wall_ms=2001.644 ok_p50_ms=12.122 ok_p99_ms=12.323 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/limiter4
+RESULT spike=S-T1b case=200vs8/strict/limiter4 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=4 over_limit=0 wall_ms=555.770 ok_p50_ms=277.863 ok_p99_ms=555.367 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token
+RESULT spike=S-T1b case=200vs8/strict/token calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=281.032 ok_p50_ms=146.978 ok_p99_ms=280.831 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/strict/token-first
+RESULT spike=S-T1b case=200vs8/strict/token-first calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=287.813 ok_p50_ms=156.153 ok_p99_ms=287.557 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token
+RESULT spike=S-T1b case=64vs4/strict/token calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=180.955 ok_p50_ms=90.841 ok_p99_ms=180.875 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/strict/token-first
+RESULT spike=S-T1b case=64vs4/strict/token-first calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=4 over_limit=0 wall_ms=204.847 ok_p50_ms=109.044 ok_p99_ms=204.718 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token
+RESULT spike=S-T1b case=8vs8/strict/token calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=8 over_limit=0 wall_ms=12.220 ok_p50_ms=12.037 ok_p99_ms=12.070 first_other=""
+=== RUN   TestST1bStreamLimit/8vs8/strict/token-first
+RESULT spike=S-T1b case=8vs8/strict/token-first calls=8 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=8 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=8 requests_per_conn=[8] max_active_streams=7 over_limit=0 wall_ms=24.801 ok_p50_ms=24.743 ok_p99_ms=24.768 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token
+RESULT spike=S-T1b case=9vs8/strict/token calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=23.518 ok_p50_ms=12.357 ok_p99_ms=23.423 first_other=""
+=== RUN   TestST1bStreamLimit/9vs8/strict/token-first
+RESULT spike=S-T1b case=9vs8/strict/token-first calls=9 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=9 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=9 requests_per_conn=[9] max_active_streams=8 over_limit=0 wall_ms=24.033 ok_p50_ms=23.784 ok_p99_ms=23.971 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token
+RESULT spike=S-T1b case=4vs4/strict/token calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=4 over_limit=0 wall_ms=12.808 ok_p50_ms=12.725 ok_p99_ms=12.777 first_other=""
+=== RUN   TestST1bStreamLimit/4vs4/strict/token-first
+RESULT spike=S-T1b case=4vs4/strict/token-first calls=4 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=4 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=4 requests_per_conn=[4] max_active_streams=3 over_limit=0 wall_ms=24.132 ok_p50_ms=23.963 ok_p99_ms=23.973 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token
+RESULT spike=S-T1b case=5vs4/strict/token calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=24.422 ok_p50_ms=12.615 ok_p99_ms=24.392 first_other=""
+=== RUN   TestST1bStreamLimit/5vs4/strict/token-first
+RESULT spike=S-T1b case=5vs4/strict/token-first calls=5 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=5 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=5 requests_per_conn=[5] max_active_streams=4 over_limit=0 wall_ms=23.277 ok_p50_ms=23.150 ok_p99_ms=23.161 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/strict
+RESULT spike=S-T1b case=200vs1024/strict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=16.518 ok_p50_ms=15.146 ok_p99_ms=16.189 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict
+RESULT spike=S-T1b case=200vs1024/nonstrict calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=15.937 ok_p50_ms=13.723 ok_p99_ms=14.902 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/strict
+RESULT spike=S-T1b case=200vs0/strict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=16.266 ok_p50_ms=13.665 ok_p99_ms=15.989 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict
+RESULT spike=S-T1b case=200vs0/nonstrict calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=2 dials=2 requests_seen=200 requests_per_conn=[200] max_active_streams=200 over_limit=0 wall_ms=14.619 ok_p50_ms=13.357 ok_p99_ms=14.354 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter100 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=13 dials=13 requests_seen=417 requests_per_conn="[4 8 12 16 20 24 28 30 44 46 59 59 67]" max_active_streams=8 over_limit=217 wall_ms=37.462 ok_p50_ms=26.896 ok_p99_ms=37.227 first_other=""
+=== RUN   TestST1bStreamLimit/64vs4/nonstrict/limiter100
+RESULT spike=S-T1b case=64vs4/nonstrict/limiter100 calls=64 limit=4 service_ms=10.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=14 dials=14 requests_seen=287 requests_per_conn="[0 0 4 9 21 22 24 32 40 49 68]" max_active_streams=4 over_limit=223 wall_ms=30.809 ok_p50_ms=22.026 ok_p99_ms=30.749 first_other=""
+=== RUN   TestST1bStreamLimit/200vs1024/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs1024/nonstrict/limiter100 calls=200 limit=1024 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=51.608 ok_p50_ms=33.748 ok_p99_ms=51.048 first_other=""
+=== RUN   TestST1bStreamLimit/200vs0/nonstrict/limiter100
+RESULT spike=S-T1b case=200vs0/nonstrict/limiter100 calls=200 limit=0 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=100 over_limit=0 wall_ms=34.183 ok_p50_ms=22.898 ok_p99_ms=33.910 first_other=""
+=== RUN   TestST1bStreamLimit/200vs8/nonstrict/limiter8
+RESULT spike=S-T1b case=200vs8/nonstrict/limiter8 calls=200 limit=8 service_ms=10.000 deadline_ms=2000.000 ok=200 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=200 requests_per_conn=[200] max_active_streams=8 over_limit=0 wall_ms=283.684 ok_p50_ms=150.949 ok_p99_ms=283.262 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/service50ms
+RESULT spike=S-T1b case=64vs0/strict/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.066 ok_p50_ms=51.780 ok_p99_ms=52.017 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/strict/token-first/service50ms
+RESULT spike=S-T1b case=64vs0/strict/token-first/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=63 over_limit=0 wall_ms=102.813 ok_p50_ms=102.436 ok_p99_ms=102.762 first_other=""
+=== RUN   TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms
+RESULT spike=S-T1b case=64vs0/nonstrict/limiter100/service50ms calls=64 limit=0 service_ms=50.000 deadline_ms=2000.000 ok=64 deadline=0 canceled=0 other=0 accepts=1 dials=1 requests_seen=64 requests_per_conn=[64] max_active_streams=64 over_limit=0 wall_ms=52.286 ok_p50_ms=52.002 ok_p99_ms=52.238 first_other=""
+--- PASS: TestST1bStreamLimit (8.88s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict (2.00s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict (0.03s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter100 (2.00s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/limiter4 (0.56s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token (0.28s)
+    --- PASS: TestST1bStreamLimit/200vs8/strict/token-first (0.29s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token (0.18s)
+    --- PASS: TestST1bStreamLimit/64vs4/strict/token-first (0.21s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/8vs8/strict/token-first (0.03s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token (0.02s)
+    --- PASS: TestST1bStreamLimit/9vs8/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token (0.01s)
+    --- PASS: TestST1bStreamLimit/4vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token (0.03s)
+    --- PASS: TestST1bStreamLimit/5vs4/strict/token-first (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/strict (0.02s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict (0.01s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter100 (0.04s)
+    --- PASS: TestST1bStreamLimit/64vs4/nonstrict/limiter100 (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs1024/nonstrict/limiter100 (0.05s)
+    --- PASS: TestST1bStreamLimit/200vs0/nonstrict/limiter100 (0.03s)
+    --- PASS: TestST1bStreamLimit/200vs8/nonstrict/limiter8 (0.28s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/service50ms (0.05s)
+    --- PASS: TestST1bStreamLimit/64vs0/strict/token-first/service50ms (0.10s)
+    --- PASS: TestST1bStreamLimit/64vs0/nonstrict/limiter100/service50ms (0.05s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-t	55.381s
+# exit 0 at 2026-09-25 16:28:50 JST
+# load after: 16:28  up 3 days, 15:34, 1 user, load averages: 40.23 19.61 15.29

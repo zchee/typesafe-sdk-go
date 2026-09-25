@@ -1,0 +1,48 @@
+# 2026-09-25 16:26:26 JST (M) lock=none GOEXPERIMENT=nosimd,noruntimesecret go test -count=5 -run ^TestST1Auto$ -v ./_spikes/s-t/
+# load before: 16:26  up 3 days, 15:32, 1 user, load averages: 11.49 12.44 12.72
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestST1Auto
+=== RUN   TestST1Auto/gate
+RESULT spike=S-T1 case=auto-redundant-dials variant=gate reps=10 accepts="[1 1 1 1 1 1 1 1 1 1]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[1 1 1 1 1 1 1 1 1 1]" failures=0
+=== RUN   TestST1Auto/nogate
+RESULT spike=S-T1 case=auto-redundant-dials variant=nogate reps=10 accepts="[64 64 51 64 64 57 64 63 64 64]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[64 64 51 64 64 57 64 63 64 64]" failures=0
+--- PASS: TestST1Auto (0.13s)
+    --- PASS: TestST1Auto/gate (0.03s)
+    --- PASS: TestST1Auto/nogate (0.10s)
+=== RUN   TestST1Auto
+=== RUN   TestST1Auto/gate
+RESULT spike=S-T1 case=auto-redundant-dials variant=gate reps=10 accepts="[1 1 1 1 1 1 1 1 1 1]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[1 1 1 1 1 1 1 1 1 1]" failures=0
+=== RUN   TestST1Auto/nogate
+RESULT spike=S-T1 case=auto-redundant-dials variant=nogate reps=10 accepts="[64 64 64 58 64 64 64 64 55 64]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[64 64 64 58 64 64 64 64 55 64]" failures=0
+--- PASS: TestST1Auto (0.11s)
+    --- PASS: TestST1Auto/gate (0.02s)
+    --- PASS: TestST1Auto/nogate (0.09s)
+=== RUN   TestST1Auto
+=== RUN   TestST1Auto/gate
+RESULT spike=S-T1 case=auto-redundant-dials variant=gate reps=10 accepts="[1 1 1 1 1 1 1 1 1 1]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[1 1 1 1 1 1 1 1 1 1]" failures=0
+=== RUN   TestST1Auto/nogate
+RESULT spike=S-T1 case=auto-redundant-dials variant=nogate reps=10 accepts="[62 63 59 64 64 64 64 64 64 64]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[62 63 59 64 64 64 64 64 64 64]" failures=0
+--- PASS: TestST1Auto (0.10s)
+    --- PASS: TestST1Auto/gate (0.02s)
+    --- PASS: TestST1Auto/nogate (0.08s)
+=== RUN   TestST1Auto
+=== RUN   TestST1Auto/gate
+RESULT spike=S-T1 case=auto-redundant-dials variant=gate reps=10 accepts="[1 1 1 1 1 1 1 1 1 1]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[1 1 1 1 1 1 1 1 1 1]" failures=0
+=== RUN   TestST1Auto/nogate
+RESULT spike=S-T1 case=auto-redundant-dials variant=nogate reps=10 accepts="[64 64 64 64 64 64 64 64 64 52]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[64 64 64 64 64 64 64 64 64 52]" failures=0
+--- PASS: TestST1Auto (0.09s)
+    --- PASS: TestST1Auto/gate (0.02s)
+    --- PASS: TestST1Auto/nogate (0.07s)
+=== RUN   TestST1Auto
+=== RUN   TestST1Auto/gate
+RESULT spike=S-T1 case=auto-redundant-dials variant=gate reps=10 accepts="[1 1 1 1 1 1 1 1 1 1]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[1 1 1 1 1 1 1 1 1 1]" failures=0
+=== RUN   TestST1Auto/nogate
+RESULT spike=S-T1 case=auto-redundant-dials variant=nogate reps=10 accepts="[64 64 64 64 64 64 64 64 64 64]" conns_carrying_requests="[1 1 1 1 1 1 1 1 1 1]" dials="[64 64 64 64 64 64 64 64 64 64]" failures=0
+--- PASS: TestST1Auto (0.09s)
+    --- PASS: TestST1Auto/gate (0.02s)
+    --- PASS: TestST1Auto/nogate (0.06s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-t	0.538s
+# exit 0 at 2026-09-25 16:26:27 JST
+# load after: 16:26  up 3 days, 15:32, 1 user, load averages: 11.49 12.44 12.72

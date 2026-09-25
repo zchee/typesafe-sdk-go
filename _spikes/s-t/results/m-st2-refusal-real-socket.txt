@@ -1,0 +1,13 @@
+# 2026-09-25 16:26:49 JST (M) lock=none GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -timeout 20s -run ^TestST2Refusals$/^loopback_socket_inside_a_bubble$ -v ./_spikes/s-t/
+# load before: 16:26  up 3 days, 15:32, 1 user, load averages: 11.11 12.27 12.65
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestST2Refusals
+=== RUN   TestST2Refusals/loopback_socket_inside_a_bubble
+RESULT spike=S-T2 case=refusal-real-socket status=200 err=<nil>
+--- PASS: TestST2Refusals (0.00s)
+    --- PASS: TestST2Refusals/loopback_socket_inside_a_bubble (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-t	0.013s
+# exit 0 at 2026-09-25 16:26:49 JST
+# load after: 16:26  up 3 days, 15:32, 1 user, load averages: 11.11 12.27 12.65

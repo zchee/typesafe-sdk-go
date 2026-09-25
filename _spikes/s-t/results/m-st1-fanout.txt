@@ -1,0 +1,63 @@
+# 2026-09-25 16:27:53 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=5 -run ^TestST1FanOut$ -v ./_spikes/s-t/
+# load before: 16:27  up 3 days, 15:33, 1 user, load averages: 13.21 12.48 12.69 (MAXLOAD=16, waited 0 x 60 s)
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestST1FanOut
+=== RUN   TestST1FanOut/gate
+RESULT spike=S-T1 case=cold64 variant=gate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.513 waiter_wire_p99_ms=2.664 waiter_gotconn_p50_ms=1.011 waiter_gotconn_p99_ms=2.244 all_wire_p50_ms=1.505 all_wire_p99_ms=2.664 leader_gotconn_p50_ms=0.746 span_p50_ms=1.936 span_max_ms=2.761 warm_wire_p50_ms=0.407 warm_wire_p99_ms=1.500
+=== RUN   TestST1FanOut/nogate
+RESULT spike=S-T1 case=cold64 variant=nogate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles=map[warm:640] waiter_wire_p50_ms=0.000 waiter_wire_p99_ms=0.000 waiter_gotconn_p50_ms=0.000 waiter_gotconn_p99_ms=0.000 all_wire_p50_ms=1.237 all_wire_p99_ms=1.823 leader_gotconn_p50_ms=0.000 span_p50_ms=1.557 span_max_ms=1.883 warm_wire_p50_ms=0.477 warm_wire_p99_ms=1.367
+=== RUN   TestST1FanOut/gate+token
+RESULT spike=S-T1 case=cold64 variant=gate+token reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.276 waiter_wire_p99_ms=2.344 waiter_gotconn_p50_ms=1.266 waiter_gotconn_p99_ms=2.328 all_wire_p50_ms=1.260 all_wire_p99_ms=2.344 leader_gotconn_p50_ms=0.698 span_p50_ms=1.934 span_max_ms=2.436 warm_wire_p50_ms=0.610 warm_wire_p99_ms=1.477
+--- PASS: TestST1FanOut (0.13s)
+    --- PASS: TestST1FanOut/gate (0.05s)
+    --- PASS: TestST1FanOut/nogate (0.04s)
+    --- PASS: TestST1FanOut/gate+token (0.04s)
+=== RUN   TestST1FanOut
+=== RUN   TestST1FanOut/gate
+RESULT spike=S-T1 case=cold64 variant=gate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.199 waiter_wire_p99_ms=1.898 waiter_gotconn_p50_ms=0.853 waiter_gotconn_p99_ms=1.532 all_wire_p50_ms=1.190 all_wire_p99_ms=1.898 leader_gotconn_p50_ms=0.738 span_p50_ms=1.551 span_max_ms=2.023 warm_wire_p50_ms=0.383 warm_wire_p99_ms=1.631
+=== RUN   TestST1FanOut/nogate
+RESULT spike=S-T1 case=cold64 variant=nogate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles=map[warm:640] waiter_wire_p50_ms=0.000 waiter_wire_p99_ms=0.000 waiter_gotconn_p50_ms=0.000 waiter_gotconn_p99_ms=0.000 all_wire_p50_ms=1.215 all_wire_p99_ms=2.861 leader_gotconn_p50_ms=0.000 span_p50_ms=1.537 span_max_ms=3.035 warm_wire_p50_ms=0.334 warm_wire_p99_ms=0.880
+=== RUN   TestST1FanOut/gate+token
+RESULT spike=S-T1 case=cold64 variant=gate+token reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.372 waiter_wire_p99_ms=2.487 waiter_gotconn_p50_ms=1.362 waiter_gotconn_p99_ms=2.478 all_wire_p50_ms=1.366 all_wire_p99_ms=2.487 leader_gotconn_p50_ms=0.737 span_p50_ms=1.992 span_max_ms=3.234 warm_wire_p50_ms=0.603 warm_wire_p99_ms=1.340
+--- PASS: TestST1FanOut (0.13s)
+    --- PASS: TestST1FanOut/gate (0.04s)
+    --- PASS: TestST1FanOut/nogate (0.04s)
+    --- PASS: TestST1FanOut/gate+token (0.05s)
+=== RUN   TestST1FanOut
+=== RUN   TestST1FanOut/gate
+RESULT spike=S-T1 case=cold64 variant=gate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.114 waiter_wire_p99_ms=2.384 waiter_gotconn_p50_ms=0.795 waiter_gotconn_p99_ms=1.401 all_wire_p50_ms=1.111 all_wire_p99_ms=2.384 leader_gotconn_p50_ms=0.651 span_p50_ms=1.380 span_max_ms=2.515 warm_wire_p50_ms=0.422 warm_wire_p99_ms=1.077
+=== RUN   TestST1FanOut/nogate
+RESULT spike=S-T1 case=cold64 variant=nogate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles=map[warm:640] waiter_wire_p50_ms=0.000 waiter_wire_p99_ms=0.000 waiter_gotconn_p50_ms=0.000 waiter_gotconn_p99_ms=0.000 all_wire_p50_ms=1.349 all_wire_p99_ms=2.132 leader_gotconn_p50_ms=0.000 span_p50_ms=1.691 span_max_ms=2.276 warm_wire_p50_ms=0.418 warm_wire_p99_ms=1.167
+=== RUN   TestST1FanOut/gate+token
+RESULT spike=S-T1 case=cold64 variant=gate+token reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.478 waiter_wire_p99_ms=3.600 waiter_gotconn_p50_ms=1.471 waiter_gotconn_p99_ms=3.584 all_wire_p50_ms=1.475 all_wire_p99_ms=3.600 leader_gotconn_p50_ms=0.772 span_p50_ms=1.924 span_max_ms=3.990 warm_wire_p50_ms=0.526 warm_wire_p99_ms=1.823
+--- PASS: TestST1FanOut (0.14s)
+    --- PASS: TestST1FanOut/gate (0.04s)
+    --- PASS: TestST1FanOut/nogate (0.05s)
+    --- PASS: TestST1FanOut/gate+token (0.05s)
+=== RUN   TestST1FanOut
+=== RUN   TestST1FanOut/gate
+RESULT spike=S-T1 case=cold64 variant=gate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.146 waiter_wire_p99_ms=1.778 waiter_gotconn_p50_ms=0.746 waiter_gotconn_p99_ms=1.398 all_wire_p50_ms=1.140 all_wire_p99_ms=1.778 leader_gotconn_p50_ms=0.636 span_p50_ms=1.348 span_max_ms=1.832 warm_wire_p50_ms=0.424 warm_wire_p99_ms=1.236
+=== RUN   TestST1FanOut/nogate
+RESULT spike=S-T1 case=cold64 variant=nogate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles=map[warm:640] waiter_wire_p50_ms=0.000 waiter_wire_p99_ms=0.000 waiter_gotconn_p50_ms=0.000 waiter_gotconn_p99_ms=0.000 all_wire_p50_ms=1.060 all_wire_p99_ms=1.921 leader_gotconn_p50_ms=0.000 span_p50_ms=1.343 span_max_ms=2.281 warm_wire_p50_ms=0.380 warm_wire_p99_ms=1.212
+=== RUN   TestST1FanOut/gate+token
+RESULT spike=S-T1 case=cold64 variant=gate+token reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.252 waiter_wire_p99_ms=2.068 waiter_gotconn_p50_ms=1.242 waiter_gotconn_p99_ms=2.058 all_wire_p50_ms=1.244 all_wire_p99_ms=2.068 leader_gotconn_p50_ms=0.668 span_p50_ms=1.594 span_max_ms=2.207 warm_wire_p50_ms=0.519 warm_wire_p99_ms=1.041
+--- PASS: TestST1FanOut (0.11s)
+    --- PASS: TestST1FanOut/gate (0.04s)
+    --- PASS: TestST1FanOut/nogate (0.04s)
+    --- PASS: TestST1FanOut/gate+token (0.04s)
+=== RUN   TestST1FanOut
+=== RUN   TestST1FanOut/gate
+RESULT spike=S-T1 case=cold64 variant=gate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=0.996 waiter_wire_p99_ms=1.764 waiter_gotconn_p50_ms=0.737 waiter_gotconn_p99_ms=1.356 all_wire_p50_ms=0.995 all_wire_p99_ms=1.764 leader_gotconn_p50_ms=0.591 span_p50_ms=1.184 span_max_ms=1.859 warm_wire_p50_ms=0.360 warm_wire_p99_ms=1.007
+=== RUN   TestST1FanOut/nogate
+RESULT spike=S-T1 case=cold64 variant=nogate reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles=map[warm:640] waiter_wire_p50_ms=0.000 waiter_wire_p99_ms=0.000 waiter_gotconn_p50_ms=0.000 waiter_gotconn_p99_ms=0.000 all_wire_p50_ms=0.981 all_wire_p99_ms=1.984 leader_gotconn_p50_ms=0.000 span_p50_ms=1.182 span_max_ms=2.047 warm_wire_p50_ms=0.359 warm_wire_p99_ms=0.745
+=== RUN   TestST1FanOut/gate+token
+RESULT spike=S-T1 case=cold64 variant=gate+token reps=10 cold_conns="[1 1 1 1 1 1 1 1 1 1]" warm_new_conns="[0 0 0 0 0 0 0 0 0 0]" ordering_ok=10/10 failures=0 non200=0 roles="map[leader:10 waiter:630]" waiter_wire_p50_ms=1.056 waiter_wire_p99_ms=1.688 waiter_gotconn_p50_ms=1.046 waiter_gotconn_p99_ms=1.681 all_wire_p50_ms=1.050 all_wire_p99_ms=1.688 leader_gotconn_p50_ms=0.631 span_p50_ms=1.441 span_max_ms=1.815 warm_wire_p50_ms=0.514 warm_wire_p99_ms=1.492
+--- PASS: TestST1FanOut (0.10s)
+    --- PASS: TestST1FanOut/gate (0.03s)
+    --- PASS: TestST1FanOut/nogate (0.03s)
+    --- PASS: TestST1FanOut/gate+token (0.04s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-t	0.621s
+# exit 0 at 2026-09-25 16:27:54 JST
+# load after: 16:27  up 3 days, 15:33, 1 user, load averages: 13.21 12.48 12.69

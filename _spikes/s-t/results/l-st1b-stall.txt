@@ -1,0 +1,28 @@
+# 2026-09-25 07:27:26 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -timeout 900s -run ^TestST1bStallRate$ -v ./_spikes/s-t/
+# load before:  07:27:26 up 1 day,  2:52,  1 user,  load average: 0.00, 0.00, 0.00
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+=== RUN   TestST1bStallRate
+=== RUN   TestST1bStallRate/64vs4/strict/token
+RESULT spike=S-T1b case=stall-rate/64vs4/strict/token reps=20 deadline_ms=500 reps_with_a_missed_deadline=0 max_accepts=1 refused_streams_total=0 wall_p50_ms=165.743 wall_max_ms=167.716
+=== RUN   TestST1bStallRate/200vs8/strict/token
+RESULT spike=S-T1b case=stall-rate/200vs8/strict/token reps=20 deadline_ms=500 reps_with_a_missed_deadline=0 max_accepts=1 refused_streams_total=0 wall_p50_ms=261.315 wall_max_ms=265.111
+=== RUN   TestST1bStallRate/64vs4/strict/token-first
+RESULT spike=S-T1b case=stall-rate/64vs4/strict/token-first reps=20 deadline_ms=500 reps_with_a_missed_deadline=0 max_accepts=1 refused_streams_total=0 wall_p50_ms=175.506 wall_max_ms=176.936
+=== RUN   TestST1bStallRate/200vs8/strict/token-first
+RESULT spike=S-T1b case=stall-rate/200vs8/strict/token-first reps=20 deadline_ms=500 reps_with_a_missed_deadline=0 max_accepts=1 refused_streams_total=0 wall_p50_ms=270.757 wall_max_ms=273.747
+=== RUN   TestST1bStallRate/64vs4/nonstrict/limiter100
+RESULT spike=S-T1b case=stall-rate/64vs4/nonstrict/limiter100 reps=20 deadline_ms=500 reps_with_a_missed_deadline=13 max_accepts=16 refused_streams_total=531 wall_p50_ms=500.512 wall_max_ms=501.213
+=== RUN   TestST1bStallRate/200vs8/nonstrict/limiter100
+RESULT spike=S-T1b case=stall-rate/200vs8/nonstrict/limiter100 reps=20 deadline_ms=500 reps_with_a_missed_deadline=17 max_accepts=13 refused_streams_total=251 wall_p50_ms=500.880 wall_max_ms=501.435
+--- PASS: TestST1bStallRate (32.81s)
+    --- PASS: TestST1bStallRate/64vs4/strict/token (3.32s)
+    --- PASS: TestST1bStallRate/200vs8/strict/token (5.24s)
+    --- PASS: TestST1bStallRate/64vs4/strict/token-first (3.52s)
+    --- PASS: TestST1bStallRate/200vs8/strict/token-first (5.42s)
+    --- PASS: TestST1bStallRate/64vs4/nonstrict/limiter100 (6.69s)
+    --- PASS: TestST1bStallRate/200vs8/nonstrict/limiter100 (8.62s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-t	32.816s
+# exit 0 at 2026-09-25 07:27:59 UTC
+# load after:  07:27:59 up 1 day,  2:52,  1 user,  load average: 0.00, 0.00, 0.00
