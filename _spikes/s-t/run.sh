@@ -8,20 +8,35 @@
 #         connection-count and classification runs; the lock is taken with
 #         flock(1) on a file descriptor (FLOCK overrides the binary).
 #   NAME  output file name without .txt.
-# The header records date, load average, go version and ToolTags, all taken
-# inside the lock in the same shell as the measurement; the footer records
-# the exit status, date and load again.
+# MAXLOAD, when set with a lock, is the highest 1-minute load average at
+# which the run may start: above it the lock is released, the runner waits
+# 60 s and tries again, up to 5 times, and then runs anyway (the ledger
+# marks such a row noisy). The header records date, load average, the
+# attempts, go version and ToolTags, all taken inside the lock in the same
+# shell as the measurement; the footer records the exit status, date and
+# load again.
 set -u
 host=$1 out=$2 lock=$3 name=$4
 shift 4
 mkdir -p "$out"
 {
+	tries=0
 	if [ "$lock" != none ]; then
-		exec 9>"$lock"
-		"${FLOCK:-flock}" 9
+		while :; do
+			exec 9>"$lock"
+			"${FLOCK:-flock}" 9
+			load=$(uptime | sed -E 's/.*load averages?: *([0-9.]+).*/\1/')
+			if [ -z "${MAXLOAD:-}" ] || [ "$tries" -ge 5 ] || awk "BEGIN { exit !($load <= $MAXLOAD) }"; then
+				break
+			fi
+			"${FLOCK:-flock}" -u 9
+			exec 9>&-
+			tries=$((tries + 1))
+			sleep 60
+		done
 	fi
 	echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') $host lock=$lock GOEXPERIMENT=${GOEXPERIMENT:-} go test $*"
-	echo "# load before: $(uptime)"
+	echo "# load before: $(uptime) (MAXLOAD=${MAXLOAD:-none}, waited $tries x 60 s)"
 	go version
 	go list -f '{{context.ToolTags}}' runtime
 	go test "$@" 2>&1
