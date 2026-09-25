@@ -1,4 +1,4 @@
-# 2026-09-26 04:54:53 JST typesafe-sdk-python 0ffd094, Python 3.14.6, pydantic-core 2.46.5
+# 2026-09-26 05:30:45 JST typesafe-sdk-python 0ffd094, Python 3.14.6, pydantic-core 2.46.5
 # cd typesafe-sdk-python && .venv/bin/python <module>/_spikes/w2.4/python_dump.py <module>/testdata
 deviation-big-exp-noul.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":1},"answers":{"spam":{"type":"noul","noul":null}}}
 deviation-big-exp-noul.json: equals the fixture: False
@@ -47,3 +47,5 @@ model card: {"name":"jev-latest","description":"Fast model","release_date":"2026
 empty response: {"model":"test","usage":{"input_tokens":null,"output_tokens":null},"answers":{}}
 empty models: {"models":[]}
 model_dump() keys after reading nouls/choices/scores: ['answers', 'model', 'usage']
+negative zero: {"model":"m","usage":{"input_tokens":1,"output_tokens":1},"answers":{"n":{"type":"noul","noul":-0.0},"c":{"type":"choice","choice":"a","confidence":-0.0,"probabilities":{"a":-0.0}},"s":{"type":"score","score":-0.0,"confidence":-0.0,"legend":{"0":"x"},"probabilities":{"0":-0.0}}}}
+repeated member in a structured level: {"model":"m","usage":{"input_tokens":1,"output_tokens":1},"answers":{"s":{"type":"score","score":0.5,"confidence":1.0,"legend":{"0":{"a":3,"b":2}},"probabilities":{"0":1.0}}}}

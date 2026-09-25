@@ -12,7 +12,10 @@ output equals the fixture's bytes. A fixture Python refuses prints
 "<file>: refused at <field_path>". The answer shapes of
 test_answer_attributes_and_dictionary_types (R12) and of the parameters of
 test_answer_fields_are_frozen (R14) follow, with Usage and ModelMetadata
-values, then model_dump() key sets (R5, R15).
+values, then model_dump() key sets (R5, R15), then the bodies of the two
+classes where Go's payload differs from Python's beyond an escape (review
+W2.4 MINOR 2): -0.0 in every known float member, and a member name repeated
+inside a structured legend level.
 """
 
 import hashlib
@@ -77,6 +80,29 @@ def answers() -> None:
         print(f"{name}: {value.model_dump_json()}")
 
 
+# Byte strings, not dicts: a dict cannot hold a repeated key, and these
+# are the exact bodies TestResponseJSONDeviations in response_json_test.go
+# reads.
+DEVIATION_BODIES = {
+    "negative zero": (
+        b'{"model":"m","usage":{"input_tokens":1,"output_tokens":1},"answers":{'
+        b'"n":{"type":"noul","noul":-0.0},'
+        b'"c":{"type":"choice","choice":"a","confidence":-0.0,"probabilities":{"a":-0.0}},'
+        b'"s":{"type":"score","score":-0.0,"confidence":-0.0,"legend":{"0":"x"},"probabilities":{"0":-0.0}}}}'
+    ),
+    "repeated member in a structured level": (
+        b'{"model":"m","usage":{"input_tokens":1,"output_tokens":1},"answers":{'
+        b'"s":{"type":"score","score":0.5,"confidence":1,"legend":{"0":{"a":1,"b":2,"a":3}},"probabilities":{"0":1}}}}'
+    ),
+}
+
+
+def deviations() -> None:
+    for name, body in DEVIATION_BODIES.items():
+        response = SystemOneResponse.from_http_response(httpx2.Response(200, content=body))
+        print(f"{name}: {response.model_dump_json()}")
+
+
 def keys() -> None:
     body = SystemOneResponse.from_http_response(
         httpx2.Response(200, json={"model": "m", "usage": {"input_tokens": 1, "output_tokens": 1}, "answers": {}})
@@ -90,3 +116,4 @@ if __name__ == "__main__":
     fixtures(Path(sys.argv[1]))
     answers()
     keys()
+    deviations()
