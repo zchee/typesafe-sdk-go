@@ -1,8 +1,8 @@
-# 2026-09-26 05:34:41 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run ^TestAllocResponseJSON$ -v .
-# load before:  5:34  up 4 days,  4:40, 1 user, load averages: 8.79 6.76 6.41 | kernel: { 8.79 6.76 6.41 } (MAXLOAD=none, waited 0 x 60 s)
-# base: 4a11b48
-go version go1.27.1 darwin/arm64
-[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# 2026-09-25 19:59:59 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocResponseJSON$ -v .
+# load before:  19:59:59 up 1 day, 15:24,  1 user,  load average: 0.11, 0.09, 0.29 | kernel: 0.11 0.09 0.29 1/603 271123 (MAXLOAD=none, waited 0 x 60 s)
+# base: eaedbdd
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
 === RUN   TestAllocResponseJSON
 === RUN   TestAllocResponseJSON/models.json
     alloc_json_test.go:68: runs of models.json marshal                    mallocs/bytes: 1/96 1/96 1/96 1/96 1/96
@@ -24,8 +24,8 @@ go version go1.27.1 darwin/arm64
     --- PASS: TestAllocResponseJSON/models.json (0.00s)
     --- PASS: TestAllocResponseJSON/result-20.json (0.00s)
     --- PASS: TestAllocResponseJSON/result.json (0.00s)
-    --- PASS: TestAllocResponseJSON/structured-legend-flood-1k.json (0.01s)
+    --- PASS: TestAllocResponseJSON/structured-legend-flood-1k.json (0.00s)
 PASS
-ok  	github.com/zchee/typesafe-sdk-go	0.038s
-# exit 0 at 2026-09-26 05:34:43 JST
-# load after:  5:34  up 4 days,  4:40, 1 user, load averages: 8.79 6.76 6.41 | kernel: { 8.79 6.76 6.41 }
+ok  	github.com/zchee/typesafe-sdk-go	0.015s
+# exit 0 at 2026-09-25 19:59:59 UTC
+# load after:  19:59:59 up 1 day, 15:24,  1 user,  load average: 0.11, 0.09, 0.29 | kernel: 0.11 0.09 0.29 1/603 271309

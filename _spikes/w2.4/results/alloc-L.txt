@@ -1,6 +1,6 @@
-# 2026-09-25 19:59:59 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocResponseJSON$ -v .
-# load before:  19:59:59 up 1 day, 15:24,  1 user,  load average: 0.11, 0.09, 0.29 | kernel: 0.11 0.09 0.29 1/603 271123 (MAXLOAD=none, waited 0 x 60 s)
-# base: eaedbdd
+# 2026-09-25 20:34:36 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocResponseJSON$ -v .
+# load before:  20:34:36 up 1 day, 15:59,  1 user,  load average: 1.01, 1.63, 0.95 | kernel: 1.01 1.63 0.95 1/600 306838 (MAXLOAD=none, waited 0 x 60 s)
+# base: 4a11b48
 go version go1.27.1 linux/amd64
 [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
 === RUN   TestAllocResponseJSON
@@ -27,5 +27,5 @@ go version go1.27.1 linux/amd64
     --- PASS: TestAllocResponseJSON/structured-legend-flood-1k.json (0.00s)
 PASS
 ok  	github.com/zchee/typesafe-sdk-go	0.015s
-# exit 0 at 2026-09-25 19:59:59 UTC
-# load after:  19:59:59 up 1 day, 15:24,  1 user,  load average: 0.11, 0.09, 0.29 | kernel: 0.11 0.09 0.29 1/603 271309
+# exit 0 at 2026-09-25 20:34:37 UTC
+# load after:  20:34:37 up 1 day, 15:59,  1 user,  load average: 1.01, 1.63, 0.95 | kernel: 1.01 1.63 0.95 1/600 307179

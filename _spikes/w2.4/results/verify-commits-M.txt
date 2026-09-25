@@ -1,14 +1,11 @@
-== 860dc27 2026-09-26 05:01:00 JST
-ok  	github.com/zchee/typesafe-sdk-go	4.107s
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.771s
-ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	9.225s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.579s
-ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.021s
-rc=0
-== 0066e71 2026-09-26 05:01:11 JST
-ok  	github.com/zchee/typesafe-sdk-go	4.153s
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.749s
-ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	9.262s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.574s
-ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.018s
-rc=0
+# commit walk (M) 2026-09-26 05:35:33 JST: each commit of origin/main..4a11b48 checked out alone; go build, go vet, gofumpt -extra -l, go test -count=1 ./..., and the root allocation step where TestAllocResponseJSON exists
+05:35:44 9943bc8 errors: leave a zero status out of a response error's text: build/vet/gofumpt/test=ok root-alloc=n/a
+05:35:55 860dc27 wire: write response payloads byte for byte as Python dumps them: build/vet/gofumpt/test=ok root-alloc=n/a
+05:36:06 0066e71 typesafe: read and write response payloads as the Python SDK does: build/vet/gofumpt/test=ok root-alloc=n/a
+05:36:21 eaedbdd typesafe: pin the payload allocations so CI sees them move: build/vet/gofumpt/test=ok root-alloc=ok
+05:36:35 df3248c docs: record what a response payload costs on both hosts: build/vet/gofumpt/test=ok root-alloc=ok
+05:36:50 98c6b36 typesafe: pin that encoding/json HTML-escapes a payload's characters: build/vet/gofumpt/test=ok root-alloc=ok
+05:37:04 271d00d typesafe: say what UnmarshalJSON does to a response and its views: build/vet/gofumpt/test=ok root-alloc=ok
+05:37:19 5908dd9 typesafe: pin the in-place replace, the Meta rules and the -0.0 bytes: build/vet/gofumpt/test=ok root-alloc=ok
+05:37:33 4a11b48 seam: keep internal/testsupport out of every non-test build: build/vet/gofumpt/test=ok root-alloc=ok
+# end 2026-09-26 05:37:33 JST

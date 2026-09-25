@@ -1,4 +1,4 @@
-gate (M) full start 2026-09-26 05:00:32 JST head eaedbdd (uncommitted: docs/perf/ledger.md and _spikes/w2.4/results only)
+gate (M) full start 2026-09-26 05:34:43 JST head 4a11b48 (clean)
 go version go1.27.1 darwin/arm64
 [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
 gofumpt-ok
@@ -10,16 +10,16 @@ staticcheck-ok
 No vulnerabilities found.
 tidy-ok
 port-test-matrix: OK, 129 upstream tests (14 deviation, 61 planned, 54 ported)
-ok  	github.com/zchee/typesafe-sdk-go	3.872s
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.468s
-ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.930s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.100s
-ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.040s
+ok  	github.com/zchee/typesafe-sdk-go	4.182s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.479s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.937s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.394s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.098s
 race-ok
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.731s
-ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.016s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.576s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.127s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.019s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.615s
 nonrace-internal-ok
-ok  	github.com/zchee/typesafe-sdk-go	2.889s
+ok  	github.com/zchee/typesafe-sdk-go	2.953s
 root-alloc-ok
-gate (M) full end rc=0 2026-09-26 05:01:00 JST
+gate (M) full end rc=0 2026-09-26 05:35:18 JST
