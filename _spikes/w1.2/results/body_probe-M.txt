@@ -1,4 +1,4 @@
-# 2026-09-25 21:50:14 JST (date in the run's command): typesafe-sdk-python 0ffd094, pydantic-core 2.46.5, Python 3.14.6; one case per line, name TAB repr(request.content)
+# 2026-09-25 22:53:56 JST (date in the run's command): typesafe-sdk-python 0ffd094, pydantic-core 2.46.5, Python 3.14.6; one case per line, name TAB repr(request.content). The first ten cases reproduce the 2026-09-25 21:50:14 JST run byte for byte; extra-floats and extra-nested-float were added for ruling R59.
 string	b'{"state":"I was charged twice. Please help.","model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
 map	b'{"state":{"message":"I was charged twice."},"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
 nested	b'{"state":{"name":"ticket","items":[{"id":1,"text":"hi","tags":["a","b"],"ok":true,"meta":{"source":"web","rank":2,"note":null}}]},"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
@@ -9,3 +9,5 @@ floats	b'{"state":[0.00001,9.99e-6,0.0001,0.1,1.5,3.0,-7.0,9999999999999998.0,1e
 extra-body	b'{"state":"hi","model":"override-model","questions":{"q":{"type":"noul","instructions":"?"}},"beam_width":4,"nullable":null}'
 extra-state-questions	b'{"state":{"s":1},"model":"jev-latest","questions":{"x":{"type":"noul"}},"z":[1]}'
 typed-questions	b'{"state":"x","model":"jev-latest","questions":{"billing":{"type":"noul","instructions":"Is this about billing?"}}}'
+extra-floats	b'{"state":"hi","model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}},"cfg":[0.5,3.0,1e+16,-0.0,1e-6,1e+21]}'
+extra-nested-float	b'{"state":"hi","model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}},"cfg":{"t":{"x":3.0}}}'

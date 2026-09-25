@@ -42,6 +42,8 @@ CASES = {
     "extra-state-questions": dict(state="ignored", questions=Q,
                                   extra_body={"questions": {"x": {"type": "noul"}}, "state": {"s": 1}, "z": [1]}),
     "typed-questions": dict(state="x", questions={"billing": Noul(instructions="Is this about billing?")}),
+    "extra-floats": dict(state="hi", questions=Q, extra_body={"cfg": [0.5, 3.0, 1e16, -0.0, 1e-6, 1e21]}),
+    "extra-nested-float": dict(state="hi", questions=Q, extra_body={"cfg": {"t": {"x": 3.0}}}),
 }
 
 for name, kw in CASES.items():
