@@ -1,0 +1,62 @@
+# 2026-09-26 00:33:18 JST upstream 0ffd094 Python 3.14.6
+systemone R1 no model: 'model'
+systemone R1 noul missing: 'answers.n.noul'
+systemone R1 noul a string: 'answers.n.noul'
+systemone R1 choice without confidence: 'answers.c.confidence'
+systemone R1 choice without choice: 'answers.c.choice'
+systemone R1 legend an array: 'answers.s.legend'
+systemone R1 legend key not a level: 'answers.s.legend.x'
+systemone R1 answer not a mapping: 'answers.c.type'
+systemone score wrong, confidence missing: 'answers.s.score'
+systemone confidence wrong, score missing: 'answers.s.score'
+systemone legend missing, probabilities wrong: 'answers.s.legend'
+systemone probabilities wrong first on the wire: 'answers.s.legend'
+systemone score probability not a number: 'answers.s.probabilities.0'
+systemone score probability key not a level: 'answers.s.probabilities.x'
+systemone choice probabilities wrong, choice missing: 'answers.c.choice'
+systemone choice probability a string: 'answers.c.probabilities.a'
+systemone choice probability a boolean: 'answers.c.probabilities.a'
+systemone noul a boolean: 'answers.n.noul'
+systemone two bad answers, the first in wire order: 'answers.a.noul'
+systemone type not a string: 'answers.a.type'
+systemone type null: 'answers.a.type'
+systemone answer type pre-pass before a missing model: 'answers.c.type'
+systemone missing model before an answer's member: 'model'
+systemone answer type pre-pass before an earlier answer: 'answers.c.type'
+systemone answer type pre-pass on a later integer type: 'answers.c.type'
+systemone model before usage: 'model'
+systemone usage before answers: 'usage'
+systemone answers null: 'answers'
+systemone usage null: 'usage'
+systemone a token count null is absent: accepted
+systemone a token count 1.0: 'usage.input_tokens'
+systemone a token count 1.5: 'usage.input_tokens'
+systemone output_tokens a string: 'usage.output_tokens'
+systemone model null: 'model'
+systemone an unknown type before a missing model: 'model'
+systemone answer type pre-pass past an unknown type: 'answers.c.type'
+systemone an empty legend and probabilities: accepted
+systemone an integer noul: accepted
+systemone legend members of other kinds are not needed: accepted
+systemone deviation: a negative token count: accepted
+systemone deviation: a token count past 2^64-1: accepted
+systemone deviation: a level value that is a number: 'answers.s.legend.0.str'
+systemone deviation: level key -1: accepted
+systemone deviation: level key ' 1': accepted
+systemone deviation: level key 1_0: accepted
+systemone deviation: level key 1.0: accepted
+systemone deviation: level key 4294967296: accepted
+models R2 models[1] without name: 'models[1].name'
+models R2 models[1] without description: 'models[1].description'
+models R2 models[1] without release_date: 'models[1].release_date'
+models models missing: 'models'
+models models an object: 'models'
+models models null: 'models'
+models a card that is not an object: 'models[0]'
+models two members missing, schema order: 'models[1].name'
+models a name that is a number: 'models[0].name'
+models the first failing card first: 'models[0].description'
+models a card after a scalar card: 'models[0]'
+models the second card is null: 'models[1]'
+models an unknown top-level member: accepted
+# exit 0 at 2026-09-26 00:33:18 JST
