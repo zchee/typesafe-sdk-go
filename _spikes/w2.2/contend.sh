@@ -9,17 +9,23 @@
 #          (FLOCK overrides the flock(1) binary).
 #   NAME   output file name without .txt.
 #   LOOPS  number of `nice -n 19 yes` loops (one per core).
-# The header and footer record date, load average, go version and ToolTags,
-# taken inside the lock in the same shell as the run; the footer also
-# records that no yes loop survived (pgrep -x yes prints nothing).
+# The header and footer record date, the tree, load average, go version and
+# ToolTags, taken inside the lock in the same shell as the run; the footer
+# also records that no yes loop survived (pgrep -x yes prints nothing).
 set -u
 host=$1 out=$2 lock=$3 name=$4 loops=$5
 shift 5
+# The tree measured: TREE when set (a copy without .git), otherwise the
+# worktree's HEAD, with +changes when the worktree differs from it.
+tree=${TREE:-$(git rev-parse --short HEAD 2>/dev/null || echo unknown)}
+if [ -z "${TREE:-}" ] && [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+	tree="$tree+changes"
+fi
 mkdir -p "$out"
 {
 	exec 9>"$lock"
 	"${FLOCK:-flock}" 9
-	echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') $host lock=$lock loops=$loops GOEXPERIMENT=${GOEXPERIMENT:-} go test $*"
+	echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') $host tree=$tree lock=$lock loops=$loops GOEXPERIMENT=${GOEXPERIMENT:-} go test $*"
 	echo "# load before: $(uptime)"
 	go version
 	go list -f '{{context.ToolTags}}' runtime

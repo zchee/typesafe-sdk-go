@@ -12,12 +12,18 @@
 # which the run may start: above it the lock is released, the runner waits
 # 60 s and tries again, up to 5 times, and then runs anyway (the ledger
 # marks such a row noisy). The header records date, load average, the
-# attempts, go version and ToolTags, all taken inside the lock in the same
-# shell as the measurement; the footer records the exit status, date and
-# load again.
+# attempts, the tree, go version and ToolTags, all taken inside the lock in
+# the same shell as the measurement; the footer records the exit status,
+# date and load again.
 set -u
 host=$1 out=$2 lock=$3 name=$4
 shift 4
+# The tree measured: TREE when set (a copy without .git), otherwise the
+# worktree's HEAD, with +changes when the worktree differs from it.
+tree=${TREE:-$(git rev-parse --short HEAD 2>/dev/null || echo unknown)}
+if [ -z "${TREE:-}" ] && [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+	tree="$tree+changes"
+fi
 mkdir -p "$out"
 {
 	tries=0
@@ -35,7 +41,7 @@ mkdir -p "$out"
 			sleep 60
 		done
 	fi
-	echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') $host lock=$lock GOEXPERIMENT=${GOEXPERIMENT:-} go test $*"
+	echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') $host tree=$tree lock=$lock GOEXPERIMENT=${GOEXPERIMENT:-} go test $*"
 	echo "# load before: $(uptime) (MAXLOAD=${MAXLOAD:-none}, waited $tries x 60 s)"
 	go version
 	go list -f '{{context.ToolTags}}' runtime
