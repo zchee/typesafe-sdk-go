@@ -1,0 +1,48 @@
+# 2026-09-25 15:45:19 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=5 -run ^TestFanOut$ -v ./internal/h2gate/
+# load before:  15:45:19 up 1 day, 11:10,  1 user,  load average: 1.50, 0.62, 0.24 (MAXLOAD=44, waited 0 x 60 s)
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=21.855 waiter_wire_p99_ms=24.514 warm_wire_p50_ms=0.705 warm_wire_p99_ms=1.754 answer_to_first_waiter_write_min_ms=0.047 answer_to_first_waiter_write_p50_ms=0.061 leader_write_to_first_waiter_write_p50_ms=20.275
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=271.325 wall_max_ms=275.047 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (2.98s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.26s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.72s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=21.732 waiter_wire_p99_ms=22.974 warm_wire_p50_ms=0.608 warm_wire_p99_ms=1.698 answer_to_first_waiter_write_min_ms=0.034 answer_to_first_waiter_write_p50_ms=0.047 leader_write_to_first_waiter_write_p50_ms=20.266
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=270.851 wall_max_ms=273.991 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (2.97s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.25s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.72s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=21.619 waiter_wire_p99_ms=22.930 warm_wire_p50_ms=0.604 warm_wire_p99_ms=1.825 answer_to_first_waiter_write_min_ms=0.033 answer_to_first_waiter_write_p50_ms=0.045 leader_write_to_first_waiter_write_p50_ms=20.262
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=271.330 wall_max_ms=274.163 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (2.97s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.25s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.72s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=21.739 waiter_wire_p99_ms=22.731 warm_wire_p50_ms=0.577 warm_wire_p99_ms=1.948 answer_to_first_waiter_write_min_ms=0.038 answer_to_first_waiter_write_p50_ms=0.050 leader_write_to_first_waiter_write_p50_ms=20.267
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=271.052 wall_max_ms=272.124 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (2.96s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.25s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.71s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=21.649 waiter_wire_p99_ms=22.629 warm_wire_p50_ms=0.643 warm_wire_p99_ms=1.919 answer_to_first_waiter_write_min_ms=0.031 answer_to_first_waiter_write_p50_ms=0.047 leader_write_to_first_waiter_write_p50_ms=20.249
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=270.471 wall_max_ms=274.433 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (2.96s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.25s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.71s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	14.829s
+# exit 0 at 2026-09-25 15:45:35 UTC
+# load after:  15:45:35 up 1 day, 11:10,  1 user,  load average: 1.17, 0.59, 0.23

@@ -1,0 +1,63 @@
+# 2026-09-25 15:45:35 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=5 -run ^TestRecordFanOut$ -v ./internal/h2gate/
+# load before:  15:45:35 up 1 day, 11:10,  1 user,  load average: 1.17, 0.59, 0.23 (MAXLOAD=44, waited 0 x 60 s)
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+=== RUN   TestRecordFanOut
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-b/firsthold reps=3 service_ms=1000.000 wall_p50_ms=2003.894 wall_max_ms=2005.397 leader_done_p50_ms=1001.358 waiter_done_p50_ms=2003.610 waiter_done_p99_ms=2005.395
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-a/plain-token reps=3 service_ms=1000.000 wall_p50_ms=1003.173 wall_max_ms=1003.450 leader_done_p50_ms=1001.700 waiter_done_p50_ms=1002.843 waiter_done_p99_ms=1003.448
+=== RUN   TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay
+    record_test.go:101: RESULT case=negative-control variant=iv-a/plain-token lead_delay_ms=20.000 ordering_passed=0/10 failed_b=10/10
+--- PASS: TestRecordFanOut (9.24s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold (6.01s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token (3.01s)
+    --- PASS: TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay (0.22s)
+=== RUN   TestRecordFanOut
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-b/firsthold reps=3 service_ms=1000.000 wall_p50_ms=2003.214 wall_max_ms=2003.583 leader_done_p50_ms=1001.216 waiter_done_p50_ms=2002.561 waiter_done_p99_ms=2003.580
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-a/plain-token reps=3 service_ms=1000.000 wall_p50_ms=1003.248 wall_max_ms=1003.358 leader_done_p50_ms=1001.304 waiter_done_p50_ms=1001.833 waiter_done_p99_ms=1003.356
+=== RUN   TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay
+    record_test.go:101: RESULT case=negative-control variant=iv-a/plain-token lead_delay_ms=20.000 ordering_passed=0/10 failed_b=10/10
+--- PASS: TestRecordFanOut (9.24s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold (6.01s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token (3.01s)
+    --- PASS: TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay (0.22s)
+=== RUN   TestRecordFanOut
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-b/firsthold reps=3 service_ms=1000.000 wall_p50_ms=2003.062 wall_max_ms=2003.710 leader_done_p50_ms=1001.408 waiter_done_p50_ms=2002.987 waiter_done_p99_ms=2003.708
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-a/plain-token reps=3 service_ms=1000.000 wall_p50_ms=1003.025 wall_max_ms=1003.609 leader_done_p50_ms=1001.633 waiter_done_p50_ms=1002.744 waiter_done_p99_ms=1003.601
+=== RUN   TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay
+    record_test.go:101: RESULT case=negative-control variant=iv-a/plain-token lead_delay_ms=20.000 ordering_passed=0/10 failed_b=10/10
+--- PASS: TestRecordFanOut (9.24s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold (6.01s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token (3.01s)
+    --- PASS: TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay (0.22s)
+=== RUN   TestRecordFanOut
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-b/firsthold reps=3 service_ms=1000.000 wall_p50_ms=2003.197 wall_max_ms=2003.710 leader_done_p50_ms=1001.269 waiter_done_p50_ms=2002.435 waiter_done_p99_ms=2003.708
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-a/plain-token reps=3 service_ms=1000.000 wall_p50_ms=1002.707 wall_max_ms=1002.873 leader_done_p50_ms=1001.373 waiter_done_p50_ms=1002.443 waiter_done_p99_ms=1002.873
+=== RUN   TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay
+    record_test.go:101: RESULT case=negative-control variant=iv-a/plain-token lead_delay_ms=20.000 ordering_passed=0/10 failed_b=10/10
+--- PASS: TestRecordFanOut (9.24s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold (6.01s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token (3.01s)
+    --- PASS: TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay (0.22s)
+=== RUN   TestRecordFanOut
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-b/firsthold reps=3 service_ms=1000.000 wall_p50_ms=2003.175 wall_max_ms=2003.822 leader_done_p50_ms=1001.660 waiter_done_p50_ms=2002.860 waiter_done_p99_ms=2003.814
+=== RUN   TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token
+    record_test.go:74: RESULT case=k22-cold64-service1s variant=iv-a/plain-token reps=3 service_ms=1000.000 wall_p50_ms=1003.062 wall_max_ms=1003.166 leader_done_p50_ms=1001.430 waiter_done_p50_ms=1001.880 waiter_done_p99_ms=1003.163
+=== RUN   TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay
+    record_test.go:101: RESULT case=negative-control variant=iv-a/plain-token lead_delay_ms=20.000 ordering_passed=0/10 failed_b=10/10
+--- PASS: TestRecordFanOut (9.24s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-b/firsthold (6.01s)
+    --- PASS: TestRecordFanOut/K22:_cold_64_at_1_s_service/iv-a/plain-token (3.01s)
+    --- PASS: TestRecordFanOut/negative_control:_the_plain_token_at_a_20_ms_leader_delay (0.22s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	46.195s
+# exit 0 at 2026-09-25 15:46:21 UTC
+# load after:  15:46:21 up 1 day, 11:11,  1 user,  load average: 0.55, 0.50, 0.22

@@ -1,0 +1,389 @@
+# 2026-09-25 15:46:21 UTC (L) lock=/tmp/ts-spike/bench.lock loops=44 GOEXPERIMENT= go test -count=20 -run ^(TestFanOut|TestTokenResidualK21)$ -v ./internal/h2gate/
+# load before:  15:46:21 up 1 day, 11:11,  1 user,  load average: 0.55, 0.50, 0.22
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  15:46:26 up 1 day, 11:11,  1 user,  load average: 4.03, 1.22, 0.45
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.589 waiter_wire_p99_ms=32.376 warm_wire_p50_ms=0.502 warm_wire_p99_ms=9.817 answer_to_first_waiter_write_min_ms=0.040 answer_to_first_waiter_write_p50_ms=0.057 leader_write_to_first_waiter_write_p50_ms=20.299
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=285.246 wall_max_ms=1230.827 max_active_streams=8 refused_streams_total=47
+--- PASS: TestFanOut (4.97s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.33s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.64s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.052 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.030 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:16 timeout:56]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=127 probe_headers_ms=0.058 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.86s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.29s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.30s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.183 waiter_wire_p99_ms=23.613 warm_wire_p50_ms=0.305 warm_wire_p99_ms=2.413 answer_to_first_waiter_write_min_ms=0.044 answer_to_first_waiter_write_p50_ms=0.054 leader_write_to_first_waiter_write_p50_ms=20.227
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=1086.663 wall_max_ms=1266.376 max_active_streams=8 refused_streams_total=59
+--- PASS: TestFanOut (9.33s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (9.06s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:9 timeout:63]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=132 probe_headers_ms=0.104 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.030 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=12 probe_headers_ms=0.035 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (4.83s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.26s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (1.29s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=23.062 waiter_wire_p99_ms=26.962 warm_wire_p50_ms=0.320 warm_wire_p99_ms=3.662 answer_to_first_waiter_write_min_ms=0.033 answer_to_first_waiter_write_p50_ms=0.057 leader_write_to_first_waiter_write_p50_ms=20.262
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=280.734 wall_max_ms=288.762 max_active_streams=8 refused_streams_total=34
+--- PASS: TestFanOut (3.10s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.81s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:5 timeout:67]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.082 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.012 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.029 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (3.62s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (3.06s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.28s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.616 waiter_wire_p99_ms=27.571 warm_wire_p50_ms=0.404 warm_wire_p99_ms=2.446 answer_to_first_waiter_write_min_ms=0.037 answer_to_first_waiter_write_p50_ms=0.062 leader_write_to_first_waiter_write_p50_ms=20.312
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=273.588 wall_max_ms=285.308 max_active_streams=8 refused_streams_total=12
+--- PASS: TestFanOut (3.04s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.76s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:10 timeout:62]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=159 probe_headers_ms=0.083 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=2 probe_headers_ms=0.016 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.037 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (3.68s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (3.11s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.29s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.28s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.620 waiter_wire_p99_ms=28.101 warm_wire_p50_ms=0.758 warm_wire_p99_ms=4.198 answer_to_first_waiter_write_min_ms=0.052 answer_to_first_waiter_write_p50_ms=0.075 leader_write_to_first_waiter_write_p50_ms=20.284
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=273.576 wall_max_ms=1264.812 max_active_streams=8 refused_streams_total=14
+--- PASS: TestFanOut (4.04s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.76s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:20 timeout:52]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=125 probe_headers_ms=0.027 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.011 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.011 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (3.67s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.11s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.29s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.815 waiter_wire_p99_ms=31.604 warm_wire_p50_ms=0.630 warm_wire_p99_ms=6.258 answer_to_first_waiter_write_min_ms=0.032 answer_to_first_waiter_write_p50_ms=0.059 leader_write_to_first_waiter_write_p50_ms=20.309
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=283.960 wall_max_ms=1233.164 max_active_streams=8 refused_streams_total=52
+--- PASS: TestFanOut (7.55s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.30s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (7.25s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.020 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:8 timeout:64]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.068 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:43 timeout:29]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=59 probe_headers_ms=0.028 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (4.85s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.29s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.28s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.410 waiter_wire_p99_ms=27.008 warm_wire_p50_ms=0.371 warm_wire_p99_ms=1.784 answer_to_first_waiter_write_min_ms=0.036 answer_to_first_waiter_write_p50_ms=0.065 leader_write_to_first_waiter_write_p50_ms=20.245
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=286.948 wall_max_ms=1138.097 max_active_streams=8 refused_streams_total=63
+--- PASS: TestFanOut (4.85s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.56s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:14 timeout:58]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=146 probe_headers_ms=0.231 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.011 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.028 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (4.54s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (1.18s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (1.09s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.295 waiter_wire_p99_ms=27.199 warm_wire_p50_ms=0.649 warm_wire_p99_ms=8.424 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.059 leader_write_to_first_waiter_write_p50_ms=20.242
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=277.117 wall_max_ms=1149.340 max_active_streams=8 refused_streams_total=22
+--- PASS: TestFanOut (5.58s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.023 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:33 timeout:39]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=159 probe_headers_ms=0.085 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.040 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (3.75s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.29s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (3.18s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.382 waiter_wire_p99_ms=27.712 warm_wire_p50_ms=0.763 warm_wire_p99_ms=3.103 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.055 leader_write_to_first_waiter_write_p50_ms=20.263
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.445 wall_max_ms=1096.967 max_active_streams=8 refused_streams_total=51
+--- PASS: TestFanOut (3.93s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.30s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.63s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:10 timeout:62]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=144 probe_headers_ms=0.072 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.024 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.059 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.82s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.478 waiter_wire_p99_ms=29.329 warm_wire_p50_ms=0.615 warm_wire_p99_ms=2.083 answer_to_first_waiter_write_min_ms=0.044 answer_to_first_waiter_write_p50_ms=0.064 leader_write_to_first_waiter_write_p50_ms=20.290
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=276.455 wall_max_ms=1128.148 max_active_streams=8 refused_streams_total=27
+--- PASS: TestFanOut (3.92s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.27s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.64s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:56 timeout:16]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=16 probe_headers_ms=0.122 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=1 probe_headers_ms=0.028 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=157 probe_headers_ms=0.053 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (5.60s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (3.07s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.197 waiter_wire_p99_ms=24.074 warm_wire_p50_ms=0.309 warm_wire_p99_ms=5.135 answer_to_first_waiter_write_min_ms=0.035 answer_to_first_waiter_write_p50_ms=0.041 leader_write_to_first_waiter_write_p50_ms=20.298
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=287.123 wall_max_ms=1205.163 max_active_streams=8 refused_streams_total=57
+--- PASS: TestFanOut (5.60s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.32s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:38 timeout:34]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=126 probe_headers_ms=0.046 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:34 timeout:38]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=42 probe_headers_ms=0.038 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.016 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (4.86s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.28s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.30s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.584 waiter_wire_p99_ms=26.812 warm_wire_p50_ms=0.018 warm_wire_p99_ms=2.268 answer_to_first_waiter_write_min_ms=0.034 answer_to_first_waiter_write_p50_ms=0.038 leader_write_to_first_waiter_write_p50_ms=20.302
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=286.244 wall_max_ms=1192.241 max_active_streams=8 refused_streams_total=77
+--- PASS: TestFanOut (5.69s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.42s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:13 timeout:59]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=124 probe_headers_ms=0.063 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:15 timeout:57]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=57 probe_headers_ms=0.074 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=1 probe_headers_ms=0.020 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (5.82s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (3.25s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.28s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.30s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.527 waiter_wire_p99_ms=30.299 warm_wire_p50_ms=0.294 warm_wire_p99_ms=6.349 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.045 leader_write_to_first_waiter_write_p50_ms=20.308
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=294.628 wall_max_ms=1158.843 max_active_streams=8 refused_streams_total=75
+--- PASS: TestFanOut (5.65s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.37s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=135 probe_headers_ms=0.056 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:17 timeout:55]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=55 probe_headers_ms=0.215 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes="map[ok:65 timeout:7]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=19 probe_headers_ms=0.038 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (7.67s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (3.12s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (2.29s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.351 waiter_wire_p99_ms=27.009 warm_wire_p50_ms=0.118 warm_wire_p99_ms=5.522 answer_to_first_waiter_write_min_ms=0.040 answer_to_first_waiter_write_p50_ms=0.056 leader_write_to_first_waiter_write_p50_ms=20.295
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.723 wall_max_ms=1242.724 max_active_streams=8 refused_streams_total=59
+--- PASS: TestFanOut (5.69s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.41s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=161 probe_headers_ms=0.081 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.018 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.020 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.83s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.28s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.191 waiter_wire_p99_ms=33.527 warm_wire_p50_ms=0.255 warm_wire_p99_ms=2.891 answer_to_first_waiter_write_min_ms=0.037 answer_to_first_waiter_write_p50_ms=0.043 leader_write_to_first_waiter_write_p50_ms=20.291
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=284.646 wall_max_ms=1210.382 max_active_streams=8 refused_streams_total=70
+--- PASS: TestFanOut (4.97s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.30s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.67s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:11 timeout:61]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=131 probe_headers_ms=0.062 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:9 timeout:63]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=63 probe_headers_ms=0.070 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.059 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (6.68s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (3.21s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (1.19s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.154 waiter_wire_p99_ms=23.262 warm_wire_p50_ms=0.910 warm_wire_p99_ms=3.189 answer_to_first_waiter_write_min_ms=0.036 answer_to_first_waiter_write_p50_ms=0.059 leader_write_to_first_waiter_write_p50_ms=20.254
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=285.865 wall_max_ms=1278.121 max_active_streams=8 refused_streams_total=67
+--- PASS: TestFanOut (6.09s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (5.81s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:25 timeout:47]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=126 probe_headers_ms=0.050 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.017 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.020 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (3.69s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (1.14s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.258 waiter_wire_p99_ms=27.284 warm_wire_p50_ms=0.022 warm_wire_p99_ms=2.849 answer_to_first_waiter_write_min_ms=0.039 answer_to_first_waiter_write_p50_ms=0.052 leader_write_to_first_waiter_write_p50_ms=20.257
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=273.815 wall_max_ms=294.897 max_active_streams=8 refused_streams_total=33
+--- PASS: TestFanOut (3.07s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (2.79s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=143 probe_headers_ms=0.080 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes="map[ok:48 timeout:24]" late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=24 probe_headers_ms=0.077 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.031 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (4.82s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (2.26s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.28s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=23.228 waiter_wire_p99_ms=27.956 warm_wire_p50_ms=0.143 warm_wire_p99_ms=1.989 answer_to_first_waiter_write_min_ms=0.040 answer_to_first_waiter_write_p50_ms=0.049 leader_write_to_first_waiter_write_p50_ms=20.296
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=274.047 wall_max_ms=1207.511 max_active_streams=8 refused_streams_total=24
+--- PASS: TestFanOut (4.81s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (4.52s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.019 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.026 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:9 timeout:63]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=131 probe_headers_ms=0.075 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.82s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.245 waiter_wire_p99_ms=27.743 warm_wire_p50_ms=0.510 warm_wire_p99_ms=3.147 answer_to_first_waiter_write_min_ms=0.038 answer_to_first_waiter_write_p50_ms=0.046 leader_write_to_first_waiter_write_p50_ms=20.297
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=273.741 wall_max_ms=1232.784 max_active_streams=8 refused_streams_total=28
+--- PASS: TestFanOut (4.03s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.29s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.74s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:11 timeout:61]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=127 probe_headers_ms=0.084 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.018 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=2 probe_headers_ms=0.037 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (3.83s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (1.29s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:152: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=22.222 waiter_wire_p99_ms=24.101 warm_wire_p50_ms=0.384 warm_wire_p99_ms=2.528 answer_to_first_waiter_write_min_ms=0.041 answer_to_first_waiter_write_p50_ms=0.058 leader_write_to_first_waiter_write_p50_ms=20.281
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:183: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=275.810 wall_max_ms=1181.792 max_active_streams=8 refused_streams_total=20
+--- PASS: TestFanOut (3.95s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.28s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.67s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:192: RESULT case=k21/REFUSED_STREAM classes="map[ok:14 timeout:58]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=125 probe_headers_ms=0.070 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.011 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:192: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.019 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (2.83s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.28s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	185.962s
+# load at the end:  15:49:33 up 1 day, 11:14,  1 user,  load average: 42.18, 20.98, 8.33
+# exit 0 at 2026-09-25 15:49:33 UTC; yes loops left: []
