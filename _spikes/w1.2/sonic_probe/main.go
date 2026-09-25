@@ -63,7 +63,7 @@ func main() {
 		for c := range 0x20 {
 			ctl = append(ctl, byte(c))
 		}
-		s := string(ctl) + "\x7f<>&\"\\/" + "é  \U0001F600"
+		s := string(ctl) + "\x7f<>&\"\\/" + "é\u2028\u2029\U0001F600"
 		fmt.Println("ctl:", enc(s))
 		fmt.Printf("invalid utf8: %q\n", enc("a\xffb"))
 		fmt.Printf("lone surrogate bytes: %q\n", enc("a\xed\xa0\x80b"))

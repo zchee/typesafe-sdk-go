@@ -21,7 +21,7 @@ from typesafe_sdk._core.response_types import SystemOneResponse
 
 CONFIG = Config("key", "https://api.example", "jev-latest", 10.0, httpx2.Headers())
 Q = {"q": {"type": "noul", "instructions": "?"}}
-CTL = "".join(chr(c) for c in range(0x20)) + "\x7f<>&\"\\/é  \U0001F600"
+CTL = "".join(chr(c) for c in range(0x20)) + "\x7f<>&\"\\/é\u2028\u2029\U0001F600"
 FLOATS = [1e-5, 9.99e-6, 1e-4, 0.1, 1.5, 3.0, -7.0, 9999999999999998.0, 1e16, 1e20, 1e21, 1e22,
           5e-324, 1.7976931348623157e308, -0.0, 0.0, float(2**53 + 1), 12345678901234567168.0]
 
