@@ -1,0 +1,109 @@
+# 2026-09-25 16:58:04 UTC (L) tree=92ae350+r72b lock=/tmp/ts-spike/bench.lock loops=44 GOEXPERIMENT= go test -count=20 -run TestTokenResidualK21/success:_GOAWAY -v ./internal/h2gate/
+# load before:  16:58:04 up 1 day, 12:23,  1 user,  load average: 0.15, 0.12, 0.53
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  16:58:09 up 1 day, 12:23,  1 user,  load average: 3.66, 0.85, 0.76
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.017 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.029 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.015 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.016 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.067 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.042 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.012 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.019 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.014 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.046 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.026 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.019 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.017 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.29s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.29s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.015 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.044 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.018 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.014 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.046 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.020 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.27s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:192: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.013 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+--- PASS: TestTokenResidualK21 (0.28s)
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.28s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	5.570s
+# load at the end:  16:58:16 up 1 day, 12:23,  1 user,  load average: 6.89, 1.57, 1.00
+# exit 0 at 2026-09-25 16:58:16 UTC; yes loops left: []
