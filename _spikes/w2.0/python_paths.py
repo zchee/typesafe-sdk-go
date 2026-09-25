@@ -1,9 +1,9 @@
 """Field paths the Python SDK 0.7.1 reports for malformed response bodies.
 
 Run from the upstream checkout (typesafe-sdk-python @ 0ffd094) with its own
-virtualenv:
+virtualenv, passing the Go module's testdata directory:
 
-    cd typesafe-sdk-python && .venv/bin/python <this file>
+    cd typesafe-sdk-python && .venv/bin/python <this file> <go-module>/testdata
 
 Each line is "<case>: <field_path repr>" or "<case>: accepted". The cases are
 the rows of internal/codec's TestDecodeFieldPaths and TestModelsFieldPaths
@@ -12,6 +12,7 @@ difference is on record.
 """
 
 import sys
+from pathlib import Path
 
 sys.path.insert(0, ".")
 
@@ -102,6 +103,16 @@ MODELS = {
     "an unknown top-level member": {"models": [], "x": 1},
 }
 
+# Review W2.0 (MINOR 2): a bad value under one spelling of a level that
+# another spelling supersedes.
+SYSTEM_ONE.update({
+    "spelling: bad 0, then 00 good": body({"s": {"type": "score", "score": 1, "confidence": 1, "legend": {"0": 5, "1": "b", "00": "a"}, "probabilities": {}}}),
+    "spelling: 1 good, then 01 bad": body({"s": {"type": "score", "score": 1, "confidence": 1, "legend": {"1": "a", "01": 5}, "probabilities": {}}}),
+    "spelling: probability 0 bad, then 00 good": body({"s": {"type": "score", "score": 1, "confidence": 1, "legend": {}, "probabilities": {"0": "x", "00": 1}}}),
+    "spelling: probability 1 good, then 01 bad": body({"s": {"type": "score", "score": 1, "confidence": 1, "legend": {}, "probabilities": {"1": 1, "01": "x"}}}),
+    "spelling: 0 bad then 0 good (same spelling)": body({"s": {"type": "score", "score": 1, "confidence": 1, "legend": {"0": "a"}, "probabilities": {}}}),
+})
+
 for label, response_type, cases in (("systemone", SystemOneResponse, SYSTEM_ONE), ("models", ListModelsResponse, MODELS)):
     for name, value in cases.items():
         try:
@@ -109,3 +120,42 @@ for label, response_type, cases in (("systemone", SystemOneResponse, SYSTEM_ONE)
             print(f"{label} {name}: accepted")
         except TypeSafeAPIResponseValidationError as error:
             print(f"{label} {name}: {error.field_path!r}")
+
+
+# Raw bodies, which a dict cannot spell: nesting depth, NaN and Infinity,
+# -0, and the W2.0 fixtures that hold them (review W2.0 MAJOR 1, MINOR 1,
+# MINOR 3, NIT 4).
+def nested(n: int) -> bytes:
+    return b'{"model":"m","usage":{},"answers":{},"x":' + b"[" * n + b"]" * n + b"}"
+
+
+RAW = {
+    "depth: 200 arrays in a root member": nested(200),
+    "depth: 201 arrays in a root member": nested(201),
+    "depth: 4095 arrays in a root member": nested(4095),
+    "depth: 4096 arrays in a root member": nested(4096),
+    "NaN in input_tokens": b'{"model":"m","usage":{"input_tokens":NaN}}',
+    "NaN inside an unknown-type answer": b'{"model":"m","usage":{},"answers":{"u":{"type":"aurora","v":NaN}}}',
+    "Infinity as a noul": b'{"model":"m","usage":{},"answers":{"n":{"type":"noul","noul":Infinity}}}',
+    "-0 as a token count": b'{"model":"m","usage":{"input_tokens":-0}}',
+    "-0 as a noul": b'{"model":"m","usage":{},"answers":{"n":{"type":"noul","noul":-0}}}',
+    "-0.0 as a noul": b'{"model":"m","usage":{},"answers":{"n":{"type":"noul","noul":-0.0}}}',
+}
+testdata = Path(sys.argv[1]) if len(sys.argv) > 1 else None
+if testdata is not None:
+    for name in ("malformed-too-deep.json", "deviation-nan-unknown.json", "deviation-nan-noul.json"):
+        if (testdata / name).exists():
+            RAW["fixture " + name] = (testdata / name).read_bytes()
+for name, content in RAW.items():
+    try:
+        result = SystemOneResponse.from_http_response(httpx2.Response(200, content=content))
+        noul = {k: repr(a.noul) for k, a in result.nouls.items()}
+        print(f"raw {name}: accepted {noul or ''} usage={result.usage.model_dump()}")
+    except TypeSafeAPIResponseValidationError as error:
+        print(f"raw {name}: {error.field_path!r}")
+models_nan = b'{"models":[],"x":NaN}'
+try:
+    ListModelsResponse.from_http_response(httpx2.Response(200, content=models_nan))
+    print("raw models with x NaN: accepted")
+except TypeSafeAPIResponseValidationError as error:
+    print(f"raw models with x NaN: {error.field_path!r}")

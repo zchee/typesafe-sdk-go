@@ -1,4 +1,4 @@
-# 2026-09-26 00:33:18 JST upstream 0ffd094 Python 3.14.6
+# 2026-09-26 01:58:16 JST upstream 0ffd094 Python 3.14.6
 systemone R1 no model: 'model'
 systemone R1 noul missing: 'answers.n.noul'
 systemone R1 noul a string: 'answers.n.noul'
@@ -46,6 +46,11 @@ systemone deviation: level key ' 1': accepted
 systemone deviation: level key 1_0: accepted
 systemone deviation: level key 1.0: accepted
 systemone deviation: level key 4294967296: accepted
+systemone spelling: bad 0, then 00 good: 'answers.s.legend.0.str'
+systemone spelling: 1 good, then 01 bad: 'answers.s.legend.01.str'
+systemone spelling: probability 0 bad, then 00 good: 'answers.s.probabilities.0'
+systemone spelling: probability 1 good, then 01 bad: 'answers.s.probabilities.01'
+systemone spelling: 0 bad then 0 good (same spelling): accepted
 models R2 models[1] without name: 'models[1].name'
 models R2 models[1] without description: 'models[1].description'
 models R2 models[1] without release_date: 'models[1].release_date'
@@ -59,4 +64,18 @@ models the first failing card first: 'models[0].description'
 models a card after a scalar card: 'models[0]'
 models the second card is null: 'models[1]'
 models an unknown top-level member: accepted
-# exit 0 at 2026-09-26 00:33:18 JST
+raw depth: 200 arrays in a root member: accepted  usage={'input_tokens': None, 'output_tokens': None}
+raw depth: 201 arrays in a root member: ''
+raw depth: 4095 arrays in a root member: ''
+raw depth: 4096 arrays in a root member: ''
+raw NaN in input_tokens: 'usage.input_tokens'
+raw NaN inside an unknown-type answer: accepted  usage={'input_tokens': None, 'output_tokens': None}
+raw Infinity as a noul: accepted {'n': 'inf'} usage={'input_tokens': None, 'output_tokens': None}
+raw -0 as a token count: accepted  usage={'input_tokens': 0, 'output_tokens': None}
+raw -0 as a noul: accepted {'n': '0.0'} usage={'input_tokens': None, 'output_tokens': None}
+raw -0.0 as a noul: accepted {'n': '-0.0'} usage={'input_tokens': None, 'output_tokens': None}
+raw fixture malformed-too-deep.json: ''
+raw fixture deviation-nan-unknown.json: accepted {'spam': '0.5'} usage={'input_tokens': 1, 'output_tokens': 1}
+raw fixture deviation-nan-noul.json: accepted {'spam': 'nan'} usage={'input_tokens': 1, 'output_tokens': 1}
+raw models with x NaN: accepted
+# exit 0 at 2026-09-26 01:58:16 JST

@@ -59,6 +59,10 @@ BODIES = [
     b'{"error":null,"message":"m"}',
     b'{"detail":[]}',
     b'{"detail":[{"msg":""}]}',
+    b'{"message":"x","v":NaN}',
+    b'{"message":"a\\ud800"}',
+    b"NaN",
+    b"Infinity",
 ]
 
 for content in BODIES:
