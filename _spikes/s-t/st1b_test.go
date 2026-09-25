@@ -104,15 +104,18 @@ func TestST1bStreamLimit(t *testing.T) {
 // TestST1bFirstHold re-measures option (iv-b), the owner's choice at W0.6
 // (G2), for W0.4b: 200 vs limit 8 and 64 vs limit 4 with the token held by
 // the first request per new connection until its response headers, and the
-// cold-burst cost at 50 ms service time, gate alone against gate+token-first.
-// Every case must complete all its calls on one connection.
+// cold-burst cost at 50 ms and 200 ms service time, gate alone against
+// gate+token-first. Every case must complete all its calls on one
+// connection.
 func TestST1bFirstHold(t *testing.T) {
-	const slow = 50 * time.Millisecond
+	const slow, slower = 50 * time.Millisecond, 200 * time.Millisecond
 	for _, c := range []f1Case{
 		{calls: 200, limit: 8, mitig: "token-first"},
 		{calls: 64, limit: 4, mitig: "token-first"},
 		{calls: 64, service: slow},
 		{calls: 64, mitig: "token-first", service: slow},
+		{calls: 64, service: slower},
+		{calls: 64, mitig: "token-first", service: slower},
 	} {
 		t.Run(c.name(), func(t *testing.T) {
 			ok, accepts := runF1(t, c)

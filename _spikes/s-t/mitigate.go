@@ -20,6 +20,7 @@ import (
 	"net/http/httptrace"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 // Limiter is F1 mitigation (ii): a semaphore of N requests in the transport,
@@ -79,9 +80,23 @@ func (b *releaseBody) Close() error {
 // server's SETTINGS (the first frame the server sends, RFC 9113 section
 // 3.4); until then the client assumes 100 streams
 // (initialMaxConcurrentStreams, internal/http2/transport.go:57,624).
+//
+// One WriteToken serves one transport, and RoundTrip takes the token before
+// the wrapped RoundTrip runs: the pool reserves the stream
+// (ReserveNewRequest, internal/http2/client_conn_pool.go:54,81) before
+// GotConn fires (internal/http2/transport.go:418,424), so a token taken per
+// connection at GotConn would leave the reservations uncounted and F1
+// would return.
 type WriteToken struct {
 	RT        http.RoundTripper
 	FirstHold bool
+	// HoldBound, when positive, bounds a FirstHold hold: the token is
+	// released HoldBound after the first request's WroteHeaders even when
+	// its response headers have not arrived, so a first response the server
+	// never sends blocks the other callers for at most HoldBound (the gate's
+	// wait bound) instead of until the first request's context ends. Zero
+	// keeps the token until RoundTrip returns.
+	HoldBound time.Duration
 	ch        chan struct{}
 }
 
@@ -99,6 +114,7 @@ func (w *WriteToken) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 	var once sync.Once
 	var first atomic.Bool
+	var bound atomic.Pointer[time.Timer]
 	release := func() { once.Do(func() { <-w.ch }) }
 	trace := &httptrace.ClientTrace{
 		GotConn: func(info httptrace.GotConnInfo) {
@@ -107,12 +123,18 @@ func (w *WriteToken) RoundTrip(req *http.Request) (*http.Response, error) {
 			}
 		},
 		WroteHeaders: func() {
-			if !first.Load() {
+			switch {
+			case !first.Load():
 				release()
+			case w.HoldBound > 0:
+				bound.Store(time.AfterFunc(w.HoldBound, release))
 			}
 		},
 	}
 	resp, err := w.RT.RoundTrip(req.WithContext(httptrace.WithClientTrace(req.Context(), trace)))
 	release()
+	if t := bound.Load(); t != nil {
+		t.Stop()
+	}
 	return resp, err
 }

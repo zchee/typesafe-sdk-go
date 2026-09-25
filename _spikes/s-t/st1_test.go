@@ -45,9 +45,14 @@ type variant struct {
 	// headers.
 	firstHold bool
 	// control applies gate+token-first's reworded handler and checks to a
-	// variant without firstHold and does not assert them: the negative
-	// control showing that the checks can fail.
+	// variant without firstHold: the negative control showing that the
+	// checks can fail. With leadDelay zero nothing is asserted; with it set,
+	// every burst must fail check (b).
 	control bool
+	// leadDelay delays the reworded handler's answer to the first request,
+	// so that a waiter written before that answer cannot pass by the timing
+	// luck of a loopback round trip.
+	leadDelay time.Duration
 }
 
 var fanVariants = []variant{
@@ -56,6 +61,8 @@ var fanVariants = []variant{
 	{name: "gate+token", gated: true, token: true},
 	{name: "gate+token-first", gated: true, token: true, firstHold: true},
 	{name: "control:gate+token", gated: true, token: true, control: true},
+	{name: "gate+token-first/lead5ms", gated: true, token: true, firstHold: true, leadDelay: 5 * time.Millisecond},
+	{name: "control:gate+token/lead5ms", gated: true, token: true, control: true, leadDelay: 5 * time.Millisecond},
 }
 
 // wrap builds the round-tripper chain of v over tr.
@@ -81,8 +88,10 @@ func wrap(v variant, tr http.RoundTripper, bound time.Duration) *Gate {
 // before any other caller writes its HEADERS, and every request must arrive
 // on connection 0. Its warm burst keeps the original clause. The
 // control:gate+token variant runs the same handler and checks over the
-// plain token (option (iv-a)) without asserting them. For every gated
-// variant the burst's gap from the leader's WroteHeaders to the first
+// plain token (option (iv-a)) without asserting them. The /lead5ms pair
+// answers the first request after 5 ms: token-first must still pass every
+// burst and the plain token must fail check (b) in every burst. For every
+// gated variant the burst's gap from the leader's WroteHeaders to the first
 // waiter's WroteHeaders is recorded: the cost of the hold.
 func TestST1FanOut(t *testing.T) {
 	const reps = 10
@@ -107,7 +116,7 @@ func TestST1FanOut(t *testing.T) {
 			for rep := range reps {
 				b := newBarrier(fanN, guard)
 				if reworded {
-					b.free = "cold"
+					b.free, b.freeDelay = "cold", v.leadDelay
 				}
 				srv := testsupport.NewLoopbackServer(t, testsupport.ServerConfig{Handler: b})
 				tr := newTransport(t, Options{})
@@ -232,6 +241,9 @@ func TestST1FanOut(t *testing.T) {
 			if v.gated && !v.control && orderingOK != reps {
 				t.Errorf("ordering %d/%d", orderingOK, reps)
 			}
+			if v.control && v.leadDelay > 0 && answeredBefore != 0 {
+				t.Errorf("plain token: leader answered before any waiter write in %d/%d bursts, want 0", answeredBefore, reps)
+			}
 			kv := []any{
 				"spike", "S-T1", "case", "cold64", "variant", v.name, "reps", reps,
 				"cold_conns", fmt.Sprint(coldConns), "warm_new_conns", fmt.Sprint(warmNew),
@@ -258,6 +270,96 @@ func TestST1FanOut(t *testing.T) {
 					"answer_to_waiter_write_p50_ms", ms(pct(answerGaps, 0.5)))
 			}
 			result(kv...)
+		})
+	}
+}
+
+// TestST1FirstHoldBound bounds the FirstHold hold. With no per-call deadline
+// (the SDK's WithNoTimeout), the server holds the leader's response for
+// twice the bound. With HoldBound set to the gate's wait bound (500 ms
+// here), the waiters get the token back HoldBound after the leader's
+// HEADERS, are answered on the same connection while the leader is still
+// held, and every call succeeds. With no bound they wait for the leader's
+// response, and a response that never came would block them until their
+// own contexts end (K19).
+func TestST1FirstHoldBound(t *testing.T) {
+	const bound = 500 * time.Millisecond
+	for _, hb := range []time.Duration{bound, 0} {
+		name := "unbounded"
+		if hb > 0 {
+			name = "bound" + strconv.Itoa(int(hb/time.Millisecond)) + "ms"
+		}
+		t.Run(name, func(t *testing.T) {
+			var mu sync.Mutex
+			held := ""
+			srv := testsupport.NewLoopbackServer(t, testsupport.ServerConfig{Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				mu.Lock()
+				first := held == ""
+				if first {
+					held = r.URL.Path
+				}
+				mu.Unlock()
+				if first {
+					tm := time.NewTimer(2 * bound)
+					defer tm.Stop()
+					select {
+					case <-tm.C:
+					case <-r.Context().Done():
+						return
+					}
+				}
+				w.WriteHeader(http.StatusOK)
+			})})
+			tr := newTransport(t, Options{})
+			wt := NewWriteToken(tr)
+			wt.FirstHold, wt.HoldBound = true, hb
+			g := &Gate{RT: wt, WaitBound: bound}
+			calls := fanOut(fanN, func(i int) call { return do(t.Context(), g, srv.URL()+"/hold/"+strconv.Itoa(i)) })
+			leader, okN, roles := -1, 0, map[Role]int{}
+			var start, firstOther, lastOtherDone time.Time
+			for i, c := range calls {
+				roles[c.Role]++
+				if start.IsZero() || c.Start.Before(start) {
+					start = c.Start
+				}
+				if c.Err != nil || c.Status != http.StatusOK {
+					continue
+				}
+				okN++
+				if c.Role == RoleLeader {
+					leader = i
+					continue
+				}
+				if firstOther.IsZero() || c.WroteHeaders.Before(firstOther) {
+					firstOther = c.WroteHeaders
+				}
+				if c.Done.After(lastOtherDone) {
+					lastOtherDone = c.Done
+				}
+			}
+			if leader < 0 || firstOther.IsZero() {
+				t.Fatalf("leader %d, roles %v, ok %d", leader, roles, okN)
+			}
+			l := calls[leader]
+			gap := firstOther.Sub(l.WroteHeaders)
+			mu.Lock()
+			heldIsLeader := held == "/hold/"+strconv.Itoa(leader)
+			mu.Unlock()
+			result("spike", "S-T1", "case", "firsthold-bound", "variant", name, "hold_bound_ms", ms(hb), "gate_wait_bound_ms", ms(bound),
+				"leader_response_held_ms", ms(2*bound), "ok", fmt.Sprintf("%d/%d", okN, fanN), "roles", fmt.Sprint(roles),
+				"accepts", srv.Accepts(), "held_is_leader", heldIsLeader,
+				"leader_write_to_first_waiter_write_ms", ms(gap), "last_waiter_done_ms", ms(lastOtherDone.Sub(start)),
+				"leader_done_ms", ms(l.Done.Sub(start)))
+			if okN != fanN || srv.Accepts() != 1 || !heldIsLeader {
+				t.Errorf("ok %d/%d, accepts %d, held request is the leader's: %t", okN, fanN, srv.Accepts(), heldIsLeader)
+			}
+			switch {
+			case hb > 0 && (gap < hb-time.Millisecond || !lastOtherDone.Before(l.Done)):
+				t.Errorf("bound %v: first waiter HEADERS %v after the leader's, last waiter done %v, leader done %v",
+					hb, gap, lastOtherDone.Sub(start), l.Done.Sub(start))
+			case hb == 0 && gap < 2*bound:
+				t.Errorf("unbounded: first waiter HEADERS %v after the leader's, want at least the %v hold", gap, 2*bound)
+			}
 		})
 	}
 }

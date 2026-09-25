@@ -124,11 +124,13 @@ func fanOut(n int, fn func(i int) call) []call {
 // set, the first request of that key is answered at once and the others
 // of the key are held until the n-1 after it have arrived: AC-P4's ordering
 // clause as reworded for F1 option (iv-b), where the leader's request is
-// answered before any waiter's request is written.
+// answered before any waiter's request is written. freeDelay, when
+// positive, delays that first answer.
 type barrier struct {
-	n     int
-	guard time.Duration
-	free  string
+	n         int
+	guard     time.Duration
+	free      string
+	freeDelay time.Duration
 
 	mu        sync.Mutex
 	arrived   map[string]int
@@ -164,6 +166,15 @@ func (b *barrier) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if key == b.free && b.arrived[key] == 1 {
 		b.freeFirst = r.URL.Path
 		b.mu.Unlock()
+		if b.freeDelay > 0 {
+			tm := time.NewTimer(b.freeDelay)
+			defer tm.Stop()
+			select {
+			case <-tm.C:
+			case <-r.Context().Done():
+				return
+			}
+		}
 		w.WriteHeader(http.StatusOK)
 		return
 	}
