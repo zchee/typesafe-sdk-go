@@ -1,0 +1,35 @@
+# lock: flock /tmp/ts-spike/bench.lock; acquired 2026-09-25 07:30:12 UTC
+# host: (L) Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz, 44 vCPU
+# load before: 0.08 0.02 0.01
+# go version: go version go1.27.1 linux/amd64
+# ToolTags: [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# command: go test -count=5 -run ^TestLinearity$ -v ./_spikes/s-d1/
+=== RUN   TestLinearity
+    decode_test.go:539: a1: 1k 557.687µs, 10k 5.564544ms, ratio 9.98 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: a2: 1k 546.39µs, 10k 5.565082ms, ratio 10.19 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: b: 1k 560.728µs, 10k 5.511394ms, ratio 9.83 (bound 15), lazy members visited 10k: 10008
+--- PASS: TestLinearity (0.42s)
+=== RUN   TestLinearity
+    decode_test.go:539: a1: 1k 550.425µs, 10k 5.64482ms, ratio 10.26 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: a2: 1k 550.116µs, 10k 5.66932ms, ratio 10.31 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: b: 1k 560.438µs, 10k 5.54297ms, ratio 9.89 (bound 15), lazy members visited 10k: 10008
+--- PASS: TestLinearity (0.41s)
+=== RUN   TestLinearity
+    decode_test.go:539: a1: 1k 549.715µs, 10k 5.590289ms, ratio 10.17 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: a2: 1k 559.182µs, 10k 5.546704ms, ratio 9.92 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: b: 1k 543.556µs, 10k 5.541674ms, ratio 10.20 (bound 15), lazy members visited 10k: 10008
+--- PASS: TestLinearity (0.41s)
+=== RUN   TestLinearity
+    decode_test.go:539: a1: 1k 562.895µs, 10k 5.620882ms, ratio 9.99 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: a2: 1k 556.455µs, 10k 5.627403ms, ratio 10.11 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: b: 1k 553.917µs, 10k 5.597397ms, ratio 10.11 (bound 15), lazy members visited 10k: 10008
+--- PASS: TestLinearity (0.41s)
+=== RUN   TestLinearity
+    decode_test.go:539: a1: 1k 555.71µs, 10k 5.619236ms, ratio 10.11 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: a2: 1k 552.371µs, 10k 5.618879ms, ratio 10.17 (bound 15), lazy members visited 10k: 10011
+    decode_test.go:539: b: 1k 558.03µs, 10k 5.598986ms, ratio 10.03 (bound 15), lazy members visited 10k: 10008
+--- PASS: TestLinearity (0.41s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-d1	2.075s
+# load after: 0.08 0.02 0.01
+# end: 2026-09-25 07:30:14 UTC rc=0

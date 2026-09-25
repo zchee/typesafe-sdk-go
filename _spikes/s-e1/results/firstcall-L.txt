@@ -1,0 +1,22 @@
+# lock: flock /tmp/ts-spike/bench.lock; acquired 2026-09-25 07:44:40 UTC
+# host: (L) Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz, 44 vCPU
+# load before: 0.54 0.89 0.62
+# base: 2305d02
+# go version: go version go1.27.1 linux/amd64
+# ToolTags: [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# command: go test -count=1 -run ^TestFirstCall$ -v ./_spikes/s-e1/
+=== RUN   TestFirstCall
+    alloc_test.go:257: FIRST string 1KiB: first call                  allocs/bytes=506/485248       time=436.952µs
+    alloc_test.go:257: FIRST string 1KiB: second call                 allocs/bytes=2/32             time=800ns
+    alloc_test.go:257: FIRST map 1KiB: first call                     allocs/bytes=2625/1457448     time=1.333412ms
+    alloc_test.go:257: FIRST map 1KiB: second call                    allocs/bytes=5/400            time=2.993µs
+    alloc_test.go:257: FIRST *coldA 1KiB: first call, no Pretouch     allocs/bytes=2203/720008      time=940.557µs
+    alloc_test.go:257: FIRST *coldA 1KiB: second call                 allocs/bytes=1/16             time=1.823µs
+    alloc_test.go:257: FIRST codec.Pretouch(*coldB)                   allocs/bytes=1885/645152      time=957.486µs
+    alloc_test.go:257: FIRST *coldB 1KiB: first call after Pretouch   allocs/bytes=1/16             time=3.005µs
+    alloc_test.go:257: FIRST *coldB 1KiB: second call                 allocs/bytes=1/16             time=1.328µs
+--- PASS: TestFirstCall (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-e1	0.010s
+# load after: 0.54 0.89 0.62
+# end: 2026-09-25 07:44:40 UTC rc=0

@@ -1,0 +1,93 @@
+# lock: flock /tmp/ts-spike/bench.lock; acquired 2026-09-25 07:30:14 UTC
+# host: (L) Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz, 44 vCPU
+# load before: 0.08 0.02 0.01
+# go version: go version go1.27.1 linux/amd64
+# ToolTags: [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# command: go test -count=1 -run ^(TestAllocEncode|TestGrowth|TestSequence)$ -v ./_spikes/s-e1/
+=== RUN   TestAllocEncode
+    alloc_test.go:65: ENC string         1KiB   encoded=1024     allocs/bytes=2/32                     warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC string         64KiB  encoded=65536    allocs/bytes=2/32                     warmCap=65536     capAfter=65536     pooled=true
+    alloc_test.go:65: ENC string         1MiB   encoded=1048576  allocs/bytes=2/32                     warmCap=1048576   capAfter=1048576   pooled=true
+    alloc_test.go:65: ENC string         6MiB   encoded=6291456  allocs/bytes=2/32                     warmCap=6291456   capAfter=6291456   pooled=true
+    alloc_test.go:65: ENC string         9MiB   encoded=9437184  allocs/bytes=5/9441360                warmCap=9437184   capAfter=9437184   pooled=false
+    alloc_test.go:65: ENC boxed          1KiB   encoded=1024     allocs/bytes=1/16                     warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC boxed          64KiB  encoded=65536    allocs/bytes=1/16                     warmCap=65536     capAfter=65536     pooled=true
+    alloc_test.go:65: ENC boxed          1MiB   encoded=1048576  allocs/bytes=1/16                     warmCap=1048576   capAfter=1048576   pooled=true
+    alloc_test.go:65: ENC boxed          6MiB   encoded=6291456  allocs/bytes=1/16                     warmCap=6291456   capAfter=6291456   pooled=true
+    alloc_test.go:65: ENC boxed          9MiB   encoded=9437184  allocs/bytes=4/9441344                warmCap=9437184   capAfter=9437184   pooled=false
+    alloc_test.go:65: ENC map            1KiB   encoded=1024     allocs/bytes=9-9/784-784              warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC map            64KiB  encoded=66018    allocs/bytes=471-471/45136-45136      warmCap=73728     capAfter=73728     pooled=true
+    alloc_test.go:65: ENC map            1MiB   encoded=1074672  allocs/bytes=7503-7503/720208-720208  warmCap=1114112   capAfter=1114112   pooled=true
+    alloc_test.go:65: ENC map            6MiB   encoded=6515697  allocs/bytes=45010-45010/4320880-4320880 warmCap=6750208   capAfter=6750208   pooled=true
+    alloc_test.go:65: ENC map            9MiB   encoded=9801281  allocs/bytes=67547-67547/58736544-58736544 warmCap=10559488  capAfter=10559488  pooled=false
+    alloc_test.go:65: ENC map-flat       1KiB   encoded=1055     allocs/bytes=2/112                    warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC map-flat       64KiB  encoded=65535    allocs/bytes=2/112                    warmCap=73728     capAfter=73728     pooled=true
+    alloc_test.go:65: ENC map-flat       1MiB   encoded=1048545  allocs/bytes=2/112                    warmCap=1114112   capAfter=1114112   pooled=true
+    alloc_test.go:65: ENC map-flat       6MiB   encoded=6291327  allocs/bytes=2/112                    warmCap=6750208   capAfter=6750208   pooled=true
+    alloc_test.go:65: ENC map-flat       9MiB   encoded=9437021  allocs/bytes=35/52255392              warmCap=10559488  capAfter=10559488  pooled=false
+    alloc_test.go:65: ENC struct-ptr     1KiB   encoded=1066     allocs/bytes=1/16                     warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC struct-ptr     64KiB  encoded=65520    allocs/bytes=1/16                     warmCap=73728     capAfter=73728     pooled=true
+    alloc_test.go:65: ENC struct-ptr     1MiB   encoded=1056133  allocs/bytes=1/16                     warmCap=1114112   capAfter=1114112   pooled=true
+    alloc_test.go:65: ENC struct-ptr     6MiB   encoded=6379778  allocs/bytes=1/16                     warmCap=6750208   capAfter=6750208   pooled=true
+    alloc_test.go:65: ENC struct-ptr     9MiB   encoded=9575142  allocs/bytes=34/52255296              warmCap=10559488  capAfter=10559488  pooled=false
+    alloc_test.go:65: ENC raw-verbatim   1KiB   encoded=1024     allocs/bytes=0/0                      warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC raw-verbatim   64KiB  encoded=66018    allocs/bytes=0/0                      warmCap=73728     capAfter=73728     pooled=true
+    alloc_test.go:65: ENC raw-verbatim   1MiB   encoded=1074672  allocs/bytes=0/0                      warmCap=1081344   capAfter=1081344   pooled=true
+    alloc_test.go:65: ENC raw-verbatim   6MiB   encoded=6515697  allocs/bytes=0/0                      warmCap=6520832   capAfter=6520832   pooled=true
+    alloc_test.go:65: ENC raw-verbatim   9MiB   encoded=9801281  allocs/bytes=3/9809968                warmCap=9805824   capAfter=9805824   pooled=false
+    alloc_test.go:65: ENC raw-encodeinto 1KiB   encoded=1024     allocs/bytes=1/16                     warmCap=4096      capAfter=4096      pooled=true
+    alloc_test.go:65: ENC raw-encodeinto 64KiB  encoded=66018    allocs/bytes=1/16                     warmCap=73728     capAfter=73728     pooled=true
+    alloc_test.go:65: ENC raw-encodeinto 1MiB   encoded=1074672  allocs/bytes=1/16                     warmCap=1081344   capAfter=1081344   pooled=true
+    alloc_test.go:65: ENC raw-encodeinto 6MiB   encoded=6515697  allocs/bytes=1/16                     warmCap=6520832   capAfter=6520832   pooled=true
+    alloc_test.go:65: ENC raw-encodeinto 9MiB   encoded=9801281  allocs/bytes=4/9809984                warmCap=9805824   capAfter=9805824   pooled=false
+--- PASS: TestAllocEncode (3.95s)
+=== RUN   TestGrowth
+    alloc_test.go:149: GROW string         64KiB  g=3/65568                    capAfter=65536     pooled=true
+    alloc_test.go:149: GROW string         1MiB   g=3/1048608                  capAfter=1048576   pooled=true
+    alloc_test.go:149: GROW string         6MiB   g=3/6291488                  capAfter=6291456   pooled=true
+    alloc_test.go:149: GROW string         9MiB   g=3/9437216                  capAfter=9437184   pooled=false
+    alloc_test.go:149: GROW boxed          64KiB  g=2/65552                    capAfter=65536     pooled=true
+    alloc_test.go:149: GROW boxed          1MiB   g=2/1048592                  capAfter=1048576   pooled=true
+    alloc_test.go:149: GROW boxed          6MiB   g=2/6291472                  capAfter=6291456   pooled=true
+    alloc_test.go:149: GROW boxed          9MiB   g=2/9437200                  capAfter=9437184   pooled=false
+    alloc_test.go:149: GROW map            64KiB  g=481-481/318032-318032      capAfter=73728     pooled=true
+    alloc_test.go:149: GROW map            1MiB   g=7524-7524/5949264-5949264  capAfter=1114112   pooled=true
+    alloc_test.go:149: GROW map            6MiB   g=45039-45039/37566576-37566576 capAfter=6750208   pooled=true
+    alloc_test.go:149: GROW map            9MiB   g=67545-67545/58732400-58732400 capAfter=10559488  pooled=false
+    alloc_test.go:149: GROW map-flat       64KiB  g=12/273008                  capAfter=73728     pooled=true
+    alloc_test.go:149: GROW map-flat       1MiB   g=23/5229168                 capAfter=1114112   pooled=true
+    alloc_test.go:149: GROW map-flat       6MiB   g=31/33245808                capAfter=6750208   pooled=true
+    alloc_test.go:149: GROW map-flat       9MiB   g=33/52251248                capAfter=10559488  pooled=false
+    alloc_test.go:149: GROW struct-ptr     64KiB  g=11/272912                  capAfter=73728     pooled=true
+    alloc_test.go:149: GROW struct-ptr     1MiB   g=22/5229072                 capAfter=1114112   pooled=true
+    alloc_test.go:149: GROW struct-ptr     6MiB   g=30/33245712                capAfter=6750208   pooled=true
+    alloc_test.go:149: GROW struct-ptr     9MiB   g=32/52251152                capAfter=10559488  pooled=false
+    alloc_test.go:149: GROW raw-verbatim   64KiB  g=1/73728                    capAfter=73728     pooled=true
+    alloc_test.go:149: GROW raw-verbatim   1MiB   g=1/1081344                  capAfter=1081344   pooled=true
+    alloc_test.go:149: GROW raw-verbatim   6MiB   g=1/6520832                  capAfter=6520832   pooled=true
+    alloc_test.go:149: GROW raw-verbatim   9MiB   g=1/9805824                  capAfter=9805824   pooled=false
+    alloc_test.go:149: GROW raw-encodeinto 64KiB  g=2/73744                    capAfter=73728     pooled=true
+    alloc_test.go:149: GROW raw-encodeinto 1MiB   g=2/1081360                  capAfter=1081344   pooled=true
+    alloc_test.go:149: GROW raw-encodeinto 6MiB   g=2/6520848                  capAfter=6520832   pooled=true
+    alloc_test.go:149: GROW raw-encodeinto 9MiB   g=2/9805840                  capAfter=9805824   pooled=false
+--- PASS: TestGrowth (4.79s)
+=== RUN   TestSequence
+    alloc_test.go:209: SEQ string         mallocs/bytes per call 1..32: 9/143720 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32 3/6291488 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32 3/9838624 4/4176 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32 2/32
+    alloc_test.go:210: SEQ string         scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 9838592 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+    alloc_test.go:209: SEQ boxed          mallocs/bytes per call 1..32: 8/143704 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 2/6291472 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 2/9838608 3/4160 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16
+    alloc_test.go:210: SEQ boxed          scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 6291456 9838592 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+    alloc_test.go:209: SEQ map            mallocs/bytes per call 1..32: 22-22/145096-145096 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 45039-45039/37566576-37566576 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 67516-67516/25486704-25486704 11-11/4928-4928 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784 9-9/784-784
+    alloc_test.go:210: SEQ map            scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 10559488 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+    alloc_test.go:209: SEQ map-flat       mallocs/bytes per call 1..32: 12/144104 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112 31/33245808 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112 4/19005552 4/4256 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112 2/112
+    alloc_test.go:210: SEQ map-flat       scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 10559488 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+    alloc_test.go:209: SEQ struct-ptr     mallocs/bytes per call 1..32: 8/143704 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 30/33245712 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 3/19005456 3/4160 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16
+    alloc_test.go:210: SEQ struct-ptr     scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 10559488 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+    alloc_test.go:209: SEQ raw-verbatim   mallocs/bytes per call 1..32: 4/4280 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 1/6520832 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 1/10190848 2/4144 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0
+    alloc_test.go:210: SEQ raw-verbatim   scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 10190848 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+    alloc_test.go:209: SEQ raw-encodeinto mallocs/bytes per call 1..32: 11/184824 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 2/6520848 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 2/10190864 3/4160 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16 1/16
+    alloc_test.go:210: SEQ raw-encodeinto scratch cap after call: 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 10190848 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096
+--- PASS: TestSequence (5.30s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-e1	14.044s
+# load after: 0.28 0.07 0.02
+# end: 2026-09-25 07:30:29 UTC rc=0

@@ -1,0 +1,22 @@
+# lock: /opt/homebrew/opt/util-linux/bin/flock /private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock; acquired 2026-09-25 16:34:26 JST
+# host: (M) Apple M3 Max, 16 cores
+# load before: { 22.91 24.91 19.73 }
+# base: 2305d02 
+# go version: go version go1.27.1 darwin/arm64
+# ToolTags: [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# command: env GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run ^TestFirstCall$ -v ./_spikes/s-e1/
+=== RUN   TestFirstCall
+    alloc_test.go:257: FIRST string 1KiB: first call                  allocs/bytes=11/237872        time=72.917µs
+    alloc_test.go:257: FIRST string 1KiB: second call                 allocs/bytes=2/32             time=1µs
+    alloc_test.go:257: FIRST map 1KiB: first call                     allocs/bytes=64/513104        time=177.917µs
+    alloc_test.go:257: FIRST map 1KiB: second call                    allocs/bytes=5/400            time=3.666µs
+    alloc_test.go:257: FIRST *coldA 1KiB: first call, no Pretouch     allocs/bytes=162/211736       time=58.917µs
+    alloc_test.go:257: FIRST *coldA 1KiB: second call                 allocs/bytes=1/16             time=4.042µs
+    alloc_test.go:257: FIRST codec.Pretouch(*coldB)                   allocs/bytes=136/210048       time=30.709µs
+    alloc_test.go:257: FIRST *coldB 1KiB: first call after Pretouch   allocs/bytes=1/16             time=3.917µs
+    alloc_test.go:257: FIRST *coldB 1KiB: second call                 allocs/bytes=1/16             time=5.584µs
+--- PASS: TestFirstCall (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-e1	0.011s
+# load after: { 22.91 24.91 19.73 }
+# end: 2026-09-25 16:34:27 JST rc=0
