@@ -1,0 +1,49 @@
+# 2026-09-26 04:54:53 JST typesafe-sdk-python 0ffd094, Python 3.14.6, pydantic-core 2.46.5
+# cd typesafe-sdk-python && .venv/bin/python <module>/_spikes/w2.4/python_dump.py <module>/testdata
+deviation-big-exp-noul.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":1},"answers":{"spam":{"type":"noul","noul":null}}}
+deviation-big-exp-noul.json: equals the fixture: False
+deviation-lone-surrogate.json: refused at ''
+deviation-nan-noul.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":1},"answers":{"spam":{"type":"noul","noul":null}}}
+deviation-nan-noul.json: equals the fixture: False
+deviation-nan-unknown.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":1},"answers":{"spam":{"type":"noul","noul":0.5}}}
+deviation-nan-unknown.json: equals the fixture: False
+duplicates.json: {"model":"jev-latest","usage":{"input_tokens":12,"output_tokens":null},"answers":{"tone":{"type":"choice","choice":"friendly","confidence":0.9,"probabilities":{"friendly":0.9,"hostile":0.1}},"spam":{"type":"noul","noul":0.98},"quality":{"type":"score","score":1.7,"confidence":0.8,"legend":{"0":"bad","1":"fine","2":"great"},"probabilities":{"0":0.1,"1":0.1,"2":0.8}},"risk":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":{"summary":"low"}},"probabilities":{"0":1.0}}}}
+duplicates.json: equals the fixture: False
+escaped-member-names.json: {"model":"jev-latest","usage":{"input_tokens":12,"output_tokens":3},"answers":{"spam":{"type":"noul","noul":0.98},"tone":{"type":"choice","choice":"friendly","confidence":0.9,"probabilities":{"friendly":0.9,"hostile":0.1}},"risk":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":{"summary":"duplicated","examples":["charged \"twice\""]}},"probabilities":{"0":1.0}}}}
+escaped-member-names.json: equals the fixture: False
+escaped-names.json: {"model":"jev-latest","usage":{"input_tokens":40,"output_tokens":6},"answers":{"spécial":{"type":"noul","noul":0.5},"quote\"d":{"type":"noul","noul":0.25},"back\\slash":{"type":"choice","choice":"a","confidence":0.6,"probabilities":{"a":0.6,"b":0.4}},"new\nline":{"type":"noul","noul":0.75},"globe 🌍":{"type":"score","score":1.5,"confidence":0.5,"legend":{"0":"low","1":"mid","2":"high"},"probabilities":{"0":0.0,"1":0.5,"2":0.5}},"sl/ash":{"type":"noul","noul":1.0}}}
+escaped-names.json: equals the fixture: False
+models.json: {"models":[{"name":"jev-latest","description":"Fast model","release_date":"2026-08-01"}]}
+models.json: equals the fixture: True
+no-answers.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":0},"answers":{}}
+no-answers.json: equals the fixture: False
+parity-big-exp-unknown.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":1},"answers":{"spam":{"type":"noul","noul":0.5}}}
+parity-big-exp-unknown.json: equals the fixture: False
+result-20.json: {"model":"jev-latest","usage":{"input_tokens":1874,"output_tokens":20},"answers":{"spam":{"type":"noul","noul":0.02},"tone":{"type":"choice","choice":"angry","confidence":0.72,"probabilities":{"calm":0.08,"angry":0.72,"confused":0.2}},"urgency":{"type":"score","score":1.62,"confidence":0.69,"legend":{"0":"can wait","1":"this week","2":"today"},"probabilities":{"0":0.07,"1":0.24,"2":0.69}},"billing":{"type":"noul","noul":0.91},"language":{"type":"choice","choice":"en","confidence":0.97,"probabilities":{"en":0.97,"ja":0.01,"de":0.01,"fr":0.01}},"sentiment":{"type":"score","score":0.95,"confidence":0.41,"legend":{"0":"very negative","1":"negative","2":"neutral","3":"positive","4":"very positive"},"probabilities":{"0":0.41,"1":0.33,"2":0.18,"3":0.06,"4":0.02}},"refund_request":{"type":"noul","noul":0.64},"team":{"type":"choice","choice":"billing","confidence":0.81,"probabilities":{"billing":0.81,"support":0.15,"sales":0.04}},"priority":{"type":"score","score":1.8,"confidence":0.55,"legend":{"0":"low","1":"normal","2":"high","3":"critical"},"probabilities":{"0":0.05,"1":0.25,"2":0.55,"3":0.15}},"pii_present":{"type":"noul","noul":0.11},"product":{"type":"choice","choice":"api","confidence":0.66,"probabilities":{"sdk":0.12,"api":0.66,"dashboard":0.19,"other":0.03}},"clarity":{"type":"score","score":1.5,"confidence":0.6,"legend":{"0":"unclear","1":"partly clear","2":"clear"},"probabilities":{"0":0.1,"1":0.3,"2":0.6}},"needs_human":{"type":"noul","noul":0.83},"channel":{"type":"choice","choice":"email","confidence":0.88,"probabilities":{"email":0.88,"chat":0.1,"phone":0.02}},"complexity":{"type":"score","score":1.1,"confidence":0.5,"legend":{"0":"simple","1":"moderate","2":"complex"},"probabilities":{"0":0.2,"1":0.5,"2":0.3}},"duplicate":{"type":"noul","noul":0.05},"intent":{"type":"choice","choice":"complaint","confidence":0.61,"probabilities":{"question":0.09,"complaint":0.61,"request":0.27,"feedback":0.03}},"effort":{"type":"score","score":0.8,"confidence":0.5,"legend":{"0":"minutes","1":"hours","2":"days"},"probabilities":{"0":0.35,"1":0.5,"2":0.15}},"escalate":{"type":"noul","noul":0.38},"resolution":{"type":"choice","choice":"pending","confidence":0.9,"probabilities":{"resolved":0.07,"pending":0.9,"wontfix":0.03}}}}
+result-20.json: equals the fixture: True
+result.json: {"model":"jev-latest","usage":{"input_tokens":12,"output_tokens":3},"answers":{"spam":{"type":"noul","noul":0.98},"tone":{"type":"choice","choice":"friendly","confidence":0.9,"probabilities":{"friendly":0.9,"hostile":0.1}},"quality":{"type":"score","score":1.7,"confidence":0.8,"legend":{"0":"bad","1":"ok","2":"great"},"probabilities":{"0":0.1,"1":0.1,"2":0.8}}}}
+result.json: equals the fixture: True
+score-flood-mini.json: {"model":"jev-latest","usage":{"input_tokens":1,"output_tokens":1},"answers":{"empty0":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty1":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty2":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty3":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty4":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty5":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty6":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"empty7":{"type":"score","score":0.0,"confidence":0.0,"legend":{},"probabilities":{}},"one0":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one1":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one2":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one3":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one4":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one5":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one6":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}},"one7":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"only"},"probabilities":{"0":1.0}}}}
+score-flood-mini.json: equals the fixture: False
+structured-legend-flood-10k.json: len=616421 sha256=1e3b65a34d4474b198ab91f96aeae733016bf0d33f2a84c92e2c5a1c9e9bf149
+structured-legend-flood-10k.json: equals the fixture: True
+structured-legend-flood-1k.json: len=57418 sha256=f6b478fac3d093f7cf90b86677c165258a6160dc2b36473b25e8f7c8284ea42d
+structured-legend-flood-1k.json: equals the fixture: True
+structured-legend.json: {"model":"custom","usage":{"input_tokens":1,"output_tokens":1},"answers":{"risk":{"type":"score","score":0.0,"confidence":1.0,"legend":{"0":{"summary":"duplicated","examples":["charged twice"]}},"probabilities":{"0":1.0}}}}
+structured-legend.json: equals the fixture: False
+type-last.json: {"model":"jev-latest","usage":{"input_tokens":12,"output_tokens":3},"answers":{"spam":{"type":"noul","noul":0.98},"tone":{"type":"choice","choice":"friendly","confidence":0.9,"probabilities":{"friendly":0.9,"hostile":0.1}},"quality":{"type":"score","score":1.7,"confidence":0.8,"legend":{"0":"bad","1":"ok","2":"great"},"probabilities":{"0":0.1,"1":0.1,"2":0.8}}}}
+type-last.json: equals the fixture: False
+unknown-answer-type.json: {"model":"test","usage":{"input_tokens":1,"output_tokens":1},"answers":{"spam":{"type":"noul","noul":0.9}}}
+unknown-answer-type.json: equals the fixture: False
+R12 noul: {"type":"noul","noul":0.98}
+R12 choice: {"type":"choice","choice":"billing","confidence":0.9,"probabilities":{"billing":0.9,"support":0.1}}
+R14 noul: {"type":"noul","noul":0.98}
+R14 choice: {"type":"choice","choice":"billing","confidence":1.0,"probabilities":{"billing":1.0}}
+R14 score: {"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"bad"},"probabilities":{"0":1.0}}
+R11 structured score: {"type":"score","score":0.0,"confidence":1.0,"legend":{"0":{"examples":["a",{"note":null}]}},"probabilities":{"0":1.0}}
+usage: {"input_tokens":12,"output_tokens":3}
+empty usage: {"input_tokens":null,"output_tokens":null}
+model card: {"name":"jev-latest","description":"Fast model","release_date":"2026-08-01"}
+empty response: {"model":"test","usage":{"input_tokens":null,"output_tokens":null},"answers":{}}
+empty models: {"models":[]}
+model_dump() keys after reading nouls/choices/scores: ['answers', 'model', 'usage']
