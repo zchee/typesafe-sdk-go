@@ -1,0 +1,53 @@
+# 2026-09-25 17:07:42 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/c8084031-5323-4873-8c36-a19f65c9e6ff/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -run ^$ -bench . -benchmem -count=5 ./_spikes/s-c1/
+# load before: 17:07  up 3 days, 16:13, 1 user, load averages: 7.28 7.35 8.80 | kernel: { 7.28 7.35 8.80 } (MAXLOAD=16, waited 0 x 60 s)
+# base: 7b55fe7 + _spikes/s-c1 (src-sha256 46a5e88ba297945d)
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/s-c1
+cpu: Apple M3 Max
+BenchmarkCall/q3/floor-16         	 4265722	       304.5 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q3/floor-16         	 3714241	       312.9 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q3/floor-16         	 4396676	       285.2 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q3/floor-16         	 3883336	       296.4 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q3/floor-16         	 4275744	       277.0 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q3/esonic-16        	 9317077	       128.0 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q3/esonic-16        	 9265773	       128.4 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q3/esonic-16        	 9491067	       127.4 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q3/esonic-16        	 9282192	       128.5 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q3/esonic-16        	 9608708	       126.7 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q3/sdk-16           	  244282	      4588 ns/op	    3276 B/op	      23 allocs/op
+BenchmarkCall/q3/sdk-16           	  268386	      4562 ns/op	    3275 B/op	      23 allocs/op
+BenchmarkCall/q3/sdk-16           	  269770	      4723 ns/op	    3267 B/op	      23 allocs/op
+BenchmarkCall/q3/sdk-16           	  258441	      4647 ns/op	    3264 B/op	      23 allocs/op
+BenchmarkCall/q3/sdk-16           	  261519	      4713 ns/op	    3279 B/op	      23 allocs/op
+BenchmarkCall/q3/naive-16         	  131005	      9006 ns/op	    7994 B/op	     119 allocs/op
+BenchmarkCall/q3/naive-16         	  137835	      8513 ns/op	    7993 B/op	     119 allocs/op
+BenchmarkCall/q3/naive-16         	  144252	      8507 ns/op	    7992 B/op	     119 allocs/op
+BenchmarkCall/q3/naive-16         	  140612	      8968 ns/op	    7995 B/op	     119 allocs/op
+BenchmarkCall/q3/naive-16         	  131690	      9230 ns/op	    7995 B/op	     119 allocs/op
+BenchmarkCall/q20/floor-16        	 3635004	       329.3 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q20/floor-16        	 3664670	       309.6 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q20/floor-16        	 3731838	       338.1 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q20/floor-16        	 3616905	       308.9 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q20/floor-16        	 3914008	       323.5 ns/op	     621 B/op	       7 allocs/op
+BenchmarkCall/q20/esonic-16       	 9408345	       128.7 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q20/esonic-16       	 9139365	       130.1 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q20/esonic-16       	 9282826	       129.4 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q20/esonic-16       	 9422288	       127.4 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q20/esonic-16       	 9446428	       128.6 ns/op	      16 B/op	       1 allocs/op
+BenchmarkCall/q20/sdk-16          	   51974	     22723 ns/op	   11343 B/op	      43 allocs/op
+BenchmarkCall/q20/sdk-16          	   52766	     25426 ns/op	   11381 B/op	      43 allocs/op
+BenchmarkCall/q20/sdk-16          	   42481	     26894 ns/op	   11292 B/op	      43 allocs/op
+BenchmarkCall/q20/sdk-16          	   52780	     23282 ns/op	   11421 B/op	      43 allocs/op
+BenchmarkCall/q20/sdk-16          	   51518	     22931 ns/op	   11390 B/op	      43 allocs/op
+BenchmarkCall/q20/naive-16        	   30444	     39473 ns/op	   31058 B/op	     522 allocs/op
+BenchmarkCall/q20/naive-16        	   30894	     40294 ns/op	   31069 B/op	     522 allocs/op
+BenchmarkCall/q20/naive-16        	   29577	     39782 ns/op	   31060 B/op	     522 allocs/op
+BenchmarkCall/q20/naive-16        	   28867	     41113 ns/op	   31078 B/op	     522 allocs/op
+BenchmarkCall/q20/naive-16        	   30212	     39549 ns/op	   31067 B/op	     522 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-c1	48.269s
+# exit 0 at 2026-09-25 17:08:31 JST
+# load after: 17:08  up 3 days, 16:14, 1 user, load averages: 7.71 7.41 8.75 | kernel: { 7.71 7.41 8.75 }

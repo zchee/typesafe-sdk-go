@@ -1,0 +1,8 @@
+# 2026-09-25 08:07:53 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -race -count=1 ./_spikes/s-c1/
+# load before:  08:07:53 up 1 day,  3:32,  1 user,  load average: 1.28, 0.29, 0.36 | kernel: 1.28 0.29 0.36 1/594 63097 (MAXLOAD=none, waited 0 x 60 s)
+# base: 7b55fe7 + _spikes/s-c1 (src-sha256 46a5e88ba297945d)
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-c1	1.433s
+# exit 0 at 2026-09-25 08:08:02 UTC
+# load after:  08:08:02 up 1 day,  3:32,  1 user,  load average: 1.26, 0.30, 0.36 | kernel: 1.26 0.30 0.36 1/595 70301

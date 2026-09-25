@@ -1,0 +1,61 @@
+# 2026-09-25 08:07:52 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -v -run ^(TestSystemOneDecodes|TestRequestShape|TestGetBodyReplay|TestReadBody|TestSystemOneCap)$ ./_spikes/s-c1/
+# load before:  08:07:52 up 1 day,  3:32,  1 user,  load average: 0.00, 0.03, 0.27 | kernel: 0.00 0.03 0.27 1/594 62952 (MAXLOAD=none, waited 0 x 60 s)
+# base: 7b55fe7 + _spikes/s-c1 (src-sha256 46a5e88ba297945d)
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+=== RUN   TestSystemOneDecodes
+=== RUN   TestSystemOneDecodes/q3
+=== RUN   TestSystemOneDecodes/q20
+--- PASS: TestSystemOneDecodes (0.00s)
+    --- PASS: TestSystemOneDecodes/q3 (0.00s)
+    --- PASS: TestSystemOneDecodes/q20 (0.00s)
+=== RUN   TestRequestShape
+=== RUN   TestRequestShape/q3
+=== RUN   TestRequestShape/q20
+--- PASS: TestRequestShape (0.00s)
+    --- PASS: TestRequestShape/q3 (0.00s)
+    --- PASS: TestRequestShape/q20 (0.00s)
+=== RUN   TestGetBodyReplay
+--- PASS: TestGetBodyReplay (0.00s)
+=== RUN   TestReadBody
+=== RUN   TestReadBody/success:_declared_body_above_the_initial_buffer_grows_to_its_length
+=== RUN   TestReadBody/success:_declared_body_exactly_at_the_cap
+=== RUN   TestReadBody/success:_undeclared_body_in_small_chunks
+=== RUN   TestReadBody/success:_undeclared_empty_body
+=== RUN   TestReadBody/error:_declared_length_over_the_cap_is_refused_before_any_read
+=== RUN   TestReadBody/error:_undeclared_body_over_the_cap_stops_at_cap_+_1
+=== RUN   TestReadBody/error:_declared_at_the_cap_but_longer_stops_at_cap_+_1
+=== RUN   TestReadBody/error:_declared_longer_than_sent_ends_early
+=== RUN   TestReadBody/success:_declared_body_fits_its_exact_buffer
+=== RUN   TestReadBody/success:_undeclared_body_exactly_at_the_cap
+=== RUN   TestReadBody/success:_declared_zero,_empty_body
+=== RUN   TestReadBody/success:_body_longer_than_declared_is_read_on
+--- PASS: TestReadBody (0.00s)
+    --- PASS: TestReadBody/success:_declared_body_above_the_initial_buffer_grows_to_its_length (0.00s)
+    --- PASS: TestReadBody/success:_declared_body_exactly_at_the_cap (0.00s)
+    --- PASS: TestReadBody/success:_undeclared_body_in_small_chunks (0.00s)
+    --- PASS: TestReadBody/success:_undeclared_empty_body (0.00s)
+    --- PASS: TestReadBody/error:_declared_length_over_the_cap_is_refused_before_any_read (0.00s)
+    --- PASS: TestReadBody/error:_undeclared_body_over_the_cap_stops_at_cap_+_1 (0.00s)
+    --- PASS: TestReadBody/error:_declared_at_the_cap_but_longer_stops_at_cap_+_1 (0.00s)
+    --- PASS: TestReadBody/error:_declared_longer_than_sent_ends_early (0.00s)
+    --- PASS: TestReadBody/success:_declared_body_fits_its_exact_buffer (0.00s)
+    --- PASS: TestReadBody/success:_undeclared_body_exactly_at_the_cap (0.00s)
+    --- PASS: TestReadBody/success:_declared_zero,_empty_body (0.00s)
+    --- PASS: TestReadBody/success:_body_longer_than_declared_is_read_on (0.00s)
+=== RUN   TestSystemOneCap
+=== RUN   TestSystemOneCap/error:_declared_16_MiB_with_a_10-byte_body_ends_early
+=== RUN   TestSystemOneCap/error:_declared_16_MiB_+_1_is_refused_before_reading
+=== RUN   TestSystemOneCap/error:_undeclared_16_MiB_+_1_stops_at_cap_+_1
+=== RUN   TestSystemOneCap/success:_declared_16_MiB_exactly
+=== RUN   TestSystemOneCap/success:_undeclared_16_MiB_exactly
+--- PASS: TestSystemOneCap (0.07s)
+    --- PASS: TestSystemOneCap/error:_declared_16_MiB_with_a_10-byte_body_ends_early (0.00s)
+    --- PASS: TestSystemOneCap/error:_declared_16_MiB_+_1_is_refused_before_reading (0.00s)
+    --- PASS: TestSystemOneCap/error:_undeclared_16_MiB_+_1_stops_at_cap_+_1 (0.01s)
+    --- PASS: TestSystemOneCap/success:_declared_16_MiB_exactly (0.03s)
+    --- PASS: TestSystemOneCap/success:_undeclared_16_MiB_exactly (0.02s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/s-c1	0.085s
+# exit 0 at 2026-09-25 08:07:53 UTC
+# load after:  08:07:53 up 1 day,  3:32,  1 user,  load average: 1.28, 0.29, 0.36 | kernel: 1.28 0.29 0.36 1/594 63087

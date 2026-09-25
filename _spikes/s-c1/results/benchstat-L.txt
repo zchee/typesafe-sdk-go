@@ -1,0 +1,42 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/s-c1
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+                   │ _spikes/s-c1/results/bench-L.txt │
+                   │              sec/op              │
+Call/q3/floor-44                         564.8n ± ∞ ¹
+Call/q3/esonic-44                        93.51n ± ∞ ¹
+Call/q3/sdk-44                           5.837µ ± ∞ ¹
+Call/q3/naive-44                         16.76µ ± ∞ ¹
+Call/q20/floor-44                        601.7n ± ∞ ¹
+Call/q20/esonic-44                       93.44n ± ∞ ¹
+Call/q20/sdk-44                          24.25µ ± ∞ ¹
+Call/q20/naive-44                        77.34µ ± ∞ ¹
+geomean                                  2.198µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ _spikes/s-c1/results/bench-L.txt │
+                   │               B/op               │
+Call/q3/floor-44                          623.0 ± ∞ ¹
+Call/q3/esonic-44                         16.00 ± ∞ ¹
+Call/q3/sdk-44                          3.252Ki ± ∞ ¹
+Call/q3/naive-44                        7.856Ki ± ∞ ¹
+Call/q20/floor-44                         624.0 ± ∞ ¹
+Call/q20/esonic-44                        16.00 ± ∞ ¹
+Call/q20/sdk-44                         11.60Ki ± ∞ ¹
+Call/q20/naive-44                       30.63Ki ± ∞ ¹
+geomean                                   999.1
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ _spikes/s-c1/results/bench-L.txt │
+                   │            allocs/op             │
+Call/q3/floor-44                          7.000 ± ∞ ¹
+Call/q3/esonic-44                         1.000 ± ∞ ¹
+Call/q3/sdk-44                            23.00 ± ∞ ¹
+Call/q3/naive-44                          119.0 ± ∞ ¹
+Call/q20/floor-44                         7.000 ± ∞ ¹
+Call/q20/esonic-44                        1.000 ± ∞ ¹
+Call/q20/sdk-44                           43.00 ± ∞ ¹
+Call/q20/naive-44                         522.0 ± ∞ ¹
+geomean                                   15.30
+¹ need >= 6 samples for confidence interval at level 0.95

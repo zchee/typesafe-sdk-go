@@ -1,0 +1,42 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/s-c1
+cpu: Apple M3 Max
+                   │ _spikes/s-c1/results/bench-M.txt │
+                   │              sec/op              │
+Call/q3/floor-16                         296.4n ± ∞ ¹
+Call/q3/esonic-16                        128.0n ± ∞ ¹
+Call/q3/sdk-16                           4.647µ ± ∞ ¹
+Call/q3/naive-16                         8.968µ ± ∞ ¹
+Call/q20/floor-16                        323.5n ± ∞ ¹
+Call/q20/esonic-16                       128.7n ± ∞ ¹
+Call/q20/sdk-16                          23.28µ ± ∞ ¹
+Call/q20/naive-16                        39.78µ ± ∞ ¹
+geomean                                  1.672µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ _spikes/s-c1/results/bench-M.txt │
+                   │               B/op               │
+Call/q3/floor-16                          621.0 ± ∞ ¹
+Call/q3/esonic-16                         16.00 ± ∞ ¹
+Call/q3/sdk-16                          3.198Ki ± ∞ ¹
+Call/q3/naive-16                        7.807Ki ± ∞ ¹
+Call/q20/floor-16                         621.0 ± ∞ ¹
+Call/q20/esonic-16                        16.00 ± ∞ ¹
+Call/q20/sdk-16                         11.11Ki ± ∞ ¹
+Call/q20/naive-16                       30.34Ki ± ∞ ¹
+geomean                                   988.8
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ _spikes/s-c1/results/bench-M.txt │
+                   │            allocs/op             │
+Call/q3/floor-16                          7.000 ± ∞ ¹
+Call/q3/esonic-16                         1.000 ± ∞ ¹
+Call/q3/sdk-16                            23.00 ± ∞ ¹
+Call/q3/naive-16                          119.0 ± ∞ ¹
+Call/q20/floor-16                         7.000 ± ∞ ¹
+Call/q20/esonic-16                        1.000 ± ∞ ¹
+Call/q20/sdk-16                           43.00 ± ∞ ¹
+Call/q20/naive-16                         522.0 ± ∞ ¹
+geomean                                   15.30
+¹ need >= 6 samples for confidence interval at level 0.95
