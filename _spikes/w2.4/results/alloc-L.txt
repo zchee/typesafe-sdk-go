@@ -1,0 +1,31 @@
+# 2026-09-25 19:59:59 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocResponseJSON$ -v .
+# load before:  19:59:59 up 1 day, 15:24,  1 user,  load average: 0.11, 0.09, 0.29 | kernel: 0.11 0.09 0.29 1/603 271123 (MAXLOAD=none, waited 0 x 60 s)
+# base: eaedbdd
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+=== RUN   TestAllocResponseJSON
+=== RUN   TestAllocResponseJSON/models.json
+    alloc_json_test.go:68: runs of models.json marshal                    mallocs/bytes: 1/96 1/96 1/96 1/96 1/96
+    alloc_json_test.go:71: runs of models.json unmarshal                  mallocs/bytes: 2/80 2/80 2/80 2/80 2/80
+    alloc_json_test.go:93: JSON models.json                      payload=89      marshal allocs=1 bytes=96      unmarshal allocs=2 bytes=80
+=== RUN   TestAllocResponseJSON/result-20.json
+    alloc_json_test.go:84: runs of result-20.json marshal                 mallocs/bytes: 1/4864 1/4864 1/4864 1/4864 1/4864
+    alloc_json_test.go:87: runs of result-20.json unmarshal               mallocs/bytes: 25/6520 25/6520 25/6520 25/6520 25/6520
+    alloc_json_test.go:93: JSON result-20.json                   payload=2253    marshal allocs=1 bytes=4864    unmarshal allocs=25 bytes=6520
+=== RUN   TestAllocResponseJSON/result.json
+    alloc_json_test.go:84: runs of result.json marshal                    mallocs/bytes: 1/704 1/704 1/704 1/704 1/704
+    alloc_json_test.go:87: runs of result.json unmarshal                  mallocs/bytes: 5/752 5/752 5/752 5/752 5/752
+    alloc_json_test.go:93: JSON result.json                      payload=364     marshal allocs=1 bytes=704     unmarshal allocs=5 bytes=752
+=== RUN   TestAllocResponseJSON/structured-legend-flood-1k.json
+    alloc_json_test.go:84: runs of structured-legend-flood-1k.json marshal mallocs/bytes: 1/98304 1/98304 1/98304 1/98304 1/98304
+    alloc_json_test.go:87: runs of structured-legend-flood-1k.json unmarshal mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
+    alloc_json_test.go:93: JSON structured-legend-flood-1k.json  payload=57418   marshal allocs=1 bytes=98304   unmarshal allocs=91 bytes=213896
+--- PASS: TestAllocResponseJSON (0.01s)
+    --- PASS: TestAllocResponseJSON/models.json (0.00s)
+    --- PASS: TestAllocResponseJSON/result-20.json (0.00s)
+    --- PASS: TestAllocResponseJSON/result.json (0.00s)
+    --- PASS: TestAllocResponseJSON/structured-legend-flood-1k.json (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.015s
+# exit 0 at 2026-09-25 19:59:59 UTC
+# load after:  19:59:59 up 1 day, 15:24,  1 user,  load average: 0.11, 0.09, 0.29 | kernel: 0.11 0.09 0.29 1/603 271309

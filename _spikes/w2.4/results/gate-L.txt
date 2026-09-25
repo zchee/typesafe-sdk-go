@@ -1,0 +1,17 @@
+gate (L) start 2026-09-25 19:59:59 UTC base eaedbdd
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+vet-ok
+ok  	github.com/zchee/typesafe-sdk-go	4.136s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.033s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.784s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.310s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.042s
+race-ok
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.641s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.570s
+nonrace-internal-ok
+ok  	github.com/zchee/typesafe-sdk-go	3.012s
+root-alloc-ok
+gate (L) end rc=0 2026-09-25 20:00:16 UTC

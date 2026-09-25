@@ -1,0 +1,14 @@
+== 860dc27 2026-09-26 05:01:00 JST
+ok  	github.com/zchee/typesafe-sdk-go	4.107s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.771s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	9.225s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.579s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.021s
+rc=0
+== 0066e71 2026-09-26 05:01:11 JST
+ok  	github.com/zchee/typesafe-sdk-go	4.153s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.749s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	9.262s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.574s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.018s
+rc=0
