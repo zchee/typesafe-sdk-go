@@ -1,0 +1,389 @@
+# 2026-09-25 17:19:14 UTC (L) tree=7fd43ce+k29 lock=/tmp/ts-spike/bench.lock loops=44 GOEXPERIMENT= go test -race -count=20 -cpu 2 -run ^(TestFanOut|TestWaiterFallThrough|TestALPNHTTP1Only)$ -v ./internal/h2gate/
+# load before:  17:19:14 up 1 day, 12:44,  1 user,  load average: 0.00, 0.08, 0.34
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  17:19:19 up 1 day, 12:44,  1 user,  load average: 3.60, 0.83, 0.58
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.01s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.944 waiter_wire_p99_ms=34.311 warm_wire_p50_ms=2.454 warm_wire_p99_ms=7.480 answer_to_first_waiter_write_min_ms=0.136 answer_to_first_waiter_write_p50_ms=0.142 leader_write_to_first_waiter_write_p50_ms=20.686
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=307.318 wall_max_ms=325.729 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.64s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.53s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.11s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.972 last_waiter_done_ms=514.451 leader_done_ms=514.568 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.286 waiter_wire_p99_ms=38.665 warm_wire_p50_ms=2.611 warm_wire_p99_ms=7.551 answer_to_first_waiter_write_min_ms=0.137 answer_to_first_waiter_write_p50_ms=0.141 leader_write_to_first_waiter_write_p50_ms=20.671
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=313.158 wall_max_ms=314.825 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.64s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.52s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.12s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.026 last_waiter_done_ms=517.737 leader_done_ms=517.834 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.01s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.559 waiter_wire_p99_ms=37.662 warm_wire_p50_ms=2.640 warm_wire_p99_ms=7.533 answer_to_first_waiter_write_min_ms=0.139 answer_to_first_waiter_write_p50_ms=0.146 leader_write_to_first_waiter_write_p50_ms=20.655
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=313.305 wall_max_ms=319.709 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.64s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.50s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.14s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.334 last_waiter_done_ms=522.567 leader_done_ms=522.736 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.76s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.830 waiter_wire_p99_ms=39.532 warm_wire_p50_ms=3.410 warm_wire_p99_ms=10.068 answer_to_first_waiter_write_min_ms=0.146 answer_to_first_waiter_write_p50_ms=0.158 leader_write_to_first_waiter_write_p50_ms=20.674
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=306.470 wall_max_ms=315.016 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.62s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.53s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.09s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.299 last_waiter_done_ms=519.871 leader_done_ms=519.990 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.76s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.01s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.718 waiter_wire_p99_ms=34.177 warm_wire_p50_ms=2.461 warm_wire_p99_ms=7.798 answer_to_first_waiter_write_min_ms=0.146 answer_to_first_waiter_write_p50_ms=0.158 leader_write_to_first_waiter_write_p50_ms=20.588
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=305.759 wall_max_ms=310.584 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.60s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.53s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.07s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.480 last_waiter_done_ms=513.564 leader_done_ms=513.698 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.74s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.51s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.356 waiter_wire_p99_ms=31.356 warm_wire_p50_ms=2.524 warm_wire_p99_ms=9.371 answer_to_first_waiter_write_min_ms=0.137 answer_to_first_waiter_write_p50_ms=0.145 leader_write_to_first_waiter_write_p50_ms=20.614
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=304.943 wall_max_ms=312.548 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.57s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.51s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.06s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.119 last_waiter_done_ms=518.713 leader_done_ms=518.844 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.882 waiter_wire_p99_ms=44.641 warm_wire_p50_ms=2.588 warm_wire_p99_ms=8.550 answer_to_first_waiter_write_min_ms=0.148 answer_to_first_waiter_write_p50_ms=0.169 leader_write_to_first_waiter_write_p50_ms=20.883
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=310.783 wall_max_ms=315.913 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.66s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.54s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.12s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.079 last_waiter_done_ms=516.125 leader_done_ms=516.250 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.935 waiter_wire_p99_ms=35.353 warm_wire_p50_ms=2.406 warm_wire_p99_ms=6.675 answer_to_first_waiter_write_min_ms=0.140 answer_to_first_waiter_write_p50_ms=0.149 leader_write_to_first_waiter_write_p50_ms=20.680
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=307.929 wall_max_ms=320.361 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.61s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.51s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.10s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.290 last_waiter_done_ms=518.863 leader_done_ms=519.014 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.76s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.368 waiter_wire_p99_ms=34.092 warm_wire_p50_ms=2.665 warm_wire_p99_ms=12.265 answer_to_first_waiter_write_min_ms=0.139 answer_to_first_waiter_write_p50_ms=0.148 leader_write_to_first_waiter_write_p50_ms=20.474
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=307.837 wall_max_ms=315.525 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.62s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.52s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.09s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.620 last_waiter_done_ms=513.851 leader_done_ms=513.948 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.51s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.01s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.586 waiter_wire_p99_ms=36.954 warm_wire_p50_ms=2.865 warm_wire_p99_ms=6.205 answer_to_first_waiter_write_min_ms=0.140 answer_to_first_waiter_write_p50_ms=0.150 leader_write_to_first_waiter_write_p50_ms=20.717
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=309.325 wall_max_ms=321.661 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.62s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.51s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.10s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.614 last_waiter_done_ms=514.921 leader_done_ms=515.041 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.429 waiter_wire_p99_ms=38.861 warm_wire_p50_ms=2.420 warm_wire_p99_ms=6.619 answer_to_first_waiter_write_min_ms=0.140 answer_to_first_waiter_write_p50_ms=0.152 leader_write_to_first_waiter_write_p50_ms=20.488
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=309.851 wall_max_ms=322.950 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.60s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.49s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.11s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.928 last_waiter_done_ms=514.313 leader_done_ms=514.429 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=30.174 waiter_wire_p99_ms=36.451 warm_wire_p50_ms=2.341 warm_wire_p99_ms=6.936 answer_to_first_waiter_write_min_ms=0.143 answer_to_first_waiter_write_p50_ms=0.147 leader_write_to_first_waiter_write_p50_ms=20.740
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=307.794 wall_max_ms=316.085 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.61s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.52s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.10s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.222 last_waiter_done_ms=515.252 leader_done_ms=515.348 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.436 waiter_wire_p99_ms=35.159 warm_wire_p50_ms=2.646 warm_wire_p99_ms=12.853 answer_to_first_waiter_write_min_ms=0.147 answer_to_first_waiter_write_p50_ms=0.161 leader_write_to_first_waiter_write_p50_ms=20.646
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=310.469 wall_max_ms=318.032 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.61s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.50s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.11s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.014 last_waiter_done_ms=515.397 leader_done_ms=515.506 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.76s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.03s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=30.213 waiter_wire_p99_ms=35.145 warm_wire_p50_ms=2.584 warm_wire_p99_ms=6.431 answer_to_first_waiter_write_min_ms=0.142 answer_to_first_waiter_write_p50_ms=0.149 leader_write_to_first_waiter_write_p50_ms=20.738
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=307.814 wall_max_ms=314.072 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.61s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.53s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.08s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.168 last_waiter_done_ms=518.516 leader_done_ms=518.652 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.76s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.23s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.434 waiter_wire_p99_ms=33.060 warm_wire_p50_ms=2.875 warm_wire_p99_ms=7.939 answer_to_first_waiter_write_min_ms=0.142 answer_to_first_waiter_write_p50_ms=0.154 leader_write_to_first_waiter_write_p50_ms=20.669
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=309.133 wall_max_ms=316.862 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.59s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.49s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.10s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.181 last_waiter_done_ms=514.163 leader_done_ms=514.297 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.74s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.01s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.679 waiter_wire_p99_ms=35.449 warm_wire_p50_ms=2.188 warm_wire_p99_ms=6.369 answer_to_first_waiter_write_min_ms=0.145 answer_to_first_waiter_write_p50_ms=0.149 leader_write_to_first_waiter_write_p50_ms=20.689
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=308.974 wall_max_ms=312.388 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.59s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.51s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.08s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.314 last_waiter_done_ms=515.347 leader_done_ms=515.446 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.74s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.717 waiter_wire_p99_ms=42.640 warm_wire_p50_ms=2.549 warm_wire_p99_ms=6.594 answer_to_first_waiter_write_min_ms=0.139 answer_to_first_waiter_write_p50_ms=0.148 leader_write_to_first_waiter_write_p50_ms=20.682
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=312.338 wall_max_ms=322.476 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.63s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.51s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.12s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.140 last_waiter_done_ms=516.192 leader_done_ms=516.301 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.02s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.272 waiter_wire_p99_ms=33.137 warm_wire_p50_ms=2.639 warm_wire_p99_ms=21.778 answer_to_first_waiter_write_min_ms=0.139 answer_to_first_waiter_write_p50_ms=0.151 leader_write_to_first_waiter_write_p50_ms=20.720
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=309.706 wall_max_ms=318.493 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.62s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.53s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.09s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.918 last_waiter_done_ms=514.753 leader_done_ms=514.858 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.74s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=30.183 waiter_wire_p99_ms=35.233 warm_wire_p50_ms=2.531 warm_wire_p99_ms=7.031 answer_to_first_waiter_write_min_ms=0.145 answer_to_first_waiter_write_p50_ms=0.159 leader_write_to_first_waiter_write_p50_ms=20.708
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=308.432 wall_max_ms=326.272 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.63s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.52s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.11s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=500.885 last_waiter_done_ms=520.321 leader_done_ms=520.427 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+=== RUN   TestALPNHTTP1Only
+--- PASS: TestALPNHTTP1Only (0.00s)
+=== RUN   TestFanOut
+=== RUN   TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none
+    gate_test.go:159: RESULT case=cold64+warm64 reps=10 ordering_ok=10/10 lead_delay_ms=20.000 waiter_wire_p50_ms=29.443 waiter_wire_p99_ms=34.758 warm_wire_p50_ms=2.395 warm_wire_p99_ms=8.056 answer_to_first_waiter_write_min_ms=0.140 answer_to_first_waiter_write_p50_ms=0.158 leader_write_to_first_waiter_write_p50_ms=20.476
+=== RUN   TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection
+    gate_test.go:190: RESULT case=200vs8 reps=10 deadline_ms=2000.000 service_ms=10.000 wall_p50_ms=309.131 wall_max_ms=324.746 max_active_streams=8 refused_streams_total=0
+--- PASS: TestFanOut (3.62s)
+    --- PASS: TestFanOut/success:_cold_64_on_1_connection_with_the_leader_answered_first;_warm_64_on_none (0.50s)
+    --- PASS: TestFanOut/success:_200_calls_against_MAX_CONCURRENT_STREAMS_8_all_succeed_within_2_s_on_1_connection (3.12s)
+=== RUN   TestWaiterFallThrough
+=== RUN   TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only
+    gate_test.go:401: RESULT case=firsthold-bound hold_bound_ms=500.000 leader_write_to_first_waiter_write_ms=501.129 last_waiter_done_ms=517.877 leader_done_ms=517.976 accepts=1
+=== RUN   TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s
+=== RUN   TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection
+--- PASS: TestWaiterFallThrough (0.75s)
+    --- PASS: TestWaiterFallThrough/success:_a_hung_first_response_holds_the_waiters_for_the_hold_bound_only (0.52s)
+    --- PASS: TestWaiterFallThrough/success:_at_the_default_bounds_on_fake_time,_a_first_response_hung_60_s_holds_the_waiters_20_s (0.01s)
+    --- PASS: TestWaiterFallThrough/success:_a_leader's_dial_outlasts_the_wait_bound;_the_waiters_fall_through_and_share_its_connection (0.22s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	88.479s
+# load at the end:  17:20:50 up 1 day, 12:45,  2 users,  load average: 35.97, 12.53, 4.77
+# exit 0 at 2026-09-25 17:20:50 UTC; yes loops left: []
