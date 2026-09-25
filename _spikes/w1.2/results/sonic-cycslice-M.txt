@@ -1,0 +1,2 @@
+# 2026-09-25 22:18:04 JST go version go1.27.1 darwin/arm64 github.com/bytedance/sonic v1.15.4: sonic_probe cycslice
+cyclic slice: ERR *json.UnsupportedValueError: json: unsupported value: Value nesting too deep

@@ -1,0 +1,11 @@
+# 2026-09-25 21:50:14 JST (date in the run's command): typesafe-sdk-python 0ffd094, pydantic-core 2.46.5, Python 3.14.6; one case per line, name TAB repr(request.content)
+string	b'{"state":"I was charged twice. Please help.","model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+map	b'{"state":{"message":"I was charged twice."},"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+nested	b'{"state":{"name":"ticket","items":[{"id":1,"text":"hi","tags":["a","b"],"ok":true,"meta":{"source":"web","rank":2,"note":null}}]},"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+array	b'{"state":[{"message":"Classify"},null],"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+rawjson	b'{"state":{"a":[1,2,{"b":null}],"c":"d"},"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+control	b'{"state":"\\u0000\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\\n\\u000b\\f\\r\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f\x7f<>&\\"\\\\/\xc3\xa9\xe2\x80\xa8\xe2\x80\xa9\xf0\x9f\x98\x80","model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+floats	b'{"state":[0.00001,9.99e-6,0.0001,0.1,1.5,3.0,-7.0,9999999999999998.0,1e+16,1e+20,1e+21,1e+22,5e-324,1.7976931348623157e+308,-0.0,0.0,9007199254740992.0,1.2345678901234567e+19],"model":"jev-latest","questions":{"q":{"type":"noul","instructions":"?"}}}'
+extra-body	b'{"state":"hi","model":"override-model","questions":{"q":{"type":"noul","instructions":"?"}},"beam_width":4,"nullable":null}'
+extra-state-questions	b'{"state":{"s":1},"model":"jev-latest","questions":{"x":{"type":"noul"}},"z":[1]}'
+typed-questions	b'{"state":"x","model":"jev-latest","questions":{"billing":{"type":"noul","instructions":"Is this about billing?"}}}'

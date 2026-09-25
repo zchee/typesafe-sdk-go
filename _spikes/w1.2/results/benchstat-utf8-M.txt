@@ -1,0 +1,69 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+                                  │ bench-utf8-M.txt │
+                                  │      sec/op      │
+EncodeState/ascii/1KiB/encode-16         150.6n ± 1%
+EncodeState/ascii/1KiB/check-16          17.74n ± 1%
+EncodeState/ascii/64KiB/encode-16        4.728µ ± 1%
+EncodeState/ascii/64KiB/check-16         828.7n ± 1%
+EncodeState/ascii/6MiB/encode-16         445.0µ ± 2%
+EncodeState/ascii/6MiB/check-16          81.85µ ± 2%
+EncodeState/cjk/1KiB/encode-16           555.8n ± 2%
+EncodeState/cjk/1KiB/check-16            426.5n ± 1%
+EncodeState/cjk/64KiB/encode-16          30.96µ ± 1%
+EncodeState/cjk/64KiB/check-16           27.31µ ± 1%
+EncodeState/cjk/6MiB/encode-16           2.964m ± 1%
+EncodeState/cjk/6MiB/check-16            2.618m ± 1%
+geomean                                  9.574µ
+
+                                  │ bench-utf8-M.txt │
+                                  │       B/s        │
+EncodeState/ascii/1KiB/encode-16        6.133Gi ± 1%
+EncodeState/ascii/1KiB/check-16         52.08Gi ± 1%
+EncodeState/ascii/64KiB/encode-16       12.91Gi ± 1%
+EncodeState/ascii/64KiB/check-16        73.64Gi ± 1%
+EncodeState/ascii/6MiB/encode-16        13.17Gi ± 2%
+EncodeState/ascii/6MiB/check-16         71.59Gi ± 2%
+EncodeState/cjk/1KiB/encode-16          1.692Gi ± 2%
+EncodeState/cjk/1KiB/check-16           2.206Gi ± 1%
+EncodeState/cjk/64KiB/encode-16         1.971Gi ± 1%
+EncodeState/cjk/64KiB/check-16          2.235Gi ± 1%
+EncodeState/cjk/6MiB/encode-16          1.977Gi ± 1%
+EncodeState/cjk/6MiB/check-16           2.239Gi ± 1%
+geomean                                 7.242Gi
+
+                                  │ bench-utf8-M.txt │
+                                  │       B/op       │
+EncodeState/ascii/1KiB/encode-16      16.00 ±   0%
+EncodeState/ascii/1KiB/check-16       0.000 ±   0%
+EncodeState/ascii/64KiB/encode-16     16.00 ±   6%
+EncodeState/ascii/64KiB/check-16      0.000 ±   0%
+EncodeState/ascii/6MiB/encode-16    2.316Ki ±  99%
+EncodeState/ascii/6MiB/check-16       0.000 ±   0%
+EncodeState/cjk/1KiB/encode-16        16.00 ±   0%
+EncodeState/cjk/1KiB/check-16         0.000 ±   0%
+EncodeState/cjk/64KiB/encode-16       21.00 ±  24%
+EncodeState/cjk/64KiB/check-16        0.000 ±   0%
+EncodeState/cjk/6MiB/encode-16      15.32Ki ± 100%
+EncodeState/cjk/6MiB/check-16         0.000 ±   0%
+geomean                                            ¹
+¹ summaries must be >0 to compute geomean
+
+                                  │ bench-utf8-M.txt │
+                                  │    allocs/op     │
+EncodeState/ascii/1KiB/encode-16        1.000 ± 0%
+EncodeState/ascii/1KiB/check-16         0.000 ± 0%
+EncodeState/ascii/64KiB/encode-16       1.000 ± 0%
+EncodeState/ascii/64KiB/check-16        0.000 ± 0%
+EncodeState/ascii/6MiB/encode-16        1.000 ± 0%
+EncodeState/ascii/6MiB/check-16         0.000 ± 0%
+EncodeState/cjk/1KiB/encode-16          1.000 ± 0%
+EncodeState/cjk/1KiB/check-16           0.000 ± 0%
+EncodeState/cjk/64KiB/encode-16         1.000 ± 0%
+EncodeState/cjk/64KiB/check-16          0.000 ± 0%
+EncodeState/cjk/6MiB/encode-16          1.000 ± 0%
+EncodeState/cjk/6MiB/check-16           0.000 ± 0%
+geomean                                            ¹
+¹ summaries must be >0 to compute geomean
