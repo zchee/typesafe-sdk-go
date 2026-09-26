@@ -1,0 +1,14 @@
+# 2026-09-26 06:03:39 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -race -count=1 ./...
+# load before:  06:03:39 up 2 days,  1:28,  2 users,  load average: 0.62, 0.31, 0.14 | kernel: 0.62 0.31 0.14 1/620 531831 (MAXLOAD=none, waited 0 x 60 s)
+# base: 93c18a0
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+ok  	github.com/zchee/typesafe-sdk-go	50.328s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.121s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.024s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.813s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.372s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.083s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.044s
+# exit 0 at 2026-09-26 06:04:30 UTC
+# load after:  06:04:30 up 2 days,  1:29,  2 users,  load average: 0.76, 0.41, 0.19 | kernel: 0.76 0.41 0.19 1/619 532567
