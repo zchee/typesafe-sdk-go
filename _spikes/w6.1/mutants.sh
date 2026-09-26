@@ -51,5 +51,26 @@ mutant A-bound-never-fires internal/testsupport/fuzz.go \
 	's/panic\(fmt.Sprintf\("testsupport: fuzz input %s ran past the %v per-input bound", name, d\)\)/_ = fmt.Sprintf("%s%v", name, d)/' \
 	./internal/testsupport/ '^TestBoundFuzzInput$'
 
+# B: the differential. Each lazy-pass mutant makes one last-wins choice
+# first-wins; M5/M6 do so in the visitor; M7 drops skipped answers; M8 cuts
+# a structured level's bytes.
+B=./internal/codec/
+mutant B-M1-lazy-answers-first-wins internal/codec/lazy.go \
+	's/if p.Key == "answers" \{\n\t\t\tanswers = p.Value/if p.Key == "answers" \&\& !answers.Exists() {\n\t\t\tanswers = p.Value/' $B '^FuzzDecodePaths$'
+mutant B-M2-lazy-answer-name-first-wins internal/codec/lazy.go \
+	's/v.set\[i\].structured > 0 \{\n\t\t\td.nodes\[i\] = p.Value/v.set[i].structured > 0 \&\& !d.nodes[i].Exists() {\n\t\t\td.nodes[i] = p.Value/' $B '^FuzzDecodePaths$'
+mutant B-M3-lazy-legend-first-wins internal/codec/lazy.go \
+	's/if p.Key == "legend" \{\n\t\t\t\tlegend = p.Value/if p.Key == "legend" \&\& !legend.Exists() {\n\t\t\t\tlegend = p.Value/' $B '^FuzzDecodePaths$'
+mutant B-M4-lazy-level-first-wins internal/codec/lazy.go \
+	's/\t\t\td.raws\[base\+j\] = raw\n/\t\t\tif d.raws[base+j] == "" {\n\t\t\t\td.raws[base+j] = raw\n\t\t\t}\n/' $B '^FuzzDecodePaths$'
+mutant B-M5-visitor-level-first-value internal/codec/commit.go \
+	's/(mixed = mixed \|\| v.legend\[folds\[j\].first\].key != l.key\n)\t\t\tlegend\[j\].Description = desc\n/$1/' $B '^FuzzDecodePaths$'
+mutant B-M6-visitor-answer-first-value internal/codec/commit.go \
+	's/if i := v.find\(e.name\); i >= 0 \{\n\t\tv.set\[i\] = e\n/if i := v.find(e.name); i >= 0 {\n/' $B '^FuzzDecodePaths$'
+mutant B-M7-skipped-last-only internal/codec/decode.go \
+	's/if !e.err.set && e.ans.Kind == wire.KindUnknown \{\n\t\t\tskipped.add\(e.name, e.typ\)/if !e.err.set \&\& e.ans.Kind == wire.KindUnknown \&\& i == len(v.set)-1 {\n\t\t\tskipped.add(e.name, e.typ)/' $B '^FuzzDecodePaths$'
+mutant B-M8-lazy-raw-cut internal/codec/lazy.go \
+	's/\t\t\td.raws\[base\+j\] = raw\n/\t\t\td.raws[base+j] = raw[:len(raw)-1]\n/' $B '^FuzzDecodePaths$'
+
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"
