@@ -23,3 +23,34 @@ exit=1
 ## case bad: a truncated JSON file
 jq: parse error: Unfinished JSON term at EOF at line 1, column 16
 exit=5
+
+# second run, 2026-09-26 17:06:07 JST (M) 3e05853+worktree: the same four cases against the step with its AVX-512 and flags-digest line; no /tmp/profile.*.out existed (0); darwin has no /proc/cpuinfo, so the line reads AVX-512 no with the digest of an empty flag list
+
+## case empty
+::error title=AC-P7 report::no CodSpeed results file under $RUNNER_TEMP or /tmp
+exit=1
+
+## case real
+- CPU: , 16 CPUs, AVX-512 no, flags digest 36a9e7f1c95b
+| sdk | 4.083 | 4.375 | 5.006 | 24111 |
+| naive | 2.5 | 3 | 3.786 | 31000 |
+| sdk / naive | 1.633 | 1.458 | 1.322 |
+exit=0
+
+## case nonaive
+- CPU: , 16 CPUs, AVX-512 no, flags digest 36a9e7f1c95b
+| sdk | 4.083 | 4.375 | 5.006 | 24111 |
+| naive | – | – | – | – |
+| sdk / naive | – | – | – |
+::error title=AC-P7 report::no BenchmarkCall row in the results for: naive
+exit=1
+
+## case bad
+- CPU: , 16 CPUs, AVX-512 no, flags digest 36a9e7f1c95b
+jq: parse error: Unfinished JSON term at EOF at line 1, column 16
+exit=5
+
+## the host line's commands on (L) (2026-09-26 17:06:08 JST, ssh debian-13-trixie, real /proc/cpuinfo)
+- CPU: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz, 44 CPUs, AVX-512 yes, flags digest e8bd8076a11e
+flag count: 112
+exit=0

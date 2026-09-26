@@ -12,9 +12,10 @@ median and by mean (go test's ns/op, the one AC-P7 reads under ruling R108),
 and sdk's own three values. It then prints K7 under ruling R109: the counted
 runs (successful push runs on main from K7_FIRST_RUN on) per CPU model, with
 the spread, (largest - smallest) / smallest, of BenchmarkCall/sdk's mean on
-each model, and beside it the spread of the sdk/naive mean ratio over the
-counted runs of any model. Last, for comparison, both spreads over every run
-in the file, in total and per CPU model.
+each model, then per model and AVX-512 exposure (the amendment proposed
+beside R109), and beside it the spread of the sdk/naive mean ratio over the
+counted runs of any host. Last, for comparison, both spreads over every run
+in the file, in total and per host.
 """
 
 import csv
@@ -57,22 +58,65 @@ def spread(values: list[float]) -> str:
     return f"{(max(values) - min(values)) / min(values) * 100:.2f} % over {len(values)} runs"
 
 
+def model(run: Run) -> str:
+    """Return the run's CPU model name, ruling R109's K7 group.
+
+    Args:
+        run: The run's rows.
+
+    Returns:
+        The model name the runner reports.
+    """
+    return run["sdk"]["cpu"]
+
+
+def host(run: Run) -> str:
+    """Return the run's CPU model name plus its AVX-512 exposure.
+
+    One model name covers VMs with and without AVX-512, which run about
+    28 % apart, so this is the K7 group proposed beside R109's.
+
+    Args:
+        run: The run's rows.
+
+    Returns:
+        The model name, with " + AVX-512" when the host exposes avx512f.
+    """
+    return model(run) + (" + AVX-512" if run["sdk"]["avx512"] == "yes" else "")
+
+
 def print_spreads(title: str, runs: Iterable[Run], value: Callable[[Run], float]) -> None:
-    """Print the spread of value over runs, in total and per CPU model.
+    """Print the spread of value over runs, in total and per host.
 
     Args:
         title: The quantity's name.
         runs: The runs to take it over.
         value: Returns the quantity for one run.
     """
-    by_cpu: dict[str, list[float]] = {}
+    by_host: dict[str, list[float]] = {}
     total: list[float] = []
     for run in runs:
         v = value(run)
         total.append(v)
-        by_cpu.setdefault(run["sdk"]["cpu"], []).append(v)
-    per_cpu = "; ".join(f"{cpu}: {spread(v)}" for cpu, v in sorted(by_cpu.items()))
-    print(f"- {title}: {spread(total)} ({per_cpu})")
+        by_host.setdefault(host(run), []).append(v)
+    per_host = "; ".join(f"{h}: {spread(v)}" for h, v in sorted(by_host.items()))
+    print(f"- {title}: {spread(total)} ({per_host})")
+
+
+def print_k7(title: str, runs: list[Run], key: Callable[[Run], str]) -> None:
+    """Print K7's count and BenchmarkCall/sdk mean spread per group.
+
+    Args:
+        title: The grouping's name.
+        runs: The counted runs.
+        key: Returns a run's group.
+    """
+    groups: dict[str, list[float]] = {}
+    for r in runs:
+        groups.setdefault(key(r), []).append(float(r["sdk"]["mean"]))
+    print(f"{title}:")
+    for g, v in sorted(groups.items()):
+        print(f"- {g}: {len(v)} of 20 runs; BenchmarkCall/sdk mean spread {spread(v)}")
 
 
 def main() -> int:
@@ -93,7 +137,7 @@ def main() -> int:
         sdk, naive = r["sdk"], r["naive"]
         ratios = " | ".join(f"{float(sdk[s]) / float(naive[s]):.3f}" for s in STATS)
         values = " | ".join(f"{float(sdk[s]) * 1e6:.3f}" for s in STATS)
-        cpu = sdk["cpu"].removeprefix("AMD EPYC ")
+        cpu = host(r).removeprefix("AMD EPYC ")
         print(f"| {sdk['commit']} | {sdk['event']} {sdk['branch']} | {g} | {sdk['codspeed_run']} | {cpu} | {ratios} | {values} |")
     counted = [r for g, r in complete.items() if int(g) >= K7_FIRST_RUN and r["sdk"]["event"] == "push" and r["sdk"]["branch"] == "main"]
 
@@ -103,16 +147,13 @@ def main() -> int:
     def mean_ratio(r: Run) -> float:
         return float(r["sdk"]["mean"]) / float(r["naive"]["mean"])
 
-    by_cpu: dict[str, list[float]] = {}
-    for r in counted:
-        by_cpu.setdefault(r["sdk"]["cpu"], []).append(sdk_mean(r))
     print()
-    print(f"K7 (ruling R109), successful push runs on main from {K7_FIRST_RUN} on, counted per CPU model;")
-    print("blocking needs 20 runs on one model with BenchmarkCall/sdk's mean within 5 %:")
-    for cpu, v in sorted(by_cpu.items()):
-        print(f"- {cpu}: {len(v)} of 20 runs; BenchmarkCall/sdk mean spread {spread(v)}")
+    print(f"K7, successful push runs on main from {K7_FIRST_RUN} on; blocking needs 20 runs in one group")
+    print("with BenchmarkCall/sdk's mean within 5 %.")
+    print_k7("Per CPU model (ruling R109 as written)", counted, model)
+    print_k7("Per CPU model and AVX-512 exposure (proposed amendment)", counted, host)
     ratio_spread = spread([mean_ratio(r) for r in counted])
-    print(f"- beside it, the sdk/naive mean ratio over those runs, any model (no threshold set): {ratio_spread}")
+    print(f"Beside it, the sdk/naive mean ratio over those runs, any host (no threshold set): {ratio_spread}")
     print()
     print("Every run above, K7 or not, for comparison:")
     print_spreads("BenchmarkCall/sdk mean", complete.values(), sdk_mean)
