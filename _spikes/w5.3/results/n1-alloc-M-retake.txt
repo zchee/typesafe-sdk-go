@@ -1,0 +1,48 @@
+# 2026-09-26 19:47:59 JST (M) TestAllocWholeCall -count=5 before (6f9a3af) and after (1500b71, 0422123's code), re-taken; load { 111.70 110.10 78.22 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+## 6f9a3af
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.01s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+ok  	github.com/zchee/typesafe-sdk-go	0.036s
+## 1500b71
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+ok  	github.com/zchee/typesafe-sdk-go	0.031s
+# end 2026-09-26 19:48:01 JST load { 111.70 110.10 78.22 }

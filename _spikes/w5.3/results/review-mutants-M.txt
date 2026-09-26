@@ -1,0 +1,66 @@
+# mutants for slice 1's review pins (K10, K9), K41's test and N2's follow-up, over the working tree, 2026-09-26 19:45:20 JST, (M), not under the bench lock; the fuzz targets run their seeds and testdata corpus only
+== mutant K10 any error of the cut traversal taken as the cut
+vet ok
+--- FAIL: TestOneScanMatchesWholeScan (0.70s)
+    --- FAIL: TestOneScanMatchesWholeScan/models:_"{\"model\":\"m\",\"usage\":{},\"x\":\"y\"]}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/system_one:_"{\"model\":\"m\",\"usage\":{},\"x\":\"y\"]}" (0.00s)
+--- FAIL: FuzzDecodeResponse (0.06s)
+    --- FAIL: FuzzDecodeResponse/k36-review-not-errcut (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	1.587s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.018s
+ok  	github.com/zchee/typesafe-sdk-go	0.026s
+FAIL
+killed
+== mutant K9 a \u escape of three hex digits taken as complete
+vet ok
+--- FAIL: TestOneScanMatchesWholeScan (0.49s)
+    --- FAIL: TestOneScanMatchesWholeScan/system_one:_"{\"model\":\"m\",\"usage\":{},\"\\u123\"}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/models:_"{\"model\":\"m\",\"usage\":{},\"\\u123\"}" (0.00s)
+--- FAIL: FuzzDecodeResponse (0.07s)
+    --- FAIL: FuzzDecodeResponse/k36-review-u-three-hex (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	1.592s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+ok  	github.com/zchee/typesafe-sdk-go	0.031s
+FAIL
+killed
+== mutant K41 no quote-parity check in cutPoint
+vet ok
+--- FAIL: TestOneScanMatchesWholeScan (0.50s)
+    --- FAIL: TestOneScanMatchesWholeScan/models:_"{\"a\":\"000000000000000000000000000000000000000000000000000000000000000]}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/system_one:_"{\"a\":\"000000000000000000000000000000000000000000000000000000000000000]}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/models:_"{\"a\":\"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000}}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/system_one:_"{\"a\":\"0000000000000000000000000000000}}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/models:_"{\"a\":\"0000000000000000000000000000000}}" (0.00s)
+    --- FAIL: TestOneScanMatchesWholeScan/system_one:_"{\"a\":\"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000}}" (0.00s)
+--- FAIL: TestOneScanTakesValidBodies (0.20s)
+    --- FAIL: TestOneScanTakesValidBodies/error:_a_string_cut_open,_a_bracket_last (0.00s)
+    --- FAIL: TestOneScanTakesValidBodies/error:_a_string_cut_open,_a_brace_last (0.00s)
+--- FAIL: FuzzDecodeResponse (0.08s)
+    --- FAIL: FuzzDecodeResponse/seed#49 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	1.678s
+killed
+== mutant N2b a spare taken for no entries
+vet ok
+--- FAIL: TestDecodeDoesNotAliasBody (0.76s)
+    --- FAIL: TestDecodeDoesNotAliasBody/no-answers.json (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	1.723s
+--- FAIL: TestAnswersGrowInto (0.00s)
+    --- FAIL: TestAnswersGrowInto/success:_no_entries,_the_set_stays_nil (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+ok  	github.com/zchee/typesafe-sdk-go	0.026s
+FAIL
+killed
+== mutant N2b no inline array for four questions
+vet ok
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.618s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+--- FAIL: TestAllocAnswersInlineBound (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.015s
+FAIL
+killed

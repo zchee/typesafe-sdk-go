@@ -1,0 +1,82 @@
+# N2 (answer entries in the call's allocation) mutants over the working tree, 2026-09-26 19:14:06 JST, (M), unit and allocation tests, not under the bench lock
+== mutant a a shared array for three questions
+vet ok
+--- FAIL: TestAllocLoggedCall (0.00s)
+--- FAIL: TestSystemOneAnswersInline (0.00s)
+    --- FAIL: TestSystemOneAnswersInline/success:_three_questions,_the_entries_with_the_response (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.022s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.024s
+FAIL
+killed
+== mutant b GrowInto takes spare from a set with entries
+vet ok
+ok  	github.com/zchee/typesafe-sdk-go	0.026s
+--- FAIL: TestAnswersGrowInto (0.00s)
+    --- FAIL: TestAnswersGrowInto/success:_a_set_with_entries,_own_array (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.027s
+FAIL
+killed
+== mutant c GrowInto takes a spare too small
+vet ok
+ok  	github.com/zchee/typesafe-sdk-go	0.023s
+--- FAIL: TestAnswersGrowInto (0.00s)
+    --- FAIL: TestAnswersGrowInto/success:_too_little_room,_own_array (0.00s)
+    --- FAIL: TestAnswersGrowInto/success:_no_spare (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.023s
+FAIL
+killed
+== mutant d GrowInto keeps spare's length
+vet ok
+ok  	github.com/zchee/typesafe-sdk-go	0.021s
+--- FAIL: TestAnswersGrowInto (0.00s)
+    --- FAIL: TestAnswersGrowInto/success:_a_spare_with_a_length,_its_capacity_counts (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.022s
+FAIL
+killed
+== mutant e SystemOne passes no spare
+vet ok
+--- FAIL: TestAllocWholeCall (0.01s)
+--- FAIL: TestAllocLoggedCall (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.022s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.023s
+FAIL
+killed
+== mutant f finish ignores spare
+vet ok
+--- FAIL: TestAllocWholeCall (0.01s)
+--- FAIL: TestAllocLoggedCall (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.022s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.024s
+FAIL
+killed
+== mutant g three questions get a four-entry array
+vet ok
+--- FAIL: TestAllocLoggedCall (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.032s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.041s
+FAIL
+killed
+== mutant h no inline case for three questions
+vet ok
+--- FAIL: TestAllocWholeCall (0.00s)
+--- FAIL: TestAllocLoggedCall (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.021s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.010s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.022s
+FAIL
+killed
