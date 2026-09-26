@@ -18,12 +18,13 @@ import (
 	"testing"
 )
 
-// BenchmarkSD2 times the typed decode of each S-D2 fixture's response four
-// ways: typesafe.DecodeAs itself (0-DecodeAs), and the three replicas that
-// differ from it only in how an answer reaches its field (1-reflect-addr,
-// the store as built; 2-unsafe-offset; 3-reflect-set). The response is
-// decoded once, before the loop; each iteration fills a fresh struct from
-// it, as DecodeAs does per call.
+// BenchmarkSD2 times the typed decode of each S-D2 fixture's response:
+// typesafe.DecodeAs itself (0-DecodeAs), and the replicas that differ from
+// it only in how an answer reaches its field (1-reflect-addr, the store as
+// built; 2-unsafe-offset; 3-reflect-set), with the diagnostic
+// 2h-unsafe-offset-heap (variant 2 with the struct on the heap). The
+// response is decoded once, before the loop; each iteration fills a fresh
+// struct from it, as DecodeAs does per call.
 func BenchmarkSD2(b *testing.B) {
 	for _, f := range fixtures(b) {
 		b.Run(f.name, func(b *testing.B) {

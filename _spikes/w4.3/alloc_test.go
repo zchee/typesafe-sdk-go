@@ -35,13 +35,13 @@ import (
 // none is the input of a measured section that needs none.
 func none() struct{} { return struct{}{} }
 
-// TestSD2Allocs counts the allocations of each of the four typed decodes of
-// each S-D2 fixture, as TestAllocTypedDecode counts DecodeAs's (AC-P3):
+// TestSD2Allocs counts the allocations of each typed decode of each S-D2
+// fixture, as TestAllocTypedDecode counts DecodeAs's (AC-P3):
 // runtime.ReadMemStats deltas, collector off, GOMAXPROCS 1, the minimum that
 // three of five runs share, after one warm-up decode. It checks the shape
 // the replicas are expected to have: variant 1 costs what DecodeAs costs
-// (the T moved to the heap), variant 2 nothing, variant 3 the T and one
-// boxed answer per answer field.
+// (the T moved to the heap), variant 2 nothing, the diagnostic 2h the T
+// alone, variant 3 the T and one boxed answer per answer field.
 func TestSD2Allocs(t *testing.T) {
 	fs := fixtures(t)
 	testsupport.QuietRuntime(t)
@@ -69,6 +69,9 @@ func TestSD2Allocs(t *testing.T) {
 		}
 		if got[unsafeOffset] != (testsupport.Allocs{}) {
 			t.Errorf("%s: %s allocates %s, want nothing", f.name, unsafeOffset, got[unsafeOffset])
+		}
+		if got[unsafeHeap] != got[asBuilt] {
+			t.Errorf("%s: %s allocates %s, want DecodeAs's %s, the T alone", f.name, unsafeHeap, got[unsafeHeap], got[asBuilt])
 		}
 		if want := 1 + uint64(f.fields); got[reflectSetVar].Mallocs != want { //nolint:gosec // G115: a field count is never negative
 			t.Errorf("%s: %s makes %d allocations, want %d: the T and one per answer", f.name, reflectSetVar, got[reflectSetVar].Mallocs, want)

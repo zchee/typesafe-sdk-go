@@ -45,6 +45,7 @@ const (
 	asBuilt       = "0-DecodeAs"
 	reflectAddr   = "1-reflect-addr"
 	unsafeOffset  = "2-unsafe-offset"
+	unsafeHeap    = "2h-unsafe-offset-heap"
 	reflectSetVar = "3-reflect-set"
 )
 
@@ -56,7 +57,7 @@ type variant struct {
 	run func() error
 }
 
-// fixture is one S-D2 fixture with the four decodes of its answers.
+// fixture is one S-D2 fixture with the five decodes of its answers.
 type fixture struct {
 	name string
 	// fields is the number of answer fields of the fixture's type.
@@ -111,6 +112,7 @@ func newFixture[R, M any](tb testing.TB, name string) fixture {
 			{asBuilt, func() (err error) { outR, err = typesafe.DecodeAs[R](resp); return err }},
 			{reflectAddr, func() (err error) { outM, err = DecodeAddr[M](res); return err }},
 			{unsafeOffset, func() (err error) { outM, err = DecodeOffset[M](res); return err }},
+			{unsafeHeap, func() (err error) { outM, err = DecodeOffsetHeap[M](res); return err }},
 			{reflectSetVar, func() (err error) { outM, err = DecodeSet[M](res); return err }},
 		},
 	}

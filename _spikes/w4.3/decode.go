@@ -184,6 +184,25 @@ func DecodeOffset[T any](res *wire.SystemOneResult) (T, error) {
 	return t, nil
 }
 
+// HeapT holds the T of the last DecodeOffsetHeap call: storing it in a
+// package variable is what moves the T to the heap.
+var HeapT unsafe.Pointer
+
+// DecodeOffsetHeap is variant 2 with the T on the heap, where DecodeAddr's
+// reflect.ValueOf(&t) puts it: a diagnostic, not a candidate. Against
+// variant 1 it leaves the reflect work per field; against variant 2, the
+// allocation of the T (and the collector's share of it).
+func DecodeOffsetHeap[T any](res *wire.SystemOneResult) (T, error) {
+	p := planFor[T]()
+	t := new(T)
+	HeapT = unsafe.Pointer(t)
+	if err := p.decodeOffset(res, unsafe.Pointer(t)); err != nil {
+		var zero T
+		return zero, err
+	}
+	return *t, nil
+}
+
 // decodeOffset is decodeAddr with the store through unsafe.Add(base,
 // offset) in place of the field's address as an interface.
 func (p *plan) decodeOffset(res *wire.SystemOneResult, base unsafe.Pointer) error {

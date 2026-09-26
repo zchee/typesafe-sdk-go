@@ -25,8 +25,11 @@
 //     address.
 //   - [DecodeSet], variant 3: [reflect.Value.Set] of the field with the
 //     answer as a [reflect.Value].
+//   - [DecodeOffsetHeap], a diagnostic: variant 2 with the struct moved to
+//     the heap as variant 1 moves it, which splits the difference between
+//     variants 1 and 2 into the allocation and the reflect work per field.
 //
-// The three are replicas of the root package's typedPlan.decode: the same
+// All four are replicas of the root package's typedPlan.decode: the same
 // plan cache keyed by [reflect.Type], the same [wire.Answers.Get] lookup,
 // kind check and option and level checks, on answer types laid out as the
 // root package's ([NoulAnswer], [ChoiceAnswer], [ScoreAnswer]), which the
