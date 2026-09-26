@@ -1,0 +1,25 @@
+# 2026-09-26 16:41:07 JST (M) ef032d1+worktree: the report step's script (yq e '.jobs.codspeed.steps[-1].run' .github/workflows/bench.yaml) run by bash 5.3.20(1)-release with RUNNER_TEMP=<case dir>, GITHUB_STEP_SUMMARY=<case>/summary.md, GOEXPERIMENT=nosimd,noruntimesecret; no /tmp/profile.*.out existed; lscpu and nproc are absent on darwin, so the CPU line is empty here
+
+## case empty: no results file
+::error title=AC-P7 report::no CodSpeed results file under $RUNNER_TEMP or /tmp
+exit=1
+
+## case real: the go runner results file of a local codspeed run --skip-upload -m walltime of go test -bench=BenchmarkCall -benchtime=100ms ./internal/benchmark/ (2026-09-26 14:55 JST, under the bench lock; its numbers are not a measurement)
+| sdk | 4.083 | 4.375 | 5.006 | 24111 |
+| naive | 2.5 | 3 | 3.786 | 31000 |
+| sdk / naive | 1.633 | 1.458 | 1.322 |
+internal/benchmark/call_test.go::BenchmarkCall::naive
+internal/benchmark/call_test.go::BenchmarkCall::sdk
+exit=0
+
+## case nonaive: the real file with the BenchmarkCall::naive row deleted by jq
+| sdk | 4.083 | 4.375 | 5.006 | 24111 |
+| naive | – | – | – | – |
+| sdk / naive | – | – | – |
+internal/benchmark/call_test.go::BenchmarkCall::sdk
+::error title=AC-P7 report::no BenchmarkCall row in the results for: naive
+exit=1
+
+## case bad: a truncated JSON file
+jq: parse error: Unfinished JSON term at EOF at line 1, column 16
+exit=5
