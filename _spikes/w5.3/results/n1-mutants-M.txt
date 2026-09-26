@@ -1,0 +1,15 @@
+# N1 (URL copy in the call's allocation) mutants over the working tree, 2026-09-26 18:19:08 JST, (M), unit tests only
+== mutant a the retry reuses the call's URL storage
+vet ok
+--- FAIL: TestRetryURLIsCopied (0.00s)
+    --- FAIL: TestRetryURLIsCopied/success:_SystemOne (0.00s)
+    --- FAIL: TestRetryURLIsCopied/success:_Models.List (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.014s
+== mutant b no copy: the request points at the client's URL
+vet ok
+--- FAIL: TestRequestURLIsCopied (0.00s)
+--- FAIL: TestRetryURLIsCopied (0.00s)
+    --- FAIL: TestRetryURLIsCopied/success:_SystemOne (0.00s)
+    --- FAIL: TestRetryURLIsCopied/success:_Models.List (0.00s)
+FAIL

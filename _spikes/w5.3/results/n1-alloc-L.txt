@@ -1,0 +1,76 @@
+# 2026-09-26 10:01:11 UTC (L) TestAllocWholeCall -count=5 before (6f9a3af) and after (6ad7cf8), ci.yaml's allocation-budget step and -race at 6ad7cf8; load 0.45 3.16 9.32 1/614 718468
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+## 6f9a3af
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:117: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 14, frozen at W3.4)
+    alloc_call_test.go:120: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+    alloc_call_test.go:155: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+ok  	github.com/zchee/typesafe-sdk-go	0.019s
+## 6ad7cf8
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=21/2648 own=13/2008 (N = 13, frozen at W5.3)
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=4/688
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+--- PASS: TestAllocWholeCall (0.00s)
+ok  	github.com/zchee/typesafe-sdk-go	0.019s
+## ci.yaml allocation-budget step at 6ad7cf8
+--- PASS: TestAllocWholeCall (0.00s)
+--- PASS: TestMemStatsCap (0.40s)
+--- PASS: TestLinearityFloodTime (2.59s)
+--- PASS: TestAllocDecodeFixtures (0.13s)
+--- PASS: TestLinearityFlood (0.07s)
+--- PASS: TestAllocEncode (1.87s)
+--- PASS: TestAllocResponseJSON (0.01s)
+--- PASS: TestAllocPrepare (0.01s)
+--- PASS: TestAllocScratchSequence (3.41s)
+--- PASS: TestAllocLoggedCall (0.01s)
+--- PASS: TestAllocRequestID (0.00s)
+--- PASS: TestAllocTypedDecode (0.01s)
+ok  	github.com/zchee/typesafe-sdk-go	8.522s
+--- PASS: TestLazyPassAllocations (0.02s)
+--- PASS: TestEncodeStateAllocations (0.00s)
+--- PASS: TestNewBodyAllocations (0.01s)
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.043s
+step-exit 0
+## go test -race -count=1 ./... at 6ad7cf8
+ok  	github.com/zchee/typesafe-sdk-go	51.223s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.132s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	7.591s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.818s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.421s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.082s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.043s
+race-exit 0
+# end 2026-09-26 10:02:22 UTC load 0.96 2.76 8.73 1/615 720948
