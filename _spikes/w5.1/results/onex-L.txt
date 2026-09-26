@@ -1,0 +1,152 @@
+# 2026-09-26 02:57:00 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -run ^$ -bench . -benchtime 1x -benchmem ./...
+# load before:  02:57:00 up 1 day, 22:21,  3 users,  load average: 0.92, 1.00, 1.18 | kernel: 0.92 1.00 1.18 1/619 415256 (MAXLOAD=44, waited 0 x 60 s)
+# base: 1ca60e1
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkAssembly/request-44       	       1	    381565 ns/op	  454136 B/op	     516 allocs/op
+BenchmarkAssembly/prepare-and-request-44         	       1	     34806 ns/op	  157944 B/op	      29 allocs/op
+BenchmarkCall/sdk-44                             	       1	     13056 ns/op	    2648 B/op	      22 allocs/op
+BenchmarkCall/floor-44                           	       1	     18142 ns/op	   15032 B/op	      12 allocs/op
+BenchmarkCall/naive-44                           	       1	     17922 ns/op	    7640 B/op	      68 allocs/op
+BenchmarkCall/naive-json-44                      	       1	     27260 ns/op	    7864 B/op	     114 allocs/op
+BenchmarkCall/sdk-q20-44                         	       1	     39600 ns/op	    9888 B/op	      42 allocs/op
+BenchmarkCall/floor-q20-44                       	       1	     10983 ns/op	   15032 B/op	      12 allocs/op
+BenchmarkCall/naive-q20-44                       	       1	     28397 ns/op	   29808 B/op	     247 allocs/op
+BenchmarkCall/naive-json-q20-44                  	       1	     84106 ns/op	   30792 B/op	     517 allocs/op
+BenchmarkHeaderTemplateClone/sdk-only-44         	       1	      1485 ns/op	     496 B/op	       3 allocs/op
+BenchmarkHeaderTemplateClone/three-defaults-44   	       1	      2843 ns/op	     936 B/op	       5 allocs/op
+BenchmarkHeaderTemplateClone/no-runtime-hdr-44   	       1	      1660 ns/op	     480 B/op	       3 allocs/op
+BenchmarkEncodeBody/map/1KiB/sdk-44              	       1	     31811 ns/op	  43.79 MB/s	  162136 B/op	      12 allocs/op
+BenchmarkEncodeBody/map/1KiB/naive-44            	       1	    143563 ns/op	   9.70 MB/s	  210704 B/op	      16 allocs/op
+BenchmarkEncodeBody/map/1KiB/naive-json-44       	       1	     43808 ns/op	  31.80 MB/s	   17496 B/op	      24 allocs/op
+BenchmarkEncodeBody/map/64KiB/sdk-44             	       1	    155568 ns/op	 437.64 MB/s	  391512 B/op	      14 allocs/op
+BenchmarkEncodeBody/map/64KiB/naive-44           	       1	     55884 ns/op	1218.29 MB/s	  372992 B/op	      16 allocs/op
+BenchmarkEncodeBody/map/64KiB/naive-json-44      	       1	    159158 ns/op	 427.77 MB/s	  242392 B/op	      20 allocs/op
+BenchmarkEncodeBody/map/1MiB/sdk-44              	       1	   1254166 ns/op	 865.90 MB/s	 3774808 B/op	      14 allocs/op
+BenchmarkEncodeBody/map/1MiB/naive-44            	       1	    845649 ns/op	1284.20 MB/s	 3682560 B/op	      15 allocs/op
+BenchmarkEncodeBody/map/1MiB/naive-json-44       	       1	   2404185 ns/op	 451.71 MB/s	 3470040 B/op	      20 allocs/op
+BenchmarkEncodeBody/rawjson/1KiB/sdk-44          	       1	     12900 ns/op	 107.98 MB/s	   10280 B/op	       4 allocs/op
+BenchmarkEncodeBody/rawjson/1KiB/naive-44        	       1	    410786 ns/op	   3.39 MB/s	  484896 B/op	     403 allocs/op
+BenchmarkEncodeBody/rawjson/1KiB/naive-json-44   	       1	     54719 ns/op	  25.46 MB/s	   12672 B/op	      26 allocs/op
+BenchmarkEncodeBody/rawjson/64KiB/sdk-44         	       1	     25239 ns/op	2697.53 MB/s	   84008 B/op	       5 allocs/op
+BenchmarkEncodeBody/rawjson/64KiB/naive-44       	       1	    159782 ns/op	 426.10 MB/s	  424096 B/op	      15 allocs/op
+BenchmarkEncodeBody/rawjson/64KiB/naive-json-44  	       1	    322579 ns/op	 211.06 MB/s	  227928 B/op	      14 allocs/op
+BenchmarkEncodeBody/rawjson/1MiB/sdk-44          	       1	    163363 ns/op	6647.67 MB/s	 1099816 B/op	       5 allocs/op
+BenchmarkEncodeBody/rawjson/1MiB/naive-44        	       1	   2055206 ns/op	 528.41 MB/s	 2381984 B/op	      14 allocs/op
+BenchmarkEncodeBody/rawjson/1MiB/naive-json-44   	       1	   4684644 ns/op	 231.82 MB/s	 3275352 B/op	      14 allocs/op
+BenchmarkEncodeBody/struct/1KiB/sdk-44           	       1	     30433 ns/op	  45.77 MB/s	  155720 B/op	       8 allocs/op
+BenchmarkEncodeBody/struct/1KiB/naive-44         	       1	     28104 ns/op	  49.57 MB/s	  204320 B/op	      13 allocs/op
+BenchmarkEncodeBody/struct/1KiB/naive-json-44    	       1	     93956 ns/op	  14.83 MB/s	   13984 B/op	      68 allocs/op
+BenchmarkEncodeBody/struct/64KiB/sdk-44          	       1	     55573 ns/op	1225.11 MB/s	   12328 B/op	       5 allocs/op
+BenchmarkEncodeBody/struct/64KiB/naive-44        	       1	     74206 ns/op	 917.49 MB/s	  506016 B/op	      15 allocs/op
+BenchmarkEncodeBody/struct/64KiB/naive-json-44   	       1	    134811 ns/op	 505.03 MB/s	  236136 B/op	      16 allocs/op
+BenchmarkEncodeBody/struct/1MiB/sdk-44           	       1	   1280297 ns/op	 848.23 MB/s	 3629128 B/op	       9 allocs/op
+BenchmarkEncodeBody/struct/1MiB/naive-44         	       1	    439348 ns/op	2471.81 MB/s	 3815584 B/op	      14 allocs/op
+BenchmarkEncodeBody/struct/1MiB/naive-json-44    	       1	   1810935 ns/op	 599.68 MB/s	 3463784 B/op	      16 allocs/op
+BenchmarkEncodeBody/text/1KiB/sdk-44             	       1	     14947 ns/op	  88.51 MB/s	   12328 B/op	       5 allocs/op
+BenchmarkEncodeBody/text/1KiB/naive-44           	       1	     32987 ns/op	  40.11 MB/s	  204320 B/op	      13 allocs/op
+BenchmarkEncodeBody/text/1KiB/naive-json-44      	       1	     22532 ns/op	  58.72 MB/s	   11064 B/op	      13 allocs/op
+BenchmarkEncodeBody/text/64KiB/sdk-44            	       1	    154115 ns/op	 441.31 MB/s	  385096 B/op	      10 allocs/op
+BenchmarkEncodeBody/text/64KiB/naive-44          	       1	     81380 ns/op	 835.75 MB/s	  366752 B/op	      14 allocs/op
+BenchmarkEncodeBody/text/64KiB/naive-json-44     	       1	    135726 ns/op	 501.11 MB/s	  236088 B/op	      13 allocs/op
+BenchmarkEncodeBody/text/1MiB/sdk-44             	       1	   1833569 ns/op	 592.24 MB/s	 3768392 B/op	      10 allocs/op
+BenchmarkEncodeBody/text/1MiB/naive-44           	       1	    804928 ns/op	1349.08 MB/s	 3815584 B/op	      14 allocs/op
+BenchmarkEncodeBody/text/1MiB/naive-json-44      	       1	   2281309 ns/op	 476.00 MB/s	 3463752 B/op	      14 allocs/op
+BenchmarkLoopback/call-44                        	       1	    158745 ns/op	         0 new-conns	  208848 B/op	     135 allocs/op
+BenchmarkLoopback/cold-fanout-64-44              	       1	   4740440 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 3790120 B/op	    9323 allocs/op
+BenchmarkNoop-44                                 	       1	       239.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c1-sketch-44                    	       1	     14480 ns/op	    1016 B/op	       9 allocs/op
+BenchmarkPrepare/c2-noul-short-44                	       1	      8970 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44              	       1	     32116 ns/op	   15256 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44          	       1	     27283 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44          	       1	     69158 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                 	       1	    150280 ns/op	   78080 B/op	    1710 allocs/op
+BenchmarkPrepare/c6-escapes-44                   	       1	     20463 ns/op	    8536 B/op	      12 allocs/op
+BenchmarkPrepare/n8a-array-control-44            	       1	     77717 ns/op	   58840 B/op	     132 allocs/op
+BenchmarkPrepare/n8a-array-score-44              	       1	    110600 ns/op	  110040 B/op	     252 allocs/op
+BenchmarkPrepare/n8b-map-control-44              	       1	    233778 ns/op	  271744 B/op	     615 allocs/op
+BenchmarkPrepare/n8b-map-score-44                	       1	    420065 ns/op	  514944 B/op	    1215 allocs/op
+BenchmarkFalsyJSON/array-44                      	       1	     11848 ns/op	    2560 B/op	       6 allocs/op
+BenchmarkFalsyJSON/map-44                        	       1	     12046 ns/op	    2432 B/op	       6 allocs/op
+BenchmarkFalsyJSON/small-14B-44                  	       1	      1130 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-44                   	       1	       593.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-44                        	       1	       753.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/http-date-44                 	       1	      1548 ns/op	      32 B/op	       1 allocs/op
+BenchmarkBackoff/retry-1-44                      	       1	      6769 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-44                      	       1	      5414 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-44                   	       1	      6626 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-44                     	       1	      4694 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.118s
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44       	       1	     30122 ns/op	  12.08 MB/s	   57944 B/op	      22 allocs/op
+BenchmarkDecode/type-last-44    	       1	     48011 ns/op	   7.58 MB/s	   57944 B/op	      22 allocs/op
+BenchmarkDecode/duplicates-44   	       1	     65598 ns/op	  12.58 MB/s	   62744 B/op	      37 allocs/op
+BenchmarkDecode/result-20-44    	       1	     78625 ns/op	  28.66 MB/s	   83896 B/op	      52 allocs/op
+BenchmarkDecode/score-flood-mini-44         	       1	     51537 ns/op	  29.01 MB/s	   69960 B/op	      39 allocs/op
+BenchmarkDecode/escaped-names-44            	       1	     40370 ns/op	  11.91 MB/s	   61168 B/op	      29 allocs/op
+BenchmarkDecode/escaped-member-names-44     	       1	     67917 ns/op	   6.26 MB/s	   62040 B/op	      46 allocs/op
+BenchmarkDecode/structured-legend-44        	       1	     35588 ns/op	   6.10 MB/s	   16776 B/op	      15 allocs/op
+BenchmarkDecode/deviation-lone-surrogate-44 	       1	     48940 ns/op	   4.47 MB/s	   59608 B/op	      29 allocs/op
+BenchmarkDecode/unknown-answer-type-44      	       1	     29800 ns/op	   4.87 MB/s	   55496 B/op	       9 allocs/op
+BenchmarkDecode/parity-big-exp-unknown-44   	       1	     20412 ns/op	   6.61 MB/s	   12456 B/op	       5 allocs/op
+BenchmarkDecode/no-answers-44               	       1	     16247 ns/op	   4.12 MB/s	   54424 B/op	       6 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	       1	    658425 ns/op	  87.21 MB/s	  493480 B/op	     142 allocs/op
+BenchmarkDecode/structured-legend-flood-10k-44        	       1	   6774226 ns/op	  91.00 MB/s	 6126112 B/op	     791 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	       1	     25002 ns/op	  14.56 MB/s	  116320 B/op	      43 allocs/op
+BenchmarkDecodeNaiveSonic/type-last-44                	       1	     24469 ns/op	  14.88 MB/s	  116320 B/op	      43 allocs/op
+BenchmarkDecodeNaiveSonic/duplicates-44               	       1	     16168 ns/op	  51.03 MB/s	   15312 B/op	      91 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	       1	     37676 ns/op	  59.80 MB/s	  132280 B/op	     217 allocs/op
+BenchmarkDecodeNaiveSonic/score-flood-mini-44         	       1	     26864 ns/op	  55.65 MB/s	  129096 B/op	     140 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	       1	     27316 ns/op	  17.61 MB/s	  117712 B/op	      60 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	       1	     37910 ns/op	  11.21 MB/s	  117312 B/op	      54 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-44        	       1	     18955 ns/op	  11.45 MB/s	  115640 B/op	      30 allocs/op
+BenchmarkDecodeNaiveSonic/deviation-lone-surrogate-44 	       1	     16967 ns/op	  12.91 MB/s	  115400 B/op	      30 allocs/op
+BenchmarkDecodeNaiveSonic/unknown-answer-type-44      	       1	     22319 ns/op	   6.50 MB/s	  114608 B/op	      23 allocs/op
+BenchmarkDecodeNaiveSonic/no-answers-44               	       1	     23696 ns/op	   2.83 MB/s	  113472 B/op	      12 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	       1	    501249 ns/op	 114.55 MB/s	 1149376 B/op	    6577 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-10k-44        	       1	   5815241 ns/op	 106.00 MB/s	 9846160 B/op	   65204 allocs/op
+BenchmarkDecodeNaiveJSON/result-44                              	       1	     65096 ns/op	   5.59 MB/s	   15456 B/op	     114 allocs/op
+BenchmarkDecodeNaiveJSON/type-last-44                           	       1	     67012 ns/op	   5.43 MB/s	   15440 B/op	     114 allocs/op
+BenchmarkDecodeNaiveJSON/duplicates-44                          	       1	     65183 ns/op	  12.66 MB/s	   21648 B/op	     251 allocs/op
+BenchmarkDecodeNaiveJSON/result-20-44                           	       1	    107079 ns/op	  21.04 MB/s	   32496 B/op	     547 allocs/op
+BenchmarkDecodeNaiveJSON/score-flood-mini-44                    	       1	     69313 ns/op	  21.57 MB/s	   24056 B/op	     388 allocs/op
+BenchmarkDecodeNaiveJSON/escaped-names-44                       	       1	     37650 ns/op	  12.78 MB/s	   16848 B/op	     148 allocs/op
+BenchmarkDecodeNaiveJSON/escaped-member-names-44                	       1	     52034 ns/op	   8.17 MB/s	   10592 B/op	     103 allocs/op
+BenchmarkDecodeNaiveJSON/structured-legend-44                   	       1	     40665 ns/op	   5.34 MB/s	   14656 B/op	      84 allocs/op
+BenchmarkDecodeNaiveJSON/deviation-lone-surrogate-44            	       1	     38378 ns/op	   5.71 MB/s	    9152 B/op	      63 allocs/op
+BenchmarkDecodeNaiveJSON/unknown-answer-type-44                 	       1	     23519 ns/op	   6.17 MB/s	   13600 B/op	      61 allocs/op
+BenchmarkDecodeNaiveJSON/no-answers-44                          	       1	     29997 ns/op	   2.23 MB/s	   12264 B/op	      29 allocs/op
+BenchmarkDecodeNaiveJSON/structured-legend-flood-1k-44          	       1	   1803948 ns/op	  31.83 MB/s	  881888 B/op	   17153 allocs/op
+BenchmarkDecodeNaiveJSON/structured-legend-flood-10k-44         	       1	  17570039 ns/op	  35.08 MB/s	 8159880 B/op	  170543 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-44                       	       1	     11542 ns/op	  85.95 MB/s	  145440 B/op	       4 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44                        	       1	       667.0 ns/op	1487.26 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44                      	       1	     20752 ns/op	3157.38 MB/s	  210976 B/op	       5 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44                       	       1	      4457 ns/op	14700.92 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44                       	       1	   1817775 ns/op	3461.07 MB/s	 6436896 B/op	       5 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44                        	       1	    285050 ns/op	22071.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44                         	       1	     10836 ns/op	  93.21 MB/s	  145440 B/op	       4 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44                          	       1	      1151 ns/op	 877.50 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44                        	       1	     78367 ns/op	 836.09 MB/s	  210976 B/op	       5 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44                         	       1	     51435 ns/op	1273.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44                         	       1	   6442667 ns/op	 976.53 MB/s	 6297632 B/op	       4 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44                          	       1	   4922744 ns/op	1278.03 MB/s	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.152s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	0.005s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.005s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.009s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.004s
+# exit 0 at 2026-09-26 02:57:01 UTC
+# load after:  02:57:01 up 1 day, 22:21,  3 users,  load average: 0.92, 1.00, 1.18 | kernel: 0.92 1.00 1.18 1/619 415835

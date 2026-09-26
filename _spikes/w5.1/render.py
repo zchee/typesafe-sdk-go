@@ -151,6 +151,28 @@ def main() -> None:
     print(row(bench, "Loopback/call", "new-conns"))
     print(row(bench, "Loopback/cold-fanout-64", "conns/op"))
 
+    b46_files = [RESULTS / f"b46-{h}.txt" for h in HOSTS]
+    if not all(f.exists() for f in b46_files):
+        return
+    b46 = {h: parse(RESULTS / f"b46-{h}.txt") for h in HOSTS}
+    print("\nB4 at 1ca60e1 (on W3.2's landing), b46-{M,L}.txt (-count=10):\n")
+    print(header())
+    for name in b46["M"]:
+        if name.startswith(("RetryAfter/", "Backoff/")):
+            print(row(b46, name))
+
+    print("\nB6 re-run at 1ca60e1 (after b3fd5db's graceful close), b46-{M,L}.txt (-count=10):\n")
+    print(header("metric"))
+    print(row(b46, "Loopback/call", "new-conns"))
+    print(row(b46, "Loopback/cold-fanout-64", "conns/op"))
+    print("\n| `Loopback/cold-fanout-64` metric, median | (M) / (L) |\n| --- | ---: |")
+    for metric in ("conns/op", "leaders/op", "firstholds/op"):
+        print(f"| {metric} | {' / '.join(f'{cell(b46[h], "Loopback/cold-fanout-64", metric):.3f}' for h in HOSTS)} |")
+    print("\n| B6 median ns/op, 1ca60e1 / 6afc8a3 | (M) / (L) |\n| --- | ---: |")
+    for name in ("Loopback/call", "Loopback/cold-fanout-64"):
+        moved = " / ".join(f"{cell(b46[h], name, 'ns/op') / cell(bench[h], name, 'ns/op'):.3f}" for h in HOSTS)
+        print(f"| `{name}` | {moved} |")
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)

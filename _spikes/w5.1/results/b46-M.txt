@@ -1,0 +1,103 @@
+# 2026-09-26 11:55:16 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -run ^$ -bench ^Benchmark(RetryAfter|Backoff|Loopback)$ -benchmem -count=10 .
+# load before: 11:55  up 4 days, 11:01, 1 user, load averages: 13.84 9.51 9.02 | kernel: { 13.84 9.51 9.02 } (MAXLOAD=16, waited 0 x 60 s)
+# base: 1ca60e1
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkLoopback/call-16 	   16904	     71150 ns/op	         0 new-conns	   16263 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   16920	     71413 ns/op	         0 new-conns	   14214 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   16269	     72935 ns/op	         0 new-conns	   13493 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   16476	     72503 ns/op	         0 new-conns	   14093 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   17431	     68834 ns/op	         0 new-conns	   13609 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   16508	     72106 ns/op	         0 new-conns	   12893 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   17229	     68758 ns/op	         0 new-conns	   13599 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   18008	     67421 ns/op	         0 new-conns	   13661 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   16938	     70317 ns/op	         0 new-conns	   12679 B/op	     111 allocs/op
+BenchmarkLoopback/call-16 	   17618	     67881 ns/op	         0 new-conns	   13872 B/op	     111 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     446	   2749376 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1067110 B/op	    8596 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     435	   2665270 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1000601 B/op	    8592 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     471	   2789092 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1074466 B/op	    8593 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     433	   2596020 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1000766 B/op	    8593 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     462	   2679640 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1094485 B/op	    8592 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     415	   2674770 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	  999895 B/op	    8591 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     480	   2555819 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1000427 B/op	    8590 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     476	   2507205 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1115682 B/op	    8592 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     442	   2705617 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	 1001222 B/op	    8591 allocs/op
+BenchmarkLoopback/cold-fanout-64-16         	     458	   2547625 ns/op	         1.000 conns/op	         1.000 firstholds/op	         1.000 leaders/op	  999853 B/op	    8591 allocs/op
+BenchmarkRetryAfter/seconds-16              	13297915	        88.82 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13856065	        87.69 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13798548	        87.31 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13391287	        88.88 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	12765108	       103.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13001769	        91.14 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13313614	        89.48 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13825215	        88.38 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13485020	        88.60 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/seconds-16              	13159258	        90.17 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14793013	        80.75 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14792078	        79.64 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	15478861	        78.40 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14840953	        79.57 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14849892	        80.41 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	15433785	        80.15 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14807554	        81.46 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	15641139	        78.72 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14958512	        79.22 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/ms-16                   	14678890	        81.70 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4546240	       267.7 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4501833	       270.0 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4460109	       262.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4560570	       265.0 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4476199	       272.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4089864	       276.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4633557	       264.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4411446	       266.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4547187	       265.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkRetryAfter/http-date-16            	 4479304	       272.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkBackoff/retry-1-16                 	21818692	        54.45 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	22639141	        53.09 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	22705609	        53.30 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	21584400	        53.28 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	22642844	        52.97 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	22570107	        53.50 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	22074952	        54.87 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	21802622	        55.10 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	21721406	        55.77 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1-16                 	21976394	        54.67 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22199850	        53.77 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22422274	        54.11 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	20532373	        54.44 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22583434	        54.35 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22814030	        53.15 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22943527	        52.95 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22794638	        53.56 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	21826465	        53.42 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	22787170	        52.62 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-6-16                 	23066848	        52.62 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22580211	        53.25 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22894573	        52.71 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22415852	        53.31 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	21730370	        55.33 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22655989	        54.85 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22212606	        54.81 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22382630	        55.16 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	21885762	        57.56 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	21981460	        54.38 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/retry-1000-16              	22420441	        54.25 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	10444731	       115.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	10468071	       116.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	10305868	       115.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	10469064	       115.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	10074022	       118.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	10155463	       117.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	 9978307	       124.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	 9786879	       123.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	 9520802	       125.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBackoff/schedule-16                	 9437498	       122.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	108.935s
+# exit 0 at 2026-09-26 11:57:05 JST
+# load after: 11:57  up 4 days, 11:03, 1 user, load averages: 15.34 11.26 9.75 | kernel: { 15.34 11.26 9.75 }

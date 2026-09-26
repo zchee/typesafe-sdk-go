@@ -1,0 +1,150 @@
+== 4e3dd7315249bb764e2bbefd6628fc94e09256df naive: give AC-P2, AC-P6 and AC-P7 the comparator G3 (a) chose start 2026-09-26 11:57:55 JST
+0 issues.
+2026/09/26 11:57:57 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:57:57 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:57:57 8.056667ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:57:57 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:57:57 22.841792ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:57:57 150.918667ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	9.629s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.736s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.919s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.242s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.041s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.036s
+== 4e3dd7315249bb764e2bbefd6628fc94e09256df PASS 2026-09-26 11:58:11 JST
+== a744ab99b254ccf0ccd14f5bc8c326ef41bf1b9c codec: decode the naive rows through the comparator of record start 2026-09-26 11:58:11 JST
+0 issues.
+2026/09/26 11:58:13 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:58:13 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:58:13 9.191625ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:58:13 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:58:13 22.97225ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:58:13 138.112667ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	11.472s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.728s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.631s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.154s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.036s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.037s
+== a744ab99b254ccf0ccd14f5bc8c326ef41bf1b9c PASS 2026-09-26 11:58:25 JST
+== 6ed9da1bc9707e137da15dd264e5020f52c1ad12 bench: measure call/sdk against its floor and call/naive (B1 B3 B5) start 2026-09-26 11:58:25 JST
+0 issues.
+2026/09/26 11:58:34 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:58:34 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:58:34 8.370042ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:58:34 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:58:34 22.841584ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:58:34 138.682208ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	10.163s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.536s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.668s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.151s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.039s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.039s
+== 6ed9da1bc9707e137da15dd264e5020f52c1ad12 PASS 2026-09-26 11:58:47 JST
+== 164ce0db8fef58380c232819f366dab74b2473fb bench: time calls over a real HTTP/2 connection on loopback (B6) start 2026-09-26 11:58:47 JST
+0 issues.
+2026/09/26 11:58:56 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:58:56 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:58:56 7.769584ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:58:56 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:58:56 21.200625ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:58:56 140.061625ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	11.698s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.604s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.725s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.209s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.037s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.042s
+== 164ce0db8fef58380c232819f366dab74b2473fb PASS 2026-09-26 11:59:10 JST
+== c402bc6fe88017d035ef9ccf74e109e67ecd3963 docs: say what B1-B6 measure and why the naive comparison is fair start 2026-09-26 11:59:10 JST
+0 issues.
+2026/09/26 11:59:12 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:59:12 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:59:12 9.680541ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:59:12 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:59:12 24.008375ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:59:12 125.9445ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	11.467s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.494s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.686s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.142s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.040s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.043s
+== c402bc6fe88017d035ef9ccf74e109e67ecd3963 PASS 2026-09-26 11:59:24 JST
+== 17951a856b4945ee9e091b39d376288fb70c8550 docs: record the AC-P6 time clause and AC-P2 ratio against the naive start 2026-09-26 11:59:24 JST
+0 issues.
+2026/09/26 11:59:26 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:59:26 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:59:26 8.45075ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:59:26 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:59:26 21.976ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:59:26 122.513375ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	12.133s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.618s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.736s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.159s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.040s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.040s
+== 17951a856b4945ee9e091b39d376288fb70c8550 PASS 2026-09-26 11:59:38 JST
+== 5b0b7bdf84a4ee24c0b3480891e96cbb615a23d1 bench: pin the naive's deadline and the floor copy the review left loose start 2026-09-26 11:59:38 JST
+0 issues.
+2026/09/26 11:59:48 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:59:48 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:59:48 8.13525ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 11:59:48 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 11:59:48 22.156125ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 11:59:48 144.03375ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	10.117s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.655s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.805s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.238s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.047s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.050s
+== 5b0b7bdf84a4ee24c0b3480891e96cbb615a23d1 PASS 2026-09-26 12:00:01 JST
+== a080624fbf6f63a0a4f089bde2d2524a100345ae bench: report the gate's own counters for B6's cold burst start 2026-09-26 12:00:01 JST
+0 issues.
+2026/09/26 12:00:11 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 12:00:11 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 12:00:11 8.248167ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 12:00:11 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 12:00:11 24.058041ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 12:00:11 146.110167ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	9.423s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.496s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.690s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.142s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.036s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.040s
+== a080624fbf6f63a0a4f089bde2d2524a100345ae PASS 2026-09-26 12:00:24 JST
+== 7a79d93c65f36f7d3297a03c86658a986aeac4d5 docs: correct B6's AC-P4 claim and route the encode gap to R54 start 2026-09-26 12:00:24 JST
+0 issues.
+2026/09/26 12:00:25 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 12:00:25 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 12:00:25 7.924875ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 12:00:25 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 12:00:25 21.760917ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 12:00:25 117.654958ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	11.973s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.515s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.695s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.152s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.039s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.039s
+== 7a79d93c65f36f7d3297a03c86658a986aeac4d5 PASS 2026-09-26 12:00:38 JST
+== 1ca60e184d8ea27ebd4fdb76c4edaecb54cbe82e bench: time Retry-After parsing and the backoff schedule (B4) start 2026-09-26 12:00:38 JST
+0 issues.
+2026/09/26 12:00:40 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 12:00:40 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 12:00:40 7.285708ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 12:00:40 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 12:00:40 20.301792ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 12:00:40 139.210583ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/cbd01adc-31ad-465d-b943-31fb651ff0fa/scratchpad/wt-gates go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+ok  	github.com/zchee/typesafe-sdk-go	11.476s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.525s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.647s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.164s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.043s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.043s
+== 1ca60e184d8ea27ebd4fdb76c4edaecb54cbe82e PASS 2026-09-26 12:00:54 JST

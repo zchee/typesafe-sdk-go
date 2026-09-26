@@ -1,0 +1,22 @@
+# 2026-09-26 11:55:16 JST (M) base 1ca60e1 GOEXPERIMENT=nosimd,noruntimesecret go test -list 'Benchmark.*' ./...
+BenchmarkAssembly
+BenchmarkCall
+BenchmarkHeaderTemplateClone
+BenchmarkEncodeBody
+BenchmarkLoopback
+BenchmarkNoop
+BenchmarkPrepare
+BenchmarkFalsyJSON
+BenchmarkRetryAfter
+BenchmarkBackoff
+ok  	github.com/zchee/typesafe-sdk-go	0.011s
+BenchmarkDecode
+BenchmarkDecodeNaiveSonic
+BenchmarkDecodeNaiveJSON
+BenchmarkEncodeState
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.012s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	0.011s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.014s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.013s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+# exit 0
