@@ -9,10 +9,12 @@ The TSV holds CodSpeed's walltime statistics of BenchmarkCall/sdk and
 BenchmarkCall/naive, one line per run and row. The script prints, per run,
 AC-P7's sdk/naive ratio by minimum (the value CodSpeed's report shows), by
 median and by mean (go test's ns/op, the one AC-P7 reads under ruling R108),
-and sdk's own three values. It then prints K7's spread, (largest - smallest)
-/ smallest, of BenchmarkCall/sdk's mean and of the sdk/naive mean ratio:
-over the counted runs (successful push runs on main from K7_FIRST_RUN on)
-and, for comparison, over every run, each in total and per CPU model.
+and sdk's own three values. It then prints K7 under ruling R109: the counted
+runs (successful push runs on main from K7_FIRST_RUN on) per CPU model, with
+the spread, (largest - smallest) / smallest, of BenchmarkCall/sdk's mean on
+each model, and beside it the spread of the sdk/naive mean ratio over the
+counted runs of any model. Last, for comparison, both spreads over every run
+in the file, in total and per CPU model.
 """
 
 import csv
@@ -101,12 +103,20 @@ def main() -> int:
     def mean_ratio(r: Run) -> float:
         return float(r["sdk"]["mean"]) / float(r["naive"]["mean"])
 
+    by_cpu: dict[str, list[float]] = {}
+    for r in counted:
+        by_cpu.setdefault(r["sdk"]["cpu"], []).append(sdk_mean(r))
     print()
-    print(f"K7: {len(counted)} counted main runs from {K7_FIRST_RUN} on (20 needed)")
-    print_spreads("counted runs, BenchmarkCall/sdk mean", counted, sdk_mean)
-    print_spreads("counted runs, sdk/naive mean ratio", counted, mean_ratio)
-    print_spreads("every run above, BenchmarkCall/sdk mean", complete.values(), sdk_mean)
-    print_spreads("every run above, sdk/naive mean ratio", complete.values(), mean_ratio)
+    print(f"K7 (ruling R109), successful push runs on main from {K7_FIRST_RUN} on, counted per CPU model;")
+    print("blocking needs 20 runs on one model with BenchmarkCall/sdk's mean within 5 %:")
+    for cpu, v in sorted(by_cpu.items()):
+        print(f"- {cpu}: {len(v)} of 20 runs; BenchmarkCall/sdk mean spread {spread(v)}")
+    ratio_spread = spread([mean_ratio(r) for r in counted])
+    print(f"- beside it, the sdk/naive mean ratio over those runs, any model (no threshold set): {ratio_spread}")
+    print()
+    print("Every run above, K7 or not, for comparison:")
+    print_spreads("BenchmarkCall/sdk mean", complete.values(), sdk_mean)
+    print_spreads("sdk/naive mean ratio", complete.values(), mean_ratio)
     return 1 if len(complete) != len(runs) else 0
 
 
