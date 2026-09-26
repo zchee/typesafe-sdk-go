@@ -1,0 +1,27 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w6.4/gzip
+cpu: Apple M3 Max
+                               │ /private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/00dc49b9-02a4-4929-a66e-76427a243f67/scratchpad/live/gzip-bench.txt │
+                               │                                                                      sec/op                                                                      │
+LiveBody/models/identity-16                                                                                                                                          73.64µ ± 28%
+LiveBody/models/gzip-16                                                                                                                                              92.06µ ± 14%
+LiveBody/systemone/identity-16                                                                                                                                       89.74µ ±  9%
+LiveBody/systemone/gzip-16                                                                                                                                           96.06µ ±  7%
+geomean                                                                                                                                                              87.44µ
+
+                               │ /private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/00dc49b9-02a4-4929-a66e-76427a243f67/scratchpad/live/gzip-bench.txt │
+                               │                                                                       B/op                                                                       │
+LiveBody/models/identity-16                                                                                                                                          9.754Ki ± 0%
+LiveBody/models/gzip-16                                                                                                                                              20.07Ki ± 1%
+LiveBody/systemone/identity-16                                                                                                                                       20.88Ki ± 2%
+LiveBody/systemone/gzip-16                                                                                                                                           32.82Ki ± 1%
+geomean                                                                                                                                                              19.14Ki
+
+                               │ /private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/00dc49b9-02a4-4929-a66e-76427a243f67/scratchpad/live/gzip-bench.txt │
+                               │                                                                    allocs/op                                                                     │
+LiveBody/models/identity-16                                                                                                                                            87.00 ± 0%
+LiveBody/models/gzip-16                                                                                                                                                94.50 ± 1%
+LiveBody/systemone/identity-16                                                                                                                                         112.0 ± 0%
+LiveBody/systemone/gzip-16                                                                                                                                             119.0 ± 0%
+geomean                                                                                                                                                                102.3
