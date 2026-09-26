@@ -122,5 +122,9 @@ mutant FU-R5-lazy-skips-plus-level internal/codec/lazy.go \
 	's/(\t\t\tlvl, ok := parseLevel\(p.Key\)\n)/$1\t\t\tif p.Key != "" \&\& p.Key[0] == \x27+\x27 {\n\t\t\t\tcontinue\n\t\t\t}\n/' \
 	./internal/codec/ '^FuzzDecodePaths$'
 
+# D/K16: no OnProxyConnectResponse on the SDK's transport.
+mutant D-K16-no-hook internal/h2gate/config.go \
+	's/\t\tOnProxyConnectResponse: refusedConnect,\n//' ./internal/h2gate/ '^TestProxy$'
+
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

@@ -1,0 +1,11 @@
+# 2026-09-26 18:56:06 JST (M) K16: the refused-CONNECT pins, -race -count=3, the wave's tree; load { 34.03 29.75 34.31 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+      3     --- PASS: TestProxy/error:_a_CONNECT_the_proxy_refuses_is_a_proxy_failure_(K16)
+      3     --- PASS: TestProxy/error:_a_caller_transport's_refused_CONNECT_stays_as_the_stock_transport_returns_it_(K16)
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	1.069s
+      3     --- PASS: TestTransportDebugRecordsHoldNoCredential/error:_a_proxy's_502_answer_to_the_CONNECT_(K16)_at_DEBUG
+      3     --- PASS: TestTransportDebugRecordsHoldNoCredential/error:_a_proxy's_502_answer_to_the_CONNECT_(K16)_at_LevelTrace
+      3     --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_proxy_*ConnectionError_(K16)
+      1 ok  	github.com/zchee/typesafe-sdk-go	4.830s
+# end 2026-09-26 18:56:15 JST; load { 29.03 28.82 33.93 }
