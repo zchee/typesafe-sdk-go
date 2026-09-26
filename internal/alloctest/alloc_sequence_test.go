@@ -28,6 +28,7 @@ import (
 	gocmp "github.com/google/go-cmp/cmp"
 
 	"github.com/zchee/typesafe-sdk-go/internal/codec"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 )
 
@@ -105,7 +106,7 @@ func TestAllocScratchSequence(t *testing.T) {
 			check("single-size call")
 			encode := series(t, sk.name+" single-size encode", nil, func() {
 				var body codec.Body
-				if body, err = encodeBody(states[0], engOf(c).Config().Model, qs, nil); err == nil {
+				if body, err = encodeBody(states[0], engine.ConfigOf(c).Model, qs, nil); err == nil {
 					body.Release()
 				}
 			})

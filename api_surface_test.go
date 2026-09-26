@@ -22,7 +22,6 @@ import (
 	"go/types"
 	"os"
 	"path/filepath"
-	"reflect"
 	"strings"
 	"sync"
 	"testing"
@@ -42,8 +41,9 @@ var update = flag.Bool("update", false, "rewrite testdata/api/*.txt from the pac
 // test binary, through the "source" importer: the goldens then depend only on
 // declarations, so an edited comment or a renamed parameter changes nothing.
 var apiPackage = sync.OnceValues(func() (*types.Package, error) {
-	path := reflect.TypeFor[Client]().PkgPath()
-	return importer.ForCompiler(token.NewFileSet(), "source", nil).Import(path)
+	// Client is an alias of internal/engine's Client (design D2), whose
+	// PkgPath is the engine's, so the root package is named by its path.
+	return importer.ForCompiler(token.NewFileSet(), "source", nil).Import("github.com/zchee/typesafe-sdk-go")
 })
 
 // TestPublicAPISurface pins every exported identifier of the package with its

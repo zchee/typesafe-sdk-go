@@ -372,7 +372,10 @@ func goList(t *testing.T, root string, args ...string) string {
 func TestSeamTransitiveImports(t *testing.T) {
 	mod := findModule(t)
 	t.Run("root package imports no JSON library directly (R41)", func(t *testing.T) {
-		out := goList(t, mod.root, "-f", `{{join .Imports "\n"}}{{"\n"}}{{join .TestImports "\n"}}{{"\n"}}{{join .XTestImports "\n"}}`, ".")
+		out := goList(t, mod.root, "-f", `{{join .Imports "\n"}}{{"\n"}}{{join .TestImports "\n"}}{{"\n"}}{{join .XTestImports "\n"}}`, "./internal/engine")
+		// Design D2: the public types are internal/engine's, aliased by the root
+		// package, so the package that must not import a JSON library directly
+		// and must import internal/wire is the engine.
 		const wirePath = modulePath + "/internal/wire"
 		sawWire := false
 		for line := range strings.Lines(out) {

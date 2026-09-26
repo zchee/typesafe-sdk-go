@@ -177,12 +177,12 @@ func measureCallItems(t *testing.T, c *Client, state any, qs *Prepared, prefix s
 	ctx := t.Context()
 	var hdr, ca, to, rq, open, gb, rd, dec [testsupport.AllocRuns]testsupport.Allocs
 	for i := range testsupport.AllocRuns {
-		body, err := encodeBody(state, engOf(c).Config().Model, qs, nil)
+		body, err := encodeBody(state, engine.ConfigOf(c).Model, qs, nil)
 		if err != nil {
 			t.Fatal(err)
 		}
-		s := callSettings{header: engOf(c).Config().SystemOneHeader, timeout: engOf(c).Config().Timeout}
-		rqs := engine.Request{Method: http.MethodPost, URL: engOf(c).Config().SystemOneURL, Header: s.header, Timeout: s.timeout, Body: body}
+		s := callSettings{header: engine.ConfigOf(c).SystemOneHeader, timeout: engine.ConfigOf(c).Timeout}
+		rqs := engine.Request{Method: http.MethodPost, URL: engine.ConfigOf(c).SystemOneURL, Header: s.header, Timeout: s.timeout, Body: body}
 		var (
 			h       http.Header
 			call    *engine.SystemOneAlloc
@@ -210,21 +210,21 @@ func measureCallItems(t *testing.T, c *Client, state any, qs *Prepared, prefix s
 			req = r.WithContext(actx)
 		})
 		sinkRequest = req
-		hresp, err := engOf(c).Config().Transport.RoundTrip(req)
+		hresp, err := engine.ConfigOf(c).Transport.RoundTrip(req, s.timeout)
 		if err != nil {
 			t.Fatal(err)
 		}
 		rd[i] = testsupport.Measure(func() {
-			raw, err = engine.ReadBody(hresp.Body, hresp.ContentLength, engOf(c).Config().MaxResponseBytes)
+			raw, err = engine.ReadBody(hresp.Body, hresp.ContentLength, engine.ConfigOf(c).MaxResponseBytes)
 		})
 		if err != nil {
 			t.Fatal(err)
 		}
 		_ = hresp.Body.Close()
-		resp = (*SystemOneResponse)(&call.Resp)
-		*(*engine.Response)(resp).Meta() = wire.ResponseMeta{Status: hresp.StatusCode, Header: hresp.Header, Body: raw}
+		resp = &call.Resp
+		*engine.ResponseMetaOf(resp) = wire.ResponseMeta{Status: hresp.StatusCode, Header: hresp.Header, Body: raw}
 		dec[i] = testsupport.Measure(func() {
-			err = decodeSystemOneInto(ctx, engOf(c).Config().Logger, (*engine.Response)(resp).Meta(), engOf(c).SystemOneEndpoint(), engOf(c).Config().Redactor(), qs, engOf(c).Config().Model, (*engine.Response)(resp).Result(), spare)
+			err = decodeSystemOneInto(ctx, engine.ConfigOf(c).Logger, engine.ResponseMetaOf(resp), engine.SystemOneEndpointOf(c), engine.ConfigOf(c).Redactor(), qs, engine.ConfigOf(c).Model, engine.ResponseResultOf(resp), spare)
 		})
 		if err != nil {
 			t.Fatal(err)

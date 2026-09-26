@@ -22,13 +22,12 @@ import (
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
 )
 
-// DecodeSystemOne decodes body, the body of a successful System One
-// response, into *dst. q is the question set the request asked and model
+// DecodeSystemOne decodes the body of a successful System One response,
+// meta.Body, into *dst. qs is the question set the request asked and model
 // the model it named: the answers' strings are theirs where equal
-// (codec.DecodeSystemOne), so the result never aliases the body. It returns
-// the decoder's error as it is; the root package reports it as a
-// *ResponseValidationError naming the first failure the Python SDK would
-// report.
+// (codec.DecodeSystemOne), so the result never aliases the body. A body the
+// decoder refuses is a [*ResponseValidationError] naming the first failure
+// the Python SDK would report.
 //
 // Every answer of a type this version does not model is dropped and logged
 // at WARN through logger, as the Python SDK logs "Ignoring answer %r with
@@ -36,25 +35,43 @@ import (
 // each with the answer's name and type escaped and cut at 128 characters,
 // then one line counting the rest. The lines are logged even when the decode
 // then fails, for the answers the Python SDK would have logged before
-// failing. A nil logger logs nothing.
-func DecodeSystemOne(ctx context.Context, logger *slog.Logger, body []byte, q *wire.Prepared, model string, dst *wire.SystemOneResult) error {
-	return DecodeSystemOneInto(ctx, logger, body, q, model, dst, nil)
+// failing. A nil logger logs nothing. r redacts the error's header
+// ([headerRedactor]).
+func DecodeSystemOne(ctx context.Context, logger *slog.Logger, meta *wire.ResponseMeta, endpoint string, r HeaderRedactor, qs *Prepared, model string, dst *wire.SystemOneResult) error {
+	return DecodeSystemOneInto(ctx, logger, meta, endpoint, r, qs, model, dst, nil)
 }
 
 // DecodeSystemOneInto is decodeSystemOne with spare as the room for the
 // answers ([codec.DecodeSystemOneInto]).
-func DecodeSystemOneInto(ctx context.Context, logger *slog.Logger, body []byte, q *wire.Prepared, model string, dst *wire.SystemOneResult, spare []wire.AnswerEntry) error {
-	skipped, err := codec.DecodeSystemOneInto(body, q, model, dst, spare)
+func DecodeSystemOneInto(ctx context.Context, logger *slog.Logger, meta *wire.ResponseMeta, endpoint string, r HeaderRedactor, qs *Prepared, model string, dst *wire.SystemOneResult, spare []wire.AnswerEntry) error {
+	var q *wire.Prepared
+	if qs != nil {
+		q = &qs.w
+	}
+	skipped, err := codec.DecodeSystemOneInto(meta.Body, q, model, dst, spare)
 	if skipped.Count > 0 {
 		logSkipped(ctx, logger, &skipped)
 	}
-	return err
+	if err != nil {
+		return newResponseValidationError(meta, endpoint, r, err)
+	}
+	return nil
+}
+
+// decodeModels decodes the body of a successful list-models response,
+// meta.Body, into *dst. A body the decoder refuses is a
+// [*ResponseValidationError], whose header r redacts.
+func decodeModels(meta *wire.ResponseMeta, endpoint string, r HeaderRedactor, dst *wire.ModelList) error {
+	if err := codec.DecodeModels(meta.Body, dst); err != nil {
+		return newResponseValidationError(meta, endpoint, r, err)
+	}
+	return nil
 }
 
 // The WARN lines for answers of unknown types.
 const (
-	MsgSkippedAnswer  = "Ignoring answer with unrecognized type"
-	MsgSkippedAnswers = "Ignoring more answers with unrecognized types"
+	msgSkippedAnswer  = "Ignoring answer with unrecognized type"
+	msgSkippedAnswers = "Ignoring more answers with unrecognized types"
 )
 
 // logSkipped logs the answers a decode dropped: one WARN line per named
@@ -66,9 +83,9 @@ func logSkipped(ctx context.Context, logger *slog.Logger, skipped *codec.Skipped
 		return
 	}
 	for _, s := range skipped.Named() {
-		logger.LogAttrs(ctx, slog.LevelWarn, MsgSkippedAnswer, slog.String("answer", SafeName(s.Name)), slog.String("type", SafeName(s.Type)))
+		logger.LogAttrs(ctx, slog.LevelWarn, msgSkippedAnswer, slog.String("answer", safeName(s.Name)), slog.String("type", safeName(s.Type)))
 	}
 	if rest := skipped.Count - len(skipped.Named()); rest > 0 {
-		logger.LogAttrs(ctx, slog.LevelWarn, MsgSkippedAnswers, slog.Int("count", rest))
+		logger.LogAttrs(ctx, slog.LevelWarn, msgSkippedAnswers, slog.Int("count", rest))
 	}
 }

@@ -117,8 +117,8 @@ func TestResponseCapOverTheWire(t *testing.T) {
 				t.Fatalf("NewClient: %v", err)
 			}
 			t.Cleanup(func() { _ = c.Close() })
-			counter := &countingRT{rt: engOf(c).Config().Transport.RT}
-			engOf(c).Config().Transport.RT = counter
+			counter := &countingRT{rt: engine.ConfigOf(c).Transport.RT}
+			engine.ConfigOf(c).Transport.RT = counter
 			if err := c.WarmUp(t.Context()); err != nil { // the connection, so the call's deltas are the call's
 				t.Fatalf("WarmUp: %v", err)
 			}

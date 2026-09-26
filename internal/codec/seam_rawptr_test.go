@@ -35,7 +35,7 @@ import (
 // a decoded answer into T's field at the offset reflect gave it. Every other
 // file of the root package, and of each package the root package imports,
 // writes through no raw pointer by any route (K40).
-const rootStoreFile = "decodeas_store.go"
+const rootStoreFile = "internal/engine/decodeas_store.go"
 
 // rawPointerSelectors are the selectors through which a file reaches a raw
 // pointer without importing unsafe itself, or with it: reflect.Value's
@@ -151,7 +151,7 @@ func TestSeamRootRawPointers(t *testing.T) {
 
 	var importers []string
 	for _, f := range files {
-		if f.dir == "." && !f.test && slices.Contains(f.imports, "unsafe") {
+		if (f.dir == "." || f.dir == "internal/engine") && !f.test && slices.Contains(f.imports, "unsafe") {
 			importers = append(importers, f.rel)
 		}
 	}
@@ -198,7 +198,7 @@ func TestSeamRootRawPointers(t *testing.T) {
 			t.Errorf("%s:%s (K40, R116: only %s writes through a raw pointer)", f.rel, use, path.Join(".", rootStoreFile))
 		}
 	}
-	if checked == 0 || !slices.ContainsFunc(files, func(f goFile) bool { return f.rel == "decodeas.go" }) {
+	if checked == 0 || !slices.ContainsFunc(files, func(f goFile) bool { return f.rel == "internal/engine/decodeas.go" }) {
 		t.Fatalf("checked %d files and found no decodeas.go; the check would pass vacuously", checked)
 	}
 	t.Logf("read %d non-test files of %d packages", checked, len(dirs))

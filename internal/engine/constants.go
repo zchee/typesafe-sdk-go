@@ -14,49 +14,74 @@
 
 package engine
 
-import (
-	"net/http"
-	"strconv"
+import "time"
+
+// The environment variables a client reads for a setting its options leave
+// unset, as typesafe-sdk-python names them (py:constants.py). A value is
+// trimmed of leading and trailing whitespace, and a variable that is unset or
+// blank counts as unset.
+const (
+	// APIKeyEnv names the variable holding the API key.
+	APIKeyEnv = "TYPESAFE_API_KEY" //nolint:gosec // G101: the name of the variable that holds the key, not a key.
+
+	// BaseURLEnv names the variable holding the API base URL.
+	BaseURLEnv = "TYPESAFE_BASE_URL"
+
+	// DefaultModelEnv names the variable holding the model a request names
+	// when the call names none.
+	DefaultModelEnv = "TYPESAFE_DEFAULT_MODEL"
 )
 
-// The API's paths, joined to the base URL's path.
+// The settings a client uses when neither an option nor the environment
+// gives one.
 const (
-	SystemOnePath = "/v1/systemone"
+	// DefaultBaseURL is the API base URL.
+	DefaultBaseURL = "https://api.typesafe.ai"
+
+	// DefaultModel is the model a request names when the call names none.
+	DefaultModel = "jev-latest"
+
+	// DefaultTimeout is the deadline of each attempt of a request.
+	DefaultTimeout = 10 * time.Second
+
+	// DefaultConnectTimeout is the deadline for opening a connection,
+	// inside the deadline of the attempt that opens it.
+	DefaultConnectTimeout = 10 * time.Second
+
+	// DefaultMaxResponseBytes is the largest response body a request reads:
+	// 16 MiB.
+	DefaultMaxResponseBytes = 16 << 20
+)
+
+// maxMaxResponseBytes is the largest limit WithMaxResponseBytes accepts:
+// 1 GiB. A System One response is a few kilobytes; a limit past this one is a
+// unit mistake rather than a need, and it would let one response hold that
+// much memory.
+const maxMaxResponseBytes = 1 << 30
+
+// The API endpoints, appended to the base URL (py:_core/constants.py:5-6).
+const (
+	systemOnePath = "/v1/systemone"
 	ModelsPath    = "/v1/models"
 )
 
-// HeaderRetryCount is the header only retries carry, with the number of
-// attempts before them (py:_core/transport.py:66-68).
-const HeaderRetryCount = "X-TypeSafe-Retry-Count"
+// The request and response headers the SDK reads or writes, spelled as
+// typesafe-sdk-python spells them (py:_core/constants.py:11-18). An
+// [net/http.Header] stores a name in its canonical form ("X-Typesafe-Sdk"),
+// so these are for Get and Set, never for indexing the map directly; the
+// wire form is the same either way, since HTTP/2 sends every name in lower
+// case and HTTP/1.1 names are case-insensitive.
+const (
+	headerAuthorization = "Authorization"
+	headerAccept        = "Accept"
+	headerContentType   = "Content-Type"
+	headerUserAgent     = "User-Agent"
+	headerSDK           = "X-TypeSafe-SDK"
+	headerRuntime       = "X-TypeSafe-Runtime"
+	headerRetryCount    = "X-TypeSafe-Retry-Count"
+	headerRequestID     = "x-typesafe-request-id"
+)
 
-// RepeatScanLimit is the number of strings up to which a repeat is found by
-// comparing each with the ones before it; past it a map is used. At 32
-// strings the scan makes at most 496 comparisons, cheaper than the map's
-// allocations, and question sets and option lists are rarely longer.
-const RepeatScanLimit = 32
-
-// retryCountValues holds the value of X-TypeSafe-Retry-Count for the first
-// retries, so an attempt never formats its number (section 6.3: "retry-count
-// from a static table"); index n is retry n+1. The value slices have
-// len == cap, so a transport that appends to one reallocates instead of
-// writing into the table.
-var retryCountValues = func() [16][]string {
-	var t [16][]string
-	for i := range t {
-		t[i] = []string{strconv.Itoa(i + 1)}
-	}
-	return t
-}()
-
-// CanonicalRetryCount is the canonical form of X-TypeSafe-Retry-Count, the
-// key a header map holds it under.
-var CanonicalRetryCount = http.CanonicalHeaderKey(HeaderRetryCount)
-
-// RetryCountValue returns the X-TypeSafe-Retry-Count value of attempt, which
-// is at least 1: the number of attempts before it.
-func RetryCountValue(attempt int) []string {
-	if attempt <= len(retryCountValues) {
-		return retryCountValues[attempt-1]
-	}
-	return []string{strconv.Itoa(attempt)}
-}
+// jsonContentType is the media type of every request body and of every
+// response the SDK reads.
+const jsonContentType = "application/json"

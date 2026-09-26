@@ -24,6 +24,7 @@ import (
 	. "github.com/zchee/typesafe-sdk-go"
 
 	"github.com/zchee/typesafe-sdk-go/internal/codec"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
 )
@@ -81,7 +82,7 @@ func TestAllocTypedDecode(t *testing.T) {
 	none := func() struct{} { return struct{}{} }
 
 	answersDecode := testsupport.MeasureMin(t, "Answers() decode", func() *wire.SystemOneResult { return new(wire.SystemOneResult) }, func(res *wire.SystemOneResult) {
-		_, err = codec.DecodeSystemOne(body, wireOf(qs), engOf(c).Config().Model, res)
+		_, err = codec.DecodeSystemOne(body, wireOf(qs), engine.ConfigOf(c).Model, res)
 	})
 	check("Answers() decode")
 	typedDecode := testsupport.MeasureMin(t, "DecodeAs[reviewAnswers]", none, func(struct{}) {

@@ -15,11 +15,17 @@
 package engine
 
 import (
+	"context"
+	"errors"
 	"io"
 	"log/slog"
 	"maps"
+	"net"
 	"net/http"
 	"net/url"
+	"os"
+	"reflect"
+	"strconv"
 	"sync/atomic"
 	"time"
 
@@ -27,81 +33,30 @@ import (
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
 )
 
-// Config is a client's settings once every source has been consulted and
-// every value checked. Nothing changes it after [options.resolve] returns,
-// so requests read it without locking.
-type Config struct {
-	// APIKey is the key after trimming, which the redaction of logged
-	// headers looks for in their values.
-	APIKey string
+// LevelTrace is the log level of the records that carry request and response
+// bodies, below [slog.LevelDebug]: a body holds the caller's state, which
+// may be personal data, so a handler shows it only when set to this level
+// or lower. typesafe-sdk-python logs bodies at DEBUG.
+const LevelTrace = slog.LevelDebug - 4
 
-	// SystemOneURL and modelsURL are the two endpoints, shared read-only by
-	// every request.
-	SystemOneURL *url.URL
-	ModelsURL    *url.URL
-
-	// SystemOneLog and modelsLog are how log records name the endpoints: the
-	// URL, or the API path alone under WithLogEndpointHost(false).
-	SystemOneLog string
-	ModelsLog    string
-
-	// Model is the Model a request names when the call names none.
-	Model string
-
-	// Timeout is the deadline of each attempt; zero means none
-	// (WithNoTimeout), since a zero WithTimeout is refused.
-	Timeout time.Duration
-
-	// ConnectTimeout is the deadline for opening a connection.
-	ConnectTimeout time.Duration
-
-	// MaxResponseBytes is the largest response body a request reads.
-	MaxResponseBytes int64
-
-	// Logger receives the client's records; it is never nil.
-	Logger *slog.Logger
-
-	// SystemOneHeader and modelsHeader are the headers of every POST
-	// /v1/systemone and GET /v1/models request, built once. A request clones
-	// its template and never writes to it.
-	SystemOneHeader http.Header
-	ModelsHeader    http.Header
-
-	// Transport carries every request of the client.
-	Transport *Transport
-
-	// Retry is the policy of a call that passes none: the root package's
-	// RetryPolicy, which this package cannot name, held as an interface value
-	// that the root package asserts back (one allocation when the client is
-	// built, none per call).
-	Retry any
-}
-
-// Redactor returns the redactor for the client c configures.
-func (c *Config) Redactor() HeaderRedactor { return NewHeaderRedactor(c.APIKey) }
-
-// ConfigRef holds a client's *Config, so that the key is two pointers away
-// from the Client (ruling R66): fmt prints a pointer field as an address,
-// except under a verb a pointer does not take, such as %s or %q, where it
-// prints the value the field points to, which is this struct, whose one
-// field is again a pointer, printed as an address. The configuration's
-// fields are promoted through it.
-type ConfigRef struct {
-	*Config
-}
-
-// Client is the state of a client, behind the root package's Client, which
-// is declared as a defined type over it: the configuration, how errors name
-// the endpoints, and the client's counters. Its fields are unexported, so
-// that the root package's Client shows none; its methods are this
-// package's, which the root package's Client does not inherit.
+// Client calls the TypeSafe API. It is safe for concurrent use by multiple
+// goroutines; build it with [NewClient] and release its connections with
+// [Client.Close]. The zero Client is not usable.
+//
+// The first attempt of every call hands the transport the client's own
+// header map, shared by every call and never copied, so a RoundTripper
+// given with [WithRoundTripper] must not modify a request, as the
+// [net/http.RoundTripper] contract already requires.
 type Client struct {
 	// cfg holds the key and the header templates, two pointers away from
-	// the Client (ConfigRef).
-	cfg *ConfigRef
+	// the Client (ruling R66). fmt prints a pointer field as an address,
+	// except under a verb a pointer does not take, such as %s or %q, where
+	// it prints the value the field points to: that value is configRef,
+	// whose one field is again a pointer, printed as an address.
+	cfg *configRef
 
 	// systemOneEndpoint and modelsEndpoint name the endpoints in errors: the
-	// method and the URL.
+	// method and the URL (endpointOf).
 	systemOneEndpoint string
 	modelsEndpoint    string
 
@@ -113,60 +68,191 @@ type Client struct {
 	random func() float64
 }
 
-// NewClient returns the state of a client configured by cfg, whose errors
-// name its endpoints systemOneEndpoint and modelsEndpoint.
-func NewClient(cfg *Config, systemOneEndpoint, modelsEndpoint string) *Client {
-	return &Client{cfg: &ConfigRef{cfg}, systemOneEndpoint: systemOneEndpoint, modelsEndpoint: modelsEndpoint}
+// configRef holds a client's *config; see Client.cfg. The configuration's
+// fields are promoted through it.
+type configRef struct {
+	*config
 }
 
-// Built reports whether c was built by NewClient.
-func (c *Client) Built() bool { return c != nil && c.cfg != nil && c.cfg.Config != nil }
-
-// Config returns the client's configuration.
-func (c *Client) Config() *Config { return c.cfg.Config }
-
-// SystemOneEndpoint returns how errors name the System One endpoint.
-func (c *Client) SystemOneEndpoint() string { return c.systemOneEndpoint }
-
-// ModelsEndpoint returns how errors name the list-models endpoint.
-func (c *Client) ModelsEndpoint() string { return c.modelsEndpoint }
-
-// Closed is the client's closed flag.
-func (c *Client) Closed() *atomic.Bool { return &c.closed }
-
-// Attempts counts the attempts the client sent.
-func (c *Client) Attempts() *atomic.Uint64 { return &c.attempts }
-
-// Random returns the jitter source of the retry backoff, nil for
-// math/rand/v2's Float64.
-func (c *Client) Random() func() float64 { return c.random }
-
-// SetRandom sets the jitter source of the retry backoff; tests set it before
-// the first call.
-func (c *Client) SetRandom(random func() float64) { c.random = random }
-
-// Prepared is the state of a prepared question set, behind the root
-// package's Prepared, which is declared as a defined type over it.
-type Prepared struct {
-	w wire.Prepared
+// WithPretouch prepares the JSON encoder for each type before the first
+// call that encodes a state or an extra body value of it, so that the call
+// does not pay the one-time compilation the encoder makes per type (which
+// grows with the type's size). It changes nothing on the wire. The types are
+// prepared when the client is built, after every other option is checked;
+// a nil type, or one the encoder refuses (a map whose keys cannot be JSON
+// object keys, for example), fails NewClient with a [*ConfigError]. Types
+// from several WithPretouch options are all prepared.
+func WithPretouch(types ...reflect.Type) ClientOption {
+	return func(o *options) { o.pretouch = append(o.pretouch, types...) }
 }
 
-// Wire returns the prepared set's bytes and tables.
-func (p *Prepared) Wire() *wire.Prepared { return &p.w }
-
-// Response is the state of a System One response, behind the root package's
-// SystemOneResponse, which is declared as a defined type over it: the
-// decoded result and the HTTP metadata of the response it came from.
-type Response struct {
-	res  wire.SystemOneResult
-	meta wire.ResponseMeta
+// NewClient builds a client from opts. Unless an option supplies the
+// transport ([WithHTTPTransport], [WithRoundTripper]), the client builds its
+// own: HTTP/2 on one connection per client for an https base URL (HTTP/1.1
+// or HTTP/2 for http; [WithHTTPVersion]), through the proxy the environment
+// names ([WithProxy]). Every option is checked before the client is built,
+// and the first that cannot be used is reported as a [*ConfigError];
+// nothing is sent.
+func NewClient(opts ...ClientOption) (*Client, error) {
+	o := collectOptions(opts)
+	cfg, err := o.resolve(os.Getenv)
+	if err != nil {
+		return nil, err
+	}
+	for i, t := range o.pretouch {
+		if err := codec.Pretouch(t); err != nil {
+			name := "nil"
+			if t != nil {
+				name = t.String()
+			}
+			return nil, newConfigError("The type "+strconv.Itoa(i+1)+" passed to WithPretouch, "+safeName(name)+
+				", cannot be prepared for the JSON encoder: "+safeMessage(err.Error())+".", err)
+		}
+	}
+	return &Client{
+		cfg:               &configRef{cfg},
+		systemOneEndpoint: endpointOf(http.MethodPost, cfg.SystemOneURL),
+		modelsEndpoint:    endpointOf(http.MethodGet, cfg.modelsURL),
+	}, nil
 }
 
-// Result returns the decoded result.
-func (r *Response) Result() *wire.SystemOneResult { return &r.res }
+// Close releases the client's network resources: it closes the idle
+// connections of the transport the client built or cloned
+// ([WithHTTPTransport]), and calls Close once on a [WithRoundTripper]
+// transport that implements [io.Closer], returning its error. Calls in
+// flight finish on their own connections. Close is idempotent: a second
+// Close does nothing and returns nil. Every call made after Close fails
+// with a [*ConfigError] wrapping [ErrClientClosed].
+func (c *Client) Close() error {
+	if err := c.built(); err != nil {
+		return err
+	}
+	if !c.closed.CompareAndSwap(false, true) {
+		return nil
+	}
+	return c.cfg.Transport.close()
+}
 
-// Meta returns the HTTP metadata: status, header and body.
-func (r *Response) Meta() *wire.ResponseMeta { return &r.meta }
+// built returns a *ConfigError for a Client that NewClient did not build.
+func (c *Client) built() error {
+	if c == nil || c.cfg == nil || c.cfg.config == nil {
+		return newConfigError("The client was not built by NewClient.")
+	}
+	return nil
+}
+
+// usable returns the error a call fails with before it starts: a client that
+// NewClient did not build, or one that has been closed.
+func (c *Client) usable() error {
+	if err := c.built(); err != nil {
+		return err
+	}
+	if c.closed.Load() {
+		return newClientClosedError()
+	}
+	return nil
+}
+
+// Stats counts what a client has done since it was built.
+type Stats struct {
+	// Dials counts the connections the SDK's transport (its own, or the
+	// clone of WithHTTPTransport) handed to a request for the first time,
+	// re-dials and the transport's internal replays included; zero under
+	// WithRoundTripper.
+	Dials uint64
+	// Attempts counts the attempts the client sent: one per request that
+	// reached the transport, whatever came of it. The transport's own
+	// replay of a request inside one attempt is not counted.
+	Attempts uint64
+}
+
+// Stats returns the client's counters. A Client that NewClient did not build
+// counts nothing.
+func (c *Client) Stats() Stats {
+	if c.built() != nil {
+		return Stats{}
+	}
+	return Stats{Dials: c.cfg.Transport.stats().Dials, Attempts: c.attempts.Load()}
+}
+
+// WarmUp lists the models once, so that the connection, and the HTTP/2
+// session a burst of calls then shares, is ready before the first call that
+// matters. It returns the error of that call.
+func (c *Client) WarmUp(ctx context.Context) error {
+	_, err := c.Models().List(ctx)
+	return err
+}
+
+// SystemOne asks the questions qs about state and returns the answers:
+// POST /v1/systemone with {"state": state, "model": ..., "questions": ...}.
+//
+// state is text, a JSON object or an array: a string, a map, a slice, a
+// struct, a [RawJSON] sent as it is, or a [Content]. A nil, a number or a
+// boolean is refused, as is a plain []byte, whose intent is ambiguous. The
+// body is encoded once per call, before anything is sent, and every attempt
+// sends the same bytes; a state that cannot be encoded fails with an
+// [*InvalidRequestError], and a missing question set with a [*ConfigError].
+// A float inside the state keeps the encoder's spelling (3.0 is sent as 3),
+// and a map's members go out in Go's iteration order; a struct or RawJSON
+// gives stable bytes.
+//
+// opts override the client's settings for this call; see [CallOption].
+//
+// Each attempt has its own deadline ([WithTimeout], [Timeout]) under ctx. A
+// response with a status outside 2xx is an [*APIError]; a successful
+// response whose body is not the answer the SDK expects is a
+// [*ResponseValidationError], and one over the size limit a
+// [*ResponseTooLargeError]; an attempt that produced no response is a
+// [*ConnectionError], or a [*TimeoutError] when its deadline or ctx's
+// passed. A failed attempt is tried again as the call's retry policy
+// decides ([WithRetry], [Retry], [RetryPolicy]), and the call returns the
+// error of its last attempt. A call whose ctx is cancelled, while a request
+// is in flight or while it waits to retry, stops and returns ctx.Err(),
+// [context.Canceled], itself, which is not an SDK [Error], as
+// typesafe-sdk-python lets a cancellation through unwrapped;
+// [context.Cause] gives a cause the canceller set.
+func (c *Client) SystemOne(ctx context.Context, state any, qs *Prepared, opts ...CallOption) (*SystemOneResponse, error) {
+	if err := c.usable(); err != nil {
+		return nil, err
+	}
+	var o callOptions
+	if len(opts) > 0 {
+		o = collectCallOptions(opts)
+	}
+	model, err := o.systemOneModel(c.cfg.config)
+	if err != nil {
+		return nil, err
+	}
+	s, err := o.settings(ctx, c.cfg.config, c.cfg.SystemOneHeader)
+	if err != nil {
+		return nil, err
+	}
+	body, err := EncodeBody(state, model, qs, o.extra)
+	if err != nil {
+		return nil, err
+	}
+	defer body.Release()
+	call, spare := NewSystemOneAlloc(qs.Len())
+	rq := Request{
+		Method:   http.MethodPost,
+		URL:      c.cfg.SystemOneURL,
+		firstURL: &call.URL,
+		logURL:   c.cfg.systemOneLog,
+		endpoint: c.systemOneEndpoint,
+		Header:   s.header,
+		Timeout:  s.timeout,
+		Body:     body,
+		GetBody:  body.GetBody,
+	}
+	resp := &call.Resp
+	err = c.send(ctx, &rq, s.retry, &resp.meta, func() error {
+		return DecodeSystemOneInto(ctx, c.cfg.Logger, &resp.meta, c.systemOneEndpoint, c.cfg.Redactor(), qs, model, &resp.res, spare)
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
 
 // SystemOneAlloc is what a SystemOne call keeps on the heap, in one piece:
 // the response it returns and its first attempt's copy of the endpoint URL
@@ -174,7 +260,7 @@ func (r *Response) Meta() *wire.ResponseMeta { return &r.meta }
 // lives as long as the response, 144 B that a held response keeps alive,
 // and nothing reads it but the transport.
 type SystemOneAlloc struct {
-	Resp Response
+	Resp SystemOneResponse
 	URL  url.URL
 }
 
@@ -226,16 +312,95 @@ func NewSystemOneAlloc(n int) (*SystemOneAlloc, []wire.AnswerEntry) {
 	}
 }
 
+// modelsAlloc is systemOneAlloc for a list-models call.
+type modelsAlloc struct {
+	resp ModelsResponse
+	url  url.URL
+}
+
+// Models is the list-models endpoint of a client, from [Client.Models].
+type Models struct {
+	c *Client
+}
+
+// Models returns the client's list-models endpoint.
+func (c *Client) Models() Models { return Models{c} }
+
+// List lists the models the account can use: GET /v1/models. Of the call
+// options it takes [Timeout], [Header] and [Retry]; [Model] and [ExtraBody]
+// are refused with a [*ConfigError]. Its errors are those of
+// [Client.SystemOne].
+func (m Models) List(ctx context.Context, opts ...CallOption) (*ModelsResponse, error) {
+	c := m.c
+	if err := c.usable(); err != nil {
+		return nil, err
+	}
+	var o callOptions
+	if len(opts) > 0 {
+		o = collectCallOptions(opts)
+	}
+	if err := o.forModels(); err != nil {
+		return nil, err
+	}
+	s, err := o.settings(ctx, c.cfg.config, c.cfg.modelsHeader)
+	if err != nil {
+		return nil, err
+	}
+	call := new(modelsAlloc)
+	rq := Request{
+		Method:   http.MethodGet,
+		URL:      c.cfg.modelsURL,
+		firstURL: &call.url,
+		logURL:   c.cfg.modelsLog,
+		endpoint: c.modelsEndpoint,
+		Header:   s.header,
+		Timeout:  s.timeout,
+	}
+	resp := &call.resp
+	err = c.send(ctx, &rq, s.retry, &resp.meta, func() error {
+		return decodeModels(&resp.meta, c.modelsEndpoint, c.cfg.Redactor(), &resp.list)
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// send makes the attempts of one call as policy asks (section 6.4) and
+// returns nil for a response that decoded, or the error that ended the
+// call: the last attempt's own, decode's for a response that arrived, or
+// the context's when it ended a wait (retryState.wait). Each attempt stores
+// its response's status, header and body in *meta, which decode reads. One
+// loop serves every endpoint (ruling R79 NIT 9). Neither decode nor the
+// policy, a copy on send's stack, escapes, so a first attempt that succeeds
+// allocates nothing here.
+func (c *Client) send(ctx context.Context, rq *Request, policy RetryPolicy, meta *wire.ResponseMeta, decode func() error) error {
+	r := retryState{policy: &policy, start: time.Now(), random: c.random}
+	for attempt := 0; ; attempt++ {
+		var err error
+		*meta, err = c.attempt(ctx, rq, attempt)
+		if err == nil {
+			err = decode()
+		}
+		if err == nil {
+			return nil
+		}
+		if err = r.wait(ctx, attempt, err); err != nil {
+			return err
+		}
+	}
+}
+
 // Request is what every attempt of one call sends.
 type Request struct {
 	Method string
 	URL    *url.URL
-	// FirstURL is where the first attempt copies url: storage allocated
+	// firstURL is where the first attempt copies url: storage allocated
 	// with the call's response, so that the copy costs no allocation of
 	// its own. A retry copies url to a fresh URL.
-	FirstURL *url.URL
-	LogURL   string // how log records name the endpoint
-	Endpoint string // how errors name the endpoint
+	firstURL *url.URL
+	logURL   string // how log records name the endpoint
+	endpoint string // how errors name the endpoint
 	// Header is the call's Header template, which every attempt's Header
 	// starts from, and timeout the deadline of each attempt (zero: none).
 	Header  http.Header
@@ -260,6 +425,277 @@ func (rq *Request) AttemptHeader(attempt int) http.Header {
 	}
 	h := make(http.Header, len(rq.Header)+1)
 	maps.Copy(h, rq.Header)
-	h[CanonicalRetryCount] = RetryCountValue(attempt)
+	h[canonicalRetryCount] = retryCountValue(attempt)
 	return h
+}
+
+// attempt sends attempt number attempt of rq and reads its response. It
+// returns the response's status, header and body, and an error for every
+// outcome but a 2xx response read whole: an *APIError for another status, a
+// *ResponseTooLargeError for a 2xx body over the limit, and a transport
+// failure as a *ConnectionError or a *TimeoutError.
+func (c *Client) attempt(ctx context.Context, rq *Request, attempt int) (wire.ResponseMeta, error) {
+	h := rq.AttemptHeader(attempt)
+	// Each request carries its own copy of the endpoint URL, so a
+	// RoundTripper that rewrites req.URL, which the RoundTripper contract
+	// forbids, cannot change the next request's: the first attempt's in the
+	// call's own allocation, a retry's in a fresh one.
+	u := rq.firstURL
+	if attempt > 0 || u == nil {
+		u = new(url.URL)
+	}
+	*u = *rq.URL
+	actx := ctx
+	if timeout := rq.Timeout; timeout > 0 {
+		var cancel context.CancelFunc
+		actx, cancel = context.WithTimeout(ctx, timeout)
+		defer cancel()
+	}
+	r := http.Request{
+		Method:     rq.Method,
+		URL:        u,
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     h,
+		Host:       u.Host,
+	}
+	if rq.GetBody != nil {
+		rc, err := rq.Body.Open()
+		if err != nil {
+			// The call holds its reference until it returns: unreachable.
+			return wire.ResponseMeta{}, newConnectionError(err.Error(), err, false)
+		}
+		r.Body, r.GetBody, r.ContentLength = rc, rq.GetBody, int64(rq.Body.Len())
+	}
+	req := r.WithContext(actx)
+	c.logRequest(ctx, rq, h, attempt)
+
+	start := time.Now()
+	c.attempts.Add(1)
+	resp, err := c.cfg.Transport.RoundTrip(req, rq.Timeout)
+	if err != nil {
+		err = c.attemptError(ctx, actx, rq.Timeout, h, err)
+		c.logFailure(ctx, rq, attempt, start, err)
+		return wire.ResponseMeta{}, err
+	}
+	meta := wire.ResponseMeta{Status: resp.StatusCode, Header: resp.Header}
+	success := resp.StatusCode >= 200 && resp.StatusCode <= 299
+	raw, err := ReadBody(resp.Body, resp.ContentLength, c.cfg.MaxResponseBytes)
+	// A body read to its end has nothing left to report on Close; one cut
+	// short is abandoned, which Close tells the transport.
+	_ = resp.Body.Close()
+	switch {
+	case errors.Is(err, errTooLarge):
+		c.logResponse(ctx, rq, attempt, start, &meta)
+		if success {
+			return meta, newResponseTooLargeError(&meta, rq.endpoint, c.cfg.Redactor(), c.cfg.MaxResponseBytes)
+		}
+		return meta, newAPIError(&meta, rq.endpoint, c.cfg.Redactor())
+	case err != nil:
+		err = c.attemptError(ctx, actx, rq.Timeout, h, err)
+		c.logFailure(ctx, rq, attempt, start, err)
+		return wire.ResponseMeta{}, err
+	}
+	meta.Body = raw
+	c.logResponse(ctx, rq, attempt, start, &meta)
+	if !success {
+		return meta, newAPIError(&meta, rq.endpoint, c.cfg.Redactor())
+	}
+	return meta, nil
+}
+
+// attemptError turns the error that ended an attempt without a response,
+// from the transport or from reading the body, into what the call returns
+// (section 6.3). ctx is the call's context, actx the attempt's under its
+// timeout, and h the header the attempt sent. In this order:
+//
+//   - A call whose context was cancelled returns ctx.Err(), context.Canceled,
+//     itself: typesafe-sdk-python maps only httpx's RequestError
+//     (py:_core/transport.py:79-86), so asyncio.CancelledError reaches its
+//     caller as it is (tests/test_clients.py:559-596, C20 and C21).
+//   - An error the transport already mapped ([transportError]) is returned
+//     as it is.
+//   - The call's own deadline is a *TimeoutError without a timeout.
+//   - The attempt's deadline, or an error that is a timeout itself
+//     (context.DeadlineExceeded in its chain, or a net.Error whose Timeout
+//     is true), is a *TimeoutError with the attempt's timeout, as the
+//     Python SDK maps every httpx TimeoutException
+//     (py:_core/transport.py:83-84).
+//   - Anything else, a refused or reset connection, a stream reset, a
+//     GOAWAY after the request was written, a body cut short, is a
+//     *ConnectionError.
+//
+// A *ConnectionError's text is the transport error's, with every credential
+// of h and every URL userinfo replaced by "***" ([credentials.redact]);
+// both types wrap the transport's error, or a stand-in for it when its
+// chain printed a credential ([credentials.cause]).
+func (c *Client) attemptError(ctx, actx context.Context, timeout time.Duration, h http.Header, err error) error {
+	if cerr := ctx.Err(); errors.Is(cerr, context.Canceled) {
+		return cerr
+	}
+	if _, ok := err.(Error); ok { //nolint:errorlint // only an error the transport returned as the SDK's own is kept.
+		return err
+	}
+	creds := RequestCredentials(h)
+	var ne net.Error
+	switch {
+	case errors.Is(ctx.Err(), context.DeadlineExceeded):
+		return newTimeoutError(0, creds.cause(err))
+	case errors.Is(actx.Err(), context.DeadlineExceeded), errors.Is(err, context.DeadlineExceeded), errors.As(err, &ne) && ne.Timeout():
+		return newTimeoutError(timeout, creds.cause(err))
+	}
+	text, _ := creds.redact(err.Error())
+	return newConnectionError(text, creds.cause(err), false)
+}
+
+// errTooLarge ends a body read that passed the size limit.
+var errTooLarge = errors.New("typesafe: response body over the size limit")
+
+// The first buffer of a response body read (NF5, ruling R27).
+const (
+	// initialDeclared bounds the first buffer of a body whose length is
+	// declared: the buffer holds min(Content-Length, initialDeclared).
+	initialDeclared = 256 << 10
+	// InitialUndeclared is the first buffer of a body that declares no
+	// length (a chunked body); it doubles as the body grows.
+	InitialUndeclared = 4 << 10
+	// minGrow is the smallest room a growth step makes, so a body that
+	// declared zero bytes and sent some does not grow a byte at a time.
+	minGrow = 512
+)
+
+// ReadBody reads a response body of at most limit bytes (section 6.2.1,
+// rulings R26b and R27). declared is its Content-Length, or -1 when it
+// declares none.
+//
+//   - A declared length above limit is refused before anything is read.
+//   - The first buffer holds min(declared, initialDeclared) bytes for a
+//     declared body and initialUndeclared for an undeclared one.
+//   - A full buffer grows by doubling, up to the end the body may reach: its
+//     declared length while it is within it, else the limit. Growth that
+//     would pass half that end goes to the end at once.
+//   - The buffer that can reach the end has one byte of room beyond it, so
+//     the read that finds the end of the body, or the byte after the limit,
+//     needs no other buffer; the buffers before it are exact powers of two,
+//     so none costs the allocator a page for one byte.
+//   - The read stops at limit + 1 bytes: that byte makes the body too large.
+//
+// It returns errTooLarge for a body over the limit, and a read's own error
+// other than io.EOF as it is.
+func ReadBody(r io.Reader, declared, limit int64) ([]byte, error) {
+	if declared > limit {
+		return nil, errTooLarge
+	}
+	var size int64
+	switch {
+	case declared > initialDeclared:
+		size = initialDeclared
+	case declared >= 0:
+		size = declared + 1
+	default:
+		size = min(InitialUndeclared, limit+1)
+	}
+	buf := make([]byte, 0, size)
+	for {
+		if len(buf) == cap(buf) {
+			if int64(len(buf)) > limit {
+				return nil, errTooLarge
+			}
+			buf = grow(buf, declared, limit)
+		}
+		n, err := r.Read(buf[len(buf):cap(buf)])
+		buf = buf[:len(buf)+n]
+		if err != nil {
+			if int64(len(buf)) > limit {
+				return nil, errTooLarge
+			}
+			if errors.Is(err, io.EOF) {
+				return buf, nil
+			}
+			return nil, err
+		}
+	}
+}
+
+// grow returns buf, which is full and within limit, with room for more: see
+// readBody.
+func grow(buf []byte, declared, limit int64) []byte {
+	held := int64(len(buf))
+	end := limit
+	if declared > held {
+		end = declared // within limit: readBody refused a larger one
+	}
+	next := max(2*held, minGrow)
+	if 2*next > end {
+		next = end + 1
+	}
+	nb := make([]byte, held, next)
+	copy(nb, buf)
+	return nb
+}
+
+// logRequest logs attempt's request at debug level, its body at LevelTrace.
+// Headers are redacted ([newRedactedHeaders]); nothing is built unless a
+// handler takes the record.
+func (c *Client) logRequest(ctx context.Context, rq *Request, h http.Header, attempt int) {
+	logger := c.cfg.Logger
+	if attempt > 0 && logger.Enabled(ctx, slog.LevelInfo) {
+		logger.LogAttrs(ctx, slog.LevelInfo, "request retry", slog.String("method", rq.Method),
+			slog.String("endpoint", rq.logURL), slog.Int("retry", attempt))
+	}
+	if !logger.Enabled(ctx, slog.LevelDebug) {
+		return
+	}
+	n := 0
+	if rq.GetBody != nil {
+		n = rq.Body.Len()
+	}
+	logger.LogAttrs(ctx, slog.LevelDebug, "request", slog.String("method", rq.Method), slog.String("endpoint", rq.logURL),
+		slog.Int("attempt", attempt), slog.Any("headers", newRedactedHeaders(h, c.cfg.apiKey)), slog.Int("body_bytes", n))
+	if n > 0 && logger.Enabled(ctx, LevelTrace) {
+		logger.LogAttrs(ctx, LevelTrace, "request body", slog.String("method", rq.Method), slog.String("endpoint", rq.logURL),
+			slog.String("body", string(rq.Body.Bytes())))
+	}
+}
+
+// logResponse logs attempt's response: one INFO record with the status, the
+// time since start and the request id, as the Python SDK's
+// "<method> <url> <- <status> in <ms>ms (request <id>)", then the redacted
+// headers and the body's length at debug level and the body at LevelTrace.
+// The request id is redacted as the error types' Header is, "***" when it
+// holds the client's API key (ruling R87; typesafe-sdk-python logs it as it
+// arrived); the body is as it arrived.
+func (c *Client) logResponse(ctx context.Context, rq *Request, attempt int, start time.Time, meta *wire.ResponseMeta) {
+	logger := c.cfg.Logger
+	if !logger.Enabled(ctx, slog.LevelInfo) {
+		return
+	}
+	id := "-"
+	if v, ok := c.cfg.Redactor().RequestID(meta.Header); ok {
+		id = safeName(v)
+	}
+	logger.LogAttrs(ctx, slog.LevelInfo, "response", slog.String("method", rq.Method), slog.String("endpoint", rq.logURL),
+		slog.Int("status", meta.Status), slog.Duration("duration", time.Since(start)), slog.String("request_id", id),
+		slog.Int("attempt", attempt))
+	if !logger.Enabled(ctx, slog.LevelDebug) {
+		return
+	}
+	logger.LogAttrs(ctx, slog.LevelDebug, "response headers", slog.String("method", rq.Method), slog.String("endpoint", rq.logURL),
+		slog.Any("headers", newRedactedHeaders(meta.Header, c.cfg.apiKey)), slog.Int("body_bytes", len(meta.Body)))
+	if len(meta.Body) > 0 && logger.Enabled(ctx, LevelTrace) {
+		logger.LogAttrs(ctx, LevelTrace, "response body", slog.String("method", rq.Method), slog.String("endpoint", rq.logURL),
+			slog.String("body", string(meta.Body)))
+	}
+}
+
+// logFailure logs an attempt that produced no response, at INFO, with the
+// SDK error's text, which carries no credential.
+func (c *Client) logFailure(ctx context.Context, rq *Request, attempt int, start time.Time, err error) {
+	logger := c.cfg.Logger
+	if !logger.Enabled(ctx, slog.LevelInfo) {
+		return
+	}
+	logger.LogAttrs(ctx, slog.LevelInfo, "request failed", slog.String("method", rq.Method), slog.String("endpoint", rq.logURL),
+		slog.String("error", err.Error()), slog.Duration("duration", time.Since(start)), slog.Int("attempt", attempt))
 }

@@ -26,62 +26,35 @@ import (
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
 )
 
-// The bridge from the root package's public types to the state and the
-// stages internal/engine holds for them. The root package declares Client,
-// Prepared and SystemOneResponse as defined types over engine.Client,
-// engine.Prepared and engine.Response, so each conversion below is free
-// and compile-checked.
-
-// engOf returns c's state.
-func engOf(c *Client) *engine.Client { return (*engine.Client)(c) }
+// The bridge from the root package's public types, aliases of
+// internal/engine's, to the state and the stages the engine holds for them
+// (design D2: the whole implementation in internal/engine, the root package
+// a facade of aliases and wrappers).
 
 // wireOf returns the bytes and tables of qs, or nil for a nil set.
-func wireOf(qs *Prepared) *wire.Prepared {
-	if qs == nil {
-		return nil
-	}
-	return (*engine.Prepared)(qs).Wire()
-}
+func wireOf(qs *Prepared) *wire.Prepared { return engine.WireOf(qs) }
 
 // responseOf returns a response holding res and no HTTP metadata.
 func responseOf(res wire.SystemOneResult) *SystemOneResponse {
 	r := new(SystemOneResponse)
-	*(*engine.Response)(r).Result() = res
+	*engine.ResponseResultOf(r) = res
 	return r
 }
 
-// encodeBody is the root package's body encode as a call makes it
-// (engine.EncodeBody with the root package's RawJSON and Content); a
-// failure is reported as an error of its kind, the member and the cause.
+// encodeBody is the body encode a call makes (engine.EncodeBody).
 func encodeBody(state any, model string, qs *Prepared, extra []engine.BodyMember) (codec.Body, error) {
-	body, f := engine.EncodeBody[RawJSON, Content](state, model, wireOf(qs), extra)
-	if f.Kind != engine.FailNone {
-		return codec.Body{}, &encodeFailure{f}
-	}
-	return body, nil
+	return engine.EncodeBody(state, model, qs, extra)
 }
 
-// encodeFailure is an engine.Failure as an error.
-type encodeFailure struct{ f engine.Failure }
-
-func (e *encodeFailure) Error() string {
-	if e.f.Err != nil {
-		return "encode " + e.f.Key + ": " + e.f.Err.Error()
-	}
-	return "encode failure kind " + string(rune('0'+e.f.Kind))
-}
-
-// decodeSystemOne is the root package's decode of a System One body as a
-// call makes it (engine.DecodeSystemOne); endpoint and r name and redact
-// the error a call would build, which the root package adds.
-func decodeSystemOne(ctx context.Context, logger *slog.Logger, meta *wire.ResponseMeta, _ string, _ engine.HeaderRedactor, qs *Prepared, model string, dst *wire.SystemOneResult) error {
-	return engine.DecodeSystemOne(ctx, logger, meta.Body, wireOf(qs), model, dst)
+// decodeSystemOne is the decode of a System One body a call makes.
+func decodeSystemOne(ctx context.Context, logger *slog.Logger, meta *wire.ResponseMeta, endpoint string, r engine.HeaderRedactor, qs *Prepared, model string, dst *wire.SystemOneResult) error {
+	return engine.DecodeSystemOne(ctx, logger, meta, endpoint, r, qs, model, dst)
 }
 
 // decodeSystemOneInto is decodeSystemOne with spare as the room for the
-// answers (engine.DecodeSystemOneInto).
-func decodeSystemOneInto(ctx context.Context, logger *slog.Logger, meta *wire.ResponseMeta, _ string, _ engine.HeaderRedactor, qs *Prepared, model string, dst *wire.SystemOneResult, spare []wire.AnswerEntry) error {
-	return engine.DecodeSystemOneInto(ctx, logger, meta.Body, wireOf(qs), model, dst, spare)
+// answers.
+func decodeSystemOneInto(ctx context.Context, logger *slog.Logger, meta *wire.ResponseMeta, endpoint string, r engine.HeaderRedactor, qs *Prepared, model string, dst *wire.SystemOneResult, spare []wire.AnswerEntry) error {
+	return engine.DecodeSystemOneInto(ctx, logger, meta, endpoint, r, qs, model, dst, spare)
 }
 
 // callSettings is what one call sends besides its body: the header every

@@ -28,6 +28,8 @@ import (
 	"strings"
 	"syscall"
 	"unicode/utf8"
+
+	"github.com/zchee/typesafe-sdk-go/internal/codec"
 )
 
 // This file renders text the SDK did not write: a server's message, a name
@@ -43,20 +45,20 @@ import (
 // escaping (NF7): a name, such as an extra body member's, and a sentence
 // another layer wrote, such as the encoder's.
 const (
-	MaxNameChars    = 128
-	MaxMessageChars = 200
+	maxNameChars    = 128
+	maxMessageChars = 200
 )
 
-// QuotedName returns name between double quotes, escaped with its
+// quotedName returns name between double quotes, escaped with its
 // backslashes doubled, and cut at [maxNameChars].
-func QuotedName(name string) string {
-	b := make([]byte, 0, min(len(name), MaxNameChars)+8)
+func quotedName(name string) string {
+	b := make([]byte, 0, min(len(name), maxNameChars)+8)
 	b = append(b, '"')
-	b = AppendSafeText(b, name, MaxNameChars, true)
+	b = appendSafeText(b, name, maxNameChars, true)
 	return string(append(b, '"'))
 }
 
-// AppendSafeText appends s, text the SDK did not write, to dst escaped and
+// appendSafeText appends s, text the SDK did not write, to dst escaped and
 // cut at limit characters, as the Rust port's src/text.rs renders such text
 // (NF7). Printable characters, non-ASCII and U+FFFD included, are written as
 // they are; a control character (C0, DEL, C1), a byte that is not UTF-8 and a
@@ -66,7 +68,7 @@ func QuotedName(name string) string {
 // read like one holding the byte; a sentence keeps its backslashes, which
 // its own layer wrote. A cut never splits a character or an escape and is
 // marked with U+2026.
-func AppendSafeText(dst []byte, s string, limit int, double bool) []byte {
+func appendSafeText(dst []byte, s string, limit int, double bool) []byte {
 	const hex = "0123456789abcdef"
 	var buf [16]byte
 	n := 0
@@ -80,7 +82,7 @@ func AppendSafeText(dst []byte, s string, limit int, double bool) []byte {
 			if double {
 				esc = append(buf[:0], '\\', '\\')
 			}
-		case r < 0x20 || 0x7f <= r && r < 0xa0 || HidesText(r):
+		case r < 0x20 || 0x7f <= r && r < 0xa0 || hidesText(r):
 			q := strconv.AppendQuoteRune(buf[:0], r) // '\n', '\x1b', '\u2028'
 			esc = q[1 : len(q)-1]
 		}
@@ -102,13 +104,13 @@ func AppendSafeText(dst []byte, s string, limit int, double bool) []byte {
 	return dst
 }
 
-// HidesText reports whether r is a Unicode format character that reorders,
+// hidesText reports whether r is a Unicode format character that reorders,
 // joins or hides the text around it: the soft hyphen, the Arabic letter
 // mark, the Mongolian vowel separator, the zero-width characters, the line
 // and paragraph separators, the bidirectional embeddings, overrides and
 // isolates, the byte-order mark, the interlinear annotation marks and the
 // invisible tag characters (the Rust port's hides_text).
-func HidesText(r rune) bool {
+func hidesText(r rune) bool {
 	switch {
 	case r == 0x00ad, r == 0x061c, r == 0x180e, r == 0xfeff:
 		return true
@@ -120,22 +122,92 @@ func HidesText(r rune) bool {
 	return false
 }
 
-// MaxPathChars caps a whole field path in characters, counted after
+// maxPathChars caps a whole field path in characters, counted after
 // escaping: it holds the deepest path of the response schema,
 // answers.<name>.probabilities.<key>, with both server-chosen names at
 // [maxNameChars] (the Rust port's MAX_PATH_CHARS).
-const MaxPathChars = 320
+const maxPathChars = 320
 
-// SafeName returns name, which the server chose, escaped with its
+// safeName returns name, which the server chose, escaped with its
 // backslashes doubled and cut at [maxNameChars], without quotes.
-func SafeName(name string) string {
-	return string(AppendSafeText(make([]byte, 0, min(len(name), MaxNameChars)+4), name, MaxNameChars, true))
+func safeName(name string) string {
+	return string(appendSafeText(make([]byte, 0, min(len(name), maxNameChars)+4), name, maxNameChars, true))
 }
 
-// SafeMessage returns s, a sentence the SDK did not write, escaped with its
+// safeMessage returns s, a sentence the SDK did not write, escaped with its
 // backslashes kept and cut at [maxMessageChars].
-func SafeMessage(s string) string {
-	return string(AppendSafeText(make([]byte, 0, min(len(s), MaxMessageChars)+4), s, MaxMessageChars, false))
+func safeMessage(s string) string {
+	return string(appendSafeText(make([]byte, 0, min(len(s), maxMessageChars)+4), s, maxMessageChars, false))
+}
+
+// renderFieldPath returns p as a *ResponseValidationError prints it: the
+// Python SDK's dotted field_path, "." for the root, with each name the server
+// chose (an answer name, a probability or legend key) escaped with its
+// backslashes doubled and cut at [maxNameChars], and the whole cut at
+// [maxPathChars].
+func renderFieldPath(p codec.FieldPath) string {
+	if p.Top == "" {
+		return "."
+	}
+	t := pathText{limit: maxPathChars}
+	t.fixed(p.Top)
+	if p.HasIndex {
+		t.fixed("[" + strconv.Itoa(p.Index) + "]")
+	}
+	if p.HasName {
+		t.fixed(".")
+		t.name(p.Name)
+	}
+	if p.Member != "" {
+		t.fixed(".")
+		t.fixed(p.Member)
+	}
+	if p.HasKey {
+		t.fixed(".")
+		t.name(p.Key)
+	}
+	return string(t.b)
+}
+
+// pathText builds a rendering capped at limit characters from the SDK's own
+// text and escaped names. Once a piece would cross the limit, U+2026 is
+// written in its place and nothing after it.
+type pathText struct {
+	b     []byte
+	n     int // characters written
+	limit int
+	full  bool
+}
+
+// fixed appends s, ASCII text of the SDK's own, as it is.
+func (t *pathText) fixed(s string) {
+	if t.full {
+		return
+	}
+	if t.n+len(s) > t.limit {
+		t.b = append(t.b, "\u2026"...)
+		t.full = true
+		return
+	}
+	t.b = append(t.b, s...)
+	t.n += len(s)
+}
+
+// name appends s, a name the server chose, escaped and cut at
+// [maxNameChars] and at what remains of the limit.
+func (t *pathText) name(s string) {
+	if t.full {
+		return
+	}
+	room := min(maxNameChars, t.limit-t.n)
+	start := len(t.b)
+	t.b = appendSafeText(t.b, s, room, true)
+	written := utf8.RuneCount(t.b[start:])
+	if room < maxNameChars && written > room {
+		// The name was cut by the whole path's limit, not its own.
+		t.full = true
+	}
+	t.n += written
 }
 
 // Credentials are the values a transport error's text must not show: the
@@ -163,10 +235,10 @@ type Credentials []string
 func RequestCredentials(h http.Header) Credentials {
 	var c Credentials
 	add := func(v string) {
-		if !KeyNeedle(v) {
+		if !keyNeedle(v) {
 			return
 		}
-		for _, form := range [...]string{v, QuotedForm(strconv.Quote(v)), QuotedForm(strconv.QuoteToASCII(v)), JSONForm(v)} {
+		for _, form := range [...]string{v, quotedForm(strconv.Quote(v)), quotedForm(strconv.QuoteToASCII(v)), jsonForm(v)} {
 			if !slices.Contains(c, form) {
 				c = append(c, form)
 			}
@@ -203,17 +275,17 @@ func afterScheme(v string) (string, bool) {
 	return cred, cred != ""
 }
 
-// QuotedForm returns q, a Go-quoted string, without its quotes.
-func QuotedForm(q string) string { return q[1 : len(q)-1] }
+// quotedForm returns q, a Go-quoted string, without its quotes.
+func quotedForm(q string) string { return q[1 : len(q)-1] }
 
-// JSONForm returns v as a JSON string holds it, without its quotes, escaped
+// jsonForm returns v as a JSON string holds it, without its quotes, escaped
 // as encoding/json escapes it by default on Go 1.27: '"' and '\\' with a
 // backslash, the controls, '<', '>', '&', U+2028 and U+2029 as \u escapes
 // (\n, \r and \t as those), and a byte that is not UTF-8 as U+FFFD itself,
 // unescaped. TestJSONFormMatchesEncodingJSON checks it against
 // encoding/json, whose spelling of that last case differs between
 // encoders.
-func JSONForm(v string) string {
+func jsonForm(v string) string {
 	const hex = "0123456789abcdef"
 	var b strings.Builder
 	for i := 0; i < len(v); {
@@ -243,39 +315,39 @@ func JSONForm(v string) string {
 	return b.String()
 }
 
-// Redact returns s with every credential replaced by [redacted], then the
+// redact returns s with every credential replaced by [redacted], then the
 // userinfo of every URL in it ([scrubUserinfo]), which may hold a proxy's
 // password, and reports whether it replaced anything.
-func (c Credentials) Redact(s string) (string, bool) {
+func (c Credentials) redact(s string) (string, bool) {
 	found := false
 	for _, v := range c {
 		if strings.Contains(s, v) {
-			s, found = strings.ReplaceAll(s, v, Redacted), true
+			s, found = strings.ReplaceAll(s, v, redacted), true
 		}
 	}
-	if u, ok := ScrubUserinfo(s); ok {
+	if u, ok := scrubUserinfo(s); ok {
 		s, found = u, true
 	}
 	return s, found
 }
 
-// LogErrorText renders err, an error of the SDK's transport for the request
+// logErrorText renders err, an error of the SDK's transport for the request
 // req, for the transport's DEBUG records "h2: gate error" and "h2: redial
 // error" (h2gate.Config.ErrorText, ruling R84): every credential of req's
 // header and every URL userinfo replaced by "***" ([credentials.redact]),
 // then escaped and cut at 200 characters ([safeMessage]), as the text of a
 // *ConnectionError is. The transport calls it only for a record the logger
 // keeps.
-func LogErrorText(req *http.Request, err error) string {
-	text, _ := RequestCredentials(req.Header).Redact(err.Error())
-	return SafeMessage(text)
+func logErrorText(req *http.Request, err error) string {
+	text, _ := RequestCredentials(req.Header).redact(err.Error())
+	return safeMessage(text)
 }
 
-// MaxChainErrors bounds the errors [credentials.cause] reads in a chain; a
+// maxChainErrors bounds the errors [credentials.cause] reads in a chain; a
 // longer chain is treated as holding a credential.
-const MaxChainErrors = 64
+const maxChainErrors = 64
 
-// Cause returns the error an SDK error made from the transport's error err
+// cause returns the error an SDK error made from the transport's error err
 // unwraps to: err itself, unless a printed form of err or of an error its
 // chain wraps (errors.Unwrap, both forms) holds a credential
 // ([credentials.printed]), in which case it returns a [scrubbedError]
@@ -289,12 +361,12 @@ const MaxChainErrors = 64
 // as an address, so no printed form shows the credential, and errors.As
 // reaches the error with the request the caller's own RoundTripper, dialer
 // or body gave it (review W2.5 MINOR 2, ruling R82).
-func (c Credentials) Cause(err error) error {
+func (c Credentials) cause(err error) error {
 	if err == nil || !c.inChain(err) {
 		return err
 	}
-	msg, _ := c.Redact(err.Error())
-	s := &ScrubbedError{msg: msg, detail: c.detail(err)}
+	msg, _ := c.redact(err.Error())
+	s := &scrubbedError{msg: msg, detail: c.detail(err)}
 	for _, sentinel := range causeSentinels {
 		if errors.Is(err, sentinel) {
 			s.sentinels = append(s.sentinels, sentinel)
@@ -306,11 +378,11 @@ func (c Credentials) Cause(err error) error {
 	return s
 }
 
-// MaxDetailChars caps a [scrubbedError]'s rendering of the chain it stands
+// maxDetailChars caps a [scrubbedError]'s rendering of the chain it stands
 // in for, in characters counted after escaping: one line holding the
 // transport error's text and the text of each cause it wraps, which a
 // sentence's 200 characters would cut before the first cause.
-const MaxDetailChars = 1024
+const maxDetailChars = 1024
 
 // detail returns the rendering of err's chain that a [scrubbedError] prints
 // for %+v and %#v (ruling R95): the %+v form of err, then that of each error
@@ -325,7 +397,7 @@ const MaxDetailChars = 1024
 func (c Credentials) detail(err error) string {
 	var b strings.Builder
 	stack := []error{err}
-	for n := 0; len(stack) > 0 && n < MaxChainErrors; n++ {
+	for n := 0; len(stack) > 0 && n < maxChainErrors; n++ {
 		e := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 		if e == nil {
@@ -346,8 +418,8 @@ func (c Credentials) detail(err error) string {
 			}
 		}
 	}
-	text, _ := c.Redact(b.String())
-	return string(AppendSafeText(make([]byte, 0, min(len(text), MaxDetailChars)+4), text, MaxDetailChars, false))
+	text, _ := c.redact(b.String())
+	return string(appendSafeText(make([]byte, 0, min(len(text), maxDetailChars)+4), text, maxDetailChars, false))
 }
 
 // inChain reports whether a printed form of err, or of an error its chain
@@ -355,7 +427,7 @@ func (c Credentials) detail(err error) string {
 // [maxChainErrors] errors counts as holding one.
 func (c Credentials) inChain(err error) bool {
 	stack := []error{err}
-	for n := 0; len(stack) > 0 && n < MaxChainErrors; n++ {
+	for n := 0; len(stack) > 0 && n < maxChainErrors; n++ {
 		e := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 		if e == nil {
@@ -380,7 +452,7 @@ func (c Credentials) inChain(err error) bool {
 // request header among them. It runs on the error path only.
 func (c Credentials) printed(e error) bool {
 	for _, form := range [...]string{e.Error(), fmt.Sprintf("%+v", e), fmt.Sprintf("%#v", e)} {
-		if _, found := c.Redact(form); found {
+		if _, found := c.redact(form); found {
 			return true
 		}
 	}
@@ -392,7 +464,7 @@ func (c Credentials) printed(e error) bool {
 // cancellation, a connection or a stream a caller may branch on.
 var causeSentinels = [...]error{context.DeadlineExceeded, context.Canceled, os.ErrDeadlineExceeded, io.ErrUnexpectedEOF, io.EOF, net.ErrClosed}
 
-// ScrubbedError stands in for a transport error whose chain printed a
+// scrubbedError stands in for a transport error whose chain printed a
 // credential of the request (Appendix B: "cause via errors.Unwrap unless it
 // printed a credential"). Its text is the transport error's with every
 // credential replaced by "***"; it unwraps to the [causeSentinels] and the
@@ -403,18 +475,18 @@ var causeSentinels = [...]error{context.DeadlineExceeded, context.Canceled, os.E
 // rendering of the transport error's chain with its credentials replaced
 // ([credentials.detail]), so a cause's diagnostic survives as text; every
 // other verb prints the text, as for any error.
-type ScrubbedError struct {
+type scrubbedError struct {
 	msg       string
 	detail    string
 	sentinels []error
 }
 
 // Error returns the transport error's text with its credentials replaced.
-func (e *ScrubbedError) Error() string { return e.msg }
+func (e *scrubbedError) Error() string { return e.msg }
 
 // Format writes the rendering of the transport error's chain for %+v and
 // %#v, and the text, under the verb and its flags, for every other verb.
-func (e *ScrubbedError) Format(f fmt.State, verb rune) {
+func (e *scrubbedError) Format(f fmt.State, verb rune) {
 	if verb == 'v' && (f.Flag('+') || f.Flag('#')) {
 		_, _ = io.WriteString(f, e.detail)
 		return
@@ -423,41 +495,4 @@ func (e *ScrubbedError) Format(f fmt.State, verb rune) {
 }
 
 // Unwrap returns the sentinels the transport's error matched.
-func (e *ScrubbedError) Unwrap() []error { return e.sentinels }
-
-// ScrubUserinfo replaces the userinfo of every URL in s ("scheme://user@" or
-// "scheme://user:password@") with "***", and reports whether it replaced
-// any. A URL's authority is taken to run to the next whitespace or quote, not
-// to the next "/": a password written with a raw "/" is still scrubbed, at
-// the cost of scrubbing a path that holds an "@".
-func ScrubUserinfo(s string) (string, bool) {
-	var b strings.Builder
-	rest, scrubbed := s, false
-	for {
-		i := strings.Index(rest, "://")
-		if i < 0 {
-			break
-		}
-		b.WriteString(rest[:i+3])
-		rest = rest[i+3:]
-		end := strings.IndexAny(rest, " \t\n\"'<>")
-		if end < 0 {
-			end = len(rest)
-		}
-		if at := strings.LastIndexByte(rest[:end], '@'); at >= 0 {
-			b.WriteString("***")
-			rest, scrubbed = rest[at:], true
-		}
-	}
-	if !scrubbed {
-		return s, false
-	}
-	b.WriteString(rest)
-	return b.String(), true
-}
-
-// shield wraps a caller's httptrace hooks for one request (K28, K28b, K28c):
-// a hook that panics inside net/http, which may hold its connection pool's
-// lock or a reserved stream there, is recovered in place, and done raises the
-// panic again on the goroutine that called RoundTrip. A panic it does not
-// raise is logged at WARN with its hook and stack, never its value, which
+func (e *scrubbedError) Unwrap() []error { return e.sentinels }

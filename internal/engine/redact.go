@@ -26,12 +26,12 @@ import (
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
 )
 
-// Redacted is what a credential is printed as.
-const Redacted = "***"
+// redacted is what a credential is printed as.
+const redacted = "***"
 
-// SecretHeaderNames are the header names, in lower case, whose values are
+// secretHeaderNames are the header names, in lower case, whose values are
 // credentials (py:_core/constants.py:21).
-var SecretHeaderNames = []string{"authorization", "proxy-authorization", "x-api-key", "api-key", "cookie", "set-cookie"}
+var secretHeaderNames = []string{"authorization", "proxy-authorization", "x-api-key", "api-key", "cookie", "set-cookie"}
 
 // IsSecretHeader reports whether the value of the header name is a
 // credential by its name, compared without regard to case: one of
@@ -46,10 +46,10 @@ func IsSecretHeader(name string) bool {
 	for i := range len(name) {
 		if name[i] >= utf8.RuneSelf {
 			lower := strings.ToLower(name)
-			return slices.Contains(SecretHeaderNames, lower) || strings.Contains(lower, "token") || strings.Contains(lower, "secret")
+			return slices.Contains(secretHeaderNames, lower) || strings.Contains(lower, "token") || strings.Contains(lower, "secret")
 		}
 	}
-	for _, secret := range SecretHeaderNames {
+	for _, secret := range secretHeaderNames {
 		if strings.EqualFold(name, secret) {
 			return true
 		}
@@ -80,30 +80,30 @@ func lowerASCII(c byte) byte {
 	return c
 }
 
-// MinKeyNeedleBytes is the shortest API key the SDK looks for inside other
+// minKeyNeedleBytes is the shortest API key the SDK looks for inside other
 // text: a header value it redacts, and a WithHeader name it refuses (ruling
 // R68). A shorter key, such as a test's "test" or "k", occurs in ordinary
 // names and values, and looking for it would hide or refuse them; real keys
 // are far longer. Redaction by header name does not depend on the key and
 // always applies.
-const MinKeyNeedleBytes = 8
+const minKeyNeedleBytes = 8
 
-// KeyNeedle reports whether key is long enough to be looked for inside other
+// keyNeedle reports whether key is long enough to be looked for inside other
 // text ([minKeyNeedleBytes]).
-func KeyNeedle(key string) bool {
-	return len(key) >= MinKeyNeedleBytes
+func keyNeedle(key string) bool {
+	return len(key) >= minKeyNeedleBytes
 }
 
-// IsCredential reports whether the values of the header name must not be
+// isCredential reports whether the values of the header name must not be
 // printed: the name marks them as credentials ([isSecretHeader]), or one of
 // them holds the API key, under whatever name the caller sent it, when the
 // key is at least [minKeyNeedleBytes] long. The second test goes past
 // typesafe-sdk-python, which redacts by name alone.
-func IsCredential(name string, values []string, apiKey string) bool {
+func isCredential(name string, values []string, apiKey string) bool {
 	if IsSecretHeader(name) {
 		return true
 	}
-	return KeyNeedle(apiKey) && slices.ContainsFunc(values, func(v string) bool { return strings.Contains(v, apiKey) })
+	return keyNeedle(apiKey) && slices.ContainsFunc(values, func(v string) bool { return strings.Contains(v, apiKey) })
 }
 
 // HeaderRedactor redacts the response header that the error types keep
@@ -121,16 +121,14 @@ type HeaderRedactor struct {
 // apiKey: by name and by apiKey when apiKey is at least
 // [minKeyNeedleBytes] long (ruling R68), by name alone otherwise.
 func NewHeaderRedactor(apiKey string) HeaderRedactor {
-	if !KeyNeedle(apiKey) {
+	if !keyNeedle(apiKey) {
 		return HeaderRedactor{}
 	}
 	return HeaderRedactor{key: apiKey}
 }
 
-// Key returns the key r looks for, empty when it redacts by name alone.
-func (r HeaderRedactor) Key() string { return r.key }
-
-// redactor returns the redactor for the client c configures.
+// Redactor returns the Redactor for the client c configures.
+func (c *config) Redactor() HeaderRedactor { return NewHeaderRedactor(c.apiKey) }
 
 // Header returns h's headers in a new map in which every value of each
 // Header that is a credential is replaced by "***", one "***" per value, and
@@ -144,13 +142,13 @@ func (r HeaderRedactor) Header(h http.Header) http.Header {
 	}
 	out := make(http.Header, len(h))
 	for name, values := range h {
-		if !IsCredential(name, values, r.key) {
+		if !isCredential(name, values, r.key) {
 			out[name] = values
 			continue
 		}
 		masked := make([]string, len(values))
 		for i := range masked {
-			masked[i] = Redacted
+			masked[i] = redacted
 		}
 		out[name] = masked
 	}
@@ -172,12 +170,12 @@ func (r HeaderRedactor) RequestID(h http.Header) (string, bool) {
 		return "", false
 	}
 	if r.key != "" && slices.ContainsFunc(values, func(v string) bool { return strings.Contains(v, r.key) }) {
-		return strings.Repeat(", "+Redacted, len(values))[len(", "):], true
+		return strings.Repeat(", "+redacted, len(values))[len(", "):], true
 	}
 	return strings.Join(values, ", "), true
 }
 
-// RedactedHeaders is a header map as a log record shows it: a group with one
+// redactedHeaders is a header map as a log record shows it: a group with one
 // attribute per header, in name order, whose value is the header's values
 // joined by ", ", or "***" when they are a credential ([isCredential]). Build
 // it with [newRedactedHeaders].
@@ -188,12 +186,12 @@ func (r HeaderRedactor) RequestID(h http.Header) (string, bool) {
 // checks [slog.Logger.Enabled] before it builds the attribute.
 //
 // No rendering prints the map or the key. Every fmt verb prints the redacted
-// form ([RedactedHeaders.Format]), and so do an unresolved [slog.Value] and
+// form ([redactedHeaders.Format]), and so do an unresolved [slog.Value] and
 // [slog.Attr], whose String methods print a LogValuer through fmt. The map
 // and the key sit behind the one pointer field, so the two renderings fmt
-// makes without calling Format, the %p verb and a RedactedHeaders held in an
+// makes without calling Format, the %p verb and a redactedHeaders held in an
 // unexported field of another value, print an address.
-type RedactedHeaders struct {
+type redactedHeaders struct {
 	p *headerLog
 }
 
@@ -203,24 +201,24 @@ type headerLog struct {
 	apiKey string
 }
 
-// NewRedactedHeaders returns header as a log record shows it, with any value
+// newRedactedHeaders returns header as a log record shows it, with any value
 // that holds apiKey redacted whatever its header's name, when apiKey is at
 // least [minKeyNeedleBytes] long.
-func NewRedactedHeaders(header http.Header, apiKey string) RedactedHeaders {
-	return RedactedHeaders{p: &headerLog{header: header, apiKey: apiKey}}
+func newRedactedHeaders(header http.Header, apiKey string) redactedHeaders {
+	return redactedHeaders{p: &headerLog{header: header, apiKey: apiKey}}
 }
 
 // LogValue returns the redacted headers as a group value; the zero
 // redactedHeaders is an empty group.
-func (r RedactedHeaders) LogValue() slog.Value {
+func (r redactedHeaders) LogValue() slog.Value {
 	if r.p == nil {
 		return slog.GroupValue()
 	}
 	attrs := make([]slog.Attr, 0, len(r.p.header))
 	for _, name := range slices.Sorted(maps.Keys(r.p.header)) {
 		values := r.p.header[name]
-		value := Redacted
-		if !IsCredential(name, values, r.p.apiKey) {
+		value := redacted
+		if !isCredential(name, values, r.p.apiKey) {
 			value = strings.Join(values, ", ")
 		}
 		attrs = append(attrs, slog.String(name, value))
@@ -232,6 +230,6 @@ func (r RedactedHeaders) LogValue() slog.Value {
 // "[Accept=application/json Authorization=***]", whatever the verb and its
 // flags. A String method alone would not do: %d and %x bypass it and print
 // the fields.
-func (r RedactedHeaders) Format(f fmt.State, _ rune) {
+func (r redactedHeaders) Format(f fmt.State, _ rune) {
 	fmt.Fprint(f, r.LogValue().String())
 }
