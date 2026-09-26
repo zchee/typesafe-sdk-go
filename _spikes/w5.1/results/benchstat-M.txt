@@ -1,0 +1,500 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+                                       │ bench-M.txt  │
+                                       │    sec/op    │
+Assembly/request-16                      676.8n ± ∞ ¹
+Assembly/prepare-and-request-16          1.451µ ± ∞ ¹
+Call/sdk-16                              5.107µ ± ∞ ¹
+Call/floor-16                            547.4n ± ∞ ¹
+Call/naive-16                            4.383µ ± ∞ ¹
+Call/naive-json-16                       8.979µ ± ∞ ¹
+Call/sdk-q20-16                          25.12µ ± ∞ ¹
+Call/floor-q20-16                        535.2n ± ∞ ¹
+Call/naive-q20-16                        14.13µ ± ∞ ¹
+Call/naive-json-q20-16                   42.47µ ± ∞ ¹
+HeaderTemplateClone/sdk-only-16          256.3n ± ∞ ¹
+HeaderTemplateClone/three-defaults-16    465.9n ± ∞ ¹
+HeaderTemplateClone/no-runtime-hdr-16    227.6n ± ∞ ¹
+EncodeBody/map/1KiB/sdk-16               1.263µ ± ∞ ¹
+EncodeBody/map/1KiB/naive-16             1.498µ ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-16        1.875µ ± ∞ ¹
+EncodeBody/map/64KiB/sdk-16              38.70µ ± ∞ ¹
+EncodeBody/map/64KiB/naive-16            30.15µ ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-16       64.79µ ± ∞ ¹
+EncodeBody/map/1MiB/sdk-16               608.0µ ± ∞ ¹
+EncodeBody/map/1MiB/naive-16             436.9µ ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-16        954.4µ ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-16           47.04n ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-16         2.112µ ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-16    4.322µ ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-16          939.8n ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-16        82.34µ ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-16   205.8µ ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-16           15.63µ ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-16         1.318m ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-16    3.207m ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-16            945.1n ± ∞ ¹
+EncodeBody/struct/1KiB/naive-16          1.179µ ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-16     1.790µ ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-16           38.51µ ± ∞ ¹
+EncodeBody/struct/64KiB/naive-16         29.65µ ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-16    64.76µ ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-16            606.5µ ± ∞ ¹
+EncodeBody/struct/1MiB/naive-16          437.5µ ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-16     964.2µ ± ∞ ¹
+EncodeBody/text/1KiB/sdk-16              760.2n ± ∞ ¹
+EncodeBody/text/1KiB/naive-16            1.706µ ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-16       1.772µ ± ∞ ¹
+EncodeBody/text/64KiB/sdk-16             43.32µ ± ∞ ¹
+EncodeBody/text/64KiB/naive-16           36.40µ ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-16      72.66µ ± ∞ ¹
+EncodeBody/text/1MiB/sdk-16              604.9µ ± ∞ ¹
+EncodeBody/text/1MiB/naive-16            473.2µ ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-16       966.6µ ± ∞ ¹
+Loopback/call-16                         72.01µ ± ∞ ¹
+Loopback/cold-fanout-64-16               2.932m ± ∞ ¹
+Noop-16                                  2.101n ± ∞ ¹
+Prepare/c1-sketch-16                     625.6n ± ∞ ¹
+Prepare/c2-noul-short-16                 112.0n ± ∞ ¹
+Prepare/c3-choice-20x10-16               11.93µ ± ∞ ¹
+Prepare/c4a-score-20x8-text-16           9.726µ ± ∞ ¹
+Prepare/c4b-score-20x8-json-16           28.47µ ± ∞ ¹
+Prepare/c5-raw-100x3-16                  81.07µ ± ∞ ¹
+Prepare/c6-escapes-16                    3.702µ ± ∞ ¹
+Prepare/n8a-array-control-16             34.72µ ± ∞ ¹
+Prepare/n8a-array-score-16               63.92µ ± ∞ ¹
+Prepare/n8b-map-control-16               142.9µ ± ∞ ¹
+Prepare/n8b-map-score-16                 269.0µ ± ∞ ¹
+FalsyJSON/array-16                       1.313µ ± ∞ ¹
+FalsyJSON/map-16                         1.099µ ± ∞ ¹
+FalsyJSON/small-14B-16                   27.98n ± ∞ ¹
+geomean                                  12.04µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                       │  bench-M.txt  │
+                                       │     B/op      │
+Assembly/request-16                        896.0 ± ∞ ¹
+Assembly/prepare-and-request-16          1.947Ki ± ∞ ¹
+Call/sdk-16                              2.933Ki ± ∞ ¹
+Call/floor-16                              681.0 ± ∞ ¹
+Call/naive-16                            11.41Ki ± ∞ ¹
+Call/naive-json-16                       7.715Ki ± ∞ ¹
+Call/sdk-q20-16                          11.21Ki ± ∞ ¹
+Call/floor-q20-16                          684.0 ± ∞ ¹
+Call/naive-q20-16                        39.86Ki ± ∞ ¹
+Call/naive-json-q20-16                   30.29Ki ± ∞ ¹
+HeaderTemplateClone/sdk-only-16            496.0 ± ∞ ¹
+HeaderTemplateClone/three-defaults-16      936.0 ± ∞ ¹
+HeaderTemplateClone/no-runtime-hdr-16      480.0 ± ∞ ¹
+EncodeBody/map/1KiB/sdk-16                 114.0 ± ∞ ¹
+EncodeBody/map/1KiB/naive-16             1.618Ki ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-16        1.518Ki ± ∞ ¹
+EncodeBody/map/64KiB/sdk-16                125.0 ± ∞ ¹
+EncodeBody/map/64KiB/naive-16            75.36Ki ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-16       72.48Ki ± ∞ ¹
+EncodeBody/map/1MiB/sdk-16               1.956Ki ± ∞ ¹
+EncodeBody/map/1MiB/naive-16             3.482Mi ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-16        1.078Mi ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-16             0.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-16         2.675Ki ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-16    2.674Ki ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-16            0.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-16        148.1Ki ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-16   144.4Ki ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-16             13.00 ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-16         2.101Mi ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-16    2.088Mi ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-16              16.00 ± ∞ ¹
+EncodeBody/struct/1KiB/naive-16          1.531Ki ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-16     1.517Ki ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-16             28.00 ± ∞ ¹
+EncodeBody/struct/64KiB/naive-16         74.94Ki ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-16    72.43Ki ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-16            1.887Ki ± ∞ ¹
+EncodeBody/struct/1MiB/naive-16          3.481Mi ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-16     1.082Mi ± ∞ ¹
+EncodeBody/text/1KiB/sdk-16                16.00 ± ∞ ¹
+EncodeBody/text/1KiB/naive-16            1.533Ki ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-16       1.517Ki ± ∞ ¹
+EncodeBody/text/64KiB/sdk-16               24.00 ± ∞ ¹
+EncodeBody/text/64KiB/naive-16           75.46Ki ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-16      72.45Ki ± ∞ ¹
+EncodeBody/text/1MiB/sdk-16              1.876Ki ± ∞ ¹
+EncodeBody/text/1MiB/naive-16            3.483Mi ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-16       1.095Mi ± ∞ ¹
+Loopback/call-16                         13.80Ki ± ∞ ¹
+Loopback/cold-fanout-64-16               1.004Mi ± ∞ ¹
+Noop-16                                    0.000 ± ∞ ¹
+Prepare/c1-sketch-16                      1008.0 ± ∞ ¹
+Prepare/c2-noul-short-16                   224.0 ± ∞ ¹
+Prepare/c3-choice-20x10-16               14.90Ki ± ∞ ¹
+Prepare/c4a-score-20x8-text-16           16.78Ki ± ∞ ¹
+Prepare/c4b-score-20x8-json-16           43.37Ki ± ∞ ¹
+Prepare/c5-raw-100x3-16                  76.25Ki ± ∞ ¹
+Prepare/c6-escapes-16                    8.328Ki ± ∞ ¹
+Prepare/n8a-array-control-16             57.46Ki ± ∞ ¹
+Prepare/n8a-array-score-16               107.5Ki ± ∞ ¹
+Prepare/n8b-map-control-16               265.4Ki ± ∞ ¹
+Prepare/n8b-map-score-16                 502.9Ki ± ∞ ¹
+FalsyJSON/array-16                       2.500Ki ± ∞ ¹
+FalsyJSON/map-16                         2.375Ki ± ∞ ¹
+FalsyJSON/small-14B-16                     0.000 ± ∞ ¹
+geomean                                              ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                       │ bench-M.txt  │
+                                       │  allocs/op   │
+Assembly/request-16                       9.000 ± ∞ ¹
+Assembly/prepare-and-request-16           18.00 ± ∞ ¹
+Call/sdk-16                               22.00 ± ∞ ¹
+Call/floor-16                             8.000 ± ∞ ¹
+Call/naive-16                             54.00 ± ∞ ¹
+Call/naive-json-16                        114.0 ± ∞ ¹
+Call/sdk-q20-16                           42.00 ± ∞ ¹
+Call/floor-q20-16                         8.000 ± ∞ ¹
+Call/naive-q20-16                         127.0 ± ∞ ¹
+Call/naive-json-q20-16                    517.0 ± ∞ ¹
+HeaderTemplateClone/sdk-only-16           3.000 ± ∞ ¹
+HeaderTemplateClone/three-defaults-16     5.000 ± ∞ ¹
+HeaderTemplateClone/no-runtime-hdr-16     3.000 ± ∞ ¹
+EncodeBody/map/1KiB/sdk-16                2.000 ± ∞ ¹
+EncodeBody/map/1KiB/naive-16              4.000 ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-16         5.000 ± ∞ ¹
+EncodeBody/map/64KiB/sdk-16               2.000 ± ∞ ¹
+EncodeBody/map/64KiB/naive-16             4.000 ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-16        5.000 ± ∞ ¹
+EncodeBody/map/1MiB/sdk-16                2.000 ± ∞ ¹
+EncodeBody/map/1MiB/naive-16              9.000 ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-16         6.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-16            0.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-16          4.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-16     6.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-16           0.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-16         4.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-16    6.000 ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-16            0.000 ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-16          9.000 ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-16     6.000 ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-16             1.000 ± ∞ ¹
+EncodeBody/struct/1KiB/naive-16           3.000 ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-16      5.000 ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-16            1.000 ± ∞ ¹
+EncodeBody/struct/64KiB/naive-16          3.000 ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-16     5.000 ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-16             1.000 ± ∞ ¹
+EncodeBody/struct/1MiB/naive-16           8.000 ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-16      5.000 ± ∞ ¹
+EncodeBody/text/1KiB/sdk-16               1.000 ± ∞ ¹
+EncodeBody/text/1KiB/naive-16             3.000 ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-16        4.000 ± ∞ ¹
+EncodeBody/text/64KiB/sdk-16              1.000 ± ∞ ¹
+EncodeBody/text/64KiB/naive-16            3.000 ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-16       4.000 ± ∞ ¹
+EncodeBody/text/1MiB/sdk-16               1.000 ± ∞ ¹
+EncodeBody/text/1MiB/naive-16             8.000 ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-16        4.000 ± ∞ ¹
+Loopback/call-16                          111.0 ± ∞ ¹
+Loopback/cold-fanout-64-16               8.593k ± ∞ ¹
+Noop-16                                   0.000 ± ∞ ¹
+Prepare/c1-sketch-16                      9.000 ± ∞ ¹
+Prepare/c2-noul-short-16                  3.000 ± ∞ ¹
+Prepare/c3-choice-20x10-16                27.00 ± ∞ ¹
+Prepare/c4a-score-20x8-text-16            27.00 ± ∞ ¹
+Prepare/c4b-score-20x8-json-16            36.00 ± ∞ ¹
+Prepare/c5-raw-100x3-16                  1.710k ± ∞ ¹
+Prepare/c6-escapes-16                     12.00 ± ∞ ¹
+Prepare/n8a-array-control-16              132.0 ± ∞ ¹
+Prepare/n8a-array-score-16                252.0 ± ∞ ¹
+Prepare/n8b-map-control-16                615.0 ± ∞ ¹
+Prepare/n8b-map-score-16                 1.215k ± ∞ ¹
+FalsyJSON/array-16                        6.000 ± ∞ ¹
+FalsyJSON/map-16                          6.000 ± ∞ ¹
+FalsyJSON/small-14B-16                    0.000 ± ∞ ¹
+geomean                                             ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                       │  bench-M.txt   │
+                                       │      B/s       │
+EncodeBody/map/1KiB/sdk-16                1.027Gi ± ∞ ¹
+EncodeBody/map/1KiB/naive-16              886.7Mi ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-16         708.6Mi ± ∞ ¹
+EncodeBody/map/64KiB/sdk-16               1.638Gi ± ∞ ¹
+EncodeBody/map/64KiB/naive-16             2.103Gi ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-16       1002.1Mi ± ∞ ¹
+EncodeBody/map/1MiB/sdk-16                1.663Gi ± ∞ ¹
+EncodeBody/map/1MiB/naive-16              2.315Gi ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-16         1.060Gi ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-16            27.58Gi ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-16          629.1Mi ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-16     307.4Mi ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-16           67.47Gi ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-16         788.6Mi ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-16    315.5Mi ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-16            64.70Gi ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-16          786.0Mi ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-16     322.9Mi ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-16             1.373Gi ± ∞ ¹
+EncodeBody/struct/1KiB/naive-16           1.100Gi ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-16      742.1Mi ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-16            1.646Gi ± ∞ ¹
+EncodeBody/struct/64KiB/naive-16          2.138Gi ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-16    1002.6Mi ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-16             1.668Gi ± ∞ ¹
+EncodeBody/struct/1MiB/naive-16           2.312Gi ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-16      1.049Gi ± ∞ ¹
+EncodeBody/text/1KiB/sdk-16               1.621Gi ± ∞ ¹
+EncodeBody/text/1KiB/naive-16             739.4Mi ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-16        712.0Mi ± ∞ ¹
+EncodeBody/text/64KiB/sdk-16              1.462Gi ± ∞ ¹
+EncodeBody/text/64KiB/naive-16            1.740Gi ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-16       892.7Mi ± ∞ ¹
+EncodeBody/text/1MiB/sdk-16               1.672Gi ± ∞ ¹
+EncodeBody/text/1MiB/naive-16             2.137Gi ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-16        1.046Gi ± ∞ ¹
+geomean                                   1.472Gi
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                 │ bench-M.txt │
+                 │  new-conns  │
+Loopback/call-16   0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                           │ bench-M.txt │
+                           │  conns/op   │
+Loopback/cold-fanout-64-16   1.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+                                                │ bench-M.txt  │
+                                                │    sec/op    │
+Decode/result-16                                  3.455µ ± ∞ ¹
+Decode/type-last-16                               3.555µ ± ∞ ¹
+Decode/duplicates-16                              11.32µ ± ∞ ¹
+Decode/result-20-16                               21.45µ ± ∞ ¹
+Decode/score-flood-mini-16                        14.57µ ± ∞ ¹
+Decode/escaped-names-16                           5.490µ ± ∞ ¹
+Decode/escaped-member-names-16                    7.087µ ± ∞ ¹
+Decode/structured-legend-16                       4.123µ ± ∞ ¹
+Decode/deviation-lone-surrogate-16                4.543µ ± ∞ ¹
+Decode/unknown-answer-type-16                     1.416µ ± ∞ ¹
+Decode/parity-big-exp-unknown-16                  1.283µ ± ∞ ¹
+Decode/no-answers-16                              585.1n ± ∞ ¹
+Decode/structured-legend-flood-1k-16              700.1µ ± ∞ ¹
+Decode/structured-legend-flood-10k-16             7.158m ± ∞ ¹
+DecodeNaiveSonic/result-16                        1.575µ ± ∞ ¹
+DecodeNaiveSonic/type-last-16                     1.872µ ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                    4.177µ ± ∞ ¹
+DecodeNaiveSonic/result-20-16                     9.307µ ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16              6.466µ ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                 2.085µ ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16          1.796µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16             1.114µ ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16      1.135µ ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16           842.1n ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                    465.9n ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16    195.4µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16   1.809m ± ∞ ¹
+DecodeNaiveJSON/result-16                         5.575µ ± ∞ ¹
+DecodeNaiveJSON/type-last-16                      5.532µ ± ∞ ¹
+DecodeNaiveJSON/duplicates-16                     13.23µ ± ∞ ¹
+DecodeNaiveJSON/result-20-16                      33.41µ ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-16               24.03µ ± ∞ ¹
+DecodeNaiveJSON/escaped-names-16                  7.815µ ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-16           6.345µ ± ∞ ¹
+DecodeNaiveJSON/structured-legend-16              3.410µ ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-16       3.704µ ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-16            2.437µ ± ∞ ¹
+DecodeNaiveJSON/no-answers-16                     994.7n ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-16     1.018m ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-16    9.782m ± ∞ ¹
+EncodeState/ascii/1KiB/encode-16                  160.2n ± ∞ ¹
+EncodeState/ascii/1KiB/check-16                   17.54n ± ∞ ¹
+EncodeState/ascii/64KiB/encode-16                 4.668µ ± ∞ ¹
+EncodeState/ascii/64KiB/check-16                  820.9n ± ∞ ¹
+EncodeState/ascii/6MiB/encode-16                  442.1µ ± ∞ ¹
+EncodeState/ascii/6MiB/check-16                   79.38µ ± ∞ ¹
+EncodeState/cjk/1KiB/encode-16                    568.1n ± ∞ ¹
+EncodeState/cjk/1KiB/check-16                     431.0n ± ∞ ¹
+EncodeState/cjk/64KiB/encode-16                   31.46µ ± ∞ ¹
+EncodeState/cjk/64KiB/check-16                    27.03µ ± ∞ ¹
+EncodeState/cjk/6MiB/encode-16                    2.957m ± ∞ ¹
+EncodeState/cjk/6MiB/check-16                     2.628m ± ∞ ¹
+geomean                                           9.314µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                │  bench-M.txt  │
+                                                │     B/op      │
+Decode/result-16                                    697.0 ± ∞ ¹
+Decode/type-last-16                                 696.0 ± ∞ ¹
+Decode/duplicates-16                              5.263Ki ± ∞ ¹
+Decode/result-20-16                               5.963Ki ± ∞ ¹
+Decode/score-flood-mini-16                        4.152Ki ± ∞ ¹
+Decode/escaped-names-16                           1.212Ki ± ∞ ¹
+Decode/escaped-member-names-16                    5.042Ki ± ∞ ¹
+Decode/structured-legend-16                       4.426Ki ± ∞ ¹
+Decode/deviation-lone-surrogate-16                4.509Ki ± ∞ ¹
+Decode/unknown-answer-type-16                       146.0 ± ∞ ¹
+Decode/parity-big-exp-unknown-16                    145.0 ± ∞ ¹
+Decode/no-answers-16                                0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-16              171.8Ki ± ∞ ¹
+Decode/structured-legend-flood-10k-16             1.568Mi ± ∞ ¹
+DecodeNaiveSonic/result-16                        4.284Ki ± ∞ ¹
+DecodeNaiveSonic/type-last-16                     4.279Ki ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                    10.15Ki ± ∞ ¹
+DecodeNaiveSonic/result-20-16                     19.93Ki ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16              16.84Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                 5.645Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16          4.855Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16             3.387Ki ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16      3.345Ki ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16           2.486Ki ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                    1.253Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16    640.1Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16   7.878Mi ± ∞ ¹
+DecodeNaiveJSON/result-16                         3.746Ki ± ∞ ¹
+DecodeNaiveJSON/type-last-16                      3.746Ki ± ∞ ¹
+DecodeNaiveJSON/duplicates-16                     9.636Ki ± ∞ ¹
+DecodeNaiveJSON/result-20-16                      20.08Ki ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-16               17.50Ki ± ∞ ¹
+DecodeNaiveJSON/escaped-names-16                  5.123Ki ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-16           4.333Ki ± ∞ ¹
+DecodeNaiveJSON/structured-legend-16              2.839Ki ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-16       2.925Ki ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-16            1.994Ki ± ∞ ¹
+DecodeNaiveJSON/no-answers-16                       817.0 ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-16     856.1Ki ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-16    7.767Mi ± ∞ ¹
+EncodeState/ascii/1KiB/encode-16                    16.00 ± ∞ ¹
+EncodeState/ascii/1KiB/check-16                     0.000 ± ∞ ¹
+EncodeState/ascii/64KiB/encode-16                   17.00 ± ∞ ¹
+EncodeState/ascii/64KiB/check-16                    0.000 ± ∞ ¹
+EncodeState/ascii/6MiB/encode-16                  2.276Ki ± ∞ ¹
+EncodeState/ascii/6MiB/check-16                     0.000 ± ∞ ¹
+EncodeState/cjk/1KiB/encode-16                      17.00 ± ∞ ¹
+EncodeState/cjk/1KiB/check-16                       0.000 ± ∞ ¹
+EncodeState/cjk/64KiB/encode-16                     21.00 ± ∞ ¹
+EncodeState/cjk/64KiB/check-16                      0.000 ± ∞ ¹
+EncodeState/cjk/6MiB/encode-16                    15.21Ki ± ∞ ¹
+EncodeState/cjk/6MiB/check-16                       0.000 ± ∞ ¹
+geomean                                                       ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                │ bench-M.txt  │
+                                                │  allocs/op   │
+Decode/result-16                                   4.000 ± ∞ ¹
+Decode/type-last-16                                4.000 ± ∞ ¹
+Decode/duplicates-16                               16.00 ± ∞ ¹
+Decode/result-20-16                                24.00 ± ∞ ¹
+Decode/score-flood-mini-16                         21.00 ± ∞ ¹
+Decode/escaped-names-16                            10.00 ± ∞ ¹
+Decode/escaped-member-names-16                     29.00 ± ∞ ¹
+Decode/structured-legend-16                        11.00 ± ∞ ¹
+Decode/deviation-lone-surrogate-16                 13.00 ± ∞ ¹
+Decode/unknown-answer-type-16                      1.000 ± ∞ ¹
+Decode/parity-big-exp-unknown-16                   1.000 ± ∞ ¹
+Decode/no-answers-16                               0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-16               90.00 ± ∞ ¹
+Decode/structured-legend-flood-10k-16              686.0 ± ∞ ¹
+DecodeNaiveSonic/result-16                         26.00 ± ∞ ¹
+DecodeNaiveSonic/type-last-16                      26.00 ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                     55.00 ± ∞ ¹
+DecodeNaiveSonic/result-20-16                      94.00 ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16               96.00 ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                  38.00 ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16           41.00 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16              24.00 ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16       24.00 ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16            18.00 ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                     12.00 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16    2.036k ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16   20.09k ± ∞ ¹
+DecodeNaiveJSON/result-16                          85.00 ± ∞ ¹
+DecodeNaiveJSON/type-last-16                       85.00 ± ∞ ¹
+DecodeNaiveJSON/duplicates-16                      212.0 ± ∞ ¹
+DecodeNaiveJSON/result-20-16                       483.0 ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-16                386.0 ± ∞ ¹
+DecodeNaiveJSON/escaped-names-16                   120.0 ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-16            101.0 ± ∞ ¹
+DecodeNaiveJSON/structured-legend-16               56.00 ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-16        61.00 ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-16             39.00 ± ∞ ¹
+DecodeNaiveJSON/no-answers-16                      16.00 ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-16     17.15k ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-16    170.5k ± ∞ ¹
+EncodeState/ascii/1KiB/encode-16                   1.000 ± ∞ ¹
+EncodeState/ascii/1KiB/check-16                    0.000 ± ∞ ¹
+EncodeState/ascii/64KiB/encode-16                  1.000 ± ∞ ¹
+EncodeState/ascii/64KiB/check-16                   0.000 ± ∞ ¹
+EncodeState/ascii/6MiB/encode-16                   1.000 ± ∞ ¹
+EncodeState/ascii/6MiB/check-16                    0.000 ± ∞ ¹
+EncodeState/cjk/1KiB/encode-16                     1.000 ± ∞ ¹
+EncodeState/cjk/1KiB/check-16                      0.000 ± ∞ ¹
+EncodeState/cjk/64KiB/encode-16                    1.000 ± ∞ ¹
+EncodeState/cjk/64KiB/check-16                     0.000 ± ∞ ¹
+EncodeState/cjk/6MiB/encode-16                     1.000 ± ∞ ¹
+EncodeState/cjk/6MiB/check-16                      0.000 ± ∞ ¹
+geomean                                                      ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                │  bench-M.txt  │
+                                                │      B/s      │
+Decode/result-16                                  100.5Mi ± ∞ ¹
+Decode/type-last-16                               97.65Mi ± ∞ ¹
+Decode/duplicates-16                              69.51Mi ± ∞ ¹
+Decode/result-20-16                               100.2Mi ± ∞ ¹
+Decode/score-flood-mini-16                        97.88Mi ± ∞ ¹
+Decode/escaped-names-16                           83.55Mi ± ∞ ¹
+Decode/escaped-member-names-16                    57.19Mi ± ∞ ¹
+Decode/structured-legend-16                       50.19Mi ± ∞ ¹
+Decode/deviation-lone-surrogate-16                45.98Mi ± ∞ ¹
+Decode/unknown-answer-type-16                     97.67Mi ± ∞ ¹
+Decode/parity-big-exp-unknown-16                  100.4Mi ± ∞ ¹
+Decode/no-answers-16                              109.2Mi ± ∞ ¹
+Decode/structured-legend-flood-1k-16              78.22Mi ± ∞ ¹
+Decode/structured-legend-flood-10k-16             82.13Mi ± ∞ ¹
+DecodeNaiveSonic/result-16                        220.4Mi ± ∞ ¹
+DecodeNaiveSonic/type-last-16                     185.4Mi ± ∞ ¹
+DecodeNaiveSonic/duplicates-16                    188.4Mi ± ∞ ¹
+DecodeNaiveSonic/result-20-16                     230.9Mi ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-16              220.5Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-names-16                 220.0Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-16          225.7Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-16             185.7Mi ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-16      184.1Mi ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-16           164.2Mi ± ∞ ¹
+DecodeNaiveSonic/no-answers-16                    137.1Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-16    280.3Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-16   324.9Mi ± ∞ ¹
+DecodeNaiveJSON/result-16                         62.27Mi ± ∞ ¹
+DecodeNaiveJSON/type-last-16                      62.74Mi ± ∞ ¹
+DecodeNaiveJSON/duplicates-16                     59.46Mi ± ∞ ¹
+DecodeNaiveJSON/result-20-16                      64.32Mi ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-16               59.33Mi ± ∞ ¹
+DecodeNaiveJSON/escaped-names-16                  58.70Mi ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-16           63.89Mi ± ∞ ¹
+DecodeNaiveJSON/structured-legend-16              60.69Mi ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-16       56.39Mi ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-16            56.74Mi ± ∞ ¹
+DecodeNaiveJSON/no-answers-16                     64.24Mi ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-16     53.80Mi ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-16    60.10Mi ± ∞ ¹
+EncodeState/ascii/1KiB/encode-16                  5.767Gi ± ∞ ¹
+EncodeState/ascii/1KiB/check-16                   52.66Gi ± ∞ ¹
+EncodeState/ascii/64KiB/encode-16                 13.07Gi ± ∞ ¹
+EncodeState/ascii/64KiB/check-16                  74.34Gi ± ∞ ¹
+EncodeState/ascii/6MiB/encode-16                  13.25Gi ± ∞ ¹
+EncodeState/ascii/6MiB/check-16                   73.82Gi ± ∞ ¹
+EncodeState/cjk/1KiB/encode-16                    1.656Gi ± ∞ ¹
+EncodeState/cjk/1KiB/check-16                     2.182Gi ± ∞ ¹
+EncodeState/cjk/64KiB/encode-16                   1.940Gi ± ∞ ¹
+EncodeState/cjk/64KiB/check-16                    2.258Gi ± ∞ ¹
+EncodeState/cjk/6MiB/encode-16                    1.981Gi ± ∞ ¹
+EncodeState/cjk/6MiB/check-16                     2.229Gi ± ∞ ¹
+geomean                                           269.6Mi
+¹ need >= 6 samples for confidence interval at level 0.95

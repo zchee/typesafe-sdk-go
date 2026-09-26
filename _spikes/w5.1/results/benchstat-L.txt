@@ -1,0 +1,500 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+                                       │ bench-L.txt  │
+                                       │    sec/op    │
+Assembly/request-44                      1.199µ ± ∞ ¹
+Assembly/prepare-and-request-44          2.579µ ± ∞ ¹
+Call/sdk-44                              6.091µ ± ∞ ¹
+Call/floor-44                            755.0n ± ∞ ¹
+Call/naive-44                            6.833µ ± ∞ ¹
+Call/naive-json-44                       16.64µ ± ∞ ¹
+Call/sdk-q20-44                          25.38µ ± ∞ ¹
+Call/floor-q20-44                        769.1n ± ∞ ¹
+Call/naive-q20-44                        25.88µ ± ∞ ¹
+Call/naive-json-q20-44                   76.49µ ± ∞ ¹
+HeaderTemplateClone/sdk-only-44          439.5n ± ∞ ¹
+HeaderTemplateClone/three-defaults-44    782.6n ± ∞ ¹
+HeaderTemplateClone/no-runtime-hdr-44    412.1n ± ∞ ¹
+EncodeBody/map/1KiB/sdk-44               1.225µ ± ∞ ¹
+EncodeBody/map/1KiB/naive-44             1.399µ ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-44        3.437µ ± ∞ ¹
+EncodeBody/map/64KiB/sdk-44              46.45µ ± ∞ ¹
+EncodeBody/map/64KiB/naive-44            31.23µ ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-44       102.7µ ± ∞ ¹
+EncodeBody/map/1MiB/sdk-44               734.3µ ± ∞ ¹
+EncodeBody/map/1MiB/naive-44             589.3µ ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-44        1.557m ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-44           75.53n ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-44         2.950µ ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-44    6.426µ ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-44          1.770µ ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-44        133.4µ ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-44   302.3µ ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-44           49.08µ ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-44         2.079m ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-44    4.570m ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-44            952.4n ± ∞ ¹
+EncodeBody/struct/1KiB/naive-44          1.132µ ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-44     3.354µ ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-44           46.27µ ± ∞ ¹
+EncodeBody/struct/64KiB/naive-44         32.77µ ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-44    113.6µ ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-44            735.6µ ± ∞ ¹
+EncodeBody/struct/1MiB/naive-44          568.1µ ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-44     1.563m ± ∞ ¹
+EncodeBody/text/1KiB/sdk-44              888.8n ± ∞ ¹
+EncodeBody/text/1KiB/naive-44            1.049µ ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-44       2.949µ ± ∞ ¹
+EncodeBody/text/64KiB/sdk-44             45.89µ ± ∞ ¹
+EncodeBody/text/64KiB/naive-44           33.00µ ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-44      112.0µ ± ∞ ¹
+EncodeBody/text/1MiB/sdk-44              732.6µ ± ∞ ¹
+EncodeBody/text/1MiB/naive-44            581.0µ ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-44       1.566m ± ∞ ¹
+Loopback/call-44                         79.85µ ± ∞ ¹
+Loopback/cold-fanout-64-44               3.452m ± ∞ ¹
+Noop-44                                  2.466n ± ∞ ¹
+Prepare/c1-sketch-44                     1.075µ ± ∞ ¹
+Prepare/c2-noul-short-44                 171.2n ± ∞ ¹
+Prepare/c3-choice-20x10-44               19.44µ ± ∞ ¹
+Prepare/c4a-score-20x8-text-44           14.95µ ± ∞ ¹
+Prepare/c4b-score-20x8-json-44           44.32µ ± ∞ ¹
+Prepare/c5-raw-100x3-44                  132.7µ ± ∞ ¹
+Prepare/c6-escapes-44                    5.305µ ± ∞ ¹
+Prepare/n8a-array-control-44             53.15µ ± ∞ ¹
+Prepare/n8a-array-score-44               99.70µ ± ∞ ¹
+Prepare/n8b-map-control-44               228.1µ ± ∞ ¹
+Prepare/n8b-map-score-44                 429.3µ ± ∞ ¹
+FalsyJSON/array-44                       2.069µ ± ∞ ¹
+FalsyJSON/map-44                         1.740µ ± ∞ ¹
+FalsyJSON/small-14B-44                   46.27n ± ∞ ¹
+geomean                                  17.17µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                       │  bench-L.txt  │
+                                       │     B/op      │
+Assembly/request-44                        909.0 ± ∞ ¹
+Assembly/prepare-and-request-44          1.991Ki ± ∞ ¹
+Call/sdk-44                              2.958Ki ± ∞ ¹
+Call/floor-44                              696.0 ± ∞ ¹
+Call/naive-44                            8.833Ki ± ∞ ¹
+Call/naive-json-44                       7.762Ki ± ∞ ¹
+Call/sdk-q20-44                          11.18Ki ± ∞ ¹
+Call/floor-q20-44                          692.0 ± ∞ ¹
+Call/naive-q20-44                        33.95Ki ± ∞ ¹
+Call/naive-json-q20-44                   30.49Ki ± ∞ ¹
+HeaderTemplateClone/sdk-only-44            496.0 ± ∞ ¹
+HeaderTemplateClone/three-defaults-44      936.0 ± ∞ ¹
+HeaderTemplateClone/no-runtime-hdr-44      480.0 ± ∞ ¹
+EncodeBody/map/1KiB/sdk-44                 115.0 ± ∞ ¹
+EncodeBody/map/1KiB/naive-44             1.652Ki ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-44        1.524Ki ± ∞ ¹
+EncodeBody/map/64KiB/sdk-44                133.0 ± ∞ ¹
+EncodeBody/map/64KiB/naive-44            76.61Ki ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-44       72.78Ki ± ∞ ¹
+EncodeBody/map/1MiB/sdk-44               2.358Ki ± ∞ ¹
+EncodeBody/map/1MiB/naive-44             3.473Mi ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-44        1.056Mi ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-44             0.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-44         2.720Ki ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-44    2.679Ki ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-44            0.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-44        151.8Ki ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-44   144.6Ki ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-44             44.00 ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-44         2.100Mi ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-44    2.080Mi ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-44              16.00 ± ∞ ¹
+EncodeBody/struct/1KiB/naive-44          1.559Ki ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-44     1.520Ki ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-44             30.00 ± ∞ ¹
+EncodeBody/struct/64KiB/naive-44         76.68Ki ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-44    72.67Ki ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-44            2.272Ki ± ∞ ¹
+EncodeBody/struct/1MiB/naive-44          3.465Mi ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-44     1.052Mi ± ∞ ¹
+EncodeBody/text/1KiB/sdk-44                16.00 ± ∞ ¹
+EncodeBody/text/1KiB/naive-44            1.559Ki ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-44       1.520Ki ± ∞ ¹
+EncodeBody/text/64KiB/sdk-44               30.00 ± ∞ ¹
+EncodeBody/text/64KiB/naive-44           76.67Ki ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-44      72.68Ki ± ∞ ¹
+EncodeBody/text/1MiB/sdk-44              2.259Ki ± ∞ ¹
+EncodeBody/text/1MiB/naive-44            3.465Mi ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-44       1.055Mi ± ∞ ¹
+Loopback/call-44                         13.52Ki ± ∞ ¹
+Loopback/cold-fanout-64-44               1.029Mi ± ∞ ¹
+Noop-44                                    0.000 ± ∞ ¹
+Prepare/c1-sketch-44                      1008.0 ± ∞ ¹
+Prepare/c2-noul-short-44                   224.0 ± ∞ ¹
+Prepare/c3-choice-20x10-44               14.90Ki ± ∞ ¹
+Prepare/c4a-score-20x8-text-44           16.78Ki ± ∞ ¹
+Prepare/c4b-score-20x8-json-44           43.37Ki ± ∞ ¹
+Prepare/c5-raw-100x3-44                  76.25Ki ± ∞ ¹
+Prepare/c6-escapes-44                    8.328Ki ± ∞ ¹
+Prepare/n8a-array-control-44             57.46Ki ± ∞ ¹
+Prepare/n8a-array-score-44               107.5Ki ± ∞ ¹
+Prepare/n8b-map-control-44               265.4Ki ± ∞ ¹
+Prepare/n8b-map-score-44                 502.9Ki ± ∞ ¹
+FalsyJSON/array-44                       2.500Ki ± ∞ ¹
+FalsyJSON/map-44                         2.375Ki ± ∞ ¹
+FalsyJSON/small-14B-44                     0.000 ± ∞ ¹
+geomean                                              ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                       │ bench-L.txt  │
+                                       │  allocs/op   │
+Assembly/request-44                       9.000 ± ∞ ¹
+Assembly/prepare-and-request-44           18.00 ± ∞ ¹
+Call/sdk-44                               22.00 ± ∞ ¹
+Call/floor-44                             8.000 ± ∞ ¹
+Call/naive-44                             68.00 ± ∞ ¹
+Call/naive-json-44                        114.0 ± ∞ ¹
+Call/sdk-q20-44                           42.00 ± ∞ ¹
+Call/floor-q20-44                         8.000 ± ∞ ¹
+Call/naive-q20-44                         247.0 ± ∞ ¹
+Call/naive-json-q20-44                    517.0 ± ∞ ¹
+HeaderTemplateClone/sdk-only-44           3.000 ± ∞ ¹
+HeaderTemplateClone/three-defaults-44     5.000 ± ∞ ¹
+HeaderTemplateClone/no-runtime-hdr-44     3.000 ± ∞ ¹
+EncodeBody/map/1KiB/sdk-44                2.000 ± ∞ ¹
+EncodeBody/map/1KiB/naive-44              4.000 ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-44         5.000 ± ∞ ¹
+EncodeBody/map/64KiB/sdk-44               2.000 ± ∞ ¹
+EncodeBody/map/64KiB/naive-44             4.000 ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-44        5.000 ± ∞ ¹
+EncodeBody/map/1MiB/sdk-44                2.000 ± ∞ ¹
+EncodeBody/map/1MiB/naive-44              9.000 ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-44         5.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-44            0.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-44          4.000 ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-44     6.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-44           0.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-44         4.000 ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-44    6.000 ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-44            0.000 ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-44          8.000 ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-44     6.000 ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-44             1.000 ± ∞ ¹
+EncodeBody/struct/1KiB/naive-44           3.000 ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-44      5.000 ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-44            1.000 ± ∞ ¹
+EncodeBody/struct/64KiB/naive-44          3.000 ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-44     5.000 ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-44             1.000 ± ∞ ¹
+EncodeBody/struct/1MiB/naive-44           7.000 ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-44      5.000 ± ∞ ¹
+EncodeBody/text/1KiB/sdk-44               1.000 ± ∞ ¹
+EncodeBody/text/1KiB/naive-44             3.000 ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-44        4.000 ± ∞ ¹
+EncodeBody/text/64KiB/sdk-44              1.000 ± ∞ ¹
+EncodeBody/text/64KiB/naive-44            3.000 ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-44       4.000 ± ∞ ¹
+EncodeBody/text/1MiB/sdk-44               1.000 ± ∞ ¹
+EncodeBody/text/1MiB/naive-44             7.000 ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-44        4.000 ± ∞ ¹
+Loopback/call-44                          111.0 ± ∞ ¹
+Loopback/cold-fanout-64-44               8.586k ± ∞ ¹
+Noop-44                                   0.000 ± ∞ ¹
+Prepare/c1-sketch-44                      9.000 ± ∞ ¹
+Prepare/c2-noul-short-44                  3.000 ± ∞ ¹
+Prepare/c3-choice-20x10-44                27.00 ± ∞ ¹
+Prepare/c4a-score-20x8-text-44            27.00 ± ∞ ¹
+Prepare/c4b-score-20x8-json-44            36.00 ± ∞ ¹
+Prepare/c5-raw-100x3-44                  1.710k ± ∞ ¹
+Prepare/c6-escapes-44                     12.00 ± ∞ ¹
+Prepare/n8a-array-control-44              132.0 ± ∞ ¹
+Prepare/n8a-array-score-44                252.0 ± ∞ ¹
+Prepare/n8b-map-control-44                615.0 ± ∞ ¹
+Prepare/n8b-map-score-44                 1.215k ± ∞ ¹
+FalsyJSON/array-44                        6.000 ± ∞ ¹
+FalsyJSON/map-44                          6.000 ± ∞ ¹
+FalsyJSON/small-14B-44                    0.000 ± ∞ ¹
+geomean                                             ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                       │  bench-L.txt  │
+                                       │      B/s      │
+EncodeBody/map/1KiB/sdk-44               1.059Gi ± ∞ ¹
+EncodeBody/map/1KiB/naive-44             949.4Mi ± ∞ ¹
+EncodeBody/map/1KiB/naive-json-44        386.5Mi ± ∞ ¹
+EncodeBody/map/64KiB/sdk-44              1.365Gi ± ∞ ¹
+EncodeBody/map/64KiB/naive-44            2.030Gi ± ∞ ¹
+EncodeBody/map/64KiB/naive-json-44       632.0Mi ± ∞ ¹
+EncodeBody/map/1MiB/sdk-44               1.377Gi ± ∞ ¹
+EncodeBody/map/1MiB/naive-44             1.716Gi ± ∞ ¹
+EncodeBody/map/1MiB/naive-json-44        665.0Mi ± ∞ ¹
+EncodeBody/rawjson/1KiB/sdk-44           17.18Gi ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-44         450.3Mi ± ∞ ¹
+EncodeBody/rawjson/1KiB/naive-json-44    206.7Mi ± ∞ ¹
+EncodeBody/rawjson/64KiB/sdk-44          35.83Gi ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-44        486.8Mi ± ∞ ¹
+EncodeBody/rawjson/64KiB/naive-json-44   214.8Mi ± ∞ ¹
+EncodeBody/rawjson/1MiB/sdk-44           20.61Gi ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-44         498.1Mi ± ∞ ¹
+EncodeBody/rawjson/1MiB/naive-json-44    226.6Mi ± ∞ ¹
+EncodeBody/struct/1KiB/sdk-44            1.362Gi ± ∞ ¹
+EncodeBody/struct/1KiB/naive-44          1.146Gi ± ∞ ¹
+EncodeBody/struct/1KiB/naive-json-44     396.1Mi ± ∞ ¹
+EncodeBody/struct/64KiB/sdk-44           1.370Gi ± ∞ ¹
+EncodeBody/struct/64KiB/naive-44         1.935Gi ± ∞ ¹
+EncodeBody/struct/64KiB/naive-json-44    571.8Mi ± ∞ ¹
+EncodeBody/struct/1MiB/sdk-44            1.375Gi ± ∞ ¹
+EncodeBody/struct/1MiB/naive-44          1.780Gi ± ∞ ¹
+EncodeBody/struct/1MiB/naive-json-44     662.5Mi ± ∞ ¹
+EncodeBody/text/1KiB/sdk-44              1.386Gi ± ∞ ¹
+EncodeBody/text/1KiB/naive-44            1.175Gi ± ∞ ¹
+EncodeBody/text/1KiB/naive-json-44       427.9Mi ± ∞ ¹
+EncodeBody/text/64KiB/sdk-44             1.380Gi ± ∞ ¹
+EncodeBody/text/64KiB/naive-44           1.919Gi ± ∞ ¹
+EncodeBody/text/64KiB/naive-json-44      579.3Mi ± ∞ ¹
+EncodeBody/text/1MiB/sdk-44              1.380Gi ± ∞ ¹
+EncodeBody/text/1MiB/naive-44            1.741Gi ± ∞ ¹
+EncodeBody/text/1MiB/naive-json-44       661.4Mi ± ∞ ¹
+geomean                                  1.095Gi
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                 │ bench-L.txt │
+                 │  new-conns  │
+Loopback/call-44   0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                           │ bench-L.txt │
+                           │  conns/op   │
+Loopback/cold-fanout-64-44   1.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+                                                │ bench-L.txt  │
+                                                │    sec/op    │
+Decode/result-44                                  3.437µ ± ∞ ¹
+Decode/type-last-44                               3.445µ ± ∞ ¹
+Decode/duplicates-44                              11.17µ ± ∞ ¹
+Decode/result-20-44                               21.56µ ± ∞ ¹
+Decode/score-flood-mini-44                        14.15µ ± ∞ ¹
+Decode/escaped-names-44                           5.006µ ± ∞ ¹
+Decode/escaped-member-names-44                    7.328µ ± ∞ ¹
+Decode/structured-legend-44                       4.763µ ± ∞ ¹
+Decode/deviation-lone-surrogate-44                5.146µ ± ∞ ¹
+Decode/unknown-answer-type-44                     1.326µ ± ∞ ¹
+Decode/parity-big-exp-unknown-44                  1.236µ ± ∞ ¹
+Decode/no-answers-44                              521.0n ± ∞ ¹
+Decode/structured-legend-flood-1k-44              616.5µ ± ∞ ¹
+Decode/structured-legend-flood-10k-44             6.022m ± ∞ ¹
+DecodeNaiveSonic/result-44                        2.788µ ± ∞ ¹
+DecodeNaiveSonic/type-last-44                     2.823µ ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                    6.793µ ± ∞ ¹
+DecodeNaiveSonic/result-20-44                     16.79µ ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44              11.82µ ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                 4.064µ ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44          3.406µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44             1.950µ ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44      1.956µ ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44           1.360µ ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                    604.3n ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    603.7µ ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44   5.820m ± ∞ ¹
+DecodeNaiveJSON/result-44                         10.49µ ± ∞ ¹
+DecodeNaiveJSON/type-last-44                      10.52µ ± ∞ ¹
+DecodeNaiveJSON/duplicates-44                     25.37µ ± ∞ ¹
+DecodeNaiveJSON/result-20-44                      63.50µ ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-44               45.49µ ± ∞ ¹
+DecodeNaiveJSON/escaped-names-44                  15.07µ ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-44           12.35µ ± ∞ ¹
+DecodeNaiveJSON/structured-legend-44              6.542µ ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-44       7.301µ ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-44            4.643µ ± ∞ ¹
+DecodeNaiveJSON/no-answers-44                     1.847µ ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-44     1.801m ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-44    17.64m ± ∞ ¹
+EncodeState/ascii/1KiB/encode-44                  152.8n ± ∞ ¹
+EncodeState/ascii/1KiB/check-44                   35.94n ± ∞ ¹
+EncodeState/ascii/64KiB/encode-44                 4.488µ ± ∞ ¹
+EncodeState/ascii/64KiB/check-44                  1.907µ ± ∞ ¹
+EncodeState/ascii/6MiB/encode-44                  687.3µ ± ∞ ¹
+EncodeState/ascii/6MiB/check-44                   235.2µ ± ∞ ¹
+EncodeState/cjk/1KiB/encode-44                    913.0n ± ∞ ¹
+EncodeState/cjk/1KiB/check-44                     806.5n ± ∞ ¹
+EncodeState/cjk/64KiB/encode-44                   54.18µ ± ∞ ¹
+EncodeState/cjk/64KiB/check-44                    51.21µ ± ∞ ¹
+EncodeState/cjk/6MiB/encode-44                    5.382m ± ∞ ¹
+EncodeState/cjk/6MiB/check-44                     4.924m ± ∞ ¹
+geomean                                           14.36µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                │  bench-L.txt   │
+                                                │      B/op      │
+Decode/result-44                                     705.0 ± ∞ ¹
+Decode/type-last-44                                  705.0 ± ∞ ¹
+Decode/duplicates-44                               5.342Ki ± ∞ ¹
+Decode/result-20-44                                6.067Ki ± ∞ ¹
+Decode/score-flood-mini-44                         4.212Ki ± ∞ ¹
+Decode/escaped-names-44                            1.227Ki ± ∞ ¹
+Decode/escaped-member-names-44                     5.124Ki ± ∞ ¹
+Decode/structured-legend-44                        4.501Ki ± ∞ ¹
+Decode/deviation-lone-surrogate-44                 4.586Ki ± ∞ ¹
+Decode/unknown-answer-type-44                        147.0 ± ∞ ¹
+Decode/parity-big-exp-unknown-44                     147.0 ± ∞ ¹
+Decode/no-answers-44                                 0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-44               172.7Ki ± ∞ ¹
+Decode/structured-legend-flood-10k-44              1.564Mi ± ∞ ¹
+DecodeNaiveSonic/result-44                         3.621Ki ± ∞ ¹
+DecodeNaiveSonic/type-last-44                      3.615Ki ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                     9.014Ki ± ∞ ¹
+DecodeNaiveSonic/result-20-44                      19.28Ki ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44               16.17Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                  4.986Ki ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44           4.604Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44              2.958Ki ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44       2.722Ki ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44            1.940Ki ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                       832.0 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    1015.0Ki ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44    9.283Mi ± ∞ ¹
+DecodeNaiveJSON/result-44                          3.751Ki ± ∞ ¹
+DecodeNaiveJSON/type-last-44                       3.751Ki ± ∞ ¹
+DecodeNaiveJSON/duplicates-44                      9.647Ki ± ∞ ¹
+DecodeNaiveJSON/result-20-44                       20.11Ki ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-44                17.52Ki ± ∞ ¹
+DecodeNaiveJSON/escaped-names-44                   5.129Ki ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-44            4.338Ki ± ∞ ¹
+DecodeNaiveJSON/structured-legend-44               2.843Ki ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-44        2.929Ki ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-44             1.997Ki ± ∞ ¹
+DecodeNaiveJSON/no-answers-44                        818.0 ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-44      856.9Ki ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-44     7.770Mi ± ∞ ¹
+EncodeState/ascii/1KiB/encode-44                     16.00 ± ∞ ¹
+EncodeState/ascii/1KiB/check-44                      0.000 ± ∞ ¹
+EncodeState/ascii/64KiB/encode-44                    17.00 ± ∞ ¹
+EncodeState/ascii/64KiB/check-44                     0.000 ± ∞ ¹
+EncodeState/ascii/6MiB/encode-44                   3.634Ki ± ∞ ¹
+EncodeState/ascii/6MiB/check-44                      0.000 ± ∞ ¹
+EncodeState/cjk/1KiB/encode-44                       16.00 ± ∞ ¹
+EncodeState/cjk/1KiB/check-44                        0.000 ± ∞ ¹
+EncodeState/cjk/64KiB/encode-44                      25.00 ± ∞ ¹
+EncodeState/cjk/64KiB/check-44                       0.000 ± ∞ ¹
+EncodeState/cjk/6MiB/encode-44                     28.33Ki ± ∞ ¹
+EncodeState/cjk/6MiB/check-44                        0.000 ± ∞ ¹
+geomean                                                        ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                │ bench-L.txt  │
+                                                │  allocs/op   │
+Decode/result-44                                   4.000 ± ∞ ¹
+Decode/type-last-44                                4.000 ± ∞ ¹
+Decode/duplicates-44                               16.00 ± ∞ ¹
+Decode/result-20-44                                24.00 ± ∞ ¹
+Decode/score-flood-mini-44                         21.00 ± ∞ ¹
+Decode/escaped-names-44                            10.00 ± ∞ ¹
+Decode/escaped-member-names-44                     29.00 ± ∞ ¹
+Decode/structured-legend-44                        11.00 ± ∞ ¹
+Decode/deviation-lone-surrogate-44                 13.00 ± ∞ ¹
+Decode/unknown-answer-type-44                      1.000 ± ∞ ¹
+Decode/parity-big-exp-unknown-44                   1.000 ± ∞ ¹
+Decode/no-answers-44                               0.000 ± ∞ ¹
+Decode/structured-legend-flood-1k-44               90.00 ± ∞ ¹
+Decode/structured-legend-flood-10k-44              686.0 ± ∞ ¹
+DecodeNaiveSonic/result-44                         40.00 ± ∞ ¹
+DecodeNaiveSonic/type-last-44                      40.00 ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                     89.00 ± ∞ ¹
+DecodeNaiveSonic/result-20-44                      214.0 ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44               137.0 ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                  57.00 ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44           51.00 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44              27.00 ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44       27.00 ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44            20.00 ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                     9.000 ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    6.574k ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44   65.19k ± ∞ ¹
+DecodeNaiveJSON/result-44                          85.00 ± ∞ ¹
+DecodeNaiveJSON/type-last-44                       85.00 ± ∞ ¹
+DecodeNaiveJSON/duplicates-44                      212.0 ± ∞ ¹
+DecodeNaiveJSON/result-20-44                       483.0 ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-44                386.0 ± ∞ ¹
+DecodeNaiveJSON/escaped-names-44                   120.0 ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-44            101.0 ± ∞ ¹
+DecodeNaiveJSON/structured-legend-44               56.00 ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-44        61.00 ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-44             39.00 ± ∞ ¹
+DecodeNaiveJSON/no-answers-44                      16.00 ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-44     17.15k ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-44    170.5k ± ∞ ¹
+EncodeState/ascii/1KiB/encode-44                   1.000 ± ∞ ¹
+EncodeState/ascii/1KiB/check-44                    0.000 ± ∞ ¹
+EncodeState/ascii/64KiB/encode-44                  1.000 ± ∞ ¹
+EncodeState/ascii/64KiB/check-44                   0.000 ± ∞ ¹
+EncodeState/ascii/6MiB/encode-44                   1.000 ± ∞ ¹
+EncodeState/ascii/6MiB/check-44                    0.000 ± ∞ ¹
+EncodeState/cjk/1KiB/encode-44                     1.000 ± ∞ ¹
+EncodeState/cjk/1KiB/check-44                      0.000 ± ∞ ¹
+EncodeState/cjk/64KiB/encode-44                    1.000 ± ∞ ¹
+EncodeState/cjk/64KiB/check-44                     0.000 ± ∞ ¹
+EncodeState/cjk/6MiB/encode-44                     1.000 ± ∞ ¹
+EncodeState/cjk/6MiB/check-44                      0.000 ± ∞ ¹
+geomean                                                      ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                │  bench-L.txt  │
+                                                │      B/s      │
+Decode/result-44                                  101.0Mi ± ∞ ¹
+Decode/type-last-44                               100.8Mi ± ∞ ¹
+Decode/duplicates-44                              70.44Mi ± ∞ ¹
+Decode/result-20-44                               99.67Mi ± ∞ ¹
+Decode/score-flood-mini-44                        100.8Mi ± ∞ ¹
+Decode/escaped-names-44                           91.63Mi ± ∞ ¹
+Decode/escaped-member-names-44                    55.30Mi ± ∞ ¹
+Decode/structured-legend-44                       43.45Mi ± ∞ ¹
+Decode/deviation-lone-surrogate-44                40.59Mi ± ∞ ¹
+Decode/unknown-answer-type-44                     104.3Mi ± ∞ ¹
+Decode/parity-big-exp-unknown-44                  104.2Mi ± ∞ ¹
+Decode/no-answers-44                              122.6Mi ± ∞ ¹
+Decode/structured-legend-flood-1k-44              88.83Mi ± ∞ ¹
+Decode/structured-legend-flood-10k-44             97.62Mi ± ∞ ¹
+DecodeNaiveSonic/result-44                        124.5Mi ± ∞ ¹
+DecodeNaiveSonic/type-last-44                     123.0Mi ± ∞ ¹
+DecodeNaiveSonic/duplicates-44                    115.8Mi ± ∞ ¹
+DecodeNaiveSonic/result-20-44                     128.0Mi ± ∞ ¹
+DecodeNaiveSonic/score-flood-mini-44              120.6Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-names-44                 112.9Mi ± ∞ ¹
+DecodeNaiveSonic/escaped-member-names-44          119.0Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-44             106.1Mi ± ∞ ¹
+DecodeNaiveSonic/deviation-lone-surrogate-44      106.8Mi ± ∞ ¹
+DecodeNaiveSonic/unknown-answer-type-44           101.7Mi ± ∞ ¹
+DecodeNaiveSonic/no-answers-44                    105.7Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-1k-44    90.70Mi ± ∞ ¹
+DecodeNaiveSonic/structured-legend-flood-10k-44   101.0Mi ± ∞ ¹
+DecodeNaiveJSON/result-44                         33.08Mi ± ∞ ¹
+DecodeNaiveJSON/type-last-44                      33.01Mi ± ∞ ¹
+DecodeNaiveJSON/duplicates-44                     31.01Mi ± ∞ ¹
+DecodeNaiveJSON/result-20-44                      33.84Mi ± ∞ ¹
+DecodeNaiveJSON/score-flood-mini-44               31.35Mi ± ∞ ¹
+DecodeNaiveJSON/escaped-names-44                  30.43Mi ± ∞ ¹
+DecodeNaiveJSON/escaped-member-names-44           32.82Mi ± ∞ ¹
+DecodeNaiveJSON/structured-legend-44              31.63Mi ± ∞ ¹
+DecodeNaiveJSON/deviation-lone-surrogate-44       28.61Mi ± ∞ ¹
+DecodeNaiveJSON/unknown-answer-type-44            29.78Mi ± ∞ ¹
+DecodeNaiveJSON/no-answers-44                     34.60Mi ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-1k-44     30.40Mi ± ∞ ¹
+DecodeNaiveJSON/structured-legend-flood-10k-44    33.33Mi ± ∞ ¹
+EncodeState/ascii/1KiB/encode-44                  6.046Gi ± ∞ ¹
+EncodeState/ascii/1KiB/check-44                   25.71Gi ± ∞ ¹
+EncodeState/ascii/64KiB/encode-44                 13.60Gi ± ∞ ¹
+EncodeState/ascii/64KiB/check-44                  32.00Gi ± ∞ ¹
+EncodeState/ascii/6MiB/encode-44                  8.526Gi ± ∞ ¹
+EncodeState/ascii/6MiB/check-44                   24.91Gi ± ∞ ¹
+EncodeState/cjk/1KiB/encode-44                    1.030Gi ± ∞ ¹
+EncodeState/cjk/1KiB/check-44                     1.166Gi ± ∞ ¹
+EncodeState/cjk/64KiB/encode-44                   1.126Gi ± ∞ ¹
+EncodeState/cjk/64KiB/check-44                    1.192Gi ± ∞ ¹
+EncodeState/cjk/6MiB/encode-44                    1.089Gi ± ∞ ¹
+EncodeState/cjk/6MiB/check-44                     1.190Gi ± ∞ ¹
+geomean                                           174.8Mi
+¹ need >= 6 samples for confidence interval at level 0.95

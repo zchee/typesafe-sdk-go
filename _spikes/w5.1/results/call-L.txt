@@ -1,0 +1,93 @@
+# 2026-09-26 01:43:59 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -run ^$ -bench ^BenchmarkCall$ -benchmem -count=10 .
+# load before:  01:43:59 up 1 day, 21:08,  4 users,  load average: 0.40, 3.92, 10.06 | kernel: 0.40 3.92 10.06 1/627 382820 (MAXLOAD=44, waited 0 x 60 s)
+# base: 6afc8a3
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  196822	      6088 ns/op	    3007 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  199066	      6095 ns/op	    3023 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  201130	      6081 ns/op	    3021 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  198280	      6107 ns/op	    3008 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  197380	      6101 ns/op	    2990 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  198069	      6102 ns/op	    3021 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  195613	      6116 ns/op	    3012 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  197232	      6139 ns/op	    3021 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  195591	      6141 ns/op	    3020 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  195111	      6121 ns/op	    3021 B/op	      22 allocs/op
+BenchmarkCall/floor-44       	 1569213	       761.4 ns/op	     691 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1564380	       766.3 ns/op	     694 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1563175	       766.6 ns/op	     693 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1584168	       758.9 ns/op	     694 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1574511	       760.9 ns/op	     692 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1584862	       759.1 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1585662	       757.8 ns/op	     693 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1578232	       760.4 ns/op	     691 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1579471	       760.9 ns/op	     692 B/op	       8 allocs/op
+BenchmarkCall/floor-44       	 1582437	       759.7 ns/op	     691 B/op	       8 allocs/op
+BenchmarkCall/naive-44       	  171084	      6877 ns/op	    8918 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  171266	      6876 ns/op	    8919 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  175545	      6868 ns/op	    8959 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  177399	      6884 ns/op	    8952 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  170829	      6912 ns/op	    8964 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  171333	      6897 ns/op	    8980 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  176238	      6879 ns/op	    8916 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  175279	      6910 ns/op	    8958 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  174757	      6886 ns/op	    8933 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  176272	      6888 ns/op	    8945 B/op	      68 allocs/op
+BenchmarkCall/naive-json-44  	   71514	     16868 ns/op	    7947 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71212	     16823 ns/op	    7946 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71244	     16823 ns/op	    7948 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71378	     16776 ns/op	    7947 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71313	     16774 ns/op	    7947 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71581	     16759 ns/op	    7950 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71078	     16798 ns/op	    7945 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71115	     16849 ns/op	    7945 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   71655	     16773 ns/op	    7946 B/op	     114 allocs/op
+BenchmarkCall/naive-json-44  	   70902	     16836 ns/op	    7946 B/op	     114 allocs/op
+BenchmarkCall/sdk-q20-44     	   47625	     25410 ns/op	   11406 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47204	     25351 ns/op	   11427 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47112	     25395 ns/op	   11435 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47382	     25327 ns/op	   11508 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47142	     25312 ns/op	   11355 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47150	     25410 ns/op	   11481 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47074	     25408 ns/op	   11451 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47209	     25370 ns/op	   11456 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47127	     25410 ns/op	   11413 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   47329	     25340 ns/op	   11468 B/op	      42 allocs/op
+BenchmarkCall/floor-q20-44   	 1551516	       773.5 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1559900	       770.8 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1556714	       770.7 ns/op	     692 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1558027	       771.8 ns/op	     689 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1556553	       770.0 ns/op	     692 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1565781	       768.6 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1556367	       770.2 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1549182	       774.9 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1555954	       772.9 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-44   	 1553577	       769.5 ns/op	     691 B/op	       8 allocs/op
+BenchmarkCall/naive-q20-44   	   46436	     25761 ns/op	   34676 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46556	     25816 ns/op	   34615 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46431	     25820 ns/op	   34746 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46146	     25972 ns/op	   34631 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   47240	     25800 ns/op	   34632 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46261	     25849 ns/op	   34432 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46266	     25818 ns/op	   34580 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46479	     25891 ns/op	   34622 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46734	     25774 ns/op	   34636 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   46954	     25729 ns/op	   34503 B/op	     247 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15607	     76925 ns/op	   31223 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15642	     76684 ns/op	   31222 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15618	     76726 ns/op	   31226 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15585	     76981 ns/op	   31232 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15652	     76739 ns/op	   31245 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15604	     76694 ns/op	   31241 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15673	     76526 ns/op	   31242 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15644	     76713 ns/op	   31257 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15642	     76736 ns/op	   31233 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-44         	   15622	     76714 ns/op	   31233 B/op	     517 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	96.113s
+# exit 0 at 2026-09-26 01:45:36 UTC
+# load after:  01:45:36 up 1 day, 21:10,  4 users,  load average: 1.25, 3.17, 9.18 | kernel: 1.25 3.17 9.18 1/627 383292

@@ -1,0 +1,159 @@
+# 2026-09-26 11:11:27 JST (M) base 6afc8a3 GOEXPERIMENT=nosimd,noruntimesecret codspeed run --skip-upload -m walltime -- go test -bench=. ./...
+# load before: 11:11  up 4 days, 10:17, 1 user, load averages: 6.67 9.74 21.70
+codspeed-runner 5.3.1
+
+› Running the benchmarks
+
+go: downloading github.com/google/go-cmp v0.7.0
+go: downloading github.com/bytedance/sonic v1.15.4
+go: downloading golang.org/x/net v0.59.0
+go: downloading golang.org/x/text v0.42.0
+go: downloading github.com/bytedance/gopkg v0.1.4
+go: downloading golang.org/x/arch v0.31.0
+WORK=/var/folders/dp/89wwdp754235m6jmdzj7p5lm0000gn/T/go-build62629171
+Running with CodSpeed (mode: walltime)
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkAssembly/request-16       	 4545915	       881.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAssembly/prepare-and-request-16         	 2375644	      1430 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/sdk-16                             	  622005	      5458 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/floor-16                           	 3816196	       806.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/naive-16                           	  755365	      4254 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/naive-json-16                      	  351728	     10899 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/sdk-q20-16                         	   98415	     33622 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/floor-q20-16                       	 5569764	       578.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/naive-q20-16                       	  225630	     15707 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCall/naive-json-q20-16                  	   82207	     45892 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHeaderTemplateClone/sdk-only-16         	12008433	       249.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHeaderTemplateClone/three-defaults-16   	 8050767	       390.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHeaderTemplateClone/no-runtime-hdr-16   	12442842	       250.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/1KiB/sdk-16              	 2662220	      1288 ns/op	1081.24 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/1KiB/naive-16            	 2447403	      1446 ns/op	 963.42 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/1KiB/naive-json-16       	 1860447	      1871 ns/op	 744.46 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/64KiB/sdk-16             	   89767	     40225 ns/op	1692.56 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/64KiB/naive-16           	  108800	     30118 ns/op	2260.54 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/64KiB/naive-json-16      	   56218	     69022 ns/op	 986.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/1MiB/sdk-16              	    5652	    639287 ns/op	1698.74 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/1MiB/naive-16            	    6868	    465398 ns/op	2333.45 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/map/1MiB/naive-json-16       	    3813	    969705 ns/op	1119.91 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/1KiB/sdk-16          	50300121	        59.64 ns/op	23356.02 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/1KiB/naive-16        	 1758380	      1972 ns/op	 706.55 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/1KiB/naive-json-16   	  905947	      4258 ns/op	 327.13 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/64KiB/sdk-16         	 4242254	       799.8 ns/op	85125.02 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/64KiB/naive-16       	   37989	     92339 ns/op	 737.32 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/64KiB/naive-json-16  	   15594	    223618 ns/op	 304.46 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/1MiB/sdk-16          	  212150	     17304 ns/op	62757.66 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/1MiB/naive-16        	    2646	   1365100 ns/op	 795.53 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/rawjson/1MiB/naive-json-16   	    1098	   3381136 ns/op	 321.19 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/1KiB/sdk-16           	 2855277	      1072 ns/op	1299.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/1KiB/naive-16         	 2834648	      1203 ns/op	1158.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/1KiB/naive-json-16    	 1928461	      1809 ns/op	 769.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/64KiB/sdk-16          	   76184	     43280 ns/op	1573.07 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/64KiB/naive-16        	   97053	     31966 ns/op	2129.87 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/64KiB/naive-json-16   	   48866	     72629 ns/op	 937.41 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/1MiB/sdk-16           	    6026	    669232 ns/op	1622.73 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/1MiB/naive-16         	    5980	    579412 ns/op	1874.28 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/struct/1MiB/naive-json-16    	    3352	   1063283 ns/op	1021.35 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/1KiB/sdk-16             	 4031436	       852.6 ns/op	1551.75 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/1KiB/naive-16           	 3579272	       934.0 ns/op	1416.51 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/1KiB/naive-json-16      	 2136388	      1575 ns/op	 840.15 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/64KiB/sdk-16            	   91976	     39806 ns/op	1708.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/64KiB/naive-16          	  103664	     30026 ns/op	2265.15 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/64KiB/naive-json-16     	   50883	     72112 ns/op	 943.16 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/1MiB/sdk-16             	    5419	    615832 ns/op	1763.33 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/1MiB/naive-16           	    6951	    497725 ns/op	2181.75 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeBody/text/1MiB/naive-json-16      	    3916	    943631 ns/op	1150.78 MB/s	       0 B/op	       0 allocs/op
+BenchmarkLoopback/call-16                        	   44480	     73213 ns/op	         0 new-conns	       0 B/op	       0 allocs/op
+BenchmarkLoopback/cold-fanout-64-16              	    1260	   2735699 ns/op	         1.000 conns/op	       0 B/op	       0 allocs/op
+BenchmarkNoop-16                                 	109906771	        12.16 ns/op
+BenchmarkPrepare/c1-sketch-16                    	 5157153	       615.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c2-noul-short-16                	28219534	       106.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c3-choice-20x10-16              	  307796	     12216 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16          	  324768	     10914 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16          	  119461	     28672 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16                 	   43023	     81846 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/c6-escapes-16                   	  889882	      3377 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/n8a-array-control-16            	   94443	     36692 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/n8a-array-score-16              	   46052	     75218 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/n8b-map-control-16              	   20238	    178030 ns/op	       0 B/op	       0 allocs/op
+BenchmarkPrepare/n8b-map-score-16                	   10000	    303478 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-16                      	 2530712	      1347 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                        	 3095742	      1036 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16                  	88793766	        33.29 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	269.410s
+Running with CodSpeed (mode: walltime)
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkDecode/result-16       	 1000000	      3496 ns/op	 104.11 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/type-last-16    	  998358	      3518 ns/op	 103.47 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/duplicates-16   	  313705	     11640 ns/op	  70.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/result-20-16    	  162702	     21777 ns/op	 103.46 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/score-flood-mini-16         	  241291	     15011 ns/op	  99.59 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/escaped-names-16            	  683889	      5200 ns/op	  92.50 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/escaped-member-names-16     	  528258	      6941 ns/op	  61.23 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/structured-legend-16        	  825895	      4264 ns/op	  50.89 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/deviation-lone-surrogate-16 	  786794	      4676 ns/op	  46.83 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/unknown-answer-type-16      	 2234616	      1484 ns/op	  97.74 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/parity-big-exp-unknown-16   	 2499931	      1338 ns/op	 100.93 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/no-answers-16               	 5286916	       609.1 ns/op	 109.99 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-16         	    5473	    682108 ns/op	  84.18 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecode/structured-legend-flood-10k-16        	     530	   7256074 ns/op	  84.95 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/result-16                   	 2151867	      1783 ns/op	 204.17 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/type-last-16                	 1981213	      1645 ns/op	 221.21 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/duplicates-16               	  753284	      4447 ns/op	 185.53 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-16                	  381236	      8941 ns/op	 251.99 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/score-flood-mini-16         	  452817	      6792 ns/op	 220.11 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-16            	 1604602	      2153 ns/op	 223.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-16     	 2073462	      1641 ns/op	 259.06 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-16        	 3351460	      1019 ns/op	 212.99 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/deviation-lone-surrogate-16 	 3076864	      1106 ns/op	 198.05 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/unknown-answer-type-16      	 3812451	       865.2 ns/op	 167.59 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/no-answers-16               	 6816502	       490.7 ns/op	 136.54 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-16         	   16999	    210209 ns/op	 273.15 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-10k-16        	    1754	   2078157 ns/op	 296.62 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/result-16                              	  607899	      5965 ns/op	  61.03 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/type-last-16                           	  620458	      5836 ns/op	  62.37 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/duplicates-16                          	  243176	     14063 ns/op	  58.66 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/result-20-16                           	   95920	     36463 ns/op	  61.79 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/score-flood-mini-16                    	  140012	     25286 ns/op	  59.12 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/escaped-names-16                       	  421803	      8198 ns/op	  58.67 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/escaped-member-names-16                	  517256	      7016 ns/op	  60.57 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/structured-legend-16                   	  973274	      3373 ns/op	  64.34 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/deviation-lone-surrogate-16            	  916480	      3725 ns/op	  58.80 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/unknown-answer-type-16                 	 1476744	      2353 ns/op	  61.63 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/no-answers-16                          	 3636096	       921.3 ns/op	  72.72 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/structured-legend-flood-1k-16          	    3799	   1034511 ns/op	  55.50 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeNaiveJSON/structured-legend-flood-10k-16         	     338	  10444848 ns/op	  59.02 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-16                       	17020917	       176.3 ns/op	5628.25 MB/s
+BenchmarkEncodeState/ascii/1KiB/check-16                        	91798529	        28.34 ns/op	35006.05 MB/s
+BenchmarkEncodeState/ascii/64KiB/encode-16                      	  718108	      5361 ns/op	12222.11 MB/s
+BenchmarkEncodeState/ascii/64KiB/check-16                       	 3740310	       917.5 ns/op	71410.26 MB/s
+BenchmarkEncodeState/ascii/6MiB/encode-16                       	    7207	    477083 ns/op	13187.33 MB/s
+BenchmarkEncodeState/ascii/6MiB/check-16                        	   38437	     96807 ns/op	64989.38 MB/s
+BenchmarkEncodeState/cjk/1KiB/encode-16                         	 4121594	       746.3 ns/op	1353.36 MB/s
+BenchmarkEncodeState/cjk/1KiB/check-16                          	 7093972	       492.9 ns/op	2049.11 MB/s
+BenchmarkEncodeState/cjk/64KiB/encode-16                        	  100790	     33920 ns/op	1931.66 MB/s
+BenchmarkEncodeState/cjk/64KiB/check-16                         	  128854	     27958 ns/op	2343.62 MB/s
+BenchmarkEncodeState/cjk/6MiB/encode-16                         	    1136	   3222520 ns/op	1952.33 MB/s
+BenchmarkEncodeState/cjk/6MiB/check-16                          	    1322	   2803517 ns/op	2244.12 MB/s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	202.326s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	0.036s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.018s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.031s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.017s
+[INFO  codspeed_go_runner] Results written to "/var/folders/dp/89wwdp754235m6jmdzj7p5lm0000gn/T/profile.fBw9oM2hCY.out/results/11034.json"
+[INFO  codspeed_go_runner] Results written to "/var/folders/dp/89wwdp754235m6jmdzj7p5lm0000gn/T/profile.fBw9oM2hCY.out/results/12755.json"
+All tasks terminated.
+Symbolicating...
+# exit 0 at 2026-09-26 11:19:47 JST
+# load after: 11:19  up 4 days, 10:25, 1 user, load averages: 6.71 8.02 15.55

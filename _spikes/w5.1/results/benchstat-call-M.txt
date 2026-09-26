@@ -1,0 +1,39 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+                       │ call-M.txt  │
+                       │   sec/op    │
+Call/sdk-16              4.821µ ± 3%
+Call/floor-16            467.1n ± 2%
+Call/naive-16            3.616µ ± 3%
+Call/naive-json-16       8.244µ ± 2%
+Call/sdk-q20-16          23.73µ ± 1%
+Call/floor-q20-16        497.8n ± 3%
+Call/naive-q20-16        12.62µ ± 3%
+Call/naive-json-q20-16   38.94µ ± 3%
+geomean                  4.999µ
+
+                       │  call-M.txt  │
+                       │     B/op     │
+Call/sdk-16              2.927Ki ± 1%
+Call/floor-16              678.5 ± 0%
+Call/naive-16            11.01Ki ± 1%
+Call/naive-json-16       7.716Ki ± 0%
+Call/sdk-q20-16          11.10Ki ± 1%
+Call/floor-q20-16          688.5 ± 0%
+Call/naive-q20-16        39.27Ki ± 2%
+Call/naive-json-q20-16   30.28Ki ± 0%
+geomean                  5.897Ki
+
+                       │ call-M.txt │
+                       │ allocs/op  │
+Call/sdk-16              22.00 ± 0%
+Call/floor-16            8.000 ± 0%
+Call/naive-16            54.00 ± 0%
+Call/naive-json-16       114.0 ± 0%
+Call/sdk-q20-16          42.00 ± 0%
+Call/floor-q20-16        8.000 ± 0%
+Call/naive-q20-16        127.0 ± 0%
+Call/naive-json-q20-16   517.0 ± 0%
+geomean                  47.02
