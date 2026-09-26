@@ -1,0 +1,64 @@
+# W6.1 C3a (critic-p5 m-3, condition C3): the critic's store mutants, each applied to a git archive copy, on (M) go1.27.1 darwin/arm64,
+# GOEXPERIMENT=nosimd,noruntimesecret, outside the bench lock (no allocation test runs: -run '^TestStore' or -race). Mutants as the critic wrote them:
+# S2 typed.go:294 offset: f.Offset + 8 (the next field's); S3 the same, offset 0; S1 decodeas_store.go:60 unsafe.Add(b.p, off+1).
+# 6be1664 = FU2, before C3a; f030bbd = a scratch commit of C3a's Go files (the committed C3a adds this file and its ledger row to them, nothing that builds).
+# 2026-09-27 01:56:26 JST S2-before at 6be1664: go test -count=1 -timeout 60s -run ^TestStore . (load { 7.57 6.05 5.27 })
+# 2026-09-27 01:57:28 JST S2-before rc=1 after 62 s
+panic: test timed out after 1m0s
+FAIL	github.com/zchee/typesafe-sdk-go	60.326s
+FAIL
+# 2026-09-27 01:57:28 JST S2-store at f030bbd: go test -count=1 -timeout 60s -run ^TestStore . (load { 6.14 5.85 5.24 })
+# 2026-09-27 01:57:29 JST S2-store rc=1 after 1 s
+--- FAIL: TestStoreFieldKinds (0.00s)
+    decodeas_store_test.go:168: typesafe.storeKinds field Spam: plan offset 32, want reflect's 24
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Spam [32, 48) overlaps field I8 [40, 41)
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Spam [32, 48) overlaps field I16 [42, 44)
+    decodeas_store_test.go:168: typesafe.storeKinds field Tone: plan offset 56, want reflect's 48
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Tone [56, 112) overlaps field I32 [104, 108)
+    decodeas_store_test.go:168: typesafe.storeKinds field Quality: plan offset 144, want reflect's 136
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Quality [144, 216) overlaps field U16 [208, 210)
+# 2026-09-27 01:57:30 JST S2-store-race at f030bbd: go test -race -count=1 -timeout 60s -run ^TestStore . (load { 6.14 5.85 5.24 })
+# 2026-09-27 01:57:33 JST S2-store-race rc=1 after 3 s
+--- FAIL: TestStoreFieldKinds (0.00s)
+    decodeas_store_test.go:168: typesafe.storeKinds field Spam: plan offset 32, want reflect's 24
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Spam [32, 48) overlaps field I8 [40, 41)
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Spam [32, 48) overlaps field I16 [42, 44)
+    decodeas_store_test.go:168: typesafe.storeKinds field Tone: plan offset 56, want reflect's 48
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Tone [56, 112) overlaps field I32 [104, 108)
+    decodeas_store_test.go:168: typesafe.storeKinds field Quality: plan offset 144, want reflect's 136
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Quality [144, 216) overlaps field U16 [208, 210)
+# 2026-09-27 01:57:33 JST S3-store at f030bbd: go test -count=1 -timeout 60s -run ^TestStore . (load { 6.21 5.87 5.25 })
+# 2026-09-27 01:57:35 JST S3-store rc=1 after 2 s
+--- FAIL: TestStoreFieldKinds (0.00s)
+    decodeas_store_test.go:168: typesafe.storeKinds field Spam: plan offset 0, want reflect's 24
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Spam [0, 16) overlaps field S [0, 16)
+    decodeas_store_test.go:168: typesafe.storeKinds field Tone: plan offset 0, want reflect's 48
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Tone [0, 56) overlaps field S [0, 16)
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Tone [0, 56) overlaps field B [16, 17)
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Tone [0, 56) overlaps field Spam [24, 40)
+    decodeas_store_test.go:168: typesafe.storeKinds answer field Tone [0, 56) overlaps field I8 [40, 41)
+# 2026-09-27 01:57:35 JST S1-store at f030bbd: go test -count=1 -timeout 60s -run ^TestStore . (load { 6.21 5.87 5.25 })
+# 2026-09-27 01:57:36 JST S1-store rc=1 after 1 s
+unexpected fault address 0x62dd7bcc6b103f
+fatal error: fault
+FAIL	github.com/zchee/typesafe-sdk-go	0.019s
+FAIL
+# 2026-09-27 01:57:36 JST S2-root-race at f030bbd: go test -race -count=1 -timeout 180s . (load { 8.59 6.37 5.43 })
+# 2026-09-27 01:58:31 JST S2-root-race rc=1 after 55 s
+--- FAIL: TestDecodeAsAgreesWithAnswers (0.05s)
+    --- FAIL: TestDecodeAsAgreesWithAnswers/success:_duplicates.json (0.00s)
+        decodeas_agree_test.go:168: typesafe.duplicatesAnswers field Tone: plan offset 8, want reflect's 0
+        decodeas_agree_test.go:168: typesafe.duplicatesAnswers answer field Tone [8, 64) overlaps field Spam [56, 72)
+        decodeas_agree_test.go:168: typesafe.duplicatesAnswers field Spam: plan offset 64, want reflect's 56
+        decodeas_agree_test.go:168: typesafe.duplicatesAnswers answer field Spam [64, 80) overlaps field Quality [72, 144)
+        decodeas_agree_test.go:168: typesafe.duplicatesAnswers field Quality: plan offset 80, want reflect's 72
+        decodeas_agree_test.go:168: typesafe.duplicatesAnswers answer field Quality [80, 152) overlaps field Risk [144, 216)
+
+## S2-root-race: every '--- FAIL' line and the fatal error, in order
+1:--- FAIL: TestDecodeAsAgreesWithAnswers (0.05s)
+164:--- FAIL: TestStoreFieldKinds (0.00s)
+176:--- FAIL: TestStoreKeepsNeighbours (0.00s)
+188:--- FAIL: TestDecodeAsWithSeparateQuestions (0.00s)
+193:unexpected fault address 0x3fecccccccccccd5
+194:fatal error: fault
+207:	/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/e4870ad3-64d7-48d5-a37d-bdec4cc1ff7d/scratchpad/arc-S2-root-race/decodeas_test.go:168 +0x73c fp=0xc013169ec0 sp=0xc013
