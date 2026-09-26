@@ -12,8 +12,8 @@ median and by mean (go test's ns/op, the one AC-P7 reads under ruling R108),
 and sdk's own three values. It then prints K7 under ruling R109: the counted
 runs (successful push runs on main from K7_FIRST_RUN on) per CPU model, with
 the spread, (largest - smallest) / smallest, of BenchmarkCall/sdk's mean on
-each model, then per model and AVX-512 exposure (the amendment proposed
-beside R109), and beside it the spread of the sdk/naive mean ratio over the
+each model, then per model and AVX-512 exposure (ruling R109b's key), and
+beside it the spread of the sdk/naive mean ratio over the
 counted runs of any host. Last, for comparison, both spreads over every run
 in the file, in total and per host.
 """
@@ -74,7 +74,7 @@ def host(run: Run) -> str:
     """Return the run's CPU model name plus its AVX-512 exposure.
 
     One model name covers VMs with and without AVX-512, which run about
-    28 % apart, so this is the K7 group proposed beside R109's.
+    28 % apart, so ruling R109b makes this K7's group.
 
     Args:
         run: The run's rows.
@@ -151,7 +151,7 @@ def main() -> int:
     print(f"K7, successful push runs on main from {K7_FIRST_RUN} on; blocking needs 20 runs in one group")
     print("with BenchmarkCall/sdk's mean within 5 %.")
     print_k7("Per CPU model (ruling R109 as written)", counted, model)
-    print_k7("Per CPU model and AVX-512 exposure (proposed amendment)", counted, host)
+    print_k7("Per CPU model and AVX-512 exposure (ruling R109b)", counted, host)
     ratio_spread = spread([mean_ratio(r) for r in counted])
     print(f"Beside it, the sdk/naive mean ratio over those runs, any host (no threshold set): {ratio_spread}")
     print()
