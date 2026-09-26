@@ -1,0 +1,23 @@
+# 2026-09-26 12:17:49 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -run ^$ -bench ^BenchmarkCall$/^sdk$ -benchmem -count=10 ./internal/benchmark/
+# load before: 12:17  up 4 days, 11:23, 1 user, load averages: 10.48 10.95 9.77 | kernel: { 10.48 10.95 9.77 } (MAXLOAD=16, waited 0 x 60 s)
+# base: 438a12d
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  249883	      4819 ns/op	    2965 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  256545	      4768 ns/op	    2985 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  257178	      4961 ns/op	    2990 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  249403	      4998 ns/op	    2965 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  233335	      4962 ns/op	    2963 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  235951	      5108 ns/op	    2972 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  227830	      5641 ns/op	    2972 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  226684	      5410 ns/op	    2980 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  237022	      5065 ns/op	    2969 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  234448	      4990 ns/op	    2947 B/op	      22 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	12.212s
+# exit 0 at 2026-09-26 12:18:01 JST
+# load after: 12:18  up 4 days, 11:24, 1 user, load averages: 10.08 10.84 9.75 | kernel: { 10.08 10.84 9.75 }

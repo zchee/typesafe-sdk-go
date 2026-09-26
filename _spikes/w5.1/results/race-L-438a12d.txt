@@ -1,0 +1,12 @@
+# 2026-09-26 03:17:45 UTC (L) base 438a12d: go build, go vet, go test -race -count=1 ./...
+# load before:  03:17:45 up 1 day, 22:42,  2 users,  load average: 0.01, 0.19, 0.48
+go version go1.27.1 linux/amd64
+ok  	github.com/zchee/typesafe-sdk-go	11.206s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.115s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.044s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.808s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.402s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.087s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.045s
+# exit 0 at 2026-09-26 03:18:01 UTC
+# load after:  03:18:01 up 1 day, 22:42,  2 users,  load average: 0.29, 0.25, 0.50
