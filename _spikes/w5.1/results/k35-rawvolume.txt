@@ -1,0 +1,15 @@
+# 2026-09-26 14:32:32 JST _spikes/w5.1/k35-rawvolume.py over `gh run view <id> --log` of Benchmarks runs 36212995431 (87d1ac7, before W5.1), 36218293900 (f048059, main) and 36219879628 (f1b1df8, the probe)
+== run-36212995431-87d1ac7.log
+.                      rows= 19 failed= 0 raw~ 1.87 GiB
+./internal/codec       rows= 39 failed= 0 raw~ 1.45 GiB
+total                  rows= 58 failed= 0 raw~ 3.33 GiB
+== run-36218293900-f048059.log
+.                      rows= 57 failed= 0 raw~ 2.75 GiB
+./internal/benchmark   rows= 16 failed= 0 raw~ 1.63 GiB
+./internal/codec       rows= 52 failed=11 raw~ 1.52 GiB
+total                  rows=125 failed=11 raw~ 5.90 GiB
+== run-36219879628-f1b1df8.log
+.                      rows= 57 failed= 0 raw~ 2.76 GiB
+./internal/benchmark   rows= 16 failed= 0 raw~ 1.63 GiB
+./internal/codec       rows= 52 failed=11 raw~ 1.53 GiB
+total                  rows=125 failed=11 raw~ 5.92 GiB

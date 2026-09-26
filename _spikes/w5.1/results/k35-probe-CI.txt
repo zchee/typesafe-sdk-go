@@ -1,0 +1,266 @@
+# 2026-09-26 14:32:45 JST excerpt of `gh run view 36219879628 --log` (Benchmarks, f1b1df8 on wave/p5-codspeedfix-probe): the two probe steps, the /tmp sampler's log, and the CodSpeed step's package, failure and results lines; timestamps are the runner's (UTC)
+
+## step: Probe /tmp before the benchmarks
+2026-09-26T05:08:12.2976057Z ##[group]Run set -x
+2026-09-26T05:08:12.3160637Z shell: /usr/bin/bash -e {0}
+2026-09-26T05:08:12.3160968Z env:
+2026-09-26T05:08:12.3161207Z   GOTOOLCHAIN: local
+2026-09-26T05:08:12.3161481Z ##[endgroup]
+2026-09-26T05:08:12.3265407Z + date -u +%Y-%m-%dT%H:%M:%SZ
+2026-09-26T05:08:12.3296331Z 2026-09-26T05:08:12Z
+2026-09-26T05:08:12.3300387Z + id
+2026-09-26T05:08:12.3330411Z uid=1001(runner) gid=1001(runner) groups=1001(runner),4(adm),100(users),113(docker),999(systemd-journal)
+2026-09-26T05:08:12.3334109Z + uname -r
+2026-09-26T05:08:12.3356302Z 7.0.0-1012-azure
+2026-09-26T05:08:12.3360169Z + nproc
+2026-09-26T05:08:12.3385936Z 4
+2026-09-26T05:08:12.3389879Z + free -m
+2026-09-26T05:08:12.3404168Z                total        used        free      shared  buff/cache   available
+2026-09-26T05:08:12.3405015Z Mem:           15983        1235       11950          81        3223       14747
+2026-09-26T05:08:12.3405746Z Swap:           3071           0        3071
+2026-09-26T05:08:12.3408703Z + findmnt -o TARGET,SOURCE,FSTYPE,SIZE,USED,AVAIL,OPTIONS /tmp /dev/shm / /mnt
+2026-09-26T05:08:12.3431361Z + true
+2026-09-26T05:08:12.3431866Z + df -hT /tmp /dev/shm / /mnt /home/runner/work/_temp
+2026-09-26T05:08:12.3453394Z Filesystem     Type   Size  Used Avail Use% Mounted on
+2026-09-26T05:08:12.3454098Z tmpfs          tmpfs  7.9G   38M  7.8G   1% /tmp
+2026-09-26T05:08:12.3454473Z tmpfs          tmpfs  7.9G     0  7.9G   0% /dev/shm
+2026-09-26T05:08:12.3454847Z /dev/root      ext4   145G   54G   91G  38% /
+2026-09-26T05:08:12.3455188Z /dev/root      ext4   145G   54G   91G  38% /
+2026-09-26T05:08:12.3455490Z /dev/root      ext4   145G   54G   91G  38% /
+2026-09-26T05:08:12.3457036Z + echo 'TMPDIR=unset RUNNER_TEMP=/home/runner/work/_temp'
+2026-09-26T05:08:12.3457789Z TMPDIR=unset RUNNER_TEMP=/home/runner/work/_temp
+2026-09-26T05:08:12.3460349Z + systemctl cat tmp.mount
+2026-09-26T05:08:12.3464714Z + grep -v '^#'
+2026-09-26T05:08:12.3510393Z [Unit]
+2026-09-26T05:08:12.3510898Z Description=Temporary Directory /tmp
+2026-09-26T05:08:12.3511543Z Documentation=https://systemd.io/TEMPORARY_DIRECTORIES
+2026-09-26T05:08:12.3511949Z Documentation=man:file-hierarchy(7)
+2026-09-26T05:08:12.3512297Z Documentation=https://systemd.io/API_FILE_SYSTEMS
+2026-09-26T05:08:12.3512681Z ConditionPathIsSymbolicLink=!/tmp
+2026-09-26T05:08:12.3512968Z DefaultDependencies=no
+2026-09-26T05:08:12.3513207Z Conflicts=umount.target
+2026-09-26T05:08:12.3513493Z Before=local-fs.target umount.target
+2026-09-26T05:08:12.3513769Z After=swap.target
+2026-09-26T05:08:12.3513991Z [Mount]
+2026-09-26T05:08:12.3514182Z What=tmpfs
+2026-09-26T05:08:12.3514378Z Where=/tmp
+2026-09-26T05:08:12.3514573Z Type=tmpfs
+2026-09-26T05:08:12.3515016Z Options=mode=1777,strictatime,nosuid,nodev,size=50%%,nr_inodes=1m,x-systemd.graceful-option=usrquota
+2026-09-26T05:08:12.3519119Z + systemctl show tmp.mount -p What -p Options
+2026-09-26T05:08:12.3609880Z What=tmpfs
+2026-09-26T05:08:12.3610601Z Options=rw,nosuid,nodev,nr_inodes=1048576,inode64,usrquota
+2026-09-26T05:08:12.3620441Z + grep -i -E 'limit|tmp|shm'
+2026-09-26T05:08:12.3621142Z ++ id -un
+2026-09-26T05:08:12.3646990Z + userdbctl user runner
+2026-09-26T05:08:12.3651789Z + true
+2026-09-26T05:08:12.3652959Z + grep -r -i -E 'tmp|quota' /etc/systemd/logind.conf /etc/systemd/logind.conf.d /usr/lib/systemd/logind.conf.d
+2026-09-26T05:08:12.3667566Z + true
+2026-09-26T05:08:12.3668646Z + cat /proc/self/cgroup
+2026-09-26T05:08:12.3690327Z 0::/system.slice/hosted-compute-agent.service
+2026-09-26T05:08:12.3693895Z + ps -o user=,pid=,cmd= -p 2185
+2026-09-26T05:08:12.3893667Z runner      2185 /home/runner/actions-runner/cached/2.337.0/bin/Runner.Worker spawnclient 142 145
+2026-09-26T05:08:12.3914983Z ++ df -m --output=avail /tmp
+2026-09-26T05:08:12.3915463Z ++ tail -1
+2026-09-26T05:08:12.3915810Z ++ tr -d ' '
+2026-09-26T05:08:12.3944315Z + avail=7954
+2026-09-26T05:08:12.3944732Z + echo avail_mib=7954
+2026-09-26T05:08:12.3949974Z + tail -2
+2026-09-26T05:08:12.3951056Z + dd if=/dev/zero of=/tmp/k35.fill.user bs=1M count=8018
+2026-09-26T05:08:12.3952173Z avail_mib=7954
+2026-09-26T05:08:15.3122003Z dd: IO error: Disk quota exceeded
+2026-09-26T05:08:15.3126420Z + du -m /tmp/k35.fill.user
+2026-09-26T05:08:15.3157971Z 6356	/tmp/k35.fill.user
+2026-09-26T05:08:15.3162855Z + df -m /tmp
+2026-09-26T05:08:15.3174501Z Filesystem     1M-blocks  Used Available Use% Mounted on
+2026-09-26T05:08:15.3175230Z tmpfs               7992  6394      1599  80% /tmp
+2026-09-26T05:08:15.3176257Z + rm -f /tmp/k35.fill.user
+2026-09-26T05:08:16.2923154Z + sudo dd if=/dev/zero of=/tmp/k35.fill.root bs=1M count=8018
+2026-09-26T05:08:16.2924214Z + tail -2
+2026-09-26T05:08:20.0865345Z dd: IO error: No space left on device
+2026-09-26T05:08:20.0870155Z + sudo du -m /tmp/k35.fill.root
+2026-09-26T05:08:20.0957536Z 7954	/tmp/k35.fill.root
+2026-09-26T05:08:20.0967869Z + df -m /tmp
+2026-09-26T05:08:20.0979326Z Filesystem     1M-blocks  Used Available Use% Mounted on
+2026-09-26T05:08:20.0979787Z tmpfs               7992  7992         0 100% /tmp
+2026-09-26T05:08:20.0981148Z + sudo rm -f /tmp/k35.fill.root
+2026-09-26T05:08:21.3284906Z + df -m /tmp
+2026-09-26T05:08:21.3298612Z Filesystem     1M-blocks  Used Available Use% Mounted on
+2026-09-26T05:08:21.3299317Z tmpfs               7992    38      7954   1% /tmp
+
+## step: Run CodSpeedHQ/action@v5
+2026-09-26T05:08:22.5777638Z   https://codspeed.io     /_/          runner v5.2.1
+2026-09-26T05:09:06.5848394Z pkg: github.com/zchee/typesafe-sdk-go
+2026-09-26T05:09:06.5848964Z cpu: AMD EPYC 7763 64-Core Processor                
+2026-09-26T05:13:05.6298335Z ok  	github.com/zchee/typesafe-sdk-go	242.613s
+2026-09-26T05:13:08.9703679Z pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+2026-09-26T05:13:08.9704503Z cpu: AMD EPYC 7763 64-Core Processor                
+2026-09-26T05:14:25.4963505Z ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	79.866s
+2026-09-26T05:14:28.9703115Z pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+2026-09-26T05:14:28.9703606Z cpu: AMD EPYC 7763 64-Core Processor                
+2026-09-26T05:17:12.7331114Z BenchmarkEncodeState/ascii/1KiB/check-4                        	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/ec51f6d6897bea1a7125ac8ac12ffe58.json: disk quota exceeded
+2026-09-26T05:17:16.2953432Z BenchmarkEncodeState/ascii/64KiB/encode-4                      	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/4c2208bec020a1e604a8125b3c93d5d5.json: disk quota exceeded
+2026-09-26T05:17:20.1953113Z BenchmarkEncodeState/ascii/64KiB/check-4                       	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/12dcc4152f10a11bbe1f927965943e9a.json: disk quota exceeded
+2026-09-26T05:17:23.7419630Z BenchmarkEncodeState/ascii/6MiB/encode-4                       	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/d268f26f4ceaec5e3c3ce82f13dd8869.json: disk quota exceeded
+2026-09-26T05:17:27.3382995Z BenchmarkEncodeState/ascii/6MiB/check-4                        	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/b0078538c21fbdde2d9e7ca42dba9a4c.json: disk quota exceeded
+2026-09-26T05:17:31.2870497Z BenchmarkEncodeState/cjk/1KiB/encode-4                         	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/c1d6b18b0695bef1244db3e48f0031b4.json: disk quota exceeded
+2026-09-26T05:17:35.3394073Z BenchmarkEncodeState/cjk/1KiB/check-4                          	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/88776faeb37deff222d30a2a65010a30.json: disk quota exceeded
+2026-09-26T05:17:38.8893565Z BenchmarkEncodeState/cjk/64KiB/encode-4                        	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/06f7dcfe3bce59f47837f7f43e176211.json: disk quota exceeded
+2026-09-26T05:17:42.4904237Z BenchmarkEncodeState/cjk/64KiB/check-4                         	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/ec99d69e248ece1fc3b419d743a22e54.json: disk quota exceeded
+2026-09-26T05:17:46.0939719Z BenchmarkEncodeState/cjk/6MiB/encode-4                         	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/62edbbaeafd88c4ff90b8ed45f11d320.json: disk quota exceeded
+2026-09-26T05:17:49.6865074Z BenchmarkEncodeState/cjk/6MiB/check-4                          	failed to write raw results: write /tmp/profile.LIEX0MHmW2.out/raw_results/07e85b631c7410e5e3d1c35e4b9d4fb4.json: disk quota exceeded
+2026-09-26T05:17:49.6910982Z ok  	github.com/zchee/typesafe-sdk-go/internal/codec	204.195s
+2026-09-26T05:17:49.6975872Z ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	0.006s
+2026-09-26T05:17:49.7030535Z ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.006s
+2026-09-26T05:17:49.7134702Z ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.010s
+2026-09-26T05:17:49.7189588Z ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.005s
+2026-09-26T05:18:04.4940749Z [INFO  codspeed_go_runner] Results written to "/tmp/profile.LIEX0MHmW2.out/results/7289.json"
+2026-09-26T05:18:04.4943451Z [INFO  codspeed_go_runner] Results written to "/tmp/profile.LIEX0MHmW2.out/results/7911.json"
+2026-09-26T05:18:04.4944754Z [INFO  codspeed_go_runner] Results written to "/tmp/profile.LIEX0MHmW2.out/results/8109.json"
+2026-09-26T05:18:29.2304022Z Performance data uploaded
+
+## step: Probe /tmp after the benchmarks
+2026-09-26T05:18:29.2382497Z ##[group]Run set -x
+2026-09-26T05:18:29.2444211Z shell: /usr/bin/bash -e {0}
+2026-09-26T05:18:29.2444472Z env:
+2026-09-26T05:18:29.2444666Z   GOTOOLCHAIN: local
+2026-09-26T05:18:29.2444892Z ##[endgroup]
+2026-09-26T05:18:29.2522916Z + date -u +%Y-%m-%dT%H:%M:%SZ
+2026-09-26T05:18:29.2551764Z 2026-09-26T05:18:29Z
+2026-09-26T05:18:29.2555646Z + cat /home/runner/work/_temp/k35-tmpwatch.log
+2026-09-26T05:18:29.2576386Z 05:08:21 used_mib=38 raw= perf= gobuild=0
+2026-09-26T05:18:29.2577172Z 05:08:31 used_mib=211 raw= perf= gobuild=177
+2026-09-26T05:18:29.2577642Z 05:08:41 used_mib=337 raw= perf= gobuild=294
+2026-09-26T05:18:29.2578257Z 05:08:51 used_mib=428 raw= perf= gobuild=393
+2026-09-26T05:18:29.2578893Z 05:09:01 used_mib=688 raw= perf= gobuild=570
+2026-09-26T05:18:29.2579483Z 05:09:11 used_mib=673 raw=41, perf= gobuild=598
+2026-09-26T05:18:29.2580087Z 05:09:21 used_mib=882 raw=250, perf= gobuild=598
+2026-09-26T05:18:29.2580690Z 05:09:32 used_mib=883 raw=252, perf= gobuild=598
+2026-09-26T05:18:29.2581278Z 05:09:42 used_mib=894 raw=262, perf= gobuild=598
+2026-09-26T05:18:29.2581685Z 05:09:52 used_mib=920 raw=289, perf= gobuild=598
+2026-09-26T05:18:29.2582061Z 05:10:02 used_mib=950 raw=319, perf= gobuild=598
+2026-09-26T05:18:29.2582464Z 05:10:12 used_mib=1553 raw=921, perf= gobuild=598
+2026-09-26T05:18:29.2582883Z + df -hT /tmp / /home/runner/work/_temp /mnt
+2026-09-26T05:18:29.2583262Z 05:10:22 used_mib=1605 raw=973, perf= gobuild=598
+2026-09-26T05:18:29.2583651Z 05:10:32 used_mib=1609 raw=977, perf= gobuild=598
+2026-09-26T05:18:29.2584031Z 05:10:42 used_mib=1609 raw=977, perf= gobuild=598
+2026-09-26T05:18:29.2584422Z 05:10:52 used_mib=2049 raw=1417, perf= gobuild=598
+2026-09-26T05:18:29.2584815Z 05:11:02 used_mib=2114 raw=1482, perf= gobuild=598
+2026-09-26T05:18:29.2585207Z 05:11:12 used_mib=2116 raw=1484, perf= gobuild=598
+2026-09-26T05:18:29.2585591Z 05:11:22 used_mib=2116 raw=1484, perf= gobuild=598
+2026-09-26T05:18:29.2585976Z 05:11:32 used_mib=2227 raw=1595, perf= gobuild=598
+2026-09-26T05:18:29.2586361Z 05:11:42 used_mib=2231 raw=1599, perf= gobuild=598
+2026-09-26T05:18:29.2587012Z 05:11:53 used_mib=2231 raw=1599, perf= gobuild=598
+2026-09-26T05:18:29.2587503Z 05:12:03 used_mib=2334 raw=1702, perf= gobuild=598
+2026-09-26T05:18:29.2587904Z 05:12:13 used_mib=2354 raw=1722, perf= gobuild=598
+2026-09-26T05:18:29.2588290Z 05:12:23 used_mib=2354 raw=1722, perf= gobuild=598
+2026-09-26T05:18:29.2588676Z 05:12:33 used_mib=2416 raw=1784, perf= gobuild=598
+2026-09-26T05:18:29.2589016Z 05:12:43 used_mib=2713 raw=2081, perf= gobuild=598
+2026-09-26T05:18:29.2589320Z 05:12:53 used_mib=3020 raw=2388, perf= gobuild=598
+2026-09-26T05:18:29.2589633Z 05:13:03 used_mib=3493 raw=2861, perf= gobuild=598
+2026-09-26T05:18:29.2589961Z 05:13:13 used_mib=3556 raw=2924, perf= gobuild=598
+2026-09-26T05:18:29.2590277Z 05:13:23 used_mib=3566 raw=2934, perf= gobuild=598
+2026-09-26T05:18:29.2590593Z 05:13:33 used_mib=3623 raw=2991, perf= gobuild=598
+2026-09-26T05:18:29.2590919Z 05:13:43 used_mib=3737 raw=3105, perf= gobuild=598
+2026-09-26T05:18:29.2591241Z 05:13:53 used_mib=3904 raw=3272, perf= gobuild=598
+2026-09-26T05:18:29.2591551Z 05:14:04 used_mib=3904 raw=3272, perf= gobuild=598
+2026-09-26T05:18:29.2591868Z 05:14:14 used_mib=4614 raw=3991, perf= gobuild=598
+2026-09-26T05:18:29.2592610Z 05:14:24 used_mib=5078 raw=4446, perf= gobuild=598
+2026-09-26T05:18:29.2593165Z 05:14:34 used_mib=5193 raw=4561, perf= gobuild=598
+2026-09-26T05:18:29.2593493Z 05:14:44 used_mib=5204 raw=4572, perf= gobuild=598
+2026-09-26T05:18:29.2593805Z 05:14:54 used_mib=5231 raw=4599, perf= gobuild=598
+2026-09-26T05:18:29.2594294Z 05:15:04 used_mib=5277 raw=4645, perf= gobuild=598
+2026-09-26T05:18:29.2594617Z 05:15:14 used_mib=5388 raw=4756, perf= gobuild=598
+2026-09-26T05:18:29.2594932Z 05:15:24 used_mib=5427 raw=4795, perf= gobuild=598
+2026-09-26T05:18:29.2595242Z 05:15:34 used_mib=5437 raw=4810, perf= gobuild=598
+2026-09-26T05:18:29.2595551Z 05:15:44 used_mib=5470 raw=4838, perf= gobuild=598
+2026-09-26T05:18:29.2595871Z 05:15:54 used_mib=5563 raw=4931, perf= gobuild=598
+2026-09-26T05:18:29.2596183Z 05:16:04 used_mib=5639 raw=5007, perf= gobuild=598
+2026-09-26T05:18:29.2596513Z 05:16:14 used_mib=5648 raw=5016, perf= gobuild=598
+2026-09-26T05:18:29.2597109Z 05:16:25 used_mib=5652 raw=5020, perf= gobuild=598
+2026-09-26T05:18:29.2597463Z 05:16:35 used_mib=5667 raw=5035, perf= gobuild=598
+2026-09-26T05:18:29.2597794Z 05:16:45 used_mib=5709 raw=5077, perf= gobuild=598
+2026-09-26T05:18:29.2598119Z 05:16:55 used_mib=5709 raw=5077, perf= gobuild=598
+2026-09-26T05:18:29.2598434Z 05:17:05 used_mib=5937 raw=5305, perf= gobuild=598
+2026-09-26T05:18:29.2598755Z 05:17:15 used_mib=6394 raw=5762, perf= gobuild=598
+2026-09-26T05:18:29.2599065Z 05:17:25 used_mib=6394 raw=5762, perf= gobuild=598
+2026-09-26T05:18:29.2599373Z 05:17:35 used_mib=6394 raw=5762, perf= gobuild=598
+2026-09-26T05:18:29.2599684Z 05:17:45 used_mib=6394 raw=5762, perf= gobuild=598
+2026-09-26T05:18:29.2600000Z 05:17:55 used_mib=4458 raw=3826, perf= gobuild=598
+2026-09-26T05:18:29.2600312Z 05:18:05 used_mib=1089 raw=457, perf= gobuild=598
+2026-09-26T05:18:29.2600627Z 05:18:15 used_mib=1567 raw=457, perf= gobuild=1064
+2026-09-26T05:18:29.2600941Z 05:18:25 used_mib=1567 raw=457, perf= gobuild=1064
+2026-09-26T05:18:29.2601526Z + sudo ls -la /tmp/profile.LIEX0MHmW2.out /tmp/profile.LIEX0MHmW2.out/raw_results /tmp/profile.LIEX0MHmW2.out/results
+2026-09-26T05:18:29.2602140Z Filesystem     Type   Size  Used Avail Use% Mounted on
+2026-09-26T05:18:29.2602486Z tmpfs          tmpfs  7.9G  1.1G  6.8G  14% /tmp
+2026-09-26T05:18:29.2602804Z /dev/root      ext4   145G   54G   91G  38% /
+2026-09-26T05:18:29.2603120Z /dev/root      ext4   145G   54G   91G  38% /
+2026-09-26T05:18:29.2603413Z /dev/root      ext4   145G   54G   91G  38% /
+2026-09-26T05:18:29.2691369Z /tmp/profile.LIEX0MHmW2.out:
+2026-09-26T05:18:29.2691869Z total 10580
+2026-09-26T05:18:29.2692298Z drwxr-xr-x  4 runner runner      300 Sep 26 05:18 .
+2026-09-26T05:18:29.2692913Z drwxrwxrwt 16 root   root        520 Sep 26 05:18 ..
+2026-09-26T05:18:29.2693668Z -rw-r--r--  1 runner runner    19113 Sep 26 05:18 ExecutionTimestamps.msgpack
+2026-09-26T05:18:29.2694553Z -rw-r--r--  1 runner runner      395 Sep 26 05:09 environment-7289.json
+2026-09-26T05:18:29.2695087Z -rw-r--r--  1 runner runner      395 Sep 26 05:13 environment-7911.json
+2026-09-26T05:18:29.2695563Z -rw-r--r--  1 runner runner      395 Sep 26 05:14 environment-8109.json
+2026-09-26T05:18:29.2696142Z -rw-r--r--  1 runner runner        0 Sep 26 05:17 environment-8596.json
+2026-09-26T05:18:29.2696934Z -rw-r--r--  1 runner runner        0 Sep 26 05:17 environment-8603.json
+2026-09-26T05:18:29.2697599Z -rw-r--r--  1 runner runner        0 Sep 26 05:17 environment-8610.json
+2026-09-26T05:18:29.2698037Z -rw-r--r--  1 runner runner        0 Sep 26 05:17 environment-8617.json
+2026-09-26T05:18:29.2698461Z drwxr-xr-x  2 runner runner      260 Sep 26 05:18 raw_results
+2026-09-26T05:18:29.2698861Z drwxr-xr-x  2 runner runner      100 Sep 26 05:18 results
+2026-09-26T05:18:29.2699253Z -rw-------  1 runner runner   129650 Sep 26 05:18 runner.log
+2026-09-26T05:18:29.2699707Z -rw-r--r--  1 root   root   10642518 Sep 26 05:18 samply-profile.json.gz
+2026-09-26T05:18:29.2700171Z -rw-r--r--  1 runner runner    23370 Sep 26 05:18 walltime.metadata
+2026-09-26T05:18:29.2700761Z /tmp/profile.LIEX0MHmW2.out/raw_results:
+2026-09-26T05:18:29.2701044Z total 467848
+2026-09-26T05:18:29.2701297Z drwxr-xr-x 2 runner runner       260 Sep 26 05:18 .
+2026-09-26T05:18:29.2701651Z drwxr-xr-x 4 runner runner       300 Sep 26 05:18 ..
+2026-09-26T05:18:29.2702086Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 06f7dcfe3bce59f47837f7f43e176211.json
+2026-09-26T05:18:29.2702749Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 07e85b631c7410e5e3d1c35e4b9d4fb4.json
+2026-09-26T05:18:29.2703426Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 12dcc4152f10a11bbe1f927965943e9a.json
+2026-09-26T05:18:29.2704334Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 4c2208bec020a1e604a8125b3c93d5d5.json
+2026-09-26T05:18:29.2705248Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 62edbbaeafd88c4ff90b8ed45f11d320.json
+2026-09-26T05:18:29.2706180Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 88776faeb37deff222d30a2a65010a30.json
+2026-09-26T05:18:29.2707365Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 b0078538c21fbdde2d9e7ca42dba9a4c.json
+2026-09-26T05:18:29.2708292Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 c1d6b18b0695bef1244db3e48f0031b4.json
+2026-09-26T05:18:29.2709245Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 d268f26f4ceaec5e3c3ce82f13dd8869.json
+2026-09-26T05:18:29.2710331Z -rw-r--r-- 1 runner runner 479076352 Sep 26 05:17 ec51f6d6897bea1a7125ac8ac12ffe58.json
+2026-09-26T05:18:29.2711320Z -rw-r--r-- 1 runner runner         0 Sep 26 05:17 ec99d69e248ece1fc3b419d743a22e54.json
+2026-09-26T05:18:29.2712079Z /tmp/profile.LIEX0MHmW2.out/results:
+2026-09-26T05:18:29.2712565Z total 60
+2026-09-26T05:18:29.2712978Z drwxr-xr-x 2 runner runner   100 Sep 26 05:18 .
+2026-09-26T05:18:29.2713578Z drwxr-xr-x 4 runner runner   300 Sep 26 05:18 ..
+2026-09-26T05:18:29.2714194Z -rw-r--r-- 1 runner runner 28609 Sep 26 05:18 7289.json
+2026-09-26T05:18:29.2714828Z -rw-r--r-- 1 runner runner  7910 Sep 26 05:18 7911.json
+2026-09-26T05:18:29.2715445Z -rw-r--r-- 1 runner runner 21345 Sep 26 05:18 8109.json
+2026-09-26T05:18:29.2725178Z + sudo du -sm /tmp/clr-debug-pipe-2164-10155-in /tmp/clr-debug-pipe-2164-10155-out /tmp/clr-debug-pipe-2185-10317-in /tmp/clr-debug-pipe-2185-10317-out /tmp/codspeed_introspected_go /tmp/codspeed_introspected_node /tmp/dotnet-diagnostic-2164-10155-socket /tmp/dotnet-diagnostic-2185-10317-socket /tmp/go-build856731181 /tmp/profile.LIEX0MHmW2.out /tmp/runner.ack.fifo /tmp/runner.ctl.fifo /tmp/snap-private-tmp /tmp/systemd-private-5163905dd2224efab53142939da159c1-ModemManager.service-JoV3fn /tmp/systemd-private-5163905dd2224efab53142939da159c1-chrony.service-kZzsMZ /tmp/systemd-private-5163905dd2224efab53142939da159c1-polkit.service-1STs9h /tmp/systemd-private-5163905dd2224efab53142939da159c1-systemd-logind.service-5gP0wR /tmp/tmp.0ExIqzQnQT
+2026-09-26T05:18:29.2730834Z + sort -n
+2026-09-26T05:18:29.2747857Z + tail -15
+2026-09-26T05:18:29.2900580Z 0	/tmp/clr-debug-pipe-2185-10317-out
+2026-09-26T05:18:29.2901088Z 0	/tmp/dotnet-diagnostic-2164-10155-socket
+2026-09-26T05:18:29.2901435Z 0	/tmp/dotnet-diagnostic-2185-10317-socket
+2026-09-26T05:18:29.2901757Z 0	/tmp/runner.ack.fifo
+2026-09-26T05:18:29.2901997Z 0	/tmp/runner.ctl.fifo
+2026-09-26T05:18:29.2902249Z 0	/tmp/snap-private-tmp
+2026-09-26T05:18:29.2902702Z 0	/tmp/systemd-private-5163905dd2224efab53142939da159c1-ModemManager.service-JoV3fn
+2026-09-26T05:18:29.2903376Z 0	/tmp/systemd-private-5163905dd2224efab53142939da159c1-chrony.service-kZzsMZ
+2026-09-26T05:18:29.2903985Z 0	/tmp/systemd-private-5163905dd2224efab53142939da159c1-polkit.service-1STs9h
+2026-09-26T05:18:29.2904776Z 0	/tmp/systemd-private-5163905dd2224efab53142939da159c1-systemd-logind.service-5gP0wR
+2026-09-26T05:18:29.2905591Z 0	/tmp/tmp.0ExIqzQnQT
+2026-09-26T05:18:29.2906014Z 1	/tmp/codspeed_introspected_go
+2026-09-26T05:18:29.2906486Z 1	/tmp/codspeed_introspected_node
+2026-09-26T05:18:29.2907196Z 318	/tmp/go-build856731181
+2026-09-26T05:18:29.2907636Z 468	/tmp/profile.LIEX0MHmW2.out
+2026-09-26T05:18:29.2908372Z + for f in /tmp/profile.*.out/results/*.json
+2026-09-26T05:18:29.2908982Z + printf '%s ' /tmp/profile.LIEX0MHmW2.out/results/7289.json
+2026-09-26T05:18:29.2909695Z + python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(len(d["benchmarks"]))' /tmp/profile.LIEX0MHmW2.out/results/7289.json
+2026-09-26T05:18:29.3084371Z /tmp/profile.LIEX0MHmW2.out/results/7289.json 57
+2026-09-26T05:18:29.3115729Z + for f in /tmp/profile.*.out/results/*.json
+2026-09-26T05:18:29.3116281Z + printf '%s ' /tmp/profile.LIEX0MHmW2.out/results/7911.json
+2026-09-26T05:18:29.3117761Z + python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(len(d["benchmarks"]))' /tmp/profile.LIEX0MHmW2.out/results/7911.json
+2026-09-26T05:18:29.3287698Z /tmp/profile.LIEX0MHmW2.out/results/7911.json 16
+2026-09-26T05:18:29.3318898Z + for f in /tmp/profile.*.out/results/*.json
+2026-09-26T05:18:29.3319470Z + printf '%s ' /tmp/profile.LIEX0MHmW2.out/results/8109.json
+2026-09-26T05:18:29.3320881Z + python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(len(d["benchmarks"]))' /tmp/profile.LIEX0MHmW2.out/results/8109.json
+2026-09-26T05:18:29.3493581Z /tmp/profile.LIEX0MHmW2.out/results/8109.json 41

@@ -1,0 +1,140 @@
+# 2026-09-26 14:33:03 JST (M) f7927c0 the guard step of .github/workflows/bench.yaml (yq e .jobs.codspeed.steps[-1].run) run by bash with GOEXPERIMENT=nosimd,noruntimesecret against three RUNNER_TEMP folders under the bench lock
+# load before: 14:33  up 4 days, 13:39, 1 user, load averages: 6.15 5.56 7.16
+# go version go1.27.1 darwin/arm64
+# codspeed: codspeed-runner 5.3.1
+
+## case full: a local codspeed run --skip-upload -m walltime of go test -bench=. -benchtime=10ms ./... at 14:15:56 JST (TMPDIR and log in the folder)
+go test -list expansion: 125 rows; CodSpeed results: 125 rows in 3 files
+exit=0
+
+## case partial: a local codspeed run of -bench BenchmarkFalsyJSON|BenchmarkEncodeState -benchtime=20ms ./internal/codec . at 14:11:18 JST (15 of the 125 rows)
+go test -list expansion: 125 rows; CodSpeed results: 15 rows in 2 files
+--- k35local/codspeed-expected.txt	2026-09-26 14:33:04.807518709 +0900
++++ k35local/codspeed-written.txt	2026-09-26 14:33:04.813697578 +0900
+@@ -1,116 +1,6 @@
+-. BenchmarkAssembly/prepare-and-request
+-. BenchmarkAssembly/request
+-. BenchmarkBackoff/retry-1
+-. BenchmarkBackoff/retry-1000
+-. BenchmarkBackoff/retry-6
+-. BenchmarkBackoff/schedule
+-. BenchmarkEncodeBody/map/1KiB/naive
+-. BenchmarkEncodeBody/map/1KiB/naive-json
+-. BenchmarkEncodeBody/map/1KiB/sdk
+-. BenchmarkEncodeBody/map/1MiB/naive
+-. BenchmarkEncodeBody/map/1MiB/naive-json
+-. BenchmarkEncodeBody/map/1MiB/sdk
+-. BenchmarkEncodeBody/map/64KiB/naive
+-. BenchmarkEncodeBody/map/64KiB/naive-json
+-. BenchmarkEncodeBody/map/64KiB/sdk
+-. BenchmarkEncodeBody/rawjson/1KiB/naive
+-. BenchmarkEncodeBody/rawjson/1KiB/naive-json
+-. BenchmarkEncodeBody/rawjson/1KiB/sdk
+-. BenchmarkEncodeBody/rawjson/1MiB/naive
+-. BenchmarkEncodeBody/rawjson/1MiB/naive-json
+-. BenchmarkEncodeBody/rawjson/1MiB/sdk
+-. BenchmarkEncodeBody/rawjson/64KiB/naive
+-. BenchmarkEncodeBody/rawjson/64KiB/naive-json
+-. BenchmarkEncodeBody/rawjson/64KiB/sdk
+-. BenchmarkEncodeBody/struct/1KiB/naive
+-. BenchmarkEncodeBody/struct/1KiB/naive-json
+-. BenchmarkEncodeBody/struct/1KiB/sdk
+-. BenchmarkEncodeBody/struct/1MiB/naive
+-. BenchmarkEncodeBody/struct/1MiB/naive-json
+-. BenchmarkEncodeBody/struct/1MiB/sdk
+-. BenchmarkEncodeBody/struct/64KiB/naive
+-. BenchmarkEncodeBody/struct/64KiB/naive-json
+-. BenchmarkEncodeBody/struct/64KiB/sdk
+-. BenchmarkEncodeBody/text/1KiB/naive
+-. BenchmarkEncodeBody/text/1KiB/naive-json
+-. BenchmarkEncodeBody/text/1KiB/sdk
+-. BenchmarkEncodeBody/text/1MiB/naive
+-. BenchmarkEncodeBody/text/1MiB/naive-json
+-. BenchmarkEncodeBody/text/1MiB/sdk
+-. BenchmarkEncodeBody/text/64KiB/naive
+-. BenchmarkEncodeBody/text/64KiB/naive-json
+-. BenchmarkEncodeBody/text/64KiB/sdk
+ . BenchmarkFalsyJSON/array
+ . BenchmarkFalsyJSON/map
+ . BenchmarkFalsyJSON/small-14B
+-. BenchmarkLoopback/cold-fanout-64
+-. BenchmarkPrepare/c1-sketch
+-. BenchmarkPrepare/c2-noul-short
+-. BenchmarkPrepare/c3-choice-20x10
+-. BenchmarkPrepare/c4a-score-20x8-text
+-. BenchmarkPrepare/c4b-score-20x8-json
+-. BenchmarkPrepare/c5-raw-100x3
+-. BenchmarkPrepare/c6-escapes
+-. BenchmarkPrepare/n8a-array-control
+-. BenchmarkPrepare/n8a-array-score
+-. BenchmarkPrepare/n8b-map-control
+-. BenchmarkPrepare/n8b-map-score
+-./internal/benchmark BenchmarkCall/floor
+-./internal/benchmark BenchmarkCall/floor-q20
+-./internal/benchmark BenchmarkCall/naive
+-./internal/benchmark BenchmarkCall/naive-json
+-./internal/benchmark BenchmarkCall/naive-json-q20
+-./internal/benchmark BenchmarkCall/naive-q20
+-./internal/benchmark BenchmarkCall/sdk
+-./internal/benchmark BenchmarkCall/sdk-q20
+-./internal/benchmark BenchmarkHeaderTemplateClone/no-runtime-hdr
+-./internal/benchmark BenchmarkHeaderTemplateClone/sdk-only
+-./internal/benchmark BenchmarkHeaderTemplateClone/three-defaults
+-./internal/benchmark BenchmarkLoopback/call
+-./internal/benchmark BenchmarkNoop
+-./internal/benchmark BenchmarkRetryAfter/http-date
+-./internal/benchmark BenchmarkRetryAfter/ms
+-./internal/benchmark BenchmarkRetryAfter/seconds
+-./internal/codec BenchmarkDecode/deviation-lone-surrogate
+-./internal/codec BenchmarkDecode/duplicates
+-./internal/codec BenchmarkDecode/escaped-member-names
+-./internal/codec BenchmarkDecode/escaped-names
+-./internal/codec BenchmarkDecode/no-answers
+-./internal/codec BenchmarkDecode/parity-big-exp-unknown
+-./internal/codec BenchmarkDecode/result
+-./internal/codec BenchmarkDecode/result-20
+-./internal/codec BenchmarkDecode/score-flood-mini
+-./internal/codec BenchmarkDecode/structured-legend
+-./internal/codec BenchmarkDecode/structured-legend-flood-10k
+-./internal/codec BenchmarkDecode/structured-legend-flood-1k
+-./internal/codec BenchmarkDecode/type-last
+-./internal/codec BenchmarkDecode/unknown-answer-type
+-./internal/codec BenchmarkDecodeNaiveJSON/deviation-lone-surrogate
+-./internal/codec BenchmarkDecodeNaiveJSON/duplicates
+-./internal/codec BenchmarkDecodeNaiveJSON/escaped-member-names
+-./internal/codec BenchmarkDecodeNaiveJSON/escaped-names
+-./internal/codec BenchmarkDecodeNaiveJSON/no-answers
+-./internal/codec BenchmarkDecodeNaiveJSON/result
+-./internal/codec BenchmarkDecodeNaiveJSON/result-20
+-./internal/codec BenchmarkDecodeNaiveJSON/score-flood-mini
+-./internal/codec BenchmarkDecodeNaiveJSON/structured-legend
+-./internal/codec BenchmarkDecodeNaiveJSON/structured-legend-flood-10k
+-./internal/codec BenchmarkDecodeNaiveJSON/structured-legend-flood-1k
+-./internal/codec BenchmarkDecodeNaiveJSON/type-last
+-./internal/codec BenchmarkDecodeNaiveJSON/unknown-answer-type
+-./internal/codec BenchmarkDecodeNaiveSonic/deviation-lone-surrogate
+-./internal/codec BenchmarkDecodeNaiveSonic/duplicates
+-./internal/codec BenchmarkDecodeNaiveSonic/escaped-member-names
+-./internal/codec BenchmarkDecodeNaiveSonic/escaped-names
+-./internal/codec BenchmarkDecodeNaiveSonic/no-answers
+-./internal/codec BenchmarkDecodeNaiveSonic/result
+-./internal/codec BenchmarkDecodeNaiveSonic/result-20
+-./internal/codec BenchmarkDecodeNaiveSonic/score-flood-mini
+-./internal/codec BenchmarkDecodeNaiveSonic/structured-legend
+-./internal/codec BenchmarkDecodeNaiveSonic/structured-legend-flood-10k
+-./internal/codec BenchmarkDecodeNaiveSonic/structured-legend-flood-1k
+-./internal/codec BenchmarkDecodeNaiveSonic/type-last
+-./internal/codec BenchmarkDecodeNaiveSonic/unknown-answer-type
+ ./internal/codec BenchmarkEncodeState/ascii/1KiB/check
+ ./internal/codec BenchmarkEncodeState/ascii/1KiB/encode
+ ./internal/codec BenchmarkEncodeState/ascii/64KiB/check
+::error title=CodSpeed lost results::15 of 125 benchmarks reached the results (K35)
+exit=1
+
+## case injected: the full run's results, and its log plus one line "BenchmarkEncodeState/ascii/1KiB/check-16 <TAB>failed to write raw results: write /tmp/profile.x.out/raw_results/y.json: disk quota exceeded"
+BenchmarkEncodeState/ascii/1KiB/check-16  	failed to write raw results: write /tmp/profile.x.out/raw_results/y.json: disk quota exceeded
+::error title=CodSpeed lost results::the go runner could not write raw results (K35)
+go test -list expansion: 125 rows; CodSpeed results: 125 rows in 3 files
+exit=1
+
+# load after: 14:33  up 4 days, 13:39, 1 user, load averages: 6.94 5.74 7.21
