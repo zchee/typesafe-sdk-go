@@ -1,0 +1,17 @@
+# W6.1 C3b (critic-p5 m-2, condition C3): the critic's S7, applied to a git archive copy of FU2 (6be1664) and of C3b's Go tree (4e05f4d, a scratch commit;
+# the committed C3b adds this file and its ledger row, nothing that builds), on (M) go1.27.1 darwin/arm64, GOEXPERIMENT=nosimd,noruntimesecret, outside the bench lock.
+# S7: internal/codec/nocopy.go gains
+#   // WriteFloatAt writes v at offset off of the value p points to.
+#   func WriteFloatAt(p any, off uintptr, v float64) { *(*float64)(unsafe.Add((*[2]unsafe.Pointer)(unsafe.Pointer(&p))[1], off)) = v }
+# and decodeas.go gains 'var _ = codec.WriteFloatAt'. go vet . ./internal/codec/ passed (rc 0) on both copies before the test.
+# 2026-09-27 02:00:14 JST S7-before at 6be1664 (critic-p5's S7: WriteFloatAt in internal/codec/nocopy.go, referenced from decodeas.go): go test -count=1 -run '^TestSeam' -v ./internal/codec/ rc=0 after 1 s; go vet . ./internal/codec/ rc=0 before it
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.270s
+  --- PASS lines: 11
+# 2026-09-27 02:00:15 JST S7-after at 4e05f4d (critic-p5's S7: WriteFloatAt in internal/codec/nocopy.go, referenced from decodeas.go): go test -count=1 -run '^TestSeam' -v ./internal/codec/ rc=1 after 0 s; go vet . ./internal/codec/ rc=0 before it
+    seam_rawptr_test.go:125: internal/codec/nocopy.go declares ["func NoCopyString" "func WriteFloatAt"], want only ["func NoCopyString"]
+    seam_rawptr_test.go:135: internal/codec/nocopy.go reaches raw pointers through ["selector SliceData" "unsafe.Add" "unsafe.Pointer" "unsafe.String"], want only ["selector SliceData" "unsafe.String"] (unsafe.String over unsafe.SliceData)
+--- FAIL: TestSeamCodecUnsafeIsNoCopyString (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.271s
+FAIL
+  --- PASS lines: 11
