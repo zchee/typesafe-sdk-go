@@ -1,0 +1,43 @@
+# K36 per-fixture path (cutPoint of 05264fe, the Go tree committed as 05264fe), 2026-09-26 17:36:04 JST, (M); a tabulation, not a measurement
+PATH deviation-big-exp-noul.json                 115 B  backslashes   0  bench false  one-scan                        decode-error true
+PATH deviation-lone-surrogate.json               219 B  backslashes   2  bench true   one-scan                        decode-error false
+PATH deviation-nan-noul.json                     113 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH deviation-nan-unknown.json                  164 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH duplicates.json                             825 B  backslashes   1  bench true   one-scan                        decode-error false
+PATH escaped-member-names.json                   425 B  backslashes  13  bench true   one-scan                        decode-error false
+PATH escaped-names.json                          481 B  backslashes   8  bench true   one-scan                        decode-error false
+PATH malformed-answers-not-object.json            80 B  backslashes   0  bench false  one-scan                        decode-error true
+PATH malformed-bad-literal.json                  133 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-big-exp.json                      117 B  backslashes   0  bench false  one-scan                        decode-error true
+PATH malformed-control-char-key.json             135 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-control-char.json                 135 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-double-comma.json                 136 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-empty.json                          0 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH malformed-invalid-escape.json               134 B  backslashes   1  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-invalid-utf8-key.json             162 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-invalid-utf8.json                 162 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-leading-zero.json                 129 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-missing-model.json                 92 B  backslashes   0  bench false  one-scan                        decode-error true
+PATH malformed-missing-usage.json                 68 B  backslashes   0  bench false  one-scan                        decode-error true
+PATH malformed-root-array.json                   366 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH malformed-too-deep.json                    8313 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-trailing-comma.json               134 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-trailing-formfeed.json            365 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH malformed-trailing-garbage.json             366 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH malformed-trailing-nbsp.json                366 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH malformed-trailing-value.json               381 B  backslashes   0  bench false  fallback cut-traversal-declines decode-error true
+PATH malformed-truncated.json                    182 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH malformed-usage-type.json                   116 B  backslashes   0  bench false  one-scan                        decode-error true
+PATH malformed-whitespace.json                     5 B  backslashes   0  bench false  fallback cutPoint-refuses       decode-error true
+PATH models.json                                  89 B  backslashes   0  bench false  one-scan                        decode-error false
+PATH no-answers.json                              67 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH parity-big-exp-unknown.json                 135 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH result-20.json                             2253 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH result.json                                 364 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH score-flood-mini.json                      1495 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH structured-legend-flood-10k.json         616421 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH structured-legend-flood-1k.json           57418 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH structured-legend.json                      217 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH type-last.json                              364 B  backslashes   0  bench true   one-scan                        decode-error false
+PATH unknown-answer-type.json                    145 B  backslashes   0  bench true   one-scan                        decode-error false
+PATHS 21 of 41 fixtures take the one scan

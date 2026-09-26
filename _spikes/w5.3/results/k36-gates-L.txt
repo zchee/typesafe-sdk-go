@@ -1,0 +1,42 @@
+# 2026-09-26 08:48:13 UTC (L) commit 05264fe load: 9.68 8.74 6.11 10/866 690665
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+## go test -race -count=1 ./... (under the lock)
+ok  	github.com/zchee/typesafe-sdk-go	53.033s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.121s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	8.165s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.998s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.461s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.089s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.048s
+race-exit 0
+## validity gate and one-scan tests
+--- PASS: TestDecodeDepthBound (0.02s)
+    decode_scan_test.go:206: 236 of 11030 decodes read the body once
+--- PASS: TestOneScanMatchesWholeScan (0.48s)
+--- PASS: TestOneScanTakesValidBodies (0.13s)
+--- PASS: TestDecodeFixtures (0.01s)
+--- PASS: TestSeamH2GateImports (0.00s)
+--- PASS: TestSeamH2GateTransitiveImports (0.03s)
+--- PASS: TestSeamRawPointerDetector (0.00s)
+    seam_rawptr_test.go:204: read 31 non-test files of 3 packages
+--- PASS: TestSeamRootRawPointers (0.02s)
+--- PASS: TestSeamImports (0.00s)
+--- PASS: TestSeamOneUnsafeFile (0.01s)
+--- PASS: TestSeamTransitiveImports (0.18s)
+--- PASS: TestSeamD1IdentifierSites (0.00s)
+--- PASS: TestSeamBuildConstraints (0.00s)
+--- PASS: TestSeamSonicFallbackRule (0.00s)
+--- PASS: TestSeamSonicJITPath (0.05s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.952s
+--- PASS: TestMalformedFixturesRefused (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.021s
+## fuzz FuzzDecodeResponse 600 s -parallel 8 (lock released; W6.1 fuzz campaign may run beside it)
+# fuzz start 2026-09-26 08:49:15 UTC load: 10.52 9.20 6.45 10/867 692788
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	601.103s
+fuzz-exit 0
+# corpus entries: 287
+# end 2026-09-26 08:59:18 UTC load: 18.16 16.93 12.04 9/866 695413

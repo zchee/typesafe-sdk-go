@@ -1,0 +1,98 @@
+# 2026-09-26 18:15:59 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret base.test -test.run ^$ -test.bench ^BenchmarkSD2$/.*/(0-DecodeAs|2-unsafe-offset)$ -test.benchmem -test.count 2
+# load before: 18:15  up 4 days, 17:22, 1 user, load averages: 9.20 22.44 20.69 | kernel: { 9.20 22.44 20.69 } (MAXLOAD=10, waited 1 x 60 s)
+# commit: 05264fe
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-26 18:15:59 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Apple M3 Max
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8093352	       149.0 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8024606	       149.0 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	16730655	        70.25 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	17055699	        66.04 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1271928	       941.1 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1312923	       917.3 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2161887	       551.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2135310	       560.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1645798	       736.1 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1530286	       763.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1851151	       653.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1815933	       663.4 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 2 at 2026-09-26 18:16:28 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Apple M3 Max
+BenchmarkSD2/result.json/0-DecodeAs-16         	 9042243	       135.2 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8858065	       133.5 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18139675	        66.10 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18200478	        66.43 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1290693	       944.3 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1251183	       958.9 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2153811	       561.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2176472	       557.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1642860	       725.1 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1690713	       711.0 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1861738	       645.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1853640	       648.7 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 3 at 2026-09-26 18:16:57 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Apple M3 Max
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8794322	       135.3 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8581846	       133.3 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18608461	        64.96 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18649443	        64.94 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1000000	      1071 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1291747	       934.4 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2139514	       561.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2177341	       552.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1673806	       714.3 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1675430	       718.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1824998	       659.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1835548	       651.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 4 at 2026-09-26 18:17:26 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Apple M3 Max
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8156684	       144.7 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8779376	       137.0 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18210870	        65.39 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18450397	        65.36 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1279081	       937.0 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1269192	       944.7 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2133249	       562.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2146029	       562.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1662661	       723.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1656536	       723.5 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1834147	       656.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1826150	       654.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 5 at 2026-09-26 18:17:55 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Apple M3 Max
+BenchmarkSD2/result.json/0-DecodeAs-16         	 4753876	       249.5 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-16         	 8693113	       134.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18009848	        66.61 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-16    	18077007	        66.87 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1260808	       952.1 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-16      	 1283535	       930.0 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2146453	       557.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-16 	 2142535	       562.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1502652	       776.5 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-16         	 1649018	       728.3 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1832659	       654.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-16    	 1833685	       657.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+# exit 0 at 2026-09-26 18:18:23 JST
+# load after: 18:18  up 4 days, 17:24, 1 user, load averages: 6.71 16.20 18.41 | kernel: { 6.71 16.20 18.41 }

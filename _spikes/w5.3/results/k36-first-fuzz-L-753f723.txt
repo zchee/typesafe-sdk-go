@@ -1,0 +1,30 @@
+# 2026-09-26 07:50:53 UTC (L) commit 753f723 load: 0.00 0.11 0.53 1/611 642198
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+## go test -race -count=1 ./...
+ok  	github.com/zchee/typesafe-sdk-go	51.232s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.119s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	6.665s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.835s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.377s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.085s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.043s
+race-exit 0
+## validity gate and one-scan tests
+--- PASS: TestDecodeDepthBound (0.02s)
+    decode_scan_test.go:181: 150 of 2988 decodes read the body once
+--- PASS: TestOneScanMatchesWholeScan (0.23s)
+--- PASS: TestOneScanTakesValidBodies (0.11s)
+--- PASS: TestDecodeFixtures (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.375s
+--- PASS: TestMalformedFixturesRefused (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.020s
+## fuzz 300 s -parallel 8
+    go test -run=FuzzDecodeResponse/783d15958c87daaf
+FAIL
+exit status 1
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	2.196s
+fuzz-exit 0
+# end 2026-09-26 07:52:08 UTC load: 3.72 1.03 0.80 1/612 655483

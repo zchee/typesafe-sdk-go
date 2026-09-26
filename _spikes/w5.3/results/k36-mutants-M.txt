@@ -1,0 +1,49 @@
+# K36 guard mutants of 05264fe's Go tree (58a1682 plus the cutPoint guard, as committed in 05264fe), 2026-09-26 17:35:17 JST, (M), unit tests only (not a measurement, not under the lock)
+== mutant 1 no quote-parity check
+vet ok
+--- FAIL: TestOneScanMatchesWholeScan (0.29s)
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+--- FAIL: FuzzDecodeResponse (0.03s)
+FAIL
+== mutant 2 escaped quotes not subtracted (the backslash-run rule)
+vet ok
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.413s
+FAIL
+== mutant 3 no \u check (a root key unquote failure)
+vet ok
+--- FAIL: TestOneScanMatchesWholeScan (0.29s)
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+--- FAIL: FuzzDecodeResponse (0.03s)
+FAIL
+== mutant 4 any backslash before a quote escapes it
+vet ok
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.409s
+FAIL
+== mutant 5 no last-byte rule
+vet ok
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.430s
+FAIL
+== mutant 6 no depth rule (skipDepth)
+vet ok
+--- FAIL: TestDecodeDepthBound (0.01s)
+--- FAIL: TestOneScanMatchesWholeScan (0.30s)
+--- FAIL: TestOneScanTakesValidBodies (0.08s)
+FAIL
+== mutant 7 no between-members rule
+vet ok
+--- FAIL: TestOneScanMatchesWholeScan (0.32s)
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.447s
+== mutant 8 slotCard kept after the models array
+vet ok
+--- FAIL: TestOneScanTakesValidBodies (0.07s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.431s
+FAIL

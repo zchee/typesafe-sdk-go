@@ -1,0 +1,48 @@
+# 2026-09-26 09:51:03 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= cand.test -test.run ^$ -test.bench ^BenchmarkCall$/^sdk$ -test.benchmem -test.count 2
+# load before:  09:51:03 up 2 days,  5:15,  1 user,  load average: 5.93, 22.61, 17.73 | kernel: 5.93 22.61 17.73 1/614 713938 (MAXLOAD=2, waited 5 x 60 s)
+# commit: 7df5a6b
+# rounds: 5, alternating base and cand
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# round 1 at 2026-09-26 09:51:05 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  213021	      5614 ns/op	    2941 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  213361	      5623 ns/op	    2933 B/op	      22 allocs/op
+PASS
+# round 2 at 2026-09-26 09:51:10 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  215341	      5573 ns/op	    2933 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  215137	      5593 ns/op	    2933 B/op	      22 allocs/op
+PASS
+# round 3 at 2026-09-26 09:51:15 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  212937	      5608 ns/op	    2917 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  212998	      5615 ns/op	    2936 B/op	      22 allocs/op
+PASS
+# round 4 at 2026-09-26 09:51:20 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  212271	      5612 ns/op	    2927 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  213067	      5602 ns/op	    2932 B/op	      22 allocs/op
+PASS
+# round 5 at 2026-09-26 09:51:24 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  206247	      5695 ns/op	    2960 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  211711	      5678 ns/op	    2948 B/op	      22 allocs/op
+PASS
+# exit 0 at 2026-09-26 09:51:27 UTC
+# load after:  09:51:27 up 2 days,  5:16,  1 user,  load average: 4.09, 20.84, 17.27 | kernel: 4.09 20.84 17.27 1/614 714176

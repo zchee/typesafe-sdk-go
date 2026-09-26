@@ -1,0 +1,4 @@
+# 2026-09-26 17:47:11 JST (M) commit 05264fe load: 7.37 7.53 7.29 (not under the lock; lead's rule: at most 30 s on (M))
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	31.034s
+# end 2026-09-26 17:47:43 JST

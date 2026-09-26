@@ -1,0 +1,138 @@
+# 2026-09-26 08:43:31 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= cand.test -test.run ^$ -test.bench ^BenchmarkDecode(NaiveSonic)?$/^(result|escaped-names|escaped-member-names|result-20|structured-legend-flood-1k)$ -test.benchmem -test.count 2
+# load before:  08:43:31 up 2 days,  4:08,  2 users,  load average: 8.73, 6.83, 4.73 | kernel: 8.73 6.83 4.73 9/869 682774 (MAXLOAD=4, waited 5 x 60 s)
+# commit: 05264fe
+# rounds: 5, alternating base and cand
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# round 1 at 2026-09-26 08:43:55 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44       	  416650	      3415 ns/op	 106.57 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44       	  320401	      3483 ns/op	 104.51 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44    	   56740	     21210 ns/op	 106.22 MB/s	    6025 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44    	   60834	     21996 ns/op	 102.43 MB/s	    6025 B/op	      24 allocs/op
+BenchmarkDecode/escaped-names-44         	  203656	      5007 ns/op	  96.06 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-names-44         	  228708	      5406 ns/op	  88.97 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  143316	      8263 ns/op	  51.43 MB/s	    5235 B/op	      29 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  153333	      8026 ns/op	  52.95 MB/s	    5230 B/op	      29 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    1822	    582934 ns/op	  98.50 MB/s	  176922 B/op	      90 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    2025	    615727 ns/op	  93.25 MB/s	  176870 B/op	      90 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  360280	      3535 ns/op	 102.98 MB/s	    3707 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  356265	      3288 ns/op	 110.71 MB/s	    3707 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   67518	     19087 ns/op	 118.04 MB/s	   19748 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   58078	     18792 ns/op	 119.89 MB/s	   19749 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  264370	      4724 ns/op	 101.82 MB/s	    5111 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  235549	      4901 ns/op	  98.14 MB/s	    5114 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  273734	      4185 ns/op	 101.55 MB/s	    4705 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  274737	      3945 ns/op	 107.74 MB/s	    4711 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1804	    682975 ns/op	  84.07 MB/s	 1039424 B/op	    6574 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1796	    690651 ns/op	  83.14 MB/s	 1039530 B/op	    6574 allocs/op
+PASS
+# round 2 at 2026-09-26 08:44:43 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44       	  427617	      3206 ns/op	 113.54 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44       	  427944	      3357 ns/op	 108.43 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44    	   53698	     22399 ns/op	 100.59 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44    	   53532	     20917 ns/op	 107.71 MB/s	    6025 B/op	      24 allocs/op
+BenchmarkDecode/escaped-names-44         	  245320	      5124 ns/op	  93.88 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-names-44         	  214069	      5233 ns/op	  91.91 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  139089	      8557 ns/op	  49.67 MB/s	    5242 B/op	      29 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  147262	      8159 ns/op	  52.09 MB/s	    5237 B/op	      29 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    1916	    647968 ns/op	  88.61 MB/s	  176872 B/op	      90 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    1838	    627495 ns/op	  91.50 MB/s	  176720 B/op	      90 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  360717	      3318 ns/op	 109.72 MB/s	    3703 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  360718	      3404 ns/op	 106.95 MB/s	    3708 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   60384	     20649 ns/op	 109.11 MB/s	   19742 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   55730	     20332 ns/op	 110.81 MB/s	   19741 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  242215	      4768 ns/op	 100.89 MB/s	    5104 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  242216	      4851 ns/op	  99.15 MB/s	    5103 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  292790	      4117 ns/op	 103.23 MB/s	    4713 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  262574	      4200 ns/op	 101.18 MB/s	    4717 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1692	    697960 ns/op	  82.27 MB/s	 1039541 B/op	    6574 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1627	    722787 ns/op	  79.44 MB/s	 1039497 B/op	    6574 allocs/op
+PASS
+# round 3 at 2026-09-26 08:45:32 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44       	  430263	      3362 ns/op	 108.28 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44       	  334698	      3600 ns/op	 101.12 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44    	   59323	     21321 ns/op	 105.67 MB/s	    6025 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44    	   56821	     23024 ns/op	  97.85 MB/s	    6025 B/op	      24 allocs/op
+BenchmarkDecode/escaped-names-44         	  215978	      5465 ns/op	  88.01 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-names-44         	  253804	      4925 ns/op	  97.67 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  145761	      8535 ns/op	  49.80 MB/s	    5227 B/op	      29 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  140330	      8149 ns/op	  52.15 MB/s	    5230 B/op	      29 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    2086	    611097 ns/op	  93.96 MB/s	  176916 B/op	      90 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    2188	    599960 ns/op	  95.70 MB/s	  177108 B/op	      90 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  330158	      3432 ns/op	 106.05 MB/s	    3706 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  351738	      3108 ns/op	 117.11 MB/s	    3713 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   60456	     20616 ns/op	 109.28 MB/s	   19740 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   61738	     19229 ns/op	 117.16 MB/s	   19747 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  253568	      4672 ns/op	 102.95 MB/s	    5102 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  236420	      4865 ns/op	  98.86 MB/s	    5107 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  300087	      4128 ns/op	 102.95 MB/s	    4713 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  287690	      3981 ns/op	 106.75 MB/s	    4710 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1797	    709328 ns/op	  80.95 MB/s	 1039177 B/op	    6574 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1725	    680797 ns/op	  84.34 MB/s	 1039142 B/op	    6574 allocs/op
+PASS
+# round 4 at 2026-09-26 08:46:21 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44       	  317552	      3426 ns/op	 106.24 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44       	  433477	      3347 ns/op	 108.77 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44    	   56896	     22025 ns/op	 102.29 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44    	   56558	     21452 ns/op	 105.03 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/escaped-names-44         	  241640	      4753 ns/op	 101.20 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-names-44         	  279429	      5138 ns/op	  93.62 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  141222	      8601 ns/op	  49.41 MB/s	    5233 B/op	      29 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  132754	      8196 ns/op	  51.85 MB/s	    5238 B/op	      29 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    1969	    590515 ns/op	  97.23 MB/s	  177019 B/op	      90 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    2013	    636233 ns/op	  90.25 MB/s	  177204 B/op	      90 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  418876	      2975 ns/op	 122.36 MB/s	    3704 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  370064	      3329 ns/op	 109.36 MB/s	    3710 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   60498	     19731 ns/op	 114.19 MB/s	   19751 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   61554	     19753 ns/op	 114.06 MB/s	   19740 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  233041	      4813 ns/op	  99.94 MB/s	    5103 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  255214	      4492 ns/op	 107.09 MB/s	    5101 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  302576	      4031 ns/op	 105.42 MB/s	    4708 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  326336	      4004 ns/op	 106.13 MB/s	    4714 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1833	    662645 ns/op	  86.65 MB/s	 1039685 B/op	    6574 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1706	    695685 ns/op	  82.53 MB/s	 1039529 B/op	    6574 allocs/op
+PASS
+# round 5 at 2026-09-26 08:47:09 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44       	  425379	      3043 ns/op	 119.61 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44       	  430972	      3157 ns/op	 115.28 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44    	   55759	     20231 ns/op	 111.36 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44    	   59065	     20371 ns/op	 110.60 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/escaped-names-44         	  242305	      4868 ns/op	  98.82 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-names-44         	  209672	      4999 ns/op	  96.22 MB/s	    1227 B/op	      10 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  143301	      8231 ns/op	  51.63 MB/s	    5230 B/op	      29 allocs/op
+BenchmarkDecode/escaped-member-names-44  	  147642	      7798 ns/op	  54.50 MB/s	    5229 B/op	      29 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    2140	    569229 ns/op	 100.87 MB/s	  177155 B/op	      90 allocs/op
+BenchmarkDecode/structured-legend-flood-1k-44         	    1964	    594301 ns/op	  96.61 MB/s	  176955 B/op	      90 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  340974	      3181 ns/op	 114.43 MB/s	    3706 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-44                   	  377510	      3135 ns/op	 116.11 MB/s	    3703 B/op	      40 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   63098	     19194 ns/op	 117.38 MB/s	   19742 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/result-20-44                	   61264	     18650 ns/op	 120.80 MB/s	   19725 B/op	     214 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  268502	      4617 ns/op	 104.18 MB/s	    5109 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-names-44            	  268986	      4535 ns/op	 106.07 MB/s	    5109 B/op	      57 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  297897	      3747 ns/op	 113.43 MB/s	    4702 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/escaped-member-names-44     	  327514	      3884 ns/op	 109.42 MB/s	    4716 B/op	      51 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1743	    657325 ns/op	  87.35 MB/s	 1039498 B/op	    6574 allocs/op
+BenchmarkDecodeNaiveSonic/structured-legend-flood-1k-44         	    1790	    652389 ns/op	  88.01 MB/s	 1039659 B/op	    6574 allocs/op
+PASS
+# exit 0 at 2026-09-26 08:47:33 UTC
+# load after:  08:47:33 up 2 days,  4:12,  2 users,  load average: 10.49, 8.72, 5.99 | kernel: 10.49 8.72 5.99 9/866 690538

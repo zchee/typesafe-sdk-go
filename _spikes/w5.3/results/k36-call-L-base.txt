@@ -1,0 +1,78 @@
+# 2026-09-26 08:36:53 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= base.test -test.run ^$ -test.bench ^BenchmarkCall$/^(sdk|naive)(-q20)?$ -test.benchmem -test.count 2
+# load before:  08:36:53 up 2 days,  4:01,  2 users,  load average: 2.49, 0.78, 2.37 | kernel: 2.49 0.78 2.37 9/860 681928 (MAXLOAD=4, waited 0 x 60 s)
+# commit: 67dcbb0
+# rounds: 5, alternating base and cand
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# round 1 at 2026-09-26 08:36:53 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  169388	      7097 ns/op	    2980 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  165542	      7078 ns/op	    2997 B/op	      22 allocs/op
+BenchmarkCall/naive-44       	  158715	      8000 ns/op	    8879 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  154473	      7713 ns/op	    8891 B/op	      68 allocs/op
+BenchmarkCall/sdk-q20-44     	   41434	     29578 ns/op	   11223 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   39260	     31433 ns/op	   11297 B/op	      42 allocs/op
+BenchmarkCall/naive-q20-44   	   40558	     30346 ns/op	   34207 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   38919	     30030 ns/op	   34325 B/op	     247 allocs/op
+PASS
+# round 2 at 2026-09-26 08:37:12 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  160617	      6898 ns/op	    2975 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  177850	      6858 ns/op	    2978 B/op	      22 allocs/op
+BenchmarkCall/naive-44       	  142910	      8107 ns/op	    8939 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  156144	      8238 ns/op	    8986 B/op	      68 allocs/op
+BenchmarkCall/sdk-q20-44     	   41067	     29407 ns/op	   11395 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   39834	     30581 ns/op	   11322 B/op	      42 allocs/op
+BenchmarkCall/naive-q20-44   	   37723	     30259 ns/op	   34614 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   41072	     29840 ns/op	   34509 B/op	     247 allocs/op
+PASS
+# round 3 at 2026-09-26 08:37:31 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  168663	      7492 ns/op	    3005 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  163585	      7432 ns/op	    3002 B/op	      22 allocs/op
+BenchmarkCall/naive-44       	  135069	      8427 ns/op	    9014 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  154456	      8274 ns/op	    8980 B/op	      68 allocs/op
+BenchmarkCall/sdk-q20-44     	   39974	     29852 ns/op	   11314 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   39842	     31212 ns/op	   11273 B/op	      42 allocs/op
+BenchmarkCall/naive-q20-44   	   37623	     31655 ns/op	   34718 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   40612	     29802 ns/op	   34730 B/op	     247 allocs/op
+PASS
+# round 4 at 2026-09-26 08:37:51 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  181900	      6963 ns/op	    3018 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  159038	      7360 ns/op	    3006 B/op	      22 allocs/op
+BenchmarkCall/naive-44       	  136539	      8098 ns/op	    8972 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  153310	      7691 ns/op	    8959 B/op	      68 allocs/op
+BenchmarkCall/sdk-q20-44     	   41163	     29919 ns/op	   11346 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   38545	     28463 ns/op	   11251 B/op	      42 allocs/op
+BenchmarkCall/naive-q20-44   	   42333	     29382 ns/op	   34553 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   39836	     29902 ns/op	   34376 B/op	     247 allocs/op
+PASS
+# round 5 at 2026-09-26 08:38:10 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkCall/sdk-44         	  177211	      7027 ns/op	    2990 B/op	      22 allocs/op
+BenchmarkCall/sdk-44         	  167794	      7545 ns/op	    3015 B/op	      22 allocs/op
+BenchmarkCall/naive-44       	  133930	      8104 ns/op	    8891 B/op	      68 allocs/op
+BenchmarkCall/naive-44       	  149419	      8327 ns/op	    8976 B/op	      68 allocs/op
+BenchmarkCall/sdk-q20-44     	   40700	     28711 ns/op	   11243 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-44     	   39364	     30060 ns/op	   11287 B/op	      42 allocs/op
+BenchmarkCall/naive-q20-44   	   41726	     30452 ns/op	   34605 B/op	     247 allocs/op
+BenchmarkCall/naive-q20-44   	   43274	     29364 ns/op	   34325 B/op	     247 allocs/op
+PASS
+# exit 0 at 2026-09-26 08:38:29 UTC
+# load after:  08:38:29 up 2 days,  4:03,  2 users,  load average: 9.10, 3.44, 3.17 | kernel: 9.10 3.44 3.17 10/868 682234

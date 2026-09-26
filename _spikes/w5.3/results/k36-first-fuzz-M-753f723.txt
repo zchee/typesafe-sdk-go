@@ -1,0 +1,21 @@
+# 2026-09-26 16:51:05 JST (M) commit 753f723 load: 9.60 11.76 14.38
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+## validity gate and one-scan tests
+--- PASS: TestDecodeDepthBound (0.01s)
+    decode_scan_test.go:181: 150 of 2988 decodes read the body once
+--- PASS: TestOneScanMatchesWholeScan (0.18s)
+--- PASS: TestOneScanTakesValidBodies (0.07s)
+--- PASS: TestDecodeFixtures (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.285s
+--- PASS: TestMalformedFixturesRefused (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.023s
+## fuzz 120 s -parallel 4
+    go test -run=FuzzDecodeResponse/e7897d7962d74f7b
+FAIL
+exit status 1
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	90.212s
+fuzz-exit 0
+# end 2026-09-26 16:52:38 JST load: 8.99 11.02 13.82

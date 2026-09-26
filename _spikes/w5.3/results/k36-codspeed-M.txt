@@ -1,0 +1,32 @@
+# 2026-09-26 17:54:23 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret codspeed run --skip-upload -m walltime -- go test -bench='^BenchmarkCall$/^(sdk|naive)(-q20)?$' -run='^$' ./internal/benchmark/
+# load before: 17:54  up 4 days, 17 hrs, 1 user, load averages: 6.26 6.70 6.97 (MAXLOAD=10, waited 0 x 60 s)
+# base: 67dcbb0 cand: 05264fe; rounds: 3, alternating
+codspeed-runner 5.3.1
+go version go1.27.1 darwin/arm64
+# side round benchmark min_ns median_ns mean_ns rounds
+base	1	BenchmarkCall::naive	2500.0	3208.0	3784	852718
+base	1	BenchmarkCall::sdk-q20	20833.0	22375.0	24780	146708
+base	1	BenchmarkCall::naive-q20	8833.0	10541.0	13315	249805
+base	1	BenchmarkCall::sdk	4083.0	4583.0	5103	700916
+cand	1	BenchmarkCall::sdk-q20	17875.0	19584.0	22233	149782
+cand	1	BenchmarkCall::sdk	3625.0	4083.0	4496	795608
+cand	1	BenchmarkCall::naive	2458.0	3125.0	3595	915392
+cand	1	BenchmarkCall::naive-q20	8750.0	10250.0	12923	266828
+base	2	BenchmarkCall::sdk-q20	20666.0	22333.0	24840	136412
+base	2	BenchmarkCall::sdk	4042.0	4541.0	4969	731542
+base	2	BenchmarkCall::naive-q20	8750.0	10166.0	12615	267559
+base	2	BenchmarkCall::naive	2458.0	3208.0	3786	875427
+cand	2	BenchmarkCall::naive	2500.0	3209.0	3843	856795
+cand	2	BenchmarkCall::sdk-q20	17958.0	19791.0	22263	155614
+cand	2	BenchmarkCall::sdk	3583.0	4041.0	4395	768120
+cand	2	BenchmarkCall::naive-q20	8708.0	10250.0	12922	240558
+base	3	BenchmarkCall::naive-q20	8750.0	10583.0	13412	240770
+base	3	BenchmarkCall::sdk-q20	20708.0	22958.0	26192	136377
+base	3	BenchmarkCall::sdk	4041.0	4583.0	5137	698266
+base	3	BenchmarkCall::naive	2458.0	3250.0	4050	816950
+cand	3	BenchmarkCall::naive-q20	8833.0	11083.0	14800	207897
+cand	3	BenchmarkCall::naive	2458.0	3125.0	3721	947143
+cand	3	BenchmarkCall::sdk	3583.0	4000.0	4393	748375
+cand	3	BenchmarkCall::sdk-q20	17791.0	19584.0	22248	154477
+# exit 0 at 2026-09-26 17:57:06 JST
+# load after: 17:57  up 4 days, 17:03, 1 user, load averages: 10.80 8.85 7.81
