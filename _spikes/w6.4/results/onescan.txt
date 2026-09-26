@@ -1,0 +1,12 @@
+start 2026-09-27 02:44:14 JST base 47d2521 + testdata/live load:  2:44  up 5 days,  1:50, 1 user, load averages: 9.40 8.80 7.00
+=== RUN   TestLiveBodiesOneScan
+    decode_live_test.go:98: ONESCAN live/models.json           bytes=311  reader=models last_member_end=']' one_scan=true
+    decode_live_test.go:98: ONESCAN live/questions.json        bytes=401  reader=system one last_member_end='}' one_scan=true
+    decode_live_test.go:98: ONESCAN live/typed-response.json   bytes=401  reader=system one last_member_end='}' one_scan=true
+    decode_live_test.go:81: ONESCAN live/unauthenticated.json  bytes=118  reader=ReadErrorBody (no cut) error_type=authentication_error
+    decode_live_test.go:81: ONESCAN live/wrong-key.json        bytes=138  reader=ReadErrorBody (no cut) error_type=authentication_error
+    decode_live_test.go:101: ONESCAN share: 3 of 3 decoded live bodies took one scan
+--- PASS: TestLiveBodiesOneScan (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.012s
+rc=0 end 2026-09-27 02:44:14 JST load:  2:44  up 5 days,  1:50, 1 user, load averages: 9.40 8.80 7.00

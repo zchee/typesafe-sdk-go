@@ -1,0 +1,25 @@
+start 2026-09-27 02:42:13 JST head 47d2521+worktree load:  2:42  up 5 days,  1:48, 1 user, load averages: 12.55 8.62 6.66
+=== RUN   TestLiveUnauthenticated
+    live_test.go:476: live API host: api.typesafe.ai
+=== RUN   TestLiveUnauthenticated/no_credential/models
+    live_test.go:519: K22 no credential models: dns=3.3ms connect=26.2ms tls=57.9ms gotconn=58.0ms reused=false wrote=58.2ms first_byte=184.7ms server=126.5ms total=185.3ms content_length=absent content_encoding=absent body_bytes=118
+    live_test.go:531: no credential models: GET https://api.typesafe.ai/v1/models: 403 Must supply an API key! Check your request and try again. (request_id=req_01a0decf77277d4cbe6ec6c5ad16e086)
+    live_test.go:533: recorded testdata/live/unauthenticated.json (118 bytes)
+=== RUN   TestLiveUnauthenticated/no_credential/system_one
+    live_test.go:519: K22 no credential system one: dns=- connect=- tls=- gotconn=0.1ms reused=true wrote=0.2ms first_byte=126.5ms server=126.3ms total=126.6ms content_length=absent content_encoding=absent body_bytes=118
+    live_test.go:531: no credential system one: POST https://api.typesafe.ai/v1/systemone: 403 Must supply an API key! Check your request and try again. (request_id=req_01a0decf77a77e62992b8b18d1c4ca24)
+=== RUN   TestLiveUnauthenticated/wrong_key/models
+    live_test.go:519: K22 wrong key models: dns=2.6ms connect=19.6ms tls=49.1ms gotconn=49.3ms reused=false wrote=49.3ms first_byte=206.2ms server=156.9ms total=206.9ms content_length=138 content_encoding=absent body_bytes=138
+    live_test.go:531: wrong key models: GET https://api.typesafe.ai/v1/models: 401 Cannot authenticate with the server. Please check your API key and try again. (request_id=req_01a0decf78737931af65bfd17e8c13ab)
+    live_test.go:533: recorded testdata/live/wrong-key.json (138 bytes)
+=== RUN   TestLiveUnauthenticated/wrong_key/system_one
+    live_test.go:519: K22 wrong key system one: dns=- connect=- tls=- gotconn=0.0ms reused=true wrote=0.1ms first_byte=122.7ms server=122.5ms total=123.5ms content_length=138 content_encoding=absent body_bytes=138
+    live_test.go:531: wrong key system one: POST https://api.typesafe.ai/v1/systemone: 401 Cannot authenticate with the server. Please check your API key and try again. (request_id=req_01a0decf78f179489a08444b40de9db0)
+--- PASS: TestLiveUnauthenticated (0.64s)
+    --- PASS: TestLiveUnauthenticated/no_credential/models (0.19s)
+    --- PASS: TestLiveUnauthenticated/no_credential/system_one (0.13s)
+    --- PASS: TestLiveUnauthenticated/wrong_key/models (0.21s)
+    --- PASS: TestLiveUnauthenticated/wrong_key/system_one (0.12s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/livetests	0.655s
+rc=0 end 2026-09-27 02:42:14 JST

@@ -5620,3 +5620,66 @@ R85 token-wait bound. Raw outputs are in `_spikes/w6.1/results/`;
 | W6.1-17 | 2026-09-26 20:27:51–20:29:16 JST | W6.1 FU2 (review V61 MINOR 1): `contend.sh`'s busy loops end with the script; the script SIGKILLed, or sent SIGTERM, while its loops run | (M) | `go1.27.1 darwin/arm64` | `[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]` | 5.29 → 4.01 (a quiet window, under the (M) bench lock) | `r17-orphan2.sh <script> <name> KILL\|TERM`: `contend.sh '(M)' <out> <throwaway lock> <name> 2 -count=1 -run '^TestRefusedAddr$' ./internal/testsupport/`, the signal sent once its header says the loops run; then this run's `yes` pids, `flock -n` and `lsof` on the lock every 0.5 s for 3 s after go test ends | dbf85a9's script, SIGKILL: both `yes` loops still ran at +3 s with parent pid 1 and were killed by pid; the lock was free (their fd 9 closed). This commit's, SIGKILL: both still ran at +0 s, none at +0.5 s (the watcher), the lock free throughout; SIGTERM: the script ended with status 143 through its trap once go test ended, no loop ran at +0 s, the lock free | `results/m-fu2-contend-proof.txt`; also in FU2: `TestTokenResidualK21`'s godoc names its CI step (V61 NIT 2), and `TestRefusedAddr`'s control retries its re-listen once on a new port (V61 NIT 1). K16 and E were re-parented on FU2 with code patches identical to 368d7ab and a61a3cb (118 and 260 changed lines, compared with `:(exclude)` pathspecs); the rebuild script's first comparison excluded paths with `:!_spikes/…`, which git reads as pathspec magic, so both diffs failed and two empty outputs compared equal: a vacuous pass (the STANDING 7 pattern), caught in the log and redone before the push |
 | W6.1-17a | 2026-09-27 01:56:26–01:58:31 JST | W6.1 C3a (critic-p5 m-3, condition C3): the store tests stop by name before the first write | (M) | `go1.27.1 darwin/arm64` | `[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]` | 7.57 → 8.59 | each mutant in a `git archive` copy: `GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -timeout 60s -run '^TestStore' .` (and with `-race`), and the whole root package with `-race -timeout 180s`; outside the bench lock (no allocation test runs) | S2, the plan's offset + 8 (`typed.go:294`, the next field's): at FU2 `-run '^TestStore'` timed out after 60 s; with `requireStoreLayout`, `--- FAIL: TestStoreFieldKinds` after 1 s (3 s under `-race`): "typesafe.storeKinds field Spam: plan offset 32, want reflect's 24", each other mismatch, then "typesafe.storeKinds: 10 layout mismatches in its plan; the store must not write through it"; the whole root package under `-race` ends after 55 s with rc 1 and its first failures named (all 15 subtests of `TestDecodeAsAgreesWithAnswers`, `TestStoreFieldKinds`, `TestStoreKeepsNeighbours`); decodeas_test.go's tests, which do not check the layout, then fail and `TestDecodeAsOptionalFieldAndUnknownAnswer` faults, where the critic's run hung 10 min in `TestDecodeAsAgreesWithAnswers`. S3, every plan offset 0: named after 2 s. S1, the store's own `off+1` (`decodeas_store.go:60`): still `fatal error: fault` after 1 s; the plan is right there, so no check of it before the write sees a store that adds to its offset | `results/m-c3a-store-layout.txt`; `requireStoreLayout[T]` also runs first in `checkAgreement[T]` and the two `alloc_typed_test.go` tests, which sort before the store tests and write through the store before them |
 | W6.1-17b | 2026-09-27 02:00:14–02:00:15 JST | W6.1 C3b (critic-p5 m-2, condition C3): `TestSeamCodecUnsafeIsNoCopyString` bounds internal/codec's unsafe use to `NoCopyString` | (M) | `go1.27.1 darwin/arm64` | `[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]` | 5.90 | the critic's S7 (an exported `WriteFloatAt` that writes through `unsafe.Add`, added to `internal/codec/nocopy.go` and referenced from `decodeas.go`) in a `git archive` copy of FU2 and of C3b: `go vet . ./internal/codec/`, then `GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run '^TestSeam' -v ./internal/codec/` | at FU2: vet rc 0 and every seam test passes (11), as the critic found; at C3b: vet rc 0, `--- FAIL: TestSeamCodecUnsafeIsNoCopyString`: "internal/codec/nocopy.go declares ["func NoCopyString" "func WriteFloatAt"], want only ["func NoCopyString"]" and "reaches raw pointers through ["selector SliceData" "unsafe.Add" "unsafe.Pointer" "unsafe.String"], want only ["selector SliceData" "unsafe.String"]"; the other 11 seam tests pass | `results/m-c3b-seam.txt`; the test runs in the lint job's internal/codec seam tests step and in the -race test step |
+
+## W6.4: the live pass (I1-I3, K22, K6, C4)
+
+The owner approved one live pass (ruling G8-b). It ran from (M) against
+`https://api.typesafe.ai` through `livetests/` (`-tags live`), the SDK
+reading `TYPESAFE_API_KEY` from the environment; no command line, file or
+log holds the key (a program reading the environment counted 0
+occurrences in each raw output and in each recorded body). Raw outputs:
+`_spikes/w6.4/results/live-pass.txt`, `live-unauth.txt`, `onescan.txt`.
+The bodies are in [`../../testdata/live/`](../../testdata/live/README.md).
+Latency and framing are recorded, not gated: they describe the API and
+the network between (M) and it, not the SDK.
+
+| # | When | Wave | Host | `go version` | ToolTags | Load | Command | Result | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| W6.4-01 | 2026-09-27 02:41:00 JST | W6.4 live pass (I1-I3, K22) | (M) → api.typesafe.ai | `go1.27.1 darwin/arm64` | `[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]` | 6.76 → 6.86 | `TYPESAFE_LIVE_TESTS=1 GOEXPERIMENT=nosimd,noruntimesecret go test -tags live -count=1 -v -timeout 15m -run '^(TestLiveModels\|TestLiveQuestions\|TestLiveTypedResponse\|TestLiveUnauthenticated\|TestLiveTransportFacts)$' ./livetests/ -args -record` | `TestLiveModels` PASS (2 models: `jev-latest`, `jev-preview`); `TestLiveQuestions` PASS (model `jev-1.13.0`, usage 420/75, billing 0.99, tone frustrated 0.87, urgency 1.91); `TestLiveTypedResponse` PASS (`Ask`; request id present; `DecodeAs` and `Answers()` of the recorded body equal the typed answers); `TestLiveTransportFacts` PASS; `TestLiveUnauthenticated` FAIL: a wrong key is answered 401, not AC-F11's 403 (`IsAuthentication()` true, `error_type` `authentication_error`) | at 47d2521; 2 billed calls (the two System One calls); the unauthenticated test was then rewritten (W6.4-02); `live-pass.txt` |
+| W6.4-02 | 2026-09-27 02:42:13 JST | W6.4 live pass, `TestLiveUnauthenticated` rewritten | (M) → api.typesafe.ai | `go1.27.1 darwin/arm64` | as W6.4-01 | 12.55 → not recorded | `TYPESAFE_LIVE_TESTS=1 GOEXPERIMENT=nosimd,noruntimesecret go test -tags live -count=1 -v -timeout 5m -run '^TestLiveUnauthenticated$' ./livetests/ -args -record` | PASS, 4 subtests, one attempt each: no credential → 403 `Must supply an API key!` (Kind permission denied, `IsAuthentication()` through `error_type`) on both endpoints; wrong key → 401 `Cannot authenticate with the server.` (Kind authentication) on both | 47d2521's tree plus the rewritten test; not billed; `live-unauth.txt` |
+| W6.4-03 | 2026-09-27 02:41:00 JST | W6.4 K22 first response | (M) → api.typesafe.ai | `go1.27.1 darwin/arm64` | as W6.4-01 | 6.76 → 6.86 (W6.4-01's run) | the `K22 …` lines of W6.4-01 and W6.4-02 (`httptrace` times from each call's start) | cold call: DNS 1.2-46.0 ms, TCP connected 19.6-71.2 ms, TLS done 49.1-100.8 ms, first byte 177.1-268.9 ms, total 178.3-269.8 ms; first byte after the request was written (server time + 1 RTT): System One 180.8 and 219.3 ms cold, models 166.8 ms cold, 122.0-199.9 ms warm (3 calls), error answers 122.5-156.9 ms | table below; RTT ≈ 20 ms (TCP connect less DNS on the later calls) |
+| W6.4-04 | 2026-09-27 02:41:02 JST | W6.4 K22 SETTINGS | (M) → api.typesafe.ai:443 | `go1.27.1 darwin/arm64` | as W6.4-01 | 6.76 → 6.86 (W6.4-01's run) | `TestLiveTransportFacts` (`testsupport.ReadPeerSettings`: TLS with ALPN h2 only, the preface, an empty SETTINGS; no request, no key) | `h2`; `MAX_CONCURRENT_STREAMS` 100, `INITIAL_WINDOW_SIZE` 65536, `MAX_FRAME_SIZE` 16777215; `HEADER_TABLE_SIZE`, `ENABLE_PUSH`, `MAX_HEADER_LIST_SIZE` not sent (their defaults hold); handshake 43.9 ms, SETTINGS 65.9 ms after the dial began | W0.4-06 cited 1024 for the live API without a measurement: the measured limit is 100, so the SDK's strict stream accounting (R71) queues the 101st concurrent call on its one connection |
+| W6.4-05 | 2026-09-27 02:41:02 JST | W6.4 K22 framing (`ContentLength`) | (M) → api.typesafe.ai | `go1.27.1 darwin/arm64` | as W6.4-01 | 6.76 → 6.86 (W6.4-01's run) | `TestLiveTransportFacts` (`GET /v1/models` through a stock HTTP/2 transport, gzip requested and not) and the SDK's "response headers" records of W6.4-01/02 | gzip requested (Go's default, which the SDK's own transport keeps): `Content-Encoding: gzip` taken off by the transport, `ContentLength` -1, `Uncompressed` true, no `Content-Length` left; gzip refused: `Content-Length: 311`, `ContentLength` 311. Through the SDK every 2xx (311 and 401 bytes) and the 403 arrived with no length; the 401 bodies with `Content-Length: 138` | so `readBody` takes its undeclared path (4 KiB first buffer, `initialUndeclared`) on every live 2xx, and the transport runs a gzip reader per response; neither is in AC-P6's in-process measurement (W6.4 open question) |
+| W6.4-06 | 2026-09-27 02:44:14 JST | W6.4 C4 one scan (critic-p5) | (M) | `go1.27.1 darwin/arm64` | as W6.4-01 | 9.40 → 9.40 | `GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run '^TestLiveBodiesOneScan$' -v ./internal/codec/` | 3 of 3 decoded live bodies take the one scan (`d.stats.wholes == 0`); the one-scan and whole-body outcomes are equal on each; the two error bodies go through `ReadErrorBody`, which has no cut | per-file table below; not a timing run; `onescan.txt` |
+
+### W6.4 tables
+
+K22, each call's `httptrace` times in ms from the call's start (`-`: the
+connection was reused, so no dial):
+
+| Call | DNS | TCP | TLS | Got conn | Wrote | First byte | First byte − wrote | Total | Framing seen by the SDK |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| models, cold (the process's first dial) | 46.0 | 71.2 | 100.8 | 101.1 | 101.2 | 267.9 | 166.8 | 268.2 | no length, 311 B |
+| models, warm 1 | - | - | - | 0.0 | 0.1 | 200.1 | 199.9 | 200.9 | no length, 311 B |
+| models, warm 2 | - | - | - | 0.0 | 0.1 | 133.1 | 133.0 | 133.2 | no length, 311 B |
+| models, warm 3 | - | - | - | 0.0 | 0.1 | 122.0 | 122.0 | 122.8 | no length, 311 B |
+| System One, cold (`TestLiveQuestions`) | 2.1 | 20.5 | 49.6 | 49.6 | 49.7 | 268.9 | 219.3 | 269.8 | no length, 401 B |
+| System One through `Ask`, cold | 1.3 | 20.4 | 55.4 | 55.5 | 55.5 | 236.3 | 180.8 | 237.0 | no length, 401 B |
+| wrong key, models, cold (W6.4-01) | 1.2 | 22.5 | 50.1 | 50.1 | 50.2 | 177.1 | 127.0 | 178.3 | 138 B declared |
+| wrong key, System One (W6.4-01) | - | - | - | 0.1 | 0.1 | 126.5 | 126.4 | 126.6 | 138 B declared |
+| no credential, models, cold (W6.4-02) | 3.3 | 26.2 | 57.9 | 58.0 | 58.2 | 184.7 | 126.5 | 185.3 | no length, 118 B |
+| no credential, System One (W6.4-02) | - | - | - | 0.1 | 0.2 | 126.5 | 126.3 | 126.6 | no length, 118 B |
+| wrong key, models, cold (W6.4-02) | 2.6 | 19.6 | 49.1 | 49.3 | 49.3 | 206.2 | 156.9 | 206.9 | 138 B declared |
+| wrong key, System One (W6.4-02) | - | - | - | 0.0 | 0.1 | 122.7 | 122.5 | 123.5 | 138 B declared |
+
+K22 reading: K22 prices a cold burst on a new connection at one leader
+response on top of the dial (W2.2 measured 103 against 52 ms at 50 ms of
+service time on loopback). On this API the dial costs about 50 ms after
+the first DNS lookup and one response 120-220 ms, so the cold penalty is
+of that order; no live fan-out was run (it was not in the approved pass).
+
+C4 (critic-p5), one row per recorded body:
+
+| Body | Bytes | Reader | Root's last member ends in | One scan |
+| --- | --- | --- | --- | --- |
+| `live/models.json` | 311 | models | `]` (`models`) | yes |
+| `live/questions.json` | 401 | System One | `}` (`usage`) | yes |
+| `live/typed-response.json` | 401 | System One | `}` (`usage`) | yes |
+| `live/unauthenticated.json` | 118 | `ReadErrorBody` | no cut | n/a |
+| `live/wrong-key.json` | 138 | `ReadErrorBody` | no cut | n/a |
+
+Share: 3 of 3 decoded live bodies (100 %) take the one scan; the API puts
+`usage`, an object, last in a System One body, so a number or a literal
+never ends one. The test's three synthetic controls (a last member that is
+a number, `true` or `null`) take the second traversal, so the check can
+fail.

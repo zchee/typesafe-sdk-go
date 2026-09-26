@@ -1,0 +1,51 @@
+start 2026-09-27 02:41:00 JST head 47d2521 load:  2:41  up 5 days,  1:47, 1 user, load averages: 6.76 6.55 5.79
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestLiveModels
+    live_test.go:233: live API host: api.typesafe.ai
+    live_test.go:237: K22 models cold: dns=46.0ms connect=71.2ms tls=100.8ms gotconn=101.1ms reused=false wrote=101.2ms first_byte=267.9ms server=166.8ms total=268.2ms content_length=absent content_encoding=absent body_bytes=311
+    live_test.go:246: model 0: name="jev-latest" release_date="2026-09-10T18:38:01.391457+00:00" description=56 bytes
+    live_test.go:246: model 1: name="jev-preview" release_date="2026-09-10T18:39:06.057655+00:00" description=64 bytes
+    live_test.go:248: recorded testdata/live/models.json (311 bytes)
+    live_test.go:254: K22 models warm 1: dns=- connect=- tls=- gotconn=0.0ms reused=true wrote=0.1ms first_byte=200.1ms server=199.9ms total=200.9ms content_length=absent content_encoding=absent body_bytes=311
+    live_test.go:254: K22 models warm 2: dns=- connect=- tls=- gotconn=0.0ms reused=true wrote=0.1ms first_byte=133.1ms server=133.0ms total=133.2ms content_length=absent content_encoding=absent body_bytes=311
+    live_test.go:254: K22 models warm 3: dns=- connect=- tls=- gotconn=0.0ms reused=true wrote=0.1ms first_byte=122.0ms server=122.0ms total=122.8ms content_length=absent content_encoding=absent body_bytes=311
+--- PASS: TestLiveModels (0.73s)
+=== RUN   TestLiveQuestions
+    live_test.go:266: live API host: api.typesafe.ai
+    live_test.go:289: K22 system one cold: dns=2.1ms connect=20.5ms tls=49.6ms gotconn=49.6ms reused=false wrote=49.7ms first_byte=268.9ms server=219.3ms total=269.8ms content_length=absent content_encoding=absent body_bytes=401
+    live_test.go:293: recorded testdata/live/questions.json (401 bytes)
+--- PASS: TestLiveQuestions (0.27s)
+=== RUN   TestLiveTypedResponse
+    live_test.go:387: live API host: api.typesafe.ai
+    live_test.go:392: K22 ask cold: dns=1.3ms connect=20.4ms tls=55.4ms gotconn=55.5ms reused=false wrote=55.5ms first_byte=236.3ms server=180.8ms total=237.0ms content_length=absent content_encoding=absent body_bytes=401
+    live_test.go:415: recorded testdata/live/typed-response.json (401 bytes)
+--- PASS: TestLiveTypedResponse (0.24s)
+=== RUN   TestLiveUnauthenticated
+    live_test.go:455: live API host: api.typesafe.ai
+=== RUN   TestLiveUnauthenticated/models
+    live_test.go:475: K22 unauthenticated models: dns=1.2ms connect=22.5ms tls=50.1ms gotconn=50.1ms reused=false wrote=50.2ms first_byte=177.1ms server=127.0ms total=178.3ms content_length=138 content_encoding=absent body_bytes=138
+    live_test.go:481: StatusCode = 401, IsAuthentication() = true, Kind = authentication, ErrorType = "authentication_error"; want 403 and true
+    live_test.go:487: unauthenticated models: GET https://api.typesafe.ai/v1/models: 401 Cannot authenticate with the server. Please check your API key and try again. (request_id=req_01a0dece60ca7521b3d18db5a684c7a3)
+    live_test.go:489: recorded testdata/live/unauthenticated.json (138 bytes)
+=== RUN   TestLiveUnauthenticated/system_one
+    live_test.go:475: K22 unauthenticated system one: dns=- connect=- tls=- gotconn=0.1ms reused=true wrote=0.1ms first_byte=126.5ms server=126.4ms total=126.6ms content_length=138 content_encoding=absent body_bytes=138
+    live_test.go:481: StatusCode = 401, IsAuthentication() = true, Kind = authentication, ErrorType = "authentication_error"; want 403 and true
+    live_test.go:487: unauthenticated system one: POST https://api.typesafe.ai/v1/systemone: 401 Cannot authenticate with the server. Please check your API key and try again. (request_id=req_01a0dece614978ee8d67b694841e1332)
+--- FAIL: TestLiveUnauthenticated (0.31s)
+    --- FAIL: TestLiveUnauthenticated/models (0.18s)
+    --- FAIL: TestLiveUnauthenticated/system_one (0.13s)
+=== RUN   TestLiveTransportFacts
+    live_test.go:525: live API host: api.typesafe.ai
+    live_test.go:535: K22 settings: protocol=h2 max_concurrent_streams=100 advertised=true handshake=43.874125ms first_settings=65.855334ms all=map[INITIAL_WINDOW_SIZE:65536 MAX_CONCURRENT_STREAMS:100 MAX_FRAME_SIZE:16777215]
+=== RUN   TestLiveTransportFacts/gzip_requested_true
+    live_test.go:558: K22 framing (gzip requested true): GET /v1/models: proto=HTTP/2.0 status=200 content_length=-1 uncompressed=true header_content_length="" content_type="application/json"
+=== RUN   TestLiveTransportFacts/gzip_requested_false
+    live_test.go:558: K22 framing (gzip requested false): GET /v1/models: proto=HTTP/2.0 status=200 content_length=311 uncompressed=false header_content_length="311" content_type="application/json"
+--- PASS: TestLiveTransportFacts (0.42s)
+    --- PASS: TestLiveTransportFacts/gzip_requested_true (0.18s)
+    --- PASS: TestLiveTransportFacts/gzip_requested_false (0.18s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/livetests	1.974s
+FAIL
+rc=1 end 2026-09-27 02:41:02 JST load:  2:41  up 5 days,  1:47, 1 user, load averages: 6.86 6.57 5.81
