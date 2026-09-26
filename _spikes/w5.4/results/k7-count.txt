@@ -51,3 +51,10 @@
 36221839206	aaa9698	completed	success	2026-09-26T05:47:28Z	counted
 36220416172	3ffe77b	completed	success	2026-09-26T05:18:40Z	not counted
 36218293900	f048059	completed	success	2026-09-26T04:35:38Z	not counted
+
+# K7 count: 2026-09-26 15:59:15 JST; same command; counted per CPU model (R109): 36221839206 AMD EPYC 7763, 36223111400 AMD EPYC 9V74, 36224817149 AMD EPYC 7763 (CodSpeed compare_runs)
+36224817149	9c61db9	completed	success	2026-09-26T06:47:35Z	counted
+36223111400	7778166	completed	success	2026-09-26T06:13:35Z	counted
+36221839206	aaa9698	completed	success	2026-09-26T05:47:28Z	counted
+36220416172	3ffe77b	completed	success	2026-09-26T05:18:40Z	not counted
+36218293900	f048059	completed	success	2026-09-26T04:35:38Z	not counted
