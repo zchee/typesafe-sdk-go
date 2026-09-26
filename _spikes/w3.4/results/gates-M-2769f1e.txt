@@ -1,0 +1,14 @@
+# 2026-09-26 13:29:09 JST (M) gates on git write-tree 9406d22 (commit 1: 1f694b0 + ledger and _spikes/w3.4), load before: 13:29  up 4 days, 12:35, 1 user, load averages: 8.38 9.80 9.80
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+0 issues.
+No vulnerabilities found.
+# lint chain ok 13:29:12 JST
+ok  	github.com/zchee/typesafe-sdk-go	10.396s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.079s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.216s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.695s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.151s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.041s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.041s
+# exit 0 at 2026-09-26 13:29:25 JST, load after: 13:29  up 4 days, 12:35, 1 user, load averages: 7.08 9.42 9.66
