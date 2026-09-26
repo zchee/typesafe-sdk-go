@@ -1,0 +1,38 @@
+# 2026-09-26 19:47:08 JST (M) GOEXPERIMENT=nosimd,noruntimesecret go run ./_spikes/w5.3/k41 at e178067 plus the working tree; load { 253.66 129.64 82.78 }
+sonic v1.15.4 (go.mod), go1.27.1 darwin/arm64
+
+Part 1, sonic alone: an unterminated string at the end of the input, content n zeros.
+A correct scanner reports an error for every n; ERR_EOF-free success is the bug.
+
+top-level, input " + n zeros, end of input:
+  n=  0  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 2: eof\n\n\t\"\n\t^\n"  decoder.Skip=(-1,1)
+  n=  1  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 3: eof\n\n\t\"0\n\t^\n"  decoder.Skip=(-1,2)
+  n= 31  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 33: eof\n\n\t\"0000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,32)
+  n= 32  ast.Preorder: string of 31 bytes, err=<nil>                                 sonic.UnmarshalString err="Syntax error at index 34: eof\n\n\t\"00000000000000000000000000000000\n\t^\n"  decoder.Skip=(0,33)
+  n= 33  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 35: eof\n\n\t\"000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,34)
+  n= 63  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 65: eof\n\n\t\"000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,64)
+  n= 64  ast.Preorder: string of 63 bytes, err=<nil>                                 sonic.UnmarshalString err="Syntax error at index 66: eof\n\n\t\"0000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(0,65)
+  n= 65  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 67: eof\n\n\t\"00000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,66)
+  n= 96  ast.Preorder: string of 95 bytes, err=<nil>                                 sonic.UnmarshalString err="Syntax error at index 98: eof\n\n\t\"000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(0,97)
+  n=128  ast.Preorder: string of 127 bytes, err=<nil>                                sonic.UnmarshalString err="Syntax error at index 130: eof\n\n\t\"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(0,129)
+
+object member value, input {"":" + n zeros, end of input:
+  n=  0  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 7: expect a `,` or `}`\n\n\t{\"\":\"\n\t^\n"  decoder.Skip=(-1,5)
+  n=  1  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 8: expect a `,` or `}`\n\n\t{\"\":\"0\n\t^\n"  decoder.Skip=(-1,6)
+  n= 31  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 38: expect a `,` or `}`\n\n\t{\"\":\"0000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,36)
+  n= 32  ast.Preorder: string of 31 bytes, err=json: error when parsing input: eof   sonic.UnmarshalString err="Syntax error at index 39: expect a `,` or `}`\n\n\t{\"\":\"00000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,41)
+  n= 33  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 40: expect a `,` or `}`\n\n\t{\"\":\"000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,38)
+  n= 63  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 70: expect a `,` or `}`\n\n\t{\"\":\"000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,68)
+  n= 64  ast.Preorder: string of 63 bytes, err=json: error when parsing input: eof   sonic.UnmarshalString err="Syntax error at index 71: expect a `,` or `}`\n\n\t{\"\":\"0000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,73)
+  n= 65  ast.Preorder: no string, err=json: error when parsing input: eof            sonic.UnmarshalString err="Syntax error at index 72: expect a `,` or `}`\n\n\t{\"\":\"00000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,70)
+  n= 96  ast.Preorder: string of 95 bytes, err=json: error when parsing input: eof   sonic.UnmarshalString err="Syntax error at index 103: expect a `,` or `}`\n\n\t{\"\":\"000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,105)
+  n=128  ast.Preorder: string of 127 bytes, err=json: error when parsing input: eof  sonic.UnmarshalString err="Syntax error at index 135: expect a `,` or `}`\n\n\t{\"\":\"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\t^\n"  decoder.Skip=(-1,137)
+
+Part 2, this module: codec.DecodeSystemOne, and wire.AppendJSON (the error-body path's
+validator), on the finding's body and its neighbours; each must be refused.
+  len= 70  DecodeSystemOne REFUSED (invalid JSON: json: error when parsing input: eof)  AppendJSON syntax error: true
+  len= 69  DecodeSystemOne REFUSED (invalid JSON: json: error when parsing input: eof)  AppendJSON syntax error: true
+  len= 69  DecodeSystemOne REFUSED (invalid JSON: json: error when parsing input: eof)  AppendJSON syntax error: true
+  len= 33  DecodeSystemOne REFUSED (invalid JSON: the response is not a JSON object)  AppendJSON syntax error: true
+  len= 75  DecodeSystemOne REFUSED (invalid JSON: json: error when parsing input: eof)  AppendJSON syntax error: true
+# exit 0
