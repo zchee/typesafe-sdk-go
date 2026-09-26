@@ -1,0 +1,34 @@
+# W6.1 FU (review V59): on (M), go1.27.1 darwin/arm64, GOEXPERIMENT=nosimd,noruntimesecret. P7 and P8 ran in a throwaway worktree of the wave's
+# tree before this commit plus this commit's files; the mutants ran in a detached worktree at FU's tree before this file's mutant section
+# was replaced (0b620b7; the amended FU changes only this file).
+# NIT 4: the ci.yaml fuzz step's bash under Actions' flags (runstep.sh), with P7 the scan's pattern broken and P8 one seeded entry that
+# does not exist; the happy path runs in CI (the (M) bench lock was held, so no fuzzing on (M)).
+
+## P7-empty-scan: step exit 1
+::error::the scan found no fuzz target in the tree
+
+## P8-seeded-missing: step exit 1
+::error::go test -list does not find FuzzGone in ./internal/wire
+
+## the mutants at this stage (mutants.sh as committed here)
+# 2026-09-26 20:05:57 JST mutants.sh at 0b620b7 go version go1.27.1 darwin/arm64
+A-bound-never-fires: killed (2 FAIL lines) :: fuzz_test.go:66: child output lacks "testsupport: fuzz input TestBoundFuzzInput ran past the 50ms per-input bound":
+B-M1-lazy-answers-first-wins: killed (25 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+B-M2-lazy-answer-name-first-wins: killed (18 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+B-M3-lazy-legend-first-wins: killed (32 FAIL lines) :: decode_paths_test.go:614: decode of the generated body {"an\u0073w\u0065r\u0073": [{"legen\u0064\u0020":{}}]	,
+B-M4-lazy-level-first-wins: killed (23 FAIL lines) :: decode_paths_test.go:626: answers of \r
+B-M5-visitor-level-first-value: killed (25 FAIL lines) :: decode_paths_test.go:626: answers of \r
+B-M6-visitor-answer-first-value: killed (33 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+B-M7-skipped-last-only: killed (16 FAIL lines) :: decode_paths_test.go:632: skipped of {"model"	:
+B-M8-lazy-raw-cut: killed (51 FAIL lines) :: decode_paths_test.go:626: answers of {"model":"jev-latest","usage":{},"answers":{"s":{"score":0,"confidence":0,"legend":{"0":{}},"probabilities":{},"type":"scor
+D-K39-closed-listener: killed (2 FAIL lines) :: refused_test.go:64: address 127.0.0.1:55936 is not the held connection's local end 127.0.0.1:51755
+D-K39-held-closed: killed (2 FAIL lines) :: refused_test.go:69: set a read deadline on the held connection: set tcp 127.0.0.1:50065: use of closed network connection
+D-K25-pre-fix-goaway: killed (20 FAIL lines) :: goaway_race_test.go:66: GoAway: testsupport: connection closed: tls: protocol is shutdown
+D-n2-leaked-token: killed (4 FAIL lines) :: token_test.go:236: probe: context deadline exceeded, HEADERS after 0s at traceSeq 0 (0: none), deadline at 257; want them within 50ms and before the deadline
+D-n2-linger-on-timeout: killed (2 FAIL lines) :: token_test.go:207: call 0 returned after 2.302870958s, past its 2s deadline + 100ms
+D-R100-no-drain-wait: killed (5 FAIL lines) :: drain_bound_test.go:58: the server closed the socket 102.916µs after its close began, before the 200ms drain bound
+D-R100-never-closes: killed (1 FAIL lines) :: drain_bound_test.go:50: timed out waiting for the server's close of the socket
+FU-disarm-stops-nothing: killed (2 FAIL lines) :: fuzz_test.go:97: a disarmed bound fired: testsupport: fuzz input TestBoundFuzzInput/a_bound_disarmed_before_it_fires_never_fires ran past the 50ms per-input bou
+FU-wrapper-drops-disarm: killed (2 FAIL lines) :: fuzz_test.go:97: a disarmed bound fired: testsupport: fuzz input TestBoundFuzzInput/a_bound_disarmed_before_it_fires_never_fires ran past the 50ms per-input bou
+FU-R5-lazy-skips-plus-level: killed (30 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+# 2026-09-26 20:06:50 JST mutants not killed (survived, not applied or not built): 0

@@ -48,7 +48,7 @@ echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants.sh at $(git rev-parse --short HE
 
 # A: the per-input bound.
 mutant A-bound-never-fires internal/testsupport/fuzz.go \
-	's/panic\(fmt.Sprintf\("testsupport: fuzz input %s ran past the %v per-input bound", name, d\)\)/_ = fmt.Sprintf("%s%v", name, d)/' \
+	's/func\(msg string\) \{ panic\(msg\) \}/func(msg string) { _ = msg }/' \
 	./internal/testsupport/ '^TestBoundFuzzInput$'
 
 # B: the differential. Each lazy-pass mutant makes one last-wins choice
@@ -106,6 +106,21 @@ mutant D-R100-no-drain-wait internal/testsupport/h2conn.go \
 mutant D-R100-never-closes internal/testsupport/h2conn.go \
 	's/(_, streamErr := errors.AsType\[http2.StreamError\]\(err\)\n\treturn streamErr)/return true\n\t$1/' \
 	./internal/testsupport/ '^TestDrainBoundClosesSilentClient$'
+
+# FU: review V59's follow-up. A disarm that stops nothing (MINOR 1), and
+# one that boundFuzzInput, the wrapper every target calls, drops
+# (D-W6.1-fu-nit); the lazy pass skipping a level spelled with "+" (the
+# reviewer's R5, which only FuzzDecodePaths catches: TestLastWins and
+# TestSkippedAnswers pass).
+mutant FU-disarm-stops-nothing internal/testsupport/fuzz.go \
+	's/\treturn timer.Stop\n/\treturn func() bool { _ = timer; return true }\n/' \
+	./internal/testsupport/ '^TestBoundFuzzInput$'
+mutant FU-wrapper-drops-disarm internal/testsupport/fuzz.go \
+	's/return func\(\) \{ disarmed\(\) \}/return func() { _ = disarmed }/' \
+	./internal/testsupport/ '^TestBoundFuzzInput$'
+mutant FU-R5-lazy-skips-plus-level internal/codec/lazy.go \
+	's/(\t\t\tlvl, ok := parseLevel\(p.Key\)\n)/$1\t\t\tif p.Key != "" \&\& p.Key[0] == \x27+\x27 {\n\t\t\t\tcontinue\n\t\t\t}\n/' \
+	./internal/codec/ '^FuzzDecodePaths$'
 
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

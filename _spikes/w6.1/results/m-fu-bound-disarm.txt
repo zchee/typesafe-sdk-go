@@ -1,0 +1,14 @@
+# 2026-09-26 19:54:22 JST (M) FU MINOR 1 and D-W6.1-fu-nit: TestBoundFuzzInput with boundFire swapped for a recorder and the disarm through boundFuzzInput, GOMAXPROCS=2, -race -count=200 and -count=200; load { 5.74 35.22 52.29 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+## go test -race -count=200 (GOMAXPROCS=2)
+    200     --- PASS: TestBoundFuzzInput/a_bound_disarmed_before_it_fires_never_fires
+    200     --- PASS: TestBoundFuzzInput/an_armed_bound_fires_with_its_message
+    200     --- PASS: TestBoundFuzzInput/an_input_past_the_bound_ends_the_process
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	45.107s
+## go test  -count=200 (GOMAXPROCS=2)
+    200     --- PASS: TestBoundFuzzInput/a_bound_disarmed_before_it_fires_never_fires
+    200     --- PASS: TestBoundFuzzInput/an_armed_bound_fires_with_its_message
+    200     --- PASS: TestBoundFuzzInput/an_input_past_the_bound_ends_the_process
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	42.862s
+# end 2026-09-26 19:55:51 JST; load { 7.31 28.07 47.81 }
