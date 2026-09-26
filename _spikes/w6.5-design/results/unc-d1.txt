@@ -1,0 +1,647 @@
+Installed 1 package in 1ms
+unlisted: 1 zero-count block(s); add the row
+  | `body.go` | `appendState` | `return engine.AppendState[RawJSON, Content](buf, state)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `if v == nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `if v.IsZero()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `return codec.AppendRawState(buf, []byte(*v))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `return codec.AppendRawState(buf, []byte(v))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `return codec.EncodeState(buf, state)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `return fmt.Errorf("nil *RawJSON holds no JSON value, %w", codec.ErrStateShape)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `return fmt.Errorf("unset Content encodes as null, %w", codec.ErrStateShape)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `switch v := state.(type)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendState` | `var err error` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `*buf = append(*buf, "null"...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `if v == nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `if v.IsZero()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `return codec.AppendRawValue(buf, []byte(*v))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `return codec.AppendRawValue(buf, []byte(v))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `return codec.EncodeValue(buf, value)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `return fmt.Errorf("nil *RawJSON holds no JSON value, %w", codec.ErrRawValue)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `switch v := value.(type)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `AppendValue` | `var err error` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `*buf = append(*buf, '}')` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | ``*buf = append(*buf, `,"model":`...)`` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | ``*buf = append(*buf, `,"questions":`...)`` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `*buf = append(*buf, q.Questions...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `*buf, _ = wire.AppendString(*buf, model) // valid UTF-8: cannot fail` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `body := codec.NewBody()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `body.Release()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `f = Failure{Kind: FailEncode, Key: MemberState, Err: err}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `f = Failure{Kind: FailEncode, Key: MemberState, Extra: true, Err: err}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `f = Failure{Kind: FailEncode, Key: memberModel, Extra: true, Err: err}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `f = Failure{Kind: FailEncode, Key: memberQuestions, Extra: true, Err: err}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `f = appendExtra[R, C](buf, extra)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if err := AppendState[R, C](buf, extra[stateAt].Value); err != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if err := AppendState[R, C](buf, state); err != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if err := AppendValue[R, C](buf, extra[modelAt].Value); err != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if err := AppendValue[R, C](buf, extra[questionsAt].Value); err != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if f.Kind != FailNone` | 1 | <one-line reason> |
+unlisted: 3 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if f.Kind == FailNone` | 3 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if modelAt < 0 && !utf8.ValidString(model)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `if q == nil \|\| len(q.Entries()) == 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `modelAt = i` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `questionsAt = i` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `return codec.Body{}, Failure{Kind: FailModel}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `return codec.Body{}, Failure{Kind: FailNoQuestions}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `stateAt = i` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `stateAt, modelAt, questionsAt := -1, -1, -1 // the last extra member that replaces each` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `switch extra[i].Key` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `*buf = append(*buf, ',')` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `*buf = append(*buf, ':')` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `continue` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `continue next` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `delete(last, key)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `for k := i + 1; k < len(extra); k++` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `for k := range i` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `if extra[k].Key == key` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `j := i // the member whose value is written` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `j = k` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `key := extra[i].Key` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `last = make(map[string]int, len(extra))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `last[extra[i].Key] = i` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `next:` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `return Failure{` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `return Failure{Kind: FailEncode, Key: key, Extra: true, Err: err}` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `var last map[string]int // key -> index of its last member, while unwritten; nil for short lists` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `appendExtra` | `var unwritten bool` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).Attempts` | `return &c.attempts` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).Built` | `return c != nil && c.cfg != nil && c.cfg.Config != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).Closed` | `return &c.closed` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).Config` | `return c.cfg.Config` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).ModelsEndpoint` | `return c.modelsEndpoint` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).Random` | `return c.random` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).SetRandom` | `c.random = random` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).SystemOneEndpoint` | `return c.systemOneEndpoint` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Config).Redactor` | `return NewHeaderRedactor(c.APIKey)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Prepared).Wire` | `return &p.w` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Request).AttemptHeader` | `h := make(http.Header, len(rq.Header)+1)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Request).AttemptHeader` | `if attempt == 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Request).AttemptHeader` | `return rq.Header` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Response).Meta` | `return &r.meta` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Response).Result` | `return &r.res` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewClient` | `return &Client{cfg: &ConfigRef{cfg}, systemOneEndpoint: systemOneEndpoint, modelsEndpoint: modelsEndpoint}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewSystemOneAlloc` | `a := new(systemOneAllocWith[[1]wire.AnswerEntry])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewSystemOneAlloc` | `a := new(systemOneAllocWith[[2]wire.AnswerEntry])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewSystemOneAlloc` | `a := new(systemOneAllocWith[[3]wire.AnswerEntry])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewSystemOneAlloc` | `a := new(systemOneAllocWith[[MaxInlineAnswers]wire.AnswerEntry])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewSystemOneAlloc` | `return new(SystemOneAlloc), nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `NewSystemOneAlloc` | `switch n` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/constants.go` | `RetryCountValue` | `if attempt <= len(retryCountValues)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/constants.go` | `RetryCountValue` | `return []string{strconv.Itoa(attempt)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/constants.go` | `RetryCountValue` | `return retryCountValues[attempt-1]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `DecodeSystemOne` | `return DecodeSystemOneInto(ctx, logger, body, q, model, dst, nil)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `DecodeSystemOneInto` | `logSkipped(ctx, logger, &skipped)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `DecodeSystemOneInto` | `return err` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `DecodeSystemOneInto` | `skipped, err := codec.DecodeSystemOneInto(body, q, model, dst, spare)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `logSkipped` | `for _, s := range skipped.Named()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `logSkipped` | `if logger == nil \|\| !logger.Enabled(ctx, slog.LevelWarn)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `logSkipped` | `if rest := skipped.Count - len(skipped.Named()); rest > 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `logSkipped` | `logger.LogAttrs(ctx, slog.LevelWarn, MsgSkippedAnswer, slog.String("answer", SafeName(s.Name)), slog.String("type", SafeName(s.Type)))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `logSkipped` | `logger.LogAttrs(ctx, slog.LevelWarn, MsgSkippedAnswers, slog.Int("count", rest))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/decode.go` | `logSkipped` | `return` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `for i := range len(s)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `if !maybeFalsyJSON(raw)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `if s[0] != '-' && (s[0] < '0' \|\| s[0] > '9')` | 1 | <one-line reason> |
+unlisted: 4 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `return false` | 4 | <one-line reason> |
+unlisted: 3 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `return true` | 3 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `switch c := s[i];` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `switch s := string(compact); s` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `var buf [32]byte` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `for _, c := range raw[i:]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `i := skipJSONSpace(raw, 0)` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `j := skipJSONSpace(raw, i+1)` | 2 | <one-line reason> |
+unlisted: 3 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `return false` | 3 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `return i+1 < len(raw) && raw[i+1] == '"'` | 1 | <one-line reason> |
+unlisted: 3 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `return true` | 3 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `switch` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `maybeFalsyJSON` | `switch c := raw[i]; c` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `skipJSONSpace` | `for i < len(raw) && (raw[i] == ' ' \|\| raw[i] == '\t' \|\| raw[i] == '\n' \|\| raw[i] == '\r')` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `skipJSONSpace` | `i++` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `skipJSONSpace` | `return i` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `buf := make([]byte, 0, size)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `buf = grow(buf, declared, limit)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `if declared > limit` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `if errors.Is(err, io.EOF)` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `if int64(len(buf)) > limit` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `if len(buf) == cap(buf)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `n, err := r.Read(buf[len(buf):cap(buf)])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `return buf, nil` | 1 | <one-line reason> |
+unlisted: 3 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `return nil, ErrTooLarge` | 3 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `return nil, err` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `size = InitialDeclared` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `size = declared + 1` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `size = min(InitialUndeclared, limit+1)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `var size int64` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `grow` | `end = declared // within limit: readBody refused a larger one` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `grow` | `held := int64(len(buf))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `grow` | `nb := make([]byte, held, next)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `grow` | `next := max(2*held, minGrow)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `grow` | `next = end + 1` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `if !IsCredential(name, values, r.key)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `if h == nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `masked := make([]string, len(values))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `masked[i] = Redacted` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `out := make(http.Header, len(h))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `out[name] = masked` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `out[name] = values` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `return nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Header` | `return out` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.Key` | `return r.key` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.RequestID` | `if r.key != "" && slices.ContainsFunc(values, func(v string) bool` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.RequestID` | `return "", false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.RequestID` | `return strings.Contains(v, r.key)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.RequestID` | `return strings.Join(values, ", "), true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.RequestID` | `return strings.Repeat(", "+Redacted, len(values))[len(", "):], true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `HeaderRedactor.RequestID` | `values := h[wire.RequestIDHeader]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsCredential` | `if IsSecretHeader(name)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsCredential` | `return KeyNeedle(apiKey) && slices.ContainsFunc(values, func(v string) bool` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsCredential` | `return strings.Contains(v, apiKey)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsCredential` | `return true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `for _, secret := range SecretHeaderNames` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `for i := range len(name)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `if name[i] >= utf8.RuneSelf` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `if strings.EqualFold(name, secret)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `lower := strings.ToLower(name)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `return containsFoldASCII(name, "token") \|\| containsFoldASCII(name, "secret")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `IsSecretHeader` | `return true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `KeyNeedle` | `return len(key) >= MinKeyNeedleBytes` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `NewHeaderRedactor` | `if !KeyNeedle(apiKey)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `NewHeaderRedactor` | `return HeaderRedactor{key: apiKey` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `NewHeaderRedactor` | `return HeaderRedactor{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `NewRedactedHeaders` | `return RedactedHeaders{p: &headerLog{header: header, apiKey: apiKey}}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.Format` | `fmt.Fprint(f, r.LogValue().String())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `attrs := make([]slog.Attr, 0, len(r.p.header))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `attrs = append(attrs, slog.String(name, value))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `if r.p == nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `return slog.GroupValue()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `return slog.GroupValue(attrs...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `value = strings.Join(values, ", ")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `RedactedHeaders.LogValue` | `values := r.p.header[name]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `containsFoldASCII` | `for i := range len(s) - len(sub) + 1` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `containsFoldASCII` | `if j == len(sub)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `containsFoldASCII` | `j := 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `containsFoldASCII` | `j++` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `containsFoldASCII` | `return false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `containsFoldASCII` | `return true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `lowerASCII` | `if 'A' <= c && c <= 'Z'` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `lowerASCII` | `return c` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/redact.go` | `lowerASCII` | `return c + 'a' - 'A'` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*ScrubbedError).Error` | `return e.msg` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*ScrubbedError).Format` | `_, _ = fmt.Fprintf(f, fmt.FormatString(f, verb), e.msg)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*ScrubbedError).Format` | `_, _ = io.WriteString(f, e.detail)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*ScrubbedError).Format` | `if verb == 'v' && (f.Flag('+') \|\| f.Flag('#'))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*ScrubbedError).Unwrap` | `return e.sentinels` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `const hex = "0123456789abcdef"` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `dst = append(dst, esc...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `dst = append(dst, s[i:i+size]...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `esc = append(buf[:0], '\\', '\\')` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `esc = append(buf[:0], '\\', 'x', hex[s[i]>>4], hex[s[i]&0xf])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `if double` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `if esc != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `if n+w > limit` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `n += w` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `q := strconv.AppendQuoteRune(buf[:0], r) // '\n', '\x1b', '\u2028'` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `r, size := utf8.DecodeRuneInString(s[i:])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `return append(dst, "\u2026"...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `return dst` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `w := 1` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `AppendSafeText` | `w = len(esc)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `if err == nil \|\| !c.inChain(err)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `if errno, ok := errors.AsType[syscall.Errno](err); ok` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `if errors.Is(err, sentinel)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `msg, _ := c.Redact(err.Error())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `return err` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `return s` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `s.sentinels = append(s.sentinels, errno)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Cause` | `s.sentinels = append(s.sentinels, sentinel)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Redact` | `found := false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Redact` | `if strings.Contains(s, v)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Redact` | `if u, ok := ScrubUserinfo(s); ok` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Redact` | `return s, found` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Redact` | `s, found = strings.ReplaceAll(s, v, Redacted), true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.Redact` | `s, found = u, true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `b.WriteString(": ")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `b.WriteString(text)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `e := stack[len(stack)-1]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `for _, w := range slices.Backward(u.Unwrap())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `if b.Len() > 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `if text := fmt.Sprintf("%+v", e); !strings.Contains(b.String(), text)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `stack = append(stack, u.Unwrap())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `stack = append(stack, w)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `switch u := e.(type)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `text, _ := c.Redact(b.String())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `var b strings.Builder` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `e := stack[len(stack)-1]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `if c.printed(e)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `return len(stack) > 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `return true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `stack := []error{err}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `stack = append(stack, u.Unwrap())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `stack = append(stack, u.Unwrap()...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `switch u := e.(type)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.printed` | `for _, form := range [...]string{e.Error(), fmt.Sprintf("%+v", e), fmt.Sprintf("%#v", e)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.printed` | `if _, found := c.Redact(form); found` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.printed` | `return false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.printed` | `return true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `HidesText` | `return false` | 1 | <one-line reason> |
+unlisted: 3 zero-count block(s); add the row
+  | `internal/engine/text.go` | `HidesText` | `return true` | 3 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `HidesText` | `switch` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `b.WriteByte('\\')` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `b.WriteByte(hex[r>>shift&0xf])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `b.WriteString("\ufffd")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | ``b.WriteString(`\n`)`` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | ``b.WriteString(`\r`)`` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | ``b.WriteString(`\t`)`` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | ``b.WriteString(`\u`)`` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `b.WriteString(v[i : i+size])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `const hex = "0123456789abcdef"` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `i += size` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `r, size := utf8.DecodeRuneInString(v[i:])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `JSONForm` | `return b.String()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `LogErrorText` | `text, _ := RequestCredentials(req.Header).Redact(err.Error())` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `QuotedForm` | `return q[1 : len(q)-1]` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `QuotedName` | `b := make([]byte, 0, min(len(name), MaxNameChars)+8)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `add(cred)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `add(v)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `c = append(c, form)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `for _, form := range [...]string{v, QuotedForm(strconv.Quote(v)), QuotedForm(strconv.QuoteToASCII(v)), JSONForm(v)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `for name, values := range h` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `if !IsSecretHeader(name)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `if !KeyNeedle(v)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `if !slices.Contains(c, form)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `return` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `return c` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `return cmp.Or(cmp.Compare(len(b), len(a)), strings.Compare(a, b))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `scheme := strings.EqualFold(name, "Authorization") \|\| strings.EqualFold(name, "Proxy-Authorization")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `slices.SortFunc(c, func(a, b string) int` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `RequestCredentials` | `var c Credentials` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `SafeMessage` | `return string(AppendSafeText(make([]byte, 0, min(len(s), MaxMessageChars)+4), s, MaxMessageChars, false))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `SafeName` | `return string(AppendSafeText(make([]byte, 0, min(len(name), MaxNameChars)+4), name, MaxNameChars, true))` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `b.WriteString("***")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `b.WriteString(rest)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `b.WriteString(rest[:i+3])` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `break` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `end = len(rest)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `i := strings.Index(rest, "://")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `if !scrubbed` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `if at := strings.LastIndexByte(rest[:end], '@'); at >= 0` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `return s, false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `ScrubUserinfo` | `var b strings.Builder` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `afterScheme` | `cred := strings.TrimLeft(v[i:], " \t")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `afterScheme` | `return "", false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `afterScheme` | `v = strings.TrimLeft(v, " \t")` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `if t.Closer != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `if t.Gate != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `if t.Idler != nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `return t.closeErr` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `t.Gate.CloseIdleConnections()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `t.Idler.CloseIdleConnections()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `t.closeErr = t.Closer.Close()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Close` | `t.closeOnce.Do(func()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).RoundTrip` | `resp, err := t.RT.RoundTrip(req)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).RoundTrip` | `return resp, err` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).RoundTrip` | `sh = NewShield(req.Context(), trace, t.Logger)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).RoundTrip` | `sh.done(resp)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).RoundTrip` | `var sh *shield` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Stats` | `if t.Gate == nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Stats` | `return h2gate.Stats{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).Stats` | `return t.Gate.Stats()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).callerTrace` | `merged := *t.Trace` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).callerTrace` | `onCtx := httptrace.ContextClientTrace(ctx)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).callerTrace` | `return onCtx` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*Transport).callerTrace` | `return t.Trace` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*shield).done` | `_ = resp.Body.Close()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*shield).markReturned` | `s.log("transport: trace hook panic replaced by a RoundTrip panic, recovered", hook, stack)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*shield).markReturned` | `s.returned = true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `(*shield).recover` | `return` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `var traceKeys` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `redact.go` | `isCredential` | `return engine.IsCredential(name, values, apiKey)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `retry.go` | `retryCountValue` | `return engine.RetryCountValue(attempt)` | 1 | <one-line reason> |
+docs/uncovered-lines.md:36: client.go readBody 'return nil, errTooLarge': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:48: questions.go falsyJSON 'return false': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:55: text.go credentials.detail 'continue': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:56: text.go credentials.inChain 'continue': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:57: transport.go var traceKeys '{}': stale: no block has this key (the code changed): delete or update the row
+uncovered-lines: 325 failure(s)

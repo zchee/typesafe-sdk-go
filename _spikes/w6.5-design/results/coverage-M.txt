@@ -1,0 +1,12 @@
+== base 2026-09-27 03:13:17 JST load averages: 12.32 8.57 8.13
+test rc=1
+checker rc=0
+total:										(statements)			96.3%
+== d1 2026-09-27 03:14:18 JST load averages: 9.70 8.48 8.12
+test rc=1
+checker rc=1
+total:										(statements)			88.6%
+== d2 2026-09-27 03:14:55 JST load averages: 9.61 8.62 8.19
+test rc=1
+checker rc=1
+total:										(statements)			95.6%

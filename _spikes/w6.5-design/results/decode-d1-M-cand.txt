@@ -1,0 +1,58 @@
+# 2026-09-27 03:03:24 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret cand.test -test.run ^$ -test.bench ^BenchmarkDecode$/^(result|result-20)$ -test.benchmem -test.count 2
+# load before:  3:03  up 5 days,  2:09, 1 user, load averages: 8.35 8.24 8.14 | kernel: { 8.35 8.24 8.14 } (MAXLOAD=12, waited 0 x 60 s)
+# commit: fa26bfa
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-27 03:03:29 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkDecode/result-16         	  409210	      2955 ns/op	 123.20 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-16         	  400788	      2944 ns/op	 123.63 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-20-16      	   65980	     18674 ns/op	 120.65 MB/s	    6013 B/op	      24 allocs/op
+BenchmarkDecode/result-20-16      	   65343	     18304 ns/op	 123.09 MB/s	    6012 B/op	      24 allocs/op
+PASS
+# round 2 at 2026-09-27 03:03:39 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkDecode/result-16         	  406740	      2930 ns/op	 124.22 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-16         	  408543	      2984 ns/op	 121.98 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-20-16      	   66322	     18244 ns/op	 123.49 MB/s	    6012 B/op	      24 allocs/op
+BenchmarkDecode/result-20-16      	   65427	     18258 ns/op	 123.40 MB/s	    6012 B/op	      24 allocs/op
+PASS
+# round 3 at 2026-09-27 03:03:48 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkDecode/result-16         	  394720	      2959 ns/op	 123.03 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-16         	  411520	      2956 ns/op	 123.16 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-20-16      	   65556	     18228 ns/op	 123.60 MB/s	    6012 B/op	      24 allocs/op
+BenchmarkDecode/result-20-16      	   66206	     18209 ns/op	 123.73 MB/s	    6012 B/op	      24 allocs/op
+PASS
+# round 4 at 2026-09-27 03:03:58 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkDecode/result-16         	  397933	      2991 ns/op	 121.70 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-16         	  398014	      2980 ns/op	 122.16 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-20-16      	   65864	     18257 ns/op	 123.41 MB/s	    6013 B/op	      24 allocs/op
+BenchmarkDecode/result-20-16      	   65487	     18448 ns/op	 122.13 MB/s	    6013 B/op	      24 allocs/op
+PASS
+# round 5 at 2026-09-27 03:04:08 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkDecode/result-16         	  411184	      3015 ns/op	 120.73 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-16         	  394720	      3015 ns/op	 120.74 MB/s	     688 B/op	       4 allocs/op
+BenchmarkDecode/result-20-16      	   63871	     18828 ns/op	 119.67 MB/s	    6012 B/op	      24 allocs/op
+BenchmarkDecode/result-20-16      	   63948	     18766 ns/op	 120.06 MB/s	    6013 B/op	      24 allocs/op
+PASS
+# exit 0 at 2026-09-27 03:04:12 JST
+# load after:  3:04  up 5 days,  2:10, 1 user, load averages: 6.52 7.76 7.96 | kernel: { 6.52 7.76 7.96 }

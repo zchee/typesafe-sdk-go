@@ -1,0 +1,4 @@
+doc: no method or field Client.SystemOne in package github.com/zchee/typesafe-sdk-go
+package typesafe // import "github.com/zchee/typesafe-sdk-go"
+
+func (c *Client) SystemOne(ctx context.Context, state any, qs *Prepared, opts ...CallOption) (*SystemOneResponse, error)

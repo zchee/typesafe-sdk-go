@@ -1,0 +1,402 @@
+CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=20/2648 own=12/2008 (N = 12, frozen at W5.3)
+DECODE deviation-lone-surrogate           bytes=219     allocs=13   allocBytes=4544     budget=14   misses=14/4592      naive=27/2752        ratio=0.481
+DECODE duplicates                         bytes=825     allocs=16   allocBytes=5312     budget=17   misses=17/5408      naive=89/9160        ratio=0.180
+DECODE escaped-member-names               bytes=425     allocs=29   allocBytes=5080     budget=30   misses=30/5192      naive=51/4664        ratio=0.569
+DECODE escaped-names                      bytes=481     allocs=10   allocBytes=1224     budget=10   misses=11/1304      naive=57/5064        ratio=0.175
+DECODE no-answers                         bytes=67      allocs=0    allocBytes=0        budget=0    misses=1/16         naive=9/824          ratio=0.000
+DECODE parity-big-exp-unknown             bytes=135     allocs=1    allocBytes=144      budget=1    misses=2/160        naive=refused        ratio=
+DECODE result                             bytes=364     allocs=4    allocBytes=688      budget=4    misses=5/752        naive=40/3672        ratio=0.100
+DECODE result-20                          bytes=2253    allocs=24   allocBytes=6008     budget=24   misses=25/6520      naive=214/19632      ratio=0.112
+DECODE score-flood-mini                   bytes=1495    allocs=21   allocBytes=4184     budget=21   misses=22/4312      naive=137/16448      ratio=0.153
+DECODE structured-legend                  bytes=217     allocs=11   allocBytes=4464     budget=12   misses=12/4528      naive=27/2992        ratio=0.407
+DECODE structured-legend-flood-10k        bytes=616421  allocs=685  allocBytes=1604536  budget=686  misses=686/2005944  naive=65192/9721784  ratio=0.011
+DECODE structured-legend-flood-1k         bytes=57418   allocs=90   allocBytes=172936   budget=91   misses=91/213896    naive=6574/1036728   ratio=0.014
+DECODE type-last                          bytes=364     allocs=4    allocBytes=688      budget=4    misses=5/752        naive=40/3672        ratio=0.100
+DECODE unknown-answer-type                bytes=145     allocs=1    allocBytes=144      budget=1    misses=2/160        naive=20/1960        ratio=0.050
+ENCODE RawJSON/1KiB             body=1362     E_sonic=0/0          B=1 sdk=1/24             above=24   scratch=4096      warm=2  asserted
+ENCODE RawJSON/1MiB             body=1075010  E_sonic=0/0          B=1 sdk=1/24             above=24   scratch=1081344   warm=2  asserted
+ENCODE RawJSON/64KiB            body=66356    E_sonic=0/0          B=1 sdk=1/24             above=24   scratch=73728     warm=2  asserted
+ENCODE RawJSON/6MiB             body=6516035  E_sonic=0/0          B=1 sdk=1/24             above=24   scratch=6520832   warm=2  asserted
+ENCODE boxed-RawJSON/1KiB       body=1362     E_sonic=0/0          B=0 sdk=0/0              above=0    scratch=4096      warm=2  asserted
+ENCODE boxed-RawJSON/1MiB       body=1075010  E_sonic=0/0          B=0 sdk=0/0              above=0    scratch=1081344   warm=2  asserted
+ENCODE boxed-RawJSON/64KiB      body=66356    E_sonic=0/0          B=0 sdk=0/0              above=0    scratch=73728     warm=2  asserted
+ENCODE boxed-RawJSON/6MiB       body=6516035  E_sonic=0/0          B=0 sdk=0/0              above=0    scratch=6520832   warm=2  asserted
+ENCODE boxed-string/1KiB        body=1362     E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=4096      warm=2  asserted
+ENCODE boxed-string/1MiB        body=1048914  E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=1056768   warm=2  asserted
+ENCODE boxed-string/64KiB       body=65874    E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=73728     warm=2  asserted
+ENCODE boxed-string/6MiB        body=6291794  E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=6299648   warm=2  asserted
+ENCODE flat-map/1KiB            body=1393     E_sonic=2/112        B=0 sdk=2/112            above=0    scratch=4096      warm=2  asserted
+ENCODE flat-map/1MiB            body=1048883  E_sonic=2/112        B=0 sdk=2/112            above=0    scratch=1114112   warm=2  asserted
+ENCODE flat-map/64KiB           body=65873    E_sonic=2/112        B=0 sdk=2/112            above=0    scratch=73728     warm=2  asserted
+ENCODE flat-map/6MiB            body=6291665  E_sonic=2/112        B=0 sdk=2/112            above=0    scratch=6750208   warm=2  asserted
+ENCODE json.RawMessage/1KiB     body=1362     E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=4096      warm=2  asserted
+ENCODE json.RawMessage/1MiB     body=1075010  E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=1081344   warm=2  asserted
+ENCODE json.RawMessage/64KiB    body=66356    E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=73728     warm=2  asserted
+ENCODE json.RawMessage/6MiB     body=6516035  E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=6520832   warm=2  asserted
+ENCODE nested-map/1KiB          body=1362     E_sonic=9/784        B=0 sdk=9/784            above=0    scratch=4096      warm=2  asserted
+ENCODE nested-map/1MiB          body=1075010  E_sonic=7503/720208  B=0 sdk=7503/720208      above=0    scratch=1114112   warm=2  asserted
+ENCODE nested-map/64KiB         body=66356    E_sonic=471/45136    B=0 sdk=471/45136        above=0    scratch=73728     warm=2  asserted
+ENCODE nested-map/6MiB          body=6516035  E_sonic=45010/4320880 B=0 sdk=45010/4320880    above=0    scratch=6750208   warm=2  asserted
+ENCODE pointer-to-struct/1KiB   body=1404     E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=4096      warm=2  asserted
+ENCODE pointer-to-struct/1MiB   body=1058554  E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=1114112   warm=2  asserted
+ENCODE pointer-to-struct/64KiB  body=65868    E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=73728     warm=2  asserted
+ENCODE pointer-to-struct/6MiB   body=6404454  E_sonic=1/16         B=0 sdk=1/16             above=0    scratch=6750208   warm=2  asserted
+ENCODE string/1KiB              body=1362     E_sonic=1/16         B=1 sdk=2/32             above=16   scratch=4096      warm=2  asserted
+ENCODE string/1MiB              body=1048914  E_sonic=1/16         B=1 sdk=2/32             above=16   scratch=1056768   warm=2  asserted
+ENCODE string/64KiB             body=65874    E_sonic=1/16         B=1 sdk=2/32             above=16   scratch=73728     warm=2  asserted
+ENCODE string/6MiB              body=6291794  E_sonic=1/16         B=1 sdk=2/32             above=16   scratch=6299648   warm=2  asserted
+INLINE 3 questions: call 21/2696, 3 answers
+INLINE 4 questions: call 21/2888, 3 answers
+INLINE 5 questions: call 22/2696, 3 answers
+ITEM q20 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/2304 decode=24/6008
+ITEM q3 header=0/0 systemOneAlloc=1/704 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=3/240
+JSON models.json                      payload=89      marshal allocs=1 bytes=96      unmarshal allocs=2 bytes=80
+JSON result-20.json                   payload=2253    marshal allocs=1 bytes=4864    unmarshal allocs=25 bytes=6520
+JSON result.json                      payload=364     marshal allocs=1 bytes=704     unmarshal allocs=5 bytes=752
+JSON structured-legend-flood-1k.json  payload=57418   marshal allocs=1 bytes=98304   unmarshal allocs=91 bytes=213896
+LINEARITY allocations 1k 90 (members 1011), 10k 685 (members 10011), ratio 7.61 (bound 12), growth 0.0661 per member visited (the lazy pass's c₁ = 1/15 = 0.0667, recorded)
+LOG q3 default=20/2648 info-discard=21/2696 (+1/48) debug-discard=23/2744 (+3/96) info-text=21/2696 (+1/48)
+LOG q3+id default=20/2664 info-discard=22/2728 (+2/64) debug-discard=24/2776 (+4/112) info-text=22/2728 (+2/64)
+MEM i-declared-16MiB-sent-10B   outcome=eof   call=32/264408          callMiB=0.252 max=36/264696          spread=+4/+288 bound 327680 B
+MEM ii-declared-16MiB+1         outcome=large call=15/1784            callMiB=0.002 max=15/1784            spread=+0/+0 bound 65536 B
+MEM iii-undeclared-16MiB+1      outcome=large call=28/33560312        callMiB=32.006 max=28/33560312        spread=+0/+0 bound 33619968 B
+MEM iv-declared-16MiB           outcome=ok    call=24/33302456        callMiB=31.760 max=24/33302456        spread=+0/+0 bound 33619968 B
+MEM v-undeclared-16MiB          outcome=ok    call=30/33560504        callMiB=32.006 max=30/33560504        spread=+0/+0 bound 33619968 B
+MEM vi-declared-result.json     outcome=ok    call=18/2360            callMiB=0.002 max=18/2360            spread=+0/+0 bound 65901 B
+MEM vii-undeclared-result.json  outcome=ok    call=18/6072            callMiB=0.006 max=18/6072            spread=+0/+0 bound 69632 B
+SECRET header copy of 4 headers 3 allocations, credential scan 0
+SEQ boxed-RawJSON     encode-level calls 2..32: 0×9 | 1 | 0×10 | 1×2 | 0×9; bytes call 11 6523464, call 22 10193480, call 23 6728; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; asserted
+SEQ boxed-RawJSON     single-size call=19/2632 encode=0/0 rest=19; call 1 min 42/19400 max 42/19400; calls 1..32 42 | 19×9 | 20 | 19×10 | 20×2 | 19×9
+SEQ boxed-string      encode-level calls 2..32: 1×9 | 2 | 1×10 | 2×2 | 1×9; bytes call 11 6302296, call 22 9849432, call 23 6744; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6299648 6299648 6299648 6299648 6299648 6299648 6299648 6299648 6299648 6299648 6299648 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; asserted
+SEQ boxed-string      single-size call=20/2648 encode=1/16 rest=19; call 1 min 45/158808 max 45/158808; calls 1..32 45 | 20×9 | 21 | 20×10 | 21×2 | 20×9
+SEQ flat-map          encode-level calls 2..32: 2×9 | 31 | 2×10 | 4 | 3 | 2×9; bytes call 11 33248440, call 22 19008184, call 23 6840; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; recorded (G3 (b))
+SEQ flat-map          maximum calls 1..32 49 | 21×9 | 50 | 21×10 | 23 | 22 | 21×9
+SEQ flat-map          single-size call=21/2744 encode=2/112 rest=19; call 1 min 49/159240 max 49/159240; calls 1..32 49 | 21×9 | 50 | 21×10 | 23 | 22 | 21×9
+SEQ pointer-to-struct encode-level calls 2..32: 1×9 | 30 | 1×10 | 3 | 2 | 1×9; bytes call 11 33248344, call 22 19008088, call 23 6744; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 6750208 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; recorded (G3 (b))
+SEQ pointer-to-struct maximum calls 1..32 45 | 20×9 | 49 | 20×10 | 22 | 21 | 20×9
+SEQ pointer-to-struct single-size call=20/2648 encode=1/16 rest=19; call 1 min 45/158808 max 45/158808; calls 1..32 45 | 20×9 | 49 | 20×10 | 22 | 21 | 20×9
+TYPED failure at tone.choice: 5 allocations
+TYPED result bytes=364 answersDecode=4/688 decodeAs=0/0 systemOne=20/2648 ask=20/2648 (AC-P3: decodeAs < answersDecode; AC-P6: ask = systemOne + decodeAs)
+c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+c3-choice-20x10: 8 mallocs, 15512 bytes; prepared 8411 bytes
+c4a-score-20x8-text: 8 mallocs, 17304 bytes; prepared 7611 bytes
+c4b-score-20x8-json: 9 mallocs, 33560 bytes; prepared 14491 bytes
+c5-raw-100x3: 14 mallocs, 33968 bytes; prepared 15681 bytes
+c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+n8a-array-control: 10 mallocs, 24456 bytes; prepared 14681 bytes
+n8a-array-score: 10 mallocs, 24456 bytes; prepared 14681 bytes
+n8b-map-control: 13 mallocs, 105520 bytes; prepared 64581 bytes
+n8b-map-score: 13 mallocs, 105520 bytes; prepared 64581 bytes
+requestID allocates 0 times, want 0 (id "")
+requestID allocates 0 times, want 0 (id "***")
+requestID allocates 0 times, want 0 (id "req_123")
+requestID allocates 1 times, want 1 (id "***, ***, ***")
+requestID allocates 1 times, want 1 (id "req_1, req_2")
+runs of Answers() decode                       mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+runs of Ask[reviewAnswers]                     mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of DecodeAs[reviewAnswers]                mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of E_sonic                                mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of RawJSON/1KiB                           mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+runs of RawJSON/1KiB E_sonic                   mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of RawJSON/1MiB                           mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+runs of RawJSON/1MiB E_sonic                   mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of RawJSON/64KiB                          mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+runs of RawJSON/64KiB E_sonic                  mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of RawJSON/6MiB                           mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+runs of RawJSON/6MiB E_sonic                   mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of SystemOne                              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-RawJSON call 1                   mallocs/bytes: 42/19400 42/19400 42/19400 42/19400 42/19400
+runs of boxed-RawJSON call 10                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 11                  mallocs/bytes: 20/6523464 20/6523464 20/6523464 20/6523464 20/6523464
+runs of boxed-RawJSON call 12                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 13                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 14                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 15                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 16                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 20/2680
+runs of boxed-RawJSON call 17                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 18                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 19                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 2                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 20                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 21                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 22                  mallocs/bytes: 20/10193480 20/10193480 20/10193480 20/10193480 20/10193480
+runs of boxed-RawJSON call 23                  mallocs/bytes: 20/6728 20/6728 20/6728 20/6728 20/6728
+runs of boxed-RawJSON call 24                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 25                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 26                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 27                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 28                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 29                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 3                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 30                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 31                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 32                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 4                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 5                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 6                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 7                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 8                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON call 9                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON single-size call         mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+runs of boxed-RawJSON single-size encode       mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/1KiB                     mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/1KiB E_sonic             mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/1MiB                     mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/1MiB E_sonic             mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/64KiB                    mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/64KiB E_sonic            mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/6MiB                     mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-RawJSON/6MiB E_sonic             mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of boxed-string call 1                    mallocs/bytes: 45/158808 45/158808 45/158808 45/158808 45/158808
+runs of boxed-string call 10                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 11                   mallocs/bytes: 21/6302296 21/6302296 21/6302296 21/6302296 21/6302296
+runs of boxed-string call 12                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 13                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 14                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 15                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 16                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 17                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 18                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 19                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 2                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 20                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 21                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 22                   mallocs/bytes: 21/9849432 21/9849432 21/9849432 21/9849432 21/9849432
+runs of boxed-string call 23                   mallocs/bytes: 21/6744 21/6744 21/6744 21/6744 21/6744
+runs of boxed-string call 24                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 25                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 26                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 27                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 28                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 29                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 3                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 30                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 31                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 32                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 4                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 5                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 6                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 7                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 8                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string call 9                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string single-size call          mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of boxed-string single-size encode        mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/1KiB                      mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/1KiB E_sonic              mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/1MiB                      mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/1MiB E_sonic              mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/64KiB                     mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/64KiB E_sonic             mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/6MiB                      mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of boxed-string/6MiB E_sonic              mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of c1-sketch                              mallocs/bytes: 6/944 6/944 6/944 6/944 6/944
+runs of c2-noul-short                          mallocs/bytes: 3/224 3/224 3/224 3/224 3/224
+runs of c3-choice-20x10                        mallocs/bytes: 8/15512 8/15512 8/15512 8/15512 8/15512
+runs of c4a-score-20x8-text                    mallocs/bytes: 8/17304 8/17304 8/17304 8/17304 8/17304
+runs of c4b-score-20x8-json                    mallocs/bytes: 9/33560 9/33560 9/33560 9/33560 9/33560
+runs of c5-raw-100x3                           mallocs/bytes: 14/33968 14/33968 14/33968 14/33968 14/33968
+runs of c6-escapes                             mallocs/bytes: 9/8464 9/8464 9/8464 9/8464 9/8464
+runs of call with 3 questions                  mallocs/bytes: 21/2696 21/2696 21/2696 21/2696 21/2696
+runs of call with 4 questions                  mallocs/bytes: 21/2888 21/2888 21/2888 21/2888 21/2888
+runs of call with 5 questions                  mallocs/bytes: 22/2696 22/2696 22/2696 22/2696 22/2696
+runs of call/q3+id/debug-discard               mallocs/bytes: 24/2776 24/2776 24/2776 24/2776 24/2776
+runs of call/q3+id/default                     mallocs/bytes: 20/2664 20/2664 20/2664 20/2664 20/2664
+runs of call/q3+id/info-discard                mallocs/bytes: 22/2728 22/2728 22/2728 22/2728 22/2728
+runs of call/q3+id/info-text                   mallocs/bytes: 22/2728 22/2728 22/2728 22/2728 22/2728
+runs of call/q3/debug-discard                  mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
+runs of call/q3/default                        mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of call/q3/info-discard                   mallocs/bytes: 21/2696 21/2696 21/2696 21/2696 21/2696
+runs of call/q3/info-text                      mallocs/bytes: 21/2696 21/2696 21/2696 21/2696 21/2696
+runs of call/sdk                               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of deviation-lone-surrogate.json interned mallocs/bytes: 13/4544 13/4544 13/4544 13/4544 13/4544
+runs of deviation-lone-surrogate.json misses   mallocs/bytes: 14/4592 14/4592 14/4592 14/4592 14/4592
+runs of deviation-lone-surrogate.json naive    mallocs/bytes: 27/2752 27/2752 27/2752 27/2752 27/2752
+runs of duplicates.json interned               mallocs/bytes: 16/5312 16/5312 16/5312 16/5312 16/5312
+runs of duplicates.json misses                 mallocs/bytes: 17/5408 17/5408 17/5408 17/5408 17/5408
+runs of duplicates.json naive                  mallocs/bytes: 89/9160 89/9160 89/9160 89/9160 89/9160
+runs of escaped-member-names.json interned     mallocs/bytes: 29/5080 29/5080 29/5080 29/5080 29/5080
+runs of escaped-member-names.json misses       mallocs/bytes: 30/5192 30/5192 30/5192 30/5192 30/5192
+runs of escaped-member-names.json naive        mallocs/bytes: 51/4664 51/4664 51/4664 51/4664 51/4664
+runs of escaped-names.json interned            mallocs/bytes: 10/1224 10/1224 10/1224 10/1224 10/1224
+runs of escaped-names.json misses              mallocs/bytes: 11/1304 11/1304 11/1304 11/1304 11/1304
+runs of escaped-names.json naive               mallocs/bytes: 57/5064 57/5064 57/5064 57/5064 57/5064
+runs of flat-map call 1                        mallocs/bytes: 49/159240 49/159240 49/159240 49/159240 49/159240
+runs of flat-map call 10                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 11                       mallocs/bytes: 50/33248440 50/33248440 50/33248440 50/33248440 50/33248440
+runs of flat-map call 12                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 13                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 14                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 15                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 16                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 17                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 18                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 19                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 2                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 20                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 21                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 22                       mallocs/bytes: 23/19008184 23/19008184 23/19008184 23/19008184 23/19008184
+runs of flat-map call 23                       mallocs/bytes: 22/6840 22/6840 22/6840 22/6840 22/6840
+runs of flat-map call 24                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 25                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 26                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 27                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 28                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 29                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 3                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 30                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 31                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 32                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 4                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 5                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 6                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 7                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 8                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map call 9                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map single-size call              mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+runs of flat-map single-size encode            mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/1KiB                          mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/1KiB E_sonic                  mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/1MiB                          mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/1MiB E_sonic                  mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/64KiB                         mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/64KiB E_sonic                 mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/6MiB                          mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of flat-map/6MiB E_sonic                  mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+runs of floor round trip                       mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+runs of i-declared-16MiB-sent-10B              mallocs/bytes: 36/264696 32/264408 32/264408 32/264408 33/264472
+runs of ii-declared-16MiB+1                    mallocs/bytes: 15/1784 15/1784 15/1784 15/1784 15/1784
+runs of iii-undeclared-16MiB+1                 mallocs/bytes: 28/33560312 28/33560312 28/33560312 28/33560312 28/33560312
+runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+runs of item decode                            mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of item readBody                          mallocs/bytes: 1/384 1/384 1/384 1/384 1/384
+runs of item systemOneAlloc (the response, the first URL copy and up to four answer entries) mallocs/bytes: 1/704 1/704 1/704 1/704 1/704
+runs of iv-declared-16MiB                      mallocs/bytes: 24/33302456 24/33302456 24/33302456 24/33302456 24/33302456
+runs of json.RawMessage/1KiB                   mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/1KiB E_sonic           mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/1MiB                   mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/1MiB E_sonic           mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/64KiB                  mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/64KiB E_sonic          mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/6MiB                   mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of json.RawMessage/6MiB E_sonic           mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of models.json marshal                    mallocs/bytes: 1/96 1/96 1/96 1/96 1/96
+runs of models.json unmarshal                  mallocs/bytes: 2/80 2/80 2/80 2/80 2/80
+runs of n8a-array-control                      mallocs/bytes: 10/24456 10/24456 10/24456 10/24456 10/24456
+runs of n8a-array-score                        mallocs/bytes: 10/24456 10/24456 10/24456 10/24456 10/24456
+runs of n8b-map-control                        mallocs/bytes: 13/105520 13/105520 13/105520 13/105520 13/105520
+runs of n8b-map-score                          mallocs/bytes: 13/105520 13/105520 13/105520 13/105520 13/105520
+runs of nested-map/1KiB                        mallocs/bytes: 9/784 9/784 9/784 9/784 9/784
+runs of nested-map/1KiB E_sonic                mallocs/bytes: 9/784 9/784 9/784 9/784 9/784
+runs of nested-map/1MiB                        mallocs/bytes: 7503/720208 7503/720208 7503/720208 7503/720208 7503/720208
+runs of nested-map/1MiB E_sonic                mallocs/bytes: 7503/720208 7503/720208 7503/720208 7503/720208 7503/720208
+runs of nested-map/64KiB                       mallocs/bytes: 471/45136 471/45136 471/45136 471/45136 471/45136
+runs of nested-map/64KiB E_sonic               mallocs/bytes: 471/45136 471/45136 471/45136 471/45136 471/45136
+runs of nested-map/6MiB                        mallocs/bytes: 45010/4320880 45010/4320880 45010/4320880 45010/4320880 45010/4320880
+runs of nested-map/6MiB E_sonic                mallocs/bytes: 45010/4320880 45010/4320880 45010/4320880 45010/4320880 45010/4320880
+runs of no-answers.json interned               mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of no-answers.json misses                 mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of no-answers.json naive                  mallocs/bytes: 9/824 9/824 9/824 9/824 9/824
+runs of parity-big-exp-unknown.json interned   mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+runs of parity-big-exp-unknown.json misses     mallocs/bytes: 2/160 2/160 2/160 2/160 2/160
+runs of pointer-to-struct call 1               mallocs/bytes: 45/158808 45/158808 45/158808 45/158808 45/158808
+runs of pointer-to-struct call 10              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 11              mallocs/bytes: 49/33248344 49/33248344 49/33248344 49/33248344 49/33248344
+runs of pointer-to-struct call 12              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 13              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 14              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 15              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 16              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 17              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 18              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 19              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 2               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 20              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 21              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 22              mallocs/bytes: 22/19008088 22/19008088 22/19008088 22/19008088 22/19008088
+runs of pointer-to-struct call 23              mallocs/bytes: 21/6744 21/6744 21/6744 21/6744 21/6744
+runs of pointer-to-struct call 24              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 25              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 26              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 27              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 28              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 29              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 3               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 30              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 31              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 32              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 4               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 5               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 6               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 7               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 8               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct call 9               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct single-size call     mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+runs of pointer-to-struct single-size encode   mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/1KiB                 mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/1KiB E_sonic         mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/1MiB                 mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/1MiB E_sonic         mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/64KiB                mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/64KiB E_sonic        mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/6MiB                 mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of pointer-to-struct/6MiB E_sonic         mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of q20 call/sdk                           mallocs/bytes: 41/9888 41/9888 41/9888 41/9888 41/9888
+runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+runs of q20 item GetBody method value          mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+runs of q20 item Request (WithContext)         mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+runs of q20 item body.Open                     mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+runs of q20 item context.WithTimeout           mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+runs of q20 item decode                        mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+runs of q20 item header map                    mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+runs of q20 item readBody                      mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+runs of q20 item systemOneAlloc (the response, the first URL copy and up to four answer entries) mallocs/bytes: 1/256 1/256 1/256 1/256 1/256
+runs of result-20.json interned                mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+runs of result-20.json marshal                 mallocs/bytes: 1/4864 1/4864 1/4864 1/4864 1/4864
+runs of result-20.json misses                  mallocs/bytes: 25/6520 25/6520 25/6520 25/6520 25/6520
+runs of result-20.json naive                   mallocs/bytes: 214/19632 214/19632 214/19632 214/19632 214/19632
+runs of result-20.json unmarshal               mallocs/bytes: 25/6520 25/6520 25/6520 25/6520 25/6520
+runs of result.json interned                   mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+runs of result.json marshal                    mallocs/bytes: 1/704 1/704 1/704 1/704 1/704
+runs of result.json misses                     mallocs/bytes: 5/752 5/752 5/752 5/752 5/752
+runs of result.json naive                      mallocs/bytes: 40/3672 40/3672 40/3672 40/3672 40/3672
+runs of result.json unmarshal                  mallocs/bytes: 5/752 5/752 5/752 5/752 5/752
+runs of score-flood-mini.json interned         mallocs/bytes: 21/4184 21/4184 21/4184 21/4184 21/4184
+runs of score-flood-mini.json misses           mallocs/bytes: 22/4312 22/4312 22/4312 22/4312 22/4312
+runs of score-flood-mini.json naive            mallocs/bytes: 137/16448 137/16448 137/16448 137/16448 137/16448
+runs of string/1KiB                            mallocs/bytes: 2/32 2/32 2/32 2/32 2/32
+runs of string/1KiB E_sonic                    mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of string/1MiB                            mallocs/bytes: 2/32 2/32 2/32 2/32 2/32
+runs of string/1MiB E_sonic                    mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of string/64KiB                           mallocs/bytes: 2/32 2/32 2/32 2/32 2/32
+runs of string/64KiB E_sonic                   mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of string/6MiB                            mallocs/bytes: 2/32 2/32 2/32 2/32 2/32
+runs of string/6MiB E_sonic                    mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+runs of structured-legend-flood-10k.json interned mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+runs of structured-legend-flood-10k.json misses mallocs/bytes: 686/2005944 686/2005944 686/2005944 686/2005944 686/2005944
+runs of structured-legend-flood-10k.json naive mallocs/bytes: 65192/9721784 65192/9721784 65192/9721784 65192/9721784 65192/9721784
+runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+runs of structured-legend-flood-1k.json interned mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+runs of structured-legend-flood-1k.json marshal mallocs/bytes: 1/98304 1/98304 1/98304 1/98304 1/98304
+runs of structured-legend-flood-1k.json misses mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
+runs of structured-legend-flood-1k.json naive  mallocs/bytes: 6574/1036728 6574/1036728 6574/1036728 6574/1036728 6574/1036728
+runs of structured-legend-flood-1k.json unmarshal mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
+runs of structured-legend.json interned        mallocs/bytes: 11/4464 11/4464 11/4464 11/4464 11/4464
+runs of structured-legend.json misses          mallocs/bytes: 12/4528 12/4528 12/4528 12/4528 12/4528
+runs of structured-legend.json naive           mallocs/bytes: 27/2992 27/2992 27/2992 27/2992 27/2992
+runs of type-last.json interned                mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+runs of type-last.json misses                  mallocs/bytes: 5/752 5/752 5/752 5/752 5/752
+runs of type-last.json naive                   mallocs/bytes: 40/3672 40/3672 40/3672 40/3672 40/3672
+runs of unknown-answer-type.json interned      mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+runs of unknown-answer-type.json misses        mallocs/bytes: 2/160 2/160 2/160 2/160 2/160
+runs of unknown-answer-type.json naive         mallocs/bytes: 20/1960 20/1960 20/1960 20/1960 20/1960
+runs of v-undeclared-16MiB                     mallocs/bytes: 30/33560504 30/33560504 30/33560504 30/33560504 30/33560504
+runs of vi-declared-result.json                mallocs/bytes: 18/2360 18/2360 18/2360 18/2360 18/2360
+runs of vii-undeclared-result.json             mallocs/bytes: 18/6072 18/6072 18/6072 18/6072 18/6072
+the naive decode refuses parity-big-exp-unknown.json on this host: "Syntax error at index 133: float number is infinity\n\n\tul\":0.5}},\"meta\":{\"cost\":1e400}}\n\t..............................^.\n"

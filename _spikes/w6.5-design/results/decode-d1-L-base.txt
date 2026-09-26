@@ -1,0 +1,58 @@
+# 2026-09-26 18:03:46 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= base.test -test.run ^$ -test.bench ^BenchmarkDecode$/^(result|result-20)$ -test.benchmem -test.count 2
+# load before:  18:03:46 up 2 days, 13:28,  1 user,  load average: 0.54, 0.24, 0.09 | kernel: 0.54 0.24 0.09 1/622 969173 (MAXLOAD=12, waited 0 x 60 s)
+# commit: 93e9db1
+# rounds: 5, alternating base and cand
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# round 1 at 2026-09-26 18:03:46 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44         	  430392	      2789 ns/op	 130.50 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44         	  437588	      2789 ns/op	 130.49 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44      	   66670	     17865 ns/op	 126.11 MB/s	    6026 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44      	   67028	     17877 ns/op	 126.03 MB/s	    6026 B/op	      24 allocs/op
+PASS
+# round 2 at 2026-09-26 18:03:55 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44         	  424711	      2793 ns/op	 130.32 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44         	  434997	      2795 ns/op	 130.25 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44      	   67599	     17809 ns/op	 126.51 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44      	   66877	     17874 ns/op	 126.05 MB/s	    6025 B/op	      24 allocs/op
+PASS
+# round 3 at 2026-09-26 18:04:05 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44         	  425130	      2792 ns/op	 130.38 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44         	  427371	      2797 ns/op	 130.16 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44      	   67069	     17812 ns/op	 126.49 MB/s	    6025 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44      	   66842	     17859 ns/op	 126.16 MB/s	    6024 B/op	      24 allocs/op
+PASS
+# round 4 at 2026-09-26 18:04:15 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44         	  426292	      2792 ns/op	 130.36 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44         	  429894	      2788 ns/op	 130.54 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44      	   67693	     17735 ns/op	 127.04 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44      	   67635	     17786 ns/op	 126.68 MB/s	    6024 B/op	      24 allocs/op
+PASS
+# round 5 at 2026-09-26 18:04:24 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkDecode/result-44         	  418232	      2794 ns/op	 130.29 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-44         	  428145	      2796 ns/op	 130.20 MB/s	     689 B/op	       4 allocs/op
+BenchmarkDecode/result-20-44      	   66777	     17841 ns/op	 126.28 MB/s	    6024 B/op	      24 allocs/op
+BenchmarkDecode/result-20-44      	   68020	     17780 ns/op	 126.71 MB/s	    6024 B/op	      24 allocs/op
+PASS
+# exit 0 at 2026-09-26 18:04:34 UTC
+# load after:  18:04:34 up 2 days, 13:29,  1 user,  load average: 0.78, 0.35, 0.14 | kernel: 0.78 0.35 0.14 1/622 969432

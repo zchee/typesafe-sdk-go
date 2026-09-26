@@ -1,0 +1,29 @@
+// Command _probe prints what a caller sees of the SDK's type names: %T of a
+// response and an error, reflect's PkgPath, and the name of a user's generic
+// type instantiated with an SDK answer type, as PreparedFor reports it.
+package main
+
+import (
+	"errors"
+	"fmt"
+	"reflect"
+
+	typesafe "github.com/zchee/typesafe-sdk-go"
+)
+
+type set[A any] struct {
+	Extra A
+}
+
+func main() {
+	var resp typesafe.SystemOneResponse
+	fmt.Printf("%%T response: %T\n", &resp)
+	_, err := typesafe.NewClient(typesafe.WithAPIKey(""), typesafe.WithBaseURL("ftp://x"))
+	var ce *typesafe.ConfigError
+	fmt.Printf("%%T error: %T (errors.As: %v)\n", err, errors.As(err, &ce))
+	fmt.Printf("PkgPath(Client): %s\n", reflect.TypeFor[typesafe.Client]().PkgPath())
+	fmt.Printf("reflect String of a user's set[NoulAnswer]: %s\n", reflect.TypeFor[set[typesafe.NoulAnswer]]().String())
+	_, err = typesafe.PreparedFor[set[typesafe.NoulAnswer]]()
+	fmt.Printf("PreparedFor error: %v\n", err)
+	fmt.Printf("%%#v Answers: %#v\n", resp.Answers())
+}

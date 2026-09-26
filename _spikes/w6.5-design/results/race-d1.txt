@@ -1,0 +1,11 @@
+ok  	github.com/zchee/typesafe-sdk-go	25.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/alloctest	34.473s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.076s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	7.840s
+ok  	github.com/zchee/typesafe-sdk-go/internal/engine	1.025s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	11.212s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.211s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.041s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.052s
+race rc=0
+2026-09-27 02:54:47 JST

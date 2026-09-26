@@ -1,0 +1,26 @@
+unlisted: 1 zero-count block(s); add the row
+  | `body.go` | `appendState` | `return engine.AppendState[RawJSON, Content](buf, state)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/body.go` | `EncodeBody` | `f = Failure{Kind: FailEncode, Key: memberQuestions, Extra: true, Err: err}` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/falsy.go` | `FalsyJSON` | `return false` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/read.go` | `ReadBody` | `return nil, ErrTooLarge` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `var traceKeys` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `redact.go` | `isCredential` | `return engine.IsCredential(name, values, apiKey)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `retry.go` | `retryCountValue` | `return engine.RetryCountValue(attempt)` | 1 | <one-line reason> |
+docs/uncovered-lines.md:36: client.go readBody 'return nil, errTooLarge': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:93: internal/codec/visitor.go (*visitor).OnNull 'v.usage.OutputTokens, v.usage.HasOutputTokens, v.outBad = 0, false, false': stale: covered now: delete the row
+docs/uncovered-lines.md:110: internal/wire/prepared.go (*Builder).GrowLevels 'b.spans = slices.Grow(b.spans, n)': stale: covered now: delete the row
+docs/uncovered-lines.md:48: questions.go falsyJSON 'return false': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:55: text.go credentials.detail 'continue': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:56: text.go credentials.inChain 'continue': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:57: transport.go var traceKeys '{}': stale: no block has this key (the code changed): delete or update the row
+uncovered-lines: 16 failure(s)

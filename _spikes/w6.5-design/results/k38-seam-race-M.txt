@@ -1,0 +1,31 @@
+== K38 step as in fa26bfa's ci.yaml, (M) 2026-09-27 03:22:57 JST load averages: 11.98 10.02 9.04
+step rc=0 ; PASS lines: 20 FAIL lines: 0; ok lines: ok  	github.com/zchee/typesafe-sdk-go/internal/alloctest	6.921s ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.038s 
+== K38 mutant (TestAllocRequestID removed from the list) 2026-09-27 03:23:05 JST
+mutant rc=1: ::error::tests built only without -race missing from the list: TestAllocRequestID
+== seam base 2026-09-27 03:23:05 JST
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.268s
+      1 --- PASS: TestSeamTransitiveImports (0.16s)
+      1 --- PASS: TestSeamSonicJITPath (0.04s)
+      1 --- PASS: TestSeamSonicFallbackRule (0.00s)
+== seam d1 2026-09-27 03:23:06 JST
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.285s
+      1 --- PASS: TestSeamTransitiveImports (0.16s)
+      1 --- PASS: TestSeamSonicJITPath (0.04s)
+      1 --- PASS: TestSeamSonicFallbackRule (0.00s)
+== seam d2 2026-09-27 03:23:06 JST
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.280s
+      1 --- PASS: TestSeamTransitiveImports (0.16s)
+      1 --- PASS: TestSeamSonicJITPath (0.04s)
+      1 --- PASS: TestSeamSonicFallbackRule (0.00s)
+== D2 -race 2026-09-27 03:23:07 JST
+ok  	github.com/zchee/typesafe-sdk-go	12.194s
+ok  	github.com/zchee/typesafe-sdk-go/internal/alloctest	32.557s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.077s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	7.408s
+ok  	github.com/zchee/typesafe-sdk-go/internal/engine	11.595s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.758s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.173s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.040s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.040s
+race rc=0
+2026-09-27 03:23:40 JST

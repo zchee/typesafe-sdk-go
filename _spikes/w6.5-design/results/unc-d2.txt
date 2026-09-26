@@ -1,0 +1,182 @@
+Installed 1 package in 1ms
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `Ask` | `return engine.Ask[T](ctx, c, state, opts...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `DecodeAs` | `return engine.DecodeAs[T](resp)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `DefaultRetry` | `return engine.DefaultRetry()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `ExtraBody` | `return engine.ExtraBody(key, v)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `Header` | `return engine.Header(name, value)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `JSON` | `return engine.JSON(raw)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `Model` | `return engine.Model(name)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `NewClient` | `return engine.NewClient(opts...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `NewQuestions` | `return engine.NewQuestions()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `NoRetry` | `return engine.NoRetry()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `PreparedFor` | `return engine.PreparedFor[T]()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `Retry` | `return engine.Retry(policy)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `Text` | `return engine.Text(s)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `Timeout` | `return engine.Timeout(d)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithAPIKey` | `return engine.WithAPIKey(key)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithBaseURL` | `return engine.WithBaseURL(rawURL)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithClientTrace` | `return engine.WithClientTrace(trace)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithConnectTimeout` | `return engine.WithConnectTimeout(d)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithHTTPTransport` | `return engine.WithHTTPTransport(t)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithHTTPVersion` | `return engine.WithHTTPVersion(v)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithHeader` | `return engine.WithHeader(name, value)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithLogEndpointHost` | `return engine.WithLogEndpointHost(log)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithLogger` | `return engine.WithLogger(logger)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithMaxResponseBytes` | `return engine.WithMaxResponseBytes(n)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithModel` | `return engine.WithModel(model)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithNoTimeout` | `return engine.WithNoTimeout()` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithPretouch` | `return engine.WithPretouch(types...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithProxy` | `return engine.WithProxy(proxy)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithRetry` | `return engine.WithRetry(policy)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithRootCAs` | `return engine.WithRootCAs(pool)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithRoundTripper` | `return engine.WithRoundTripper(rt)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithRuntimeHeader` | `return engine.WithRuntimeHeader(send)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithTLSConfig` | `return engine.WithTLSConfig(cfg)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithTimeout` | `return engine.WithTimeout(d)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `api.go` | `WithUserAgentProduct` | `return engine.WithUserAgentProduct(product)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `ConfigOf` | `return c.cfg.config` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `ResponseMetaOf` | `return &r.meta` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `ResponseResultOf` | `return &r.res` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `SystemOneEndpointOf` | `return c.systemOneEndpoint` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `WireOf` | `if p == nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `WireOf` | `return &p.w` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/alloc_bridge.go` | `WireOf` | `return nil` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `(*Client).attempt` | `return wire.ResponseMeta{}, newConnectionError(err.Error(), err, false)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/client.go` | `ReadBody` | `return nil, errTooLarge` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/config.go` | `dropDefaultPort` | `return raw` | 2 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/config.go` | `resolveEndpoints` | `return nil, nil, newConfigError(source + " is not a valid URL.")` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*APIError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*ConfigError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*ConnectionError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*InvalidRequestError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*ResponseTooLargeError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*ResponseValidationError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `(*TimeoutError).typesafeError` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/errors.go` | `parsePythonFloat` | `return 0, false` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/questions.go` | `(*Questions).Prepare` | `return nil, newConfigError("Question set cannot be prepared: "+err.Error(), err)` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/questions.go` | `FalsyJSON` | `return false` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/retry.go` | `(*retryState).wait` | `return waitError(ctx)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/retry.go` | `roundMillis` | `return seconds` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*pathText).fixed` | `return` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*pathText).fixed` | `t.b = append(t.b, "\u2026"...)` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*pathText).name` | `return` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `(*pathText).name` | `t.full = true` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.detail` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/text.go` | `Credentials.inChain` | `continue` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/transport.go` | `var traceKeys` | `{}` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `(*tagSpec).keyOutside` | `return "levels"` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `(*tagSpec).keyOutside` | `return "no"` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `(*tagSpec).keyOutside` | `return "yes"` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `kindKeys` | `return "a choice takes kind, name, instructions, options and optional"` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `kindKeys` | `return "a score takes kind, name, instructions, levels and optional"` | 1 | <one-line reason> |
+unlisted: 2 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `lookupTag` | `break` | 2 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `parseLevels` | `return nil, err` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `parseOptions` | `return nil, err` | 1 | <one-line reason> |
+unlisted: 1 zero-count block(s); add the row
+  | `internal/engine/typed.go` | `unescape` | `return "", errUnterminated` | 1 | <one-line reason> |
+docs/uncovered-lines.md:35: client.go (*Client).attempt 'return wire.ResponseMeta{}, newConnectionError(err.Error(), err, false)': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:36: client.go readBody 'return nil, errTooLarge': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:38: config.go dropDefaultPort 'return raw': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:37: config.go resolveEndpoints 'return nil, nil, newConfigError(source + " is not a valid URL.")': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:41: errors.go (*APIError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:39: errors.go (*ConfigError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:44: errors.go (*ConnectionError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:40: errors.go (*InvalidRequestError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:43: errors.go (*ResponseTooLargeError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:42: errors.go (*ResponseValidationError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:45: errors.go (*TimeoutError).typesafeError '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:46: errors.go parsePythonFloat 'return 0, false': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:47: questions.go (*Questions).Prepare 'return nil, newConfigError("Question set cannot be prepared: "+err.Error(), err)': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:48: questions.go falsyJSON 'return false': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:49: retry.go (*retryState).wait 'return waitError(ctx)': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:50: retry.go roundMillis 'return seconds': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:51: text.go (*pathText).fixed 'return': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:52: text.go (*pathText).fixed 't.b = append(t.b, "\\u2026"...)': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:53: text.go (*pathText).name 'return': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:54: text.go (*pathText).name 't.full = true': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:55: text.go credentials.detail 'continue': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:56: text.go credentials.inChain 'continue': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:57: transport.go var traceKeys '{}': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:63: typed.go (*tagSpec).keyOutside 'return "levels"': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:62: typed.go (*tagSpec).keyOutside 'return "no"': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:61: typed.go (*tagSpec).keyOutside 'return "yes"': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:58: typed.go kindKeys 'return "a choice takes kind, name, instructions, options and optional"': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:59: typed.go kindKeys 'return "a score takes kind, name, instructions, levels and optional"': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:60: typed.go lookupTag 'break': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:65: typed.go parseLevels 'return nil, err': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:64: typed.go parseOptions 'return nil, err': stale: no block has this key (the code changed): delete or update the row
+docs/uncovered-lines.md:66: typed.go unescape 'return "", errUnterminated': stale: no block has this key (the code changed): delete or update the row
+uncovered-lines: 106 failure(s)

@@ -1,0 +1,12 @@
+== base -coverpkg=./... 2026-09-27 03:18:41 JST load averages: 11.64 9.66 8.73
+go test rc=0 (FAIL lines: 0)
+checker rc=1 unlisted-blocks=0 stale-rows=2
+total:										(statements)			96.6%
+== d1 -coverpkg=./... 2026-09-27 03:19:54 JST load averages: 8.39 9.17 8.62
+go test rc=0 (FAIL lines: 0)
+checker rc=1 unlisted-blocks=10 stale-rows=7
+total:										(statements)			96.7%
+== d2 -coverpkg=./... 2026-09-27 03:20:38 JST load averages: 8.68 9.22 8.67
+go test rc=0 (FAIL lines: 0)
+checker rc=1 unlisted-blocks=61 stale-rows=34
+total:										(statements)			96.2%

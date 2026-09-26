@@ -1,0 +1,22 @@
+# _probe (the program in _spikes/w6.5-design/typeprobe.go) run in each tree on (M), go1.27.1, GOEXPERIMENT=nosimd,noruntimesecret; recorded 2026-09-27 03:07:43 JST
+== base
+%T response: *typesafe.SystemOneResponse
+%T error: *typesafe.ConfigError (errors.As: true)
+PkgPath(Client): github.com/zchee/typesafe-sdk-go
+reflect String of a user's set[NoulAnswer]: main.set[github.com/zchee/typesafe-sdk-go.NoulAnswer]
+PreparedFor error: PreparedFor[main.set[github.com/zchee/typesafe-sdk-go.NoulAnswer]]: field Extra: the NoulAnswer field has no typesafe tag, so no kind; every answer field asks a question: add a tag such as typesafe:"kind=noul".
+%#v Answers: typesafe.Answers{s:(*wire.Answers)(0x2b57558e8028)}
+== d1
+%T response: *typesafe.SystemOneResponse
+%T error: *typesafe.ConfigError (errors.As: true)
+PkgPath(Client): github.com/zchee/typesafe-sdk-go
+reflect String of a user's set[NoulAnswer]: main.set[github.com/zchee/typesafe-sdk-go.NoulAnswer]
+PreparedFor error: PreparedFor[main.set[github.com/zchee/typesafe-sdk-go.NoulAnswer]]: field Extra: the NoulAnswer field has no typesafe tag, so no kind; every answer field asks a question: add a tag such as typesafe:"kind=noul".
+%#v Answers: typesafe.Answers{s:(*wire.Answers)(0x649fe4c3a028)}
+== d2
+%T response: *engine.SystemOneResponse
+%T error: *engine.ConfigError (errors.As: true)
+PkgPath(Client): github.com/zchee/typesafe-sdk-go/internal/engine
+reflect String of a user's set[NoulAnswer]: main.set[github.com/zchee/typesafe-sdk-go/internal/engine.NoulAnswer]
+PreparedFor error: PreparedFor[main.set[github.com/zchee/typesafe-sdk-go/internal/engine.NoulAnswer]]: field Extra: the NoulAnswer field has no typesafe tag, so no kind; every answer field asks a question: add a tag such as typesafe:"kind=noul".
+%#v Answers: engine.Answers{s:(*wire.Answers)(0x314a57012028)}

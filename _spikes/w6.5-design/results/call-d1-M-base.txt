@@ -1,0 +1,78 @@
+# 2026-09-27 03:01:47 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret base.test -test.run ^$ -test.bench ^BenchmarkCall$/^(sdk|naive)(-q20)?$ -test.benchmem -test.count 2
+# load before:  3:01  up 5 days,  2:07, 1 user, load averages: 5.35 7.83 7.99 | kernel: { 5.35 7.83 7.99 } (MAXLOAD=12, waited 0 x 60 s)
+# commit: 93e9db1
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-27 03:01:47 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  271202	      4615 ns/op	    2875 B/op	      20 allocs/op
+BenchmarkCall/sdk-16         	  269419	      4540 ns/op	    2895 B/op	      20 allocs/op
+BenchmarkCall/naive-16       	  286666	      4064 ns/op	   11058 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  307706	      4003 ns/op	   11340 B/op	      54 allocs/op
+BenchmarkCall/sdk-q20-16     	   56329	     21306 ns/op	   10716 B/op	      41 allocs/op
+BenchmarkCall/sdk-q20-16     	   55921	     21360 ns/op	   10816 B/op	      41 allocs/op
+BenchmarkCall/naive-q20-16   	   89506	     13494 ns/op	   39126 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   88132	     13328 ns/op	   38822 B/op	     127 allocs/op
+PASS
+# round 2 at 2026-09-27 03:02:06 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  268714	      4440 ns/op	    2858 B/op	      20 allocs/op
+BenchmarkCall/sdk-16         	  271252	      4470 ns/op	    2875 B/op	      20 allocs/op
+BenchmarkCall/naive-16       	  275163	      3951 ns/op	   11411 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  289849	      4114 ns/op	   11335 B/op	      54 allocs/op
+BenchmarkCall/sdk-q20-16     	   56274	     21456 ns/op	   10787 B/op	      41 allocs/op
+BenchmarkCall/sdk-q20-16     	   56160	     21438 ns/op	   10861 B/op	      41 allocs/op
+BenchmarkCall/naive-q20-16   	   92920	     13007 ns/op	   39662 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   92806	     12979 ns/op	   40064 B/op	     127 allocs/op
+PASS
+# round 3 at 2026-09-27 03:02:25 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  264615	      4452 ns/op	    2858 B/op	      20 allocs/op
+BenchmarkCall/sdk-16         	  266176	      4409 ns/op	    2860 B/op	      20 allocs/op
+BenchmarkCall/naive-16       	  304424	      3896 ns/op	   11257 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  321993	      4072 ns/op	   11114 B/op	      54 allocs/op
+BenchmarkCall/sdk-q20-16     	   55803	     23538 ns/op	   10791 B/op	      41 allocs/op
+BenchmarkCall/sdk-q20-16     	   55640	     21511 ns/op	   10798 B/op	      41 allocs/op
+BenchmarkCall/naive-q20-16   	   87721	     13580 ns/op	   39670 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   88906	     13724 ns/op	   39548 B/op	     127 allocs/op
+PASS
+# round 4 at 2026-09-27 03:02:45 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  269577	      4597 ns/op	    2878 B/op	      20 allocs/op
+BenchmarkCall/sdk-16         	  259446	      5042 ns/op	    2900 B/op	      20 allocs/op
+BenchmarkCall/naive-16       	  296784	      3793 ns/op	   11198 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  309747	      3692 ns/op	   11043 B/op	      54 allocs/op
+BenchmarkCall/sdk-q20-16     	   55442	     21570 ns/op	   10814 B/op	      41 allocs/op
+BenchmarkCall/sdk-q20-16     	   52100	     21837 ns/op	   11302 B/op	      41 allocs/op
+BenchmarkCall/naive-q20-16   	   92709	     13109 ns/op	   40986 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   92502	     12505 ns/op	   40485 B/op	     127 allocs/op
+PASS
+# round 5 at 2026-09-27 03:03:04 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  271154	      4448 ns/op	    2858 B/op	      20 allocs/op
+BenchmarkCall/sdk-16         	  262908	      4349 ns/op	    2886 B/op	      20 allocs/op
+BenchmarkCall/naive-16       	  307987	      3738 ns/op	   11145 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  332413	      3656 ns/op	   11183 B/op	      54 allocs/op
+BenchmarkCall/sdk-q20-16     	   56432	     21086 ns/op	   10819 B/op	      41 allocs/op
+BenchmarkCall/sdk-q20-16     	   57385	     20798 ns/op	   10706 B/op	      41 allocs/op
+BenchmarkCall/naive-q20-16   	   95704	     13157 ns/op	   39712 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   93054	     13143 ns/op	   39574 B/op	     127 allocs/op
+PASS
+# exit 0 at 2026-09-27 03:03:23 JST
+# load after:  3:03  up 5 days,  2:09, 1 user, load averages: 8.35 8.24 8.14 | kernel: { 8.35 8.24 8.14 }
