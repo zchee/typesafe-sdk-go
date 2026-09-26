@@ -1,0 +1,48 @@
+# 2026-09-26 12:05:13 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run ^(TestAllocWholeCall|TestMemStatsCap|TestAllocLoggedCall)$ -v .
+# load before: 12:05  up 4 days, 11:11, 1 user, load averages: 6.65 7.72 8.61 | kernel: { 6.65 7.72 8.61 } (MAXLOAD=none, waited 0 x 60 s)
+# base: c196649
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestAllocWholeCall
+    alloc_call_test.go:125: runs of E_sonic                                mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    alloc_call_test.go:139: runs of floor round trip                       mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    alloc_call_test.go:141: runs of call/sdk                               mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    alloc_call_test.go:149: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=22/2648 own=14/2008 (N = 15 provisional, target 12)
+    alloc_call_test.go:151: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_call_test.go:151: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_call_test.go:151: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    alloc_call_test.go:151: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    alloc_call_test.go:151: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    alloc_call_test.go:151: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    alloc_call_test.go:151: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    alloc_call_test.go:151: runs of item readBody                          mallocs/bytes: 1/384 1/384 1/384 1/384 1/384
+    alloc_call_test.go:151: runs of item decode                            mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_call_test.go:152: ITEM q3 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/384 decode=4/688
+--- PASS: TestAllocWholeCall (0.00s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:364: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264320 38/264032 38/264032 38/264032 38/264032
+    alloc_call_test.go:374: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/264032          callMiB=0.252 max=42/264320          spread=+4/+288 bound 327680 B
+    alloc_call_test.go:364: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1368 16/1368 16/1368 16/1368 16/1368
+    alloc_call_test.go:374: MEM ii-declared-16MiB+1         outcome=large call=16/1368            callMiB=0.001 max=16/1368            spread=+0/+0 bound 65536 B
+    alloc_call_test.go:364: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559896 29/33559896 29/33559896 29/33559896 29/33559896
+    alloc_call_test.go:374: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559896        callMiB=32.005 max=29/33559896        spread=+0/+0 bound 33619968 B
+    alloc_call_test.go:364: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302488 26/33302488 26/33302488 26/33302488 26/33302488
+    alloc_call_test.go:374: MEM iv-declared-16MiB           outcome=ok    call=26/33302488        callMiB=31.760 max=26/33302488        spread=+0/+0 bound 33619968 B
+    alloc_call_test.go:364: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560536 32/33560536 32/33560536 32/33560536 32/33560536
+    alloc_call_test.go:374: MEM v-undeclared-16MiB          outcome=ok    call=32/33560536        callMiB=32.006 max=32/33560536        spread=+0/+0 bound 33619968 B
+    alloc_call_test.go:364: runs of vi-declared-result.json                mallocs/bytes: 20/2392 20/2392 20/2392 20/2392 20/2392
+    alloc_call_test.go:374: MEM vi-declared-result.json     outcome=ok    call=20/2392            callMiB=0.002 max=20/2392            spread=+0/+0 recorded
+    alloc_call_test.go:364: runs of vii-undeclared-result.json             mallocs/bytes: 20/6104 20/6104 20/6104 20/6104 20/6104
+    alloc_call_test.go:374: MEM vii-undeclared-result.json  outcome=ok    call=20/6104            callMiB=0.006 max=20/6104            spread=+0/+0 recorded
+--- PASS: TestMemStatsCap (0.14s)
+=== RUN   TestAllocLoggedCall
+    alloc_telemetry_test.go:80: runs of call/default                           mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    alloc_telemetry_test.go:80: runs of call/info-discard                      mallocs/bytes: 23/2696 23/2696 23/2696 23/2696 23/2696
+    alloc_telemetry_test.go:80: runs of call/debug-discard                     mallocs/bytes: 25/2744 25/2744 25/2744 25/2744 25/2744
+    alloc_telemetry_test.go:80: runs of call/info-text                         mallocs/bytes: 23/2696 23/2696 23/2696 23/2696 23/2696
+    alloc_telemetry_test.go:92: LOG q3 default=22/2648 info-discard=23/2696 (+1/48) debug-discard=25/2744 (+3/96) info-text=23/2696 (+1/48)
+--- PASS: TestAllocLoggedCall (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.156s
+# exit 0 at 2026-09-26 12:05:14 JST
+# load after: 12:05  up 4 days, 11:11, 1 user, load averages: 6.65 7.72 8.61 | kernel: { 6.65 7.72 8.61 }
