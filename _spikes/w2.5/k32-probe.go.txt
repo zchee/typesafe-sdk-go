@@ -1,0 +1,165 @@
+// Throwaway K32 probe of p2-cifix-2 (never compiled as part of the module):
+// copy to ./zz_k32_probe_test.go and run go test -run '^TestK32Probe$' -memprofilerate=1 -v .
+//go:build !race
+
+package typesafe
+
+// Throwaway K32 probe (never committed): per-run heap-profile stack diffs of
+// TestMemStatsCap case (i). Run with -memprofilerate=1.
+
+import (
+	"fmt"
+	"net/http"
+	"os"
+	"runtime"
+	"slices"
+	"strconv"
+	"strings"
+	"testing"
+
+	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
+)
+
+type k32Key [32]uintptr
+
+type k32Delta struct{ objs, bytes int64 }
+
+func TestK32Probe(t *testing.T) {
+	if runtime.MemProfileRate != 1 {
+		t.Skip("needs -memprofilerate=1")
+	}
+	testsupport.QuietRuntime(t)
+	if os.Getenv("K32_LOCK") != "" {
+		runtime.LockOSThread()
+		defer runtime.UnlockOSThread()
+	}
+	ctx := t.Context()
+	const limit = DefaultMaxResponseBytes
+	small := testsupport.Fixture(t, "result.json")
+	qs := q3Questions(t)
+	state := newAllocState()
+	n := 30
+	if s := os.Getenv("K32_RUNS"); s != "" {
+		n, _ = strconv.Atoi(s)
+	}
+	mode := os.Getenv("K32_MODE") // "" = TestMemStatsCap setup; "nowarm" = no warm call
+	reply := testsupport.Reply{Body: []byte(`{"model":"`), ContentLength: limit}
+	warm := newTestClient(t, &testsupport.Recorder{Discard: true, Replies: []testsupport.Reply{testsupport.JSON(http.StatusOK, small)}})
+	c := newTestClient(t, &testsupport.Recorder{Discard: true, Replies: []testsupport.Reply{reply}})
+	snaps := make([][]runtime.MemProfileRecord, n+1)
+	sizes := make([]int, n+1)
+	for i := range snaps {
+		snaps[i] = make([]runtime.MemProfileRecord, 60000)
+	}
+	runs := make([]testsupport.Allocs, n)
+	var err error
+	for k := 0; k <= n; k++ {
+		runtime.GC()
+		cnt, ok := runtime.MemProfile(snaps[k], true)
+		if !ok {
+			t.Fatalf("profile buffer too small: %d", cnt)
+		}
+		sizes[k] = cnt
+		if k == n {
+			break
+		}
+		if mode != "nowarm" {
+			if _, werr := warm.SystemOne(ctx, state, qs); werr != nil {
+				t.Fatal(werr)
+			}
+		}
+		runs[k] = testsupport.Measure(func() { sinkResponse, err = c.SystemOne(ctx, state, qs, Retry(NoRetry())) })
+		if got := outcomeOf(err); got != "eof" {
+			t.Fatalf("outcome %q", got)
+		}
+	}
+	index := func(k int) map[k32Key]k32Delta {
+		m := make(map[k32Key]k32Delta, sizes[k])
+		for _, r := range snaps[k][:sizes[k]] {
+			m[r.Stack0] = k32Delta{r.AllocObjects, r.AllocBytes}
+		}
+		return m
+	}
+	idx := make([]map[k32Key]k32Delta, n+1)
+	for k := range idx {
+		idx[k] = index(k)
+	}
+	diffs := make([]map[k32Key]k32Delta, n)
+	for k := range diffs {
+		d := map[k32Key]k32Delta{}
+		for key, after := range idx[k+1] {
+			before := idx[k][key]
+			if after != before {
+				d[key] = k32Delta{after.objs - before.objs, after.bytes - before.bytes}
+			}
+		}
+		diffs[k] = d
+	}
+	var sb strings.Builder
+	for k, r := range runs {
+		fmt.Fprintf(&sb, "run %2d section=%s\n", k, r)
+	}
+	// The reference is the last run whose section equals the minimum.
+	least := runs[0]
+	for _, r := range runs {
+		least.Mallocs = min(least.Mallocs, r.Mallocs)
+		least.Bytes = min(least.Bytes, r.Bytes)
+	}
+	refK := -1
+	for k, r := range runs {
+		if r == least {
+			refK = k
+		}
+	}
+	if refK < 0 {
+		t.Fatalf("no run equals the minimum %s", least)
+	}
+	ref := diffs[refK]
+	for k := range diffs {
+		if runs[k] == least || (k == 0 && os.Getenv("K32_SKIP0") != "") {
+			continue
+		}
+		var keys []k32Key
+		for key := range diffs[k] {
+			if diffs[k][key] != ref[key] {
+				keys = append(keys, key)
+			}
+		}
+		for key := range ref {
+			if _, ok := diffs[k][key]; !ok {
+				keys = append(keys, key)
+			}
+		}
+		if len(keys) == 0 {
+			continue
+		}
+		slices.SortFunc(keys, func(a, b k32Key) int { return slices.Compare(a[:], b[:]) })
+		fmt.Fprintf(&sb, "=== run %d section=%s differs from run %d (%s) in %d stacks\n", k, runs[k], refK, runs[refK], len(keys))
+		for _, key := range keys {
+			fmt.Fprintf(&sb, "  run=%+d objs/%+d B  ref=%+d objs/%+d B\n", diffs[k][key].objs, diffs[k][key].bytes, ref[key].objs, ref[key].bytes)
+			frames := runtime.CallersFrames(slices.DeleteFunc(slices.Clone(key[:]), func(p uintptr) bool { return p == 0 }))
+			for {
+				f, more := frames.Next()
+				fmt.Fprintf(&sb, "      %s %s:%d\n", f.Function, f.File, f.Line)
+				if !more {
+					break
+				}
+			}
+		}
+	}
+	if dump := os.Getenv("K32_DUMP_REF"); dump != "" {
+		fmt.Fprintf(&sb, "=== reference run %d stacks\n", refK)
+		for key, d := range ref {
+			fmt.Fprintf(&sb, "  %+d objs/%+d B\n", d.objs, d.bytes)
+			frames := runtime.CallersFrames(slices.DeleteFunc(slices.Clone(key[:]), func(p uintptr) bool { return p == 0 }))
+			for {
+				f, more := frames.Next()
+				fmt.Fprintf(&sb, "      %s %s:%d\n", f.Function, f.File, f.Line)
+				if !more {
+					break
+				}
+			}
+		}
+	}
+	t.Log("\n" + sb.String())
+}

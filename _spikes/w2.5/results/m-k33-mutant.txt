@@ -1,0 +1,237 @@
+# 2026-09-26 09:11:59 JST (M) tree=3d1205c+mutant-K33-M1 (CloseConns closes HTTP/2 connections at once) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock loops=0 GOEXPERIMENT=nosimd,noruntimesecret go test -count=5 -run ^(TestLoopbackCloseConnsDrains|TestTransportErrorsBecomeConnectionOrTimeout)$ -v . ./internal/testsupport/
+# load before:  9:11  up 4 days,  8:18, 1 user, load averages: 3.48 4.72 5.19
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# load with 0 loops:  9:12  up 4 days,  8:18, 1 user, load averages: 3.44 4.69 5.18
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError)
+--- FAIL: TestTransportErrorsBecomeConnectionOrTimeout (1.22s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout) (0.30s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.00s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout) (0.31s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError) (0.00s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+--- FAIL: TestTransportErrorsBecomeConnectionOrTimeout (1.22s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError) (0.00s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout) (0.31s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server (0.31s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.00s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError
+--- FAIL: TestTransportErrorsBecomeConnectionOrTimeout (1.22s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError) (0.00s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout) (0.31s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server (0.30s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError (0.00s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}
+--- FAIL: TestTransportErrorsBecomeConnectionOrTimeout (1.22s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout) (0.31s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError) (0.00s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.00s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:156: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want GOAWAY (when sent) < close_notify and FIN < the client's close < the socket's close
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout)
+--- FAIL: TestTransportErrorsBecomeConnectionOrTimeout (1.23s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_proxy_that_answers_the_CONNECT_with_502_is_a_*ConnectionError_(K16) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_before_the_response_is_a_*TimeoutError_(ReadTimeout) (0.31s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/success:_WithNoTimeout_outlasts_a_slow_server (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_TLS-silent_API_host_is_a_*TimeoutError_(ConnectTimeout) (0.30s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_connection_is_a_*ConnectionError_(ConnectError) (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_connection_reset_mid-body_is_a_*ConnectionError_(ReadError) (0.00s)
+    --- FAIL: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_refused_proxy_is_a_proxy_*ConnectionError (0.00s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_the_attempt's_deadline_while_the_body_is_read_is_a_*TimeoutError_(ReadTimeout) (0.30s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	6.135s
+=== RUN   TestLoopbackCloseConnsDrains
+=== RUN   TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+=== RUN   TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:917: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackCloseConnsDrains (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close (0.00s)
+=== RUN   TestLoopbackCloseConnsDrains
+=== RUN   TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:917: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+=== RUN   TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+--- FAIL: TestLoopbackCloseConnsDrains (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers (0.00s)
+=== RUN   TestLoopbackCloseConnsDrains
+=== RUN   TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+=== RUN   TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:917: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackCloseConnsDrains (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close (0.00s)
+=== RUN   TestLoopbackCloseConnsDrains
+=== RUN   TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+=== RUN   TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:917: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackCloseConnsDrains (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close (0.00s)
+=== RUN   TestLoopbackCloseConnsDrains
+=== RUN   TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:1 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+=== RUN   TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close
+    loopback_test.go:911: drained frames (-want +got):
+          []string(
+        - 	{"PING"},
+        + 	nil,
+          )
+    loopback_test.go:914: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:917: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackCloseConnsDrains (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_a_clean_close_after_the_response_headers (0.00s)
+    --- FAIL: TestLoopbackCloseConnsDrains/success:_GOAWAY,_then_a_clean_close (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.022s
+FAIL
+# load at the end:  9:12  up 4 days,  8:18, 1 user, load averages: 3.16 4.61 5.15
+# exit 1 at 2026-09-26 09:12:11 JST; yes loops left: []

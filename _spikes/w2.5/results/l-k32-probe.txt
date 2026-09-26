@@ -1,0 +1,544 @@
+# p2-cifix-2 K32 heap-profile probe on (L): _spikes/w2.5/k32-probe.go.txt copied to ./zz_k32_probe_test.go at b5b1a2b; env K32_RUNS=40 K32_SKIP0=1; runtime.MemProfileRate 1; each run's stacks diffed against a run at the minimum; only runs above the minimum are listed with the stacks that differ. ToolTags [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1].
+# host=debian-13-trixie-x07x nproc=44 go version go1.27.1 linux/amd64 yes_loops=0 cpuset=0,1
+# start 2026-09-25T23:48:14Z load 2.95 15.93 21.77
+# cmd /tmp/ts-spike/p2c2/root.test -test.count=10 -test.cpu 2 -test.memprofilerate=1 -test.run ^TestK32Probe$ -test.v
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=39/264016
+        === run 39 section=39/264016 differs from run 38 (38/263952) in 1 stacks
+          run=+1 objs/+64 B  ref=+0 objs/+0 B
+              runtime.mallocgc /tmp/ts-spike/go/src/runtime/malloc.go:1082
+              runtime.buildInterfaceSwitchCache /tmp/ts-spike/go/src/runtime/iface.go:650
+              runtime.interfaceSwitch /tmp/ts-spike/go/src/runtime/iface.go:618
+              errors.is /tmp/ts-spike/go/src/errors/wrap.go:62
+              errors.Is /tmp/ts-spike/go/src/errors/wrap.go:51
+              github.com/zchee/typesafe-sdk-go.readBody /tmp/ts-spike/src-p2-cifix-2/client.go:523
+              github.com/zchee/typesafe-sdk-go.(*Client).attempt /tmp/ts-spike/src-p2-cifix-2/client.go:394
+              github.com/zchee/typesafe-sdk-go.(*Client).send /tmp/ts-spike/src-p2-cifix-2/client.go:303
+              github.com/zchee/typesafe-sdk-go.(*Client).SystemOne /tmp/ts-spike/src-p2-cifix-2/client.go:239
+              github.com/zchee/typesafe-sdk-go.TestK32Probe.func1 /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/alloc.go:105
+              github.com/zchee/typesafe-sdk-go.TestK32Probe /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              testing.tRunner /tmp/ts-spike/go/src/testing/testing.go:2193
+              runtime.goexit /tmp/ts-spike/go/src/runtime/asm_amd64.s:1264
+        
+--- PASS: TestK32Probe (0.10s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=39/264000
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        === run 11 section=39/264000 differs from run 39 (38/263952) in 1 stacks
+          run=+1 objs/+48 B  ref=+0 objs/+0 B
+              runtime.mallocgc /tmp/ts-spike/go/src/runtime/malloc.go:1082
+              runtime.buildTypeAssertCache /tmp/ts-spike/go/src/runtime/iface.go:544
+              runtime.typeAssert /tmp/ts-spike/go/src/runtime/iface.go:515
+              errors.as /tmp/ts-spike/go/src/errors/wrap.go:127
+              errors.As /tmp/ts-spike/go/src/errors/wrap.go:118
+              github.com/zchee/typesafe-sdk-go.(*Client).attemptError /tmp/ts-spike/src-p2-cifix-2/client.go:455
+              github.com/zchee/typesafe-sdk-go.(*Client).attempt /tmp/ts-spike/src-p2-cifix-2/client.go:406
+              github.com/zchee/typesafe-sdk-go.(*Client).send /tmp/ts-spike/src-p2-cifix-2/client.go:303
+              github.com/zchee/typesafe-sdk-go.(*Client).SystemOne /tmp/ts-spike/src-p2-cifix-2/client.go:239
+              github.com/zchee/typesafe-sdk-go.TestK32Probe.func1 /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/alloc.go:105
+              github.com/zchee/typesafe-sdk-go.TestK32Probe /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              testing.tRunner /tmp/ts-spike/go/src/testing/testing.go:2193
+              runtime.goexit /tmp/ts-spike/go/src/runtime/asm_amd64.s:1264
+        
+--- PASS: TestK32Probe (0.20s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=39/264000
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        === run 27 section=39/264000 differs from run 39 (38/263952) in 3 stacks
+          run=+1 objs/+48 B  ref=+0 objs/+0 B
+              runtime.mallocgc /tmp/ts-spike/go/src/runtime/malloc.go:1082
+              runtime.buildTypeAssertCache /tmp/ts-spike/go/src/runtime/iface.go:544
+              runtime.typeAssert /tmp/ts-spike/go/src/runtime/iface.go:515
+              errors.is /tmp/ts-spike/go/src/errors/wrap.go:59
+              errors.Is /tmp/ts-spike/go/src/errors/wrap.go:51
+              github.com/zchee/typesafe-sdk-go.readBody /tmp/ts-spike/src-p2-cifix-2/client.go:523
+              github.com/zchee/typesafe-sdk-go.(*Client).attempt /tmp/ts-spike/src-p2-cifix-2/client.go:394
+              github.com/zchee/typesafe-sdk-go.(*Client).send /tmp/ts-spike/src-p2-cifix-2/client.go:303
+              github.com/zchee/typesafe-sdk-go.(*Client).SystemOne /tmp/ts-spike/src-p2-cifix-2/client.go:239
+              github.com/zchee/typesafe-sdk-go.TestK32Probe.func1 /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/alloc.go:105
+              github.com/zchee/typesafe-sdk-go.TestK32Probe /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              testing.tRunner /tmp/ts-spike/go/src/testing/testing.go:2193
+              runtime.goexit /tmp/ts-spike/go/src/runtime/asm_amd64.s:1264
+          run=+0 objs/+0 B  ref=+1 objs/+16 B
+              runtime.mallocgc /tmp/ts-spike/go/src/runtime/malloc.go:1084
+              runtime.growslice /tmp/ts-spike/go/src/runtime/slice.go:265
+              strings.(*Builder).WriteString /tmp/ts-spike/go/src/strings/builder.go:114
+              github.com/zchee/typesafe-sdk-go.jsonForm /tmp/ts-spike/src-p2-cifix-2/text.go:311
+              github.com/zchee/typesafe-sdk-go.requestCredentials.func1 /tmp/ts-spike/src-p2-cifix-2/text.go:241
+              github.com/zchee/typesafe-sdk-go.requestCredentials /tmp/ts-spike/src-p2-cifix-2/text.go:253
+              github.com/zchee/typesafe-sdk-go.(*Client).attemptError /tmp/ts-spike/src-p2-cifix-2/client.go:450
+              github.com/zchee/typesafe-sdk-go.(*Client).attempt /tmp/ts-spike/src-p2-cifix-2/client.go:406
+              github.com/zchee/typesafe-sdk-go.(*Client).send /tmp/ts-spike/src-p2-cifix-2/client.go:303
+              github.com/zchee/typesafe-sdk-go.(*Client).SystemOne /tmp/ts-spike/src-p2-cifix-2/client.go:239
+              github.com/zchee/typesafe-sdk-go.TestK32Probe.func1 /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/alloc.go:105
+              github.com/zchee/typesafe-sdk-go.TestK32Probe /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              testing.tRunner /tmp/ts-spike/go/src/testing/testing.go:2193
+              runtime.goexit /tmp/ts-spike/go/src/runtime/asm_amd64.s:1264
+          run=+1 objs/+16 B  ref=+0 objs/+0 B
+              runtime.mallocgc /tmp/ts-spike/go/src/runtime/malloc.go:1084
+              runtime.growslice /tmp/ts-spike/go/src/runtime/slice.go:265
+              strings.(*Builder).WriteString /tmp/ts-spike/go/src/strings/builder.go:114
+              github.com/zchee/typesafe-sdk-go.jsonForm /tmp/ts-spike/src-p2-cifix-2/text.go:311
+              github.com/zchee/typesafe-sdk-go.requestCredentials.func1 /tmp/ts-spike/src-p2-cifix-2/text.go:241
+              github.com/zchee/typesafe-sdk-go.requestCredentials /tmp/ts-spike/src-p2-cifix-2/text.go:255
+              github.com/zchee/typesafe-sdk-go.(*Client).attemptError /tmp/ts-spike/src-p2-cifix-2/client.go:450
+              github.com/zchee/typesafe-sdk-go.(*Client).attempt /tmp/ts-spike/src-p2-cifix-2/client.go:406
+              github.com/zchee/typesafe-sdk-go.(*Client).send /tmp/ts-spike/src-p2-cifix-2/client.go:303
+              github.com/zchee/typesafe-sdk-go.(*Client).SystemOne /tmp/ts-spike/src-p2-cifix-2/client.go:239
+              github.com/zchee/typesafe-sdk-go.TestK32Probe.func1 /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/alloc.go:105
+              github.com/zchee/typesafe-sdk-go.TestK32Probe /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              testing.tRunner /tmp/ts-spike/go/src/testing/testing.go:2193
+              runtime.goexit /tmp/ts-spike/go/src/runtime/asm_amd64.s:1264
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=39/264000
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        === run 12 section=39/264000 differs from run 39 (38/263952) in 1 stacks
+          run=+1 objs/+48 B  ref=+0 objs/+0 B
+              runtime.mallocgc /tmp/ts-spike/go/src/runtime/malloc.go:1082
+              runtime.buildTypeAssertCache /tmp/ts-spike/go/src/runtime/iface.go:544
+              runtime.typeAssert /tmp/ts-spike/go/src/runtime/iface.go:515
+              io.copyBuffer /tmp/ts-spike/go/src/io/io.go:414
+              io.Copy /tmp/ts-spike/go/src/io/io.go:388
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.(*Recorder).RoundTrip /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/recorder.go:121
+              github.com/zchee/typesafe-sdk-go.(*transport).roundTrip /tmp/ts-spike/src-p2-cifix-2/transport.go:365
+              github.com/zchee/typesafe-sdk-go.(*Client).attempt /tmp/ts-spike/src-p2-cifix-2/client.go:386
+              github.com/zchee/typesafe-sdk-go.(*Client).send /tmp/ts-spike/src-p2-cifix-2/client.go:303
+              github.com/zchee/typesafe-sdk-go.(*Client).SystemOne /tmp/ts-spike/src-p2-cifix-2/client.go:239
+              github.com/zchee/typesafe-sdk-go.TestK32Probe.func1 /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure /tmp/ts-spike/src-p2-cifix-2/internal/testsupport/alloc.go:105
+              github.com/zchee/typesafe-sdk-go.TestK32Probe /tmp/ts-spike/src-p2-cifix-2/zz_k32_probe_test.go:65
+              testing.tRunner /tmp/ts-spike/go/src/testing/testing.go:2193
+              runtime.goexit /tmp/ts-spike/go/src/runtime/asm_amd64.s:1264
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        
+--- PASS: TestK32Probe (0.14s)
+=== RUN   TestK32Probe
+    zz_k32_probe_test.go:158: 
+        run  0 section=42/264240
+        run  1 section=38/263952
+        run  2 section=38/263952
+        run  3 section=38/263952
+        run  4 section=38/263952
+        run  5 section=38/263952
+        run  6 section=38/263952
+        run  7 section=38/263952
+        run  8 section=38/263952
+        run  9 section=38/263952
+        run 10 section=38/263952
+        run 11 section=38/263952
+        run 12 section=38/263952
+        run 13 section=38/263952
+        run 14 section=38/263952
+        run 15 section=38/263952
+        run 16 section=38/263952
+        run 17 section=38/263952
+        run 18 section=38/263952
+        run 19 section=38/263952
+        run 20 section=38/263952
+        run 21 section=38/263952
+        run 22 section=38/263952
+        run 23 section=38/263952
+        run 24 section=38/263952
+        run 25 section=38/263952
+        run 26 section=38/263952
+        run 27 section=38/263952
+        run 28 section=38/263952
+        run 29 section=38/263952
+        run 30 section=38/263952
+        run 31 section=38/263952
+        run 32 section=38/263952
+        run 33 section=38/263952
+        run 34 section=38/263952
+        run 35 section=38/263952
+        run 36 section=38/263952
+        run 37 section=38/263952
+        run 38 section=38/263952
+        run 39 section=38/263952
+        
+--- PASS: TestK32Probe (0.14s)
+PASS
+# end 2026-09-25T23:48:15Z load 2.95 15.93 21.77 rc=0 elapsed=1s
+# yes loops left running: 0

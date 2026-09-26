@@ -1,0 +1,1209 @@
+# 2026-09-26 00:10:46 UTC (L) tree=3d1205c lock=/tmp/ts-spike/bench.lock loops=44 GOEXPERIMENT= go test -exec taskset -c 0,1 -timeout 60m -race -count=50 -cpu 1,2,4 -run ^TestTransportErrorsBecomeConnectionOrTimeout$/(clean_close_mid-body|GOAWAY_after_the_request) -v .
+# load before:  00:10:46 up 1 day, 19:35,  3 users,  load average: 10.00, 2.68, 5.97
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  00:10:51 up 1 day, 19:35,  3 users,  load average: 12.72, 3.37, 6.17
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.04s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS RST_STREAM]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.04s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[RST_STREAM]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.02s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS RST_STREAM]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.02s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[SETTINGS]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[SETTINGS]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError)
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError
+    client_transport_error_test.go:158: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:2 PeerClosedSeq:3 ClosedSeq:4 Drained:[]}
+--- PASS: TestTransportErrorsBecomeConnectionOrTimeout (0.03s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_a_clean_close_mid-body_is_a_*ConnectionError_wrapping_io.ErrUnexpectedEOF_(RemoteProtocolError) (0.01s)
+    --- PASS: TestTransportErrorsBecomeConnectionOrTimeout/error:_GOAWAY_after_the_request_was_written_is_a_*ConnectionError (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	5.350s
+# load at the end:  00:10:57 up 1 day, 19:35,  3 users,  load average: 15.30, 4.06, 6.38
+# exit 0 at 2026-09-26 00:10:57 UTC; yes loops left: []

@@ -1,0 +1,327 @@
+# p2-cifix-2 K32 before the fix: TestMemStatsCap at b5b1a2b on (L), 20 invocations, no load. Binary: go test -c . of the b5b1a2b tree (the untracked probe _spikes/w2.5/k32-probe.go.txt was present as zz_k32_probe_test.go; TestMemStatsCap does not use it). ToolTags [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1] (read 2026-09-26 09:11:15 JST with the same toolchain). Header lines below are lrun.sh's (flock /tmp/ts-spike/bench.lock, taskset -c 0,1).
+# host=debian-13-trixie-x07x nproc=44 go version go1.27.1 linux/amd64 yes_loops=0 cpuset=0,1
+# start 2026-09-25T23:47:39Z load 0.81 17.11 22.35
+# cmd /tmp/ts-spike/p2c2/root.test -test.count=20 -test.cpu 2 -test.run ^TestMemStatsCap$ -test.v
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 39/264000
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.34s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 27/33302456
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 40/264048
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 39/264016 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+=== RUN   TestMemStatsCap
+    alloc_call_test.go:338: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264240 38/263952 38/263952 38/263952 38/263952
+    alloc_call_test.go:348: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/263952          callMiB=0.252 bound 327680 B
+    alloc_call_test.go:338: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1288 16/1288 16/1288 16/1288 16/1288
+    alloc_call_test.go:348: MEM ii-declared-16MiB+1         outcome=large call=16/1288            callMiB=0.001 bound 65536 B
+    alloc_call_test.go:338: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559816 29/33559816 29/33559816 29/33559816 29/33559816
+    alloc_call_test.go:348: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559816        callMiB=32.005 bound 33619968 B
+    alloc_call_test.go:338: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302408 26/33302408 26/33302408 26/33302408 26/33302408
+    alloc_call_test.go:348: MEM iv-declared-16MiB           outcome=ok    call=26/33302408        callMiB=31.760 bound 33619968 B
+    alloc_call_test.go:338: runs of v-undeclared-16MiB                     mallocs/bytes: 32/33560456 32/33560456 32/33560456 32/33560456 32/33560456
+    alloc_call_test.go:348: MEM v-undeclared-16MiB          outcome=ok    call=32/33560456        callMiB=32.006 bound 33619968 B
+    alloc_call_test.go:338: runs of vi-declared-result.json                mallocs/bytes: 20/2312 20/2312 20/2312 20/2312 20/2312
+    alloc_call_test.go:348: MEM vi-declared-result.json     outcome=ok    call=20/2312            callMiB=0.002 recorded
+    alloc_call_test.go:338: runs of vii-undeclared-result.json             mallocs/bytes: 20/6024 20/6024 20/6024 20/6024 20/6024
+    alloc_call_test.go:348: MEM vii-undeclared-result.json  outcome=ok    call=20/6024            callMiB=0.006 recorded
+--- PASS: TestMemStatsCap (0.25s)
+PASS
+# end 2026-09-25T23:47:44Z load 0.82 16.84 22.23 rc=0 elapsed=5s
+# yes loops left running: 0
