@@ -1,0 +1,55 @@
+# 2026-09-26 10:08:32 JST typesafe-sdk-python 0ffd094, Python 3.14.6, pydantic-core 2.46.5
+flat all present: accepted missing=None
+flat optional present: accepted missing=NoulAnswer(type='noul', noul=0.25)
+flat required spam absent: 'spam'
+flat required tone absent: 'tone'
+flat spam is a choice (wrong kind): 'spam.type'
+flat tone is a noul (wrong kind): 'tone.choice'
+flat quality is a noul (wrong kind): 'quality.type'
+flat optional missing is a choice (wrong kind): 'missing.type'
+flat tone.choice not an option: 'tone.choice'
+flat tone probability of an unknown option: accepted missing=None
+flat tone probability of an option missing: 'tone.probabilities.hostile'
+flat quality level 3 of 3 levels: accepted missing=None
+flat quality legend level 3 of 3 levels: accepted missing=None
+flat an unknown type named like a field: 'spam'
+flat an unknown type named like the optional field: accepted missing=None
+flat an extra answer: accepted missing=None
+flat an extra member in spam: accepted missing=None
+flat no answers member: 'spam'
+flat-plain all present: accepted missing=None
+flat-plain optional present: accepted missing=NoulAnswer(type='noul', noul=0.25)
+flat-plain required spam absent: 'spam'
+flat-plain required tone absent: 'tone'
+flat-plain spam is a choice (wrong kind): 'spam.type'
+flat-plain tone is a noul (wrong kind): 'tone.type'
+flat-plain quality is a noul (wrong kind): 'quality.type'
+flat-plain optional missing is a choice (wrong kind): 'missing.type'
+flat-plain tone.choice not an option: accepted missing=None
+flat-plain tone probability of an unknown option: accepted missing=None
+flat-plain tone probability of an option missing: accepted missing=None
+flat-plain quality level 3 of 3 levels: accepted missing=None
+flat-plain quality legend level 3 of 3 levels: accepted missing=None
+flat-plain an unknown type named like a field: 'spam'
+flat-plain an unknown type named like the optional field: accepted missing=None
+flat-plain an extra answer: accepted missing=None
+flat-plain an extra member in spam: accepted missing=None
+flat-plain no answers member: 'spam'
+nested all present: accepted missing=None
+nested optional present: accepted missing=NoulAnswer(type='noul', noul=0.25)
+nested required spam absent: 'answers.spam'
+nested required tone absent: 'answers.tone'
+nested spam is a choice (wrong kind): 'answers.spam.type'
+nested tone is a noul (wrong kind): 'answers.tone.choice'
+nested quality is a noul (wrong kind): 'answers.quality.type'
+nested optional missing is a choice (wrong kind): 'answers.missing.type'
+nested tone.choice not an option: 'answers.tone.choice'
+nested tone probability of an unknown option: accepted missing=None
+nested tone probability of an option missing: 'answers.tone.probabilities.hostile'
+nested quality level 3 of 3 levels: accepted missing=None
+nested quality legend level 3 of 3 levels: accepted missing=None
+nested an unknown type named like a field: 'answers.spam.type'
+nested an unknown type named like the optional field: 'answers.missing.type'
+nested an extra answer: accepted missing=None
+nested an extra member in spam: accepted missing=None
+nested no answers member: 'answers'
