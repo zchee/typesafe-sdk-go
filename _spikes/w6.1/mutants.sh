@@ -81,5 +81,11 @@ mutant D-K39-closed-listener internal/testsupport/refused.go \
 mutant D-K39-held-closed internal/testsupport/refused.go \
 	's/(\treturn held.LocalAddr\(\).String\(\), held\n)/\t_ = held.Close()\n$1/' ./internal/testsupport/ '^TestRefusedAddr$'
 
+# D/K25: the D-TSflake GoAway, which publishes its state without the write
+# lock and takes it only for the frame.
+mutant D-K25-pre-fix-goaway internal/testsupport/h2conn.go \
+	's/(\t\treturn fmt.Errorf\("%w: GOAWAY after close_notify", errConnClosed\)\n\t\}\n)/$1\tc.wmu.Unlock()\n/; s/(\terr := c.fr.WriteGoAway\(lastStreamID)/\tc.wmu.Lock()\n$1/' \
+	./internal/testsupport/ '^TestGoAwayRaceWithFinish$' 20
+
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

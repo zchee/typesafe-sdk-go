@@ -1,0 +1,11 @@
+# Filtered from the raw contend.sh output (20009 lines, 1280899 bytes) per ruling R89 (4): its header and footer lines, the
+# ok/FAIL lines and every --- FAIL block are kept; the --- PASS lines are counted by the filter (the line marked [filter]).
+# 2026-09-26 09:26:56 UTC (L) tree=w6.1-d lock=/tmp/ts-spike/bench.lock held with flock (a second flock -n failed) loops=44 GOEXPERIMENT= go test -count=5000 -run ^TestLoopbackGoAway$/^success:_net/http_replays_a_request_GOAWAY_left_unprocessed$ -v ./internal/testsupport/
+# load before:  09:26:56 up 2 days,  4:51,  2 users,  load average: 9.91, 9.29, 9.49
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  09:27:01 up 2 days,  4:51,  2 users,  load average: 12.64, 9.86, 9.68
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	23.707s
+# load at the end:  09:27:26 up 2 days,  4:52,  2 users,  load average: 24.33, 12.83, 10.67
+# exit 0 at 2026-09-26 09:27:26 UTC; yes loops left: []
+[filter] --- PASS lines matching 'TestLoopbackGoAway/success:_net/http_replays_a_request_GOAWAY_left_unprocessed': 5000; --- FAIL lines: 0; 'Accepts()' lines: 0

@@ -1,0 +1,7 @@
+# 2026-09-26 18:45:32 JST (M) K25/R100 deterministic tests, -race -count=50, the wave's tree; load { 59.48 74.30 51.03 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+     50 --- PASS: TestDrainBoundClosesSilentClient
+     50 --- PASS: TestGoAwayRaceWithFinish
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	11.716s
+# end 2026-09-26 18:45:45 JST; load { 48.32 71.10 50.30 }
