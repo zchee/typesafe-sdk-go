@@ -1,0 +1,17 @@
+# 2026-09-26 15:04:12 JST (M) c15ba0c go version go1.27.1 darwin/arm64; GOEXPERIMENT=nosimd,noruntimesecret
+# go test -list 'Benchmark.*' ./... as <package dir> <function>, sorted
+. BenchmarkAssembly
+. BenchmarkBackoff
+. BenchmarkEncodeBody
+. BenchmarkFalsyJSON
+. BenchmarkLoopback
+. BenchmarkPrepare
+./internal/benchmark BenchmarkCall
+./internal/benchmark BenchmarkHeaderTemplateClone
+./internal/benchmark BenchmarkLoopback
+./internal/benchmark BenchmarkNoop
+./internal/benchmark BenchmarkRetryAfter
+./internal/codec BenchmarkDecode
+./internal/codec BenchmarkDecodeNaiveJSON
+./internal/codec BenchmarkDecodeNaiveSonic
+./internal/codec BenchmarkEncodeState
