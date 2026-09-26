@@ -1,0 +1,10 @@
+# 2026-09-26 13:01:03 UTC (L) R111 for a09ea43 alone (its parent 6b996ed passed as 46416b6 plus documentation): go build, go vet, go test -count=1 ./... under pipefail; load 0.01 0.27 1.13
+ok  	github.com/zchee/typesafe-sdk-go	15.221s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.405s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.889s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.608s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+exit 0
+# end 13:01:21

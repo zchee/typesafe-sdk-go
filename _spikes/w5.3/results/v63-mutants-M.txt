@@ -1,0 +1,13 @@
+# mutants of review V63's fix: RetryPolicy incomparable, over the working tree, 2026-09-26 21:58:31 JST, (M), not under the bench lock; the fuzz targets run their seeds and testdata corpus only
+== mutant V1 the zero-size field removed
+vet ok
+FAIL	github.com/zchee/typesafe-sdk-go [build failed]
+FAIL
+killed
+== mutant V2 the zero-size field last
+vet ok
+--- FAIL: TestRetryPolicyRules (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.627s
+FAIL
+killed
