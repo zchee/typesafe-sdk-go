@@ -13,10 +13,12 @@
 #          succeeds (ruling R17: with no flock on PATH, the old `flock 9`
 #          failed, and the loops and the tests ran without the lock).
 #   NAME   output file name without .txt.
-#   LOOPS  number of `nice -n 19 yes` loops (one per core). They close fd 9,
-#          the lock's: a script killed before its own kill leaves them
-#          running, and they must not keep the lock for the next lane.
-#          go test keeps fd 9, so the lock lasts while it loads the host.
+#   LOOPS  number of `nice -n 19 yes` loops (one per core). They end with
+#          the script: an EXIT trap kills them, HUP, INT and TERM exit
+#          through it, and a watcher that polls the script once a second
+#          kills them after a SIGKILL, which no trap sees. They and the
+#          watcher close fd 9, the lock's; go test keeps it, so the lock
+#          lasts while it loads the host.
 # The header and footer record date, the tree, load average, go version and
 # ToolTags, taken inside the lock in the same shell as the run; the footer
 # also records that no yes loop survived (pgrep -x yes prints nothing).
@@ -50,13 +52,19 @@ mkdir -p "$out"
 	echo "# load before: $(uptime)"
 	go version
 	go list -f '{{context.ToolTags}}' runtime
-	pids=""
+	pids="" watcher=""
+	trap 'kill $watcher $pids 2>/dev/null' EXIT
+	trap 'exit 129' HUP
+	trap 'exit 130' INT
+	trap 'exit 143' TERM
 	i=0
 	while [ "$i" -lt "$loops" ]; do
 		nice -n 19 yes >/dev/null 9>&- &
 		pids="$pids $!"
 		i=$((i + 1))
 	done
+	(while kill -0 $$ 2>/dev/null; do sleep 1; done; kill $pids 2>/dev/null) 9>&- &
+	watcher=$!
 	sleep 5
 	echo "# load with $loops loops: $(uptime)"
 	go test "$@" 2>&1
@@ -64,5 +72,6 @@ mkdir -p "$out"
 	echo "# load at the end: $(uptime)"
 	kill $pids
 	wait $pids 2>/dev/null
+	pids=""
 	echo "# exit $status at $(date '+%Y-%m-%d %H:%M:%S %Z'); yes loops left: [$(pgrep -x yes | tr '\n' ' ')]"
 } >"$out/$name.txt"

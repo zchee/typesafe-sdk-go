@@ -1,0 +1,43 @@
+# W6.1 FU2 (review V61 MINOR 1) on (M), go1.27.1 darwin/arm64: r17-orphan2.sh runs contend.sh with two busy loops and one quick test against a
+# throwaway lock ($MY/r17o.lock), sends the signal to the script once its header says the loops run, waits until go test has ended, and then
+# reports every 0.5 s for 3 s which of this run's yes loops still run (by pid, with the parent pid), whether the lock is held (flock -n)
+# and by whom (lsof); leftovers are killed by pid. dbf85a9's script closes fd 9 in its loops (R17) but has no trap; this commit's adds the
+# EXIT/HUP/INT/TERM traps and the watcher. All three ran under the (M) bench lock, taken with flock -n -o so no child inherited it.
+
+# the (M) bench lock $SCRATCHPAD/bench.lock held with flock -n -o (no child inherits it) from 2026-09-26 20:27:51 JST; load { 5.29 11.95 24.86 }
+## dbf85a9 contend.sh (fd 9 closed, no trap), SIGKILL
+old-kill: 2026-09-26 20:27:56 JST sent SIGKILL to the script (pid 17799; its yes loops: [17962 17963 ]) after: # load with 2 loops: 20:; the script's status 137
+old-kill: go test ended: ok   github.com/zchee/typesafe-sdk-go/internal/testsupport 0.032s
+old-kill: +0.0s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: +0.5s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: +1.0s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: +1.5s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: +2.0s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: +2.5s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: +3.0s: this run's yes loops still running: [17962(ppid 1) 17963(ppid 1) ]; lock held: no; lock file open in: []
+old-kill: killed leftover 17962
+old-kill: killed leftover 17963
+old-kill: stderr: 
+## this commit contend.sh, SIGKILL
+new-kill: 2026-09-26 20:28:25 JST sent SIGKILL to the script (pid 23018; its yes loops: [23036 23037 ]) after: # load with 2 loops: 20:; the script's status 137
+new-kill: go test ended: ok   github.com/zchee/typesafe-sdk-go/internal/testsupport 0.032s
+new-kill: +0.0s: this run's yes loops still running: [23036(ppid 1) 23037(ppid 1) ]; lock held: no; lock file open in: []
+new-kill: +0.5s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-kill: +1.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-kill: +1.5s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-kill: +2.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-kill: +2.5s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-kill: +3.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-kill: stderr: 
+## this commit contend.sh, SIGTERM
+new-term: 2026-09-26 20:28:54 JST sent SIGTERM to the script (pid 32641; its yes loops: [32659 32660 ]) after: # load with 2 loops: 20:; the script's status 143
+new-term: go test ended: ok   github.com/zchee/typesafe-sdk-go/internal/testsupport 0.033s
+new-term: +0.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: +0.5s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: +1.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: +1.5s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: +2.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: +2.5s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: +3.0s: this run's yes loops still running: []; lock held: no; lock file open in: []
+new-term: stderr: 
+# end 2026-09-26 20:29:16 JST; load { 4.01 9.95 22.87 }
