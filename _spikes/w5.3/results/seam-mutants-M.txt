@@ -1,0 +1,23 @@
+== control: the tree as committed (2026-09-26 17:12:43 JST)
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.024s
+== mutant 1: reflect.Value.UnsafePointer() in decodeas.go (2026-09-26 17:12:43 JST)
+--- FAIL: TestSeamRootRawPointers (0.01s)
+    seam_rawptr_test.go:198: decodeas.go:267: selector UnsafePointer (K40, R116: only decodeas_store.go writes through a raw pointer)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.023s
+FAIL
+== mutant 2: unsafe imported by response.go (2026-09-26 17:12:44 JST)
+--- FAIL: TestSeamRootRawPointers (0.01s)
+    seam_rawptr_test.go:198: response.go:235: unsafe.Pointer (K40, R116: only decodeas_store.go writes through a raw pointer)
+--- FAIL: TestSeamImports (0.00s)
+        seam_test.go:312: response.go imports "unsafe"
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.024s
+== control 2: the named store file imports unsafe (allowed) (2026-09-26 17:12:44 JST)
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.022s
+== mutant 3: reflect.Value.UnsafePointer() in a new internal/wire file (2026-09-26 17:14:11 JST)
+--- FAIL: TestSeamRootRawPointers (0.01s)
+    seam_rawptr_test.go:198: internal/wire/seam_mutant.go:7: selector UnsafePointer (K40, R116: only decodeas_store.go writes through a raw pointer)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.026s
+FAIL
