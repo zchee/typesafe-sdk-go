@@ -1,0 +1,30 @@
+# W6.1: _spikes/w6.1/mutants.sh run once on (M), GOEXPERIMENT=nosimd,noruntimesecret, in a detached worktree at E's tree before this file was added
+# (551ebee on 93e9db1; the amended E commit adds this file, results/m-e-acp6.txt and ledger W6.1-19's AC-P6 figures, nothing that builds).
+# "killed" = the named tests FAIL; the script reports a mutant that does not apply or build apart.
+# Carriage returns inside the quoted generated bodies are written as \r.
+# 2026-09-27 03:17:35 JST mutants.sh at 551ebee go version go1.27.1 darwin/arm64
+A-bound-never-fires: killed (2 FAIL lines) :: fuzz_test.go:66: child output lacks "testsupport: fuzz input TestBoundFuzzInput ran past the 50ms per-input bound":
+B-M1-lazy-answers-first-wins: killed (25 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+B-M2-lazy-answer-name-first-wins: killed (18 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+B-M3-lazy-legend-first-wins: killed (32 FAIL lines) :: decode_paths_test.go:614: decode of the generated body {"an\u0073w\u0065r\u0073": [{"legen\u0064\u0020":{}}]	,
+B-M4-lazy-level-first-wins: killed (23 FAIL lines) :: decode_paths_test.go:626: answers of \r
+B-M5-visitor-level-first-value: killed (25 FAIL lines) :: decode_paths_test.go:626: answers of \r
+B-M6-visitor-answer-first-value: killed (33 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+B-M7-skipped-last-only: killed (16 FAIL lines) :: decode_paths_test.go:632: skipped of {"model"	:
+B-M8-lazy-raw-cut: killed (51 FAIL lines) :: decode_paths_test.go:626: answers of {"model":"jev-latest","usage":{},"answers":{"s":{"score":0,"confidence":0,"legend":{"0":{}},"probabilities":{},"type":"scor
+D-K39-closed-listener: killed (2 FAIL lines) :: refused_test.go:73: address 127.0.0.1:62336 is not the held connection's local end 127.0.0.1:59975
+D-K39-held-closed: killed (2 FAIL lines) :: refused_test.go:78: set a read deadline on the held connection: set tcp 127.0.0.1:49482: use of closed network connection
+D-K25-pre-fix-goaway: killed (20 FAIL lines) :: goaway_race_test.go:66: GoAway: testsupport: connection closed: tls: protocol is shutdown
+D-n2-leaked-token: killed (4 FAIL lines) :: token_test.go:237: probe: context deadline exceeded, HEADERS after 0s at traceSeq 0 (0: none), deadline at 315; want them within 50ms and before the deadline
+D-n2-linger-on-timeout: killed (2 FAIL lines) :: token_test.go:208: call 0 returned after 2.302544167s, past its 2s deadline + 100ms
+D-R100-no-drain-wait: killed (5 FAIL lines) :: drain_bound_test.go:58: the server closed the socket 6.334041ms after its close began, before the 200ms drain bound
+D-R100-never-closes: killed (1 FAIL lines) :: drain_bound_test.go:50: timed out waiting for the server's close of the socket
+FU-disarm-stops-nothing: killed (2 FAIL lines) :: fuzz_test.go:97: a disarmed bound fired: testsupport: fuzz input TestBoundFuzzInput/a_bound_disarmed_before_it_fires_never_fires ran past the 50ms per-input bou
+FU-wrapper-drops-disarm: killed (2 FAIL lines) :: fuzz_test.go:97: a disarmed bound fired: testsupport: fuzz input TestBoundFuzzInput/a_bound_disarmed_before_it_fires_never_fires ran past the 50ms per-input bou
+FU-R5-lazy-skips-plus-level: killed (30 FAIL lines) :: decode_paths_test.go:614: decode of the generated body \r
+D-K16-no-hook: killed (2 FAIL lines) :: proxy_test.go:173: classification of *h2gate.DialError(h2gate: dial failed: Bad Gateway) -> *errors.errorString(Bad Gateway) (-want +got):
+E-R85-unbounded-wait: killed (2 FAIL lines) :: token_wait_test.go:91: first call: 0 context deadline exceeded
+E-double-bound: killed (2 FAIL lines) :: token_wait_test.go:109: call 0 wrote HEADERS after 40s, done at traceSeq 13, the hook released at 14; want the 20s bound and done before the release
+E-no-fast-path: killed (1 FAIL lines) :: token_wait_test.go:142: 8 uncontended calls entered waitToken 8 times, want 0: a free token is taken without waiting
+E-fast-path-counts: killed (1 FAIL lines) :: token_wait_test.go:142: 8 uncontended calls entered waitToken 8 times, want 0: a free token is taken without waiting
+# 2026-09-27 03:18:17 JST mutants not killed (survived, not applied or not built): 0

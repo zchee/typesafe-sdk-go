@@ -1,0 +1,8 @@
+# 2026-09-26 18:58:07 JST (M) E/R85: TestTokenWaitBound on fake time (testing/synctest), -race -count=20, the wave's tree; load { 26.23 26.15 32.15 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+     20     --- PASS: TestTokenWaitBound/error:_a_waiter_whose_deadline_comes_first_ends_on_it
+     20     --- PASS: TestTokenWaitBound/success:_a_hook_that_blocks_past_the_bound_stalls_no_other_call
+     20     --- PASS: TestTokenWaitBound/success:_a_hook_that_returns_within_the_bound_holds_the_others_until_it_returns
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	1.160s
+# end 2026-09-26 18:58:08 JST; load { 26.23 26.15 32.15 }

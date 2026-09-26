@@ -1,0 +1,9 @@
+# W6.1 E, review SLICE3 revision: TestTokenWaitBound (the waiters now go out at exactly the bound) and TestTokenFreeTakesNoWait (new), -race x20, on (M) go1.27.1 darwin/arm64,
+# GOEXPERIMENT=nosimd,noruntimesecret, fake time (synctest), in the lane worktree at E's amended tree before the commit; 2026-09-27 03:09:51 JST - 2026-09-27 03:09:54 JST, bench lock held, load { 6.91 7.61 7.87 }; rc=0
+# command: go test -race -count=20 -run '^(TestTokenWaitBound|TestTokenFreeTakesNoWait)$' -v ./internal/h2gate/
+     20     --- PASS: TestTokenWaitBound/error:_a_waiter_whose_deadline_comes_first_ends_on_it
+     20     --- PASS: TestTokenWaitBound/success:_a_hook_that_blocks_past_the_bound_stalls_no_other_call
+     20     --- PASS: TestTokenWaitBound/success:_a_hook_that_returns_within_the_bound_holds_the_others_until_it_returns
+     20 --- PASS: TestTokenFreeTakesNoWait
+     20 --- PASS: TestTokenWaitBound
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	1.148s

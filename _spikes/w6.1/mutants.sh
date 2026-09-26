@@ -126,5 +126,19 @@ mutant FU-R5-lazy-skips-plus-level internal/codec/lazy.go \
 mutant D-K16-no-hook internal/h2gate/config.go \
 	's/\t\tOnProxyConnectResponse: refusedConnect,\n//' ./internal/h2gate/ '^TestProxy$'
 
+# E/R85: the unbounded token wait.
+mutant E-R85-unbounded-wait internal/h2gate/transport.go \
+	's/(\tcase <-tm.C:\n)/\tcase <-make(chan time.Time):\n\t\t_ = tm\n/' ./internal/h2gate/ '^TestTokenWaitBound$'
+# E/R85, review SLICE3: a doubled bound (MINOR 1), and every call through
+# waitToken, a timer per call, instead of taking a free token at once
+# (MINOR 2).
+mutant E-double-bound internal/h2gate/transport.go \
+	's/tm := time.NewTimer\(t.holdBound\)/tm := time.NewTimer(2 * t.holdBound)/' ./internal/h2gate/ '^TestTokenWaitBound$'
+mutant E-no-fast-path internal/h2gate/transport.go \
+	's/(\theld := true\n\tselect \{\n)\tcase t.token <- struct\{\}\{\}:\n/$1/' ./internal/h2gate/ '^TestTokenFreeTakesNoWait$'
+# E/R85, D-W6.1-minor2: the diagnostic counter's increment moved from
+# waitToken onto the fast path.
+mutant E-fast-path-counts internal/h2gate/transport.go \
+	's/(\tcase t.token <- struct\{\}\{\}:\n)(\tdefault:\n)/$1\t\tt.tokenWaits.Add(1)\n$2/; s/\tt.tokenWaits.Add\(1\)\n(\ttm := time.NewTimer)/$1/' ./internal/h2gate/ '^TestTokenFreeTakesNoWait$'
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

@@ -1,0 +1,34 @@
+# W6.1 E/R85: AC-P6 with the token-wait bound (and K16's hook) in the tree, under the (M) bench lock; the -v output of TestAllocWholeCall
+# at E's tree on 93e9db1 (551ebee, before the amend that adds this file); main's pin since W5.3 is N = 12 (14 on 67dcbb0, where this file was first taken)
+# command: /opt/homebrew/opt/util-linux/bin/flock $SP/bench.lock sh -c 'GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run "^TestAllocWholeCall$" -v .'
+# 2026-09-27 03:18:26 JST (M) lock held; load { 8.44 8.98 8.47 }
+=== RUN   TestAllocWholeCall
+    alloc_call_test.go:100: runs of E_sonic                                mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    alloc_call_test.go:106: runs of floor round trip                       mallocs/bytes: 7/624 7/624 7/624 8/672 7/624
+    alloc_call_test.go:108: runs of call/sdk                               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=20/2648 own=12/2008 (N = 12, frozen at W5.3)
+    alloc_call_test.go:118: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_call_test.go:118: runs of item systemOneAlloc (the response, the first URL copy and up to four answer entries) mallocs/bytes: 1/704 1/704 1/704 1/704 1/704
+    alloc_call_test.go:118: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    alloc_call_test.go:118: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    alloc_call_test.go:118: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    alloc_call_test.go:118: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    alloc_call_test.go:118: runs of item readBody                          mallocs/bytes: 1/384 1/384 1/384 1/384 1/384
+    alloc_call_test.go:118: runs of item decode                            mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/704 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=3/240
+    alloc_call_test.go:146: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    alloc_call_test.go:148: runs of q20 call/sdk                           mallocs/bytes: 41/9888 41/9888 41/9888 41/9888 41/9888
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+    alloc_call_test.go:155: runs of q20 item header map                    mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_call_test.go:155: runs of q20 item systemOneAlloc (the response, the first URL copy and up to four answer entries) mallocs/bytes: 1/256 1/256 1/256 1/256 1/256
+    alloc_call_test.go:155: runs of q20 item context.WithTimeout           mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    alloc_call_test.go:155: runs of q20 item Request (WithContext)         mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    alloc_call_test.go:155: runs of q20 item body.Open                     mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    alloc_call_test.go:155: runs of q20 item GetBody method value          mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    alloc_call_test.go:155: runs of q20 item readBody                      mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    alloc_call_test.go:155: runs of q20 item decode                        mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    alloc_call_test.go:155: ITEM q20 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/2304 decode=24/6008
+--- PASS: TestAllocWholeCall (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.035s
+# rc=0 2026-09-27 03:18:26 JST load { 8.44 8.98 8.47 }
