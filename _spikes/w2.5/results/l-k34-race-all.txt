@@ -1,0 +1,12 @@
+# 2026-09-26 01:53:31 UTC (L) tree=68fc345 lock=/tmp/ts-spike/bench.lock loops=0 GOEXPERIMENT= go test -timeout 60m -race -count=1 ./...
+# load before:  01:53:31 up 1 day, 21:18,  4 users,  load average: 44.39, 35.99, 23.29
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 0 loops:  01:53:36 up 1 day, 21:18,  4 users,  load average: 40.83, 35.40, 23.17
+ok  	github.com/zchee/typesafe-sdk-go	6.306s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.779s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.387s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.042s
+# load at the end:  01:53:48 up 1 day, 21:18,  4 users,  load average: 34.70, 34.26, 22.93
+# exit 0 at 2026-09-26 01:53:48 UTC; yes loops left: []

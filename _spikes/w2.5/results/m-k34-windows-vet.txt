@@ -1,0 +1,11 @@
+# 2026-09-26 10:35:06 JST (M) tree=68fc345 GOOS=windows GOARCH=amd64 go vet ./... && go test -c -o /dev/null per package; no lock (not a measurement)
+# load: 10:35  up 4 days,  9:41, 1 user, load averages: 19.91 85.55 83.55
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+vet ok
+test -c ok github.com/zchee/typesafe-sdk-go
+test -c ok github.com/zchee/typesafe-sdk-go/internal/codec
+test -c ok github.com/zchee/typesafe-sdk-go/internal/h2gate
+test -c ok github.com/zchee/typesafe-sdk-go/internal/testsupport
+test -c ok github.com/zchee/typesafe-sdk-go/internal/wire
+# exit 0 at 2026-09-26 10:35:10 JST

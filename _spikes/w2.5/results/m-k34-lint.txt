@@ -1,0 +1,8 @@
+# 2026-09-26 10:55:56 JST (M) tree=68fc345 the plan's section 11 lint chain as one && line (AC-Q1); govulncheck through go run golang.org/x/vuln/cmd/govulncheck@latest (the installed binary is go1.26-built and cannot load go1.27 sources); GOPACKAGESDEBUG unset for the chain (the loader's debug lines are not the chain's output); no lock (not a measurement)
+# load: 10:55  up 4 days, 10:01, 1 user, load averages: 33.01 44.45 47.02
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# chain: test -z "$(gofumpt -extra -l .)" && modernize -test ./... && golangci-lint run ./... && go vet ./... && staticcheck ./... && go run golang.org/x/vuln/cmd/govulncheck@latest ./... && go mod tidy -diff
+0 issues.
+No vulnerabilities found.
+# exit 0 at 2026-09-26 10:56:00 JST

@@ -1,0 +1,312 @@
+# 2026-09-26 01:36:01 UTC (L) tree=68fc345+mutant-old lock=/tmp/ts-spike/bench.lock loops=0 GOEXPERIMENT= go test -count=5 -run ^(TestReplay|TestGoAway|TestTokenResidualK21|TestLoopbackActionsDrain)$ -v ./internal/testsupport/ ./internal/h2gate/
+# load before:  01:36:01 up 1 day, 21:00,  3 users,  load average: 1.87, 18.36, 16.69
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 0 loops:  01:36:06 up 1 day, 21:01,  3 users,  load average: 1.72, 18.06, 16.60
+=== RUN   TestLoopbackActionsDrain
+=== RUN   TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully
+    loopback_test.go:961: PING after close_notify: write tcp 127.0.0.1:55318->127.0.0.1:37039: write: broken pipe
+=== RUN   TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully
+    loopback_test.go:970: drained frames (-want +got):
+          []string(
+        - 	{"DATA", "PING"},
+        + 	nil,
+          )
+    loopback_test.go:973: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:977: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackActionsDrain (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully (0.00s)
+=== RUN   TestLoopbackActionsDrain
+=== RUN   TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully
+    loopback_test.go:961: PING after close_notify: write tcp 127.0.0.1:55560->127.0.0.1:36671: write: broken pipe
+=== RUN   TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully
+    loopback_test.go:970: drained frames (-want +got):
+          []string(
+        - 	{"DATA", "PING"},
+        + 	nil,
+          )
+    loopback_test.go:973: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:977: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackActionsDrain (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully (0.00s)
+=== RUN   TestLoopbackActionsDrain
+=== RUN   TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully
+    loopback_test.go:961: PING after close_notify: write tcp 127.0.0.1:48960->127.0.0.1:40213: write: broken pipe
+=== RUN   TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully
+    loopback_test.go:970: drained frames (-want +got):
+          []string(
+        - 	{"DATA", "PING"},
+        + 	nil,
+          )
+    loopback_test.go:973: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:977: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackActionsDrain (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully (0.00s)
+=== RUN   TestLoopbackActionsDrain
+=== RUN   TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully
+    loopback_test.go:961: PING after close_notify: write tcp 127.0.0.1:60932->127.0.0.1:33069: write: broken pipe
+=== RUN   TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully
+    loopback_test.go:970: drained frames (-want +got):
+          []string(
+        - 	{"DATA", "PING"},
+        + 	nil,
+          )
+    loopback_test.go:973: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:977: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackActionsDrain (0.01s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully (0.01s)
+=== RUN   TestLoopbackActionsDrain
+=== RUN   TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully
+    loopback_test.go:961: PING after close_notify: write tcp 127.0.0.1:32868->127.0.0.1:34169: write: broken pipe
+=== RUN   TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully
+    loopback_test.go:970: drained frames (-want +got):
+          []string(
+        - 	{"DATA", "PING"},
+        + 	nil,
+          )
+    loopback_test.go:973: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < CloseWriteSeq < PeerClosedSeq < ClosedSeq
+    loopback_test.go:977: close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}: GOAWAY before close_notify = false, want true
+--- FAIL: TestLoopbackActionsDrain (0.01s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionClose_ends_the_connection_gracefully (0.00s)
+    --- FAIL: TestLoopbackActionsDrain/success:_ActionGoAway_ends_the_connection_gracefully (0.01s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.028s
+=== RUN   TestGoAway
+=== RUN   TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection
+=== RUN   TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+--- FAIL: TestGoAway (0.01s)
+    --- FAIL: TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection (0.01s)
+    --- PASS: TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection (0.00s)
+    --- FAIL: TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is (0.01s)
+=== RUN   TestReplay
+=== RUN   TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed
+=== RUN   TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed
+    recovery_test.go:398: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed
+--- FAIL: TestReplay (0.01s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:207: RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=132 probe_headers_ms=0.252 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+    token_test.go:207: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.014 restore_skipped=0 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:207: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.021 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- FAIL: TestTokenResidualK21 (2.80s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- FAIL: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+=== RUN   TestGoAway
+=== RUN   TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection
+=== RUN   TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+--- FAIL: TestGoAway (0.01s)
+    --- FAIL: TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection (0.00s)
+    --- PASS: TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection (0.00s)
+    --- FAIL: TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is (0.00s)
+=== RUN   TestReplay
+=== RUN   TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed
+    recovery_test.go:398: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed
+=== RUN   TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed
+--- FAIL: TestReplay (0.01s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:207: RESULT case=k21/REFUSED_STREAM classes="map[ok:10 timeout:62]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=132 probe_headers_ms=0.061 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+    token_test.go:207: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.021 restore_skipped=0 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:207: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.022 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- FAIL: TestTokenResidualK21 (2.80s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.27s)
+    --- FAIL: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+=== RUN   TestGoAway
+=== RUN   TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection
+=== RUN   TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+--- FAIL: TestGoAway (0.01s)
+    --- FAIL: TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection (0.00s)
+    --- PASS: TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection (0.00s)
+    --- FAIL: TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is (0.00s)
+=== RUN   TestReplay
+=== RUN   TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed
+    recovery_test.go:398: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed
+=== RUN   TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed
+--- FAIL: TestReplay (0.01s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:207: RESULT case=k21/REFUSED_STREAM classes="map[ok:5 timeout:67]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.043 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+    token_test.go:207: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.012 restore_skipped=0 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:207: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.020 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- FAIL: TestTokenResidualK21 (2.80s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.26s)
+    --- FAIL: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+=== RUN   TestGoAway
+=== RUN   TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection
+=== RUN   TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+--- FAIL: TestGoAway (0.01s)
+    --- FAIL: TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection (0.00s)
+    --- PASS: TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection (0.00s)
+    --- FAIL: TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is (0.00s)
+=== RUN   TestReplay
+=== RUN   TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed
+=== RUN   TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed
+    recovery_test.go:398: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed
+--- FAIL: TestReplay (0.01s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:207: RESULT case=k21/REFUSED_STREAM classes="map[ok:8 timeout:64]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.051 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+    token_test.go:207: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.016 restore_skipped=0 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:207: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.018 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- FAIL: TestTokenResidualK21 (2.80s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.26s)
+    --- FAIL: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+=== RUN   TestGoAway
+=== RUN   TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:154: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection
+=== RUN   TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    recovery_test.go:217: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+--- FAIL: TestGoAway (0.01s)
+    --- FAIL: TestGoAway/success:_GOAWAY_below_two_of_four_in-flight_GETs:_two_finish,_two_replay_on_a_second_connection (0.00s)
+    --- PASS: TestGoAway/success:_a_refused_stream_is_retried_on_the_same_connection (0.00s)
+    --- FAIL: TestGoAway/error:_a_POST_without_GetBody_above_LastStreamID_is_not_replayed;_one_with_GetBody_is (0.00s)
+=== RUN   TestReplay
+=== RUN   TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:321: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: false), GOAWAY first: true
+    recovery_test.go:352: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+=== RUN   TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed
+=== RUN   TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed
+    recovery_test.go:398: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:0 CloseWriteSeq:1 PeerClosedSeq:2 ClosedSeq:3 Drained:[]}
+=== RUN   TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed
+--- FAIL: TestReplay (0.01s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_GET_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/success:_GOAWAY_before_a_POST_with_GetBody_was_processed:_one_RoundTrip,_200,_two_connections (0.00s)
+    --- FAIL: TestReplay/error:_GOAWAY_before_a_POST_without_GetBody_was_processed_is_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_RST_STREAM_INTERNAL_ERROR_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_clean_close_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+    --- PASS: TestReplay/error:_a_TCP_reset_after_the_body_was_read_is_a_connection_error,_not_replayed (0.00s)
+=== RUN   TestTokenResidualK21
+=== RUN   TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    token_test.go:207: RESULT case=k21/REFUSED_STREAM classes="map[ok:6 timeout:66]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.053 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}, want 0 < PeerClosedSeq < ClosedSeq, CloseWriteSeq < PeerClosedSeq (client first allowed: true), GOAWAY first: true
+    token_test.go:205: connection 0 close records {Index:0 Protocol:h2 HandshakeErr: GoAwaySeq:1 CloseWriteSeq:0 PeerClosedSeq:0 ClosedSeq:2 Drained:[]}
+    token_test.go:207: RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.013 restore_skipped=0 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0}"
+=== RUN   TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    token_test.go:207: RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.028 restore_skipped=0 fresh=map[ok:200] stats="{Dials:1 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:1 SettleHolds:0 HoldExpiries:0}"
+--- FAIL: TestTokenResidualK21 (2.80s)
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8 (2.26s)
+    --- FAIL: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued (0.27s)
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight (0.27s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/h2gate	14.102s
+FAIL
+# load at the end:  01:36:21 up 1 day, 21:01,  3 users,  load average: 1.42, 17.19, 16.34
+# exit 1 at 2026-09-26 01:36:21 UTC; yes loops left: []
