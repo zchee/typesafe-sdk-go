@@ -1,0 +1,60 @@
+# W6.1 D/K21c on (L): TestTokenResidualK21's GOAWAY scenario under contention, 5 invocations of 300 runs (1500), each through
+# _spikes/w2.2/contend.sh with 44 nice -n 19 yes loops under /tmp/ts-spike/bench.lock (tree w6.1-d: the wave's tree as of 2026-09-26T09:08Z).
+# Filtered per ruling R89 (4) from the raw -v outputs (5 files, 1231350 bytes): each invocation's header and footer lines and ok/FAIL
+# lines are kept; the filter counts the RESULT lines per invocation (lines marked [filter]) and keeps every RESULT line whose refused_streams is not 0.
+
+## l-k21c-goaway-contended
+# 2026-09-26 09:27:26 UTC (L) tree=w6.1-d lock=/tmp/ts-spike/bench.lock held with flock (a second flock -n failed) loops=44 GOEXPERIMENT= go test -count=300 -run ^TestTokenResidualK21$/^success:_GOAWAY -v ./internal/h2gate/
+# load before:  09:27:26 up 2 days,  4:52,  2 users,  load average: 24.33, 12.83, 10.67
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  09:27:31 up 2 days,  4:52,  2 users,  load average: 25.91, 13.35, 10.84
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	97.694s
+# load at the end:  09:29:10 up 2 days,  4:54,  2 users,  load average: 40.69, 22.13, 14.25
+# exit 0 at 2026-09-26 09:29:10 UTC; yes loops left: []
+[filter] RESULT lines 300; --- PASS of the subtest 300; refused_streams>0 in 0; late>0 in 0; bad>0 in 0; fresh 200/200 in 300; accepts_total=2 in 300; SettleHolds:1 in 264, SettleHolds:0 in 36
+
+## l-k21c-goaway-contended-2
+# 2026-09-26 09:42:09 UTC (L) tree=w6.1-d lock=/tmp/ts-spike/bench.lock held with flock (a second flock -n failed) loops=44 GOEXPERIMENT= go test -count=300 -run ^TestTokenResidualK21$/^success:_GOAWAY -v ./internal/h2gate/
+# load before:  09:42:09 up 2 days,  5:07,  2 users,  load average: 1.07, 2.58, 6.65
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  09:42:15 up 2 days,  5:07,  2 users,  load average: 4.59, 3.28, 6.86
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	97.821s
+# load at the end:  09:43:53 up 2 days,  5:08,  2 users,  load average: 36.69, 14.91, 10.67
+# exit 0 at 2026-09-26 09:43:53 UTC; yes loops left: []
+[filter] RESULT lines 300; --- PASS of the subtest 300; refused_streams>0 in 0; late>0 in 0; bad>0 in 0; fresh 200/200 in 300; accepts_total=2 in 300; SettleHolds:1 in 272, SettleHolds:0 in 28
+
+## l-k21c-goaway-contended-3
+# 2026-09-26 09:43:53 UTC (L) tree=w6.1-d lock=/tmp/ts-spike/bench.lock held with flock (a second flock -n failed) loops=44 GOEXPERIMENT= go test -count=300 -run ^TestTokenResidualK21$/^success:_GOAWAY -v ./internal/h2gate/
+# load before:  09:43:53 up 2 days,  5:08,  2 users,  load average: 36.69, 14.91, 10.67
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  09:43:58 up 2 days,  5:08,  2 users,  load average: 37.27, 15.40, 10.85
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	97.767s
+# load at the end:  09:45:36 up 2 days,  5:10,  2 users,  load average: 42.92, 23.58, 14.25
+# exit 0 at 2026-09-26 09:45:36 UTC; yes loops left: []
+[filter] RESULT lines 300; --- PASS of the subtest 300; refused_streams>0 in 0; late>0 in 0; bad>0 in 0; fresh 200/200 in 300; accepts_total=2 in 300; SettleHolds:1 in 271, SettleHolds:0 in 29
+
+## l-k21c-goaway-contended-4
+# 2026-09-26 09:45:36 UTC (L) tree=w6.1-d lock=/tmp/ts-spike/bench.lock held with flock (a second flock -n failed) loops=44 GOEXPERIMENT= go test -count=300 -run ^TestTokenResidualK21$/^success:_GOAWAY -v ./internal/h2gate/
+# load before:  09:45:36 up 2 days,  5:10,  2 users,  load average: 42.92, 23.58, 14.25
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  09:45:41 up 2 days,  5:10,  2 users,  load average: 43.01, 23.92, 14.41
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	97.651s
+# load at the end:  09:47:19 up 2 days,  5:12,  2 users,  load average: 43.94, 29.47, 17.32
+# exit 0 at 2026-09-26 09:47:19 UTC; yes loops left: []
+[filter] RESULT lines 300; --- PASS of the subtest 300; refused_streams>0 in 0; late>0 in 0; bad>0 in 0; fresh 200/200 in 300; accepts_total=2 in 300; SettleHolds:1 in 265, SettleHolds:0 in 35
+
+## l-k21c-goaway-contended-5
+# 2026-09-26 09:47:19 UTC (L) tree=w6.1-d lock=/tmp/ts-spike/bench.lock held with flock (a second flock -n failed) loops=44 GOEXPERIMENT= go test -count=300 -run ^TestTokenResidualK21$/^success:_GOAWAY -v ./internal/h2gate/
+# load before:  09:47:19 up 2 days,  5:12,  2 users,  load average: 43.94, 29.47, 17.32
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# load with 44 loops:  09:47:24 up 2 days,  5:12,  2 users,  load average: 43.94, 29.71, 17.47
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	97.648s
+# load at the end:  09:49:03 up 2 days,  5:13,  2 users,  load average: 44.00, 33.79, 20.18
+# exit 0 at 2026-09-26 09:49:03 UTC; yes loops left: []
+[filter] RESULT lines 300; --- PASS of the subtest 300; refused_streams>0 in 1; late>0 in 0; bad>0 in 0; fresh 200/200 in 300; accepts_total=2 in 300; SettleHolds:1 in 273, SettleHolds:0 in 27
+[refused] RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=1 probe_headers_ms=0.048 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200] stats="{Dials:2 Leaders:1 Releases:1 Failures:0 Handovers:0 ColdResets:0 FallThroughs:0 FirstHolds:2 SettleHolds:1 HoldExpiries:0 TokenExpiries:0}"
