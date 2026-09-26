@@ -12,7 +12,8 @@ median and by mean (go test's ns/op, the one AC-P7 reads under ruling R108),
 and sdk's own three values. It then prints K7 under ruling R109: the counted
 runs (successful push runs on main from K7_FIRST_RUN on) per CPU model, with
 the spread, (largest - smallest) / smallest, of BenchmarkCall/sdk's mean on
-each model, then per model and AVX-512 exposure (ruling R109b's key), and
+each model, then per model and AVX-512 exposure (ruling R109b's key), each
+group split into the segments that rulings R109c and R109c-corr open, and
 beside it the spread of the sdk/naive mean ratio over the
 counted runs of any host. Last, for comparison, both spreads over every run
 in the file, in total and per host.
@@ -27,6 +28,12 @@ RESULTS = Path(__file__).parent / "results" / "codspeed-call-stats.tsv"
 STATS = ("min", "median", "mean")
 # K7's count restarts at main's run of aaa9698, the K35 fix (D-K35-land).
 K7_FIRST_RUN = 36221839206
+# K7 segment openings (rulings R109c, R109c-corr): the counted run that
+# opens a new segment of its host group, with the landing. A landing opens
+# one only when it changes a non-test .go file on the call path and moves
+# BenchmarkCall/sdk's mean by 5 % or more on that group; the lead rules each
+# opening, so they are listed here, not detected.
+SEGMENT_OPENINGS = {36244496855: "653b5b9, W5.3's landing"}
 
 Run = dict[str, dict[str, str]]
 
@@ -73,8 +80,9 @@ def model(run: Run) -> str:
 def host(run: Run) -> str:
     """Return the run's CPU model name plus its AVX-512 exposure.
 
-    One model name covers VMs with and without AVX-512, which run about
-    28 % apart, so ruling R109b makes this K7's group.
+    One model name covers VMs with and without AVX-512, whose
+    BenchmarkCall/sdk means spread 29.01 % over one pair, so ruling R109b
+    makes this K7's group.
 
     Args:
         run: The run's rows.
@@ -104,19 +112,30 @@ def print_spreads(title: str, runs: Iterable[Run], value: Callable[[Run], float]
 
 
 def print_k7(title: str, runs: list[Run], key: Callable[[Run], str]) -> None:
-    """Print K7's count and BenchmarkCall/sdk mean spread per group.
+    """Print K7's count per group and, per segment, its count and spread.
+
+    A group's runs are taken in run order; a run in SEGMENT_OPENINGS starts
+    a new segment. The spread is BenchmarkCall/sdk's mean spread.
 
     Args:
         title: The grouping's name.
         runs: The counted runs.
         key: Returns a run's group.
     """
-    groups: dict[str, list[float]] = {}
-    for r in runs:
-        groups.setdefault(key(r), []).append(float(r["sdk"]["mean"]))
+    groups: dict[str, list[Run]] = {}
+    for r in sorted(runs, key=lambda r: int(r["sdk"]["gh_run"])):
+        groups.setdefault(key(r), []).append(r)
     print(f"{title}:")
-    for g, v in sorted(groups.items()):
-        print(f"- {g}: {len(v)} of 20 runs; BenchmarkCall/sdk mean spread {spread(v)}")
+    for g, group in sorted(groups.items()):
+        segments: list[tuple[str, list[float]]] = []
+        for r in group:
+            run = int(r["sdk"]["gh_run"])
+            if not segments or run in SEGMENT_OPENINGS:
+                opening = f", {SEGMENT_OPENINGS[run]}" if run in SEGMENT_OPENINGS else ""
+                segments.append((f"from {run}{opening}", []))
+            segments[-1][1].append(float(r["sdk"]["mean"]))
+        parts = "; ".join(f"segment {i} ({s}): {len(v)} of 20 runs, spread {spread(v)}" for i, (s, v) in enumerate(segments, 1))
+        print(f"- {g}: group count {len(group)}; {parts}")
 
 
 def main() -> int:
@@ -148,8 +167,8 @@ def main() -> int:
         return float(r["sdk"]["mean"]) / float(r["naive"]["mean"])
 
     print()
-    print(f"K7, successful push runs on main from {K7_FIRST_RUN} on; blocking needs 20 runs in one group")
-    print("with BenchmarkCall/sdk's mean within 5 %.")
+    print(f"K7, successful push runs on main from {K7_FIRST_RUN} on; blocking needs 20 runs in one segment")
+    print("of one group with BenchmarkCall/sdk's mean within 5 % (rulings R109b, R109c, R109c-corr).")
     print_k7("Per CPU model (ruling R109 as written)", counted, model)
     print_k7("Per CPU model and AVX-512 exposure (ruling R109b)", counted, host)
     ratio_spread = spread([mean_ratio(r) for r in counted])
