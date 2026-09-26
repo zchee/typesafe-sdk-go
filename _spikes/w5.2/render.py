@@ -47,7 +47,7 @@ FILES = ("ac-p1", "alloc", "codec")
 RUN = re.compile(r"^=== RUN\s+(?P<test>Test\w+)")
 RUNS = re.compile(r"runs of (?P<label>.+?)\s+mallocs/bytes:(?P<runs>(?: \d+/\d+)+)\s*$")
 RESULT = re.compile(
-    r"^\s+\S+\.go:\d+: (?P<line>(?:ENCODE|SEQ|DECODE|CALL|ITEM|MEM|LINEARITY|WIRE|LOG|JSON|LAZY) .*)$"
+    r"^\s+\S+\.go:\d+: (?P<line>(?:ENCODE|SEQ|DECODE|CALL|ITEM|MEM|LINEARITY|WIRE|LOG|JSON|LAZY|TYPED) .*)$"
 )
 LOAD = re.compile(r"^# load (?:before|after): .*load averages?: *(?P<one>[\d.]+)")
 

@@ -1,32 +1,32 @@
-# gates 2026-09-26 15:02:40 JST at 93c18a0 dirty=0
+# gates 2026-09-26 15:53:15 JST at 6bec0e8 dirty=0
 # modernize's own progress lines (its go list invocations) are removed from this copy.
 GATE ok   build
 GATE ok   vet
 0 issues.
-2026/09/26 15:02:51 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -f {{context.ReleaseTags}} -- unsafe
-2026/09/26 15:02:51 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
-2026/09/26 15:02:51 8.610167ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -f {{context.ReleaseTags}} -- unsafe
-2026/09/26 15:02:51 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
-2026/09/26 15:02:51 22.950458ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
-2026/09/26 15:02:51 154.766458ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
-2026/09/26 15:02:52 starting GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -f {{context.ReleaseTags}} -- unsafe
-2026/09/26 15:02:52 starting GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
-2026/09/26 15:02:52 9.533ms for GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -f {{context.ReleaseTags}} -- unsafe
-2026/09/26 15:02:52 starting GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,CompiledGoFiles,DepOnly,Imports,ImportMap,Module -compiled=true -test=false -export=false -deps=true -find=false -buildvcs=false -pgo=off -- ./...
-2026/09/26 15:02:52 10.272042ms for GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
-2026/09/26 15:02:52 93.331167ms for GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-c5 go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,CompiledGoFiles,DepOnly,Imports,ImportMap,Module -compiled=true -test=false -export=false -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 15:53:26 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 15:53:26 starting GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 15:53:26 8.101667ms for GOROOT= GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 15:53:26 starting GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 15:53:26 21.876875ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 15:53:26 151.592167ms for GOROOT= GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,TestGoFiles,XTestGoFiles,CompiledGoFiles,Export,DepOnly,Imports,ImportMap,TestImports,XTestImports,Module -compiled=true -test=true -export=true -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 15:53:28 starting GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 15:53:28 starting GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 15:53:28 10.35275ms for GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE=off GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -f {{context.ReleaseTags}} -- unsafe
+2026/09/26 15:53:28 starting GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,CompiledGoFiles,DepOnly,Imports,ImportMap,Module -compiled=true -test=false -export=false -deps=true -find=false -buildvcs=false -pgo=off -- ./...
+2026/09/26 15:53:28 11.47575ms for GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -f "{{context.GOARCH}} {{context.Compiler}}" -- unsafe
+2026/09/26 15:53:28 100.511291ms for GOROOT=/Users/zchee/sdk/go1.27.1 GOPATH= GO111MODULE= GOPROXY= PWD=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/06880606-d037-4ffd-81d1-eee679417251/scratchpad/wt-meas go list -e -json=Name,ImportPath,Error,Dir,GoFiles,IgnoredGoFiles,IgnoredOtherFiles,CFiles,CgoFiles,CXXFiles,MFiles,HFiles,FFiles,SFiles,SwigFiles,SwigCXXFiles,SysoFiles,CompiledGoFiles,DepOnly,Imports,ImportMap,Module -compiled=true -test=false -export=false -deps=true -find=false -buildvcs=false -pgo=off -- ./...
 GATE ok   lint
-ok  	github.com/zchee/typesafe-sdk-go	43.150s
+ok  	github.com/zchee/typesafe-sdk-go	44.512s
 ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.078s
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.459s
-ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.955s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.169s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.046s
-ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.042s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.443s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.967s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.157s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.044s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.040s
 GATE ok   race
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.713s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.707s
 ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.016s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.612s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.616s
 GATE ok   nonrace-internal
 === RUN   TestAllocWholeCall
     alloc_call_test.go:101: runs of E_sonic                                mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
@@ -56,12 +56,12 @@ GATE ok   nonrace-internal
     alloc_call_test.go:156: runs of q20 item readBody                      mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
     alloc_call_test.go:156: runs of q20 item decode                        mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
     alloc_call_test.go:156: ITEM q20 header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
---- PASS: TestAllocWholeCall (0.01s)
+--- PASS: TestAllocWholeCall (0.00s)
 === RUN   TestMemStatsCap
     alloc_call_test.go:307: runs of i-declared-16MiB-sent-10B              mallocs/bytes: 42/264320 38/264032 38/264032 38/264032 38/264032
     alloc_call_test.go:317: MEM i-declared-16MiB-sent-10B   outcome=eof   call=38/264032          callMiB=0.252 max=42/264320          spread=+4/+288 bound 327680 B
-    alloc_call_test.go:307: runs of ii-declared-16MiB+1                    mallocs/bytes: 16/1368 16/1368 16/1368 16/1368 16/1368
-    alloc_call_test.go:317: MEM ii-declared-16MiB+1         outcome=large call=16/1368            callMiB=0.001 max=16/1368            spread=+0/+0 bound 65536 B
+    alloc_call_test.go:307: runs of ii-declared-16MiB+1                    mallocs/bytes: 17/19800 16/1368 16/1368 16/1368 16/1368
+    alloc_call_test.go:317: MEM ii-declared-16MiB+1         outcome=large call=16/1368            callMiB=0.001 max=17/19800           spread=+1/+18432 bound 65536 B
     alloc_call_test.go:307: runs of iii-undeclared-16MiB+1                 mallocs/bytes: 29/33559896 29/33559896 29/33559896 29/33559896 29/33559896
     alloc_call_test.go:317: MEM iii-undeclared-16MiB+1      outcome=large call=29/33559896        callMiB=32.005 max=29/33559896        spread=+0/+0 bound 33619968 B
     alloc_call_test.go:307: runs of iv-declared-16MiB                      mallocs/bytes: 26/33302488 26/33302488 26/33302488 26/33302488 26/33302488
@@ -74,18 +74,18 @@ GATE ok   nonrace-internal
     alloc_call_test.go:317: MEM vii-undeclared-result.json  outcome=ok    call=20/6104            callMiB=0.006 max=20/6104            spread=+0/+0 bound 69632 B
 --- PASS: TestMemStatsCap (0.14s)
 === RUN   TestLinearityFloodTime
-    alloc_decode_cases_test.go:227: span 0 structured-legend-flood-1k.json    357 decodes in 250.415042ms, 701.442µs each
-    alloc_decode_cases_test.go:227: span 0 structured-legend-flood-10k.json    39 decodes in 256.787625ms, 6.584298ms each
-    alloc_decode_cases_test.go:227: span 1 structured-legend-flood-1k.json    345 decodes in 250.483917ms, 726.04µs each
-    alloc_decode_cases_test.go:227: span 1 structured-legend-flood-10k.json    37 decodes in 254.0265ms, 6.865581ms each
-    alloc_decode_cases_test.go:227: span 2 structured-legend-flood-1k.json    355 decodes in 250.656208ms, 706.073µs each
-    alloc_decode_cases_test.go:227: span 2 structured-legend-flood-10k.json    37 decodes in 255.532833ms, 6.906292ms each
-    alloc_decode_cases_test.go:227: span 3 structured-legend-flood-1k.json    348 decodes in 250.6235ms, 720.182µs each
-    alloc_decode_cases_test.go:227: span 3 structured-legend-flood-10k.json    38 decodes in 254.357917ms, 6.693629ms each
-    alloc_decode_cases_test.go:227: span 4 structured-legend-flood-1k.json    363 decodes in 250.13675ms, 689.081µs each
-    alloc_decode_cases_test.go:227: span 4 structured-legend-flood-10k.json    38 decodes in 253.508458ms, 6.671275ms each
-    alloc_decode_cases_test.go:240: LINEARITY time 1k 689.081µs, 10k 6.584298ms, ratio 9.56 (bound 15), decodes per span 1k [357 345 355 348 363] 10k [39 37 37 38 38], 5 spans of at least 250ms
---- PASS: TestLinearityFloodTime (2.60s)
+    alloc_decode_cases_test.go:227: span 0 structured-legend-flood-1k.json    365 decodes in 250.101417ms, 685.209µs each
+    alloc_decode_cases_test.go:227: span 0 structured-legend-flood-10k.json    40 decodes in 252.781375ms, 6.319534ms each
+    alloc_decode_cases_test.go:227: span 1 structured-legend-flood-1k.json    379 decodes in 250.348417ms, 660.549µs each
+    alloc_decode_cases_test.go:227: span 1 structured-legend-flood-10k.json    39 decodes in 251.785083ms, 6.456027ms each
+    alloc_decode_cases_test.go:227: span 2 structured-legend-flood-1k.json    367 decodes in 250.159792ms, 681.634µs each
+    alloc_decode_cases_test.go:227: span 2 structured-legend-flood-10k.json    40 decodes in 254.79475ms, 6.369868ms each
+    alloc_decode_cases_test.go:227: span 3 structured-legend-flood-1k.json    369 decodes in 250.284292ms, 678.277µs each
+    alloc_decode_cases_test.go:227: span 3 structured-legend-flood-10k.json    39 decodes in 250.868833ms, 6.432534ms each
+    alloc_decode_cases_test.go:227: span 4 structured-legend-flood-1k.json    369 decodes in 250.090167ms, 677.751µs each
+    alloc_decode_cases_test.go:227: span 4 structured-legend-flood-10k.json    39 decodes in 250.859333ms, 6.43229ms each
+    alloc_decode_cases_test.go:240: LINEARITY time 1k 660.549µs, 10k 6.319534ms, ratio 9.57 (bound 15), decodes per span 1k [365 379 367 369 369] 10k [40 39 40 39 39], 5 spans of at least 250ms
+--- PASS: TestLinearityFloodTime (2.57s)
 === RUN   TestAllocDecodeFixtures
 === RUN   TestAllocDecodeFixtures/deviation-big-exp-noul.json
     alloc_decode_test.go:64: DECODE deviation-big-exp-noul             does not decode, no budget: 200 Invalid response data at 'answers.spam.noul'.
@@ -211,7 +211,7 @@ GATE ok   nonrace-internal
     alloc_decode_test.go:79: runs of unknown-answer-type.json misses        mallocs/bytes: 2/160 2/160 2/160 2/160 2/160
     alloc_decode_test.go:91: runs of unknown-answer-type.json naive         mallocs/bytes: 18/2232 18/2232 18/2232 18/2232 18/2232
     alloc_decode_test.go:102: DECODE unknown-answer-type                bytes=145     allocs=1    allocBytes=144      budget=1    misses=2/160        naive=18/2232        ratio=0.056
---- PASS: TestAllocDecodeFixtures (0.13s)
+--- PASS: TestAllocDecodeFixtures (0.12s)
     --- PASS: TestAllocDecodeFixtures/deviation-big-exp-noul.json (0.00s)
     --- PASS: TestAllocDecodeFixtures/deviation-lone-surrogate.json (0.00s)
     --- PASS: TestAllocDecodeFixtures/deviation-nan-noul.json (0.00s)
@@ -257,7 +257,7 @@ GATE ok   nonrace-internal
     alloc_decode_test.go:161: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
     alloc_decode_test.go:161: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
     alloc_decode_test.go:172: LINEARITY allocations 1k 90 (members 1011), 10k 685 (members 10011), ratio 7.61 (bound 12), growth 0.0661 per member visited (the lazy pass's c₁ = 1/15 = 0.0667, recorded)
---- PASS: TestLinearityFlood (0.07s)
+--- PASS: TestLinearityFlood (0.06s)
 === RUN   TestAllocEncode
 === RUN   TestAllocEncode/string/1KiB
     alloc_encode_test.go:129: runs of string/1KiB E_sonic                    mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
@@ -378,16 +378,16 @@ GATE ok   nonrace-internal
 === RUN   TestAllocEncode/nested-map/64KiB
     alloc_encode_test.go:129: runs of nested-map/64KiB E_sonic               mallocs/bytes: 471/45136 471/45136 471/45136 471/45136 471/45136
     alloc_encode_test.go:148: runs of nested-map/64KiB                       mallocs/bytes: 471/45136 471/45136 471/45136 471/45136 471/45136
-    alloc_encode_test.go:150: ENCODE nested-map/64KiB         body=66356    E_sonic=471/45136    B=0 sdk=471/45136        above=0    scratch=70370     warm=2  asserted
+    alloc_encode_test.go:150: ENCODE nested-map/64KiB         body=66356    E_sonic=471/45136    B=0 sdk=471/45136        above=0    scratch=70938     warm=2  asserted
 === RUN   TestAllocEncode/nested-map/1MiB
     alloc_encode_test.go:129: runs of nested-map/1MiB E_sonic                mallocs/bytes: 7503/720208 7503/720208 7503/720208 7503/720208 7503/720208
     alloc_encode_test.go:148: runs of nested-map/1MiB                        mallocs/bytes: 7503/720208 7503/720208 7503/720208 7503/720208 7503/720208
-    alloc_encode_test.go:150: ENCODE nested-map/1MiB          body=1075010  E_sonic=7503/720208  B=0 sdk=7503/720208      above=0    scratch=1189012   warm=2  asserted
+    alloc_encode_test.go:150: ENCODE nested-map/1MiB          body=1075010  E_sonic=7503/720208  B=0 sdk=7503/720208      above=0    scratch=1578908   warm=2  asserted
 === RUN   TestAllocEncode/nested-map/6MiB
     alloc_encode_test.go:129: runs of nested-map/6MiB E_sonic                mallocs/bytes: 45010/4320880 45010/4320880 45010/4320880 45010/4320880 45010/4320880
     alloc_encode_test.go:148: runs of nested-map/6MiB                        mallocs/bytes: 45010/4320880 45010/4320880 45010/4320880 45010/4320880 45010/4320880
-    alloc_encode_test.go:150: ENCODE nested-map/6MiB          body=6516035  E_sonic=45010/4320880 B=0 sdk=45010/4320880    above=0    scratch=7651328   warm=2  asserted
---- PASS: TestAllocEncode (2.14s)
+    alloc_encode_test.go:150: ENCODE nested-map/6MiB          body=6516035  E_sonic=45010/4320880 B=0 sdk=45010/4320880    above=0    scratch=8034067   warm=2  asserted
+--- PASS: TestAllocEncode (1.71s)
     --- PASS: TestAllocEncode/string/1KiB (0.00s)
     --- PASS: TestAllocEncode/string/64KiB (0.00s)
     --- PASS: TestAllocEncode/string/1MiB (0.01s)
@@ -399,27 +399,27 @@ GATE ok   nonrace-internal
     --- PASS: TestAllocEncode/RawJSON/1KiB (0.00s)
     --- PASS: TestAllocEncode/RawJSON/64KiB (0.00s)
     --- PASS: TestAllocEncode/RawJSON/1MiB (0.01s)
-    --- PASS: TestAllocEncode/RawJSON/6MiB (0.10s)
+    --- PASS: TestAllocEncode/RawJSON/6MiB (0.07s)
     --- PASS: TestAllocEncode/boxed-RawJSON/1KiB (0.02s)
-    --- PASS: TestAllocEncode/boxed-RawJSON/64KiB (0.03s)
+    --- PASS: TestAllocEncode/boxed-RawJSON/64KiB (0.02s)
     --- PASS: TestAllocEncode/boxed-RawJSON/1MiB (0.02s)
     --- PASS: TestAllocEncode/boxed-RawJSON/6MiB (0.02s)
     --- PASS: TestAllocEncode/json.RawMessage/1KiB (0.02s)
-    --- PASS: TestAllocEncode/json.RawMessage/64KiB (0.03s)
-    --- PASS: TestAllocEncode/json.RawMessage/1MiB (0.04s)
-    --- PASS: TestAllocEncode/json.RawMessage/6MiB (0.11s)
+    --- PASS: TestAllocEncode/json.RawMessage/64KiB (0.02s)
+    --- PASS: TestAllocEncode/json.RawMessage/1MiB (0.03s)
+    --- PASS: TestAllocEncode/json.RawMessage/6MiB (0.10s)
     --- PASS: TestAllocEncode/pointer-to-struct/1KiB (0.02s)
-    --- PASS: TestAllocEncode/pointer-to-struct/64KiB (0.03s)
-    --- PASS: TestAllocEncode/pointer-to-struct/1MiB (0.06s)
-    --- PASS: TestAllocEncode/pointer-to-struct/6MiB (0.26s)
-    --- PASS: TestAllocEncode/flat-map/1KiB (0.04s)
-    --- PASS: TestAllocEncode/flat-map/64KiB (0.03s)
-    --- PASS: TestAllocEncode/flat-map/1MiB (0.06s)
-    --- PASS: TestAllocEncode/flat-map/6MiB (0.25s)
+    --- PASS: TestAllocEncode/pointer-to-struct/64KiB (0.02s)
+    --- PASS: TestAllocEncode/pointer-to-struct/1MiB (0.05s)
+    --- PASS: TestAllocEncode/pointer-to-struct/6MiB (0.24s)
+    --- PASS: TestAllocEncode/flat-map/1KiB (0.02s)
+    --- PASS: TestAllocEncode/flat-map/64KiB (0.02s)
+    --- PASS: TestAllocEncode/flat-map/1MiB (0.05s)
+    --- PASS: TestAllocEncode/flat-map/6MiB (0.16s)
     --- PASS: TestAllocEncode/nested-map/1KiB (0.03s)
-    --- PASS: TestAllocEncode/nested-map/64KiB (0.04s)
-    --- PASS: TestAllocEncode/nested-map/1MiB (0.13s)
-    --- PASS: TestAllocEncode/nested-map/6MiB (0.70s)
+    --- PASS: TestAllocEncode/nested-map/64KiB (0.03s)
+    --- PASS: TestAllocEncode/nested-map/1MiB (0.10s)
+    --- PASS: TestAllocEncode/nested-map/6MiB (0.54s)
 === RUN   TestAllocResponseJSON
 === RUN   TestAllocResponseJSON/models.json
     alloc_json_test.go:68: runs of models.json marshal                    mallocs/bytes: 1/96 1/96 1/96 1/96 1/96
@@ -437,11 +437,11 @@ GATE ok   nonrace-internal
     alloc_json_test.go:84: runs of structured-legend-flood-1k.json marshal mallocs/bytes: 1/98304 1/98304 1/98304 1/98304 1/98304
     alloc_json_test.go:87: runs of structured-legend-flood-1k.json unmarshal mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
     alloc_json_test.go:93: JSON structured-legend-flood-1k.json  payload=57418   marshal allocs=1 bytes=98304   unmarshal allocs=91 bytes=213896
---- PASS: TestAllocResponseJSON (0.02s)
+--- PASS: TestAllocResponseJSON (0.01s)
     --- PASS: TestAllocResponseJSON/models.json (0.00s)
     --- PASS: TestAllocResponseJSON/result-20.json (0.00s)
     --- PASS: TestAllocResponseJSON/result.json (0.00s)
-    --- PASS: TestAllocResponseJSON/structured-legend-flood-1k.json (0.01s)
+    --- PASS: TestAllocResponseJSON/structured-legend-flood-1k.json (0.00s)
 === RUN   TestAllocPrepare
 === RUN   TestAllocPrepare/c1-sketch
     alloc_prepare_test.go:61: runs of c1-sketch                              mallocs/bytes: 9/1016 9/1016 9/1016 9/1016 9/1016
@@ -509,7 +509,7 @@ GATE ok   nonrace-internal
     alloc_sequence_test.go:139: runs of boxed-string call 15                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 16                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 17                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
-    alloc_sequence_test.go:139: runs of boxed-string call 18                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 18                   mallocs/bytes: 22/2648 23/2696 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 19                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 20                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 21                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
@@ -523,7 +523,7 @@ GATE ok   nonrace-internal
     alloc_sequence_test.go:139: runs of boxed-string call 29                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 30                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:139: runs of boxed-string call 31                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
-    alloc_sequence_test.go:139: runs of boxed-string call 32                   mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 32                   mallocs/bytes: 22/2648 22/2648 22/2648 23/2696 22/2648
     alloc_sequence_test.go:155: SEQ boxed-string      single-size call=22/2648 encode=1/16 rest=21; call 1 min 50/199960 max 50/199960; calls 1..32 50 | 22×9 | 23 | 22×10 | 23×2 | 22×9
     alloc_sequence_test.go:156: SEQ boxed-string      encode-level calls 2..32: 1×9 | 2 | 1×10 | 2×2 | 1×9; bytes call 11 6302296, call 22 12593752, call 23 6744; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; asserted
 === RUN   TestAllocScratchSequence/boxed-RawJSON
@@ -575,7 +575,7 @@ GATE ok   nonrace-internal
     alloc_sequence_test.go:137: runs of pointer-to-struct call 7               mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:137: runs of pointer-to-struct call 8               mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:137: runs of pointer-to-struct call 9               mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
-    alloc_sequence_test.go:137: runs of pointer-to-struct call 10              mallocs/bytes: 22/2648 22/2648 22/2648 23/2696 22/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 10              mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:137: runs of pointer-to-struct call 11              mallocs/bytes: 43/30467928 43/30467928 43/30467928 43/30467928 43/30467928
     alloc_sequence_test.go:137: runs of pointer-to-struct call 12              mallocs/bytes: 23/6744 23/6744 23/6744 23/6744 23/6744
     alloc_sequence_test.go:137: runs of pointer-to-struct call 13              mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
@@ -600,7 +600,7 @@ GATE ok   nonrace-internal
     alloc_sequence_test.go:137: runs of pointer-to-struct call 32              mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
     alloc_sequence_test.go:155: SEQ pointer-to-struct single-size call=22/2648 encode=1/16 rest=21; call 1 min 50/199960 max 50/199960; calls 1..32 50 | 22×9 | 43 | 23 | 22×9 | 44 | 23 | 22×9
     alloc_sequence_test.go:156: SEQ pointer-to-struct encode-level calls 2..32: 1×9 | 22 | 2 | 1×9 | 23 | 2 | 1×9; bytes call 11 30467928, call 22 44410712, call 23 6744; drops after calls [11 22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; recorded (G3 (b))
-    alloc_sequence_test.go:163: SEQ pointer-to-struct maximum calls 1..32 50 | 22×8 | 23 | 43 | 23 | 22×9 | 44 | 23 | 22×9
+    alloc_sequence_test.go:163: SEQ pointer-to-struct maximum calls 1..32 50 | 22×9 | 43 | 23 | 22×9 | 44 | 23 | 22×9
 === RUN   TestAllocScratchSequence/flat-map
     alloc_sequence_test.go:102: runs of flat-map single-size call              mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
     alloc_sequence_test.go:104: runs of flat-map single-size encode            mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
@@ -628,7 +628,7 @@ GATE ok   nonrace-internal
     alloc_sequence_test.go:137: runs of flat-map call 22                       mallocs/bytes: 24/11815608 24/11815608 24/11815608 24/11815608 24/11815608
     alloc_sequence_test.go:137: runs of flat-map call 23                       mallocs/bytes: 24/6840 24/6840 24/6840 24/6840 24/6840
     alloc_sequence_test.go:137: runs of flat-map call 24                       mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
-    alloc_sequence_test.go:137: runs of flat-map call 25                       mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
+    alloc_sequence_test.go:137: runs of flat-map call 25                       mallocs/bytes: 23/2744 24/2792 23/2744 23/2744 23/2744
     alloc_sequence_test.go:137: runs of flat-map call 26                       mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
     alloc_sequence_test.go:137: runs of flat-map call 27                       mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
     alloc_sequence_test.go:137: runs of flat-map call 28                       mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
@@ -638,20 +638,117 @@ GATE ok   nonrace-internal
     alloc_sequence_test.go:137: runs of flat-map call 32                       mallocs/bytes: 23/2744 23/2744 23/2744 23/2744 23/2744
     alloc_sequence_test.go:155: SEQ flat-map          single-size call=23/2744 encode=2/112 rest=21; call 1 min 53/200328 max 53/200328; calls 1..32 53 | 23×9 | 42 | 23×10 | 24×2 | 23×9
     alloc_sequence_test.go:156: SEQ flat-map          encode-level calls 2..32: 2×9 | 21 | 2×10 | 3×2 | 2×9; bytes call 11 23729720, call 22 11815608, call 23 6840; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; recorded (G3 (b))
-    alloc_sequence_test.go:163: SEQ flat-map          maximum calls 1..32 53 | 23×9 | 42 | 23×10 | 24×2 | 23×9
---- PASS: TestAllocScratchSequence (2.73s)
-    --- PASS: TestAllocScratchSequence/boxed-string (0.42s)
-    --- PASS: TestAllocScratchSequence/boxed-RawJSON (0.65s)
-    --- PASS: TestAllocScratchSequence/pointer-to-struct (0.85s)
-    --- PASS: TestAllocScratchSequence/flat-map (0.80s)
+    alloc_sequence_test.go:163: SEQ flat-map          maximum calls 1..32 53 | 23×9 | 42 | 23×10 | 24×2 | 23 | 24 | 23×7
+--- PASS: TestAllocScratchSequence (2.22s)
+    --- PASS: TestAllocScratchSequence/boxed-string (0.25s)
+    --- PASS: TestAllocScratchSequence/boxed-RawJSON (0.49s)
+    --- PASS: TestAllocScratchSequence/pointer-to-struct (0.76s)
+    --- PASS: TestAllocScratchSequence/flat-map (0.72s)
 === RUN   TestAllocLoggedCall
-    alloc_telemetry_test.go:80: runs of call/default                           mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
-    alloc_telemetry_test.go:80: runs of call/info-discard                      mallocs/bytes: 23/2696 23/2696 23/2696 23/2696 23/2696
-    alloc_telemetry_test.go:80: runs of call/debug-discard                     mallocs/bytes: 25/2744 25/2744 25/2744 25/2744 25/2744
-    alloc_telemetry_test.go:80: runs of call/info-text                         mallocs/bytes: 23/2696 23/2696 23/2696 23/2696 23/2696
-    alloc_telemetry_test.go:92: LOG q3 default=22/2648 info-discard=23/2696 (+1/48) debug-discard=25/2744 (+3/96) info-text=23/2696 (+1/48)
+    alloc_telemetry_test.go:98: runs of call/q3/default                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    alloc_telemetry_test.go:98: runs of call/q3/info-discard                   mallocs/bytes: 23/2696 23/2696 23/2696 23/2696 23/2696
+    alloc_telemetry_test.go:98: runs of call/q3/debug-discard                  mallocs/bytes: 25/2744 25/2744 25/2744 25/2744 25/2744
+    alloc_telemetry_test.go:98: runs of call/q3/info-text                      mallocs/bytes: 23/2696 23/2696 23/2696 23/2696 23/2696
+    alloc_telemetry_test.go:110: LOG q3 default=22/2648 info-discard=23/2696 (+1/48) debug-discard=25/2744 (+3/96) info-text=23/2696 (+1/48)
+    alloc_telemetry_test.go:98: runs of call/q3+id/default                     mallocs/bytes: 22/2664 22/2664 22/2664 22/2664 22/2664
+    alloc_telemetry_test.go:98: runs of call/q3+id/info-discard                mallocs/bytes: 24/2728 24/2728 24/2728 24/2728 24/2728
+    alloc_telemetry_test.go:98: runs of call/q3+id/debug-discard               mallocs/bytes: 26/2776 26/2776 26/2776 26/2776 26/2776
+    alloc_telemetry_test.go:98: runs of call/q3+id/info-text                   mallocs/bytes: 24/2728 24/2728 24/2728 24/2728 24/2728
+    alloc_telemetry_test.go:110: LOG q3+id default=22/2664 info-discard=24/2728 (+2/64) debug-discard=26/2776 (+4/112) info-text=24/2728 (+2/64)
 --- PASS: TestAllocLoggedCall (0.01s)
+=== RUN   TestAllocRequestID
+=== RUN   TestAllocRequestID/success:_no_request_id
+    alloc_telemetry_test.go:153: requestID allocates 0 times, want 0 (id "")
+=== RUN   TestAllocRequestID/success:_an_id_without_the_key
+    alloc_telemetry_test.go:153: requestID allocates 0 times, want 0 (id "req_123")
+=== RUN   TestAllocRequestID/success:_an_id_that_holds_the_key
+    alloc_telemetry_test.go:153: requestID allocates 0 times, want 0 (id "***")
+=== RUN   TestAllocRequestID/success:_a_repeated_id_without_the_key
+    alloc_telemetry_test.go:153: requestID allocates 1 times, want 1 (id "req_1, req_2")
+=== RUN   TestAllocRequestID/success:_a_repeated_id,_one_holding_the_key
+    alloc_telemetry_test.go:153: requestID allocates 1 times, want 1 (id "***, ***, ***")
+--- PASS: TestAllocRequestID (0.00s)
+    --- PASS: TestAllocRequestID/success:_no_request_id (0.00s)
+    --- PASS: TestAllocRequestID/success:_an_id_without_the_key (0.00s)
+    --- PASS: TestAllocRequestID/success:_an_id_that_holds_the_key (0.00s)
+    --- PASS: TestAllocRequestID/success:_a_repeated_id_without_the_key (0.00s)
+    --- PASS: TestAllocRequestID/success:_a_repeated_id,_one_holding_the_key (0.00s)
+=== RUN   TestAllocTypedDecode
+    alloc_typed_test.go:79: runs of Answers() decode                       mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_typed_test.go:83: runs of DecodeAs[reviewAnswers]                mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_typed_test.go:87: runs of SystemOne                              mallocs/bytes: 22/2648 23/2728 22/2648 22/2648 22/2648
+    alloc_typed_test.go:91: runs of Ask[reviewAnswers]                     mallocs/bytes: 23/2792 23/2792 23/2792 23/2792 23/2792
+    alloc_typed_test.go:95: TYPED result bytes=364 answersDecode=4/688 decodeAs=1/144 systemOne=22/2648 ask=23/2792 (AC-P3: decodeAs < answersDecode; AC-P6: ask = systemOne + decodeAs)
+--- PASS: TestAllocTypedDecode (0.01s)
 PASS
-ok  	github.com/zchee/typesafe-sdk-go	7.869s
+ok  	github.com/zchee/typesafe-sdk-go	6.875s
+=== RUN   TestLazyPassAllocations
+=== RUN   TestLazyPassAllocations/success:_structured-legend
+    decode_bench_test.go:159: runs of structured-legend.json lazy            mallocs/bytes: 8/4256 8/4256 8/4256 8/4256 8/4256
+    decode_bench_test.go:165: LAZY structured-legend.json             members=10     allocs=8    bytes=4256     bound=22
+=== RUN   TestLazyPassAllocations/success:_escaped-member-names
+    decode_bench_test.go:159: runs of escaped-member-names.json lazy         mallocs/bytes: 13/4320 13/4320 13/4320 13/4320 13/4320
+    decode_bench_test.go:165: LAZY escaped-member-names.json          members=12     allocs=13   bytes=4320     bound=27
+=== RUN   TestLazyPassAllocations/success:_duplicates
+    decode_bench_test.go:159: runs of duplicates.json lazy                   mallocs/bytes: 9/4272 9/4272 9/4272 9/4272 9/4272
+    decode_bench_test.go:165: LAZY duplicates.json                    members=18     allocs=9    bytes=4272     bound=24
+=== RUN   TestLazyPassAllocations/success:_deviation-lone-surrogate
+    decode_bench_test.go:159: runs of deviation-lone-surrogate.json lazy     mallocs/bytes: 8/4256 8/4256 8/4256 8/4256 8/4256
+    decode_bench_test.go:165: LAZY deviation-lone-surrogate.json      members=11     allocs=8    bytes=4256     bound=22
+=== RUN   TestLazyPassAllocations/success:_flood-1k
+    decode_bench_test.go:159: runs of structured-legend-flood-1k.json lazy   mallocs/bytes: 86/106904 86/106904 86/106904 86/106904 86/106904
+    decode_bench_test.go:165: LAZY structured-legend-flood-1k.json    members=1011   allocs=86   bytes=106904   bound=89
+=== RUN   TestLazyPassAllocations/success:_flood-10k
+    decode_bench_test.go:159: runs of structured-legend-flood-10k.json lazy  mallocs/bytes: 681/956872 681/956872 681/956872 681/956872 681/956872
+    decode_bench_test.go:165: LAZY structured-legend-flood-10k.json   members=10011  allocs=681  bytes=956872   bound=689
+=== NAME  TestLazyPassAllocations
+    decode_bench_test.go:178: LAZY ratio 10k/1k = 681/86 = 7.92 (bound 12)
+--- PASS: TestLazyPassAllocations (0.02s)
+    --- PASS: TestLazyPassAllocations/success:_structured-legend (0.00s)
+    --- PASS: TestLazyPassAllocations/success:_escaped-member-names (0.00s)
+    --- PASS: TestLazyPassAllocations/success:_duplicates (0.00s)
+    --- PASS: TestLazyPassAllocations/success:_deviation-lone-surrogate (0.00s)
+    --- PASS: TestLazyPassAllocations/success:_flood-1k (0.00s)
+    --- PASS: TestLazyPassAllocations/success:_flood-10k (0.02s)
+=== RUN   TestEncodeStateAllocations
+=== RUN   TestEncodeStateAllocations/success:_boxed_string
+    encode_test.go:487: runs of success: boxed string                  mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    encode_test.go:488: success: boxed string: body 1033 bytes, 1/16 mallocs/bytes
+=== RUN   TestEncodeStateAllocations/success:_boxed_json.RawMessage
+    encode_test.go:487: runs of success: boxed json.RawMessage         mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    encode_test.go:488: success: boxed json.RawMessage: body 1019 bytes, 1/16 mallocs/bytes
+=== RUN   TestEncodeStateAllocations/success:_raw_bytes
+    encode_test.go:487: runs of success: raw bytes                     mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    encode_test.go:488: success: raw bytes: body 1019 bytes, 0/0 mallocs/bytes
+=== RUN   TestEncodeStateAllocations/success:_pointer_to_struct
+    encode_test.go:487: runs of success: pointer to struct             mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    encode_test.go:488: success: pointer to struct: body 1075 bytes, 1/16 mallocs/bytes
+=== RUN   TestEncodeStateAllocations/success:_flat_map[string]any
+    encode_test.go:487: runs of success: flat map[string]any           mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+    encode_test.go:488: success: flat map[string]any: body 1002 bytes, 2/112 mallocs/bytes
+=== RUN   TestEncodeStateAllocations/success:_empty_section_(control)
+    encode_test.go:487: runs of success: empty section (control)       mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    encode_test.go:488: success: empty section (control): body 9 bytes, 0/0 mallocs/bytes
+=== RUN   TestEncodeStateAllocations/success:_bare_string
+    encode_test.go:487: runs of success: bare string                   mallocs/bytes: 2/32 2/32 2/32 2/32 2/32
+    encode_test.go:488: success: bare string: body 1033 bytes, 2/32 mallocs/bytes
+--- PASS: TestEncodeStateAllocations (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_boxed_string (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_boxed_json.RawMessage (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_raw_bytes (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_pointer_to_struct (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_flat_map[string]any (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_empty_section_(control) (0.00s)
+    --- PASS: TestEncodeStateAllocations/success:_bare_string (0.00s)
+=== RUN   TestNewBodyAllocations
+=== RUN   TestNewBodyAllocations/success:_a_warm_pool_hit_allocates_nothing
+    scratch_test.go:474: runs of success: a warm pool hit allocates nothing mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+=== RUN   TestNewBodyAllocations/success:_the_first_body_after_an_over-ceiling_drop_allocates_only_its_buffer
+    scratch_test.go:474: runs of success: the first body after an over-ceiling drop allocates only its buffer mallocs/bytes: 1/4096 1/4096 1/4096 1/4096 1/4096
+--- PASS: TestNewBodyAllocations (0.00s)
+    --- PASS: TestNewBodyAllocations/success:_a_warm_pool_hit_allocates_nothing (0.00s)
+    --- PASS: TestNewBodyAllocations/success:_the_first_body_after_an_over-ceiling_drop_allocates_only_its_buffer (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.037s
 GATE ok   nonrace-root
-# gates done 2026-09-26 15:03:48 JST fail=0
+# gates done 2026-09-26 15:54:23 JST fail=0
