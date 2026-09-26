@@ -1,0 +1,91 @@
+# W6.1 A/B: fuzz campaigns on (L), 10 min per target, sequential, -parallel 8, GOCACHE=/tmp/ts-spike/gocache-w6.1 with its fuzz cache cleared before the first target;
+# script /tmp/ts-spike/w6.1-fuzz-l.sh (the tree copied at 2026-09-26T08:36Z; decode_paths_test.go replaced at 08:57Z with the committed version, before FuzzErrorBody and FuzzDecodePaths built). Load = /proc/loadavg 1/5/15 min; 44 cores.
+# Filtered per R89 (4): the campaign driver log in full, then each target log's first 3 and last 4 lines (the full logs print a progress line every 3 s).
+
+## driver: w6.1-campaign-B.log
+go version go1.27.1 linux/amd64
+== FuzzRetryAfter . start 2026-09-26T08:36:33Z load 0.00 0.23 2.25
+== FuzzRetryAfter end 2026-09-26T08:46:34Z rc=0 load 10.14 8.35 5.71
+fuzz: elapsed: 10m0s, execs: 26104407 (41320/sec), new interesting: 256 (total: 310)
+fuzz: elapsed: 10m0s, execs: 26104407 (0/sec), new interesting: 256 (total: 310)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	600.511s
+== FuzzRetryAfter cached corpus: 256 files; testdata/fuzz: 22 files
+== FuzzTagGrammar . start 2026-09-26T08:46:34Z load 10.14 8.35 5.71
+== FuzzTagGrammar end 2026-09-26T08:56:35Z rc=0 load 18.03 16.13 10.90
+fuzz: elapsed: 10m0s, execs: 21277926 (33501/sec), new interesting: 467 (total: 512)
+fuzz: elapsed: 10m1s, execs: 21277926 (0/sec), new interesting: 467 (total: 512)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	601.021s
+== FuzzTagGrammar cached corpus: 467 files; testdata/fuzz: 0 files
+== FuzzDecodeResponse ./internal/codec/ start 2026-09-26T08:56:35Z load 18.03 16.13 10.90
+== FuzzDecodeResponse end 2026-09-26T09:06:38Z rc=0 load 8.48 10.61 10.80
+fuzz: elapsed: 10m0s, execs: 22340113 (13558/sec), new interesting: 245 (total: 313)
+fuzz: elapsed: 10m1s, execs: 22340113 (0/sec), new interesting: 245 (total: 313)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	601.047s
+== FuzzDecodeResponse cached corpus: 245 files; testdata/fuzz: 22 files
+== FuzzErrorBody ./internal/codec/ start 2026-09-26T09:06:38Z load 8.48 10.61 10.80
+== FuzzErrorBody end 2026-09-26T09:16:40Z rc=0 load 8.28 8.89 9.78
+fuzz: elapsed: 10m0s, execs: 32422578 (61171/sec), new interesting: 324 (total: 370)
+fuzz: elapsed: 10m0s, execs: 32422578 (0/sec), new interesting: 324 (total: 370)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	600.122s
+== FuzzErrorBody cached corpus: 324 files; testdata/fuzz: 22 files
+== FuzzDecodePaths ./internal/codec/ start 2026-09-26T09:16:40Z load 8.28 8.89 9.78
+== FuzzDecodePaths end 2026-09-26T09:26:41Z rc=0 load 9.33 9.15 9.45
+fuzz: elapsed: 10m0s, execs: 3087170 (275/sec), new interesting: 162 (total: 228)
+fuzz: elapsed: 10m1s, execs: 3087170 (0/sec), new interesting: 162 (total: 228)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	601.027s
+== FuzzDecodePaths cached corpus: 162 files; testdata/fuzz: 0 files
+
+## w6.1-FuzzRetryAfter-600s.log (205 lines)
+fuzz: elapsed: 0s, gathering baseline coverage: 0/54 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 54/54 completed, now fuzzing with 8 workers
+fuzz: elapsed: 3s, execs: 68043 (22676/sec), new interesting: 86 (total: 140)
+...
+fuzz: elapsed: 10m0s, execs: 26104407 (41320/sec), new interesting: 256 (total: 310)
+fuzz: elapsed: 10m0s, execs: 26104407 (0/sec), new interesting: 256 (total: 310)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	600.511s
+
+## w6.1-FuzzTagGrammar-600s.log (205 lines)
+fuzz: elapsed: 0s, gathering baseline coverage: 0/45 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 45/45 completed, now fuzzing with 8 workers
+fuzz: elapsed: 3s, execs: 85604 (28534/sec), new interesting: 94 (total: 139)
+...
+fuzz: elapsed: 10m0s, execs: 21277926 (33501/sec), new interesting: 467 (total: 512)
+fuzz: elapsed: 10m1s, execs: 21277926 (0/sec), new interesting: 467 (total: 512)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	601.021s
+
+## w6.1-FuzzDecodeResponse-600s.log (205 lines)
+fuzz: elapsed: 0s, gathering baseline coverage: 0/68 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 68/68 completed, now fuzzing with 8 workers
+fuzz: elapsed: 3s, execs: 83296 (27760/sec), new interesting: 24 (total: 92)
+...
+fuzz: elapsed: 10m0s, execs: 22340113 (13558/sec), new interesting: 245 (total: 313)
+fuzz: elapsed: 10m1s, execs: 22340113 (0/sec), new interesting: 245 (total: 313)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	601.047s
+
+## w6.1-FuzzErrorBody-600s.log (205 lines)
+fuzz: elapsed: 0s, gathering baseline coverage: 0/46 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 46/46 completed, now fuzzing with 8 workers
+fuzz: elapsed: 3s, execs: 108131 (36038/sec), new interesting: 43 (total: 89)
+...
+fuzz: elapsed: 10m0s, execs: 32422578 (61171/sec), new interesting: 324 (total: 370)
+fuzz: elapsed: 10m0s, execs: 32422578 (0/sec), new interesting: 324 (total: 370)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	600.122s
+
+## w6.1-FuzzDecodePaths-600s.log (205 lines)
+fuzz: elapsed: 0s, gathering baseline coverage: 0/66 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 66/66 completed, now fuzzing with 8 workers
+fuzz: elapsed: 3s, execs: 6733 (2244/sec), new interesting: 3 (total: 69)
+...
+fuzz: elapsed: 10m0s, execs: 3087170 (275/sec), new interesting: 162 (total: 228)
+fuzz: elapsed: 10m1s, execs: 3087170 (0/sec), new interesting: 162 (total: 228)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	601.027s
