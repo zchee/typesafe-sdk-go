@@ -1,0 +1,28 @@
+start 2026-09-27 03:27:12 JST head 94723b5 load:  3:27  up 5 days,  2:33, 1 user, load averages: 16.97 13.07 10.50
+=== RUN   TestExamples
+    examples_live_test.go:32: live API host: api.typesafe.ai
+=== RUN   TestExamples/concurrency
+=== RUN   TestExamples/logging
+=== RUN   TestExamples/options
+    examples_test.go:113: go run ./examples/options: exit status 1
+        stdout:
+        
+        stderr:
+        2026/09/27 03:27:14 POST https://api.typesafe.ai/v1/systemone: 400 Invalid request. (request_id=req_01a0def8ae4f71bfb46cf257933bf4d8)
+        exit status 1
+=== RUN   TestExamples/quickstart
+=== RUN   TestExamples/retries
+=== RUN   TestExamples/transport
+=== RUN   TestExamples/typed
+--- FAIL: TestExamples (3.50s)
+    --- PASS: TestExamples/concurrency (0.63s)
+    --- PASS: TestExamples/logging (0.42s)
+    --- FAIL: TestExamples/options (0.27s)
+    --- PASS: TestExamples/quickstart (0.35s)
+    --- PASS: TestExamples/retries (0.56s)
+    --- PASS: TestExamples/transport (0.66s)
+    --- PASS: TestExamples/typed (0.61s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/livetests	3.519s
+FAIL
+rc=1 end 2026-09-27 03:27:16 JST load:  3:27  up 5 days,  2:33, 1 user, load averages: 19.61 13.69 10.73

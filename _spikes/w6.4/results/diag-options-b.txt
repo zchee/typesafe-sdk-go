@@ -1,0 +1,3 @@
+diag B (beam_width only) 2026-09-27 03:28:19 JST
+status 400 kind bad request error_type "api_usage_error"
+body: {"detail":{"error_type":"api_usage_error","message":"Invalid request."}}

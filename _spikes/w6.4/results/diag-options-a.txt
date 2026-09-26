@@ -1,0 +1,2 @@
+diag A (no weight, no beam_width) 2026-09-27 03:28:11 JST
+result: <nil>
