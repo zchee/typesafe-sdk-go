@@ -1,0 +1,73 @@
+# 2026-09-26 06:42:42 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -run ^$ -bench ^BenchmarkSD2$ -benchmem -count=5 ./_spikes/w4.3/
+# load before:  06:42:42 up 2 days,  2:07,  2 users,  load average: 0.00, 0.02, 0.00 | kernel: 0.00 0.02 0.00 1/622 537514 (MAXLOAD=44, waited 0 x 60 s)
+# base: 1839eb1
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkSD2/result.json/0-DecodeAs-44         	 6350556	       190.7 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-44         	 6264355	       191.8 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-44         	 6258421	       192.2 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-44         	 6238898	       192.2 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/0-DecodeAs-44         	 6242982	       191.8 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/1-reflect-addr-44     	 6805214	       176.1 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/1-reflect-addr-44     	 6789123	       176.5 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/1-reflect-addr-44     	 6767166	       176.0 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/1-reflect-addr-44     	 6821905	       176.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/1-reflect-addr-44     	 6822007	       175.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-44    	16469701	        72.75 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-44    	16428072	        72.85 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-44    	16444460	        72.93 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-44    	16457358	        72.95 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/2-unsafe-offset-44    	16467643	        72.83 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result.json/3-reflect-set-44      	 4341658	       276.0 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/result.json/3-reflect-set-44      	 4358469	       274.2 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/result.json/3-reflect-set-44      	 4397442	       275.1 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/result.json/3-reflect-set-44      	 4338082	       273.8 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/result.json/3-reflect-set-44      	 4347159	       273.4 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-44      	  989478	      1174 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-44      	  992935	      1181 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-44      	 1000000	      1177 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-44      	 1000000	      1181 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/0-DecodeAs-44      	 1000000	      1183 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/1-reflect-addr-44  	 1000000	      1117 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/1-reflect-addr-44  	 1000000	      1119 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/1-reflect-addr-44  	 1000000	      1120 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/1-reflect-addr-44  	 1000000	      1121 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/1-reflect-addr-44  	 1000000	      1120 ns/op	    1024 B/op	       1 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-44 	 1929490	       622.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-44 	 1929121	       621.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-44 	 1928776	       621.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-44 	 1931283	       621.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/2-unsafe-offset-44 	 1930382	       621.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/result-20.json/3-reflect-set-44   	  637921	      1813 ns/op	    2064 B/op	      21 allocs/op
+BenchmarkSD2/result-20.json/3-reflect-set-44   	  689545	      1803 ns/op	    2064 B/op	      21 allocs/op
+BenchmarkSD2/result-20.json/3-reflect-set-44   	  666199	      1805 ns/op	    2064 B/op	      21 allocs/op
+BenchmarkSD2/result-20.json/3-reflect-set-44   	  644454	      1812 ns/op	    2064 B/op	      21 allocs/op
+BenchmarkSD2/result-20.json/3-reflect-set-44   	  678758	      1814 ns/op	    2064 B/op	      21 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-44         	  875426	      1348 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-44         	  873433	      1350 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-44         	  907297	      1346 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-44         	  901654	      1343 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/0-DecodeAs-44         	  890628	      1344 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/1-reflect-addr-44     	 1250892	       958.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/1-reflect-addr-44     	 1252561	       958.4 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/1-reflect-addr-44     	 1248348	       961.4 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/1-reflect-addr-44     	 1250221	       959.9 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/1-reflect-addr-44     	 1252320	       958.1 ns/op	     144 B/op	       1 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-44    	 1362282	       881.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-44    	 1362306	       880.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-44    	 1361413	       881.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-44    	 1363087	       880.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/2-unsafe-offset-44    	 1359483	       882.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/3-reflect-set-44      	 1000000	      1068 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/3-reflect-set-44      	 1000000	      1064 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/3-reflect-set-44      	 1000000	      1067 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/3-reflect-set-44      	 1000000	      1066 ns/op	     304 B/op	       4 allocs/op
+BenchmarkSD2/structured-legend-flood-1k.json/3-reflect-set-44      	 1000000	      1066 ns/op	     304 B/op	       4 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/_spikes/w4.3	70.831s
+# exit 0 at 2026-09-26 06:43:54 UTC
+# load after:  06:43:54 up 2 days,  2:08,  2 users,  load average: 1.04, 0.38, 0.13 | kernel: 1.04 0.38 0.13 1/621 538047

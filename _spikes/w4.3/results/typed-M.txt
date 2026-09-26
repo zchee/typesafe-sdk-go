@@ -1,0 +1,16 @@
+# 2026-09-26 15:50:04 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=1 -run ^TestAllocTypedDecode$ -v .
+# load before: 15:50  up 4 days, 14:56, 1 user, load averages: 6.42 6.31 7.09 | kernel: { 6.42 6.31 7.09 } (MAXLOAD=none, waited 0 x 60 s)
+# base: d7a5968
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestAllocTypedDecode
+    alloc_typed_test.go:79: runs of Answers() decode                       mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_typed_test.go:83: runs of DecodeAs[reviewAnswers]                mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_typed_test.go:87: runs of SystemOne                              mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    alloc_typed_test.go:91: runs of Ask[reviewAnswers]                     mallocs/bytes: 23/2792 23/2792 23/2792 23/2792 23/2792
+    alloc_typed_test.go:95: TYPED result bytes=364 answersDecode=4/688 decodeAs=1/144 systemOne=22/2648 ask=23/2792 (AC-P3: decodeAs < answersDecode; AC-P6: ask = systemOne + decodeAs)
+--- PASS: TestAllocTypedDecode (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.013s
+# exit 0 at 2026-09-26 15:50:05 JST
+# load after: 15:50  up 4 days, 14:56, 1 user, load averages: 6.42 6.31 7.09 | kernel: { 6.42 6.31 7.09 }

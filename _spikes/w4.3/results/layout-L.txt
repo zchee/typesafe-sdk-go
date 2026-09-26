@@ -1,0 +1,182 @@
+# 2026-09-26 06:54:42 UTC (L) base d7a5968: the two copies of undeclaredLevel in the spike test binary (go test -c ./_spikes/w4.3/, no -trimpath), go tool objdump; perf stat was refused (kernel.perf_event_paranoid = 3)
+go version go1.27.1 linux/amd64
+TEXT github.com/zchee/typesafe-sdk-go.undeclaredLevel(SB) /tmp/ts-spike/src-w4.3/decodeas.go
+  decodeas.go:219	0x9964c0		493b6610		CMPQ SP, 0x10(R14)						
+  decodeas.go:219	0x9964c4		0f8645010000		JBE 0x99660f							
+  decodeas.go:219	0x9964ca		55			PUSHQ BP							
+  decodeas.go:219	0x9964cb		4889e5			MOVQ SP, BP							
+  decodeas.go:219	0x9964ce		4883ec10		SUBQ $0x10, SP							
+  decodeas.go:219	0x9964d2		488d4c2420		LEAQ 0x20(SP), CX						
+  decodeas.go:219	0x9964d7		440f1139		MOVUPS X15, 0(CX)						
+  decodeas.go:219	0x9964db		440f117910		MOVUPS X15, 0x10(CX)						
+  decodeas.go:219	0x9964e0		440f117920		MOVUPS X15, 0x20(CX)						
+  decodeas.go:219	0x9964e5		440f117930		MOVUPS X15, 0x30(CX)						
+  decodeas.go:219	0x9964ea		440f117940		MOVUPS X15, 0x40(CX)						
+  decodeas.go:219	0x9964ef		440f117950		MOVUPS X15, 0x50(CX)						
+  decodeas.go:220	0x9964f4		488b5010		MOVQ 0x10(AX), DX						
+  decodeas.go:220	0x9964f8		488b7018		MOVQ 0x18(AX), SI						
+  decodeas.go:220	0x9964fc		eb07			JMP 0x996505							
+  decodeas.go:220	0x9964fe		4883c230		ADDQ $0x30, DX							
+  decodeas.go:220	0x996502		48ffce			DECQ SI								
+  decodeas.go:220	0x996505		4885f6			TESTQ SI, SI							
+  decodeas.go:220	0x996508		7e64			JLE 0x99656e							
+  decodeas.go:222	0x99650a		8b3a			MOVL 0(DX), DI							
+  decodeas.go:221	0x99650c		4839fb			CMPQ BX, DI							
+  decodeas.go:221	0x99650f		77ed			JA 0x9964fe							
+  number.go:203		0x996511		89f8			MOVL DI, AX							
+  number.go:203		0x996513		bb0a000000		MOVL $0xa, BX							
+  number.go:203		0x996518		e823dfa7ff		CALL internal/strconv.FormatUint(SB)				
+  decodeas.go:222	0x99651d		488d4c2420		LEAQ 0x20(SP), CX						
+  decodeas.go:222	0x996522		440f1139		MOVUPS X15, 0(CX)						
+  decodeas.go:222	0x996526		440f117910		MOVUPS X15, 0x10(CX)						
+  decodeas.go:222	0x99652b		440f117920		MOVUPS X15, 0x20(CX)						
+  decodeas.go:222	0x996530		440f117930		MOVUPS X15, 0x30(CX)						
+  decodeas.go:222	0x996535		440f117940		MOVUPS X15, 0x40(CX)						
+  decodeas.go:222	0x99653a		440f117950		MOVUPS X15, 0x50(CX)						
+  decodeas.go:222	0x99653f		488d0da8a90c00		LEAQ 0xca9a8(IP), CX						
+  decodeas.go:222	0x996546		48894c2458		MOVQ CX, 0x58(SP)						
+  decodeas.go:222	0x99654b		48c744246006000000	MOVQ $0x6, 0x60(SP)						
+  decodeas.go:222	0x996554		4889442468		MOVQ AX, 0x68(SP)						
+  decodeas.go:222	0x996559		48895c2470		MOVQ BX, 0x70(SP)						
+  decodeas.go:222	0x99655e		c644247801		MOVB $0x1, 0x78(SP)						
+  decodeas.go:222	0x996563		b801000000		MOVL $0x1, AX							
+  decodeas.go:222	0x996568		4883c410		ADDQ $0x10, SP							
+  decodeas.go:222	0x99656c		5d			POPQ BP								
+  decodeas.go:222	0x99656d		c3			RET								
+  decodeas.go:225	0x99656e		488b5028		MOVQ 0x28(AX), DX						
+  decodeas.go:225	0x996572		488b7030		MOVQ 0x30(AX), SI						
+  decodeas.go:225	0x996576		eb08			JMP 0x996580							
+  decodeas.go:225	0x996578		488d5710		LEAQ 0x10(DI), DX						
+  decodeas.go:225	0x99657c		48ffce			DECQ SI								
+  decodeas.go:225	0x99657f		90			NOPL								
+  decodeas.go:225	0x996580		4885f6			TESTQ SI, SI							
+  decodeas.go:225	0x996583		7e65			JLE 0x9965ea							
+  decodeas.go:225	0x996585		4889d7			MOVQ DX, DI							
+  decodeas.go:225	0x996588		8b02			MOVL 0(DX), AX							
+  decodeas.go:226	0x99658a		4839c3			CMPQ BX, AX							
+  decodeas.go:226	0x99658d		77e9			JA 0x996578							
+  number.go:203		0x99658f		bb0a000000		MOVL $0xa, BX							
+  number.go:203		0x996594		e8a7dea7ff		CALL internal/strconv.FormatUint(SB)				
+  decodeas.go:227	0x996599		488d4c2420		LEAQ 0x20(SP), CX						
+  decodeas.go:227	0x99659e		440f1139		MOVUPS X15, 0(CX)						
+  decodeas.go:227	0x9965a2		440f117910		MOVUPS X15, 0x10(CX)						
+  decodeas.go:227	0x9965a7		440f117920		MOVUPS X15, 0x20(CX)						
+  decodeas.go:227	0x9965ac		440f117930		MOVUPS X15, 0x30(CX)						
+  decodeas.go:227	0x9965b1		440f117940		MOVUPS X15, 0x40(CX)						
+  decodeas.go:227	0x9965b6		440f117950		MOVUPS X15, 0x50(CX)						
+  decodeas.go:227	0x9965bb		488d0d05350d00		LEAQ 0xd3505(IP), CX						
+  decodeas.go:227	0x9965c2		48894c2458		MOVQ CX, 0x58(SP)						
+  decodeas.go:227	0x9965c7		48c74424600d000000	MOVQ $0xd, 0x60(SP)						
+  decodeas.go:227	0x9965d0		4889442468		MOVQ AX, 0x68(SP)						
+  decodeas.go:227	0x9965d5		48895c2470		MOVQ BX, 0x70(SP)						
+  decodeas.go:227	0x9965da		c644247801		MOVB $0x1, 0x78(SP)						
+  decodeas.go:227	0x9965df		b801000000		MOVL $0x1, AX							
+  decodeas.go:227	0x9965e4		4883c410		ADDQ $0x10, SP							
+  decodeas.go:227	0x9965e8		5d			POPQ BP								
+  decodeas.go:227	0x9965e9		c3			RET								
+  decodeas.go:230	0x9965ea		440f1139		MOVUPS X15, 0(CX)						
+  decodeas.go:230	0x9965ee		440f117910		MOVUPS X15, 0x10(CX)						
+  decodeas.go:230	0x9965f3		440f117920		MOVUPS X15, 0x20(CX)						
+  decodeas.go:230	0x9965f8		440f117930		MOVUPS X15, 0x30(CX)						
+  decodeas.go:230	0x9965fd		440f117940		MOVUPS X15, 0x40(CX)						
+  decodeas.go:230	0x996602		440f117950		MOVUPS X15, 0x50(CX)						
+  decodeas.go:230	0x996607		31c0			XORL AX, AX							
+  decodeas.go:230	0x996609		4883c410		ADDQ $0x10, SP							
+  decodeas.go:230	0x99660d		5d			POPQ BP								
+  decodeas.go:230	0x99660e		c3			RET								
+  decodeas.go:219	0x99660f		4889442468		MOVQ AX, 0x68(SP)						
+  decodeas.go:219	0x996614		48895c2470		MOVQ BX, 0x70(SP)						
+  decodeas.go:219	0x996619		e8421fb0ff		CALL runtime.morestack_noctxt.abi0(SB)				
+  decodeas.go:219	0x99661e		488b442468		MOVQ 0x68(SP), AX						
+  decodeas.go:219	0x996623		488b5c2470		MOVQ 0x70(SP), BX						
+  decodeas.go:219	0x996628		e993feffff		JMP github.com/zchee/typesafe-sdk-go.undeclaredLevel(SB)	
+TEXT github.com/zchee/typesafe-sdk-go/_spikes/w4%2e3.undeclaredLevel(SB) /tmp/ts-spike/src-w4.3/_spikes/w4.3/decode.go
+  decode.go:299		0x9da420		493b6610		CMPQ SP, 0x10(R14)							
+  decode.go:299		0x9da424		0f8645010000		JBE 0x9da56f								
+  decode.go:299		0x9da42a		55			PUSHQ BP								
+  decode.go:299		0x9da42b		4889e5			MOVQ SP, BP								
+  decode.go:299		0x9da42e		4883ec10		SUBQ $0x10, SP								
+  decode.go:299		0x9da432		488d4c2420		LEAQ 0x20(SP), CX							
+  decode.go:299		0x9da437		440f1139		MOVUPS X15, 0(CX)							
+  decode.go:299		0x9da43b		440f117910		MOVUPS X15, 0x10(CX)							
+  decode.go:299		0x9da440		440f117920		MOVUPS X15, 0x20(CX)							
+  decode.go:299		0x9da445		440f117930		MOVUPS X15, 0x30(CX)							
+  decode.go:299		0x9da44a		440f117940		MOVUPS X15, 0x40(CX)							
+  decode.go:299		0x9da44f		440f117950		MOVUPS X15, 0x50(CX)							
+  decode.go:300		0x9da454		488b5010		MOVQ 0x10(AX), DX							
+  decode.go:300		0x9da458		488b7018		MOVQ 0x18(AX), SI							
+  decode.go:300		0x9da45c		eb07			JMP 0x9da465								
+  decode.go:300		0x9da45e		4883c230		ADDQ $0x30, DX								
+  decode.go:300		0x9da462		48ffce			DECQ SI									
+  decode.go:300		0x9da465		4885f6			TESTQ SI, SI								
+  decode.go:300		0x9da468		7e64			JLE 0x9da4ce								
+  decode.go:302		0x9da46a		8b3a			MOVL 0(DX), DI								
+  decode.go:301		0x9da46c		4839fb			CMPQ BX, DI								
+  decode.go:301		0x9da46f		77ed			JA 0x9da45e								
+  number.go:203		0x9da471		89f8			MOVL DI, AX								
+  number.go:203		0x9da473		bb0a000000		MOVL $0xa, BX								
+  number.go:203		0x9da478		e8c39fa3ff		CALL internal/strconv.FormatUint(SB)					
+  decode.go:302		0x9da47d		488d4c2420		LEAQ 0x20(SP), CX							
+  decode.go:302		0x9da482		440f1139		MOVUPS X15, 0(CX)							
+  decode.go:302		0x9da486		440f117910		MOVUPS X15, 0x10(CX)							
+  decode.go:302		0x9da48b		440f117920		MOVUPS X15, 0x20(CX)							
+  decode.go:302		0x9da490		440f117930		MOVUPS X15, 0x30(CX)							
+  decode.go:302		0x9da495		440f117940		MOVUPS X15, 0x40(CX)							
+  decode.go:302		0x9da49a		440f117950		MOVUPS X15, 0x50(CX)							
+  decode.go:302		0x9da49f		488d0d486a0800		LEAQ 0x86a48(IP), CX							
+  decode.go:302		0x9da4a6		48894c2458		MOVQ CX, 0x58(SP)							
+  decode.go:302		0x9da4ab		48c744246006000000	MOVQ $0x6, 0x60(SP)							
+  decode.go:302		0x9da4b4		4889442468		MOVQ AX, 0x68(SP)							
+  decode.go:302		0x9da4b9		48895c2470		MOVQ BX, 0x70(SP)							
+  decode.go:302		0x9da4be		c644247801		MOVB $0x1, 0x78(SP)							
+  decode.go:302		0x9da4c3		b801000000		MOVL $0x1, AX								
+  decode.go:302		0x9da4c8		4883c410		ADDQ $0x10, SP								
+  decode.go:302		0x9da4cc		5d			POPQ BP									
+  decode.go:302		0x9da4cd		c3			RET									
+  decode.go:305		0x9da4ce		488b5028		MOVQ 0x28(AX), DX							
+  decode.go:305		0x9da4d2		488b7030		MOVQ 0x30(AX), SI							
+  decode.go:305		0x9da4d6		eb08			JMP 0x9da4e0								
+  decode.go:305		0x9da4d8		488d5710		LEAQ 0x10(DI), DX							
+  decode.go:305		0x9da4dc		48ffce			DECQ SI									
+  decode.go:305		0x9da4df		90			NOPL									
+  decode.go:305		0x9da4e0		4885f6			TESTQ SI, SI								
+  decode.go:305		0x9da4e3		7e65			JLE 0x9da54a								
+  decode.go:305		0x9da4e5		4889d7			MOVQ DX, DI								
+  decode.go:305		0x9da4e8		8b02			MOVL 0(DX), AX								
+  decode.go:306		0x9da4ea		4839c3			CMPQ BX, AX								
+  decode.go:306		0x9da4ed		77e9			JA 0x9da4d8								
+  number.go:203		0x9da4ef		bb0a000000		MOVL $0xa, BX								
+  number.go:203		0x9da4f4		e8479fa3ff		CALL internal/strconv.FormatUint(SB)					
+  decode.go:307		0x9da4f9		488d4c2420		LEAQ 0x20(SP), CX							
+  decode.go:307		0x9da4fe		440f1139		MOVUPS X15, 0(CX)							
+  decode.go:307		0x9da502		440f117910		MOVUPS X15, 0x10(CX)							
+  decode.go:307		0x9da507		440f117920		MOVUPS X15, 0x20(CX)							
+  decode.go:307		0x9da50c		440f117930		MOVUPS X15, 0x30(CX)							
+  decode.go:307		0x9da511		440f117940		MOVUPS X15, 0x40(CX)							
+  decode.go:307		0x9da516		440f117950		MOVUPS X15, 0x50(CX)							
+  decode.go:307		0x9da51b		488d0da5f50800		LEAQ 0x8f5a5(IP), CX							
+  decode.go:307		0x9da522		48894c2458		MOVQ CX, 0x58(SP)							
+  decode.go:307		0x9da527		48c74424600d000000	MOVQ $0xd, 0x60(SP)							
+  decode.go:307		0x9da530		4889442468		MOVQ AX, 0x68(SP)							
+  decode.go:307		0x9da535		48895c2470		MOVQ BX, 0x70(SP)							
+  decode.go:307		0x9da53a		c644247801		MOVB $0x1, 0x78(SP)							
+  decode.go:307		0x9da53f		b801000000		MOVL $0x1, AX								
+  decode.go:307		0x9da544		4883c410		ADDQ $0x10, SP								
+  decode.go:307		0x9da548		5d			POPQ BP									
+  decode.go:307		0x9da549		c3			RET									
+  decode.go:310		0x9da54a		440f1139		MOVUPS X15, 0(CX)							
+  decode.go:310		0x9da54e		440f117910		MOVUPS X15, 0x10(CX)							
+  decode.go:310		0x9da553		440f117920		MOVUPS X15, 0x20(CX)							
+  decode.go:310		0x9da558		440f117930		MOVUPS X15, 0x30(CX)							
+  decode.go:310		0x9da55d		440f117940		MOVUPS X15, 0x40(CX)							
+  decode.go:310		0x9da562		440f117950		MOVUPS X15, 0x50(CX)							
+  decode.go:310		0x9da567		31c0			XORL AX, AX								
+  decode.go:310		0x9da569		4883c410		ADDQ $0x10, SP								
+  decode.go:310		0x9da56d		5d			POPQ BP									
+  decode.go:310		0x9da56e		c3			RET									
+  decode.go:299		0x9da56f		4889442468		MOVQ AX, 0x68(SP)							
+  decode.go:299		0x9da574		48895c2470		MOVQ BX, 0x70(SP)							
+  decode.go:299		0x9da579		e8e2dfabff		CALL runtime.morestack_noctxt.abi0(SB)					
+  decode.go:299		0x9da57e		488b442468		MOVQ 0x68(SP), AX							
+  decode.go:299		0x9da583		488b5c2470		MOVQ 0x70(SP), BX							
+  decode.go:299		0x9da588		e993feffff		JMP github.com/zchee/typesafe-sdk-go/_spikes/w4%2e3.undeclaredLevel(SB)	

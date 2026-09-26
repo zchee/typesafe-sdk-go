@@ -1,0 +1,65 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Apple M3 Max
+                                                             │ bench-M.txt  │
+                                                             │    sec/op    │
+SD2/result.json/0-DecodeAs-16                                  136.0n ± ∞ ¹
+SD2/result.json/1-reflect-addr-16                              125.5n ± ∞ ¹
+SD2/result.json/2-unsafe-offset-16                             64.16n ± ∞ ¹
+SD2/result.json/2h-unsafe-offset-heap-16                       95.92n ± ∞ ¹
+SD2/result.json/3-reflect-set-16                               168.6n ± ∞ ¹
+SD2/result-20.json/0-DecodeAs-16                               927.3n ± ∞ ¹
+SD2/result-20.json/1-reflect-addr-16                           845.8n ± ∞ ¹
+SD2/result-20.json/2-unsafe-offset-16                          550.8n ± ∞ ¹
+SD2/result-20.json/2h-unsafe-offset-heap-16                    659.9n ± ∞ ¹
+SD2/result-20.json/3-reflect-set-16                            1.113µ ± ∞ ¹
+SD2/structured-legend-flood-1k.json/0-DecodeAs-16              708.0n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/1-reflect-addr-16          697.2n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2-unsafe-offset-16         652.6n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2h-unsafe-offset-heap-16   683.8n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/3-reflect-set-16           756.1n ± ∞ ¹
+geomean                                                        396.4n
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                             │  bench-M.txt  │
+                                                             │     B/op      │
+SD2/result.json/0-DecodeAs-16                                    144.0 ± ∞ ¹
+SD2/result.json/1-reflect-addr-16                                144.0 ± ∞ ¹
+SD2/result.json/2-unsafe-offset-16                               0.000 ± ∞ ¹
+SD2/result.json/2h-unsafe-offset-heap-16                         144.0 ± ∞ ¹
+SD2/result.json/3-reflect-set-16                                 304.0 ± ∞ ¹
+SD2/result-20.json/0-DecodeAs-16                               1.000Ki ± ∞ ¹
+SD2/result-20.json/1-reflect-addr-16                           1.000Ki ± ∞ ¹
+SD2/result-20.json/2-unsafe-offset-16                            0.000 ± ∞ ¹
+SD2/result-20.json/2h-unsafe-offset-heap-16                    1.000Ki ± ∞ ¹
+SD2/result-20.json/3-reflect-set-16                            2.016Ki ± ∞ ¹
+SD2/structured-legend-flood-1k.json/0-DecodeAs-16                144.0 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/1-reflect-addr-16            144.0 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2-unsafe-offset-16           0.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2h-unsafe-offset-heap-16     144.0 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/3-reflect-set-16             304.0 ± ∞ ¹
+geomean                                                                    ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                             │ bench-M.txt │
+                                                             │  allocs/op  │
+SD2/result.json/0-DecodeAs-16                                  1.000 ± ∞ ¹
+SD2/result.json/1-reflect-addr-16                              1.000 ± ∞ ¹
+SD2/result.json/2-unsafe-offset-16                             0.000 ± ∞ ¹
+SD2/result.json/2h-unsafe-offset-heap-16                       1.000 ± ∞ ¹
+SD2/result.json/3-reflect-set-16                               4.000 ± ∞ ¹
+SD2/result-20.json/0-DecodeAs-16                               1.000 ± ∞ ¹
+SD2/result-20.json/1-reflect-addr-16                           1.000 ± ∞ ¹
+SD2/result-20.json/2-unsafe-offset-16                          0.000 ± ∞ ¹
+SD2/result-20.json/2h-unsafe-offset-heap-16                    1.000 ± ∞ ¹
+SD2/result-20.json/3-reflect-set-16                            21.00 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/0-DecodeAs-16              1.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/1-reflect-addr-16          1.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2-unsafe-offset-16         0.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2h-unsafe-offset-heap-16   1.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/3-reflect-set-16           4.000 ± ∞ ¹
+geomean                                                                  ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean

@@ -1,0 +1,137 @@
+# 2026-09-26 06:48:12 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= first-call allocation sites of twenty
+# base: d7a5968
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+FIRSTCALL shape=twenty processFirst=9/944 first=114/41704 second=0/0
+PASS
+File: sd2.test
+Build ID: ae98eab51f17b4f4db8e3552471f7f1146d35741
+Type: alloc_objects
+Time: 2026-09-26 06:48:18 UTC
+Showing nodes accounting for 131, 100% of 131 total
+      flat  flat%   sum%        cum   cum%
+        21 16.03% 16.03%         21 16.03%  github.com/zchee/typesafe-sdk-go.parseOptions github.com/zchee/typesafe-sdk-go/typed.go:830
+        20 15.27% 31.30%         20 15.27%  github.com/zchee/typesafe-sdk-go.planField github.com/zchee/typesafe-sdk-go/typed.go:340
+        19 14.50% 45.80%         19 14.50%  github.com/zchee/typesafe-sdk-go.parseLevels github.com/zchee/typesafe-sdk-go/typed.go:850
+         7  5.34% 51.15%          7  5.34%  github.com/zchee/typesafe-sdk-go.planField github.com/zchee/typesafe-sdk-go/typed.go:413
+         7  5.34% 56.49%          7  5.34%  github.com/zchee/typesafe-sdk-go.planField github.com/zchee/typesafe-sdk-go/typed.go:414
+         7  5.34% 61.83%          7  5.34%  github.com/zchee/typesafe-sdk-go.prepareChoice github.com/zchee/typesafe-sdk-go/questions.go:309
+         6  4.58% 66.41%          6  4.58%  github.com/zchee/typesafe-sdk-go.buildPlan github.com/zchee/typesafe-sdk-go/typed.go:283
+         6  4.58% 70.99%          6  4.58%  github.com/zchee/typesafe-sdk-go.buildPlan github.com/zchee/typesafe-sdk-go/typed.go:284
+         6  4.58% 75.57%          6  4.58%  github.com/zchee/typesafe-sdk-go.planField github.com/zchee/typesafe-sdk-go/typed.go:431
+         6  4.58% 80.15%          6  4.58%  github.com/zchee/typesafe-sdk-go.prepareScore github.com/zchee/typesafe-sdk-go/questions.go:324
+         5  3.82% 83.97%          5  3.82%  runtime.mallocgc runtime/malloc.go:1133
+         4  3.05% 87.02%          4  3.05%  github.com/zchee/typesafe-sdk-go/internal/wire.(*Prepared).init github.com/zchee/typesafe-sdk-go/internal/wire/prepared.go:103
+         2  1.53% 88.55%          2  1.53%  github.com/bytedance/sonic/loader/internal/iasm/x86_64.newInstruction github.com/bytedance/sonic/loader@v0.5.2/internal/iasm/x86_64/pools.go:38 (inline)
+         2  1.53% 90.08%          2  1.53%  runtime.mallocgc runtime/malloc.go:1125
+         1  0.76% 90.84%          1  0.76%  github.com/bytedance/sonic/internal/jit.newProg github.com/bytedance/sonic@v1.15.4/internal/jit/backend.go:46
+         1  0.76% 91.60%          1  0.76%  github.com/bytedance/sonic/loader.makeModuledata github.com/bytedance/sonic/loader@v0.5.2/moduledata.go:204
+         1  0.76% 92.37%          1  0.76%  github.com/twitchyliquid64/golang-asm/asm/arch.archX86 github.com/twitchyliquid64/golang-asm@v0.15.1/asm/arch/arch.go:120
+         1  0.76% 93.13%          1  0.76%  github.com/twitchyliquid64/golang-asm/obj.(*LSym).GrowCap github.com/twitchyliquid64/golang-asm@v0.15.1/obj/data.go:58 (inline)
+         1  0.76% 93.89%          1  0.76%  github.com/zchee/typesafe-sdk-go.(*Questions).Prepare github.com/zchee/typesafe-sdk-go/questions.go:235
+         1  0.76% 94.66%          1  0.76%  github.com/zchee/typesafe-sdk-go.buildPlan github.com/zchee/typesafe-sdk-go/typed.go:301
+         1  0.76% 95.42%          1  0.76%  internal/sync.newEntryNode[go.shape.interface {},go.shape.interface {}] internal/sync/hashtriemap.go:572 (inline)
+         1  0.76% 96.18%          1  0.76%  net/http/internal/http2.map.init.1 net/http/internal/http2/frame.go:103
+         1  0.76% 96.95%          1  0.76%  runtime.mallocgc runtime/malloc.go:1131
+         1  0.76% 97.71%          1  0.76%  runtime.mallocgcSmallScanNoHeaderSC2 runtime/malloc_generated.go:184
+         1  0.76% 98.47%          1  0.76%  slices.Grow[go.shape.[]github.com/zchee/typesafe-sdk-go/internal/wire.PreparedQuestion,go.shape.struct { Name string; Kind github.com/zchee/typesafe-sdk-go/internal/wire.Kind; Options []string; Levels []github.com/zchee/typesafe-sdk-go/internal/wire.Content }] slices/slices.go:428 (inline)
+         1  0.76% 99.24%          1  0.76%  slices.Grow[go.shape.[]uint8,go.shape.uint8] slices/slices.go:428 (inline)
+         1  0.76%   100%          1  0.76%  sync.(*Pool).pinSlow sync/pool.go:238
+         0     0%   100%          4  3.05%  github.com/bytedance/sonic/internal/decoder/jitdec.(*_ValueDecoder).build github.com/bytedance/sonic@v1.15.4/internal/decoder/jitdec/generic_regabi_amd64.go:88
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/internal/decoder/jitdec.(*_ValueDecoder).compile github.com/bytedance/sonic@v1.15.4/internal/decoder/jitdec/generic_regabi_amd64.go:718
+         0     0%   100%          4  3.05%  github.com/bytedance/sonic/internal/decoder/jitdec.init github.com/bytedance/sonic@v1.15.4/internal/decoder/jitdec/generic_regabi_amd64.go:726
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.(*Backend).Assemble github.com/bytedance/sonic@v1.15.4/internal/jit/backend.go:117
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/internal/jit.(*Backend).New github.com/bytedance/sonic@v1.15.4/internal/jit/backend.go:77 (inline)
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).Byte github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:81
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).From github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:176
+         0     0%   100%          4  3.05%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).Load github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:228
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).assemble github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:291 (inline)
+         0     0%   100%          4  3.05%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).build github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:251
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).build.func1 github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:252
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).build.func1 github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:253
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).build.func1 github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:255
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.(*BaseAssembler).init github.com/bytedance/sonic@v1.15.4/internal/jit/assembler_amd64.go:244 (inline)
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.newBackend github.com/bytedance/sonic@v1.15.4/internal/jit/backend.go:59
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/jit.newProg github.com/bytedance/sonic@v1.15.4/internal/jit/backend.go:45
+         0     0%   100%          3  2.29%  github.com/bytedance/sonic/internal/native.init.0 github.com/bytedance/sonic@v1.15.4/internal/native/dispatch_amd64.go:242
+         0     0%   100%          3  2.29%  github.com/bytedance/sonic/internal/native.useAVX2 github.com/bytedance/sonic@v1.15.4/internal/native/dispatch_amd64.go:205
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/internal/native/avx2.Use github.com/bytedance/sonic@v1.15.4/internal/native/avx2/native_export.go:39
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/internal/native/avx2.Use github.com/bytedance/sonic@v1.15.4/internal/native/avx2/native_export.go:48
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader.Load github.com/bytedance/sonic/loader@v0.5.2/loader_latest.go:144
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader.WrapGoC github.com/bytedance/sonic/loader@v0.5.2/wrapper.go:102
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader.WrapGoC github.com/bytedance/sonic/loader@v0.5.2/wrapper.go:134
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader.WrapGoC github.com/bytedance/sonic/loader@v0.5.2/wrapper.go:149
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader/internal/abi.(*Frame).GrowStackTextSize github.com/bytedance/sonic/loader@v0.5.2/internal/abi/abi_amd64.go:149
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader/internal/abi.(*Frame).emitGrowStack github.com/bytedance/sonic/loader@v0.5.2/internal/abi/abi_amd64.go:114
+         0     0%   100%          1  0.76%  github.com/bytedance/sonic/loader/internal/abi.CallC github.com/bytedance/sonic/loader@v0.5.2/internal/abi/abi_amd64.go:298
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/loader/internal/iasm/x86_64.(*Program).MOVQ github.com/bytedance/sonic/loader@v0.5.2/internal/iasm/x86_64/instructions.go:424
+         0     0%   100%          2  1.53%  github.com/bytedance/sonic/loader/internal/iasm/x86_64.(*Program).alloc github.com/bytedance/sonic/loader@v0.5.2/internal/iasm/x86_64/program.go:371 (inline)
+         0     0%   100%          1  0.76%  github.com/twitchyliquid64/golang-asm/asm/arch.Set github.com/twitchyliquid64/golang-asm@v0.15.1/asm/arch/arch.go:58
+         0     0%   100%          1  0.76%  github.com/twitchyliquid64/golang-asm/obj/x86.span6 github.com/twitchyliquid64/golang-asm@v0.15.1/obj/x86/asm6.go:2096
+         0     0%   100%          2  1.53%  github.com/zchee/typesafe-sdk-go.(*Questions).Prepare github.com/zchee/typesafe-sdk-go/questions.go:204
+         0     0%   100%          7  5.34%  github.com/zchee/typesafe-sdk-go.(*Questions).Prepare github.com/zchee/typesafe-sdk-go/questions.go:222
+         0     0%   100%          6  4.58%  github.com/zchee/typesafe-sdk-go.(*Questions).Prepare github.com/zchee/typesafe-sdk-go/questions.go:224
+         0     0%   100%          4  3.05%  github.com/zchee/typesafe-sdk-go.(*Questions).Prepare github.com/zchee/typesafe-sdk-go/questions.go:236
+         0     0%   100%         21 16.03%  github.com/zchee/typesafe-sdk-go.(*tagSpec).addEntry github.com/zchee/typesafe-sdk-go/typed.go:794
+         0     0%   100%         19 14.50%  github.com/zchee/typesafe-sdk-go.(*tagSpec).addEntry github.com/zchee/typesafe-sdk-go/typed.go:796
+         0     0%   100%        114 87.02%  github.com/zchee/typesafe-sdk-go.PreparedFor[go.shape.7e3e8286e614432322b555e5f173492eae1b659fdeeb9b1f809883db0bfdb9f9] github.com/zchee/typesafe-sdk-go/typed.go:150
+         0     0%   100%         80 61.07%  github.com/zchee/typesafe-sdk-go.buildPlan github.com/zchee/typesafe-sdk-go/typed.go:264
+         0     0%   100%         20 15.27%  github.com/zchee/typesafe-sdk-go.buildPlan github.com/zchee/typesafe-sdk-go/typed.go:286
+         0     0%   100%         40 30.53%  github.com/zchee/typesafe-sdk-go.parseTag github.com/zchee/typesafe-sdk-go/typed.go:721
+         0     0%   100%         40 30.53%  github.com/zchee/typesafe-sdk-go.planField github.com/zchee/typesafe-sdk-go/typed.go:373
+         0     0%   100%        114 87.02%  github.com/zchee/typesafe-sdk-go.planFor github.com/zchee/typesafe-sdk-go/typed.go:202
+         0     0%   100%        114 87.02%  github.com/zchee/typesafe-sdk-go.typedPlanFor[go.shape.7e3e8286e614432322b555e5f173492eae1b659fdeeb9b1f809883db0bfdb9f9] github.com/zchee/typesafe-sdk-go/typed.go:193
+         0     0%   100%        114 87.02%  github.com/zchee/typesafe-sdk-go/_spikes/w4%2e3.TestFirstCallChild github.com/zchee/typesafe-sdk-go/_spikes/w4.3/alloc_test.go:219
+         0     0%   100%        114 87.02%  github.com/zchee/typesafe-sdk-go/_spikes/w4%2e3.TestFirstCallChild.func3 github.com/zchee/typesafe-sdk-go/_spikes/w4.3/alloc_test.go:219
+         0     0%   100%        114 87.02%  github.com/zchee/typesafe-sdk-go/internal/testsupport.Measure github.com/zchee/typesafe-sdk-go/internal/testsupport/alloc.go:105
+         0     0%   100%          4  3.05%  github.com/zchee/typesafe-sdk-go/internal/wire.(*Builder).Finish github.com/zchee/typesafe-sdk-go/internal/wire/prepared.go:379
+         0     0%   100%          1  0.76%  github.com/zchee/typesafe-sdk-go/internal/wire.(*Builder).Grow github.com/zchee/typesafe-sdk-go/internal/wire/prepared.go:190
+         0     0%   100%          1  0.76%  github.com/zchee/typesafe-sdk-go/internal/wire.(*Builder).Grow github.com/zchee/typesafe-sdk-go/internal/wire/prepared.go:191
+         0     0%   100%          1  0.76%  internal/sync.(*HashTrieMap[go.shape.interface {},go.shape.interface {}]).LoadOrStore internal/sync/hashtriemap.go:151
+         0     0%   100%          1  0.76%  net/http/internal/http2.init net/http/internal/http2/frame.go:103
+         0     0%   100%          1  0.76%  runtime.(*scavengerState).sleep runtime/mgcscavenge.go:500
+         0     0%   100%          1  0.76%  runtime.(*timer).maybeAdd runtime/time.go:722
+         0     0%   100%          1  0.76%  runtime.(*timer).modify runtime/time.go:644
+         0     0%   100%          1  0.76%  runtime.(*timer).reset runtime/time.go:736 (inline)
+         0     0%   100%          1  0.76%  runtime.(*timers).addHeap runtime/time.go:467
+         0     0%   100%          1  0.76%  runtime.acquireSudog runtime/proc.go:523
+         0     0%   100%          2  1.53%  runtime.allocm runtime/proc.go:2342
+         0     0%   100%          1  0.76%  runtime.allocm runtime/proc.go:2344
+         0     0%   100%          1  0.76%  runtime.bgscavenge runtime/mgcscavenge.go:662
+         0     0%   100%          8  6.11%  runtime.doInit runtime/proc.go:8121 (inline)
+         0     0%   100%          8  6.11%  runtime.doInit1 runtime/proc.go:8154
+         0     0%   100%          1  0.76%  runtime.gcBgMarkWorker runtime/mgc.go:1779
+         0     0%   100%          1  0.76%  runtime.gcBgMarkWorker runtime/mgc.go:1928
+         0     0%   100%          1  0.76%  runtime.gcMarkDone runtime/mgc.go:1000
+         0     0%   100%          1  0.76%  runtime.gcStart.func4 runtime/mgc.go:930
+         0     0%   100%          1  0.76%  runtime.growslice runtime/slice.go:273
+         0     0%   100%          1  0.76%  runtime.mProfStackInit runtime/proc.go:1062 (inline)
+         0     0%   100%          8  6.11%  runtime.main runtime/proc.go:269
+         0     0%   100%          1  0.76%  runtime.makeProfStackFP runtime/proc.go:1076 (inline)
+         0     0%   100%          1  0.76%  runtime.makeslice runtime/slice.go:117
+         0     0%   100%          1  0.76%  runtime.mallocgc runtime/malloc.go:1089
+         0     0%   100%          1  0.76%  runtime.mcommoninit runtime/proc.go:1049
+         0     0%   100%          2  1.53%  runtime.mstart runtime/asm_amd64.s:393
+         0     0%   100%          2  1.53%  runtime.mstart0 runtime/proc.go:1901
+         0     0%   100%          2  1.53%  runtime.mstart1 runtime/proc.go:1955
+         0     0%   100%          3  2.29%  runtime.newm runtime/proc.go:2888
+         0     0%   100%          7  5.34%  runtime.newobject runtime/malloc.go:2141
+         0     0%   100%          3  2.29%  runtime.procresize runtime/proc.go:6127
+         0     0%   100%          1  0.76%  runtime.resetspinning runtime/proc.go:4049
+         0     0%   100%          3  2.29%  runtime.rt0_go runtime/asm_amd64.s:340
+         0     0%   100%          3  2.29%  runtime.schedinit runtime/proc.go:949
+         0     0%   100%          1  0.76%  runtime.schedule runtime/proc.go:4214
+         0     0%   100%          1  0.76%  runtime.schedule runtime/proc.go:4236
+         0     0%   100%          1  0.76%  runtime.semacquire runtime/sema.go:143 (inline)
+         0     0%   100%          1  0.76%  runtime.semacquire1 runtime/sema.go:163
+         0     0%   100%          1  0.76%  runtime.startTheWorldWithSema runtime/proc.go:1812
+         0     0%   100%          2  1.53%  runtime.startm runtime/proc.go:3111
+         0     0%   100%          1  0.76%  runtime.systemstack runtime/asm_amd64.s:531
+         0     0%   100%          2  1.53%  runtime.wakep runtime/proc.go:3258
+         0     0%   100%          1  0.76%  sync.(*Map).LoadOrStore sync/map.go:65 (inline)
+         0     0%   100%          4  3.05%  sync.(*Once).Do sync/once.go:69 (inline)
+         0     0%   100%          4  3.05%  sync.(*Once).doSlow sync/once.go:78
+         0     0%   100%          1  0.76%  sync.(*Pool).Get sync/pool.go:136
+         0     0%   100%          1  0.76%  sync.(*Pool).pin sync/pool.go:221
+         0     0%   100%        114 87.02%  testing.tRunner testing/testing.go:2193
+# exit 0 at 2026-09-26 06:48:19 UTC

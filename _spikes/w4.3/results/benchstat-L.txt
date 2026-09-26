@@ -1,0 +1,65 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/_spikes/w4.3
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+                                                             │ bench-L.txt  │
+                                                             │    sec/op    │
+SD2/result.json/0-DecodeAs-44                                  186.1n ± ∞ ¹
+SD2/result.json/1-reflect-addr-44                              173.8n ± ∞ ¹
+SD2/result.json/2-unsafe-offset-44                             72.74n ± ∞ ¹
+SD2/result.json/2h-unsafe-offset-heap-44                       133.3n ± ∞ ¹
+SD2/result.json/3-reflect-set-44                               274.7n ± ∞ ¹
+SD2/result-20.json/0-DecodeAs-44                               1.191µ ± ∞ ¹
+SD2/result-20.json/1-reflect-addr-44                           1.119µ ± ∞ ¹
+SD2/result-20.json/2-unsafe-offset-44                          619.4n ± ∞ ¹
+SD2/result-20.json/2h-unsafe-offset-heap-44                    875.9n ± ∞ ¹
+SD2/result-20.json/3-reflect-set-44                            1.823µ ± ∞ ¹
+SD2/structured-legend-flood-1k.json/0-DecodeAs-44              1.368µ ± ∞ ¹
+SD2/structured-legend-flood-1k.json/1-reflect-addr-44          961.4n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2-unsafe-offset-44         874.6n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2h-unsafe-offset-heap-44   928.8n ± ∞ ¹
+SD2/structured-legend-flood-1k.json/3-reflect-set-44           1.068µ ± ∞ ¹
+geomean                                                        550.6n
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                                                             │  bench-L.txt  │
+                                                             │     B/op      │
+SD2/result.json/0-DecodeAs-44                                    144.0 ± ∞ ¹
+SD2/result.json/1-reflect-addr-44                                144.0 ± ∞ ¹
+SD2/result.json/2-unsafe-offset-44                               0.000 ± ∞ ¹
+SD2/result.json/2h-unsafe-offset-heap-44                         144.0 ± ∞ ¹
+SD2/result.json/3-reflect-set-44                                 304.0 ± ∞ ¹
+SD2/result-20.json/0-DecodeAs-44                               1.000Ki ± ∞ ¹
+SD2/result-20.json/1-reflect-addr-44                           1.000Ki ± ∞ ¹
+SD2/result-20.json/2-unsafe-offset-44                            0.000 ± ∞ ¹
+SD2/result-20.json/2h-unsafe-offset-heap-44                    1.000Ki ± ∞ ¹
+SD2/result-20.json/3-reflect-set-44                            2.016Ki ± ∞ ¹
+SD2/structured-legend-flood-1k.json/0-DecodeAs-44                144.0 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/1-reflect-addr-44            144.0 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2-unsafe-offset-44           0.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2h-unsafe-offset-heap-44     144.0 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/3-reflect-set-44             304.0 ± ∞ ¹
+geomean                                                                    ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+                                                             │ bench-L.txt │
+                                                             │  allocs/op  │
+SD2/result.json/0-DecodeAs-44                                  1.000 ± ∞ ¹
+SD2/result.json/1-reflect-addr-44                              1.000 ± ∞ ¹
+SD2/result.json/2-unsafe-offset-44                             0.000 ± ∞ ¹
+SD2/result.json/2h-unsafe-offset-heap-44                       1.000 ± ∞ ¹
+SD2/result.json/3-reflect-set-44                               4.000 ± ∞ ¹
+SD2/result-20.json/0-DecodeAs-44                               1.000 ± ∞ ¹
+SD2/result-20.json/1-reflect-addr-44                           1.000 ± ∞ ¹
+SD2/result-20.json/2-unsafe-offset-44                          0.000 ± ∞ ¹
+SD2/result-20.json/2h-unsafe-offset-heap-44                    1.000 ± ∞ ¹
+SD2/result-20.json/3-reflect-set-44                            21.00 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/0-DecodeAs-44              1.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/1-reflect-addr-44          1.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2-unsafe-offset-44         0.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/2h-unsafe-offset-heap-44   1.000 ± ∞ ¹
+SD2/structured-legend-flood-1k.json/3-reflect-set-44           4.000 ± ∞ ¹
+geomean                                                                  ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
