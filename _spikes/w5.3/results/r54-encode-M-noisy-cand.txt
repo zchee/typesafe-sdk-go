@@ -1,0 +1,158 @@
+# 2026-09-26 20:34:26 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret cand.test -test.run ^$ -test.bench ^BenchmarkEncodeState$ -test.benchmem -test.count 2
+# load before: 20:34  up 4 days, 19:40, 1 user, load averages: 8.90 8.54 18.17 | kernel: { 8.90 8.54 18.17 } (MAXLOAD=10, waited 0 x 60 s)
+# commit: 6bb69bf
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-26 20:34:54 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 5487608	       219.4 ns/op	4520.91 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 5505141	       219.3 ns/op	4522.92 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	16115755	        74.88 ns/op	13247.70 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	16174831	       141.8 ns/op	6996.01 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	  141866	     28537 ns/op	2296.06 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	   39529	     28910 ns/op	2266.42 MB/s	      21 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  213283	     15224 ns/op	4303.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  241014	     16758 ns/op	3909.80 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	     610	   2482202 ns/op	2534.63 MB/s	   10803 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1293	   2958037 ns/op	2126.90 MB/s	    4997 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	     774	   1315976 ns/op	4780.82 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2536	   1504843 ns/op	4180.80 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 1943228	       676.8 ns/op	1492.26 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 1965867	       641.9 ns/op	1573.36 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 1944364	       790.6 ns/op	1277.53 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 1737260	       603.4 ns/op	1673.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   29505	     55037 ns/op	1190.51 MB/s	      28 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   67185	     38245 ns/op	1713.23 MB/s	      19 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	  100254	     12195 ns/op	5372.65 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   97566	     12241 ns/op	5352.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     801	   1511431 ns/op	4162.57 MB/s	    7883 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     776	   1521104 ns/op	4136.10 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	    1018	   1160209 ns/op	5422.67 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	    1018	   1166607 ns/op	5392.93 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 2 at 2026-09-26 20:36:09 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 5525366	       219.3 ns/op	4524.00 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 5565027	       221.2 ns/op	4485.19 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	15848217	        74.29 ns/op	13352.72 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	15603387	        74.55 ns/op	13306.50 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	  147739	      8173 ns/op	8016.63 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	  147042	      8196 ns/op	7994.70 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  263191	      4475 ns/op	14641.57 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  259102	      4532 ns/op	14457.19 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1513	    792751 ns/op	7936.23 MB/s	    4181 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1488	    792651 ns/op	7937.23 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2702	    427243 ns/op	14725.69 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2820	    427832 ns/op	14705.42 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 3357476	       369.3 ns/op	2734.77 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 3307392	       363.4 ns/op	2779.61 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 5504356	       218.1 ns/op	4631.51 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 5456550	       219.1 ns/op	4610.26 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   75391	     16113 ns/op	4066.45 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   76137	     15800 ns/op	4146.83 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	  100968	     11883 ns/op	5513.97 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	  101241	     11869 ns/op	5520.44 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     781	   1528959 ns/op	4114.85 MB/s	    8263 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     786	   1520768 ns/op	4137.01 MB/s	    8210 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	    1054	   1172594 ns/op	5365.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	    1006	   1159431 ns/op	5426.31 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 3 at 2026-09-26 20:37:12 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 5499104	       216.1 ns/op	4589.46 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 5466504	       215.8 ns/op	4597.06 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	15987121	        74.30 ns/op	13350.65 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	15956889	        74.22 ns/op	13365.22 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	  146197	      8225 ns/op	7966.23 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	  145743	      8240 ns/op	7951.88 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  266145	      4545 ns/op	14417.04 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  271021	      4498 ns/op	14567.39 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1478	    797166 ns/op	7892.28 MB/s	    4279 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1498	    803402 ns/op	7831.02 MB/s	    4315 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2642	    438347 ns/op	14352.68 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2796	    432773 ns/op	14537.53 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 3248412	       365.9 ns/op	2760.54 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 3333096	       360.6 ns/op	2800.62 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 5515556	       218.7 ns/op	4617.35 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 5453989	       223.6 ns/op	4516.46 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   75543	     16016 ns/op	4091.11 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   73328	     16127 ns/op	4062.80 MB/s	      20 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   99625	     12153 ns/op	5391.39 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   97411	     12172 ns/op	5382.95 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     811	   1506807 ns/op	4175.34 MB/s	    7786 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     795	   1491100 ns/op	4219.32 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	    1056	   1173993 ns/op	5359.00 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	    1057	   1137446 ns/op	5531.19 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 4 at 2026-09-26 20:38:11 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 2513970	       466.1 ns/op	2128.22 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 2667703	       562.9 ns/op	1762.21 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	 3581612	       323.2 ns/op	3069.64 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	 7661427	       219.4 ns/op	4521.41 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	   95109	     35318 ns/op	1855.18 MB/s	      19 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	   36333	     30002 ns/op	2183.92 MB/s	      21 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  257218	     15226 ns/op	4303.21 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  212263	     17207 ns/op	3807.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	     330	   3297897 ns/op	1907.72 MB/s	   19534 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	     301	   3763611 ns/op	1671.65 MB/s	   21415 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    1827	   1550771 ns/op	4056.98 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    1987	   1427091 ns/op	4408.59 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 1393914	       867.7 ns/op	1164.00 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 1279549	       885.9 ns/op	1140.13 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 1248428	       822.6 ns/op	1227.85 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 3001318	       655.7 ns/op	1540.33 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   24272	     67574 ns/op	 969.63 MB/s	      30 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   27106	     59798 ns/op	1095.71 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   30730	     37340 ns/op	1754.76 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   24502	     48397 ns/op	1353.84 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     186	   5902226 ns/op	1065.94 MB/s	   34646 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     374	   5094056 ns/op	1235.05 MB/s	   17610 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	     818	   4261322 ns/op	1476.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	     572	   4097425 ns/op	1535.46 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 5 at 2026-09-26 20:39:46 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Apple M3 Max
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 2927703	       448.6 ns/op	2211.41 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-16         	 3886479	       396.4 ns/op	2502.46 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	15362973	       276.2 ns/op	3591.54 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-16          	 5908886	       247.5 ns/op	4007.80 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	   39667	     32668 ns/op	2005.69 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-16        	  121606	     31087 ns/op	2107.67 MB/s	      18 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  236937	     18041 ns/op	3631.80 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-16         	  228118	     16321 ns/op	4014.52 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1494	   2928823 ns/op	2148.12 MB/s	    4420 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-16         	    1402	   2649230 ns/op	2374.82 MB/s	    4709 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2457	   1597407 ns/op	3938.54 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-16          	    2454	   1351186 ns/op	4656.24 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 1537844	       738.6 ns/op	1367.47 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-16           	 1000000	      1124 ns/op	 898.36 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 2399136	       551.6 ns/op	1830.88 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-16            	 3173314	       657.6 ns/op	1535.96 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   30691	     54636 ns/op	1199.25 MB/s	      23 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-16          	   39349	     48749 ns/op	1344.06 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   36340	     44322 ns/op	1478.33 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-16           	   50912	     56054 ns/op	1168.91 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     240	   5676896 ns/op	1108.25 MB/s	   26854 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-16           	     403	   5023182 ns/op	1252.48 MB/s	   15999 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	     614	   3477192 ns/op	1809.34 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-16            	     954	   4307675 ns/op	1460.52 MB/s	       0 B/op	       0 allocs/op
+PASS
+# exit 0 at 2026-09-26 20:40:47 JST
+# load after: 20:40  up 4 days, 19:46, 1 user, load averages: 150.89 80.83 46.02 | kernel: { 150.89 80.83 46.02 }

@@ -1,0 +1,106 @@
+package codec
+
+import (
+	"encoding/binary"
+	"strings"
+	"testing"
+	"unicode/utf8"
+
+	sonicutf8 "github.com/bytedance/sonic/utf8"
+)
+
+func vA(b []byte) bool { return utf8.Valid(b) }
+
+func vB(b []byte) bool { // the committed version
+	i := 0
+	for ; i+8 <= len(b); i += 8 {
+		if binary.LittleEndian.Uint64(b[i:])&0x8080808080808080 != 0 {
+			break
+		}
+	}
+	for ; i < len(b); i++ {
+		if b[i] >= utf8.RuneSelf {
+			return sonicutf8.Validate(b[i:])
+		}
+	}
+	return true
+}
+
+func vC(b []byte) bool { // stdlib's loop shape, reslicing p
+	p := b[:len(b):len(b)]
+	for len(p) >= 8 {
+		first32 := uint32(p[0]) | uint32(p[1])<<8 | uint32(p[2])<<16 | uint32(p[3])<<24
+		second32 := uint32(p[4]) | uint32(p[5])<<8 | uint32(p[6])<<16 | uint32(p[7])<<24
+		if (first32|second32)&0x80808080 != 0 {
+			break
+		}
+		p = p[8:]
+	}
+	for i, c := range p {
+		if c >= utf8.RuneSelf {
+			return sonicutf8.Validate(p[i:])
+		}
+	}
+	return true
+}
+
+func vD(b []byte) bool { return sonicutf8.Validate(b) }
+
+func vE(b []byte) bool { // 16 bytes per iteration, reslicing
+	p := b[:len(b):len(b)]
+	for len(p) >= 16 {
+		if (binary.LittleEndian.Uint64(p)|binary.LittleEndian.Uint64(p[8:]))&0x8080808080808080 != 0 {
+			break
+		}
+		p = p[16:]
+	}
+	for i, c := range p {
+		if c >= utf8.RuneSelf {
+			return sonicutf8.Validate(p[i:])
+		}
+	}
+	return true
+}
+
+func vF(b []byte) bool { // utf8.Valid on ASCII-looking text, sonic after the first non-ASCII word
+	p := b[:len(b):len(b)]
+	for len(p) >= 8 {
+		if binary.LittleEndian.Uint64(p)&0x8080808080808080 != 0 {
+			return sonicutf8.Validate(p)
+		}
+		p = p[8:]
+	}
+	return utf8.Valid(p)
+}
+
+func BenchmarkR54Probe(b *testing.B) {
+	texts := map[string]string{"ascii": "The quick brown fox jumps over the lazy dog. ", "cjk": "請求が二重に計上されました。確認をお願いします。"}
+	for _, text := range []string{"ascii", "cjk"} {
+		for _, n := range []int{1 << 10, 64 << 10, 6 << 20} {
+			buf := []byte(`"` + strings.Repeat(texts[text], n/len(texts[text])) + `"`)
+			for _, v := range []struct {
+				name string
+				f    func([]byte) bool
+			}{{"A-stdlib", vA}, {"B-committed", vB}, {"C-stdshape", vC}, {"D-sonic", vD}, {"E-16", vE}, {"F-wordsonic", vF}} {
+				b.Run(text+"/"+sizeName(n)+"/"+v.name, func(b *testing.B) {
+					b.SetBytes(int64(len(buf)))
+					for b.Loop() {
+						if !v.f(buf) {
+							b.Fatal("invalid")
+						}
+					}
+				})
+			}
+		}
+	}
+}
+
+func sizeName(n int) string {
+	switch n {
+	case 1 << 10:
+		return "1KiB"
+	case 64 << 10:
+		return "64KiB"
+	}
+	return "6MiB"
+}

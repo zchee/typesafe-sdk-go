@@ -1,0 +1,23 @@
+//go:build !race
+
+package typesafe
+
+import (
+	"testing"
+
+	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
+)
+
+type zzRejTone struct {
+	Tone ChoiceAnswer `typesafe:"kind=choice;name=tone;instructions=Tone?;options=calm|hostile"`
+}
+
+func TestZZTypedFailProbe(t *testing.T) {
+	var resp SystemOneResponse
+	if err := resp.UnmarshalJSON(testsupport.Fixture(t, "result.json")); err != nil {
+		t.Fatal(err)
+	}
+	_, err := DecodeAs[zzRejTone](&resp)
+	t.Logf("err=%v", err)
+	t.Logf("DecodeAs failure allocs=%v", testing.AllocsPerRun(200, func() { _, err = DecodeAs[zzRejTone](&resp) }))
+}

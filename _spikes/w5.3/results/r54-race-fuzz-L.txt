@@ -1,0 +1,17 @@
+# 2026-09-26 11:32:58 UTC (L) go test -race -count=1 ./... at 6bb69bf; load 1.03 0.83 0.94 1/613 742764
+ok  	github.com/zchee/typesafe-sdk-go	51.603s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.114s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	22.289s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.836s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.388s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.087s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.045s
+race-exit 0
+# 2026-09-26 11:33:55 UTC (L) FuzzValidUTF8 at 6bb69bf, -fuzztime 300s -parallel 8; load 1.18 0.92 0.96 1/613 744219
+fuzz: elapsed: 5m0s, execs: 13429007 (61072/sec), new interesting: 38 (total: 53)
+fuzz: elapsed: 5m0s, execs: 13429007 (0/sec), new interesting: 38 (total: 53)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	300.099s
+fuzz-exit 0
+# corpus: 0 new failures; cache 38 entries
+# end 2026-09-26 11:38:57 UTC load 8.92 6.14 3.24 1/612 745088

@@ -1,0 +1,14 @@
+//go:build !race
+
+package typesafe
+
+import "testing"
+
+var zzPolicy RetryPolicy
+
+func TestZZSetterProbe(t *testing.T) {
+	f := func(error) bool { return false }
+	t.Logf("Statuses(409,503) allocs=%v", testing.AllocsPerRun(200, func() { zzPolicy = DefaultRetry().Statuses(409, 503) }))
+	t.Logf("Predicate(f) allocs=%v", testing.AllocsPerRun(200, func() { zzPolicy = DefaultRetry().Predicate(f) }))
+	t.Logf("MaxRetries(3).Backoff allocs=%v", testing.AllocsPerRun(200, func() { zzPolicy = DefaultRetry().MaxRetries(3) }))
+}

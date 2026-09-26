@@ -1,0 +1,74 @@
+# mutants of isSecretHeader's in-place fold and NIT F's one rendering, over the working tree, 2026-09-26 20:19:41 JST, (M), not under the bench lock; the fuzz targets run their seeds and testdata corpus only
+== mutant S1 the words matched with case
+vet ok
+--- FAIL: TestIsSecretHeader (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_X-Access-Token (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_x-MiXeD-ToKeN (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_X-Client-Secret (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_token_inside_a_word (0.00s)
+--- FAIL: TestRedactedHeadersSecretSpellings (0.00s)
+    --- FAIL: TestRedactedHeadersSecretSpellings/X-Access-Token (0.00s)
+    --- FAIL: TestRedactedHeadersSecretSpellings/X-Client-Secret (0.00s)
+    --- FAIL: TestRedactedHeadersSecretSpellings/x-MiXeD-ToKeN (0.00s)
+--- FAIL: TestRedactHeader (0.00s)
+    --- FAIL: TestRedactHeader/success:_every_name-marked_spelling,_by_the_zero_value_too (0.00s)
+--- FAIL: TestRedactionCoversGoEscapeForms (0.00s)
+    --- FAIL: TestRedactionCoversGoEscapeForms/success:_X-MiXeD-ToKeN/ASCII (0.00s)
+    --- FAIL: TestRedactionCoversGoEscapeForms/success:_X-MiXeD-ToKeN/non-ASCII (0.00s)
+killed
+== mutant S2 the names matched with case
+vet ok
+--- FAIL: TestAllocSecretHeaderName (0.00s)
+--- FAIL: TestTypedErrorRedactsHeader (0.00s)
+    --- FAIL: TestTypedErrorRedactsHeader/error:_DecodeAs_redacts_by_the_header's_name_only (0.00s)
+    --- FAIL: TestTypedErrorRedactsHeader/error:_Ask_redacts_the_header_by_name_and_by_the_client's_key (0.00s)
+--- FAIL: TestIsSecretHeader (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upper_case (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_X-API-Key (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_API-Key (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_canonical_form (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_Authorization (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_Proxy-Authorization (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_Cookie (0.00s)
+    --- FAIL: TestIsSecretHeader/success:_upstream_spelling_Set-Cookie (0.00s)
+--- FAIL: TestRedactedHeadersSecretSpellings (0.00s)
+killed
+== mutant S3 no fallback for a non-ASCII name
+vet ok
+--- FAIL: FuzzIsSecretHeader (0.00s)
+    --- FAIL: FuzzIsSecretHeader/seed#23 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.101s
+FAIL
+killed
+== mutant S4 the lower-case copy kept
+vet ok
+--- FAIL: TestAllocSecretHeaderName (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.100s
+FAIL
+killed
+== mutant F1 the decoder form rendered first
+vet ok
+--- FAIL: TestAllocTypedFailure (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.098s
+FAIL
+killed
+== mutant F2 the typed error given the decoder form
+vet ok
+--- FAIL: TestAllocTypedFailure (0.00s)
+--- FAIL: TestTypedErrorWrapsDecodeError (0.00s)
+    --- FAIL: TestTypedErrorWrapsDecodeError/error:_a_pick_T_does_not_list (0.00s)
+    --- FAIL: TestTypedErrorWrapsDecodeError/error:_a_required_answer_absent (0.00s)
+--- FAIL: TestTypedFieldPathEscapesNames (0.00s)
+    --- FAIL: TestTypedFieldPathEscapesNames/error:_a_name_with_a_newline (0.00s)
+    --- FAIL: TestTypedFieldPathEscapesNames/error:_a_name_with_a_backslash (0.00s)
+--- FAIL: TestDecodeAsStoredResponse (0.00s)
+--- FAIL: TestTypedErrorRedactsHeader (0.00s)
+    --- FAIL: TestTypedErrorRedactsHeader/error:_DecodeAs_redacts_by_the_header's_name_only (0.00s)
+    --- FAIL: TestTypedErrorRedactsHeader/error:_Ask_redacts_the_header_by_name_and_by_the_client's_key (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.100s
+FAIL
+killed

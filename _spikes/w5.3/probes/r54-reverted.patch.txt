@@ -1,0 +1,313 @@
+From 9ec6055cdfbe1e38b8aaad3c58e760e7042590a8 Mon Sep 17 00:00:00 2001
+From: Koichi Shiraishi <zchee.io@gmail.com>
+Date: Sat, 26 Sep 2026 20:24:55 +0900
+Subject: [PATCH 1/2] codec: check an encoded state's UTF-8 at SIMD speed on
+ CJK text
+
+R54: the UTF-8 check of ruling R48 (utf8.Valid over the encoded state)
+took 7.6 times sonic's own encode on a 6 MiB CJK state, whose
+three-byte runes take utf8.Valid's slow path; B1 measured it at 51.2 of
+54.2 us on cjk/64KiB on amd64. The ruling's candidate: Go reads the
+ASCII prefix a word at a time and sonic's SIMD validator reads the rest.
+
+validUTF8 does that: from the first byte at or above utf8.RuneSelf it
+hands the rest to sonic's utf8.Validate, which is utf8.Valid itself
+where sonic has no native code. A rune after an ASCII byte is whole in
+the rest, so the verdict is utf8.Valid's. EncodeState and EncodeValue
+use it; BenchmarkEncodeState's check rows measure it under their names.
+sonic's encoder option ValidateString, a second pass that rewrites
+invalid bytes to U+FFFD, stays off.
+
+TestValidUTF8MatchesStdlib holds it to utf8.Valid on every string of up
+to three bytes, the four-byte lead bytes, and each rune class at every
+offset around sonic's 32-byte blocks (K41 is a boundary bug of sonic's
+native code); FuzzValidUTF8 does on any input. Four mutants fail them.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Uk4zzAy9Qdq8wwvRMG1Q9n
+---
+ internal/codec/encode.go             |   4 +-
+ internal/codec/encode_bench_test.go  |   8 +-
+ internal/codec/validate.go           |  32 +++++++-
+ internal/codec/validate_utf8_test.go | 105 +++++++++++++++++++++++++++
+ 4 files changed, 142 insertions(+), 7 deletions(-)
+ create mode 100644 internal/codec/validate_utf8_test.go
+
+diff --git a/internal/codec/encode.go b/internal/codec/encode.go
+index be48e50..0628f20 100644
+--- a/internal/codec/encode.go
++++ b/internal/codec/encode.go
+@@ -131,7 +131,7 @@ func EncodeState(buf *[]byte, state any) error {
+ 		err = fmt.Errorf("%s encodes as nothing, %w", typeName(state), ErrStateShape)
+ 	case enc[i] != '{' && enc[i] != '[' && enc[i] != '"':
+ 		err = fmt.Errorf("%s encodes as %s, %w", typeName(state), describe(enc[i]), ErrStateShape)
+-	case !utf8.Valid(enc):
++	case !validUTF8(enc):
+ 		err = wire.ErrInvalidUTF8
+ 	}
+ 	if err != nil {
+@@ -165,7 +165,7 @@ func EncodeValue(buf *[]byte, v any) error {
+ 		*buf = (*buf)[:start]
+ 		return &EncodeError{Err: err}
+ 	}
+-	if !utf8.Valid((*buf)[start:]) {
++	if !validUTF8((*buf)[start:]) {
+ 		*buf = (*buf)[:start]
+ 		return wire.ErrInvalidUTF8
+ 	}
+diff --git a/internal/codec/encode_bench_test.go b/internal/codec/encode_bench_test.go
+index a8dc818..1278446 100644
+--- a/internal/codec/encode_bench_test.go
++++ b/internal/codec/encode_bench_test.go
+@@ -19,14 +19,14 @@ package codec
+ import (
+ 	"strings"
+ 	"testing"
+-	"unicode/utf8"
+ )
+ 
+ // BenchmarkEncodeState measures a text state's encode into a pooled scratch
+ // (encode: sonic plus the checks of EncodeState) next to the UTF-8 pass of
+-// ruling R48 alone (check: utf8.Valid over the same encoded bytes), for
++// ruling R48 alone (check: validUTF8, EncodeState's own check since W5.3's
++// R54 validator, over the same encoded bytes; utf8.Valid before it), for
+ // ASCII text and for CJK text, whose three-byte runes take utf8.Valid's slow
+-// path, at 1 KiB, 64 KiB and 6 MiB.
++// path and the validator's SIMD loop, at 1 KiB, 64 KiB and 6 MiB.
+ func BenchmarkEncodeState(b *testing.B) {
+ 	texts := map[string]string{
+ 		"ascii": "The quick brown fox jumps over the lazy dog. ",
+@@ -59,7 +59,7 @@ func BenchmarkEncodeState(b *testing.B) {
+ 			b.Run(text+"/"+size.name+"/check", func(b *testing.B) {
+ 				b.SetBytes(int64(len(encoded)))
+ 				for b.Loop() {
+-					if !utf8.Valid(encoded) {
++					if !validUTF8(encoded) {
+ 						b.Fatal("invalid UTF-8")
+ 					}
+ 				}
+diff --git a/internal/codec/validate.go b/internal/codec/validate.go
+index 89001cc..1f0f593 100644
+--- a/internal/codec/validate.go
++++ b/internal/codec/validate.go
+@@ -16,7 +16,12 @@
+ 
+ package codec
+ 
+-import "unicode/utf8"
++import (
++	"encoding/binary"
++	"unicode/utf8"
++
++	sonicutf8 "github.com/bytedance/sonic/utf8"
++)
+ 
+ // ValidString reports whether s is valid UTF-8 and free of the raw control
+ // characters U+0000 to U+001F, which JSON forbids inside a string and the
+@@ -49,3 +54,28 @@ func ValidString(s string) bool {
+ 	}
+ 	return true
+ }
++
++// validUTF8 reports whether b is valid UTF-8, with utf8.Valid's verdict on
++// every input (ruling R48's check of an encoded state; the validator of
++// ruling R54, W5.3). It reads the ASCII prefix of b eight bytes at a time and
++// hands the rest, from the first byte at or above utf8.RuneSelf, to sonic's
++// SIMD validator (utf8.Validate, which is utf8.Valid itself where sonic has
++// no native code): a rune that starts after an ASCII byte is whole in the
++// rest, so the split does not change the verdict. An ASCII text is read by
++// Go alone; a CJK text, whose three-byte runes take utf8.Valid's slow path,
++// by the SIMD loop. TestValidUTF8MatchesStdlib and FuzzValidUTF8 hold it to
++// utf8.Valid, at every short length and around sonic's 32-byte blocks.
++func validUTF8(b []byte) bool {
++	i := 0
++	for ; i+8 <= len(b); i += 8 {
++		if binary.LittleEndian.Uint64(b[i:])&0x8080808080808080 != 0 {
++			break
++		}
++	}
++	for ; i < len(b); i++ {
++		if b[i] >= utf8.RuneSelf {
++			return sonicutf8.Validate(b[i:])
++		}
++	}
++	return true
++}
+diff --git a/internal/codec/validate_utf8_test.go b/internal/codec/validate_utf8_test.go
+new file mode 100644
+index 0000000..183b806
+--- /dev/null
++++ b/internal/codec/validate_utf8_test.go
+@@ -0,0 +1,105 @@
++//go:build !go1.28 && (amd64 || arm64)
++
++// Copyright 2026 The typesafe-sdk-go Authors.
++//
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++//	http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++package codec
++
++import (
++	"bytes"
++	"strings"
++	"testing"
++	"unicode/utf8"
++)
++
++// TestValidUTF8MatchesStdlib holds validUTF8, the encode's UTF-8 check
++// (ruling R54's validator, W5.3), to utf8.Valid: on every byte string of up
++// to three bytes; on every four-byte string whose lead byte is 0xF0 to 0xF7
++// and whose other bytes are continuation bytes or their neighbours; and on
++// each rune class (valid 2-, 3- and 4-byte runes, a surrogate, an overlong
++// form, a rune past U+10FFFF, a cut rune, a stray continuation byte) placed
++// at every offset of an ASCII run long enough to cross sonic's 32-byte blocks
++// twice, alone and followed by more text. sonic's native scanner has a
++// 32-byte boundary bug of its own (K41), so the offsets matter.
++func TestValidUTF8MatchesStdlib(t *testing.T) {
++	check := func(b []byte) {
++		t.Helper()
++		if got, want := validUTF8(b), utf8.Valid(b); got != want {
++			t.Fatalf("validUTF8(% x) = %t, utf8.Valid says %t", b, got, want)
++		}
++	}
++	check(nil)
++	check([]byte{})
++	var b [3]byte
++	for x := range 1 << 8 {
++		b[0] = byte(x)
++		check(b[:1])
++	}
++	for x := range 1 << 16 {
++		b[0], b[1] = byte(x>>8), byte(x)
++		check(b[:2])
++	}
++	for x := range 1 << 24 {
++		b[0], b[1], b[2] = byte(x>>16), byte(x>>8), byte(x)
++		check(b[:3])
++	}
++	edge := []byte{0x00, 0x7f, 0x80, 0x8f, 0x90, 0x9f, 0xa0, 0xbf, 0xc0, 0xff}
++	for lead := 0xf0; lead <= 0xf7; lead++ {
++		for c1 := 0x7e; c1 <= 0xc1; c1++ {
++			for _, c2 := range edge {
++				for _, c3 := range edge {
++					check([]byte{byte(lead), byte(c1), c2, c3})
++				}
++			}
++		}
++	}
++	classes := map[string][]byte{
++		"two-byte rune":       []byte("é"),
++		"three-byte rune":     []byte("請"),
++		"four-byte rune":      []byte("😀"),
++		"surrogate":           {0xed, 0xa0, 0x80},
++		"overlong slash":      {0xc0, 0xaf},
++		"overlong three":      {0xe0, 0x80, 0xaf},
++		"past U+10FFFF":       {0xf4, 0x90, 0x80, 0x80},
++		"cut three-byte rune": {0xe8, 0xab},
++		"cut four-byte rune":  {0xf0, 0x9f, 0x98},
++		"stray continuation":  {0x80},
++		"invalid lead":        {0xff},
++	}
++	pad := strings.Repeat("a", 96)
++	for name, rn := range classes {
++		for off := range 70 {
++			for _, tail := range []string{"", "b", strings.Repeat("請", 12), strings.Repeat("c", 40)} {
++				buf := bytes.Join([][]byte{[]byte(pad[:off]), rn, []byte(tail)}, nil)
++				if got, want := validUTF8(buf), utf8.Valid(buf); got != want {
++					t.Fatalf("%s at offset %d, tail %q: validUTF8 = %t, utf8.Valid says %t", name, off, tail, got, want)
++				}
++			}
++		}
++	}
++}
++
++// FuzzValidUTF8 holds validUTF8 to utf8.Valid on any input.
++func FuzzValidUTF8(f *testing.F) {
++	for _, seed := range []string{
++		"", "a", "é", "請求", "😀", "\xed\xa0\x80", "\xc0\xaf", "\xf4\x90\x80\x80", "\xe8\xab", "\x80", "\xff",
++		strings.Repeat("a", 31) + "請", strings.Repeat("a", 32) + "\xe8\xab", strings.Repeat("請", 11) + "\xed\xa0\x80",
++		strings.Repeat("a", 63) + "😀" + strings.Repeat("b", 33),
++	} {
++		f.Add([]byte(seed))
++	}
++	f.Fuzz(func(t *testing.T, b []byte) {
++		if got, want := validUTF8(b), utf8.Valid(b); got != want {
++			t.Errorf("validUTF8(%q) = %t, utf8.Valid says %t", b, got, want)
++		}
++	})
++}
+-- 
+2.55.0.787.g3cb9185f65.dirty
+
+
+From a0725ecf255d1e30ae8ef8b4760436ba7d18c64f Mon Sep 17 00:00:00 2001
+From: Koichi Shiraishi <zchee.io@gmail.com>
+Date: Sat, 26 Sep 2026 20:50:14 +0900
+Subject: [PATCH 2/2] codec: validate the whole encoded state with sonic (R54
+ variant D)
+
+Temporary: folded into the R54 commit before it is pushed.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ internal/codec/validate.go | 30 +++++++++---------------------
+ 1 file changed, 9 insertions(+), 21 deletions(-)
+
+diff --git a/internal/codec/validate.go b/internal/codec/validate.go
+index 1f0f593..f176bf8 100644
+--- a/internal/codec/validate.go
++++ b/internal/codec/validate.go
+@@ -17,7 +17,6 @@
+ package codec
+ 
+ import (
+-	"encoding/binary"
+ 	"unicode/utf8"
+ 
+ 	sonicutf8 "github.com/bytedance/sonic/utf8"
+@@ -57,25 +56,14 @@ func ValidString(s string) bool {
+ 
+ // validUTF8 reports whether b is valid UTF-8, with utf8.Valid's verdict on
+ // every input (ruling R48's check of an encoded state; the validator of
+-// ruling R54, W5.3). It reads the ASCII prefix of b eight bytes at a time and
+-// hands the rest, from the first byte at or above utf8.RuneSelf, to sonic's
+-// SIMD validator (utf8.Validate, which is utf8.Valid itself where sonic has
+-// no native code): a rune that starts after an ASCII byte is whole in the
+-// rest, so the split does not change the verdict. An ASCII text is read by
+-// Go alone; a CJK text, whose three-byte runes take utf8.Valid's slow path,
+-// by the SIMD loop. TestValidUTF8MatchesStdlib and FuzzValidUTF8 hold it to
+-// utf8.Valid, at every short length and around sonic's 32-byte blocks.
++// ruling R54, W5.3): sonic's SIMD validator, which is utf8.Valid itself
++// where sonic has no native code (a GOARCH other than amd64 and arm64, or a
++// Go version sonic's native code does not build for). On a CJK text, whose
++// three-byte runes take utf8.Valid's slow path, it runs about 9 times as
++// fast; on an ASCII text it is at least as fast as utf8.Valid's word loop,
++// so an ASCII scan in Go before it only slows it (W5.3 measured both).
++// TestValidUTF8MatchesStdlib and FuzzValidUTF8 hold it to utf8.Valid, at
++// every short length and around sonic's 32-byte blocks.
+ func validUTF8(b []byte) bool {
+-	i := 0
+-	for ; i+8 <= len(b); i += 8 {
+-		if binary.LittleEndian.Uint64(b[i:])&0x8080808080808080 != 0 {
+-			break
+-		}
+-	}
+-	for ; i < len(b); i++ {
+-		if b[i] >= utf8.RuneSelf {
+-			return sonicutf8.Validate(b[i:])
+-		}
+-	}
+-	return true
++	return sonicutf8.Validate(b)
+ }
+-- 
+2.55.0.787.g3cb9185f65.dirty
+

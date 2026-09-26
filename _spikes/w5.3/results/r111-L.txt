@@ -1,0 +1,224 @@
+# R111 start 2026-09-26 12:11:43 UTC; load 0.07 0.02 0.39 1/623 746750; 20 commits
+## a2a29b4 exit 0 end 12:12:02
+## 05264fe exit 0 end 12:12:02
+## 7df5a6b exit 0 end 12:12:21
+## 6f9a3af exit 0 end 12:12:21
+## 0422123 exit 0 end 12:12:40
+## 1500b71 exit 0 end 12:12:40
+## c53a291 exit 0 end 12:12:59
+## 133b642 exit 0 end 12:12:59
+## 0aa6730 exit 0 end 12:13:18
+## 035934a exit 0 end 12:13:18
+## c8c26af exit 0 end 12:13:36
+## e178067 exit 0 end 12:13:37
+## 69085ab exit 0 end 12:13:55
+## 9f23a43 exit 0 end 12:13:56
+## 5aeec13 exit 0 end 12:14:14
+## 5e91193 exit 0 end 12:14:16
+## 9972097 exit 0 end 12:14:33
+## f6f91b9 exit 0 end 12:14:35
+## 1487d03 exit 0 end 12:14:52
+## 46416b6 exit 0 end 12:14:54
+# FAIL lines: 0
+# nonzero exits: 0
+# R111 end 2026-09-26 12:14:54 UTC
+==== a2a29b4
+## a2a29b4 start 2026-09-26 12:11:43 UTC load 0.07 0.02 0.39
+ok  	github.com/zchee/typesafe-sdk-go	15.755s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.021s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.728s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.929s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.640s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.018s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.016s
+## a2a29b4 exit 0 end 12:12:02
+==== 05264fe
+## 05264fe start 2026-09-26 12:11:43 UTC load 0.07 0.02 0.39
+ok  	github.com/zchee/typesafe-sdk-go	15.633s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.019s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.258s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.931s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.633s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.013s
+## 05264fe exit 0 end 12:12:02
+==== 7df5a6b
+## 7df5a6b start 2026-09-26 12:12:02 UTC load 0.54 0.13 0.42
+ok  	github.com/zchee/typesafe-sdk-go	15.469s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.280s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.912s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.628s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+## 7df5a6b exit 0 end 12:12:21
+==== 6f9a3af
+## 6f9a3af start 2026-09-26 12:12:02 UTC load 0.54 0.13 0.42
+ok  	github.com/zchee/typesafe-sdk-go	15.601s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.265s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.915s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.634s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+## 6f9a3af exit 0 end 12:12:21
+==== 0422123
+## 0422123 start 2026-09-26 12:12:21 UTC load 3.16 0.80 0.63
+ok  	github.com/zchee/typesafe-sdk-go	15.608s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.243s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.909s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.614s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.018s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.013s
+## 0422123 exit 0 end 12:12:40
+==== 1500b71
+## 1500b71 start 2026-09-26 12:12:21 UTC load 3.16 0.80 0.63
+ok  	github.com/zchee/typesafe-sdk-go	15.699s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.021s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.249s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.914s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.629s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+## 1500b71 exit 0 end 12:12:40
+==== c53a291
+## c53a291 start 2026-09-26 12:12:40 UTC load 2.92 0.91 0.67
+ok  	github.com/zchee/typesafe-sdk-go	15.491s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.023s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.313s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.917s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.644s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+## c53a291 exit 0 end 12:12:59
+==== 133b642
+## 133b642 start 2026-09-26 12:12:40 UTC load 2.92 0.91 0.67
+ok  	github.com/zchee/typesafe-sdk-go	15.649s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.019s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.260s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.907s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.619s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.019s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.019s
+## 133b642 exit 0 end 12:12:59
+==== 0aa6730
+## 0aa6730 start 2026-09-26 12:12:59 UTC load 2.62 0.97 0.70
+ok  	github.com/zchee/typesafe-sdk-go	15.428s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.022s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.249s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.927s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.626s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.015s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+## 0aa6730 exit 0 end 12:13:18
+==== 035934a
+## 035934a start 2026-09-26 12:12:59 UTC load 2.62 0.97 0.70
+ok  	github.com/zchee/typesafe-sdk-go	15.566s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.023s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.274s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.908s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.628s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.017s
+## 035934a exit 0 end 12:13:18
+==== c8c26af
+## c8c26af start 2026-09-26 12:13:18 UTC load 2.76 1.09 0.74
+ok  	github.com/zchee/typesafe-sdk-go	15.394s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.027s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.266s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.922s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.647s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+## c8c26af exit 0 end 12:13:36
+==== e178067
+## e178067 start 2026-09-26 12:13:18 UTC load 2.62 1.09 0.75
+ok  	github.com/zchee/typesafe-sdk-go	15.604s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.021s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.228s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.914s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.615s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.018s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.019s
+## e178067 exit 0 end 12:13:37
+==== 69085ab
+## 69085ab start 2026-09-26 12:13:36 UTC load 2.32 1.10 0.76
+ok  	github.com/zchee/typesafe-sdk-go	15.467s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.021s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.496s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.936s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.623s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+## 69085ab exit 0 end 12:13:55
+==== 9f23a43
+## 9f23a43 start 2026-09-26 12:13:37 UTC load 2.32 1.10 0.76
+ok  	github.com/zchee/typesafe-sdk-go	15.619s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.023s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.433s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.903s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.624s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.016s
+## 9f23a43 exit 0 end 12:13:56
+==== 5aeec13
+## 5aeec13 start 2026-09-26 12:13:55 UTC load 2.25 1.17 0.79
+ok  	github.com/zchee/typesafe-sdk-go	15.462s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.022s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.537s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.922s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.634s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.019s
+## 5aeec13 exit 0 end 12:14:14
+==== 5e91193
+## 5e91193 start 2026-09-26 12:13:56 UTC load 2.25 1.17 0.79
+ok  	github.com/zchee/typesafe-sdk-go	15.810s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.025s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.444s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.916s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.653s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+## 5e91193 exit 0 end 12:14:16
+==== 9972097
+## 9972097 start 2026-09-26 12:14:14 UTC load 2.46 1.30 0.84
+ok  	github.com/zchee/typesafe-sdk-go	15.483s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.019s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.474s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.928s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.626s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.015s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+## 9972097 exit 0 end 12:14:33
+==== f6f91b9
+## f6f91b9 start 2026-09-26 12:14:16 UTC load 2.46 1.30 0.84
+ok  	github.com/zchee/typesafe-sdk-go	15.713s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.024s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.406s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.923s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.633s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.018s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.017s
+## f6f91b9 exit 0 end 12:14:35
+==== 1487d03
+## 1487d03 start 2026-09-26 12:14:33 UTC load 2.54 1.41 0.89
+ok  	github.com/zchee/typesafe-sdk-go	15.581s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.020s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.545s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.931s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.619s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.016s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.015s
+## 1487d03 exit 0 end 12:14:52
+==== 46416b6
+## 46416b6 start 2026-09-26 12:14:35 UTC load 2.54 1.41 0.89
+ok  	github.com/zchee/typesafe-sdk-go	15.590s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	0.026s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.419s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	8.913s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.622s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	0.019s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.018s
+## 46416b6 exit 0 end 12:14:54

@@ -1,0 +1,158 @@
+# 2026-09-26 11:25:35 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= base.test -test.run ^$ -test.bench ^BenchmarkEncodeState$ -test.benchmem -test.count 2
+# load before:  11:25:35 up 2 days,  6:50,  1 user,  load average: 0.00, 0.09, 0.85 | kernel: 0.00 0.09 0.85 2/617 741472 (MAXLOAD=2, waited 0 x 60 s)
+# commit: f6f91b9
+# rounds: 5, alternating base and cand
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# round 1 at 2026-09-26 11:25:35 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7844556	       153.6 ns/op	6457.14 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7783077	       154.1 ns/op	6435.46 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33793910	        36.93 ns/op	26861.27 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33047173	        36.88 ns/op	26896.68 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267291	      4480 ns/op	14626.64 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267673	      4477 ns/op	14636.71 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  627114	      1908 ns/op	34348.52 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  623866	      1908 ns/op	34343.95 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1761	    666649 ns/op	9437.43 MB/s	    3671 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1767	    666373 ns/op	9441.33 MB/s	    3658 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    5028	    232702 ns/op	27036.47 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    5128	    232812 ns/op	27023.70 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1311180	       915.4 ns/op	1103.39 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1310973	       915.2 ns/op	1103.53 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1486921	       807.0 ns/op	1251.54 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1489242	       805.8 ns/op	1253.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22158	     54158 ns/op	1209.82 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22161	     54148 ns/op	1210.06 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23385	     51250 ns/op	1278.48 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23433	     51205 ns/op	1279.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     222	   5367118 ns/op	1172.22 MB/s	   28383 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     223	   5368049 ns/op	1172.01 MB/s	   28880 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4922855 ns/op	1278.01 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4922088 ns/op	1278.20 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 2 at 2026-09-26 11:26:32 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7846768	       154.1 ns/op	6437.00 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7795856	       154.5 ns/op	6420.44 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33172888	        36.67 ns/op	27053.73 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	32960311	        36.97 ns/op	26830.35 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267718	      4479 ns/op	14627.28 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  266438	      4489 ns/op	14594.64 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  626258	      1908 ns/op	34335.17 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  625243	      1908 ns/op	34339.73 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1747	    672740 ns/op	9351.98 MB/s	    3700 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1765	    665332 ns/op	9456.11 MB/s	    3662 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    4891	    239398 ns/op	26280.31 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    4951	    239719 ns/op	26245.11 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1311250	       914.6 ns/op	1104.29 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1313913	       913.6 ns/op	1105.46 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1487722	       806.4 ns/op	1252.48 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1488688	       806.3 ns/op	1252.65 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22141	     54186 ns/op	1209.21 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22148	     54172 ns/op	1209.51 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23415	     51282 ns/op	1277.68 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23430	     51202 ns/op	1279.69 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     222	   5379034 ns/op	1169.62 MB/s	   29010 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     223	   5368800 ns/op	1171.85 MB/s	      43 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4920297 ns/op	1278.67 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     241	   4943718 ns/op	1272.61 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 3 at 2026-09-26 11:27:30 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7731764	       154.3 ns/op	6430.39 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7790281	       154.2 ns/op	6435.26 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	32805985	        36.88 ns/op	26895.59 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33630968	        36.73 ns/op	27004.35 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267600	      4482 ns/op	14619.42 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  266959	      4482 ns/op	14617.85 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  626064	      1908 ns/op	34342.59 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  625284	      1909 ns/op	34326.21 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1764	    666128 ns/op	9444.80 MB/s	    3586 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1694	    693546 ns/op	9071.43 MB/s	    3815 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    4950	    235092 ns/op	26761.65 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    4998	    238167 ns/op	26416.13 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1312360	       914.2 ns/op	1104.83 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1311618	       914.8 ns/op	1104.08 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1488771	       805.8 ns/op	1253.35 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1489315	       805.9 ns/op	1253.28 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22140	     54180 ns/op	1209.34 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22148	     54165 ns/op	1209.68 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23424	     51212 ns/op	1279.44 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23430	     51209 ns/op	1279.51 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     222	   5382691 ns/op	1168.83 MB/s	   29010 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     223	   5386473 ns/op	1168.01 MB/s	      43 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4922766 ns/op	1278.03 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4921868 ns/op	1278.26 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 4 at 2026-09-26 11:28:27 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7804028	       153.8 ns/op	6449.83 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7798114	       154.1 ns/op	6437.12 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33358698	        36.84 ns/op	26927.41 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33517878	        36.98 ns/op	26825.65 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267889	      4477 ns/op	14636.67 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  266474	      4486 ns/op	14607.40 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  626306	      1908 ns/op	34343.11 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  625119	      1908 ns/op	34336.81 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1740	    674305 ns/op	9330.28 MB/s	    3715 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1701	    691586 ns/op	9097.14 MB/s	    3800 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    5006	    232686 ns/op	27038.38 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    4988	    237894 ns/op	26446.50 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1311463	       914.2 ns/op	1104.75 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1312269	       914.2 ns/op	1104.76 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1489338	       805.7 ns/op	1253.59 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1487749	       806.2 ns/op	1252.72 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22141	     54192 ns/op	1209.07 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   21819	     54981 ns/op	1191.71 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23414	     51224 ns/op	1279.13 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23425	     51224 ns/op	1279.12 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     220	   5400367 ns/op	1165.00 MB/s	   29274 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     222	   5378601 ns/op	1169.72 MB/s	   29010 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4922462 ns/op	1278.11 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4922710 ns/op	1278.04 MB/s	       0 B/op	       0 allocs/op
+PASS
+# round 5 at 2026-09-26 11:29:24 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/codec
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7781836	       154.0 ns/op	6442.35 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/encode-44         	 7750933	       154.4 ns/op	6425.60 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	32790025	        36.87 ns/op	26902.39 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/1KiB/check-44          	33037363	        36.68 ns/op	27042.65 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267546	      4483 ns/op	14615.90 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/encode-44        	  267544	      4481 ns/op	14621.52 MB/s	      16 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  626215	      1908 ns/op	34346.54 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/64KiB/check-44         	  624151	      1908 ns/op	34345.03 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1740	    674228 ns/op	9331.34 MB/s	    3715 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/encode-44         	    1736	    676180 ns/op	9304.41 MB/s	    3723 B/op	       1 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    5012	    232647 ns/op	27042.91 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/ascii/6MiB/check-44          	    4957	    239486 ns/op	26270.66 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1311014	       915.2 ns/op	1103.54 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/encode-44           	 1313148	       913.8 ns/op	1105.27 MB/s	      17 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1488043	       806.3 ns/op	1252.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/1KiB/check-44            	 1487805	       806.6 ns/op	1252.15 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22146	     54181 ns/op	1209.32 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/encode-44          	   22141	     54177 ns/op	1209.40 MB/s	      25 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23436	     51207 ns/op	1279.55 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/64KiB/check-44           	   23409	     51220 ns/op	1279.22 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     223	   5369273 ns/op	1171.75 MB/s	   28880 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/encode-44           	     222	   5383355 ns/op	1168.68 MB/s	   29010 B/op	       1 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     242	   4926216 ns/op	1277.13 MB/s	       0 B/op	       0 allocs/op
+BenchmarkEncodeState/cjk/6MiB/check-44            	     243	   4922710 ns/op	1278.04 MB/s	       0 B/op	       0 allocs/op
+PASS
+# exit 0 at 2026-09-26 11:30:22 UTC
+# load after:  11:30:22 up 2 days,  6:55,  1 user,  load average: 1.00, 0.66, 0.91 | kernel: 1.00 0.66 0.91 1/617 741801

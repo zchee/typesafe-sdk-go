@@ -1,0 +1,54 @@
+# 2026-09-26 20:52:52 JST (M) allocation probes (counts, R17; not under the bench lock), GOEXPERIMENT=nosimd,noruntimesecret; load { 6.91 35.91 43.35 }
+## isSecretHeader and the redaction paths: before 9f23a43 (wt-k36), after f6f91b9 (wt-p4)
+### 9f23a43
+zz_secret_probe_test.go:12: isSecretHeader("Content-Type") allocs=1
+zz_secret_probe_test.go:12: isSecretHeader("X-Typesafe-Request-Id") allocs=1
+zz_secret_probe_test.go:12: isSecretHeader("Authorization") allocs=1
+zz_secret_probe_test.go:12: isSecretHeader("X-Access-Token") allocs=1
+zz_secret_probe_test.go:12: isSecretHeader("set-cookie") allocs=0
+zz_secret_probe_test.go:12: isSecretHeader("Date") allocs=1
+zz_secret_probe_test.go:16: headerRedactor{}.header(4 headers) allocs=7
+zz_secret_probe_test.go:17: requestCredentials(4 headers) allocs=4
+### f6f91b9
+zz_secret_probe_test.go:12: isSecretHeader("Content-Type") allocs=0
+zz_secret_probe_test.go:12: isSecretHeader("X-Typesafe-Request-Id") allocs=0
+zz_secret_probe_test.go:12: isSecretHeader("Authorization") allocs=0
+zz_secret_probe_test.go:12: isSecretHeader("X-Access-Token") allocs=0
+zz_secret_probe_test.go:12: isSecretHeader("set-cookie") allocs=0
+zz_secret_probe_test.go:12: isSecretHeader("Date") allocs=0
+zz_secret_probe_test.go:16: headerRedactor{}.header(4 headers) allocs=3
+zz_secret_probe_test.go:17: requestCredentials(4 headers) allocs=0
+## a typed failure at tone.choice (NIT F): before 9f23a43, after f6f91b9
+### 9f23a43
+zz_typedfail_probe_test.go:21: err=Invalid response data at 'tone.choice'.
+zz_typedfail_probe_test.go:22: DecodeAs failure allocs=9
+### f6f91b9
+zz_typedfail_probe_test.go:21: err=Invalid response data at 'tone.choice'.
+zz_typedfail_probe_test.go:22: DecodeAs failure allocs=5
+## the W3.4 option probe (_spikes/w3.4/probe_test.go.txt, measureCallItems given its prefix): before f6f91b9, after 1487d03 (R97-corr (c))
+### f6f91b9
+zz_w34probe_test.go:202: PROBE opt none inline=20/2648 (+0/0) max=20/2648
+zz_w34probe_test.go:202: PROBE opt Header inline=27/3368 (+7/720) max=27/3368 hoisted=27/3368 (+7/720) max=27/3368
+zz_w34probe_test.go:202: PROBE opt Model inline=23/2840 (+3/192) max=23/2840 hoisted=23/2840 (+3/192) max=23/2840
+zz_w34probe_test.go:202: PROBE opt Timeout inline=22/2824 (+2/176) max=22/2824 hoisted=22/2824 (+2/176) max=22/2824
+zz_w34probe_test.go:202: PROBE opt ExtraBody inline=24/2864 (+4/216) max=24/2864 hoisted=22/2840 (+2/192) max=22/2840
+zz_w34probe_test.go:202: PROBE opt Retry inline=21/2808 (+1/160) max=21/2808 hoisted=21/2808 (+1/160) max=21/2808
+zz_w34probe_test.go:202: PROBE opt all5 inline=33/3456 (+13/808) max=33/3456 hoisted=31/3432 (+11/784) max=31/3432
+### 1487d03
+zz_w34probe_test.go:202: PROBE opt none inline=20/2648 (+0/0) max=20/2648
+zz_w34probe_test.go:202: PROBE opt Header inline=27/3336 (+7/688) max=27/3336 hoisted=27/3336 (+7/688) max=27/3336
+zz_w34probe_test.go:202: PROBE opt Model inline=23/2808 (+3/160) max=23/2808 hoisted=23/2808 (+3/160) max=23/2808
+zz_w34probe_test.go:202: PROBE opt Timeout inline=22/2792 (+2/144) max=22/2792 hoisted=22/2792 (+2/144) max=22/2792
+zz_w34probe_test.go:202: PROBE opt ExtraBody inline=24/2832 (+4/184) max=24/2832 hoisted=22/2808 (+2/160) max=22/2808
+zz_w34probe_test.go:202: PROBE opt Retry inline=21/2776 (+1/128) max=21/2776 hoisted=21/2776 (+1/128) max=21/2776
+zz_w34probe_test.go:202: PROBE opt all5 inline=33/3424 (+13/776) max=33/3424 hoisted=31/3400 (+11/752) max=31/3400
+## the policy setters: before f6f91b9, after 1487d03
+### f6f91b9
+zz_setter_probe_test.go:11: Statuses(409,503) allocs=1
+zz_setter_probe_test.go:12: Predicate(f) allocs=0
+zz_setter_probe_test.go:13: MaxRetries(3).Backoff allocs=0
+### 1487d03
+zz_setter_probe_test.go:11: Statuses(409,503) allocs=2
+zz_setter_probe_test.go:12: Predicate(f) allocs=1
+zz_setter_probe_test.go:13: MaxRetries(3).Backoff allocs=0
+# end 2026-09-26 20:53:00 JST

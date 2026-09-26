@@ -1,0 +1,21 @@
+# merge-tree at 2026-09-26 21:14:38 JST: wave/w5.3 46416b6 against each live wave branch
+## origin/wave/w5.4 b4faf7c: exit 1
+docs/perf/ledger.md
+
+Auto-merging docs/perf/benchmarks.md
+Auto-merging docs/perf/ledger.md
+CONFLICT (content): Merge conflict in docs/perf/ledger.md
+## origin/wave/w6.1 2b9ecfa: exit 1
+docs/perf/ledger.md
+
+Auto-merging .github/workflows/ci.yaml
+Auto-merging docs/perf/ledger.md
+CONFLICT (content): Merge conflict in docs/perf/ledger.md
+Auto-merging errors.go
+Auto-merging internal/codec/decode_fuzz_test.go
+## origin/wave/w6.3 a5b5e53: exit 1
+docs/perf/ledger.md
+
+Auto-merging .github/workflows/ci.yaml
+Auto-merging docs/perf/ledger.md
+CONFLICT (content): Merge conflict in docs/perf/ledger.md

@@ -1,0 +1,370 @@
+# 2026-09-26 20:48:23 JST (M) records at d15781a: AC-P2, AC-P8, K24's sequence, the new pins; load { 48.04 75.56 56.13 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+records-exit 0
+    alloc_call_test.go:100: runs of E_sonic                                mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    alloc_call_test.go:106: runs of floor round trip                       mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    alloc_call_test.go:108: runs of call/sdk                               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_call_test.go:116: CALL q3 E_sonic=1/16 floorRT=7/624 floor=8/640 total=20/2648 own=12/2008 (N = 12, frozen at W5.3)
+    alloc_call_test.go:118: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_call_test.go:118: runs of item systemOneAlloc (the response, the first URL copy and up to four answer entries) mallocs/bytes: 1/704 1/704 1/704 1/704 1/704
+    alloc_call_test.go:118: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    alloc_call_test.go:118: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    alloc_call_test.go:118: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    alloc_call_test.go:118: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    alloc_call_test.go:118: runs of item readBody                          mallocs/bytes: 1/384 1/384 1/384 1/384 1/384
+    alloc_call_test.go:118: runs of item decode                            mallocs/bytes: 3/240 3/240 3/240 3/240 3/240
+    alloc_call_test.go:119: ITEM q3 header=0/0 systemOneAlloc=1/704 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/384 decode=3/240
+    alloc_call_test.go:146: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    alloc_call_test.go:148: runs of q20 call/sdk                           mallocs/bytes: 41/9888 41/9888 41/9888 41/9888 41/9888
+    alloc_call_test.go:154: CALL q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=41/9888 own=33/9248 (recorded, not in N)
+    alloc_call_test.go:155: runs of q20 item header map                    mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_call_test.go:155: runs of q20 item systemOneAlloc (the response, the first URL copy and up to four answer entries) mallocs/bytes: 1/256 1/256 1/256 1/256 1/256
+    alloc_call_test.go:155: runs of q20 item context.WithTimeout           mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    alloc_call_test.go:155: runs of q20 item Request (WithContext)         mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    alloc_call_test.go:155: runs of q20 item body.Open                     mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    alloc_call_test.go:155: runs of q20 item GetBody method value          mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    alloc_call_test.go:155: runs of q20 item readBody                      mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    alloc_call_test.go:155: runs of q20 item decode                        mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    alloc_call_test.go:155: ITEM q20 header=0/0 systemOneAlloc=1/256 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 readBody=1/2304 decode=24/6008
+--- PASS: TestAllocWholeCall (0.00s)
+    alloc_call_test.go:269: runs of call with 3 questions                  mallocs/bytes: 21/2696 21/2696 21/2696 21/2696 21/2696
+    alloc_call_test.go:273: INLINE 3 questions: call 21/2696, 3 answers
+    alloc_call_test.go:269: runs of call with 4 questions                  mallocs/bytes: 21/2888 21/2888 21/2888 21/2888 21/2888
+    alloc_call_test.go:273: INLINE 4 questions: call 21/2888, 3 answers
+    alloc_call_test.go:269: runs of call with 5 questions                  mallocs/bytes: 22/2696 22/2696 22/2696 22/2696 22/2696
+    alloc_call_test.go:273: INLINE 5 questions: call 22/2696, 3 answers
+--- PASS: TestAllocAnswersInlineBound (0.00s)
+    alloc_decode_cases_test.go:227: span 0 structured-legend-flood-1k.json    388 decodes in 250.061792ms, 644.489µs each
+    alloc_decode_cases_test.go:227: span 0 structured-legend-flood-10k.json    41 decodes in 250.278958ms, 6.104364ms each
+    alloc_decode_cases_test.go:227: span 1 structured-legend-flood-1k.json    386 decodes in 250.274792ms, 648.38µs each
+    alloc_decode_cases_test.go:227: span 1 structured-legend-flood-10k.json    40 decodes in 256.811125ms, 6.420278ms each
+    alloc_decode_cases_test.go:227: span 2 structured-legend-flood-1k.json    380 decodes in 250.123125ms, 658.218µs each
+    alloc_decode_cases_test.go:227: span 2 structured-legend-flood-10k.json    42 decodes in 255.223208ms, 6.076743ms each
+    alloc_decode_cases_test.go:227: span 3 structured-legend-flood-1k.json    385 decodes in 250.374666ms, 650.323µs each
+    alloc_decode_cases_test.go:227: span 3 structured-legend-flood-10k.json    42 decodes in 255.775ms, 6.08988ms each
+    alloc_decode_cases_test.go:227: span 4 structured-legend-flood-1k.json    396 decodes in 250.524167ms, 632.636µs each
+    alloc_decode_cases_test.go:227: span 4 structured-legend-flood-10k.json    42 decodes in 254.387042ms, 6.056834ms each
+    alloc_decode_cases_test.go:240: LINEARITY time 1k 632.636µs, 10k 6.056834ms, ratio 9.57 (bound 15), decodes per span 1k [388 386 380 385 396] 10k [41 40 42 42 42], 5 spans of at least 250ms
+--- PASS: TestLinearityFloodTime (2.58s)
+    alloc_decode_test.go:64: DECODE deviation-big-exp-noul             does not decode, no budget: 200 Invalid response data at 'answers.spam.noul'.
+    alloc_decode_test.go:79: runs of deviation-lone-surrogate.json interned mallocs/bytes: 13/4544 13/4544 13/4544 13/4544 13/4544
+    alloc_decode_test.go:79: runs of deviation-lone-surrogate.json misses   mallocs/bytes: 14/4592 14/4592 14/4592 14/4592 14/4592
+    alloc_decode_test.go:91: runs of deviation-lone-surrogate.json naive    mallocs/bytes: 24/3048 24/3048 24/3048 24/3048 24/3048
+    alloc_decode_test.go:102: DECODE deviation-lone-surrogate           bytes=219     allocs=13   allocBytes=4544     budget=14   misses=14/4592      naive=24/3048        ratio=0.542
+    alloc_decode_test.go:64: DECODE deviation-nan-noul                 does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE deviation-nan-unknown              does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:79: runs of duplicates.json interned               mallocs/bytes: 16/5312 16/5312 16/5312 16/5312 16/5312
+    alloc_decode_test.go:79: runs of duplicates.json misses                 mallocs/bytes: 17/5408 17/5408 17/5408 17/5408 17/5408
+    alloc_decode_test.go:91: runs of duplicates.json naive                  mallocs/bytes: 55/9464 55/9464 55/9464 55/9464 55/9464
+    alloc_decode_test.go:102: DECODE duplicates                         bytes=825     allocs=16   allocBytes=5312     budget=17   misses=17/5408      naive=55/9464        ratio=0.291
+    alloc_decode_test.go:79: runs of escaped-member-names.json interned     mallocs/bytes: 29/5080 29/5080 29/5080 29/5080 29/5080
+    alloc_decode_test.go:79: runs of escaped-member-names.json misses       mallocs/bytes: 30/5192 30/5192 30/5192 30/5192 30/5192
+    alloc_decode_test.go:91: runs of escaped-member-names.json naive        mallocs/bytes: 41/4512 41/4512 41/4512 41/4512 41/4512
+    alloc_decode_test.go:102: DECODE escaped-member-names               bytes=425     allocs=29   allocBytes=5080     budget=30   misses=30/5192      naive=41/4512        ratio=0.707
+    alloc_decode_test.go:79: runs of escaped-names.json interned            mallocs/bytes: 10/1224 10/1224 10/1224 10/1224 10/1224
+    alloc_decode_test.go:79: runs of escaped-names.json misses              mallocs/bytes: 11/1304 11/1304 11/1304 11/1304 11/1304
+    alloc_decode_test.go:91: runs of escaped-names.json naive               mallocs/bytes: 38/5224 38/5224 38/5224 38/5224 38/5224
+    alloc_decode_test.go:102: DECODE escaped-names                      bytes=481     allocs=10   allocBytes=1224     budget=10   misses=11/1304      naive=38/5224        ratio=0.263
+    alloc_decode_test.go:64: DECODE malformed-answers-not-object       does not decode, no budget: 200 Invalid response data at 'answers'.
+    alloc_decode_test.go:64: DECODE malformed-bad-literal              does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-big-exp                  does not decode, no budget: 200 Invalid response data at 'usage.input_tokens'.
+    alloc_decode_test.go:64: DECODE malformed-control-char-key         does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-control-char             does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-double-comma             does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-empty                    does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-invalid-escape           does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-invalid-utf8-key         does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-invalid-utf8             does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-leading-zero             does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-missing-model            does not decode, no budget: 200 Invalid response data at 'model'.
+    alloc_decode_test.go:64: DECODE malformed-missing-usage            does not decode, no budget: 200 Invalid response data at 'usage'.
+    alloc_decode_test.go:64: DECODE malformed-root-array               does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-too-deep                 does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-trailing-comma           does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-trailing-formfeed        does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-trailing-garbage         does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-trailing-nbsp            does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-trailing-value           does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-truncated                does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE malformed-usage-type               does not decode, no budget: 200 Invalid response data at 'usage.input_tokens'.
+    alloc_decode_test.go:64: DECODE malformed-whitespace               does not decode, no budget: 200 Invalid response data at '.'.
+    alloc_decode_test.go:64: DECODE models                             does not decode, no budget: 200 Invalid response data at 'model'.
+    alloc_decode_test.go:79: runs of no-answers.json interned               mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_decode_test.go:79: runs of no-answers.json misses                 mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    alloc_decode_test.go:91: runs of no-answers.json naive                  mallocs/bytes: 12/1080 12/1080 12/1080 12/1080 12/1080
+    alloc_decode_test.go:102: DECODE no-answers                         bytes=67      allocs=0    allocBytes=0        budget=0    misses=1/16         naive=12/1080        ratio=0.000
+    alloc_decode_test.go:79: runs of parity-big-exp-unknown.json interned   mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_decode_test.go:79: runs of parity-big-exp-unknown.json misses     mallocs/bytes: 2/160 2/160 2/160 2/160 2/160
+    alloc_decode_test.go:100: the naive decode refuses parity-big-exp-unknown.json on this host: "Syntax error at index 132: float infinity\n\n\tul\":0.5}},\"meta\":{\"cost\":1e400}}\n\t.............................^..\n"
+    alloc_decode_test.go:102: DECODE parity-big-exp-unknown             bytes=135     allocs=1    allocBytes=144      budget=1    misses=2/160        naive=refused        ratio=
+    alloc_decode_test.go:79: runs of result-20.json interned                mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    alloc_decode_test.go:79: runs of result-20.json misses                  mallocs/bytes: 25/6520 25/6520 25/6520 25/6520 25/6520
+    alloc_decode_test.go:91: runs of result-20.json naive                   mallocs/bytes: 94/19184 94/19184 94/19184 94/19184 94/19184
+    alloc_decode_test.go:102: DECODE result-20                          bytes=2253    allocs=24   allocBytes=6008     budget=24   misses=25/6520      naive=94/19184       ratio=0.255
+    alloc_decode_test.go:79: runs of result.json interned                   mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_decode_test.go:79: runs of result.json misses                     mallocs/bytes: 5/752 5/752 5/752 5/752 5/752
+    alloc_decode_test.go:91: runs of result.json naive                      mallocs/bytes: 26/3960 26/3960 26/3960 26/3960 26/3960
+    alloc_decode_test.go:102: DECODE result                             bytes=364     allocs=4    allocBytes=688      budget=4    misses=5/752        naive=26/3960        ratio=0.154
+    alloc_decode_test.go:79: runs of score-flood-mini.json interned         mallocs/bytes: 21/4184 21/4184 21/4184 21/4184 21/4184
+    alloc_decode_test.go:79: runs of score-flood-mini.json misses           mallocs/bytes: 22/4312 22/4312 22/4312 22/4312 22/4312
+    alloc_decode_test.go:91: runs of score-flood-mini.json naive            mallocs/bytes: 96/16064 96/16064 96/16064 96/16064 96/16064
+    alloc_decode_test.go:102: DECODE score-flood-mini                   bytes=1495    allocs=21   allocBytes=4184     budget=21   misses=22/4312      naive=96/16064       ratio=0.219
+    alloc_decode_test.go:79: runs of structured-legend-flood-10k.json interned mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:79: runs of structured-legend-flood-10k.json misses mallocs/bytes: 686/2005944 686/2005944 686/2005944 686/2005944 686/2005944
+    alloc_decode_test.go:91: runs of structured-legend-flood-10k.json naive mallocs/bytes: 20093/8254712 20093/8254712 20093/8254712 20093/8254712 20093/8254712
+    alloc_decode_test.go:102: DECODE structured-legend-flood-10k        bytes=616421  allocs=685  allocBytes=1604536  budget=686  misses=686/2005944  naive=20093/8254712  ratio=0.034
+    alloc_decode_test.go:79: runs of structured-legend-flood-1k.json interned mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:79: runs of structured-legend-flood-1k.json misses mallocs/bytes: 91/213896 91/213896 91/213896 91/213896 91/213896
+    alloc_decode_test.go:91: runs of structured-legend-flood-1k.json naive  mallocs/bytes: 2036/650264 2036/650264 2036/650264 2036/650264 2036/650264
+    alloc_decode_test.go:102: DECODE structured-legend-flood-1k         bytes=57418   allocs=90   allocBytes=172936   budget=91   misses=91/213896    naive=2036/650264    ratio=0.044
+    alloc_decode_test.go:79: runs of structured-legend.json interned        mallocs/bytes: 11/4464 11/4464 11/4464 11/4464 11/4464
+    alloc_decode_test.go:79: runs of structured-legend.json misses          mallocs/bytes: 12/4528 12/4528 12/4528 12/4528 12/4528
+    alloc_decode_test.go:91: runs of structured-legend.json naive           mallocs/bytes: 24/3088 24/3088 24/3088 24/3088 24/3088
+    alloc_decode_test.go:102: DECODE structured-legend                  bytes=217     allocs=11   allocBytes=4464     budget=12   misses=12/4528      naive=24/3088        ratio=0.458
+    alloc_decode_test.go:79: runs of type-last.json interned                mallocs/bytes: 4/688 4/688 4/688 4/688 4/688
+    alloc_decode_test.go:79: runs of type-last.json misses                  mallocs/bytes: 5/752 5/752 5/752 5/752 5/752
+    alloc_decode_test.go:91: runs of type-last.json naive                   mallocs/bytes: 26/3960 26/3960 26/3960 26/3960 26/3960
+    alloc_decode_test.go:102: DECODE type-last                          bytes=364     allocs=4    allocBytes=688      budget=4    misses=5/752        naive=26/3960        ratio=0.154
+    alloc_decode_test.go:79: runs of unknown-answer-type.json interned      mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    alloc_decode_test.go:79: runs of unknown-answer-type.json misses        mallocs/bytes: 2/160 2/160 2/160 2/160 2/160
+    alloc_decode_test.go:91: runs of unknown-answer-type.json naive         mallocs/bytes: 18/2232 18/2232 18/2232 18/2232 18/2232
+    alloc_decode_test.go:102: DECODE unknown-answer-type                bytes=145     allocs=1    allocBytes=144      budget=1    misses=2/160        naive=18/2232        ratio=0.056
+--- PASS: TestAllocDecodeFixtures (0.11s)
+    --- PASS: TestAllocDecodeFixtures/deviation-big-exp-noul.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/deviation-lone-surrogate.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/deviation-nan-noul.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/deviation-nan-unknown.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/duplicates.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/escaped-member-names.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/escaped-names.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-answers-not-object.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-bad-literal.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-big-exp.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-control-char-key.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-control-char.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-double-comma.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-empty.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-invalid-escape.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-invalid-utf8-key.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-invalid-utf8.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-leading-zero.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-missing-model.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-missing-usage.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-root-array.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-too-deep.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-trailing-comma.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-trailing-formfeed.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-trailing-garbage.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-trailing-nbsp.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-trailing-value.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-truncated.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-usage-type.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/malformed-whitespace.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/models.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/no-answers.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/parity-big-exp-unknown.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/result-20.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/result.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/score-flood-mini.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/structured-legend-flood-10k.json (0.09s)
+    --- PASS: TestAllocDecodeFixtures/structured-legend-flood-1k.json (0.01s)
+    --- PASS: TestAllocDecodeFixtures/structured-legend.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/type-last.json (0.00s)
+    --- PASS: TestAllocDecodeFixtures/unknown-answer-type.json (0.00s)
+    alloc_decode_test.go:161: runs of structured-legend-flood-1k.json        mallocs/bytes: 90/172936 90/172936 90/172936 90/172936 90/172936
+    alloc_decode_test.go:161: runs of structured-legend-flood-10k.json       mallocs/bytes: 685/1604536 685/1604536 685/1604536 685/1604536 685/1604536
+    alloc_decode_test.go:172: LINEARITY allocations 1k 90 (members 1011), 10k 685 (members 10011), ratio 7.61 (bound 12), growth 0.0661 per member visited (the lazy pass's c₁ = 1/15 = 0.0667, recorded)
+--- PASS: TestLinearityFlood (0.06s)
+    alloc_prepare_test.go:71: runs of c1-sketch                              mallocs/bytes: 6/944 6/944 6/944 6/944 6/944
+    alloc_prepare_test.go:78: c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+    alloc_prepare_test.go:71: runs of c2-noul-short                          mallocs/bytes: 3/224 3/224 3/224 3/224 3/224
+    alloc_prepare_test.go:78: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:71: runs of c3-choice-20x10                        mallocs/bytes: 8/15512 8/15512 8/15512 8/15512 8/15512
+    alloc_prepare_test.go:78: c3-choice-20x10: 8 mallocs, 15512 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:71: runs of c4a-score-20x8-text                    mallocs/bytes: 8/17304 8/17304 8/17304 8/17304 8/17304
+    alloc_prepare_test.go:78: c4a-score-20x8-text: 8 mallocs, 17304 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:71: runs of c4b-score-20x8-json                    mallocs/bytes: 9/33560 9/33560 9/33560 9/33560 9/33560
+    alloc_prepare_test.go:78: c4b-score-20x8-json: 9 mallocs, 33560 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:71: runs of c5-raw-100x3                           mallocs/bytes: 14/33968 14/33968 14/33968 14/33968 14/33968
+    alloc_prepare_test.go:78: c5-raw-100x3: 14 mallocs, 33968 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:71: runs of c6-escapes                             mallocs/bytes: 9/8464 9/8464 9/8464 9/8464 9/8464
+    alloc_prepare_test.go:78: c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:71: runs of n8a-array-control                      mallocs/bytes: 10/24456 10/24456 10/24456 10/24456 10/24456
+    alloc_prepare_test.go:78: n8a-array-control: 10 mallocs, 24456 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:71: runs of n8a-array-score                        mallocs/bytes: 10/24456 10/24456 10/24456 10/24456 10/24456
+    alloc_prepare_test.go:78: n8a-array-score: 10 mallocs, 24456 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:71: runs of n8b-map-control                        mallocs/bytes: 13/105520 13/105520 13/105520 13/105520 13/105520
+    alloc_prepare_test.go:78: n8b-map-control: 13 mallocs, 105520 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:71: runs of n8b-map-score                          mallocs/bytes: 13/105520 13/105520 13/105520 13/105520 13/105520
+    alloc_prepare_test.go:78: n8b-map-score: 13 mallocs, 105520 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    --- PASS: TestAllocPrepare/c1-sketch (0.00s)
+    --- PASS: TestAllocPrepare/c2-noul-short (0.00s)
+    --- PASS: TestAllocPrepare/c3-choice-20x10 (0.00s)
+    --- PASS: TestAllocPrepare/c4a-score-20x8-text (0.00s)
+    --- PASS: TestAllocPrepare/c4b-score-20x8-json (0.00s)
+    --- PASS: TestAllocPrepare/c5-raw-100x3 (0.00s)
+    --- PASS: TestAllocPrepare/c6-escapes (0.00s)
+    --- PASS: TestAllocPrepare/n8a-array-control (0.00s)
+    --- PASS: TestAllocPrepare/n8a-array-score (0.00s)
+    --- PASS: TestAllocPrepare/n8b-map-control (0.00s)
+    --- PASS: TestAllocPrepare/n8b-map-score (0.00s)
+    alloc_sequence_test.go:102: runs of boxed-string single-size call          mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:104: runs of boxed-string single-size encode        mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    alloc_sequence_test.go:137: runs of boxed-string call 1                    mallocs/bytes: 45/158808 45/158808 45/158808 45/158808 45/158808
+    alloc_sequence_test.go:139: runs of boxed-string call 2                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 3                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 4                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 5                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 6                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 7                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 8                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 9                    mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 10                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 11                   mallocs/bytes: 21/6302296 21/6302296 21/6302296 21/6302296 21/6302296
+    alloc_sequence_test.go:139: runs of boxed-string call 12                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 13                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 14                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 15                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 16                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 17                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 18                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 19                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 20                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 21                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 22                   mallocs/bytes: 21/12593752 21/12593752 21/12593752 21/12593752 21/12593752
+    alloc_sequence_test.go:139: runs of boxed-string call 23                   mallocs/bytes: 21/6744 21/6744 21/6744 21/6744 21/6744
+    alloc_sequence_test.go:139: runs of boxed-string call 24                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 25                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 26                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 27                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 28                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 29                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 30                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 31                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:139: runs of boxed-string call 32                   mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:155: SEQ boxed-string      single-size call=20/2648 encode=1/16 rest=19; call 1 min 45/158808 max 45/158808; calls 1..32 45 | 20×9 | 21 | 20×10 | 21×2 | 20×9
+    alloc_sequence_test.go:156: SEQ boxed-string      encode-level calls 2..32: 1×9 | 2 | 1×10 | 2×2 | 1×9; bytes call 11 6302296, call 22 12593752, call 23 6744; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 6293513 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; asserted
+    alloc_sequence_test.go:102: runs of boxed-RawJSON single-size call         mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:104: runs of boxed-RawJSON single-size encode       mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    alloc_sequence_test.go:137: runs of boxed-RawJSON call 1                   mallocs/bytes: 42/19400 42/19400 42/19400 42/19400 42/19400
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 2                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 3                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 4                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 5                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 6                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 7                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 8                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 9                   mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 10                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 11                  mallocs/bytes: 20/6523464 20/6523464 20/6523464 20/6523464 20/6523464
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 12                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 13                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 14                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 15                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 16                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 17                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 18                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 19                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 20                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 21                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 22                  mallocs/bytes: 20/10193480 20/10193480 20/10193480 20/10193480 20/10193480
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 23                  mallocs/bytes: 20/6728 20/6728 20/6728 20/6728 20/6728
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 24                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 25                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 26                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 27                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 28                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 29                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 30                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 31                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:139: runs of boxed-RawJSON call 32                  mallocs/bytes: 19/2632 19/2632 19/2632 19/2632 19/2632
+    alloc_sequence_test.go:155: SEQ boxed-RawJSON     single-size call=19/2632 encode=0/0 rest=19; call 1 min 42/19400 max 42/19400; calls 1..32 42 | 19×9 | 20 | 19×10 | 20×2 | 19×9
+    alloc_sequence_test.go:156: SEQ boxed-RawJSON     encode-level calls 2..32: 0×9 | 1 | 0×10 | 1×2 | 0×9; bytes call 11 6523464, call 22 10193480, call 23 6728; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 6520832 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; asserted
+    alloc_sequence_test.go:102: runs of pointer-to-struct single-size call     mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:104: runs of pointer-to-struct single-size encode   mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 1               mallocs/bytes: 45/158808 45/158808 45/158808 45/158808 45/158808
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 2               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 3               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 4               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 5               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 6               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 7               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 8               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 9               mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 10              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 11              mallocs/bytes: 41/30467928 41/30467928 41/30467928 41/30467928 41/30467928
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 12              mallocs/bytes: 21/6744 21/6744 21/6744 21/6744 21/6744
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 13              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 14              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 15              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 16              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 17              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 18              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 19              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 20              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 21              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 22              mallocs/bytes: 42/44410712 42/44410712 42/44410712 42/44410712 42/44410712
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 23              mallocs/bytes: 21/6744 21/6744 21/6744 21/6744 21/6744
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 24              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 25              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 26              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 27              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 28              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 29              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 30              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 31              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:137: runs of pointer-to-struct call 32              mallocs/bytes: 20/2648 20/2648 20/2648 20/2648 20/2648
+    alloc_sequence_test.go:155: SEQ pointer-to-struct single-size call=20/2648 encode=1/16 rest=19; call 1 min 45/158808 max 45/158808; calls 1..32 45 | 20×9 | 41 | 21 | 20×9 | 42 | 21 | 20×9
+    alloc_sequence_test.go:156: SEQ pointer-to-struct encode-level calls 2..32: 1×9 | 22 | 2 | 1×9 | 23 | 2 | 1×9; bytes call 11 30467928, call 22 44410712, call 23 6744; drops after calls [11 22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; recorded (G3 (b))
+    alloc_sequence_test.go:163: SEQ pointer-to-struct maximum calls 1..32 45 | 20×9 | 41 | 21 | 20×9 | 42 | 21 | 20×9
+    alloc_sequence_test.go:102: runs of flat-map single-size call              mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:104: runs of flat-map single-size encode            mallocs/bytes: 2/112 2/112 2/112 2/112 2/112
+    alloc_sequence_test.go:137: runs of flat-map call 1                        mallocs/bytes: 49/159240 49/159240 49/159240 49/159240 49/159240
+    alloc_sequence_test.go:137: runs of flat-map call 2                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 3                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 4                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 5                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 6                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 7                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 8                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 9                        mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 10                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 11                       mallocs/bytes: 40/23729720 40/23729720 40/23729720 40/23729720 40/23729720
+    alloc_sequence_test.go:137: runs of flat-map call 12                       mallocs/bytes: 21/2744 21/2744 21/2744 22/2792 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 13                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 14                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 15                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 16                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 17                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 18                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 19                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 20                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 21                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 22                       mallocs/bytes: 22/11815608 22/11815608 22/11815608 22/11815608 22/11815608
+    alloc_sequence_test.go:137: runs of flat-map call 23                       mallocs/bytes: 22/6840 22/6840 22/6840 22/6840 22/6840
+    alloc_sequence_test.go:137: runs of flat-map call 24                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 25                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 26                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 27                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 28                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 29                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 30                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 31                       mallocs/bytes: 21/2744 22/2792 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:137: runs of flat-map call 32                       mallocs/bytes: 21/2744 21/2744 21/2744 21/2744 21/2744
+    alloc_sequence_test.go:155: SEQ flat-map          single-size call=21/2744 encode=2/112 rest=19; call 1 min 49/159240 max 49/159240; calls 1..32 49 | 21×9 | 40 | 21×10 | 22×2 | 21×9
+    alloc_sequence_test.go:156: SEQ flat-map          encode-level calls 2..32: 2×9 | 21 | 2×10 | 3×2 | 2×9; bytes call 11 23729720, call 22 11815608, call 23 6840; drops after calls [22]; scratch after each call [4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 7874522 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096 4096]; recorded (G3 (b))
+    alloc_sequence_test.go:163: SEQ flat-map          maximum calls 1..32 49 | 21×9 | 40 | 22 | 21×9 | 22×2 | 21×7 | 22 | 21
+--- PASS: TestAllocScratchSequence (2.04s)
+    --- PASS: TestAllocScratchSequence/boxed-string (0.10s)
+    --- PASS: TestAllocScratchSequence/boxed-RawJSON (0.49s)
+    --- PASS: TestAllocScratchSequence/pointer-to-struct (0.74s)
+    --- PASS: TestAllocScratchSequence/flat-map (0.70s)
+    alloc_telemetry_test.go:179: SECRET header copy of 4 headers 3 allocations, credential scan 0
+--- PASS: TestAllocSecretHeaderName (0.00s)
+    alloc_typed_test.go:132: TYPED failure at tone.choice: 5 allocations
+--- PASS: TestAllocTypedFailure (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	4.815s
+# end 2026-09-26 20:48:28 JST load { 44.36 74.34 55.82 }

@@ -1,0 +1,204 @@
+// Copyright 2026 The typesafe-sdk-go Authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//go:build !race
+
+package typesafe
+
+// The W3.4 measurement probe (docs/perf/ledger.md, "## W3.4"). It is kept
+// in _spikes/w3.4 as probe_test.go.txt and copied into a copy of the root
+// package as zz_w34_probe_test.go for a run only, as W2.5's K32 probe was:
+// it is not one of the repository's tests, and it pins nothing. It
+// measures, with TestAllocWholeCall's method (QuietRuntime, five runs,
+// three of which must equal the minimum), what the frozen AC-P6 row
+// records beside the q3 call:
+//
+//   - PROBE q20: the whole call asking the twenty questions result-20.json
+//     answers, its floor, SDK-own, and its ITEM split (R28 recorded
+//     SDK-own 35 for the prototype; W5.1 read 42 - 8 from allocs/op).
+//   - PROBE opt: the q3 call with one call option of each kind, and with
+//     all five, each against the call without options (ruling R97-corr:
+//     a call that passes any option moves callOptions, 160 B, to the heap).
+//     "inline" builds the options inside the measured section, as a caller
+//     writing c.SystemOne(ctx, s, qs, Header(...)) does; "hoisted" passes
+//     options built before it.
+//
+// Each series is logged by testsupport.Spread (its "runs of" line) and
+// checked here against the three-of-five rule of testsupport.StableMin.
+
+import (
+	"bytes"
+	"io"
+	"net/http"
+	"slices"
+	"strings"
+	"testing"
+
+	"github.com/zchee/typesafe-sdk-go/internal/codec"
+	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
+	"github.com/zchee/typesafe-sdk-go/internal/wire"
+)
+
+// probeSeries measures section testsupport.AllocRuns times and returns the
+// minimum and the maximum, failing t when fewer than testsupport.AllocAgree
+// runs equal the minimum.
+func probeSeries(t *testing.T, label string, section func()) (least, most testsupport.Allocs) {
+	t.Helper()
+	runs := measureRuns(nil, section)
+	least, most = testsupport.Spread(t, label, runs)
+	agree := 0
+	for _, run := range runs {
+		if run == least {
+			agree++
+		}
+	}
+	if agree < testsupport.AllocAgree {
+		t.Fatalf("%s: %d of %d runs equal the minimum %s, %d must", label, agree, len(runs), least, testsupport.AllocAgree)
+	}
+	return least, most
+}
+
+// probeQ20Questions is the question set result-20.json answers, built as
+// internal/benchmark's q20Questions builds it.
+func probeQ20Questions(t *testing.T) *Prepared {
+	t.Helper()
+	var res wire.SystemOneResult
+	if _, err := codec.DecodeSystemOne(testsupport.Fixture(t, "result-20.json"), nil, "", &res); err != nil {
+		t.Fatal(err)
+	}
+	qs := NewQuestions()
+	for _, e := range res.Answers.Entries() {
+		name := strings.Clone(e.Name)
+		instructions := Text("Question about " + name + "?")
+		switch e.Answer.Kind {
+		case wire.KindNoul:
+			qs.Noul(name, Noul{Instructions: instructions})
+		case wire.KindChoice:
+			var opts Options
+			for _, p := range e.Answer.Choice.Probabilities {
+				opts = append(opts, Option{Label: strings.Clone(p.Label)})
+			}
+			qs.Choice(name, Choice{Instructions: instructions, Options: opts})
+		case wire.KindScore:
+			legend := slices.Clone(e.Answer.Score.Legend)
+			slices.SortFunc(legend, func(a, b wire.LegendEntry) int { return int(a.Level) - int(b.Level) })
+			levels := make([]Content, 0, len(legend))
+			for _, l := range legend {
+				levels = append(levels, Text(strings.Clone(l.Description.Text)))
+			}
+			qs.Score(name, Score{Instructions: instructions, Levels: levels})
+		default:
+			t.Fatalf("result-20.json: answer %q of kind %v", e.Name, e.Answer.Kind)
+		}
+	}
+	p := mustPrepared(t, qs)
+	if p.Len() != 20 {
+		t.Fatalf("result-20.json asks %d questions, want 20", p.Len())
+	}
+	return p
+}
+
+// TestW34Probe is the probe; see the comment at the top of this file.
+func TestW34Probe(t *testing.T) {
+	testsupport.QuietRuntime(t)
+	ctx := t.Context()
+	state := newAllocState()
+	var err error
+	check := func(label string) {
+		t.Helper()
+		if err != nil {
+			t.Fatalf("%s: %v", label, err)
+		}
+	}
+
+	// q20: TestAllocWholeCall's measurement with the q20 question set and
+	// result-20.json, under DefaultRetry and the default logger.
+	q20 := probeQ20Questions(t)
+	body20 := testsupport.Fixture(t, "result-20.json")
+	rec20 := &testsupport.Recorder{Discard: true, Replies: []testsupport.Reply{testsupport.JSON(http.StatusOK, body20)}}
+	c20 := newTestClient(t, rec20, WithRetry(DefaultRetry()))
+	for range 2 {
+		_, err = c20.SystemOne(ctx, state, q20)
+		check("q20 warm")
+	}
+	buf := make([]byte, 0, 4<<10)
+	esonic, _ := probeSeries(t, "q20 E_sonic", func() {
+		buf = buf[:0]
+		err = codec.EncodeState(&buf, state)
+	})
+	check("q20 E_sonic")
+	enc, err := encodeBody(state, c20.cfg.model, q20, nil)
+	check("q20 encodeBody")
+	pre := bytes.Clone(enc.Bytes())
+	enc.Release()
+	rd := bytes.NewReader(pre)
+	floorReq := &http.Request{
+		Method: http.MethodPost, URL: c20.cfg.systemOneURL, Proto: "HTTP/1.1", ProtoMajor: 1, ProtoMinor: 1,
+		Header: c20.cfg.systemOneHeader, Body: io.NopCloser(rd), ContentLength: int64(len(pre)), Host: c20.cfg.systemOneURL.Host,
+	}
+	floorRuns := measureRuns(func() { rd.Reset(pre) }, func() { err = testsupport.FloorCall(rec20, floorReq) })
+	floorRT, _ := testsupport.Spread(t, "q20 floor round trip", floorRuns)
+	check("q20 floor")
+	total, most := probeSeries(t, "q20 call/sdk", func() { sinkResponse, err = c20.SystemOne(ctx, state, q20) })
+	check("q20 call/sdk")
+	floor := testsupport.Allocs{Mallocs: floorRT.Mallocs + esonic.Mallocs, Bytes: floorRT.Bytes + esonic.Bytes}
+	t.Logf("PROBE q20 E_sonic=%s floorRT=%s floor=%s total=%s own=%d/%d max=%s spread=+%d/+%d",
+		esonic, floorRT, floor, total, total.Mallocs-floor.Mallocs, total.Bytes-floor.Bytes, most, most.Mallocs-total.Mallocs, most.Bytes-total.Bytes)
+	t.Logf("PROBE q20 ITEM %s", measureCallItems(t, c20, state, q20, "probe "))
+
+	// Call options on the q3 call: each kind alone, then all five.
+	qs := q3Questions(t)
+	body := testsupport.Fixture(t, "result.json")
+	rec := &testsupport.Recorder{Discard: true, Replies: []testsupport.Reply{testsupport.JSON(http.StatusOK, body)}}
+	c := newTestClient(t, rec, WithRetry(DefaultRetry()))
+	for range 2 {
+		_, err = c.SystemOne(ctx, state, qs)
+		check("q3 warm")
+	}
+	all := []CallOption{Header("X-A", "b"), Model("m"), Timeout(DefaultTimeout), ExtraBody("x", RawJSON("1")), Retry(NoRetry())}
+	cases := []struct {
+		name    string
+		inline  func() (*SystemOneResponse, error)
+		hoisted []CallOption
+	}{
+		{name: "none", inline: func() (*SystemOneResponse, error) { return c.SystemOne(ctx, state, qs) }},
+		{name: "Header", inline: func() (*SystemOneResponse, error) { return c.SystemOne(ctx, state, qs, Header("X-A", "b")) }, hoisted: all[0:1]},
+		{name: "Model", inline: func() (*SystemOneResponse, error) { return c.SystemOne(ctx, state, qs, Model("m")) }, hoisted: all[1:2]},
+		{name: "Timeout", inline: func() (*SystemOneResponse, error) { return c.SystemOne(ctx, state, qs, Timeout(DefaultTimeout)) }, hoisted: all[2:3]},
+		{name: "ExtraBody", inline: func() (*SystemOneResponse, error) { return c.SystemOne(ctx, state, qs, ExtraBody("x", RawJSON("1"))) }, hoisted: all[3:4]},
+		{name: "Retry", inline: func() (*SystemOneResponse, error) { return c.SystemOne(ctx, state, qs, Retry(NoRetry())) }, hoisted: all[4:5]},
+		{name: "all5", inline: func() (*SystemOneResponse, error) {
+			return c.SystemOne(ctx, state, qs, Header("X-A", "b"), Model("m"), Timeout(DefaultTimeout), ExtraBody("x", RawJSON("1")), Retry(NoRetry()))
+		}, hoisted: all},
+	}
+	var none testsupport.Allocs
+	for _, oc := range cases {
+		for range 2 { // warm this shape: a header clone, a longer body
+			_, err = oc.inline()
+			check(oc.name + " warm")
+		}
+		in, inMost := probeSeries(t, "opt "+oc.name+" inline", func() { sinkResponse, err = oc.inline() })
+		check(oc.name + " inline")
+		if oc.name == "none" {
+			none = in
+		}
+		line := "PROBE opt " + oc.name + " inline=" + in.String() + " (+" + testsupport.Allocs{Mallocs: in.Mallocs - none.Mallocs, Bytes: in.Bytes - none.Bytes}.String() + ") max=" + inMost.String()
+		if oc.hoisted != nil {
+			ho, hoMost := probeSeries(t, "opt "+oc.name+" hoisted", func() { sinkResponse, err = c.SystemOne(ctx, state, qs, oc.hoisted...) })
+			check(oc.name + " hoisted")
+			line += " hoisted=" + ho.String() + " (+" + testsupport.Allocs{Mallocs: ho.Mallocs - none.Mallocs, Bytes: ho.Bytes - none.Bytes}.String() + ") max=" + hoMost.String()
+		}
+		t.Log(line)
+	}
+}

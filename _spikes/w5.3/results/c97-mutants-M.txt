@@ -1,0 +1,34 @@
+# mutants of R97-corr (c), the policy's rules behind one pointer, over the working tree, 2026-09-26 20:29:21 JST, (M), not under the bench lock; the fuzz targets run their seeds and testdata corpus only
+== mutant C1 a setter writes the shared rules
+vet ok
+--- FAIL: TestRetryPolicyRules (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.639s
+FAIL
+killed
+== mutant C2 a setter drops the other rule
+vet ok
+--- FAIL: TestRetryPolicyRules (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.628s
+FAIL
+killed
+== mutant C3 the predicate never asked
+vet ok
+--- FAIL: TestRetryPolicyRules (0.00s)
+--- FAIL: TestPredicateOptsIn (0.00s)
+    --- FAIL: TestPredicateOptsIn/error:_a_predicate_retries_a_404 (0.00s)
+    --- FAIL: TestPredicateOptsIn/error:_a_type_test_in_place_of_exceptions={TypeSafeAPIError} (0.00s)
+    --- FAIL: TestPredicateOptsIn/error:_a_predicate_opts_a_2xx_that_does_not_validate_in,_and_its_Retry-After_holds (0.00s)
+    --- FAIL: TestPredicateOptsIn/error:_a_predicate_opts_a_2xx_over_the_size_limit_in,_and_its_Retry-After_holds (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.629s
+FAIL
+killed
+== mutant C4 the statuses kept inline again
+vet ok
+--- FAIL: TestRetryPolicyRules (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.636s
+FAIL
+killed

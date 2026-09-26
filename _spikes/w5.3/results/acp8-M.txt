@@ -1,0 +1,15 @@
+# 2026-09-26 20:59:44 JST (M) TestLinearityFloodTime and TestLinearityFlood at d15781a, -count=3; load { 6.80 14.86 29.58 }
+    alloc_decode_cases_test.go:240: LINEARITY time 1k 624.511µs, 10k 5.886223ms, ratio 9.43 (bound 15), decodes per span 1k [395 385 380 383 401] 10k [43 40 41 42 42], 5 spans of at least 250ms
+--- PASS: TestLinearityFloodTime (2.57s)
+    alloc_decode_test.go:172: LINEARITY allocations 1k 90 (members 1011), 10k 685 (members 10011), ratio 7.61 (bound 12), growth 0.0661 per member visited (the lazy pass's c₁ = 1/15 = 0.0667, recorded)
+--- PASS: TestLinearityFlood (0.06s)
+    alloc_decode_cases_test.go:240: LINEARITY time 1k 626.361µs, 10k 5.890876ms, ratio 9.40 (bound 15), decodes per span 1k [380 399 387 400 392] 10k [43 42 43 42 42], 5 spans of at least 250ms
+--- PASS: TestLinearityFloodTime (2.57s)
+    alloc_decode_test.go:172: LINEARITY allocations 1k 90 (members 1011), 10k 685 (members 10011), ratio 7.61 (bound 12), growth 0.0661 per member visited (the lazy pass's c₁ = 1/15 = 0.0667, recorded)
+--- PASS: TestLinearityFlood (0.06s)
+    alloc_decode_cases_test.go:240: LINEARITY time 1k 618.568µs, 10k 5.860568ms, ratio 9.47 (bound 15), decodes per span 1k [385 399 405 385 395] 10k [41 43 42 42 42], 5 spans of at least 250ms
+--- PASS: TestLinearityFloodTime (2.57s)
+    alloc_decode_test.go:172: LINEARITY allocations 1k 90 (members 1011), 10k 685 (members 10011), ratio 7.61 (bound 12), growth 0.0661 per member visited (the lazy pass's c₁ = 1/15 = 0.0667, recorded)
+--- PASS: TestLinearityFlood (0.06s)
+ok  	github.com/zchee/typesafe-sdk-go	7.918s
+# end 2026-09-26 20:59:52 JST load { 9.96 15.28 29.56 }

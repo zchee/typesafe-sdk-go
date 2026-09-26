@@ -1,0 +1,49 @@
+# mutants of R54's validator (validUTF8), over the working tree, 2026-09-26 20:24:06 JST, (M), not under the bench lock; the fuzz targets run their seeds and testdata corpus only
+== mutant U1 the rest not validated
+vet ok
+--- FAIL: TestEncodeState (0.00s)
+    --- FAIL: TestEncodeState/error:_invalid_UTF-8_string (0.00s)
+    --- FAIL: TestEncodeState/error:_invalid_UTF-8_map_key (0.00s)
+    --- FAIL: TestEncodeState/error:_surrogate_bytes_(WTF-8) (0.00s)
+    --- FAIL: TestEncodeState/error:_invalid_UTF-8_in_a_field (0.00s)
+--- FAIL: TestEncodeValue (0.00s)
+    --- FAIL: TestEncodeValue/error:_invalid_UTF-8_string (0.00s)
+--- FAIL: TestValidUTF8MatchesStdlib (0.00s)
+--- FAIL: FuzzValidUTF8 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#5 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#6 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#7 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#8 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#9 (0.00s)
+killed
+== mutant U2 the first non-ASCII byte skipped
+vet ok
+--- FAIL: TestEncodeState (0.00s)
+    --- FAIL: TestEncodeState/error:_invalid_UTF-8_string (0.00s)
+    --- FAIL: TestEncodeState/error:_invalid_UTF-8_map_key (0.00s)
+    --- FAIL: TestEncodeState/error:_invalid_UTF-8_in_a_field (0.00s)
+    --- FAIL: TestEncodeState/success:_every_non-ASCII_character_as_is (0.00s)
+--- FAIL: TestEncodeValue (0.00s)
+    --- FAIL: TestEncodeValue/error:_invalid_UTF-8_string (0.00s)
+--- FAIL: TestValidUTF8MatchesStdlib (0.00s)
+--- FAIL: FuzzValidUTF8 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#2 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#3 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#4 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#9 (0.00s)
+    --- FAIL: FuzzValidUTF8/seed#10 (0.00s)
+killed
+== mutant U3 a lane missing from the word mask
+vet ok
+--- FAIL: TestValidUTF8MatchesStdlib (2.07s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	2.086s
+FAIL
+killed
+== mutant U4 the ASCII scan stops a byte late
+vet ok
+--- FAIL: TestValidUTF8MatchesStdlib (2.14s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	2.151s
+FAIL
+killed
