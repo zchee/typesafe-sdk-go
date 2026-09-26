@@ -9,6 +9,10 @@
 # The three workflow_dispatch runs 419d12e, 5a4a4d9 and 039179d come from their report step's table (results/report-<run>.md: the same
 # statistics, printed to the ns before upload), because the CodSpeed MCP server needed a new sign-in when they were recorded; stdev and
 # IQR outliers are not printed by the step and read n/a. 039179d's codspeed_date is its CodSpeed check run's time.
+# Post-W5.3 rows, added 2026-09-26 22:19:47 JST by the successor lane w5-4-codspeed: the two wave/w5.3 dispatches 6b996ed and 653b5b9 (W5.3's final head and
+# its landing SHA) from get_benchmark_result (the CodSpeed MCP server answers again in this session), CPU and avx512 from compare_runs: 6b996ed's
+# run against 5a4a4d9's EPYC 7763 run lists no environment difference; 653b5b9's against 6b996ed's lists EPYC 7763 -> 9V74 and the 14 flags of W5.4-18.
+# Main's push run at 653b5b9 (36244496855) from the same tool; compare_runs against 6b996ed's run lists no environment difference (EPYC 7763), 125 rows unchanged.
 commit	event	branch	gh_run	codspeed_run	codspeed_date	cpu	avx512	row	min	median	mean	stdev	rounds	iqr_outlier_rounds
 f048059	push	main	36218293900	6ab74dffc9fea79936132129	2026-09-26T04:45:51.874Z	AMD EPYC 7763	no	sdk	0.00000557	0.000005941	0.000006816277146227146	0.000006553660629782985	470535	38617
 f048059	push	main	36218293900	6ab74dffc9fea79936132129	2026-09-26T04:45:51.874Z	AMD EPYC 7763	no	naive	0.000004859	0.00000552	0.000007142366524028021	0.000009371402815990015	469017	66234
@@ -40,3 +44,9 @@ a4cbb5d	push	main	36225881915	6ab771dd1f99e1706f368c69	2026-09-26T07:18:53.390Z	
 5a4a4d9	workflow_dispatch	wave/w5.4	36227580459	6ab779ac2eddcdb9847b5b56	2026-09-26T07:52:12.650Z	AMD EPYC 7763	no	naive	0.000004749	0.00000546	0.000007368	n/a	474358	n/a
 039179d	workflow_dispatch	wave/w5.4	36228850305	6ab77fad9e6b21a34d50e9cf	2026-09-26T08:17:54Z	Intel Xeon Platinum 8573C	yes	sdk	0.000004884	0.000005353	0.000006275	n/a	525186	n/a
 039179d	workflow_dispatch	wave/w5.4	36228850305	6ab77fad9e6b21a34d50e9cf	2026-09-26T08:17:54Z	Intel Xeon Platinum 8573C	yes	naive	0.000004243	0.000005143	0.000006535	n/a	534046	n/a
+6b996ed	workflow_dispatch	wave/w5.3	36241378827	6ab7ba038faaebcc20e4bfc0	2026-09-26T12:26:43.490Z	AMD EPYC 7763	no	sdk	0.000004849	0.000005099	0.000005969325911487591	0.000006668413705587135	520221	47078
+6b996ed	workflow_dispatch	wave/w5.3	36241378827	6ab7ba038faaebcc20e4bfc0	2026-09-26T12:26:43.490Z	AMD EPYC 7763	no	naive	0.000004809	0.00000547	0.000007053928503970734	0.00000961422562382815	483901	67724
+653b5b9	workflow_dispatch	wave/w5.3	36243812608	6ab7c4bffa0671d207a85d80	2026-09-26T13:12:31.181Z	AMD EPYC 9V74	yes	sdk	0.000003565	0.000003865	0.000004316894492340181	0.000003964953817477935	734468	52672
+653b5b9	workflow_dispatch	wave/w5.3	36243812608	6ab7c4bffa0671d207a85d80	2026-09-26T13:12:31.181Z	AMD EPYC 9V74	yes	naive	0.000003446	0.000004146	0.000005408804936982667	0.000007289125481590666	636097	106163
+653b5b9	push	main	36244496855	6ab7c7b062642697e5f7ee46	2026-09-26T13:25:04.684Z	AMD EPYC 7763	no	sdk	0.000004829	0.00000529	0.000006406174460783291	0.00000721924882985928	516907	65351
+653b5b9	push	main	36244496855	6ab7c7b062642697e5f7ee46	2026-09-26T13:25:04.684Z	AMD EPYC 7763	no	naive	0.000004759	0.00000562	0.000007280658881188574	0.00000996252695885796	470106	63033

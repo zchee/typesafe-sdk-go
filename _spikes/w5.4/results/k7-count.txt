@@ -73,3 +73,12 @@
 36223111400	7778166	completed	success	2026-09-26T06:13:35Z	counted
 36221839206	aaa9698	completed	success	2026-09-26T05:47:28Z	counted
 36220416172	3ffe77b	completed	success	2026-09-26T05:18:40Z	not counted
+
+# K7 count: 2026-09-26 22:26:57 JST; same command; counted per model + AVX-512 (R109b): 36221839206 AMD EPYC 7763, 36223111400 AMD EPYC 9V74 (no AVX-512), 36224817149 AMD EPYC 7763, 36225881915 AMD EPYC 7763, 36228091342 AMD EPYC 9V74 with AVX-512, 36244496855 AMD EPYC 7763 (CodSpeed compare_runs; the first main run after W5.3's landing)
+36244496855	653b5b9	completed	success	2026-09-26T13:14:24Z	counted
+36228091342	67dcbb0	completed	success	2026-09-26T07:52:16Z	counted
+36225881915	a4cbb5d	completed	success	2026-09-26T07:08:45Z	counted
+36224817149	9c61db9	completed	success	2026-09-26T06:47:35Z	counted
+36223111400	7778166	completed	success	2026-09-26T06:13:35Z	counted
+36221839206	aaa9698	completed	success	2026-09-26T05:47:28Z	counted
+36220416172	3ffe77b	completed	success	2026-09-26T05:18:40Z	not counted
