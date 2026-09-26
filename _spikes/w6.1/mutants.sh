@@ -99,5 +99,13 @@ mutant D-n2-linger-on-timeout internal/h2gate/transport.go \
 	's/(func \(t \*Transport\) send\(req \*http.Request, gen \*generation\) \(\*http.Response, error\) \{\n\tctx := req.Context\(\)\n)/$1\tdefer func() {\n\t\tif ctx.Err() != nil {\n\t\t\ttime.Sleep(300 * time.Millisecond)\n\t\t}\n\t}()\n/' \
 	./internal/h2gate/ '^TestTokenResidualK21$'
 
+# D/R100: the server closes at once, or never.
+mutant D-R100-no-drain-wait internal/testsupport/h2conn.go \
+	's/_ = c.nc.SetReadDeadline\(time.Now\(\).Add\(bound\)\)/_ = c.nc.SetReadDeadline(time.Now().Add(0 * bound))/' \
+	./internal/testsupport/ '^TestDrainBoundClosesSilentClient$' 5
+mutant D-R100-never-closes internal/testsupport/h2conn.go \
+	's/(_, streamErr := errors.AsType\[http2.StreamError\]\(err\)\n\treturn streamErr)/return true\n\t$1/' \
+	./internal/testsupport/ '^TestDrainBoundClosesSilentClient$'
+
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"
