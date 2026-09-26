@@ -1,0 +1,1 @@
+::error::tests built only without -race missing from the list: TestAllocRequestID

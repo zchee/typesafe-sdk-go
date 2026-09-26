@@ -1,0 +1,1456 @@
+# go doc -all . diff, base 93e9db1 vs D2 61b457a; (M) go1.27.1 darwin/arm64; generated 2026-09-27 03:07:43 JST; base 1785 lines, D2 1048 lines
+11,46c11,12
+< const (
+< 	// APIKeyEnv names the variable holding the API key.
+< 	APIKeyEnv = "TYPESAFE_API_KEY" //nolint:gosec // G101: the name of the variable that holds the key, not a key.
+< 
+< 	// BaseURLEnv names the variable holding the API base URL.
+< 	BaseURLEnv = "TYPESAFE_BASE_URL"
+< 
+< 	// DefaultModelEnv names the variable holding the model a request names
+< 	// when the call names none.
+< 	DefaultModelEnv = "TYPESAFE_DEFAULT_MODEL"
+< )
+<     The environment variables a client reads for a setting its options leave
+<     unset, as typesafe-sdk-python names them (py:constants.py). A value is
+<     trimmed of leading and trailing whitespace, and a variable that is unset or
+<     blank counts as unset.
+< 
+< const (
+< 	// DefaultBaseURL is the API base URL.
+< 	DefaultBaseURL = "https://api.typesafe.ai"
+< 
+< 	// DefaultModel is the model a request names when the call names none.
+< 	DefaultModel = "jev-latest"
+< 
+< 	// DefaultTimeout is the deadline of each attempt of a request.
+< 	DefaultTimeout = 10 * time.Second
+< 
+< 	// DefaultConnectTimeout is the deadline for opening a connection,
+< 	// inside the deadline of the attempt that opens it.
+< 	DefaultConnectTimeout = 10 * time.Second
+< 
+< 	// DefaultMaxResponseBytes is the largest response body a request reads:
+< 	// 16 MiB.
+< 	DefaultMaxResponseBytes = 16 << 20
+< )
+<     The settings a client uses when neither an option nor the environment gives
+<     one.
+---
+> const APIKeyEnv = engine.APIKeyEnv
+>     APIKeyEnv names the variable holding the API key.
+48c14,38
+< const LevelTrace = slog.LevelDebug - 4
+---
+> const BaseURLEnv = engine.BaseURLEnv
+>     BaseURLEnv names the variable holding the API base URL.
+> 
+> const DefaultBaseURL = engine.DefaultBaseURL
+>     DefaultBaseURL is the API base URL.
+> 
+> const DefaultConnectTimeout time.Duration = engine.DefaultConnectTimeout
+>     DefaultConnectTimeout is the deadline for opening a connection, inside the
+>     deadline of the attempt that opens it.
+> 
+> const DefaultMaxResponseBytes = engine.DefaultMaxResponseBytes
+>     DefaultMaxResponseBytes is the largest response body a request reads:
+>     16 MiB.
+> 
+> const DefaultModel = engine.DefaultModel
+>     DefaultModel is the model a request names when the call names none.
+> 
+> const DefaultModelEnv = engine.DefaultModelEnv
+>     DefaultModelEnv names the variable holding the model a request names when
+>     the call names none.
+> 
+> const DefaultTimeout time.Duration = engine.DefaultTimeout
+>     DefaultTimeout is the deadline of each attempt of a request.
+> 
+> const LevelTrace slog.Level = engine.LevelTrace
+54c44
+< const Version = "0.1.0-dev"
+---
+> const Version = engine.Version
+61c51
+< var ErrClientClosed = errors.New("typesafe: the client is closed")
+---
+> var ErrClientClosed = engine.ErrClientClosed
+66c56
+< var ErrHTTP2NotNegotiated = errors.New("typesafe: the API host did not negotiate HTTP/2")
+---
+> var ErrHTTP2NotNegotiated = engine.ErrHTTP2NotNegotiated
+79,80c69,70
+<     the answers as a T: it is Client.SystemOne with the question set PreparedFor
+<     builds for T, followed by DecodeAs of the response.
+---
+>     the answers as a T: it is [Client.SystemOne] with the question set
+>     PreparedFor builds for T, followed by DecodeAs of the response.
+87c77
+<     the others Client.SystemOne lists, is returned as SystemOne returns it.
+---
+>     the others [Client.SystemOne] lists, is returned as SystemOne returns it.
+109c99
+<     DecodeAs reads the answers as SystemOneResponse.Answers holds them:
+---
+>     DecodeAs reads the answers as [SystemOneResponse.Answers] holds them:
+152,154c142,144
+<     with SystemOneResponse.UnmarshalJSON, whose Meta is empty. Its Header is a
+<     new map in which each value of a header that is a credential by its name,
+<     such as Authorization, Cookie or Set-Cookie (APIError.Header lists them),
+---
+>     with [SystemOneResponse.UnmarshalJSON], whose Meta is empty. Its Header is
+>     a new map in which each value of a header that is a credential by its name,
+>     such as Authorization, Cookie or Set-Cookie ([APIError.Header] lists them),
+163,291d152
+< func NewClient(opts ...ClientOption) (*Client, error)
+<     NewClient builds a client from opts. Unless an option supplies the transport
+<     (WithHTTPTransport, WithRoundTripper), the client builds its own: HTTP/2
+<     on one connection per client for an https base URL (HTTP/1.1 or HTTP/2 for
+<     http; WithHTTPVersion), through the proxy the environment names (WithProxy).
+<     Every option is checked before the client is built, and the first that
+<     cannot be used is reported as a *ConfigError; nothing is sent.
+< 
+< func PreparedFor[T any]() (*Prepared, error)
+<     PreparedFor returns the question set that the struct type T declares:
+<     one question per answer field, in field order, prepared as Questions.Prepare
+<     prepares a set built by hand.
+< 
+<     An answer field is an exported field of type NoulAnswer, ChoiceAnswer or
+<     ScoreAnswer whose struct tag has a "typesafe" key describing the question it
+<     answers:
+< 
+<         type Ticket struct {
+<         	Billing typesafe.NoulAnswer   `typesafe:"kind=noul;instructions=Is this about billing, invoices or refunds?;yes=payments or invoices"`
+<         	Tone    typesafe.ChoiceAnswer `typesafe:"kind=choice;instructions=What is the tone?;options=calm=neutral or polite|angry"`
+<         	Urgency typesafe.ScoreAnswer  `typesafe:"kind=score;instructions=How urgent?;levels=can wait|this week|today"`
+<         	Spam    typesafe.NoulAnswer   `typesafe:"kind=noul;optional;instructions=Spam?"`
+<         }
+< 
+<     PreparedFor[Ticket] asks the same four questions, with the same bytes on the
+<     wire, as
+< 
+<         typesafe.NewQuestions().
+<         	Noul("Billing", typesafe.Noul{Instructions: typesafe.Text("Is this about billing, invoices or refunds?"), Yes: typesafe.Text("payments or invoices")}).
+<         	Choice("Tone", typesafe.Choice{Instructions: typesafe.Text("What is the tone?"), Options: typesafe.Options{{Label: "calm", Description: typesafe.Text("neutral or polite")}, {Label: "angry"}}}).
+<         	Score("Urgency", typesafe.Score{Instructions: typesafe.Text("How urgent?"), Levels: []typesafe.Content{typesafe.Text("can wait"), typesafe.Text("this week"), typesafe.Text("today")}}).
+<         	Noul("Spam", typesafe.Noul{Instructions: typesafe.Text("Spam?")}).
+<         	Prepare()
+< 
+<     # Tag grammar
+< 
+<     The tag is a list of entries separated by ";". An entry is a key, "=" and a
+<     value, or the bare key optional. The keys are:
+< 
+<       - kind (required): noul, choice or score; it must agree with the field's
+<         type (kind=noul for a NoulAnswer field, and so on).
+<       - name: the name the question is asked under and its answer comes
+<         back under. Without it the name is the field's name as written,
+<         Billing for the field Billing: nothing is lowercased or converted,
+<         as encoding/json does with an untagged field. The names type, model,
+<         usage and answers are reserved.
+<       - instructions: the question's instructions, for every kind.
+<       - yes, no: what counts as a yes and as a no answer (kind=noul only),
+<         the Noul members of the same names.
+<       - options: the options of a choice (kind=choice only, and required there),
+<         separated by "|", in order. An option is a label, or a label, "=" and
+<         its description: options=calm=neutral or polite|angry. Labels must be
+<         unique.
+<       - levels: the levels of a score (kind=score only, and required there),
+<         separated by "|", lowest first. Levels must be unique.
+<       - optional: the answer may be absent from a response. It changes nothing
+<         on the wire; it tells the typed decoder to leave the field's Present
+<         false instead of failing when the answer is missing.
+< 
+<     Every value is text, sent as Text content; JSON content is written with
+<     Questions instead. A value may contain any character, but four must
+<     be escaped where they would otherwise end something: "\;" is a ";",
+<     "\|" a "|", "\=" a "=" and "\\" a backslash. A ";" always ends the entry,
+<     so it is escaped in every value. A "|" ends an option or a level,
+<     so it is escaped in every option and level, descriptions included:
+<     options=calm=neutral|polite|angry asks three options, calm, polite and
+<     angry, where options=calm=neutral\|polite|angry asks two. The first "="
+<     of an option ends its label, and a later "=" belongs to the description.
+<     In instructions, name, yes and no, "|" and "=" stand for themselves,
+<     and in a level "=" does; escaping them there is allowed but not needed.
+<     No other escape exists, keys are never escaped, and no space is trimmed.
+< 
+<     These are errors: an unknown key, a key given twice, a key the kind does
+<     not take (yes and no belong to noul, options to choice, levels to score),
+<     an empty value, an empty entry (";;", or a ";" at either end), an empty
+<     option, level, label or description, a backslash before any other character,
+<     a backslash at the end of the tag, and a tag that is not valid UTF-8.
+< 
+<     A struct tag is itself a Go string literal, so in source each of these
+<     backslashes is written twice: `typesafe:"kind=noul;instructions=a\\;b"`
+<     asks "a;b". A single backslash makes the tag malformed (go vet reports it),
+<     and PreparedFor refuses the field instead of ignoring the tag, as it does
+<     when the key is written with a space around its colon, is given twice,
+<     or follows a malformed pair: every tag that reflect would read as having no
+<     typesafe key, or only the first of two, while it names one.
+< 
+<     # Rejections
+< 
+<     PreparedFor fails with a *ConfigError that names T, the field and the rule
+<     when:
+< 
+<       - two fields ask under the same name;
+<       - a choice has no options, or lists an option label twice (a choice built
+<         with Questions may have none: its empty criteria are sent for the server
+<         to judge);
+<       - a score lists a level twice;
+<       - a score has no levels;
+<       - an answer field's tag has no kind, or the field has no tag at all;
+<       - the kind is not noul, choice or score;
+<       - the kind does not agree with the field's type, or a field that is not an
+<         answer field has a typesafe tag;
+<       - a field is a pointer to an answer type (write optional instead);
+<       - an unexported field has a typesafe tag;
+<       - a struct-typed field, embedded or named, value or pointer, holds a field
+<         with a typesafe tag at any depth: the fields of a nested struct are not
+<         read, and an embedded struct's are not promoted;
+<       - T is not a struct type (a pointer to a struct included);
+<       - a question name is reserved;
+<       - optional is given on a field that is not an answer field;
+<       - the tag does not follow the grammar above;
+<       - T has no answer fields: "At least one question is required.",
+<         as Questions.Prepare reports for an empty set.
+< 
+<     Fields that are neither answer fields nor tagged, and unexported fields
+<     without a typesafe tag, are ignored. Fields of an embedded struct are not
+<     promoted, and those of a named struct-typed field are not read: only T's
+<     own fields are, so a struct-typed field whose type holds typesafe tags is
+<     refused rather than silently skipped, and one without such tags is ignored
+<     like any other untagged field. A type alias of an answer type is that answer
+<     type; a type defined from one is not an answer type.
+< 
+<     # Caching
+< 
+<     T is inspected once: the first call builds the set, or the error, and every
+<     later call for the same T returns that same *Prepared, or that same error,
+<     for the life of the process, without allocating. The set is read-only and
+<     safe for concurrent use, like every prepared set; concurrent first calls may
+<     build it more than once, but all of them return the one that was kept.
+< 
+295,331c156
+< type APIError struct {
+< 	// Kind classifies StatusCode.
+< 	Kind APIErrorKind
+< 	// StatusCode is the HTTP status code.
+< 	StatusCode int
+< 	// Header is the response header as a new map in which each value of a
+< 	// header that carries a credential is "***": a header named
+< 	// Authorization, Proxy-Authorization, X-Api-Key, Api-Key, Cookie or
+< 	// Set-Cookie, or whose name contains "token" or "secret" (compared
+< 	// without regard to case), and a header with a value that holds the
+< 	// client's API key when the key is at least 8 bytes long. Every other
+< 	// header, Retry-After, Retry-After-Ms and X-Typesafe-Request-Id
+< 	// included, is as the server sent it, so [APIError.RetryAfter] and
+< 	// [APIError.RequestID] read it. The values of those other headers are
+< 	// the response's own and must not be modified. typesafe-sdk-python
+< 	// keeps the headers as they arrived and redacts them only in its logs.
+< 	Header http.Header
+< 	// Body is the response body as it arrived, or nil when it was empty or
+< 	// over the size limit. It is shared, not copied, and must not be
+< 	// modified.
+< 	Body []byte
+< 	// Endpoint is the request's method and URL without credentials, query
+< 	// or fragment, such as "GET https://api.typesafe.ai/v1/models", or
+< 	// empty when it is not known.
+< 	Endpoint string
+< 	// Message is the message Error prints after the status; empty prints
+< 	// the status alone. A message the server composes is not redacted
+< 	// (ruling R103-rev): when it echoes the client's API key, Message,
+< 	// Error and %+v show the key, as the Python SDK's error does. Header and
+< 	// the request id show "***" for a value that holds the key, in the
+< 	// error and in the SDK's log records alike (R87).
+< 	Message string
+< 	// ErrorType is the server's machine-readable name for the failure, from
+< 	// the body's detail.error_type, or empty. It is the server's text as it
+< 	// arrived.
+< 	ErrorType string
+< }
+---
+> type APIError = engine.APIError
+342,369c167
+< func (e *APIError) Error() string
+<     Error returns "<Endpoint>: <StatusCode> <Message> (request_id=<id>)".
+< 
+< func (e *APIError) IsAuthentication() bool
+<     IsAuthentication reports whether the status or the server's error type names
+<     an authentication failure: status 401, or any status whose ErrorType is
+<     "authentication_error" (the API answers a request without a key with 403 and
+<     that error type).
+< 
+< func (e *APIError) RequestID() (string, bool)
+<     RequestID returns the server's identifier for the request, from the
+<     x-typesafe-request-id response header, and whether the header was present;
+<     a repeated header's values are joined with ", ". It is the server's text as
+<     it arrived.
+< 
+< func (e *APIError) RetryAfter() (time.Duration, bool)
+<     RetryAfter returns how long the server asked the caller to wait before
+<     trying again, and whether it asked, as the Python SDK's parse_retry_after
+<     reads it: the retry-after-ms header in milliseconds, else Retry-After in
+<     seconds or as an HTTP date (a date already past is zero); a value that is
+<     not a number, negative, NaN or infinite gives no answer from that header.
+<     The wait is truncated to whole milliseconds. It is read for any status, not
+<     only 429. A date is read in the three formats RFC 9110 names (IMF-fixdate,
+<     RFC 850, asctime; net/http.ParseTime); the Python SDK's parser also takes a
+<     numeric zone such as +0000 and a missing weekday, which give no answer here
+<     (ruling R73).
+< 
+< type APIErrorKind uint8
+---
+> type APIErrorKind = engine.APIErrorKind
+375,405c173,200
+< const (
+< 	// APIErrorOther is any status without a class of its own: 408, 409 or a
+< 	// redirect the transport did not follow, for example.
+< 	APIErrorOther APIErrorKind = iota
+< 	// APIErrorBadRequest is status 400: the request was invalid.
+< 	APIErrorBadRequest
+< 	// APIErrorAuthentication is status 401: authentication failed.
+< 	APIErrorAuthentication
+< 	// APIErrorPermissionDenied is status 403: access was denied. The API
+< 	// also answers a request without a key with 403; see
+< 	// [APIError.IsAuthentication].
+< 	APIErrorPermissionDenied
+< 	// APIErrorNotFound is status 404: the resource was not found.
+< 	APIErrorNotFound
+< 	// APIErrorUnprocessableEntity is status 422: the request failed the
+< 	// server's validation.
+< 	APIErrorUnprocessableEntity
+< 	// APIErrorRateLimit is status 429: the rate limit was exceeded.
+< 	APIErrorRateLimit
+< 	// APIErrorInternalServer is any status from 500 up: the server failed.
+< 	APIErrorInternalServer
+< )
+<     The kinds of *APIError.
+< 
+< func (k APIErrorKind) String() string
+<     String returns the kind's name in words, such as "rate limit", or "other"
+<     for a value outside the enumeration.
+< 
+< type Answer struct {
+< 	// Has unexported fields.
+< }
+---
+> const APIErrorAuthentication APIErrorKind = engine.APIErrorAuthentication
+>     APIErrorAuthentication is status 401: authentication failed.
+> 
+> const APIErrorBadRequest APIErrorKind = engine.APIErrorBadRequest
+>     APIErrorBadRequest is status 400: the request was invalid.
+> 
+> const APIErrorInternalServer APIErrorKind = engine.APIErrorInternalServer
+>     APIErrorInternalServer is any status from 500 up: the server failed.
+> 
+> const APIErrorNotFound APIErrorKind = engine.APIErrorNotFound
+>     APIErrorNotFound is status 404: the resource was not found.
+> 
+> const APIErrorOther APIErrorKind = engine.APIErrorOther
+>     APIErrorOther is any status without a class of its own: 408, 409 or a
+>     redirect the transport did not follow, for example.
+> 
+> const APIErrorPermissionDenied APIErrorKind = engine.APIErrorPermissionDenied
+>     APIErrorPermissionDenied is status 403: access was denied. The API also
+>     answers a request without a key with 403; see [APIError.IsAuthentication].
+> 
+> const APIErrorRateLimit APIErrorKind = engine.APIErrorRateLimit
+>     APIErrorRateLimit is status 429: the rate limit was exceeded.
+> 
+> const APIErrorUnprocessableEntity APIErrorKind = engine.APIErrorUnprocessableEntity
+>     APIErrorUnprocessableEntity is status 422: the request failed the server's
+>     validation.
+> 
+> type Answer = engine.Answer
+409,428c204
+< func (a Answer) Choice() (ChoiceAnswer, bool)
+<     Choice returns the answer as a choice answer, and whether it is one.
+<     The choice answer's Present reports the same as the bool.
+< 
+< func (a Answer) Kind() AnswerKind
+<     Kind returns the kind of the answer.
+< 
+< func (a Answer) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the answer as the MarshalJSON of its kind writes it.
+<     The zero Answer, which is none of the kinds, is written null.
+< 
+< func (a Answer) Noul() (NoulAnswer, bool)
+<     Noul returns the answer as a yes/no answer, and whether it is one. The
+<     yes/no answer's Present reports the same as the bool.
+< 
+< func (a Answer) Score() (ScoreAnswer, bool)
+<     Score returns the answer as a score answer, and whether it is one. The score
+<     answer's Present reports the same as the bool.
+< 
+< type AnswerKind uint8
+---
+> type AnswerKind = engine.AnswerKind
+432,448c208,217
+< const (
+< 	// KindNoul is a yes/no answer, a [NoulAnswer] ("type": "noul").
+< 	KindNoul AnswerKind = AnswerKind(wire.KindNoul)
+< 	// KindChoice is a choice answer, a [ChoiceAnswer] ("type": "choice").
+< 	KindChoice AnswerKind = AnswerKind(wire.KindChoice)
+< 	// KindScore is a score answer, a [ScoreAnswer] ("type": "score").
+< 	KindScore AnswerKind = AnswerKind(wire.KindScore)
+< )
+<     The kinds of Answer. The zero AnswerKind is none of them.
+< 
+< func (k AnswerKind) String() string
+<     String returns the kind's name on the wire ("noul", "choice" or "score"),
+<     or "unknown" for a value that is none of them.
+< 
+< type Answers struct {
+< 	// Has unexported fields.
+< }
+---
+> const KindChoice AnswerKind = engine.KindChoice
+>     KindChoice is a choice answer, a ChoiceAnswer ("type": "choice").
+> 
+> const KindNoul AnswerKind = engine.KindNoul
+>     KindNoul is a yes/no answer, a NoulAnswer ("type": "noul").
+> 
+> const KindScore AnswerKind = engine.KindScore
+>     KindScore is a score answer, a ScoreAnswer ("type": "score").
+> 
+> type Answers = engine.Answers
+453,454c222,223
+<     in the raw body, ResponseMeta.RawBody). The Python SDK's nouls, choices and
+<     scores views are the Nouls, Choices and Scores iterators.
+---
+>     in the raw body, [ResponseMeta.RawBody]). The Python SDK's nouls, choices
+>     and scores views are the Nouls, Choices and Scores iterators.
+461,501c230
+< func (a Answers) All() iter.Seq2[string, Answer]
+<     All yields every answer with its question's name, in the order the names
+<     first appeared in the response.
+< 
+< func (a Answers) Choice(name string) (ChoiceAnswer, bool)
+<     Choice returns the answer to the question called name, and whether there is
+<     one and it is a choice answer.
+< 
+< func (a Answers) Choices() iter.Seq2[string, ChoiceAnswer]
+<     Choices yields the choice answers with their questions' names, in the order
+<     of All.
+< 
+< func (a Answers) Get(name string) (Answer, bool)
+<     Get returns the answer to the question called name, and whether there is
+<     one.
+< 
+< func (a Answers) Len() int
+<     Len returns the number of answers.
+< 
+< func (a Answers) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the answers as the object the "answers" member of
+<     a response payload holds, {"<name>":<answer>,…}, in the order of All,
+<     each answer as its MarshalJSON writes it. The zero Answers is written {}.
+< 
+< func (a Answers) Noul(name string) (NoulAnswer, bool)
+<     Noul returns the answer to the question called name, and whether there is
+<     one and it is a yes/no answer.
+< 
+< func (a Answers) Nouls() iter.Seq2[string, NoulAnswer]
+<     Nouls yields the yes/no answers with their questions' names, in the order of
+<     All.
+< 
+< func (a Answers) Score(name string) (ScoreAnswer, bool)
+<     Score returns the answer to the question called name, and whether there is
+<     one and it is a score answer.
+< 
+< func (a Answers) Scores() iter.Seq2[string, ScoreAnswer]
+<     Scores yields the score answers with their questions' names, in the order of
+<     All.
+< 
+< type CallOption func(*callOptions)
+---
+> type CallOption = engine.CallOption
+524c253
+<     Client.SystemOne describes for the state. A value JSON has no form for,
+---
+>     [Client.SystemOne] describes for the state. A value JSON has no form for,
+532c261
+< func Header(name, value string) CallOption
+---
+> func Header(name string, value string) CallOption
+568,575c297
+< type Choice struct {
+< 	// Instructions is what the model should decide; it is optional.
+< 	Instructions Content
+< 	// Options are the options, sent as the "criteria" object in this order.
+< 	// Labels must be unique. With no options an empty object is sent, and
+< 	// the server judges it.
+< 	Options Options
+< }
+---
+> type Choice = engine.Choice
+579,581c301
+< type ChoiceAnswer struct {
+< 	// Has unexported fields.
+< }
+---
+> type ChoiceAnswer = engine.ChoiceAnswer
+590,619c310
+< func (a ChoiceAnswer) Choice() string
+<     Choice returns the label of the option with the highest probability.
+< 
+< func (a ChoiceAnswer) Confidence() float64
+<     Confidence returns how sure the model is of the pick, from 0 to 1.
+< 
+< func (a ChoiceAnswer) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the answer as the Python
+<     SDK's model_dump_json writes it, such as
+<     {"type":"choice","choice":"billing","confidence":0.9,"probabilities":{"billing":0.9,"support":0.1}},
+<     the probabilities in the order of Probabilities. A float that arrived
+<     as -0.0 is written 0.0, where Python writes -0.0: the response reads
+<     every zero as 0. An answer that is not Present is written null, as
+<     NoulAnswer.MarshalJSON says.
+< 
+< func (a ChoiceAnswer) Present() bool
+<     Present reports whether the answer is one a response carried, as
+<     NoulAnswer.Present does.
+< 
+< func (a ChoiceAnswer) Probabilities() iter.Seq2[string, float64]
+<     Probabilities yields every option's label with its probability, in the order
+<     the response lists them. Labels are unique.
+< 
+< func (a ChoiceAnswer) Probability(label string) (float64, bool)
+<     Probability returns the probability of the option called label, and whether
+<     the answer lists that option.
+< 
+< type Client struct {
+< 	// Has unexported fields.
+< }
+---
+> type Client = engine.Client
+622c313
+<     Client.Close. The zero Client is not usable.
+---
+>     [Client.Close]. The zero Client is not usable.
+629,677c320,326
+< func (c *Client) Close() error
+<     Close releases the client's network resources: it closes the idle
+<     connections of the transport the client built or cloned (WithHTTPTransport),
+<     and calls Close once on a WithRoundTripper transport that implements
+<     io.Closer, returning its error. Calls in flight finish on their own
+<     connections. Close is idempotent: a second Close does nothing and returns
+<     nil. Every call made after Close fails with a *ConfigError wrapping
+<     ErrClientClosed.
+< 
+< func (c *Client) Models() Models
+<     Models returns the client's list-models endpoint.
+< 
+< func (c *Client) Stats() Stats
+<     Stats returns the client's counters. A Client that NewClient did not build
+<     counts nothing.
+< 
+< func (c *Client) SystemOne(ctx context.Context, state any, qs *Prepared, opts ...CallOption) (*SystemOneResponse, error)
+<     SystemOne asks the questions qs about state and returns the answers:
+<     POST /v1/systemone with {"state": state, "model": ..., "questions": ...}.
+< 
+<     state is text, a JSON object or an array: a string, a map, a slice,
+<     a struct, a RawJSON sent as it is, or a Content. A nil, a number or a
+<     boolean is refused, as is a plain []byte, whose intent is ambiguous.
+<     The body is encoded once per call, before anything is sent, and every
+<     attempt sends the same bytes; a state that cannot be encoded fails with
+<     an *InvalidRequestError, and a missing question set with a *ConfigError.
+<     A float inside the state keeps the encoder's spelling (3.0 is sent as 3),
+<     and a map's members go out in Go's iteration order; a struct or RawJSON
+<     gives stable bytes.
+< 
+<     opts override the client's settings for this call; see CallOption.
+< 
+<     Each attempt has its own deadline (WithTimeout, Timeout) under ctx.
+<     A response with a status outside 2xx is an *APIError; a successful response
+<     whose body is not the answer the SDK expects is a *ResponseValidationError,
+<     and one over the size limit a *ResponseTooLargeError; an attempt that
+<     produced no response is a *ConnectionError, or a *TimeoutError when its
+<     deadline or ctx's passed. A failed attempt is tried again as the call's
+<     retry policy decides (WithRetry, Retry, RetryPolicy), and the call
+<     returns the error of its last attempt. A call whose ctx is cancelled,
+<     while a request is in flight or while it waits to retry, stops and
+<     returns ctx.Err(), context.Canceled, itself, which is not an SDK Error,
+<     as typesafe-sdk-python lets a cancellation through unwrapped; context.Cause
+<     gives a cause the canceller set.
+< 
+< func (c *Client) WarmUp(ctx context.Context) error
+<     WarmUp lists the models once, so that the connection, and the HTTP/2 session
+<     a burst of calls then shares, is ready before the first call that matters.
+<     It returns the error of that call.
+---
+> func NewClient(opts ...ClientOption) (*Client, error)
+>     NewClient builds a client from opts. Unless an option supplies the transport
+>     (WithHTTPTransport, WithRoundTripper), the client builds its own: HTTP/2
+>     on one connection per client for an https base URL (HTTP/1.1 or HTTP/2 for
+>     http; WithHTTPVersion), through the proxy the environment names (WithProxy).
+>     Every option is checked before the client is built, and the first that
+>     cannot be used is reported as a *ConfigError; nothing is sent.
+679c328
+< type ClientOption func(*options)
+---
+> type ClientOption = engine.ClientOption
+766c415
+< func WithHeader(name, value string) ClientOption
+---
+> func WithHeader(name string, value string) ClientOption
+904,906c553
+< type ConfigError struct {
+< 	// Has unexported fields.
+< }
+---
+> type ConfigError = engine.ConfigError
+910c557
+<     the User-Agent product), or a question set that Questions.Prepare rejects.
+---
+>     the User-Agent product), or a question set that [Questions.Prepare] rejects.
+922,930c569
+< func (e *ConfigError) Error() string
+<     Error returns the message.
+< 
+< func (e *ConfigError) Unwrap() []error
+<     Unwrap returns the wrapped errors, or nil when there are none.
+< 
+< type ConnectionError struct {
+< 	// Has unexported fields.
+< }
+---
+> type ConnectionError = engine.ConnectionError
+946,958c585
+< func (e *ConnectionError) Error() string
+<     Error returns "Connection error: <cause>".
+< 
+< func (e *ConnectionError) Proxy() bool
+<     Proxy reports whether the failure was on the hop to the proxy rather than to
+<     the API.
+< 
+< func (e *ConnectionError) Unwrap() error
+<     Unwrap returns the transport's error, or its stand-in.
+< 
+< type Content struct {
+< 	// Has unexported fields.
+< }
+---
+> type Content = engine.Content
+971c598
+<     raw is kept, not copied, until Questions.Prepare checks it and writes
+---
+>     raw is kept, not copied, until [Questions.Prepare] checks it and writes
+982,1015c609
+< func (c Content) IsJSON() bool
+<     IsJSON reports whether c holds a JSON object or array rather than text.
+< 
+< func (c Content) IsZero() bool
+<     IsZero reports whether c is unset, the zero Content.
+< 
+< func (c Content) JSON() RawJSON
+<     JSON returns the JSON bytes as they were given, or nil when c is text or
+<     unset. The slice is shared: callers must not modify it.
+< 
+< func (c Content) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns c as a JSON value, written as a question writes it,
+<     so that Content nested inside a state or a request body member, such as a
+<     map[string]any value or a struct field, is sent as content rather than as
+<     an empty object: text as a JSON string, escaped as the questions are; JSON
+<     content checked and without its insignificant whitespace; unset Content as
+<     null. It fails when the text is not valid UTF-8, or when the JSON content is
+<     not a single valid JSON object or array, so that invalid JSON never reaches
+<     the network (ruling R60); the encoder checks the result a second time.
+< 
+<     Nested content costs one copy per call, and JSON content one scan too:
+<     it is built in a new slice for the encoder, where a string field is written
+<     straight into the body. A Content that is the state itself, or an extra body
+<     member's whole value, is written into the body without the copy. For large
+<     values, prefer a string field or a top-level Content.
+< 
+< func (c Content) Text() string
+<     Text returns the text, or "" when c holds JSON or is unset.
+< 
+< type Error interface {
+< 	error
+< 
+< 	// Has unexported methods.
+< }
+---
+> type Error = engine.Error
+1040c634
+< type HTTPVersion int
+---
+> type HTTPVersion = engine.HTTPVersion
+1044,1062c638,651
+< const (
+< 	// HTTP2Only speaks HTTP/2 alone, on one connection per API host: ALPN
+< 	// must choose h2 on https, and http uses HTTP/2 with prior knowledge. An
+< 	// API host that does not negotiate HTTP/2 is refused with a
+< 	// [*ConfigError] wrapping [ErrHTTP2NotNegotiated], before any byte of
+< 	// the request is sent. It is the default for an https base URL.
+< 	HTTP2Only HTTPVersion = iota + 1
+< 	// HTTPAuto lets ALPN choose between HTTP/2 and HTTP/1.1 (HTTP/1.1 on
+< 	// http), with no ALPN refusal and no cap on connections; a cold start
+< 	// still dials once before the requests waiting on it go out. It is the
+< 	// default for an http base URL.
+< 	HTTPAuto
+< )
+< func (v HTTPVersion) String() string
+<     String returns the policy's name.
+< 
+< type InvalidRequestError struct {
+< 	// Has unexported fields.
+< }
+---
+> const HTTP2Only HTTPVersion = engine.HTTP2Only
+>     HTTP2Only speaks HTTP/2 alone, on one connection per API host:
+>     ALPN must choose h2 on https, and http uses HTTP/2 with prior knowledge.
+>     An API host that does not negotiate HTTP/2 is refused with a *ConfigError
+>     wrapping ErrHTTP2NotNegotiated, before any byte of the request is sent.
+>     It is the default for an https base URL.
+> 
+> const HTTPAuto HTTPVersion = engine.HTTPAuto
+>     HTTPAuto lets ALPN choose between HTTP/2 and HTTP/1.1 (HTTP/1.1 on http),
+>     with no ALPN refusal and no cap on connections; a cold start still dials
+>     once before the requests waiting on it go out. It is the default for an http
+>     base URL.
+> 
+> type InvalidRequestError = engine.InvalidRequestError
+1079,1087c668
+< func (e *InvalidRequestError) Error() string
+<     Error returns the message.
+< 
+< func (e *InvalidRequestError) Unwrap() error
+<     Unwrap returns the cause, or nil when there is none.
+< 
+< type ModelCard struct {
+< 	// Has unexported fields.
+< }
+---
+> type ModelCard = engine.ModelCard
+1090,1091c671,672
+< func (m ModelCard) Description() string
+<     Description returns the human-readable description of the model.
+---
+> type Models = engine.Models
+>     Models is the list-models endpoint of a client, from [Client.Models].
+1093,1115c674
+< func (m ModelCard) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the card as the Python SDK's model_dump_json writes it,
+<     {"name":…,"description":…,"release_date":…}.
+< 
+< func (m ModelCard) Name() string
+<     Name returns the model name or alias that a request's model accepts.
+< 
+< func (m ModelCard) ReleaseDate() string
+<     ReleaseDate returns the model's release date, formatted as YYYY-MM-DD.
+< 
+< type Models struct {
+< 	// Has unexported fields.
+< }
+<     Models is the list-models endpoint of a client, from Client.Models.
+< 
+< func (m Models) List(ctx context.Context, opts ...CallOption) (*ModelsResponse, error)
+<     List lists the models the account can use: GET /v1/models. Of the call
+<     options it takes Timeout, Header and Retry; Model and ExtraBody are refused
+<     with a *ConfigError. Its errors are those of Client.SystemOne.
+< 
+< type ModelsResponse struct {
+< 	// Has unexported fields.
+< }
+---
+> type ModelsResponse = engine.ModelsResponse
+1119,1163c678,683
+<     It is immutable, except that ModelsResponse.UnmarshalJSON replaces the whole
+<     response in place: no other goroutine may read the response during the call,
+<     and a slice Models returned before it, or a copy of the response made before
+<     it, keeps the old cards.
+< 
+< func (r ModelsResponse) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the response's payload, the object
+<     {"models":[{"name":…,"description":…,"release_date":…},…]}, as the Python
+<     SDK's model_dump_json writes it, byte for byte: the cards in the order of
+<     Models, without the HTTP response (Meta).
+< 
+<     A caller's encoding/json escapes <, >, &, U+2028 and U+2029 in this output,
+<     as it does in every MarshalJSON's; call MarshalJSON directly for the exact
+<     bytes.
+< 
+<     The receiver is a value, so a ModelsResponse marshals the same whether it is
+<     held by pointer or by value. ModelsResponse.UnmarshalJSON reads the payload
+<     back.
+< 
+< func (r *ModelsResponse) Meta() ResponseMeta
+<     Meta returns the HTTP response the models came in.
+< 
+< func (r *ModelsResponse) Models() []ModelCard
+<     Models returns the models, in the order the response lists them. The slice
+<     is the caller's; the cards share the response's strings.
+< 
+< func (r *ModelsResponse) UnmarshalJSON(data []byte) error
+<     UnmarshalJSON sets *r to the response whose payload is data, such as
+<     one ModelsResponse.MarshalJSON returned. data is read as the body of a
+<     list-models response is, with the same checks. The response did not come
+<     from a request, so its Meta is empty, and it keeps no reference to data.
+<     It overwrites *r in place (see ModelsResponse).
+< 
+<     A payload the decoder refuses leaves *r unchanged, its Meta included, and
+<     fails with a *ResponseValidationError, as SystemOneResponse.UnmarshalJSON
+<     does. The JSON literal null leaves *r unchanged.
+< 
+< type Noul struct {
+< 	// Instructions is the question or statement to evaluate.
+< 	Instructions Content
+< 	// Yes describes what counts as a yes answer.
+< 	Yes Content
+< 	// No describes what counts as a no answer.
+< 	No Content
+< }
+---
+>     It is immutable, except that [ModelsResponse.UnmarshalJSON] replaces the
+>     whole response in place: no other goroutine may read the response during the
+>     call, and a slice Models returned before it, or a copy of the response made
+>     before it, keeps the old cards.
+> 
+> type Noul = engine.Noul
+1174,1176c694
+< type NoulAnswer struct {
+< 	// Has unexported fields.
+< }
+---
+> type NoulAnswer = engine.NoulAnswer
+1184,1210c702
+< func (a NoulAnswer) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the answer as the Python SDK's model_dump_json writes
+<     it, such as {"type":"noul","noul":0.98}. A noul that arrived as -0.0 is
+<     written 0.0, where Python writes -0.0: the response reads every zero as 0.
+<     An answer that is not Present, such as the zero NoulAnswer, is written null,
+<     as Python writes an optional answer the response did not carry (None).
+< 
+< func (a NoulAnswer) Noul() float64
+<     Noul returns the probability, from 0 to 1, that the answer is yes or the
+<     statement is true.
+< 
+< func (a NoulAnswer) Present() bool
+<     Present reports whether the answer is one a response carried: true for an
+<     answer read from a response, through Answers or DecodeAs, and false for the
+<     zero NoulAnswer, which is what DecodeAs leaves in a field tagged optional
+<     when the response has no answer for it. The Python SDK holds None there,
+<     which it dumps as null, and so does MarshalJSON for an answer that is not
+<     present.
+< 
+< type Option struct {
+< 	// Label is the option's name; the answer's choice and probabilities
+< 	// name options by it.
+< 	Label string
+< 	// Description describes the option. An unset Description is sent as
+< 	// null: the option is interpreted by its label alone.
+< 	Description Content
+< }
+---
+> type Option = engine.Option
+1213c705
+< type Options []Option
+---
+> type Options = engine.Options
+1216,1218c708
+< type Prepared struct {
+< 	// Has unexported fields.
+< }
+---
+> type Prepared = engine.Prepared
+1220c710
+<     Questions.Prepare, and reused as is by every call that asks it.
+---
+>     [Questions.Prepare], and reused as is by every call that asks it.
+1227,1236c717,838
+< func (p *Prepared) Len() int
+<     Len returns the number of questions in the set. It is never zero for a set
+<     returned by Questions.Prepare.
+< 
+< func (p *Prepared) Names() iter.Seq[string]
+<     Names returns the question names in the order they are sent.
+< 
+< type Questions struct {
+< 	// Has unexported fields.
+< }
+---
+> func PreparedFor[T any]() (*Prepared, error)
+>     PreparedFor returns the question set that the struct type T declares: one
+>     question per answer field, in field order, prepared as [Questions.Prepare]
+>     prepares a set built by hand.
+> 
+>     An answer field is an exported field of type NoulAnswer, ChoiceAnswer or
+>     ScoreAnswer whose struct tag has a "typesafe" key describing the question it
+>     answers:
+> 
+>         type Ticket struct {
+>         	Billing typesafe.NoulAnswer   `typesafe:"kind=noul;instructions=Is this about billing, invoices or refunds?;yes=payments or invoices"`
+>         	Tone    typesafe.ChoiceAnswer `typesafe:"kind=choice;instructions=What is the tone?;options=calm=neutral or polite|angry"`
+>         	Urgency typesafe.ScoreAnswer  `typesafe:"kind=score;instructions=How urgent?;levels=can wait|this week|today"`
+>         	Spam    typesafe.NoulAnswer   `typesafe:"kind=noul;optional;instructions=Spam?"`
+>         }
+> 
+>     PreparedFor[Ticket] asks the same four questions, with the same bytes on the
+>     wire, as
+> 
+>         typesafe.NewQuestions().
+>         	Noul("Billing", typesafe.Noul{Instructions: typesafe.Text("Is this about billing, invoices or refunds?"), Yes: typesafe.Text("payments or invoices")}).
+>         	Choice("Tone", typesafe.Choice{Instructions: typesafe.Text("What is the tone?"), Options: typesafe.Options{{Label: "calm", Description: typesafe.Text("neutral or polite")}, {Label: "angry"}}}).
+>         	Score("Urgency", typesafe.Score{Instructions: typesafe.Text("How urgent?"), Levels: []typesafe.Content{typesafe.Text("can wait"), typesafe.Text("this week"), typesafe.Text("today")}}).
+>         	Noul("Spam", typesafe.Noul{Instructions: typesafe.Text("Spam?")}).
+>         	Prepare()
+> 
+>     # Tag grammar
+> 
+>     The tag is a list of entries separated by ";". An entry is a key, "=" and a
+>     value, or the bare key optional. The keys are:
+> 
+>       - kind (required): noul, choice or score; it must agree with the field's
+>         type (kind=noul for a NoulAnswer field, and so on).
+>       - name: the name the question is asked under and its answer comes
+>         back under. Without it the name is the field's name as written,
+>         Billing for the field Billing: nothing is lowercased or converted,
+>         as encoding/json does with an untagged field. The names type, model,
+>         usage and answers are reserved.
+>       - instructions: the question's instructions, for every kind.
+>       - yes, no: what counts as a yes and as a no answer (kind=noul only),
+>         the Noul members of the same names.
+>       - options: the options of a choice (kind=choice only, and required there),
+>         separated by "|", in order. An option is a label, or a label, "=" and
+>         its description: options=calm=neutral or polite|angry. Labels must be
+>         unique.
+>       - levels: the levels of a score (kind=score only, and required there),
+>         separated by "|", lowest first. Levels must be unique.
+>       - optional: the answer may be absent from a response. It changes nothing
+>         on the wire; it tells the typed decoder to leave the field's Present
+>         false instead of failing when the answer is missing.
+> 
+>     Every value is text, sent as Text content; JSON content is written with
+>     Questions instead. A value may contain any character, but four must
+>     be escaped where they would otherwise end something: "\;" is a ";",
+>     "\|" a "|", "\=" a "=" and "\\" a backslash. A ";" always ends the entry,
+>     so it is escaped in every value. A "|" ends an option or a level,
+>     so it is escaped in every option and level, descriptions included:
+>     options=calm=neutral|polite|angry asks three options, calm, polite and
+>     angry, where options=calm=neutral\|polite|angry asks two. The first "="
+>     of an option ends its label, and a later "=" belongs to the description.
+>     In instructions, name, yes and no, "|" and "=" stand for themselves,
+>     and in a level "=" does; escaping them there is allowed but not needed.
+>     No other escape exists, keys are never escaped, and no space is trimmed.
+> 
+>     These are errors: an unknown key, a key given twice, a key the kind does
+>     not take (yes and no belong to noul, options to choice, levels to score),
+>     an empty value, an empty entry (";;", or a ";" at either end), an empty
+>     option, level, label or description, a backslash before any other character,
+>     a backslash at the end of the tag, and a tag that is not valid UTF-8.
+> 
+>     A struct tag is itself a Go string literal, so in source each of these
+>     backslashes is written twice: `typesafe:"kind=noul;instructions=a\\;b"`
+>     asks "a;b". A single backslash makes the tag malformed (go vet reports it),
+>     and PreparedFor refuses the field instead of ignoring the tag, as it does
+>     when the key is written with a space around its colon, is given twice,
+>     or follows a malformed pair: every tag that reflect would read as having no
+>     typesafe key, or only the first of two, while it names one.
+> 
+>     # Rejections
+> 
+>     PreparedFor fails with a *ConfigError that names T, the field and the rule
+>     when:
+> 
+>       - two fields ask under the same name;
+>       - a choice has no options, or lists an option label twice (a choice built
+>         with Questions may have none: its empty criteria are sent for the server
+>         to judge);
+>       - a score lists a level twice;
+>       - a score has no levels;
+>       - an answer field's tag has no kind, or the field has no tag at all;
+>       - the kind is not noul, choice or score;
+>       - the kind does not agree with the field's type, or a field that is not an
+>         answer field has a typesafe tag;
+>       - a field is a pointer to an answer type (write optional instead);
+>       - an unexported field has a typesafe tag;
+>       - a struct-typed field, embedded or named, value or pointer, holds a field
+>         with a typesafe tag at any depth: the fields of a nested struct are not
+>         read, and an embedded struct's are not promoted;
+>       - T is not a struct type (a pointer to a struct included);
+>       - a question name is reserved;
+>       - optional is given on a field that is not an answer field;
+>       - the tag does not follow the grammar above;
+>       - T has no answer fields: "At least one question is required.",
+>         as [Questions.Prepare] reports for an empty set.
+> 
+>     Fields that are neither answer fields nor tagged, and unexported fields
+>     without a typesafe tag, are ignored. Fields of an embedded struct are not
+>     promoted, and those of a named struct-typed field are not read: only T's
+>     own fields are, so a struct-typed field whose type holds typesafe tags is
+>     refused rather than silently skipped, and one without such tags is ignored
+>     like any other untagged field. A type alias of an answer type is that answer
+>     type; a type defined from one is not an answer type.
+> 
+>     # Caching
+> 
+>     T is inspected once: the first call builds the set, or the error, and every
+>     later call for the same T returns that same *Prepared, or that same error,
+>     for the life of the process, without allocating. The set is read-only and
+>     safe for concurrent use, like every prepared set; concurrent first calls may
+>     build it more than once, but all of them return the one that was kept.
+> 
+> type Questions = engine.Questions
+1241c843
+<     Nothing is checked until Questions.Prepare, which validates and serialises
+---
+>     Nothing is checked until [Questions.Prepare], which validates and serialises
+1255,1298c857
+< func (qs *Questions) Choice(name string, q Choice) *Questions
+<     Choice adds a copy of the choice question q under name and returns the set;
+<     Questions says what the copy shares with q.
+< 
+< func (qs *Questions) Noul(name string, q Noul) *Questions
+<     Noul adds a copy of the yes/no question q under name and returns the set;
+<     Questions says what the copy shares with q.
+< 
+< func (qs *Questions) Prepare() (*Prepared, error)
+<     Prepare validates the set and serialises it into the bytes every call that
+<     asks it sends.
+< 
+<     It fails with a *ConfigError for the first problem, in the order the
+<     questions were added:
+< 
+<       - the set is empty: "At least one question is required.";
+<       - a name is added twice (the Python SDK's dictionary would keep the last
+<         question; a Go set rejects the repeat), or is not valid UTF-8;
+<       - a Score has no levels, or a raw "score" has empty criteria: `Score
+<         question "<name>" has no criteria; at least one score is required.`;
+<       - a RawQuestion has an empty Type, or Fields name "type": `Question
+<         "<name>" must be a question object or a dictionary with a nonempty
+<         string "type".`;
+<       - a raw "choice" or "score" has no "criteria" field: `Question "<name>"
+<         requires "criteria".`;
+<       - a Choice repeats an option label, or a Score level is unset;
+<       - content or a raw field value cannot be written: text or a string that is
+<         not valid UTF-8, JSON content that is not a single valid JSON object or
+<         array, a field value of an unsupported type, or a float that is NaN or
+<         infinite.
+< 
+<     The first four messages are the Python SDK's. The returned set does not
+<     share memory with the questions: changing them afterwards does not change
+<     it.
+< 
+< func (qs *Questions) Raw(name string, q RawQuestion) *Questions
+<     Raw adds a copy of the raw question q under name and returns the set;
+<     Questions says what the copy shares with q.
+< 
+< func (qs *Questions) Score(name string, q Score) *Questions
+<     Score adds a copy of the score question q under name and returns the set;
+<     Questions says what the copy shares with q.
+< 
+< type RawJSON []byte
+---
+> type RawJSON = engine.RawJSON
+1314c873
+<     it is written by RawJSON.MarshalJSON: checked and written without its
+---
+>     it is written by [RawJSON.MarshalJSON]: checked and written without its
+1319,1336c878
+< func (r RawJSON) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns r without its insignificant whitespace, or null when r
+<     is nil, as json.RawMessage does, so that RawJSON nested inside a state or a
+<     request body member is sent as the JSON it holds, never as a base64 string.
+<     It fails when r is not exactly one valid JSON value, checked by the same
+<     scanner as a question's JSON, so that invalid JSON never reaches the network
+<     (ruling R60); the encoder checks the result a second time.
+< 
+<     Nested RawJSON costs one scan and one copy of its bytes per call.
+<     A RawJSON that is the state itself, or an extra body member's whole value,
+<     is sent as it is and costs neither.
+< 
+< type RawQuestion struct {
+< 	// Type is the question type, sent as the "type" member.
+< 	Type string
+< 	// Fields are the other members of the question object.
+< 	Fields map[string]any
+< }
+---
+> type RawQuestion = engine.RawQuestion
+1351c893
+<     Questions.Prepare applies the checks the Python SDK applies to a raw
+---
+>     [Questions.Prepare] applies the checks the Python SDK applies to a raw
+1356,1358c898
+< type ResponseMeta struct {
+< 	// Has unexported fields.
+< }
+---
+> type ResponseMeta = engine.ResponseMeta
+1368,1398c908
+< func (m ResponseMeta) Header() http.Header
+<     Header returns the response header, or nil when there is no HTTP response.
+< 
+< func (m ResponseMeta) RawBody() []byte
+<     RawBody returns the body exactly as it was received, or nil when there is
+<     no HTTP response. It holds what the decoded response leaves out: members and
+<     answer types this version does not model.
+< 
+< func (m ResponseMeta) RequestID() (string, bool)
+<     RequestID returns the server's identifier for the request, from the
+<     x-typesafe-request-id response header, and whether the header was present;
+<     a repeated header's values are joined with ", ". It is the server's text as
+<     it arrived. The Python SDK raises where this reports false.
+< 
+< func (m ResponseMeta) StatusCode() int
+<     StatusCode returns the HTTP status code, or zero when there is no HTTP
+<     response.
+< 
+< type ResponseTooLargeError struct {
+< 	// StatusCode is the HTTP status code.
+< 	StatusCode int
+< 	// Header is the response header as a new map with each credential's
+< 	// value "***", as [APIError.Header] describes; the values of the other
+< 	// headers are the response's own and must not be modified.
+< 	Header http.Header
+< 	// Endpoint is the request's method and URL without credentials, query
+< 	// or fragment, or empty when it is not known.
+< 	Endpoint string
+< 	// Limit is the size limit the body exceeded, in bytes.
+< 	Limit int64
+< }
+---
+> type ResponseTooLargeError = engine.ResponseTooLargeError
+1405,1434c915
+< func (e *ResponseTooLargeError) Error() string
+<     Error returns "<Endpoint>: <StatusCode> The response body is larger than the
+<     limit of <Limit> bytes. (request_id=<id>)".
+< 
+< func (e *ResponseTooLargeError) RequestID() (string, bool)
+<     RequestID returns the server's identifier for the request, as
+<     APIError.RequestID does.
+< 
+< type ResponseValidationError struct {
+< 	// StatusCode is the HTTP status code.
+< 	StatusCode int
+< 	// Header is the response header as a new map with each credential's
+< 	// value "***", as [APIError.Header] describes; the values of the other
+< 	// headers are the response's own and must not be modified.
+< 	Header http.Header
+< 	// Body is the response body as it arrived. It is shared, not copied,
+< 	// and must not be modified.
+< 	Body []byte
+< 	// Endpoint is the request's method and URL without credentials, query
+< 	// or fragment, or empty when it is not known.
+< 	Endpoint string
+< 	// FieldPath is the path of the first failure as Error prints it: the
+< 	// Python SDK's field_path, such as "answers.tone.confidence" or
+< 	// "models[1].name", with "." for the body as a whole (Python writes the
+< 	// empty string), and each name the server chose escaped and cut at 128
+< 	// characters.
+< 	FieldPath string
+< 
+< 	// Has unexported fields.
+< }
+---
+> type ResponseValidationError = engine.ResponseValidationError
+1450,1463c931
+< func (e *ResponseValidationError) Error() string
+<     Error returns "<Endpoint>: <StatusCode> Invalid response data at
+<     '<FieldPath>'. (request_id=<id>)".
+< 
+< func (e *ResponseValidationError) RequestID() (string, bool)
+<     RequestID returns the server's identifier for the request, as
+<     APIError.RequestID does.
+< 
+< func (e *ResponseValidationError) Unwrap() error
+<     Unwrap returns the decoder's failure, or nil.
+< 
+< type RetryPolicy struct {
+< 	// Has unexported fields.
+< }
+---
+> type RetryPolicy = engine.RetryPolicy
+1472c940
+<       - at most 2 retries after the first attempt (RetryPolicy.MaxRetries);
+---
+>       - at most 2 retries after the first attempt ([RetryPolicy.MaxRetries]);
+1474,1475c942,943
+<         and loses a random fraction of at most 25 % (RetryPolicy.Backoff);
+<       - the statuses 408, 429 and 500 to 599 retried (RetryPolicy.Statuses);
+---
+>         and loses a random fraction of at most 25 % ([RetryPolicy.Backoff]);
+>       - the statuses 408, 429 and 500 to 599 retried ([RetryPolicy.Statuses]);
+1477c945
+<         (RetryPolicy.RespectRetryAfter);
+---
+>         ([RetryPolicy.RespectRetryAfter]);
+1479,1480c947,948
+<         (RetryPolicy.ConnectionErrors, RetryPolicy.TimeoutErrors);
+<       - a budget of 30 s per call (RetryPolicy.Budget).
+---
+>         ([RetryPolicy.ConnectionErrors], [RetryPolicy.TimeoutErrors]);
+>       - a budget of 30 s per call ([RetryPolicy.Budget]).
+1490c958
+<         its set, or any error its predicate accepts (RetryPolicy.Predicate).
+---
+>         its set, or any error its predicate accepts ([RetryPolicy.Predicate]).
+1501,1504c969,972
+<     The wait is the server's when the policy honours it and the failed
+<     response carries a Retry-After-Ms (milliseconds) or a Retry-After
+<     (seconds, or an HTTP date) that parses, whatever the response's status,
+<     as APIError.RetryAfter reads it; however long it is, only the budget refuses
+---
+>     The wait is the server's when the policy honours it and the failed response
+>     carries a Retry-After-Ms (milliseconds) or a Retry-After (seconds,
+>     or an HTTP date) that parses, whatever the response's status, as
+>     [APIError.RetryAfter] reads it; however long it is, only the budget refuses
+1517,1526c985,995
+<     A setting out of range is kept in the value and reported when the policy
+<     is used: NewClient with WithRetry, or a call with Retry, fails with a
+<     *ConfigError that carries the Python SDK's message, before anything
+<     is sent. The messages name the Python SDK's parameters: max_retries is
+<     RetryPolicy.MaxRetries; backoff_initial, backoff_max and backoff_jitter are
+<     the arguments of RetryPolicy.Backoff; timeout is RetryPolicy.Budget, and
+<     timeout=None is RetryPolicy.NoBudget. Its other parameters are http_statuses
+<     (RetryPolicy.Statuses), respect_retry_after (RetryPolicy.RespectRetryAfter),
+<     api_connection_error (RetryPolicy.ConnectionErrors), api_timeout_error
+<     (RetryPolicy.TimeoutErrors) and predicate (RetryPolicy.Predicate);
+---
+>     A setting out of range is kept in the value and reported when the
+>     policy is used: NewClient with WithRetry, or a call with Retry,
+>     fails with a *ConfigError that carries the Python SDK's message,
+>     before anything is sent. The messages name the Python SDK's parameters:
+>     max_retries is [RetryPolicy.MaxRetries]; backoff_initial, backoff_max
+>     and backoff_jitter are the arguments of [RetryPolicy.Backoff]; timeout
+>     is [RetryPolicy.Budget], and timeout=None is [RetryPolicy.NoBudget].
+>     Its other parameters are http_statuses ([RetryPolicy.Statuses]),
+>     respect_retry_after ([RetryPolicy.RespectRetryAfter]),
+>     api_connection_error ([RetryPolicy.ConnectionErrors]), api_timeout_error
+>     ([RetryPolicy.TimeoutErrors]) and predicate ([RetryPolicy.Predicate]);
+1542,1602c1011
+< func (p RetryPolicy) Backoff(initial, maximum time.Duration, jitter float64) RetryPolicy
+<     Backoff returns p with the wait before retry n (from 1) that no Retry-After
+<     decides: initial doubled n-1 times, at most maximum, less a random fraction
+<     of at most jitter of it, rounded to the millisecond and never above the
+<     doubled value (the Python SDK's _backoff, py:_core/retry.py:27-33).
+<     A zero initial or maximum retries at once. initial and maximum must not be
+<     negative and jitter must be between 0 and 1, or the policy is refused when
+<     it is used.
+< 
+< func (p RetryPolicy) Budget(d time.Duration) RetryPolicy
+<     Budget returns p with a budget of d for each call: the call makes no retry
+<     whose wait would bring the time since its first attempt started to d or
+<     beyond, and returns the error of its last attempt instead (tenacity's
+<     stop_before_delay). The clock starts once the call's options are checked and
+<     its body is encoded. d must be positive, or the policy is refused when it is
+<     used. The default is 30 s; RetryPolicy.NoBudget removes the budget.
+< 
+< func (p RetryPolicy) ConnectionErrors(retry bool) RetryPolicy
+<     ConnectionErrors returns p retrying, or with false not retrying, an attempt
+<     that failed with a *ConnectionError. The default is true.
+< 
+< func (p RetryPolicy) MaxRetries(n int) RetryPolicy
+<     MaxRetries returns p with at most n retries after the first attempt of a
+<     call; 0 makes every call a single attempt. A negative n is refused when the
+<     policy is used.
+< 
+< func (p RetryPolicy) NoBudget() RetryPolicy
+<     NoBudget returns p without a budget: only MaxRetries and the caller's
+<     context bound a call, as the Python SDK's timeout=None does.
+< 
+< func (p RetryPolicy) Predicate(accept func(err error) bool) RetryPolicy
+<     Predicate returns p also retrying every error for which accept returns true,
+<     on top of the rules of the other settings, as the Python SDK's predicate
+<     does; nil removes a predicate. accept is called with the error of each
+<     failed attempt that the other rules do not retry, the last attempt's
+<     included, and may be called from several goroutines at once. It is not
+<     called for a cancellation (context.Canceled), which is never retried.
+<     The Python SDK's exceptions setting has no counterpart: accept can test an
+<     error's type with errors.As.
+< 
+< func (p RetryPolicy) RespectRetryAfter(respect bool) RetryPolicy
+<     RespectRetryAfter returns p honouring, or with false ignoring, the wait
+<     a failed response asks for in Retry-After-Ms or Retry-After; the backoff
+<     applies when it is ignored. The default is true.
+< 
+< func (p RetryPolicy) Statuses(codes ...int) RetryPolicy
+<     Statuses returns p retrying the response statuses codes and no others,
+<     in place of 408, 429 and 500 to 599; with no codes it retries no status.
+<     A successful (2xx) status among them is accepted and never retried.
+< 
+< func (p RetryPolicy) TimeoutErrors(retry bool) RetryPolicy
+<     TimeoutErrors returns p retrying, or with false not retrying, an attempt
+<     that failed with a *TimeoutError. The default is true.
+< 
+< type Score struct {
+< 	// Instructions is what the model should rate; it is optional.
+< 	Instructions Content
+< 	// Levels describes the scale, lowest first: a level's index is its
+< 	// score. At least one level is required and none may be unset.
+< 	Levels []Content
+< }
+---
+> type Score = engine.Score
+1606,1608c1015
+< type ScoreAnswer struct {
+< 	// Has unexported fields.
+< }
+---
+> type ScoreAnswer = engine.ScoreAnswer
+1618,1670c1025
+< func (a ScoreAnswer) Confidence() float64
+<     Confidence returns how sure the model is of the score, from 0 to 1.
+< 
+< func (a ScoreAnswer) Description(level uint32) (Content, bool)
+<     Description returns the description of level from the legend, and whether
+<     the legend lists that level. A description sent as JSON keeps the exact
+<     bytes it arrived as; they are shared and must not be modified.
+< 
+< func (a ScoreAnswer) Legend() iter.Seq2[uint32, Content]
+<     Legend yields every level of the legend with its description, in the order
+<     the response lists them. Levels are unique.
+< 
+< func (a ScoreAnswer) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the answer as the Python
+<     SDK's model_dump_json writes it, such as
+<     {"type":"score","score":0.0,"confidence":1.0,"legend":{"0":"bad"},"probabilities":{"0":1.0}},
+<     the legend and the probabilities in the order of Legend and Probabilities,
+<     each level a decimal member name. A structured level is written as the
+<     bytes the response carried (ScoreAnswer.Description), where the Python SDK
+<     writes the value it parsed: the two differ when those bytes hold an escape,
+<     whitespace, a repeated member name (Python keeps the last) or a number
+<     spelled otherwise than Python spells it. A float that arrived as -0.0 is
+<     written 0.0, where Python writes -0.0: the response reads every zero as 0.
+<     An answer that is not Present is written null, as NoulAnswer.MarshalJSON
+<     says.
+< 
+< func (a ScoreAnswer) Present() bool
+<     Present reports whether the answer is one a response carried, as
+<     NoulAnswer.Present does.
+< 
+< func (a ScoreAnswer) Probabilities() iter.Seq2[uint32, float64]
+<     Probabilities yields every level with its probability, in the order the
+<     response lists them. Levels are unique.
+< 
+< func (a ScoreAnswer) Probability(level uint32) (float64, bool)
+<     Probability returns the probability of level, and whether the answer lists
+<     that level.
+< 
+< func (a ScoreAnswer) Score() float64
+<     Score returns the expected score: the probability-weighted average of the
+<     levels, which may fall between two of them.
+< 
+< type Stats struct {
+< 	// Dials counts the connections the SDK's transport (its own, or the
+< 	// clone of WithHTTPTransport) handed to a request for the first time,
+< 	// re-dials and the transport's internal replays included; zero under
+< 	// WithRoundTripper.
+< 	Dials uint64
+< 	// Attempts counts the attempts the client sent: one per request that
+< 	// reached the transport, whatever came of it. The transport's own
+< 	// replay of a request inside one attempt is not counted.
+< 	Attempts uint64
+< }
+---
+> type Stats = engine.Stats
+1673,1675c1028
+< type SystemOneResponse struct {
+< 	// Has unexported fields.
+< }
+---
+> type SystemOneResponse = engine.SystemOneResponse
+1680c1033
+<     It is immutable, except that SystemOneResponse.UnmarshalJSON replaces the
+---
+>     It is immutable, except that [SystemOneResponse.UnmarshalJSON] replaces the
+1685,1743c1038
+< func (r *SystemOneResponse) Answers() Answers
+<     Answers returns the answers, keyed by question name. The view reads r:
+<     it is valid as long as r is, and after SystemOneResponse.UnmarshalJSON it
+<     shows the answers r then holds.
+< 
+< func (r SystemOneResponse) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the response's payload, the object
+<     {"model":…,"usage":{…},"answers":{…}}, as the Python SDK's model_dump_json
+<     writes it: without the HTTP response (Meta) and without any view of the
+<     answers. Floats are spelled as Python spells them (0.0, 0.98, 1e-7, 1e+20),
+<     a token count the response left out is null, and the answers come in the
+<     order of Answers.All. A structured legend level is written as the bytes the
+<     response carried (ScoreAnswer.Description), where the Python SDK writes
+<     the value it parsed; the two differ only when those bytes hold an escape,
+<     whitespace, a repeated member name (Python keeps the last) or a number
+<     spelled otherwise than Python spells it. A float member that arrived as -0.0
+<     is written 0.0, where Python writes -0.0: the response reads every zero as
+<     0. Every other byte is the Python SDK's.
+< 
+<     A caller's encoding/json escapes <, >, &, U+2028 and U+2029 in this output,
+<     as it does in every MarshalJSON's; call MarshalJSON directly for the exact
+<     bytes.
+< 
+<     The receiver is a value, so a SystemOneResponse marshals the same whether
+<     it is held by pointer or by value. SystemOneResponse.UnmarshalJSON reads the
+<     payload back.
+< 
+< func (r *SystemOneResponse) Meta() ResponseMeta
+<     Meta returns the HTTP response the answers came in.
+< 
+< func (r *SystemOneResponse) Model() string
+<     Model returns the model that answered.
+< 
+< func (r *SystemOneResponse) UnmarshalJSON(data []byte) error
+<     UnmarshalJSON sets *r to the response whose payload is data, such as
+<     one SystemOneResponse.MarshalJSON returned. data is read as the body of
+<     a System One response is, with the same checks and the same rules for a
+<     repeated member; an answer of a type this version does not model is left
+<     out without a log line. The response did not come from a request, so its
+<     Meta is empty, and it keeps no reference to data. It overwrites *r in place;
+<     SystemOneResponse says what that means to views and copies taken before the
+<     call.
+< 
+<     A payload the decoder refuses leaves *r unchanged, its Meta included,
+<     and fails with a *ResponseValidationError whose FieldPath names the first
+<     failure, whose StatusCode is zero, and whose Header, Body and Endpoint
+<     are empty. As json.Unmarshaler implementations do by convention, the JSON
+<     literal null leaves *r unchanged.
+< 
+< func (r *SystemOneResponse) Usage() Usage
+<     Usage returns the token usage of the request.
+< 
+< type TimeoutError struct {
+< 	// Timeout is the per-attempt timeout the attempt was given, or zero
+< 	// when the deadline came from the caller's context alone.
+< 	Timeout time.Duration
+< 
+< 	// Has unexported fields.
+< }
+---
+> type TimeoutError = engine.TimeoutError
+1749,1768c1044
+< func (e *TimeoutError) Error() string
+<     Error returns "Request timed out (timeout=<seconds>s).", or "Request timed
+<     out." without a timeout, with " on the proxy hop" after "out" when the hop
+<     to the proxy timed out. The Python SDK's str() prints the timeout as a float
+<     without a unit ("timeout=10.0"); the Go port prints it with an "s" and
+<     without a trailing ".0" ("timeout=10s"), as the Rust port does.
+< 
+< func (e *TimeoutError) Proxy() bool
+<     Proxy reports whether the attempt timed out on the hop to the proxy
+<     (the connection to it, or its TLS handshake) rather than to the API,
+<     as ConnectionError.Proxy reports a proxy failure.
+< 
+< func (e *TimeoutError) Unwrap() error
+<     Unwrap returns the error that ended the attempt, such as
+<     context.DeadlineExceeded, or its stand-in when its chain printed a
+<     credential of the request, as ConnectionError describes.
+< 
+< type Usage struct {
+< 	// Has unexported fields.
+< }
+---
+> type Usage = engine.Usage
+1772,1784d1047
+< 
+< func (u Usage) InputTokens() (uint64, bool)
+<     InputTokens returns the number of billable input tokens, and whether the
+<     response reported it.
+< 
+< func (u Usage) MarshalJSON() ([]byte, error)
+<     MarshalJSON returns the usage as the Python SDK's model_dump_json writes it,
+<     such as {"input_tokens":12,"output_tokens":3}, a count the response left out
+<     as null.
+< 
+< func (u Usage) OutputTokens() (uint64, bool)
+<     OutputTokens returns the number of output tokens, and whether the response
+<     reported it.

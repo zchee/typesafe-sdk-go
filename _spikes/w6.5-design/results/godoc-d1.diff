@@ -1,0 +1,19 @@
+# go doc -all . diff, base 93e9db1 vs D1 fa26bfa; (M) go1.27.1 darwin/arm64; generated 2026-09-27 03:07:43 JST
+617,619c617
+< type Client struct {
+< 	// Has unexported fields.
+< }
+---
+> type Client engine.Client
+1216,1218c1214
+< type Prepared struct {
+< 	// Has unexported fields.
+< }
+---
+> type Prepared engine.Prepared
+1673,1675c1669
+< type SystemOneResponse struct {
+< 	// Has unexported fields.
+< }
+---
+> type SystemOneResponse engine.Response
