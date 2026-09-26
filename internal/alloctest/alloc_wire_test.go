@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package typesafe
+package alloctest
 
 import (
 	"bytes"
@@ -24,6 +24,9 @@ import (
 	"strings"
 	"sync/atomic"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 )
@@ -90,7 +93,7 @@ func TestResponseCapOverTheWire(t *testing.T) {
 			var posts atomic.Int32
 			srv := testsupport.NewLoopbackServer(t, testsupport.ServerConfig{Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				w.Header().Set("Content-Type", "application/json")
-				if r.Method == http.MethodGet && strings.HasSuffix(r.URL.Path, modelsPath) {
+				if r.Method == http.MethodGet && strings.HasSuffix(r.URL.Path, engine.ModelsPath) {
 					_, _ = w.Write(models)
 					return
 				}
@@ -114,8 +117,8 @@ func TestResponseCapOverTheWire(t *testing.T) {
 				t.Fatalf("NewClient: %v", err)
 			}
 			t.Cleanup(func() { _ = c.Close() })
-			counter := &countingRT{rt: c.cfg.transport.rt}
-			c.cfg.transport.rt = counter
+			counter := &countingRT{rt: engOf(c).Config().Transport.RT}
+			engOf(c).Config().Transport.RT = counter
 			if err := c.WarmUp(t.Context()); err != nil { // the connection, so the call's deltas are the call's
 				t.Fatalf("WarmUp: %v", err)
 			}

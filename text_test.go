@@ -231,7 +231,7 @@ func TestCredentialsRedact(t *testing.T) {
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
-			got, found := requestCredentials(tt.h).redact(tt.s)
+			got, found := requestCredentials(tt.h).Redact(tt.s)
 			if diff := gocmp.Diff(tt.want, got); diff != "" || found != tt.wantFound {
 				t.Errorf("redact found %t, want %t (-want +got):\n%s", found, tt.wantFound, diff)
 			}
@@ -322,10 +322,10 @@ func TestRedactionCoversGoEscapeForms(t *testing.T) {
 			}
 			original := fmt.Errorf("raw=%s; quoted=%q; ascii=%+q; json=%s", tt.credential, tt.credential, tt.credential, j)
 			creds := requestCredentials(h)
-			if got, found := creds.redact(original.Error()); got != want || !found {
+			if got, found := creds.Redact(original.Error()); got != want || !found {
 				t.Errorf("redact = %q, %t, want %q, true", got, found, want)
 			}
-			cause := creds.cause(original)
+			cause := creds.Cause(original)
 			if _, ok := cause.(*scrubbedError); !ok || cause.Error() != want { //nolint:errorlint // the stand-in itself, not a link of its chain
 				t.Errorf("cause = %T %q, want a *scrubbedError %q", cause, cause, want)
 			}
@@ -374,10 +374,10 @@ func TestRedactionKeepsCleanChains(t *testing.T) {
 	t.Run("success: the scrub keeps the error", func(t *testing.T) {
 		creds := requestCredentials(http.Header{"Authorization": {"Bearer " + key}, "X-Client-Secret": {"provider-credential"}})
 		for _, err := range []error{unreachable(), fmt.Errorf("proxy hop: %w", unreachable())} {
-			if got := creds.cause(err); got != err { //nolint:errorlint // identity is the assertion
+			if got := creds.Cause(err); got != err { //nolint:errorlint // identity is the assertion
 				t.Errorf("cause(%v) = %T %v, want the error itself", err, got, got)
 			}
-			if got, found := creds.redact(err.Error()); got != err.Error() || found {
+			if got, found := creds.Redact(err.Error()); got != err.Error() || found {
 				t.Errorf("redact(%q) = %q, %t, want it unchanged", err.Error(), got, found)
 			}
 		}
@@ -461,7 +461,7 @@ func TestCredentialsCause(t *testing.T) {
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
-			got := creds.cause(tt.err)
+			got := creds.Cause(tt.err)
 			if tt.kept {
 				if got != tt.err { //nolint:errorlint // identity is the assertion
 					t.Errorf("cause = %v, want the transport's error itself", got)
@@ -491,7 +491,7 @@ func TestCredentialsCause(t *testing.T) {
 			assertNotPrinted(t, got, key)
 		})
 	}
-	if got := creds.cause(nil); got != nil {
+	if got := creds.Cause(nil); got != nil {
 		t.Errorf("cause(nil) = %v, want nil", got)
 	}
 }
@@ -557,7 +557,7 @@ func TestScrubbedErrorFormat(t *testing.T) {
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
-			got := creds.cause(tt.err)
+			got := creds.Cause(tt.err)
 			if _, ok := got.(*scrubbedError); !ok { //nolint:errorlint // the stand-in itself, not a link of its chain
 				t.Fatalf("cause = %T %v, want a *scrubbedError", got, got)
 			}
@@ -582,7 +582,7 @@ func TestScrubbedErrorFormat(t *testing.T) {
 	}
 	t.Run("success: a rendering of many lines is escaped and cut after the scrub", func(t *testing.T) {
 		frames := strings.Repeat("frame\n", 300)
-		got := creds.cause(plusOnly{msg: "boom", cause: errors.New("Bearer " + quirkyKey + "\n" + frames)})
+		got := creds.Cause(plusOnly{msg: "boom", cause: errors.New("Bearer " + quirkyKey + "\n" + frames)})
 		out := fmt.Sprintf("%+v", got)
 		if !strings.HasPrefix(out, `boom: ***\nframe\nframe`) || !strings.HasSuffix(out, "…") || strings.Contains(out, "\n") {
 			t.Errorf("%%+v = %.80q…, want one escaped line starting with the scrubbed text and cut", out)
@@ -609,7 +609,7 @@ func TestScrubbedErrorFormat(t *testing.T) {
 	longCreds := requestCredentials(http.Header{"Authorization": {"Bearer " + longKey}})
 	for pad := 980; pad <= 1030; pad++ {
 		t.Run("success: the key after "+strconv.Itoa(pad)+" characters, at the scrub", func(t *testing.T) {
-			got := longCreds.cause(unwrapOnly{msg: "x", cause: errors.New(strings.Repeat("p", pad) + " Bearer " + longKey + " rejected")})
+			got := longCreds.Cause(unwrapOnly{msg: "x", cause: errors.New(strings.Repeat("p", pad) + " Bearer " + longKey + " rejected")})
 			prefixes(t, "%+v", fmt.Sprintf("%+v", got))
 			prefixes(t, "%#v", fmt.Sprintf("%#v", got))
 		})

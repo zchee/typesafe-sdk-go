@@ -14,13 +14,16 @@
 
 //go:build !race
 
-package typesafe
+package alloctest
 
 import (
 	"maps"
 	"slices"
 	"strings"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 
 	gocmp "github.com/google/go-cmp/cmp"
 
@@ -75,7 +78,7 @@ func TestAllocPrepare(t *testing.T) {
 				}
 				prepareSink = p
 			})
-			t.Logf("%s: %d mallocs, %d bytes; prepared %d bytes", name, got.Mallocs, got.Bytes, len(prepareSink.w.Questions))
+			t.Logf("%s: %d mallocs, %d bytes; prepared %d bytes", name, got.Mallocs, got.Bytes, len(wireOf(prepareSink).Questions))
 			if tt.mallocs < 0 {
 				return
 			}
@@ -105,10 +108,10 @@ func TestAllocFalsyJSON(t *testing.T) {
 	}
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
-			if got := falsyJSON(tt.raw); got != tt.falsy {
+			if got := engine.FalsyJSON(tt.raw); got != tt.falsy {
 				t.Fatalf("falsyJSON = %t, want %t", got, tt.falsy)
 			}
-			if n := testing.AllocsPerRun(100, func() { falsySink = falsyJSON(tt.raw) }); n != 0 {
+			if n := testing.AllocsPerRun(100, func() { falsySink = engine.FalsyJSON(tt.raw) }); n != 0 {
 				t.Errorf("falsyJSON allocates %v times, want 0", n)
 			}
 		})

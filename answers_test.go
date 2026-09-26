@@ -148,10 +148,10 @@ func TestAnswerViews(t *testing.T) {
 // template is never written.
 func TestAttemptHeader(t *testing.T) {
 	c := newTestClient(t, replying(http.StatusOK, nil))
-	tmpl := c.cfg.systemOneHeader
+	tmpl := c.eng().Config().SystemOneHeader
 	before := tmpl.Clone()
-	rq := request{header: tmpl}
-	first := rq.attemptHeader(0)
+	rq := request{Header: tmpl}
+	first := rq.AttemptHeader(0)
 	if _, ok := first[canonicalRetryCount]; ok {
 		t.Errorf("the first attempt carries %s", headerRetryCount)
 	}
@@ -163,7 +163,7 @@ func TestAttemptHeader(t *testing.T) {
 
 	var counts []string
 	for _, attempt := range []int{1, 2, 16, 17, 100} {
-		h := rq.attemptHeader(attempt)
+		h := rq.AttemptHeader(attempt)
 		counts = append(counts, h.Get(headerRetryCount))
 		if len(h) != len(tmpl)+1 || h.Get("Authorization") != tmpl.Get("Authorization") {
 			t.Errorf("attempt %d header %v, want the template plus the retry count", attempt, h)

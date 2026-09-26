@@ -14,11 +14,14 @@
 
 //go:build !race
 
-package typesafe
+package alloctest
 
 import (
 	"runtime"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 
 	"github.com/zchee/typesafe-sdk-go/internal/codec"
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
@@ -131,7 +134,7 @@ func TestAllocEncode(t *testing.T) {
 				buf := make([]byte, 0, 2*len(sc.json)+64<<10)
 				esonic := testsupport.MeasureMin(t, name+" E_sonic", noInput, func(struct{}) {
 					buf = buf[:0]
-					err = appendState(&buf, sc.boxed)
+					err = engine.AppendState[RawJSON, Content](&buf, sc.boxed)
 				})
 				if err != nil {
 					t.Fatalf("appendState: %v", err)

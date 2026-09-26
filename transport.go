@@ -15,7 +15,6 @@
 package typesafe
 
 import (
-	"context"
 	"crypto/tls"
 	"crypto/x509"
 	"errors"
@@ -23,14 +22,12 @@ import (
 	"log/slog"
 	"net/http"
 	"net/http/httptrace"
-	"net/textproto"
 	"net/url"
-	"runtime/debug"
 	"strconv"
 	"strings"
-	"sync"
 	"time"
 
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 	"github.com/zchee/typesafe-sdk-go/internal/h2gate"
 )
 
@@ -212,26 +209,8 @@ func WithClientTrace(trace *httptrace.ClientTrace) ClientOption {
 }
 
 // transport is a client's HTTP transport, built once by resolve and shared
-// by every request.
-type transport struct {
-	// rt is what every request goes through: gate, or the caller's
-	// WithRoundTripper.
-	rt http.RoundTripper
-	// gate is the SDK's transport (the default one or WithHTTPTransport's
-	// clone), nil under WithRoundTripper.
-	gate *h2gate.Transport
-	// idler is WithRoundTripper's rt when it has CloseIdleConnections, as
-	// an *http.Transport has.
-	idler interface{ CloseIdleConnections() }
-	// closer is WithRoundTripper's rt when it is an io.Closer.
-	closer io.Closer
-	// trace is WithClientTrace's hooks, shielded per request.
-	trace  *httptrace.ClientTrace
-	logger *slog.Logger
-
-	closeOnce sync.Once
-	closeErr  error
-}
+// by every request (internal/engine.Transport).
+type transport = engine.Transport
 
 // defaultHTTPVersion is the policy for a base URL scheme with no
 // [WithHTTPVersion].
@@ -289,18 +268,18 @@ func (t *transportOptions) build(api *url.URL, connectTimeout time.Duration, con
 	if msg := t.conflict(connectTimeoutSet); msg != "" {
 		return nil, newConfigError(msg)
 	}
-	tr := &transport{logger: logger}
+	tr := &transport{Logger: logger}
 	if t.trace != nil {
 		c := *t.trace
-		tr.trace = &c
+		tr.Trace = &c
 	}
 	if t.roundTripperSet {
 		if t.roundTripper == nil {
 			return nil, newConfigError("The round tripper passed to WithRoundTripper must not be nil.")
 		}
-		tr.rt = t.roundTripper
-		tr.idler, _ = t.roundTripper.(interface{ CloseIdleConnections() })
-		tr.closer, _ = t.roundTripper.(io.Closer)
+		tr.RT = t.roundTripper
+		tr.Idler, _ = t.roundTripper.(interface{ CloseIdleConnections() })
+		tr.Closer, _ = t.roundTripper.(io.Closer)
 		return tr, nil
 	}
 	mode := defaultHTTPVersion(api.Scheme)
@@ -336,7 +315,7 @@ func (t *transportOptions) build(api *url.URL, connectTimeout time.Duration, con
 	if err != nil {
 		return nil, buildError(err)
 	}
-	tr.rt, tr.gate = gate, gate
+	tr.RT, tr.Gate = gate, gate
 	return tr, nil
 }
 
@@ -357,25 +336,13 @@ func buildError(err error) *ConfigError {
 	}
 }
 
-// roundTrip sends req through the transport. timeout is the attempt's
-// deadline, which a *TimeoutError reports. A failure of the SDK's transport
-// before a connection was had, and an API host that did not speak HTTP/2
-// under HTTP2Only, come back as the SDK's error types (section 6.3,
-// R67 Q3); any other error is returned as the transport gave it.
-func (t *transport) roundTrip(req *http.Request, timeout time.Duration) (*http.Response, error) {
-	var sh *shield
-	if trace := t.callerTrace(req.Context()); trace != nil {
-		// net/http composes every trace on the context into the one it calls,
-		// so the context net/http sees carries the shielded trace alone
-		// (K28c).
-		sh = newShield(req.Context(), trace, t.logger)
-		defer sh.markReturned()
-		req = req.WithContext(httptrace.WithClientTrace(untracedContext{req.Context()}, &sh.trace))
-	}
-	resp, err := t.rt.RoundTrip(req)
-	if sh != nil {
-		sh.done(resp)
-	}
+// roundTrip sends req through t. timeout is the attempt's deadline, which a
+// *TimeoutError reports. A failure of the SDK's transport before a connection
+// was had, and an API host that did not speak HTTP/2 under HTTP2Only, come
+// back as the SDK's error types (section 6.3, R67 Q3); any other error is
+// returned as the transport gave it.
+func roundTrip(t *transport, req *http.Request, timeout time.Duration) (*http.Response, error) {
+	resp, err := t.RoundTrip(req)
 	if err != nil {
 		if mapped := transportError(err, timeout, req.Header); mapped != nil {
 			return nil, mapped
@@ -383,78 +350,6 @@ func (t *transport) roundTrip(req *http.Request, timeout time.Duration) (*http.R
 		return nil, err
 	}
 	return resp, nil
-}
-
-// callerTrace returns the caller's hooks that reach a request with context
-// ctx: WithClientTrace's, then those of a trace on ctx, composed as
-// httptrace composes them, or nil when there are none. It never changes
-// t.trace or ctx's trace.
-func (t *transport) callerTrace(ctx context.Context) *httptrace.ClientTrace {
-	onCtx := httptrace.ContextClientTrace(ctx)
-	switch {
-	case onCtx == nil:
-		return t.trace
-	case t.trace == nil:
-		return onCtx
-	}
-	// WithClientTrace composes the trace it is given with the one already on
-	// the context, in place; composing into a copy of the option's trace
-	// leaves both originals as they were.
-	merged := *t.trace
-	httptrace.WithClientTrace(httptrace.WithClientTrace(context.Background(), onCtx), &merged)
-	return &merged
-}
-
-// untracedContext is a request context without its httptrace values: net/http
-// finds neither the caller's trace nor the net-level hooks httptrace derived
-// from it, and composes only the shielded trace roundTrip installs above it.
-// Deadline, cancellation, cause and every other value are the wrapped
-// context's; context.WithCancel on it still finds the wrapped context's
-// cancellation through Value, so it starts no goroutine.
-type untracedContext struct{ context.Context }
-
-// traceKeys answers, with a non-nil value, for exactly the context keys
-// httptrace.WithClientTrace sets: its client-event key and, for a trace
-// with a net-level hook, the key of the net package's hooks.
-var traceKeys = httptrace.WithClientTrace(context.Background(), &httptrace.ClientTrace{ConnectStart: func(string, string) {}})
-
-// Value returns nil for httptrace's keys and the wrapped context's value for
-// every other key.
-func (c untracedContext) Value(key any) any {
-	if traceKeys.Value(key) != nil {
-		return nil
-	}
-	return c.Context.Value(key)
-}
-
-// close releases the transport, once: the SDK's transport and a caller's
-// WithHTTPTransport clone close their idle connections; a WithRoundTripper
-// closes its idle connections when it has CloseIdleConnections, as an
-// *http.Transport has, and is then closed when it is an io.Closer (AC-F9,
-// R79). Later calls return the first call's result.
-func (t *transport) close() error {
-	t.closeOnce.Do(func() {
-		if t.gate != nil {
-			t.gate.CloseIdleConnections()
-			return
-		}
-		if t.idler != nil {
-			t.idler.CloseIdleConnections()
-		}
-		if t.closer != nil {
-			t.closeErr = t.closer.Close()
-		}
-	})
-	return t.closeErr
-}
-
-// stats returns the SDK transport's counters, or zero values under
-// WithRoundTripper.
-func (t *transport) stats() h2gate.Stats {
-	if t.gate == nil {
-		return h2gate.Stats{}
-	}
-	return t.gate.Stats()
 }
 
 // transportError maps an error of the SDK's transport to the SDK's error
@@ -478,197 +373,27 @@ func transportError(err error, timeout time.Duration, h http.Header) error {
 	creds := requestCredentials(h)
 	switch {
 	case isDial && de.Proxy && de.Timeout:
-		return newProxyTimeoutError(timeout, creds.cause(err))
+		return newProxyTimeoutError(timeout, creds.Cause(err))
 	case isDial && de.Proxy:
-		text, _ := creds.redact(de.Err.Error())
-		return newConnectionError(text, creds.cause(err), true)
+		text, _ := creds.Redact(de.Err.Error())
+		return newConnectionError(text, creds.Cause(err), true)
 	case errors.Is(err, h2gate.ErrNotNegotiated):
 		detail := err.Error()
 		if isDial {
 			detail = de.Err.Error()
 		}
-		detail, _ = creds.redact(strings.TrimPrefix(detail, h2gate.ErrNotNegotiated.Error()+": "))
+		detail, _ = creds.Redact(strings.TrimPrefix(detail, h2gate.ErrNotNegotiated.Error()+": "))
 		msg := "The API host did not negotiate HTTP/2, which HTTP2Only requires (" + safeMessage(detail) +
 			"); WithHTTPVersion(HTTPAuto) allows HTTP/1.1."
-		return newConfigError(msg, ErrHTTP2NotNegotiated, creds.cause(err))
+		return newConfigError(msg, ErrHTTP2NotNegotiated, creds.Cause(err))
 	case de.Timeout:
-		return newTimeoutError(timeout, creds.cause(err))
+		return newTimeoutError(timeout, creds.Cause(err))
 	default:
-		text, _ := creds.redact(de.Err.Error())
-		return newConnectionError(text, creds.cause(err), false)
+		text, _ := creds.Redact(de.Err.Error())
+		return newConnectionError(text, creds.Cause(err), false)
 	}
 }
 
-// scrubUserinfo replaces the userinfo of every URL in s ("scheme://user@" or
-// "scheme://user:password@") with "***", and reports whether it replaced
-// any. A URL's authority is taken to run to the next whitespace or quote, not
-// to the next "/": a password written with a raw "/" is still scrubbed, at
-// the cost of scrubbing a path that holds an "@".
-func scrubUserinfo(s string) (string, bool) {
-	var b strings.Builder
-	rest, scrubbed := s, false
-	for {
-		i := strings.Index(rest, "://")
-		if i < 0 {
-			break
-		}
-		b.WriteString(rest[:i+3])
-		rest = rest[i+3:]
-		end := strings.IndexAny(rest, " \t\n\"'<>")
-		if end < 0 {
-			end = len(rest)
-		}
-		if at := strings.LastIndexByte(rest[:end], '@'); at >= 0 {
-			b.WriteString("***")
-			rest, scrubbed = rest[at:], true
-		}
-	}
-	if !scrubbed {
-		return s, false
-	}
-	b.WriteString(rest)
-	return b.String(), true
-}
-
-// shield wraps a caller's httptrace hooks for one request (K28, K28b, K28c):
-// a hook that panics inside net/http, which may hold its connection pool's
-// lock or a reserved stream there, is recovered in place, and done raises the
-// panic again on the goroutine that called RoundTrip. A panic it does not
-// raise is logged at WARN with its hook and stack, never its value, which
-// may hold data.
-type shield struct {
-	trace  httptrace.ClientTrace
-	ctx    context.Context // the request's, for the log records
-	logger *slog.Logger
-
-	mu       sync.Mutex
-	returned bool
-	panicked bool
-	hook     string // the hook of the kept panic
-	value    any
-	stack    []byte
-}
-
-// newShield returns a shield for a request with context ctx whose trace
-// calls every hook of c, recovered.
-func newShield(ctx context.Context, c *httptrace.ClientTrace, logger *slog.Logger) *shield {
-	s := &shield{ctx: ctx, logger: logger}
-	if h := c.GetConn; h != nil {
-		s.trace.GetConn = func(hostPort string) { defer s.recover("GetConn"); h(hostPort) }
-	}
-	if h := c.GotConn; h != nil {
-		s.trace.GotConn = func(info httptrace.GotConnInfo) { defer s.recover("GotConn"); h(info) }
-	}
-	if h := c.PutIdleConn; h != nil {
-		s.trace.PutIdleConn = func(err error) { defer s.recover("PutIdleConn"); h(err) }
-	}
-	if h := c.GotFirstResponseByte; h != nil {
-		s.trace.GotFirstResponseByte = func() { defer s.recover("GotFirstResponseByte"); h() }
-	}
-	if h := c.Got100Continue; h != nil {
-		s.trace.Got100Continue = func() { defer s.recover("Got100Continue"); h() }
-	}
-	if h := c.Got1xxResponse; h != nil {
-		s.trace.Got1xxResponse = func(code int, header textproto.MIMEHeader) (err error) {
-			defer s.recover("Got1xxResponse")
-			return h(code, header)
-		}
-	}
-	if h := c.DNSStart; h != nil {
-		s.trace.DNSStart = func(info httptrace.DNSStartInfo) { defer s.recover("DNSStart"); h(info) }
-	}
-	if h := c.DNSDone; h != nil {
-		s.trace.DNSDone = func(info httptrace.DNSDoneInfo) { defer s.recover("DNSDone"); h(info) }
-	}
-	if h := c.ConnectStart; h != nil {
-		s.trace.ConnectStart = func(network, addr string) { defer s.recover("ConnectStart"); h(network, addr) }
-	}
-	if h := c.ConnectDone; h != nil {
-		s.trace.ConnectDone = func(network, addr string, err error) { defer s.recover("ConnectDone"); h(network, addr, err) }
-	}
-	if h := c.TLSHandshakeStart; h != nil {
-		s.trace.TLSHandshakeStart = func() { defer s.recover("TLSHandshakeStart"); h() }
-	}
-	if h := c.TLSHandshakeDone; h != nil {
-		s.trace.TLSHandshakeDone = func(cs tls.ConnectionState, err error) { defer s.recover("TLSHandshakeDone"); h(cs, err) }
-	}
-	if h := c.WroteHeaderField; h != nil {
-		s.trace.WroteHeaderField = func(key string, value []string) { defer s.recover("WroteHeaderField"); h(key, value) }
-	}
-	if h := c.WroteHeaders; h != nil {
-		s.trace.WroteHeaders = func() { defer s.recover("WroteHeaders"); h() }
-	}
-	if h := c.Wait100Continue; h != nil {
-		s.trace.Wait100Continue = func() { defer s.recover("Wait100Continue"); h() }
-	}
-	if h := c.WroteRequest; h != nil {
-		s.trace.WroteRequest = func(info httptrace.WroteRequestInfo) { defer s.recover("WroteRequest"); h(info) }
-	}
-	return s
-}
-
-// recover is deferred by every wrapped hook: it stops a panic of the hook,
-// keeps the first one before RoundTrip returned for done, and logs any
-// other.
-func (s *shield) recover(hook string) {
-	v := recover()
-	if v == nil {
-		return
-	}
-	stack := debug.Stack()
-	s.mu.Lock()
-	late, first := s.returned, !s.panicked
-	if !late && first {
-		s.panicked, s.hook, s.value, s.stack = true, hook, v, stack
-	}
-	s.mu.Unlock()
-	switch {
-	case late:
-		s.log("transport: trace hook panic after the request returned, recovered", hook, stack)
-	case !first:
-		s.log("transport: trace hook panic after an earlier one, recovered", hook, stack)
-	}
-}
-
-// done ends the request's shield on the goroutine that called RoundTrip,
-// once RoundTrip has returned: when a hook panicked, it closes resp's body,
-// if any, logs the hook and its stack, and panics again with the hook's
-// value.
-func (s *shield) done(resp *http.Response) {
-	s.mu.Lock()
-	s.returned = true
-	panicked, hook, v, stack := s.panicked, s.hook, s.value, s.stack
-	s.mu.Unlock()
-	if !panicked {
-		return
-	}
-	if resp != nil && resp.Body != nil {
-		_ = resp.Body.Close()
-	}
-	s.log("transport: trace hook panic, raised again on the caller", hook, stack)
-	panic(v)
-}
-
-// markReturned ends the request's shield when RoundTrip itself panicked, so
-// done never ran; roundTrip defers it. A hook panic after it is logged, and
-// one kept before it, which RoundTrip's panic replaces on the caller, is
-// logged rather than lost. After done it does nothing.
-func (s *shield) markReturned() {
-	s.mu.Lock()
-	if s.returned {
-		s.mu.Unlock()
-		return
-	}
-	s.returned = true
-	panicked, hook, stack := s.panicked, s.hook, s.stack
-	s.mu.Unlock()
-	if panicked {
-		s.log("transport: trace hook panic replaced by a RoundTrip panic, recovered", hook, stack)
-	}
-}
-
-// log writes a WARN record about a hook's panic: the hook and the stack of
-// the goroutine it panicked on.
-func (s *shield) log(msg, hook string, stack []byte) {
-	s.logger.LogAttrs(s.ctx, slog.LevelWarn, msg, slog.String("hook", hook), slog.String("stack", string(stack)))
-}
+// scrubUserinfo replaces the userinfo of every URL in s with "***"
+// (internal/engine.ScrubUserinfo).
+func scrubUserinfo(s string) (string, bool) { return engine.ScrubUserinfo(s) }

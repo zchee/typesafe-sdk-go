@@ -297,7 +297,7 @@ func newAPIError(meta *wire.ResponseMeta, endpoint string, r headerRedactor) *AP
 	return &APIError{
 		Kind:       apiErrorKind(meta.Status),
 		StatusCode: meta.Status,
-		Header:     r.header(meta.Header),
+		Header:     r.Header(meta.Header),
 		Body:       meta.Body,
 		Endpoint:   endpoint,
 		Message:    msg,
@@ -378,7 +378,7 @@ func newResponseValidationError(meta *wire.ResponseMeta, endpoint string, r head
 func newResponseValidationErrorAt(meta *wire.ResponseMeta, endpoint string, r headerRedactor, err error, fieldPath string) *ResponseValidationError {
 	return &ResponseValidationError{
 		StatusCode: meta.Status,
-		Header:     r.header(meta.Header),
+		Header:     r.Header(meta.Header),
 		Body:       meta.Body,
 		Endpoint:   endpoint,
 		FieldPath:  fieldPath,
@@ -423,7 +423,7 @@ func (*ResponseTooLargeError) typesafeError() {}
 // successful response whose body passed limit, with the response header's
 // credentials redacted by r ([headerRedactor]).
 func newResponseTooLargeError(meta *wire.ResponseMeta, endpoint string, r headerRedactor, limit int64) *ResponseTooLargeError {
-	return &ResponseTooLargeError{StatusCode: meta.Status, Header: r.header(meta.Header), Endpoint: endpoint, Limit: limit}
+	return &ResponseTooLargeError{StatusCode: meta.Status, Header: r.Header(meta.Header), Endpoint: endpoint, Limit: limit}
 }
 
 // ConnectionError reports a request that produced no HTTP response: the

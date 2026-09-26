@@ -168,7 +168,7 @@ func TestTransportDebugRecordsHoldNoCredential(t *testing.T) {
 				if _, err := c.Models().List(t.Context()); err != nil {
 					t.Fatalf("warm-up List: %v", err)
 				}
-				c.cfg.transport.gate.CloseIdleConnections() // the next call dials again
+				c.eng().Config().Transport.Gate.CloseIdleConnections() // the next call dials again
 			}
 			_, err := callWithin(t, func(ctx context.Context) error {
 				_, err := c.Models().List(ctx, Retry(NoRetry()))

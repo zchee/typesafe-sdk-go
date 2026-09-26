@@ -102,8 +102,8 @@ func TestRedactedHeadersSecretSpellings(t *testing.T) {
 
 			for handlerName, render := range renderers() {
 				out := render(func(logger *slog.Logger) {
-					logger.Debug("request", slog.Any("headers", newRedactedHeaders(c.systemOneHeader, c.apiKey)))
-					logger.Debug("response", slog.Any("headers", newRedactedHeaders(response, c.apiKey)))
+					logger.Debug("request", slog.Any("headers", newRedactedHeaders(c.SystemOneHeader, c.APIKey)))
+					logger.Debug("response", slog.Any("headers", newRedactedHeaders(response, c.APIKey)))
 				})
 				for _, visible := range []string{"request-visible", "response-visible", "***"} {
 					if !strings.Contains(out, visible) {
@@ -357,7 +357,7 @@ func TestAPIKeyNeedleThreshold(t *testing.T) {
 				}
 			} else {
 				c := mustResolve(t, noEnv, opts...)
-				if got := c.modelsHeader.Get(tt.name); got != "v" {
+				if got := c.ModelsHeader.Get(tt.name); got != "v" {
 					t.Errorf("template %s = %q, want %q", tt.name, got, "v")
 				}
 			}
@@ -423,7 +423,7 @@ func TestRedactHeader(t *testing.T) {
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
 			before := tt.h.Clone()
-			got := tt.r.header(tt.h)
+			got := tt.r.Header(tt.h)
 			if diff := gocmp.Diff(tt.want, got); diff != "" {
 				t.Errorf("header (-want +got):\n%s", diff)
 			}
@@ -441,10 +441,10 @@ func TestRedactHeader(t *testing.T) {
 		if r := newHeaderRedactor("k123456"); r != (headerRedactor{}) {
 			t.Errorf("newHeaderRedactor(7-byte key) = %+v, want the zero value", r)
 		}
-		if r := newHeaderRedactor("k1234567"); r.key != "k1234567" {
+		if r := newHeaderRedactor("k1234567"); r.Key() != "k1234567" {
 			t.Errorf("newHeaderRedactor(8-byte key) = %+v, want the key kept", r)
 		}
-		if r := (&config{apiKey: key}).redactor(); r.key != key {
+		if r := (&config{APIKey: key}).Redactor(); r.Key() != key {
 			t.Errorf("config.redactor() = %+v, want the client's key", r)
 		}
 	})
@@ -617,11 +617,11 @@ func TestHeaderRedactorRequestID(t *testing.T) {
 			if tt.values != nil {
 				h["X-Typesafe-Request-Id"] = slices.Clone(tt.values)
 			}
-			id, ok := tt.r.requestID(h)
+			id, ok := tt.r.RequestID(h)
 			if id != tt.want || ok != tt.wantOK {
 				t.Errorf("requestID = %q, %t, want %q, %t", id, ok, tt.want, tt.wantOK)
 			}
-			if storedID, storedOK := requestID(tt.r.header(h)); id != storedID || ok != storedOK {
+			if storedID, storedOK := requestID(tt.r.Header(h)); id != storedID || ok != storedOK {
 				t.Errorf("requestID = %q, %t, but the stored header's is %q, %t", id, ok, storedID, storedOK)
 			}
 			if tt.values != nil && !slices.Equal(h["X-Typesafe-Request-Id"], tt.values) {

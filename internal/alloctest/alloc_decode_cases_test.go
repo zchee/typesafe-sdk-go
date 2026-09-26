@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package typesafe
+package alloctest
 
 import (
 	"runtime"
@@ -20,6 +20,9 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	. "github.com/zchee/typesafe-sdk-go"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
@@ -70,7 +73,7 @@ func decodeFixture(t *testing.T, name string) (*wire.ResponseMeta, wire.SystemOn
 	t.Helper()
 	meta := &wire.ResponseMeta{Status: 200, Body: []byte(testsupport.FixtureString(t, name))}
 	var res wire.SystemOneResult
-	err := decodeSystemOne(t.Context(), nil, meta, "", headerRedactor{}, nil, "", &res)
+	err := decodeSystemOne(t.Context(), nil, meta, "", engine.HeaderRedactor{}, nil, "", &res)
 	return meta, res, err
 }
 
@@ -196,7 +199,7 @@ func TestLinearityFloodTime(t *testing.T) {
 		time    time.Duration
 	}
 	decode := func(f *flood, res *wire.SystemOneResult) {
-		if err := decodeSystemOne(t.Context(), nil, f.meta, "", headerRedactor{}, f.qs, f.model, res); err != nil {
+		if err := decodeSystemOne(t.Context(), nil, f.meta, "", engine.HeaderRedactor{}, f.qs, f.model, res); err != nil {
 			t.Fatal(err)
 		}
 	}

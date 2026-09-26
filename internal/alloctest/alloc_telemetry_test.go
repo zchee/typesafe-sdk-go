@@ -14,7 +14,7 @@
 
 //go:build !race
 
-package typesafe
+package alloctest
 
 import (
 	"context"
@@ -23,6 +23,9 @@ import (
 	"net/http"
 	"strings"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 	"github.com/zchee/typesafe-sdk-go/internal/wire"
@@ -127,7 +130,7 @@ var sinkID string
 // would be.
 func TestAllocRequestID(t *testing.T) {
 	const key = "ts_live_QzXjWvKpYbNmHgFd"
-	r := newHeaderRedactor(key)
+	r := engine.NewHeaderRedactor(key)
 	tests := map[string]struct {
 		values []string // the x-typesafe-request-id values, nil for none
 		asMeta bool     // the count is wire.ResponseMeta.RequestID's, not 0
@@ -149,7 +152,7 @@ func TestAllocRequestID(t *testing.T) {
 				meta := wire.ResponseMeta{Header: h}
 				want = testing.AllocsPerRun(100, func() { sinkID, _ = meta.RequestID() })
 			}
-			got := testing.AllocsPerRun(100, func() { sinkID, _ = r.requestID(h) })
+			got := testing.AllocsPerRun(100, func() { sinkID, _ = r.RequestID(h) })
 			t.Logf("requestID allocates %v times, want %v (id %q)", got, want, sinkID)
 			if got != want {
 				t.Errorf("requestID allocates %v times, want %v", got, want)
@@ -168,14 +171,14 @@ func TestAllocRequestID(t *testing.T) {
 // costs its scan nothing.
 func TestAllocSecretHeaderName(t *testing.T) {
 	for _, name := range []string{"Content-Type", "X-Typesafe-Request-Id", "Authorization", "X-Access-Token", "Date", "set-cookie"} {
-		if n := testing.AllocsPerRun(100, func() { sinkBool = isSecretHeader(name) }); n != 0 {
-			t.Errorf("isSecretHeader(%q) allocates %v times, want 0", name, n)
+		if n := testing.AllocsPerRun(100, func() { sinkBool = engine.IsSecretHeader(name) }); n != 0 {
+			t.Errorf("engine.IsSecretHeader(%q) allocates %v times, want 0", name, n)
 		}
 	}
 	h := http.Header{"Content-Type": {"application/json"}, "Date": {"Sat, 26 Sep 2026 11:00:00 GMT"}, "X-Typesafe-Request-Id": {"req_7f3c9a2e5b1d"}, "Set-Cookie": {"session=opaque"}}
-	redacted := testing.AllocsPerRun(100, func() { sinkHeader = headerRedactor{}.header(h) })
+	redacted := testing.AllocsPerRun(100, func() { sinkHeader = engine.HeaderRedactor{}.Header(h) })
 	req := http.Header{"Content-Type": {"application/json"}, "Accept": {"application/json"}, "User-Agent": {"typesafe-sdk-go"}, "X-Typesafe-Sdk": {"go"}}
-	creds := testing.AllocsPerRun(100, func() { sinkCreds = requestCredentials(req) })
+	creds := testing.AllocsPerRun(100, func() { sinkCreds = engine.RequestCredentials(req) })
 	t.Logf("SECRET header copy of 4 headers %v allocations, credential scan %v", redacted, creds)
 	if redacted != 3 {
 		t.Errorf("the redacted copy of a 4-header response allocates %v times, want 3 (the map and the one replaced value)", redacted)
@@ -189,5 +192,5 @@ func TestAllocSecretHeaderName(t *testing.T) {
 var (
 	sinkBool   bool
 	sinkHeader http.Header
-	sinkCreds  credentials
+	sinkCreds  engine.Credentials
 )

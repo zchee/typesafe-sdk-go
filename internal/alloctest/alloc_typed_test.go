@@ -14,12 +14,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package typesafe
+package alloctest
 
 import (
 	"errors"
 	"net/http"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
 
 	"github.com/zchee/typesafe-sdk-go/internal/codec"
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
@@ -79,7 +81,7 @@ func TestAllocTypedDecode(t *testing.T) {
 	none := func() struct{} { return struct{}{} }
 
 	answersDecode := testsupport.MeasureMin(t, "Answers() decode", func() *wire.SystemOneResult { return new(wire.SystemOneResult) }, func(res *wire.SystemOneResult) {
-		_, err = codec.DecodeSystemOne(body, &qs.w, c.cfg.model, res)
+		_, err = codec.DecodeSystemOne(body, wireOf(qs), engOf(c).Config().Model, res)
 	})
 	check("Answers() decode")
 	typedDecode := testsupport.MeasureMin(t, "DecodeAs[reviewAnswers]", none, func(struct{}) {

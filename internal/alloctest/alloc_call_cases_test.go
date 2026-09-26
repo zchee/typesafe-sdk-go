@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package typesafe
+package alloctest
 
 import (
 	"bytes"
@@ -21,6 +21,9 @@ import (
 	"net/http"
 	"strings"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
+	"github.com/zchee/typesafe-sdk-go/internal/engine"
 
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 )
@@ -43,7 +46,7 @@ func newAllocState() any { return strings.Repeat("s", allocStateSize-2) }
 // round trip.
 func floorRequest(t *testing.T, c *Client, state any, qs *Prepared) (*http.Request, *bytes.Reader) {
 	t.Helper()
-	enc, err := encodeBody(state, c.cfg.model, qs, nil)
+	enc, err := encodeBody(state, engOf(c).Config().Model, qs, nil)
 	if err != nil {
 		t.Fatalf("encodeBody: %v", err)
 	}
@@ -51,8 +54,8 @@ func floorRequest(t *testing.T, c *Client, state any, qs *Prepared) (*http.Reque
 	enc.Release()
 	rd := bytes.NewReader(pre)
 	return &http.Request{
-		Method: http.MethodPost, URL: c.cfg.systemOneURL, Proto: "HTTP/1.1", ProtoMajor: 1, ProtoMinor: 1,
-		Header: c.cfg.systemOneHeader, Body: io.NopCloser(rd), ContentLength: int64(len(pre)), Host: c.cfg.systemOneURL.Host,
+		Method: http.MethodPost, URL: engOf(c).Config().SystemOneURL, Proto: "HTTP/1.1", ProtoMajor: 1, ProtoMinor: 1,
+		Header: engOf(c).Config().SystemOneHeader, Body: io.NopCloser(rd), ContentLength: int64(len(pre)), Host: engOf(c).Config().SystemOneURL.Host,
 	}, rd
 }
 
@@ -124,6 +127,6 @@ func memCases(t *testing.T) map[string]memCase {
 		"iv-declared-16MiB":          {reply: testsupport.Reply{Body: exact}, outcome: "ok", bound: bigBound},
 		"v-undeclared-16MiB":         {reply: testsupport.Reply{Body: exact, ContentLength: -1}, outcome: "ok", bound: bigBound},
 		"vi-declared-result.json":    {reply: testsupport.Reply{Body: small}, outcome: "ok", bound: uint64(len(small)) + 1 + 64<<10},
-		"vii-undeclared-result.json": {reply: testsupport.Reply{Body: small, ContentLength: -1}, outcome: "ok", bound: initialUndeclared + 64<<10},
+		"vii-undeclared-result.json": {reply: testsupport.Reply{Body: small, ContentLength: -1}, outcome: "ok", bound: engine.InitialUndeclared + 64<<10},
 	}
 }

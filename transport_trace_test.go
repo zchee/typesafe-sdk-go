@@ -16,14 +16,11 @@ package typesafe
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
 	"net/http/httptrace"
-	"reflect"
-	"runtime"
 	"slices"
 	"strconv"
 	"strings"
@@ -68,57 +65,6 @@ func within(t *testing.T, d time.Duration, what string, fn func() []string) {
 type hookPanic struct {
 	hook string
 	n    int
-}
-
-// TestClientTraceShieldCoversEveryHook pins that the shield wraps every hook
-// of httptrace.ClientTrace, that a wrapped hook calls the caller's, that no
-// panic of one escapes it, and that done raises the first panic again. A hook
-// added to ClientTrace in a later Go release fails the test until the shield
-// wraps it.
-func TestClientTraceShieldCoversEveryHook(t *testing.T) {
-	var in httptrace.ClientTrace
-	v := reflect.ValueOf(&in).Elem()
-	var names, calls []string
-	for i := range v.NumField() {
-		f, name := v.Field(i), v.Type().Field(i).Name
-		if f.Kind() != reflect.Func {
-			t.Fatalf("ClientTrace.%s is a %v; the shield wraps hooks only", name, f.Kind())
-		}
-		names = append(names, name)
-		f.Set(reflect.MakeFunc(f.Type(), func([]reflect.Value) []reflect.Value {
-			calls = append(calls, name)
-			panic(hookPanic{hook: name})
-		}))
-	}
-	sh := newShield(t.Context(), &in, slog.New(slog.DiscardHandler))
-	out := reflect.ValueOf(&sh.trace).Elem()
-	for i, name := range names {
-		f := out.Field(i)
-		if f.IsNil() {
-			t.Errorf("hook %s is not wrapped", name)
-			continue
-		}
-		args := make([]reflect.Value, f.Type().NumIn())
-		for j := range args {
-			args[j] = reflect.Zero(f.Type().In(j))
-		}
-		if p := recovered(func() { f.Call(args) }); p != nil {
-			t.Errorf("hook %s let its panic through: %v", name, p)
-		}
-	}
-	if diff := gocmp.Diff(names, calls); diff != "" {
-		t.Errorf("hooks reached (-want +got):\n%s", diff)
-	}
-	if p := recovered(func() { sh.done(nil) }); p != (hookPanic{hook: names[0]}) {
-		t.Errorf("done panicked with %v, want the first hook's value %v", p, hookPanic{hook: names[0]})
-	}
-	empty := newShield(t.Context(), &httptrace.ClientTrace{}, slog.New(slog.DiscardHandler))
-	if !reflect.ValueOf(empty.trace).IsZero() {
-		t.Error("a trace without hooks gave a shield with hooks, want none")
-	}
-	if p := recovered(func() { empty.done(nil) }); p != nil {
-		t.Errorf("done without a panic panicked with %v", p)
-	}
 }
 
 // hookSite is where a test puts the hook that panics.
@@ -219,14 +165,14 @@ func TestClientTracePanicIsRaisedOnTheCaller(t *testing.T) {
 			get := func(path string) getResult {
 				ctx, cancel := context.WithTimeout(callCtx, 5*time.Second)
 				defer cancel()
-				return getVia(ctx, c.transport, srv.URL()+path, 0)
+				return getVia(ctx, c.Transport, srv.URL()+path, 0)
 			}
 			getPanicking := get
 			if tt.holdBody {
 				// No deadline and no cancel: only closing the body resets the
 				// stream the server holds.
 				getPanicking = func(path string) getResult {
-					return getVia(context.WithoutCancel(callCtx), c.transport, srv.URL()+path, 0)
+					return getVia(context.WithoutCancel(callCtx), c.Transport, srv.URL()+path, 0)
 				}
 			}
 			if r := get("/warm"); r.err != nil || r.protoMajor != 2 {
@@ -259,7 +205,7 @@ func TestClientTracePanicIsRaisedOnTheCaller(t *testing.T) {
 				}
 				return problems
 			})
-			st := c.transport.stats()
+			st := c.Transport.Stats()
 			if srv.Accepts() != 1 || srv.OverLimit() != 0 || st.Dials != 1 {
 				t.Errorf("accepts %d, over the limit %d, stats %+v; want 1 connection throughout", srv.Accepts(), srv.OverLimit(), st)
 			}
@@ -284,7 +230,7 @@ func TestClientTraceColdDialPanic(t *testing.T) {
 	get := func(path string) getResult {
 		ctx, cancel := context.WithTimeout(callCtx, 5*time.Second)
 		defer cancel()
-		return getVia(ctx, c.transport, srv.URL()+path, 0)
+		return getVia(ctx, c.Transport, srv.URL()+path, 0)
 	}
 	within(t, 10*time.Second, "the cold GET", func() []string {
 		if p := recovered(func() { get("/cold") }); p != (hookPanic{hook: "ConnectStart"}) {
@@ -312,55 +258,13 @@ func TestClientTraceMergeOrderAndCopy(t *testing.T) {
 		WithClientTrace(&httptrace.ClientTrace{GetConn: func(string) { calls = append(calls, "option") }}))
 	traced := httptrace.WithClientTrace(t.Context(), &httptrace.ClientTrace{GetConn: func(string) { calls = append(calls, "context") }})
 	for i, ctx := range []context.Context{traced, t.Context(), traced} {
-		if r := getVia(ctx, c.transport, "https://api.typesafe.ai/v1/models", 0); r.err != nil || r.status != http.StatusOK {
+		if r := getVia(ctx, c.Transport, "https://api.typesafe.ai/v1/models", 0); r.err != nil || r.status != http.StatusOK {
 			t.Fatalf("call %d = %d %v", i, r.status, r.err)
 		}
 	}
 	want := []string{"option", "context", "option", "option", "context"}
 	if diff := gocmp.Diff(want, calls); diff != "" {
 		t.Errorf("GetConn hooks run (-want +got):\n%s", diff)
-	}
-}
-
-// TestUntracedContext pins the context roundTrip hands net/http when a
-// caller trace is shielded: it hides httptrace's values, so net/http cannot
-// compose the unshielded caller trace again, and keeps everything else of
-// the wrapped context.
-func TestUntracedContext(t *testing.T) {
-	type key struct{}
-	cause := errors.New("the caller gave up")
-	deadline := time.Now().Add(time.Hour)
-	withDeadline, stopDeadline := context.WithDeadline(context.WithValue(t.Context(), key{}, "kept"), deadline)
-	defer stopDeadline()
-	parent, cancel := context.WithCancelCause(withDeadline)
-	defer cancel(nil)
-	traced := httptrace.WithClientTrace(parent, &httptrace.ClientTrace{GetConn: func(string) {}, ConnectStart: func(string, string) {}})
-	ctx := untracedContext{traced}
-	if tr := httptrace.ContextClientTrace(ctx); tr != nil {
-		t.Errorf("ContextClientTrace = %p, want none", tr)
-	}
-	if got := ctx.Value(key{}); got != "kept" {
-		t.Errorf("Value(key) = %v, want the wrapped context's", got)
-	}
-	if got, ok := ctx.Deadline(); !ok || !got.Equal(deadline) {
-		t.Errorf("Deadline() = %v, %t; want the wrapped context's", got, ok)
-	}
-	before := runtime.NumGoroutine()
-	children := make([]context.CancelFunc, 0, 100)
-	for range 100 {
-		_, stop := context.WithCancel(ctx)
-		children = append(children, stop)
-	}
-	if grew := runtime.NumGoroutine() - before; grew >= 50 {
-		t.Errorf("100 child contexts started %d goroutines, want none: the wrapped cancellation must be found through Value", grew)
-	}
-	cancel(cause)
-	<-ctx.Done()
-	if got := context.Cause(ctx); got != cause { //nolint:errorlint // identity is the assertion
-		t.Errorf("Cause = %v, want the wrapped context's", got)
-	}
-	for _, stop := range children {
-		stop()
 	}
 }
 
@@ -434,33 +338,6 @@ func assertHookRecords(t *testing.T, got []ctxRecord, want [][2]string, fn, secr
 	}
 }
 
-// TestClientTraceShieldLogs pins the shield's records: a panic after an
-// earlier one, the panic raised again on the caller and a panic after the
-// request returned are each logged at WARN with the hook's name and stack,
-// with the request's context, and never with the panic's value.
-func TestClientTraceShieldLogs(t *testing.T) {
-	const secret = "hunter2-in-a-panic-value"
-	rec := &ctxRecorder{}
-	ctx := context.WithValue(t.Context(), ctxLogKey{}, "the request's")
-	sh := newShield(ctx, &httptrace.ClientTrace{
-		GetConn:     func(string) { panic(secret + " first") },
-		GotConn:     func(httptrace.GotConnInfo) { panic(secret + " second") },
-		PutIdleConn: func(error) { panic(secret + " late") },
-	}, slog.New(rec))
-	sh.trace.GetConn("h:443")
-	sh.trace.GotConn(httptrace.GotConnInfo{})
-	if p := recovered(func() { sh.done(nil) }); p != secret+" first" {
-		t.Errorf("done panicked with %v, want the first hook's value", p)
-	}
-	sh.trace.PutIdleConn(nil)
-	sh.markReturned()
-	assertHookRecords(t, rec.all(), [][2]string{
-		{"transport: trace hook panic after an earlier one, recovered", "GotConn"},
-		{"transport: trace hook panic, raised again on the caller", "GetConn"},
-		{"transport: trace hook panic after the request returned, recovered", "PutIdleConn"},
-	}, "TestClientTraceShieldLogs.func", secret)
-}
-
 // TestClientTraceRoundTripPanic pins roundTrip's deferred markReturned: when
 // RoundTrip itself panics, its panic reaches the caller, the hook panic it
 // replaces is logged rather than lost, and a hook that panics afterwards is
@@ -478,7 +355,7 @@ func TestClientTraceRoundTripPanic(t *testing.T) {
 		GotConn: func(httptrace.GotConnInfo) { panic(hookPanic{hook: "GotConn"}) },
 	}))
 	ctx := context.WithValue(t.Context(), ctxLogKey{}, "the request's")
-	if p := recovered(func() { getVia(ctx, c.transport, "https://api.typesafe.ai/v1/models", 0) }); p != "the round tripper failed" {
+	if p := recovered(func() { getVia(ctx, c.Transport, "https://api.typesafe.ai/v1/models", 0) }); p != "the round tripper failed" {
 		t.Fatalf("roundTrip panicked with %v, want the round tripper's panic", p)
 	}
 	captured.GotConn(httptrace.GotConnInfo{})
@@ -507,7 +384,7 @@ func TestClientTraceLatePanicIsLogged(t *testing.T) {
 	c := loopbackConfig(t, srv, WithHTTPVersion(HTTPAuto), WithLogger(logs.Logger()), WithClientTrace(trace))
 	for i := range 2 {
 		var r getResult
-		if p := recovered(func() { r = getWithin(t, c.transport, srv.URL()+"/late", 0, 5*time.Second) }); p != nil {
+		if p := recovered(func() { r = getWithin(t, c.Transport, srv.URL()+"/late", 0, 5*time.Second) }); p != nil {
 			t.Fatalf("GET #%d panicked with %v, want the late panic kept from the caller", i, p)
 		}
 		if r.err != nil || r.status != http.StatusOK || r.protoMajor != 1 {

@@ -817,7 +817,7 @@ func TestRequestURLIsCopied(t *testing.T) {
 	if diff := gocmp.Diff(want, sent); diff != "" {
 		t.Errorf("URLs the transport got (-want +got):\n%s", diff)
 	}
-	if got := []string{c.cfg.modelsURL.String(), c.cfg.systemOneURL.String()}; !slices.Equal(got, []string{"https://api.typesafe.ai/v1/models", "https://api.typesafe.ai/v1/systemone"}) {
+	if got := []string{c.eng().Config().ModelsURL.String(), c.eng().Config().SystemOneURL.String()}; !slices.Equal(got, []string{"https://api.typesafe.ai/v1/models", "https://api.typesafe.ai/v1/systemone"}) {
 		t.Errorf("the client's endpoints changed: %v", got)
 	}
 }

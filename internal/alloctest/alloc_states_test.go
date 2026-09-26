@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package typesafe
+package alloctest
 
 import (
 	"strconv"
 	"strings"
 	"sync"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
 
 	"github.com/zchee/typesafe-sdk-go/internal/codec"
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
@@ -313,7 +315,7 @@ func encodeQuestions(t testing.TB) *Prepared {
 	t.Helper()
 	return mustPrepared(t, NewQuestions().
 		Noul("billing", Noul{Instructions: Text("Is this about billing?"), Yes: Text("payments or invoices")}).
-		Choice("tone", Choice{Instructions: Text("What is the tone?"), Options: Options{{"calm", Text("neutral or polite")}, {Label: "angry"}}}).
+		Choice("tone", Choice{Instructions: Text("What is the tone?"), Options: Options{{Label: "calm", Description: Text("neutral or polite")}, {Label: "angry"}}}).
 		Score("urgency", Score{Levels: []Content{Text("can wait"), Text("this week"), Text("today")}}))
 }
 

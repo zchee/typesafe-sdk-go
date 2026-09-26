@@ -212,7 +212,7 @@ func BenchmarkEncodeBody(b *testing.B) {
 					b.SetBytes(n)
 					b.ReportAllocs()
 					for b.Loop() {
-						if sinkEncoded, err = nc.codec.Encode(state, DefaultModel, qs.w.Questions); err != nil {
+						if sinkEncoded, err = nc.codec.Encode(state, DefaultModel, qs.wirePrepared().Questions); err != nil {
 							b.Fatal(err)
 						}
 					}
@@ -242,7 +242,7 @@ func TestEncodeBodyMatchesNaive(t *testing.T) {
 					t.Errorf("the SDK's body is %d bytes, want at least the state's %d", len(sdk), n)
 				}
 				for _, nc := range naiveCodecs {
-					got, err := nc.codec.Encode(state, DefaultModel, qs.w.Questions)
+					got, err := nc.codec.Encode(state, DefaultModel, qs.wirePrepared().Questions)
 					if err != nil {
 						t.Fatalf("%s: %v", nc.name, err)
 					}
@@ -307,22 +307,22 @@ func (a assembled) release() {
 // state, qs) with no call options, step by step as SystemOne and
 // Client.attempt build it.
 func assembleRequest(ctx context.Context, c *Client, state any, qs *Prepared) (assembled, error) {
-	body, err := encodeBody(state, c.cfg.model, qs, nil)
+	body, err := encodeBody(state, c.eng().Config().Model, qs, nil)
 	if err != nil {
 		return assembled{}, err
 	}
 	rq := request{
-		method:  http.MethodPost,
-		url:     c.cfg.systemOneURL,
-		header:  c.cfg.systemOneHeader,
-		timeout: c.cfg.timeout,
-		body:    body,
-		getBody: body.GetBody,
+		Method:  http.MethodPost,
+		URL:     c.eng().Config().SystemOneURL,
+		Header:  c.eng().Config().SystemOneHeader,
+		Timeout: c.eng().Config().Timeout,
+		Body:    body,
+		GetBody: body.GetBody,
 	}
-	h := rq.attemptHeader(0)
+	h := rq.AttemptHeader(0)
 	u := new(url.URL)
-	*u = *rq.url
-	actx, cancel := context.WithTimeout(ctx, rq.timeout)
+	*u = *rq.URL
+	actx, cancel := context.WithTimeout(ctx, rq.Timeout)
 	rc, err := body.Open()
 	if err != nil {
 		cancel()
@@ -330,7 +330,7 @@ func assembleRequest(ctx context.Context, c *Client, state any, qs *Prepared) (a
 		return assembled{}, err
 	}
 	r := http.Request{
-		Method:        rq.method,
+		Method:        rq.Method,
 		URL:           u,
 		Proto:         "HTTP/1.1",
 		ProtoMajor:    1,
@@ -338,7 +338,7 @@ func assembleRequest(ctx context.Context, c *Client, state any, qs *Prepared) (a
 		Header:        h,
 		Host:          u.Host,
 		Body:          rc,
-		GetBody:       rq.getBody,
+		GetBody:       rq.GetBody,
 		ContentLength: int64(body.Len()),
 	}
 	return assembled{req: r.WithContext(actx), cancel: cancel, body: body}, nil
@@ -562,5 +562,5 @@ func coldBurst(ctx context.Context, opts []ClientOption, state any, qs *Prepared
 		})
 	}
 	wg.Wait()
-	return c.cfg.transport.stats(), first
+	return c.eng().Config().Transport.Stats(), first
 }

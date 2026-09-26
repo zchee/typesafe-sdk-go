@@ -210,8 +210,12 @@ jobs:
           # tests run only here. internal/codec cannot carry that constraint
           # (TestSeamBuildConstraints); its tests skip themselves under -race
           # by calling raceEnabled().
+          # The root package's allocation tests live in internal/alloctest
+          # (W6.5, owner G9); a !race test left in the root package is
+          # required here too, and then fails the -list guard below, which
+          # counts internal/alloctest only.
           require_listed "tests built only without -race" \
-            "$(grep -l '^//go:build !race' -- *_test.go | xargs grep -ho '^func Test[A-Za-z0-9_]*' | sed 's/^func //' | tr -d '\r')" \
+            "$(grep -l '^//go:build !race' -- *_test.go internal/alloctest/*_test.go | xargs grep -ho '^func Test[A-Za-z0-9_]*' | sed 's/^func //' | tr -d '\r')" \
             "${root[@]}"
           require_listed "internal/codec tests that skip under -race" \
             "$(awk '/^func / { name = ($2 ~ /^Test[A-Za-z0-9_]*\(/) ? $2 : ""; sub(/\(.*/, "", name) } /raceEnabled\(\)/ && name != "" { print name }' internal/codec/*_test.go | tr -d '\r')" \
@@ -229,7 +233,7 @@ jobs:
             fi
             go test -count=1 -run "$pattern" -v "$pkg"
           }
-          run_budgets . "${root[@]}"
+          run_budgets ./internal/alloctest/ "${root[@]}"
           run_budgets ./internal/codec/ "${codec[@]}"
 
       # OIDC authentication: the action exchanges the job's id-token (hence

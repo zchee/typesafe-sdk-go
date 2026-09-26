@@ -14,12 +14,14 @@
 
 //go:build !race
 
-package typesafe
+package alloctest
 
 import (
 	"maps"
 	"slices"
 	"testing"
+
+	. "github.com/zchee/typesafe-sdk-go"
 
 	"github.com/zchee/typesafe-sdk-go/internal/testsupport"
 )
