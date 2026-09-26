@@ -140,5 +140,10 @@ mutant E-no-fast-path internal/h2gate/transport.go \
 # waitToken onto the fast path.
 mutant E-fast-path-counts internal/h2gate/transport.go \
 	's/(\tcase t.token <- struct\{\}\{\}:\n)(\tdefault:\n)/$1\t\tt.tokenWaits.Add(1)\n$2/; s/\tt.tokenWaits.Add\(1\)\n(\ttm := time.NewTimer)/$1/' ./internal/h2gate/ '^TestTokenFreeTakesNoWait$'
+# F: review SLICE3 NIT 1: refusedConnect appends a non-empty proxy
+# response body to the error text; every refusing proxy used to send none.
+mutant F-K16-proxy-body internal/h2gate/errors.go \
+	's/(\t"errors"\n)/$1\t"io"\n/; s/Err: errors.New\(resp.Status\)\}/Err: errors.New(resp.Status + func() string { b, _ := io.ReadAll(resp.Body); if len(b) == 0 { return "" }; return " " + string(b) }())}/' \
+	. '^TestTransportDebugRecordsHoldNoCredential$'
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

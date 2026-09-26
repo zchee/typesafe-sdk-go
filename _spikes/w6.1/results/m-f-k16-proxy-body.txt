@@ -1,0 +1,14 @@
+# W6.1 F (review SLICE3 NIT 1 and NIT 2), on (M) go1.27.1 darwin/arm64, GOEXPERIMENT=nosimd,noruntimesecret, outside the bench lock (no allocation test).
+# F-K16-proxy-body (mutants.sh): refusedConnect appends a non-empty proxy response body to the error text, applied to git archive copies of
+# E (7ba1a8f) and of F's tree before this file's last edit (a38ec99; the amend changes only this file and the ledger row);
+# go test -count=1 -run '^TestTransportDebugRecordsHoldNoCredential$' .
+# 2026-09-27 03:19:32 JST load { 9.61 9.44 8.70 } F-K16-proxy-body at E's tree (7ba1a8f): rc=0
+ok  	github.com/zchee/typesafe-sdk-go	0.017s
+# 2026-09-27 03:19:33 JST load { 9.61 9.44 8.70 } F-K16-proxy-body at F's tree (a38ec99): rc=1
+--- FAIL: TestTransportDebugRecordsHoldNoCredential (0.01s)
+        telemetry_test.go:186: List error = *typesafe.ConnectionError Connection error: proxyconnect tcp: 502 Authorization: *** refused ("***"); X-Client-Secret: ***\x1b[31m PROXYBODYMARKER Authorization: *** refused ("***"); X-Client-Secr
+        telemetry_test.go:186: List error = *typesafe.ConnectionError Connection error: proxyconnect tcp: 502 Authorization: *** refused ("***"); X-Client-Secret: ***\x1b[31m PROXYBODYMARKER Authorization: *** refused ("***"); X-Client-Secr
+# 2026-09-27 03:19:33 JST load { 9.61 9.44 8.70 } NIT 2: go test -count=1 -run '^TestTransportDebugRecordsHoldNoCredential$' -coverpkg=./internal/h2gate -covermode=atomic . (F's tree)
+github.com/zchee/typesafe-sdk-go/internal/h2gate/transport.go:403.3,403.17 1 2
+# the same block in h2gate's own profile (go test -count=1 -covermode=atomic ./internal/h2gate/):
+github.com/zchee/typesafe-sdk-go/internal/h2gate/transport.go:403.3,403.17 1 0
