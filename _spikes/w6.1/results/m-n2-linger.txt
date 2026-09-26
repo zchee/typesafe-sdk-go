@@ -1,0 +1,38 @@
+# W6.1 D/n-2 (D-W6.1-n2-major) on (M): the linger mutant, a 300 ms sleep at the top of (*Transport).send when its context has ended,
+# under the old control (TestTokenResidualK21 as of 427b4ce: 8 timed-out calls through the Transport under test) and under this commit's
+# (a stock net/http HTTP/2 transport), -count=3 each; RESULT lines without stats, and each call's lateness line counted.
+# perl expression applied to internal/h2gate/transport.go: s/(func \(t \*Transport\) send\(req \*http.Request, gen \*generation\) \(\*http.Response, error\) \{\n\tctx := req.Context\(\)\n)/$1\tdefer func() {\n\t\tif ctx.Err() != nil {\n\t\t\ttime.Sleep(300 * time.Millisecond)\n\t\t}\n\t}()\n/
+# applied: 1 sleep line(s)
+## old control, 2026-09-26 19:44:21 JST, load { 25.96 29.07 43.64 }
+      3     --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+      3     --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+      3     --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+      3 --- PASS: TestTokenResidualK21
+      1 RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.008 probe_bound_ms=50.000 slack_ms=1205.187 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.020 probe_bound_ms=50.000 slack_ms=1208.248 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.402 probe_bound_ms=50.000 slack_ms=1235.655 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=133 probe_headers_ms=0.077 probe_bound_ms=50.000 slack_ms=1208.757 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=136 probe_headers_ms=0.104 probe_bound_ms=50.000 slack_ms=1208.071 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/REFUSED_STREAM classes="map[ok:20 timeout:52]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=121 probe_headers_ms=0.072 probe_bound_ms=50.000 slack_ms=1220.668 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.020 probe_bound_ms=50.000 slack_ms=1205.309 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.020 probe_bound_ms=50.000 slack_ms=1210.464 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.149 probe_bound_ms=50.000 slack_ms=1211.062 restore_skipped=0 fresh=map[ok:200]
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	12.895s
+## this commit's control, 2026-09-26 19:44:35 JST, load { 69.77 38.70 46.83 }
+      3     --- FAIL: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+      3     --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+      3     --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+      3 --- FAIL: TestTokenResidualK21
+      2 FAIL
+      1 FAIL	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.206s
+      1 RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.009 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.024 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.047 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/REFUSED_STREAM classes="map[ok:13 timeout:59]" late=59 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=138 probe_headers_ms=0.083 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/REFUSED_STREAM classes="map[ok:16 timeout:56]" late=56 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=126 probe_headers_ms=0.182 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/REFUSED_STREAM classes="map[ok:32 timeout:40]" late=40 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=155 probe_headers_ms=0.076 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.013 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.019 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+      1 RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.027 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+    155 late call, bound 2s + 100ms
+# end 2026-09-26 19:44:46 JST

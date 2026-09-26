@@ -87,5 +87,17 @@ mutant D-K25-pre-fix-goaway internal/testsupport/h2conn.go \
 	's/(\t\treturn fmt.Errorf\("%w: GOAWAY after close_notify", errConnClosed\)\n\t\}\n)/$1\tc.wmu.Unlock()\n/; s/(\terr := c.fr.WriteGoAway\(lastStreamID)/\tc.wmu.Lock()\n$1/' \
 	./internal/testsupport/ '^TestGoAwayRaceWithFinish$' 20
 
+# D/n-2: a token left held before the probe.
+mutant D-n2-leaked-token internal/h2gate/token_test.go \
+	's/(\t\t\tprobeCtx, cancel := context.WithTimeout\(t.Context\(\), k21Deadline\)\n)/\t\t\ttr.token <- struct{}{}\n$1/' \
+	./internal/h2gate/ '^TestTokenResidualK21$'
+# D/n-2: a Transport that lingers 300 ms in a call whose context has ended
+# (D-W6.1-n2-major). The control runs no h2gate code, so the slack stays at
+# its floor and the late calls fail; calibrated through the Transport, the
+# slack grew to about 1.2 s and the test passed.
+mutant D-n2-linger-on-timeout internal/h2gate/transport.go \
+	's/(func \(t \*Transport\) send\(req \*http.Request, gen \*generation\) \(\*http.Response, error\) \{\n\tctx := req.Context\(\)\n)/$1\tdefer func() {\n\t\tif ctx.Err() != nil {\n\t\t\ttime.Sleep(300 * time.Millisecond)\n\t\t}\n\t}()\n/' \
+	./internal/h2gate/ '^TestTokenResidualK21$'
+
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

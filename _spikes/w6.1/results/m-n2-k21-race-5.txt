@@ -1,0 +1,40 @@
+# 2026-09-26 19:44:03 JST (M) n-2: TestTokenResidualK21 -race -count=5, the wave's tree with the stock-transport control; load { 6.13 25.87 42.81 }
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.044 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case=k21/REFUSED_STREAM classes="map[ok:12 timeout:60]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=191 probe_headers_ms=0.101 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.058 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+--- PASS: TestTokenResidualK21
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+RESULT case=k21/REFUSED_STREAM classes="map[ok:8 timeout:64]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=200 probe_headers_ms=0.101 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.078 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.289 probe_bound_ms=50.000 slack_ms=322.103 restore_skipped=0 fresh=map[ok:200]
+--- PASS: TestTokenResidualK21
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.092 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case=k21/REFUSED_STREAM classes="map[ok:38 timeout:34]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=110 probe_headers_ms=0.268 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.053 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+--- PASS: TestTokenResidualK21
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.062 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case=k21/REFUSED_STREAM classes="map[ok:35 timeout:37]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=90 probe_headers_ms=0.116 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.161 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+--- PASS: TestTokenResidualK21
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+RESULT case=k21/REFUSED_STREAM classes="map[ok:56 timeout:16]" late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=108 probe_headers_ms=0.100 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case="k21/GOAWAY(LastStreamID=3)" classes=map[ok:72] late=0 bad=0 accepts_scenario=2 accepts_total=2 refused_streams=0 probe_headers_ms=0.070 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+RESULT case=k21/SETTINGS classes=map[ok:72] late=0 bad=0 accepts_scenario=1 accepts_total=1 refused_streams=0 probe_headers_ms=0.107 probe_bound_ms=50.000 slack_ms=100.000 restore_skipped=0 fresh=map[ok:200]
+--- PASS: TestTokenResidualK21
+    --- PASS: TestTokenResidualK21/success:_REFUSED_STREAM_above_4_open_streams_while_advertising_8
+    --- PASS: TestTokenResidualK21/success:_GOAWAY(LastStreamID=3)_with_8_in_flight_and_64_queued
+    --- PASS: TestTokenResidualK21/success:_SETTINGS_lowers_the_limit_from_8_to_2_with_8_in_flight
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	17.462s
+# end 2026-09-26 19:44:21 JST; load { 25.96 29.07 43.64 }
