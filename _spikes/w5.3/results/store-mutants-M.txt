@@ -1,0 +1,49 @@
+# typed store mutants over the working tree (the R116 store commit's tree), 2026-09-26 18:10:17 JST, (M), unit tests only (not a measurement, not under the lock)
+== mutant 1 offset off by one
+build ok
+--- FAIL: TestDecodeAsAgreesWithAnswers (0.08s)
+--- FAIL: TestStoreFieldKinds (0.00s)
+--- FAIL: TestStoreKeepsNeighbours (0.00s)
+--- FAIL: TestDecodeAsWithSeparateQuestions (0.00s)
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.026s
+== mutant 2 the next answer field's offset
+build ok
+FAIL	github.com/zchee/typesafe-sdk-go	0.095s
+FAIL
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.024s
+== mutant 3 a wider write (ScoreAnswer into a NoulAnswer field)
+build ok
+FAIL	github.com/zchee/typesafe-sdk-go	0.033s
+FAIL
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.055s
+== mutant 4 the answer copied as bytes
+build ok
+--- FAIL: TestStoreWritesTyped (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.103s
+FAIL
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.025s
+== mutant 5 the store in another file
+build ok
+--- FAIL: TestStoreWritesTyped (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.099s
+FAIL
+--- FAIL: TestSeamRootRawPointers (0.01s)
+--- FAIL: TestSeamImports (0.00s)
+FAIL
+== mutant 6 reflect.Value.UnsafePointer() in decodeas.go
+build ok
+ok  	github.com/zchee/typesafe-sdk-go	0.099s
+--- FAIL: TestSeamRootRawPointers (0.01s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.024s
+# mutants 2 and 3 end the test binary with a fatal error (a corrupted stack) inside the first decode that runs, TestDecodeAsAgreesWithAnswers (AC-F12), so the package fails with no --- FAIL line; the store tests alone, 2026-09-26 18:10:56 JST:
+== mutant 2 the next answer field's offset, -run '^TestDecodeAsAgreesWithAnswers$' then each store test on its own
+fatal error: invalid pointer found on stack
+TestStoreFieldKinds: --- FAIL: TestStoreFieldKinds (0.00s)
+TestStoreKeepsNeighbours: --- FAIL: TestStoreKeepsNeighbours (0.00s)
+== mutant 3 a wider write (ScoreAnswer into a NoulAnswer field), -run '^TestDecodeAsAgreesWithAnswers$' then each store test on its own
+fatal error: traceback did not unwind completely
+TestStoreFieldKinds: fatal error: traceback did not unwind completely
+TestStoreKeepsNeighbours: --- FAIL: TestStoreKeepsNeighbours (0.00s)
