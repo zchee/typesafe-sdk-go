@@ -1,0 +1,369 @@
+# 2026-09-26 13:13:41 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -count=10 -run ^TestW34Probe$ -v .
+# load before: 13:13  up 4 days, 12:19, 1 user, load averages: 30.55 13.97 9.90 | kernel: { 30.55 13.97 9.90 } (MAXLOAD=none, waited 0 x 60 s)
+# base: 1f694b0 + _spikes/w3.4/probe_test.go.txt as zz_w34_probe_test.go
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 26/2888 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=26/2888 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 27/2912
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=27/2912 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+=== RUN   TestW34Probe
+    zz_w34_probe_test.go:136: runs of q20 E_sonic                            mallocs/bytes: 1/16 1/16 1/16 1/16 1/16
+    zz_w34_probe_test.go:151: runs of q20 floor round trip                   mallocs/bytes: 7/624 7/624 7/624 7/624 7/624
+    zz_w34_probe_test.go:153: runs of q20 call/sdk                           mallocs/bytes: 42/9888 42/9888 42/9888 42/9888 42/9888
+    zz_w34_probe_test.go:156: PROBE q20 E_sonic=1/16 floorRT=7/624 floor=8/640 total=42/9888 own=34/9248 max=42/9888 spread=+0/+0
+    zz_w34_probe_test.go:158: runs of item header map                        mallocs/bytes: 0/0 0/0 0/0 0/0 0/0
+    zz_w34_probe_test.go:158: runs of item URL copy                          mallocs/bytes: 1/144 1/144 1/144 1/144 1/144
+    zz_w34_probe_test.go:158: runs of item context.WithTimeout               mallocs/bytes: 4/272 4/272 4/272 4/272 4/272
+    zz_w34_probe_test.go:158: runs of item Request (WithContext)             mallocs/bytes: 1/320 1/320 1/320 1/320 1/320
+    zz_w34_probe_test.go:158: runs of item body.Open                         mallocs/bytes: 1/64 1/64 1/64 1/64 1/64
+    zz_w34_probe_test.go:158: runs of item GetBody method value              mallocs/bytes: 1/24 1/24 1/24 1/24 1/24
+    zz_w34_probe_test.go:158: runs of item *SystemOneResponse                mallocs/bytes: 1/112 1/112 1/112 1/112 1/112
+    zz_w34_probe_test.go:158: runs of item readBody                          mallocs/bytes: 1/2304 1/2304 1/2304 1/2304 1/2304
+    zz_w34_probe_test.go:158: runs of item decode                            mallocs/bytes: 24/6008 24/6008 24/6008 24/6008 24/6008
+    zz_w34_probe_test.go:158: PROBE q20 ITEM header=0/0 url=1/144 WithTimeout=4/272 Request=1/320 body.Open=1/64 GetBody=1/24 *SystemOneResponse=1/112 readBody=1/2304 decode=24/6008
+    zz_w34_probe_test.go:191: runs of opt none inline                        mallocs/bytes: 22/2648 22/2648 22/2648 22/2648 22/2648
+    zz_w34_probe_test.go:202: PROBE opt none inline=22/2648 (+0/0) max=22/2648
+    zz_w34_probe_test.go:191: runs of opt Header inline                      mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:198: runs of opt Header hoisted                     mallocs/bytes: 29/3368 29/3368 29/3368 29/3368 29/3368
+    zz_w34_probe_test.go:202: PROBE opt Header inline=29/3368 (+7/720) max=29/3368 hoisted=29/3368 (+7/720) max=29/3368
+    zz_w34_probe_test.go:191: runs of opt Model inline                       mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:198: runs of opt Model hoisted                      mallocs/bytes: 25/2840 25/2840 25/2840 25/2840 25/2840
+    zz_w34_probe_test.go:202: PROBE opt Model inline=25/2840 (+3/192) max=25/2840 hoisted=25/2840 (+3/192) max=25/2840
+    zz_w34_probe_test.go:191: runs of opt Timeout inline                     mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:198: runs of opt Timeout hoisted                    mallocs/bytes: 24/2824 24/2824 24/2824 24/2824 24/2824
+    zz_w34_probe_test.go:202: PROBE opt Timeout inline=24/2824 (+2/176) max=24/2824 hoisted=24/2824 (+2/176) max=24/2824
+    zz_w34_probe_test.go:191: runs of opt ExtraBody inline                   mallocs/bytes: 26/2864 26/2864 26/2864 26/2864 26/2864
+    zz_w34_probe_test.go:198: runs of opt ExtraBody hoisted                  mallocs/bytes: 24/2840 24/2840 24/2840 24/2840 24/2840
+    zz_w34_probe_test.go:202: PROBE opt ExtraBody inline=26/2864 (+4/216) max=26/2864 hoisted=24/2840 (+2/192) max=24/2840
+    zz_w34_probe_test.go:191: runs of opt Retry inline                       mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:198: runs of opt Retry hoisted                      mallocs/bytes: 23/2808 23/2808 23/2808 23/2808 23/2808
+    zz_w34_probe_test.go:202: PROBE opt Retry inline=23/2808 (+1/160) max=23/2808 hoisted=23/2808 (+1/160) max=23/2808
+    zz_w34_probe_test.go:191: runs of opt all5 inline                        mallocs/bytes: 35/3456 35/3456 35/3456 35/3456 35/3456
+    zz_w34_probe_test.go:198: runs of opt all5 hoisted                       mallocs/bytes: 33/3432 33/3432 33/3432 33/3432 33/3432
+    zz_w34_probe_test.go:202: PROBE opt all5 inline=35/3456 (+13/808) max=35/3456 hoisted=33/3432 (+11/784) max=33/3432
+--- PASS: TestW34Probe (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	0.126s
+# exit 0 at 2026-09-26 13:13:41 JST
+# load after: 13:13  up 4 days, 12:19, 1 user, load averages: 30.55 13.97 9.90 | kernel: { 30.55 13.97 9.90 }

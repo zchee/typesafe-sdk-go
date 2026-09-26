@@ -1,0 +1,93 @@
+# 2026-09-26 13:14:54 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret go test -run ^$ -bench ^BenchmarkCall$ -benchmem -count=10 ./internal/benchmark/
+# load before: 13:14  up 4 days, 12:20, 1 user, load averages: 13.10 12.18 9.54 | kernel: { 13.10 12.18 9.54 } (MAXLOAD=16, waited 1 x 60 s)
+# base: 1f694b0
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Apple M3 Max
+BenchmarkCall/sdk-16         	  172359	      7385 ns/op	    2977 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  216517	      5255 ns/op	    3035 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  234622	      5166 ns/op	    3096 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  237778	      5290 ns/op	    3075 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  237982	      5052 ns/op	    3040 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  227221	      5934 ns/op	    2983 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  233318	      5237 ns/op	    3048 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  237111	      5108 ns/op	    3086 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  231991	      5159 ns/op	    3020 B/op	      22 allocs/op
+BenchmarkCall/sdk-16         	  228042	      5627 ns/op	    2980 B/op	      22 allocs/op
+BenchmarkCall/floor-16       	 2356544	       483.1 ns/op	     677 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2591396	       461.1 ns/op	     674 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2483424	       483.3 ns/op	     680 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2541590	       496.5 ns/op	     676 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2290848	       514.4 ns/op	     680 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2382061	       501.5 ns/op	     679 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2429317	       498.5 ns/op	     682 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2308636	       510.0 ns/op	     685 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2292711	       519.5 ns/op	     689 B/op	       8 allocs/op
+BenchmarkCall/floor-16       	 2434401	       527.8 ns/op	     683 B/op	       8 allocs/op
+BenchmarkCall/naive-16       	  287275	      4697 ns/op	   11510 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  278643	      4079 ns/op	   11839 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  304552	      4058 ns/op	   12013 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  306043	      4010 ns/op	   12322 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  295695	      4003 ns/op	   11855 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  286101	      4033 ns/op	   11678 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  276874	      4506 ns/op	   11567 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  304777	      4003 ns/op	   11539 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  293491	      3868 ns/op	   11393 B/op	      54 allocs/op
+BenchmarkCall/naive-16       	  326066	      3708 ns/op	   11445 B/op	      54 allocs/op
+BenchmarkCall/naive-json-16  	  142257	      8760 ns/op	    7903 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  135600	     10201 ns/op	    7902 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  137755	      8734 ns/op	    7902 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  125581	      9362 ns/op	    7904 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  134397	      8571 ns/op	    7902 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  135630	      9096 ns/op	    7901 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  136495	      8520 ns/op	    7902 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  130351	     10296 ns/op	    7903 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  131263	      9945 ns/op	    7902 B/op	     114 allocs/op
+BenchmarkCall/naive-json-16  	  118332	     11000 ns/op	    7903 B/op	     114 allocs/op
+BenchmarkCall/sdk-q20-16     	   45998	     29246 ns/op	   11431 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   44874	     26737 ns/op	   11551 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   41600	     28611 ns/op	   11327 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   44872	     26888 ns/op	   11567 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   45681	     31405 ns/op	   11410 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   40287	     27690 ns/op	   11603 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   39537	     26455 ns/op	   11390 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   47925	     28045 ns/op	   11348 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   47918	     26262 ns/op	   11344 B/op	      42 allocs/op
+BenchmarkCall/sdk-q20-16     	   47160	     25166 ns/op	   11608 B/op	      42 allocs/op
+BenchmarkCall/floor-q20-16   	 2191497	       558.3 ns/op	     689 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2083230	       561.1 ns/op	     692 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2093364	       558.4 ns/op	     694 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2073022	       588.6 ns/op	     693 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 1911512	       610.6 ns/op	     693 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2086394	       558.0 ns/op	     691 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2074903	       565.3 ns/op	     692 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2198532	       545.0 ns/op	     693 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2248110	       534.2 ns/op	     690 B/op	       8 allocs/op
+BenchmarkCall/floor-q20-16   	 2242578	       538.2 ns/op	     694 B/op	       8 allocs/op
+BenchmarkCall/naive-q20-16   	   83618	     14143 ns/op	   41827 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   81687	     13774 ns/op	   41683 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   95822	     13445 ns/op	   41038 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   90879	     13157 ns/op	   41806 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   86546	     13559 ns/op	   41718 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   90558	     13896 ns/op	   41925 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   89860	     13624 ns/op	   41559 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   79206	     13336 ns/op	   41392 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   82772	     13890 ns/op	   42237 B/op	     127 allocs/op
+BenchmarkCall/naive-q20-16   	   92487	     13557 ns/op	   41196 B/op	     127 allocs/op
+BenchmarkCall/naive-json-q20-16         	   29216	     45842 ns/op	   31029 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   28804	     41850 ns/op	   31040 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   27778	     55047 ns/op	   31013 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   22987	     48314 ns/op	   31026 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   29084	     40282 ns/op	   31029 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   30260	     40129 ns/op	   31033 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   28555	     42865 ns/op	   31033 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   28558	     45732 ns/op	   31018 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   29679	     41629 ns/op	   31034 B/op	     517 allocs/op
+BenchmarkCall/naive-json-q20-16         	   28648	     41130 ns/op	   31037 B/op	     517 allocs/op
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	97.692s
+# exit 0 at 2026-09-26 13:16:32 JST
+# load after: 13:16  up 4 days, 12:22, 1 user, load averages: 17.44 13.45 10.30 | kernel: { 17.44 13.45 10.30 }

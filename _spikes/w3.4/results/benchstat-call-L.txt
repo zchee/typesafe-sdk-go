@@ -1,0 +1,39 @@
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go/internal/benchmark
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+                       │ call-L.txt  │
+                       │   sec/op    │
+Call/sdk-44              6.205µ ± 0%
+Call/floor-44            765.2n ± 0%
+Call/naive-44            6.969µ ± 3%
+Call/naive-json-44       16.90µ ± 2%
+Call/sdk-q20-44          25.89µ ± 0%
+Call/floor-q20-44        799.9n ± 0%
+Call/naive-q20-44        26.42µ ± 1%
+Call/naive-json-q20-44   77.26µ ± 0%
+geomean                  8.350µ
+
+                       │  call-L.txt  │
+                       │     B/op     │
+Call/sdk-44              2.924Ki ± 1%
+Call/floor-44              694.0 ± 0%
+Call/naive-44            8.775Ki ± 0%
+Call/naive-json-44       7.760Ki ± 0%
+Call/sdk-q20-44          11.13Ki ± 1%
+Call/floor-q20-44          692.0 ± 0%
+Call/naive-q20-44        33.84Ki ± 0%
+Call/naive-json-q20-44   30.48Ki ± 0%
+geomean                  5.656Ki
+
+                       │ call-L.txt │
+                       │ allocs/op  │
+Call/sdk-44              22.00 ± 0%
+Call/floor-44            8.000 ± 0%
+Call/naive-44            68.00 ± 0%
+Call/naive-json-44       114.0 ± 0%
+Call/sdk-q20-44          42.00 ± 0%
+Call/floor-q20-44        8.000 ± 0%
+Call/naive-q20-44        247.0 ± 0%
+Call/naive-json-q20-44   517.0 ± 0%
+geomean                  52.59
