@@ -1,0 +1,62 @@
+# W6.1 C: the ci.yaml fuzz step's bash, extracted from the YAML (steps["Fuzz every target"].run) and run by $MY/runstep.sh
+# under Actions' flags (bash --noprofile --norc -eo pipefail) in a throwaway detached worktree of the wave's tree (never pushed),
+# on (M) go1.27.1 darwin/arm64, GOEXPERIMENT=nosimd,noruntimesecret, 2026-09-26 17:41:29-17:42:55 JST, outside the bench lock (checked free).
+# P1/P2 use throwaway targets FuzzProofPanic (panics on any input of 2+ bytes) and FuzzProofHang (blocks past the 10 s bound);
+# collected = the files the step copied for the artifact (P2 also collects P1's input, left in that tree).
+# every other declared target moved to the seeded list so the guards pass; P3-P5 change only the lists.
+
+## P3-unlisted: step exit 1
+::error::fuzz targets in neither list: ./internal/codec FuzzProofUnlisted,
+
+## P4-missing-name: step exit 1
+::error::go test -list does not find FuzzDecodePathz in ./internal/codec
+
+## P5-empty: step exit 1
+::error::no fuzz target listed
+
+## P1-panic: step exit 1; wall 3 s
+::group::FuzzProofPanic (./internal/codec) for 20s
+fuzz: minimizing 58-byte failing input file
+--- FAIL: FuzzProofPanic (0.03s)
+    --- FAIL: FuzzProofPanic (0.00s)
+        testing.go:2076: panic: proof: an input the fuzz job must report
+    Failing input written to testdata/fuzz/FuzzProofPanic/8727b16d337d7b81
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	0.038s
+::error::FuzzProofPanic failed
+failing input internal/codec/testdata/fuzz/FuzzProofPanic/8727b16d337d7b81:
+::error::fuzz targets that failed: FuzzProofPanic
+
+## P2-hang: step exit 1; wall 10 s
+::group::FuzzProofHang (./internal/codec) for 25s
+--- FAIL: FuzzProofHang (10.03s)
+    fuzzing process hung or terminated unexpectedly: exit status 2
+    Failing input written to testdata/fuzz/FuzzProofHang/d2de14222ddbb9ab
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/codec	10.048s
+::error::FuzzProofHang failed
+failing input internal/codec/testdata/fuzz/FuzzProofHang/d2de14222ddbb9ab:
+failing input internal/codec/testdata/fuzz/FuzzProofPanic/8727b16d337d7b81:
+::error::fuzz targets that failed: FuzzProofHang
+
+## P6-happy: step exit 0; wall 23 s
+::group::FuzzDecodeResponse (./internal/codec) for 2s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.074s
+::group::FuzzErrorBody (./internal/codec) for 2s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.052s
+::group::FuzzDecodePaths (./internal/codec) for 2s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	3.030s
+::group::FuzzRetryAfter (.) for 2s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	3.029s
+::group::FuzzTagGrammar (.) for 2s
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	3.094s
+
+## P3 again at the rebase onto 93e9db1: step exit 1
+# 2026-09-27 01:42:27 JST, the step as committed, extracted and run the same way (FUZZTIME=1s) at the rebased C
+# before its fuzzed list named W5.3's two root targets; the guard stops before any fuzzing.
+::error::fuzz targets in neither list: . FuzzFalsyJSON,. FuzzIsSecretHeader,
