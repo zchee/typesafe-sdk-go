@@ -1,12 +1,14 @@
-# 2026-09-26 01:35:21 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -timeout 60m -race -count=1 ./...
-# load before:  01:35:21 up 1 day, 21:00,  3 users,  load average: 3.17, 20.91, 17.40 | kernel: 3.17 20.91 17.40 1/622 379726 (MAXLOAD=none, waited 0 x 60 s)
-# base: 662799c
+# 2026-09-26 06:17:09 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -timeout 60m -race -count=1 ./...
+# load before:  06:17:09 up 2 days,  1:42,  2 users,  load average: 0.00, 0.02, 0.06 | kernel: 0.00 0.02 0.06 1/620 533252 (MAXLOAD=none, waited 0 x 60 s)
+# base: 306af0d
 go version go1.27.1 linux/amd64
 [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
-ok  	github.com/zchee/typesafe-sdk-go	7.476s
-ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.024s
-ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.790s
-ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.344s
-ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.042s
-# exit 0 at 2026-09-26 01:35:36 UTC
-# load after:  01:35:36 up 1 day, 21:00,  3 users,  load average: 2.76, 19.95, 17.14 | kernel: 2.76 19.95 17.14 1/622 380529
+ok  	github.com/zchee/typesafe-sdk-go	12.651s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.112s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	4.057s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.872s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.380s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.084s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.043s
+# exit 0 at 2026-09-26 06:17:26 UTC
+# load after:  06:17:26 up 2 days,  1:42,  2 users,  load average: 0.13, 0.05, 0.07 | kernel: 0.13 0.05 0.07 1/620 534171

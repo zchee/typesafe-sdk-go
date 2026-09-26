@@ -1,6 +1,6 @@
-# 2026-09-26 01:35:20 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocTypedDecode$ -v .
-# load before:  01:35:20 up 1 day, 21:00,  3 users,  load average: 3.17, 20.91, 17.40 | kernel: 3.17 20.91 17.40 1/622 379486 (MAXLOAD=none, waited 0 x 60 s)
-# base: 662799c
+# 2026-09-26 06:17:07 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= go test -count=1 -run ^TestAllocTypedDecode$ -v .
+# load before:  06:17:07 up 2 days,  1:42,  2 users,  load average: 0.00, 0.02, 0.06 | kernel: 0.00 0.02 0.06 1/620 533013 (MAXLOAD=none, waited 0 x 60 s)
+# base: 306af0d
 go version go1.27.1 linux/amd64
 [goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
 === RUN   TestAllocTypedDecode
@@ -11,6 +11,6 @@ go version go1.27.1 linux/amd64
     alloc_typed_test.go:95: TYPED result bytes=364 answersDecode=4/688 decodeAs=1/144 systemOne=22/2648 ask=23/2792 (AC-P3: decodeAs < answersDecode; AC-P6: ask = systemOne + decodeAs)
 --- PASS: TestAllocTypedDecode (0.00s)
 PASS
-ok  	github.com/zchee/typesafe-sdk-go	0.011s
-# exit 0 at 2026-09-26 01:35:21 UTC
-# load after:  01:35:21 up 1 day, 21:00,  3 users,  load average: 3.17, 20.91, 17.40 | kernel: 3.17 20.91 17.40 1/622 379716
+ok  	github.com/zchee/typesafe-sdk-go	0.010s
+# exit 0 at 2026-09-26 06:17:09 UTC
+# load after:  06:17:09 up 2 days,  1:42,  2 users,  load average: 0.00, 0.02, 0.06 | kernel: 0.00 0.02 0.06 1/620 533242
