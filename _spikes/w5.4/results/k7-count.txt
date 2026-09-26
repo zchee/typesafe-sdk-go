@@ -45,3 +45,9 @@
 36103663042	2bce15a	completed	success	2026-09-25T06:36:59Z	not counted
 36102193024	91b4fe4	completed	success	2026-09-25T06:17:18Z	not counted
 36102057697	ad34b2e	completed	failure	2026-09-25T06:15:30Z	not counted
+
+# K7 count: 2026-09-26 15:25:33 JST; same command; counted = successful runs with databaseId >= 36221839206, per CPU model (ruling R109): 36221839206 AMD EPYC 7763, 36223111400 AMD EPYC 9V74 (CodSpeed compare_runs)
+36223111400	7778166	completed	success	2026-09-26T06:13:35Z	counted
+36221839206	aaa9698	completed	success	2026-09-26T05:47:28Z	counted
+36220416172	3ffe77b	completed	success	2026-09-26T05:18:40Z	not counted
+36218293900	f048059	completed	success	2026-09-26T04:35:38Z	not counted
