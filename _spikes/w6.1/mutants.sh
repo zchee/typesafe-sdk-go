@@ -72,5 +72,14 @@ mutant B-M7-skipped-last-only internal/codec/decode.go \
 mutant B-M8-lazy-raw-cut internal/codec/lazy.go \
 	's/\t\t\td.raws\[base\+j\] = raw\n/\t\t\td.raws[base+j] = raw[:len(raw)-1]\n/' $B '^FuzzDecodePaths$'
 
+# D/K39: refusedConn hands out a closed listener's address again, or
+# closes the connection that holds its port. TestRefusedAddr checks that the
+# address is the held connection's local end and that the connection is
+# still open, which does not depend on the OS (D-W6.1-k39-shape).
+mutant D-K39-closed-listener internal/testsupport/refused.go \
+	's/return held.LocalAddr\(\).String\(\), held/return ln.Addr().String(), held/' ./internal/testsupport/ '^TestRefusedAddr$'
+mutant D-K39-held-closed internal/testsupport/refused.go \
+	's/(\treturn held.LocalAddr\(\).String\(\), held\n)/\t_ = held.Close()\n$1/' ./internal/testsupport/ '^TestRefusedAddr$'
+
 echo "# $(date '+%Y-%m-%d %H:%M:%S %Z') mutants not killed (survived, not applied or not built): $fails"
 exit "$fails"

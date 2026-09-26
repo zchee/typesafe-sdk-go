@@ -1,0 +1,8 @@
+# W6.1 D/K39 (D-W6.1-k39-shape) on (M): go1.27.1 darwin/arm64, GOEXPERIMENT=nosimd,noruntimesecret, the wave's tree with refusedConn; the verbose output counted by name
+# command: go test -race -count=200 -run '^(TestProxyRefusals|TestRefusedAddr)$' -v ./internal/testsupport/ | grep ... | sort | uniq -c
+start 2026-09-26 19:47:10 JST load { 253.66 129.64 82.78 }
+    200 --- PASS: TestProxyRefusals
+    200 --- PASS: TestRefusedAddr
+      1 PASS
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	6.025s
+exit 0 end 2026-09-26 19:47:16 JST load { 233.74 127.57 82.32 }

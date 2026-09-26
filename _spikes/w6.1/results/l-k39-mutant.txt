@@ -1,0 +1,15 @@
+# W6.1 D/K39 (D-W6.1-k39-shape) on (L): mutants.sh's two D-K39 mutants, each applied in turn to a throwaway copy of the wave's tree
+# (/tmp/ts-spike/src-w6.1-k39) and restored after, TestRefusedAddr -count=3 each under flock /tmp/ts-spike/bench.lock; ports written as PORT.
+## D-K39-closed-listener: refusedConn returns the closed listener's address
+# 2026-09-26 10:52:31 UTC (L) mutant D-K39-closed-listener (applied: yes); TestRefusedAddr -count=3, lock held
+      3     refused_test.go:63: address 127.0.0.1:PORT is not the held connection's local end 127.0.0.1:PORT
+      3 --- FAIL: TestRefusedAddr
+      2 FAIL
+      1 FAIL	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.005s
+## D-K39-held-closed: refusedConn closes the held connection before it returns
+# 2026-09-26 10:52:31 UTC (L) mutant D-K39-held-closed (applied: yes); TestRefusedAddr -count=3, lock held
+      3     refused_test.go:68: set a read deadline on the held connection: set tcp 127.0.0.1:PORT: use of closed network connection
+      3 --- FAIL: TestRefusedAddr
+      2 FAIL
+      1 FAIL	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.005s
+# end 2026-09-26 10:52:32 UTC

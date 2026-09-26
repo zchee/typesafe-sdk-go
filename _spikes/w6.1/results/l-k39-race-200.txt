@@ -1,0 +1,7 @@
+# 2026-09-26 10:52:24 UTC (L) K39 (refusedConn): -race -count=200 TestProxyRefusals, TestRefusedAddr; lock /tmp/ts-spike/bench.lock held; load 0.95 1.00 1.42
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+    200 --- PASS: TestProxyRefusals
+    200 --- PASS: TestRefusedAddr
+      1 ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	5.526s
+# end 2026-09-26 10:52:31 UTC; load 0.95 1.00 1.41
