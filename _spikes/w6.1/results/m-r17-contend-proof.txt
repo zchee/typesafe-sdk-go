@@ -1,0 +1,37 @@
+# W6.1 D/R17 on (M), go1.27.1 darwin/arm64: contend.sh against a throwaway lock ($MY/r17.lock) with no busy loops and one quick test;
+# r17-proof.sh runs the script in the background and, once its header says the lock is taken (the '# load with' line), runs
+# /opt/homebrew/opt/util-linux/bin/flock -n on the lock from outside: held = that second lock failed. (The kill usage line is the script's
+# 'kill $pids' with no loops started, LOOPS=0 being a proof-only setting.)
+# The old-main section is kept from the first run (2026-09-26 18:52); the new sections ran again with this commit's script (fd 9 closed in
+# the busy loops). r17-orphan.sh (last section) runs contend.sh with one busy loop against a throwaway lock ($MY/r17o.lock), SIGKILLs the
+# script once its header says the loop runs, waits until go test has ended, and then asks flock -n and lsof whether and by whom the lock
+# is held; the orphaned yes loop is killed by pid at the end. It ran under the (M) bench lock taken with flock -n -o, so no child held it.
+
+## 2026-09-26 18:52:09 JST old-main (origin/main), FLOCK unset
+old-main: exit 0; lock held during the run: no; stderr: $MY/contend.main.sh: line 27: flock: command not found kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec] 
+# 2026-09-26 18:52:09 JST (M) tree=7dcdcd1+changes lock=$MY
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.012s
+
+## 2026-09-26 19:48:32 JST new (this commit), FLOCK unset
+new: exit 0; lock held during the run: yes; stderr: kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec] 
+# 2026-09-26 19:48:32 JST (M) tree=b8ec13f+changes lock=$MY
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.012s
+
+## 2026-09-26 19:48:38 JST new, FLOCK=/nonexistent/flock
+missing: exit 1; lock held during the run: unknown; stderr: $MY/wt-r17/_spikes/w2.2/contend.sh: line 41: /nonexistent/flock: No such file or directory contend.sh: cannot lock $MY/r17.lock with /nonexistent/flock 
+
+## r17-orphan.sh: b8ec13f's contend.sh (old) and this commit's (new)
+# the (M) bench lock $SCRATCHPAD/bench.lock held (flock -n -o, so no child inherits it) from 2026-09-26 19:46:11 JST
+## b8ec13f contend.sh (old)
+old: 2026-09-26 19:46:17 JST SIGKILLed the script (pid 48600) after: # load with 1 loops: 19:46  up 4 days, 1
+old: go test ended: ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.022s
+old: yes loops started by this run still running: [49773 ] (parent pid: 1 )
+old: lock held after the script's death: yes; processes with the lock file open: [49773(yes) ]
+old: after killing the orphans: lock held: no; left: []
+## this commit contend.sh (new)
+new: 2026-09-26 19:46:37 JST SIGKILLed the script (pid 57364) after: # load with 1 loops: 19:46  up 4 days, 1
+new: go test ended: ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.018s
+new: yes loops started by this run still running: [57430 ] (parent pid: 1 )
+new: lock held after the script's death: no; processes with the lock file open: []
+new: after killing the orphans: lock held: no; left: []
+# end 2026-09-26 19:46:52 JST
