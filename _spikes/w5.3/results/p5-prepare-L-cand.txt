@@ -1,0 +1,178 @@
+# 2026-09-26 10:52:32 UTC (L) lock=/tmp/ts-spike/bench.lock GOEXPERIMENT= cand.test -test.run ^$ -test.bench ^Benchmark(Prepare|FalsyJSON)$ -test.benchmem -test.count 2
+# load before:  10:52:32 up 2 days,  6:17,  2 users,  load average: 0.95, 1.00, 1.41 | kernel: 0.95 1.00 1.41 2/617 736671 (MAXLOAD=2, waited 0 x 60 s)
+# commit: e178067
+# rounds: 5, alternating base and cand
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+# round 1 at 2026-09-26 10:53:05 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1174 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1176 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6142636	       196.2 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6142402	       196.3 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57710	     20800 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57715	     20931 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   72901	     16374 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   72499	     16386 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28554	     41948 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28455	     42331 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13098	     91613 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13084	     91681 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  202693	      5846 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  204018	      5861 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26352	     45475 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26521	     45368 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26565	     45256 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26158	     45713 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6367	    190591 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6295	    191190 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6140	    191945 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6054	    192824 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkFalsyJSON/array-44                     	198723988	         6.047 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-44                     	199483875	         6.021 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	151460728	         7.920 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	156776880	         7.612 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	200745448	         5.964 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	201573193	         5.943 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 2 at 2026-09-26 10:54:12 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkPrepare/c1-sketch-44         	  966556	      1177 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1178 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6027499	       197.8 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6085725	       195.9 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57925	     20737 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   58094	     20697 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   73062	     16444 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   72772	     16423 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28580	     41897 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28740	     41944 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13124	     91445 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13134	     91478 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  200883	      5786 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  209316	      5750 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26811	     44786 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26638	     44884 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26592	     45228 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26475	     45322 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6207	    188326 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6338	    188386 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6194	    189789 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6206	    189975 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkFalsyJSON/array-44                     	198127928	         6.048 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-44                     	197439236	         6.052 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	156153178	         7.821 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	150301360	         7.956 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	202388188	         5.933 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	201422496	         5.948 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 3 at 2026-09-26 10:55:19 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1172 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1174 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6162520	       194.9 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6136262	       195.5 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57547	     20731 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57765	     20711 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   73051	     16419 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   72868	     16565 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28560	     42016 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28579	     42023 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13081	     91694 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13052	     91874 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  201673	      5784 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  206908	      5808 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26743	     44789 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26754	     45345 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26323	     45362 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26469	     45182 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6357	    189112 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6374	    188729 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6153	    190445 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6337	    190732 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkFalsyJSON/array-44                     	199084408	         6.034 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-44                     	197740872	         6.057 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	151638962	         7.975 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	153889670	         7.757 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	202645302	         5.918 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	202411936	         5.928 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 4 at 2026-09-26 10:56:26 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1168 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1172 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6142012	       195.6 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6164793	       195.6 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57716	     20804 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57460	     20781 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   73792	     16346 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   73364	     16447 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28376	     42342 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28106	     42289 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13018	     92197 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13016	     92054 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  204528	      5833 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  206900	      5812 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26420	     45328 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26583	     45203 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26444	     45530 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26331	     45529 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6268	    188817 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6280	    189038 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6183	    190199 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6340	    190513 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkFalsyJSON/array-44                     	198370918	         6.046 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-44                     	199087666	         6.012 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	154970505	         7.773 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	153802054	         7.758 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	200705127	         5.959 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	201537645	         5.967 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 5 at 2026-09-26 10:57:33 UTC
+goos: linux
+goarch: amd64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Intel(R) Xeon(R) Platinum 8481C CPU @ 2.70GHz
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1175 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-44         	 1000000	      1172 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6156867	       196.1 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c2-noul-short-44     	 6052746	       196.8 ns/op	     224 B/op	       3 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57884	     20865 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c3-choice-20x10-44   	   57789	     20797 ns/op	   15512 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   73118	     16486 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-44         	   73142	     16457 ns/op	   17304 B/op	       8 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28564	     42042 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-44         	   28575	     42047 ns/op	   33560 B/op	       9 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13104	     91612 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-44                	   13033	     92041 ns/op	   33968 B/op	      14 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  202648	      5823 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/c6-escapes-44                  	  209514	      5828 ns/op	    8464 B/op	       9 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26728	     44929 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-control-44           	   26626	     44950 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26478	     45408 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8a-array-score-44             	   26598	     45152 ns/op	   24456 B/op	      10 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6270	    193528 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-control-44             	    6267	    191811 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6199	    192662 ns/op	  105520 B/op	      13 allocs/op
+BenchmarkPrepare/n8b-map-score-44               	    6154	    192070 ns/op	  105521 B/op	      13 allocs/op
+BenchmarkFalsyJSON/array-44                     	199414862	         6.020 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-44                     	198873418	         6.032 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	155374447	         7.698 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-44                       	154756892	         7.797 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	201685044	         5.948 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-44                 	202150992	         5.927 ns/op	       0 B/op	       0 allocs/op
+PASS
+# exit 0 at 2026-09-26 10:58:07 UTC
+# load after:  10:58:07 up 2 days,  6:23,  1 user,  load average: 1.06, 1.12, 1.34 | kernel: 1.06 1.12 1.34 1/613 736999

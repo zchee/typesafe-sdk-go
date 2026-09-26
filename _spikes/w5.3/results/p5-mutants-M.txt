@@ -1,0 +1,45 @@
+# P5 (one array per table kind) mutants over the working tree, 2026-09-26 19:34:27 JST, (M), not under the bench lock
+== mutant a a table not capped
+vet ok
+--- FAIL: TestPrepareTablesOwnArrays (0.00s)
+--- FAIL: TestCutTables (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.065s
+FAIL
+killed
+== mutant b the arena not advanced
+vet ok
+--- FAIL: TestPrepareTablesOwnArrays (0.00s)
+--- FAIL: TestCutTables (0.00s)
+FAIL	github.com/zchee/typesafe-sdk-go	0.023s
+FAIL
+killed
+== mutant c the options not counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c3-choice-20x10 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.059s
+FAIL
+killed
+== mutant d the levels not counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c4a-score-20x8-text (0.00s)
+    --- FAIL: TestAllocPrepare/c4b-score-20x8-json (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.057s
+FAIL
+killed
+== mutant e the last table falls back
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c1-sketch (0.00s)
+    --- FAIL: TestAllocPrepare/c3-choice-20x10 (0.00s)
+    --- FAIL: TestAllocPrepare/c4a-score-20x8-text (0.00s)
+    --- FAIL: TestAllocPrepare/c4b-score-20x8-json (0.00s)
+--- FAIL: TestCutTables (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.059s
+FAIL
+killed

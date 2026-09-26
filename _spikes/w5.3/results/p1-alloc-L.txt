@@ -1,0 +1,151 @@
+# 2026-09-26 10:31:26 UTC (L) TestAllocPrepare -count=5 before (c53a291) and after (133b642), ci.yaml's allocation-budget step and the wire and root tests at 133b642; load 1.06 1.05 2.66 1/615 731214
+go version go1.27.1 linux/amd64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.dwarf5 goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc amd64.v1]
+## c53a291
+    alloc_prepare_test.go:68: c1-sketch: 9 mallocs, 1016 bytes; prepared 340 bytes
+    alloc_prepare_test.go:68: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:68: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:68: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:68: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:68: c5-raw-100x3: 1710 mallocs, 78080 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:68: c6-escapes: 12 mallocs, 8536 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:68: n8a-array-control: 132 mallocs, 58840 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8a-array-score: 252 mallocs, 110040 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8b-map-control: 615 mallocs, 271744 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:68: n8b-map-score: 1215 mallocs, 514944 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:68: c1-sketch: 9 mallocs, 1016 bytes; prepared 340 bytes
+    alloc_prepare_test.go:68: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:68: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:68: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:68: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:68: c5-raw-100x3: 1710 mallocs, 78080 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:68: c6-escapes: 12 mallocs, 8536 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:68: n8a-array-control: 132 mallocs, 58840 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8a-array-score: 252 mallocs, 110040 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8b-map-control: 615 mallocs, 271744 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:68: n8b-map-score: 1215 mallocs, 514944 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:68: c1-sketch: 9 mallocs, 1016 bytes; prepared 340 bytes
+    alloc_prepare_test.go:68: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:68: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:68: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:68: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:68: c5-raw-100x3: 1710 mallocs, 78080 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:68: c6-escapes: 12 mallocs, 8536 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:68: n8a-array-control: 132 mallocs, 58840 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8a-array-score: 252 mallocs, 110040 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8b-map-control: 615 mallocs, 271744 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:68: n8b-map-score: 1215 mallocs, 514944 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:68: c1-sketch: 9 mallocs, 1016 bytes; prepared 340 bytes
+    alloc_prepare_test.go:68: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:68: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:68: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:68: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:68: c5-raw-100x3: 1710 mallocs, 78080 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:68: c6-escapes: 12 mallocs, 8536 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:68: n8a-array-control: 132 mallocs, 58840 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8a-array-score: 252 mallocs, 110040 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8b-map-control: 615 mallocs, 271744 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:68: n8b-map-score: 1215 mallocs, 514944 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:68: c1-sketch: 9 mallocs, 1016 bytes; prepared 340 bytes
+    alloc_prepare_test.go:68: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:68: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:68: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:68: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:68: c5-raw-100x3: 1710 mallocs, 78080 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:68: c6-escapes: 12 mallocs, 8536 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:68: n8a-array-control: 132 mallocs, 58840 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8a-array-score: 252 mallocs, 110040 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:68: n8b-map-control: 615 mallocs, 271744 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:68: n8b-map-score: 1215 mallocs, 514944 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+ok  	github.com/zchee/typesafe-sdk-go	0.051s
+## 133b642
+    alloc_prepare_test.go:70: c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+    alloc_prepare_test.go:70: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:70: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:70: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:70: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:70: c5-raw-100x3: 14 mallocs, 31920 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:70: c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:70: n8a-array-control: 15 mallocs, 55432 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8a-array-score: 135 mallocs, 106632 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8b-map-control: 18 mallocs, 254256 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:70: n8b-map-score: 618 mallocs, 497456 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:70: c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+    alloc_prepare_test.go:70: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:70: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:70: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:70: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:70: c5-raw-100x3: 14 mallocs, 31920 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:70: c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:70: n8a-array-control: 15 mallocs, 55432 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8a-array-score: 135 mallocs, 106632 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8b-map-control: 18 mallocs, 254256 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:70: n8b-map-score: 618 mallocs, 497456 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:70: c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+    alloc_prepare_test.go:70: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:70: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:70: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:70: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:70: c5-raw-100x3: 14 mallocs, 31920 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:70: c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:70: n8a-array-control: 15 mallocs, 55432 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8a-array-score: 135 mallocs, 106632 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8b-map-control: 18 mallocs, 254256 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:70: n8b-map-score: 618 mallocs, 497456 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:70: c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+    alloc_prepare_test.go:70: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:70: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:70: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:70: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:70: c5-raw-100x3: 14 mallocs, 31920 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:70: c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:70: n8a-array-control: 15 mallocs, 55432 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8a-array-score: 135 mallocs, 106632 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8b-map-control: 18 mallocs, 254256 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:70: n8b-map-score: 618 mallocs, 497456 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+    alloc_prepare_test.go:70: c1-sketch: 6 mallocs, 944 bytes; prepared 340 bytes
+    alloc_prepare_test.go:70: c2-noul-short: 3 mallocs, 224 bytes; prepared 47 bytes
+    alloc_prepare_test.go:70: c3-choice-20x10: 27 mallocs, 15256 bytes; prepared 8411 bytes
+    alloc_prepare_test.go:70: c4a-score-20x8-text: 27 mallocs, 17176 bytes; prepared 7611 bytes
+    alloc_prepare_test.go:70: c4b-score-20x8-json: 36 mallocs, 44408 bytes; prepared 14491 bytes
+    alloc_prepare_test.go:70: c5-raw-100x3: 14 mallocs, 31920 bytes; prepared 15681 bytes
+    alloc_prepare_test.go:70: c6-escapes: 9 mallocs, 8464 bytes; prepared 2888 bytes
+    alloc_prepare_test.go:70: n8a-array-control: 15 mallocs, 55432 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8a-array-score: 135 mallocs, 106632 bytes; prepared 14681 bytes
+    alloc_prepare_test.go:70: n8b-map-control: 18 mallocs, 254256 bytes; prepared 64581 bytes
+    alloc_prepare_test.go:70: n8b-map-score: 618 mallocs, 497456 bytes; prepared 64581 bytes
+--- PASS: TestAllocPrepare (0.01s)
+ok  	github.com/zchee/typesafe-sdk-go	0.050s
+## ci.yaml allocation-budget step at 133b642
+step-exit 0
+--- PASS: TestAllocWholeCall (0.00s)
+--- PASS: TestMemStatsCap (0.40s)
+--- PASS: TestLinearityFloodTime (2.58s)
+--- PASS: TestAllocDecodeFixtures (0.13s)
+--- PASS: TestLinearityFlood (0.07s)
+--- PASS: TestAllocEncode (1.87s)
+--- PASS: TestAllocResponseJSON (0.01s)
+--- PASS: TestAllocPrepare (0.01s)
+--- PASS: TestAllocScratchSequence (3.33s)
+--- PASS: TestAllocLoggedCall (0.01s)
+--- PASS: TestAllocRequestID (0.00s)
+--- PASS: TestAllocTypedDecode (0.01s)
+ok  	github.com/zchee/typesafe-sdk-go	8.429s
+--- PASS: TestLazyPassAllocations (0.02s)
+--- PASS: TestEncodeStateAllocations (0.00s)
+--- PASS: TestNewBodyAllocations (0.00s)
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.040s
+## go test -count=1 ./internal/wire/ . at 133b642
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.014s
+ok  	github.com/zchee/typesafe-sdk-go	15.187s
+test-exit 0
+# end 2026-09-26 10:31:53 UTC load 2.35 1.38 2.73 1/614 732318

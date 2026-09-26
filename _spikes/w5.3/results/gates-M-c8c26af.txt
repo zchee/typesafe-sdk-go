@@ -1,0 +1,38 @@
+# gates at c8c26af start 2026-09-26 19:51:44 JST load: 7.98 55.22 61.57
+ok build+vet
+0 issues.
+No vulnerabilities found.
+ok lint chain
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.572s
+ok  	github.com/zchee/typesafe-sdk-go	46.130s
+ok  	github.com/zchee/typesafe-sdk-go/internal/benchmark	1.077s
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	6.206s
+ok  	github.com/zchee/typesafe-sdk-go/internal/h2gate	10.700s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	2.166s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport/naive	1.050s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	1.039s
+ok race
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	1.081s
+ok  	github.com/zchee/typesafe-sdk-go/internal/wire	0.017s
+ok  	github.com/zchee/typesafe-sdk-go/internal/testsupport	0.606s
+--- PASS: TestAllocWholeCall (0.00s)
+--- PASS: TestMemStatsCap (0.13s)
+--- PASS: TestLinearityFloodTime (2.57s)
+--- PASS: TestAllocDecodeFixtures (0.11s)
+--- PASS: TestLinearityFlood (0.06s)
+--- PASS: TestAllocEncode (1.87s)
+--- PASS: TestAllocResponseJSON (0.01s)
+--- PASS: TestAllocPrepare (0.01s)
+--- PASS: TestAllocFalsyJSON (0.00s)
+--- PASS: TestAllocScratchSequence (2.26s)
+--- PASS: TestAllocLoggedCall (0.01s)
+--- PASS: TestAllocRequestID (0.00s)
+--- PASS: TestAllocTypedDecode (0.01s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	7.059s
+--- PASS: TestLazyPassAllocations (0.02s)
+--- PASS: TestEncodeStateAllocations (0.00s)
+--- PASS: TestNewBodyAllocations (0.00s)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go/internal/codec	0.037s
+# gates ok at c8c26af end 2026-09-26 19:53:01 JST

@@ -1,0 +1,58 @@
+# 2026-09-26 20:02:49 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret base.test -test.run ^$ -test.bench ^BenchmarkPrepare$/^(c4a-score-20x8-text|c4b-score-20x8-json)$ -test.benchmem -test.count 2
+# load before: 20:02  up 4 days, 19:08, 1 user, load averages: 9.17 13.33 32.49 | kernel: { 9.17 13.33 32.49 } (MAXLOAD=10, waited 0 x 60 s)
+# commit: 035934a
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-26 20:02:49 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c4a-score-20x8-text-16         	  112892	     10239 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	  122016	      9795 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   40768	     35117 ns/op	   44408 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   41808	     28777 ns/op	   44408 B/op	      36 allocs/op
+PASS
+# round 2 at 2026-09-26 20:03:00 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c4a-score-20x8-text-16         	   47042	     29258 ns/op	   17177 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	   38611	     27821 ns/op	   17177 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   17546	     69322 ns/op	   44411 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   18750	     66688 ns/op	   44410 B/op	      36 allocs/op
+PASS
+# round 3 at 2026-09-26 20:03:10 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c4a-score-20x8-text-16         	   51303	     28328 ns/op	   17177 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	   41829	     29326 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   16476	     71160 ns/op	   44411 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   18134	     68206 ns/op	   44410 B/op	      36 allocs/op
+PASS
+# round 4 at 2026-09-26 20:03:20 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c4a-score-20x8-text-16         	   52785	     27078 ns/op	   17177 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	   40298	     30741 ns/op	   17176 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   15813	     72126 ns/op	   44410 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   16962	     71789 ns/op	   44410 B/op	      36 allocs/op
+PASS
+# round 5 at 2026-09-26 20:03:30 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c4a-score-20x8-text-16         	   45070	     28682 ns/op	   17177 B/op	      27 allocs/op
+BenchmarkPrepare/c4a-score-20x8-text-16         	   43880	     27809 ns/op	   17177 B/op	      27 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   10000	    111890 ns/op	   44410 B/op	      36 allocs/op
+BenchmarkPrepare/c4b-score-20x8-json-16         	   14252	     81792 ns/op	   44410 B/op	      36 allocs/op
+PASS
+# exit 0 at 2026-09-26 20:03:40 JST
+# load after: 20:03  up 4 days, 19:09, 1 user, load averages: 74.23 29.54 37.33 | kernel: { 74.23 29.54 37.33 }

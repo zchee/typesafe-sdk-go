@@ -1,0 +1,88 @@
+# 2026-09-26 19:58:48 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret cand.test -test.run ^$ -test.bench ^Benchmark(Prepare|FalsyJSON)$/^(n8a-array-score|n8b-map-score|small-14B|array|map)$ -test.benchmem -test.count 2
+# load before: 19:58  up 4 days, 19:04, 1 user, load averages: 7.99 19.34 40.49 | kernel: { 7.99 19.34 40.49 } (MAXLOAD=10, waited 0 x 60 s)
+# commit: 0aa6730
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-26 19:58:59 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/n8a-array-score-16         	   41586	     29376 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16         	   41685	     29472 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    8966	    128215 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	   10000	    125790 ns/op	  254256 B/op	      18 allocs/op
+BenchmarkFalsyJSON/array-16                 	306131559	         4.043 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-16                 	291228265	         4.195 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	208840947	         5.544 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	231957716	         5.197 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	307581958	         3.880 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	311306960	         3.888 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 2 at 2026-09-26 19:59:23 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/n8a-array-score-16         	   41500	     29027 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16         	   41618	     29364 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    9793	    126329 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    9098	    125517 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkFalsyJSON/array-16                 	312861032	         3.909 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-16                 	296956168	         3.997 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	225070438	         5.328 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	219752817	         5.383 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	303470533	         3.950 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	297096102	         3.974 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 3 at 2026-09-26 19:59:47 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/n8a-array-score-16         	   40036	     31120 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16         	   40296	     29668 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    9394	    126328 ns/op	  254256 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    9200	    129009 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkFalsyJSON/array-16                 	310350712	         3.859 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-16                 	311712769	         3.857 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	229121756	         5.244 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	223826205	         5.327 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	309374863	         3.844 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	311835792	         3.839 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 4 at 2026-09-26 20:00:10 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/n8a-array-score-16         	   41305	     28711 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16         	   39913	     30120 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    8606	    140677 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    8406	    141263 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkFalsyJSON/array-16                 	288465900	         4.213 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-16                 	282999177	         4.269 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	230622504	         5.175 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	230702016	         5.258 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	308739481	         3.892 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	307848862	         3.838 ns/op	       0 B/op	       0 allocs/op
+PASS
+# round 5 at 2026-09-26 20:00:34 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/n8a-array-score-16         	   39949	     30500 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16         	   40359	     29955 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    9726	    123441 ns/op	  254256 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16           	    9117	    123535 ns/op	  254256 B/op	      18 allocs/op
+BenchmarkFalsyJSON/array-16                 	305990659	         3.939 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/array-16                 	301409844	         4.403 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	212878592	         5.652 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/map-16                   	223733736	         5.630 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	299927110	         4.178 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFalsyJSON/small-14B-16             	295398823	         4.080 ns/op	       0 B/op	       0 allocs/op
+PASS
+# exit 0 at 2026-09-26 20:00:47 JST
+# load after: 20:00  up 4 days, 19:06, 1 user, load averages: 8.07 15.65 36.24 | kernel: { 8.07 15.65 36.24 }

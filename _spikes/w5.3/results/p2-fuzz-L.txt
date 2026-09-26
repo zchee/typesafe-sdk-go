@@ -1,0 +1,9 @@
+# 2026-09-26 10:59:38 UTC (L) FuzzFalsyJSON at e178067, -fuzztime 300s -parallel 8; load 1.39 1.23 1.35 1/611 739435
+fuzz: elapsed: 4m57s, execs: 12848512 (42633/sec), new interesting: 219 (total: 280)
+fuzz: elapsed: 5m0s, execs: 12978921 (43468/sec), new interesting: 219 (total: 280)
+fuzz: elapsed: 5m0s, execs: 12978921 (0/sec), new interesting: 219 (total: 280)
+PASS
+ok  	github.com/zchee/typesafe-sdk-go	300.118s
+fuzz-exit 0
+# corpus entries: 0 new failures; cache 219 entries
+# end 2026-09-26 11:04:44 UTC load 8.74 5.96 3.38 1/612 740209

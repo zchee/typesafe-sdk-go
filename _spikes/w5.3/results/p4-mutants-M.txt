@@ -1,0 +1,26 @@
+# P4 (the level spans reserved) mutants over the working tree, 2026-09-26 19:32:43 JST, (M), not under the bench lock
+== mutant a the spans not reserved
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c4b-score-20x8-json (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.061s
+FAIL
+killed
+== mutant b every level counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c1-sketch (0.00s)
+    --- FAIL: TestAllocPrepare/c4a-score-20x8-text (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.060s
+FAIL
+killed
+== mutant c no JSON level counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c4b-score-20x8-json (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.060s
+FAIL
+killed

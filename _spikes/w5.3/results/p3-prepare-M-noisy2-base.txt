@@ -1,0 +1,98 @@
+# 2026-09-26 20:14:18 JST (M) lock=/private/tmp/claude-501/-Users-zchee-go-src-github-com-zchee-typesafe-sdk-go/40cb0f1f-c8a9-422c-a3e8-b3afc329b5cb/scratchpad/bench.lock GOEXPERIMENT=nosimd,noruntimesecret base.test -test.run ^$ -test.bench ^BenchmarkPrepare$/^(c1-sketch|c5-raw-100x3|n8a-array-score|n8a-array-control|n8b-map-score|n8b-map-control)$ -test.benchmem -test.count 2
+# load before: 20:14  up 4 days, 19:20, 1 user, load averages: 9.54 24.83 37.82 | kernel: { 9.54 24.83 37.82 } (MAXLOAD=10, waited 0 x 60 s)
+# commit: 0aa6730
+# rounds: 5, alternating base and cand
+go version go1.27.1 darwin/arm64
+[goexperiment.regabiwrappers goexperiment.regabiargs goexperiment.jsonv2 goexperiment.greenteagc goexperiment.randomizedheapbase64 goexperiment.sizespecializedmalloc arm64.v8.0]
+# round 1 at 2026-09-26 20:14:18 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c1-sketch-16         	 1865346	       622.3 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 1340959	       944.9 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   12830	     87721 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   19448	     59434 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   38797	     30960 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   36854	     34520 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   37677	     32286 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   37920	     32294 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    6316	    190062 ns/op	  254261 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    9682	    130817 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    9302	    135927 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    9398	    135091 ns/op	  254257 B/op	      18 allocs/op
+PASS
+# round 2 at 2026-09-26 20:14:47 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c1-sketch-16         	 1987188	       605.9 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 1986824	       608.3 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   21067	     56969 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   21008	     56948 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   38961	     30959 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   39013	     30751 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   37963	     31081 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   38716	     31162 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    9584	    128377 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    9375	    129319 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    9045	    130407 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    9194	    129580 ns/op	  254257 B/op	      18 allocs/op
+PASS
+# round 3 at 2026-09-26 20:15:15 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c1-sketch-16         	 1970443	       600.0 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 1995451	       610.5 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   20918	     59196 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   20031	     59126 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   36854	     31254 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   33556	     33929 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   27205	     39683 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   20298	     60756 ns/op	   55433 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    7418	    221754 ns/op	  254266 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    8440	    139865 ns/op	  254258 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    8989	    135709 ns/op	  254257 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    9481	    126190 ns/op	  254257 B/op	      18 allocs/op
+PASS
+# round 4 at 2026-09-26 20:15:44 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c1-sketch-16         	 2089128	       578.3 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-16         	 2018168	       688.6 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   18222	     65598 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   18205	     63006 ns/op	   31920 B/op	      14 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   38701	     33316 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   39375	     34008 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   36844	     32961 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   10000	    105312 ns/op	   55434 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    1298	    872015 ns/op	  254278 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    2577	    785904 ns/op	  254273 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    2710	    652114 ns/op	  254260 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    1394	    914915 ns/op	  254257 B/op	      18 allocs/op
+PASS
+# round 5 at 2026-09-26 20:16:23 JST
+goos: darwin
+goarch: arm64
+pkg: github.com/zchee/typesafe-sdk-go
+cpu: Apple M3 Max
+BenchmarkPrepare/c1-sketch-16         	 1000000	      3782 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c1-sketch-16         	  512902	      2854 ns/op	     944 B/op	       6 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	    6615	    186298 ns/op	   31922 B/op	      14 allocs/op
+BenchmarkPrepare/c5-raw-100x3-16      	   10000	    209671 ns/op	   31922 B/op	      14 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	   11492	    125742 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-control-16 	    7980	    157708 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	    9379	    144399 ns/op	   55433 B/op	      15 allocs/op
+BenchmarkPrepare/n8a-array-score-16   	   10000	    160678 ns/op	   55432 B/op	      15 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    2323	    540863 ns/op	  254262 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-control-16   	    2600	    453013 ns/op	  254260 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    2306	    450283 ns/op	  254262 B/op	      18 allocs/op
+BenchmarkPrepare/n8b-map-score-16     	    2734	    474174 ns/op	  254262 B/op	      18 allocs/op
+PASS
+# exit 0 at 2026-09-26 20:17:05 JST
+# load after: 20:17  up 4 days, 19:23, 1 user, load averages: 114.26 48.32 44.03 | kernel: { 114.26 48.32 44.03 }

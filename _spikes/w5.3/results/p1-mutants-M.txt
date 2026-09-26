@@ -1,0 +1,103 @@
+# P1 (the Builder's key stack) mutants over the working tree, 2026-09-26 19:22:36 JST, (M), not under the bench lock
+== mutant a the keys are not sorted
+vet ok
+--- FAIL: TestPreparedBytesMatchPython (0.00s)
+    --- FAIL: TestPreparedBytesMatchPython/success:_raw_questions (0.00s)
+    --- FAIL: TestPreparedBytesMatchPython/success:_raw_scalars (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.099s
+--- FAIL: TestBuilderRawKeyStack (0.01s)
+    --- FAIL: TestBuilderRawKeyStack/success:_a_wide_map_nested_in_the_middle_of_an_outer_one (0.01s)
+    --- FAIL: TestBuilderRawKeyStack/success:_maps_inside_arrays_inside_maps (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.029s
+FAIL
+killed
+== mutant b the whole stack is sorted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c5-raw-100x3 (0.00s)
+--- FAIL: TestPreparedBytesMatchPython (0.00s)
+    --- FAIL: TestPreparedBytesMatchPython/success:_raw_questions (0.00s)
+--- FAIL: TestPrepareRejects (0.00s)
+    --- FAIL: TestPrepareRejects/error:_a_nested_unsupported_value (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.061s
+--- FAIL: TestBuilderRawValues (0.00s)
+    --- FAIL: TestBuilderRawValues/success:_map[string]any_in_sorted_key_order (0.00s)
+--- FAIL: TestBuilderRawKeyStack (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_nested_keys_that_sort_before_the_outer_ones (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_a_wide_map_nested_in_the_middle_of_an_outer_one (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_maps_inside_arrays_inside_maps (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+FAIL
+killed
+== mutant c the keys returned from the stack's start
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c5-raw-100x3 (0.00s)
+--- FAIL: TestPreparedBytesMatchPython (0.00s)
+    --- FAIL: TestPreparedBytesMatchPython/success:_raw_questions (0.00s)
+--- FAIL: TestPrepareRejects (0.00s)
+    --- FAIL: TestPrepareRejects/error:_a_cyclic_raw_field (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.068s
+--- FAIL: TestBuilderRawValues (0.00s)
+    --- FAIL: TestBuilderRawValues/success:_an_empty_map (0.00s)
+    --- FAIL: TestBuilderRawValues/success:_map[string]any_in_sorted_key_order (0.00s)
+    --- FAIL: TestBuilderRawValues/success:_map[string]string_in_sorted_key_order (0.00s)
+--- FAIL: TestBuilderRawKeyStack (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_a_wide_map_nested_in_the_middle_of_an_outer_one (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_maps_inside_arrays_inside_maps (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_nested_keys_that_sort_before_the_outer_ones (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.013s
+FAIL
+killed
+== mutant d a nested map[string]any leaves its keys on the stack
+vet ok
+ok  	github.com/zchee/typesafe-sdk-go	0.065s
+--- FAIL: TestBuilderRawKeyStack (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_a_wide_map_nested_in_the_middle_of_an_outer_one (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_maps_inside_arrays_inside_maps (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_nested_keys_that_sort_before_the_outer_ones (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+FAIL
+killed
+== mutant e Raw leaves the fields' keys on the stack
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/c5-raw-100x3 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.060s
+--- FAIL: TestBuilderRawKeyStack (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_a_wide_map_nested_in_the_middle_of_an_outer_one (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_maps_inside_arrays_inside_maps (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_nested_keys_that_sort_before_the_outer_ones (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+FAIL
+killed
+== mutant g a nested map[string]string leaves its keys on the stack
+vet ok
+ok  	github.com/zchee/typesafe-sdk-go	0.063s
+--- FAIL: TestBuilderRawKeyStack (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_nested_keys_that_sort_before_the_outer_ones (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_a_wide_map_nested_in_the_middle_of_an_outer_one (0.00s)
+    --- FAIL: TestBuilderRawKeyStack/success:_maps_inside_arrays_inside_maps (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.011s
+FAIL
+killed
+== mutant f a fresh key slice per map
+vet ok
+--- FAIL: TestAllocPrepare (0.00s)
+    --- FAIL: TestAllocPrepare/c5-raw-100x3 (0.00s)
+FAIL	github.com/zchee/typesafe-sdk-go	0.018s
+--- FAIL: TestBuilderRawValues (0.00s)
+    --- FAIL: TestBuilderRawValues/success:_an_empty_map (0.00s)
+FAIL	github.com/zchee/typesafe-sdk-go/internal/wire	0.012s
+FAIL
+killed

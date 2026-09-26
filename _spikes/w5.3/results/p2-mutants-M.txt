@@ -1,0 +1,102 @@
+# P2 (falsiness from the first bytes) mutants over the working tree, 2026-09-26 19:29:09 JST, (M), not under the bench lock; the fuzz target runs its seed corpus only
+== mutant a null is not a candidate
+vet ok
+--- FAIL: FuzzFalsyJSON (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#3 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#4 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.062s
+FAIL
+killed
+== mutant b every string is a candidate
+vet ok
+--- FAIL: TestAllocFalsyJSON (0.00s)
+    --- FAIL: TestAllocFalsyJSON/success:_a_long_string (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.062s
+FAIL
+killed
+== mutant c every array is a candidate
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/n8a-array-score (0.00s)
+--- FAIL: TestAllocFalsyJSON (0.00s)
+    --- FAIL: TestAllocFalsyJSON/success:_the_pretty_array (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.076s
+FAIL
+killed
+== mutant d every object is a candidate
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/n8b-map-score (0.00s)
+--- FAIL: TestAllocFalsyJSON (0.00s)
+    --- FAIL: TestAllocFalsyJSON/success:_the_pretty_object (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.069s
+FAIL
+killed
+== mutant e no space skipped inside an array
+vet ok
+--- FAIL: TestAllocFalsyJSON (0.00s)
+    --- FAIL: TestAllocFalsyJSON/success:_an_empty_array,_checked (0.00s)
+--- FAIL: FuzzFalsyJSON (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#20 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#21 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.074s
+FAIL
+killed
+== mutant f a zero digit rules a number out
+vet ok
+--- FAIL: TestAllocFalsyJSON (0.00s)
+    --- FAIL: TestAllocFalsyJSON/success:_a_zero,_checked_whole (0.00s)
+--- FAIL: FuzzFalsyJSON (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#32 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#33 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#34 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#35 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#36 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#37 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#38 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#52 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#53 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.060s
+FAIL
+killed
+== mutant g the exponent is scanned as mantissa
+vet ok
+--- FAIL: TestAllocFalsyJSON (0.00s)
+    --- FAIL: TestAllocFalsyJSON/success:_a_zero,_checked_whole (0.00s)
+--- FAIL: FuzzFalsyJSON (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#36 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#37 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#38 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#53 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.065s
+FAIL
+killed
+== mutant h an object is closed by a bracket
+vet ok
+--- FAIL: FuzzFalsyJSON (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#26 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#27 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#60 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.101s
+FAIL
+killed
+== mutant i leading space not skipped
+vet ok
+--- FAIL: FuzzFalsyJSON (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#4 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#8 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#13 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#52 (0.00s)
+    --- FAIL: FuzzFalsyJSON/seed#60 (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.059s
+FAIL
+killed

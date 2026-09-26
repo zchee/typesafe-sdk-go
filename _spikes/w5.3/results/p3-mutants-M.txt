@@ -1,0 +1,46 @@
+# P3 (the size hint of raw values) mutants over the working tree, 2026-09-26 19:31:15 JST, (M), not under the bench lock
+== mutant a raw values not counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/n8a-array-score (0.00s)
+    --- FAIL: TestAllocPrepare/n8b-map-score (0.00s)
+--- FAIL: TestSizeHintCoversRawValues (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_Content_text (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_Content_JSON (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_pretty_values (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_a_string (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_RawJSON (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.062s
+FAIL
+killed
+== mutant b strings not counted
+vet ok
+--- FAIL: TestSizeHintCoversRawValues (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_a_string (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.059s
+FAIL
+killed
+== mutant c RawJSON not counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/n8a-array-score (0.00s)
+--- FAIL: TestSizeHintCoversRawValues (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_RawJSON (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_pretty_values (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.060s
+FAIL
+killed
+== mutant d Content not counted
+vet ok
+--- FAIL: TestAllocPrepare (0.01s)
+    --- FAIL: TestAllocPrepare/n8b-map-score (0.00s)
+--- FAIL: TestSizeHintCoversRawValues (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_Content_text (0.00s)
+    --- FAIL: TestSizeHintCoversRawValues/success:_Content_JSON (0.00s)
+FAIL
+FAIL	github.com/zchee/typesafe-sdk-go	0.060s
+FAIL
+killed
